@@ -1,0 +1,209 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Build.Framework.IBuildEngine2
+  id: IBuildEngine2
+  children:
+  - Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  - Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  - Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  langs:
+  - csharp
+  name: IBuildEngine2
+  nameWithType: IBuildEngine2
+  fullName: Microsoft.Build.Framework.IBuildEngine2
+  type: Interface
+  summary: "Lehetővé teszi a feladat szerzők funkcióinak részhalmazának használata a [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] motor."
+  remarks: "Kiterjeszti a IBuildEngine2 <xref:Microsoft.Build.Framework.IBuildEngine>, lehetővé téve párhuzamosan több projektfájlokat több processzort vagy több magos processzor tartalmazó rendszereken.</xref:Microsoft.Build.Framework.IBuildEngine>"
+  syntax:
+    content: 'public interface IBuildEngine2 : Microsoft.Build.Framework.IBuildEngine'
+  implements:
+  - Microsoft.Build.Framework.IBuildEngine
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  id: BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  nameWithType: IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "A projektfájl build kezdeményezi. Ha a build sikeres, a megadott cél kimenetének ad vissza, ha van."
+  remarks: "Ha nincs célja meg van adva, [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] épít fel a projekt alapértelmezett céljai.       Cél kimenetek mezeje <xref:Microsoft.Build.Framework.ITaskItem>tömbök indexelik a cél neve.</xref:Microsoft.Build.Framework.ITaskItem>"
+  syntax:
+    content: public bool BuildProjectFile (string projectFileName, string[] targetNames, System.Collections.IDictionary globalProperties, System.Collections.IDictionary targetOutputs, string toolsVersion);
+    parameters:
+    - id: projectFileName
+      type: System.String
+      description: "A projekt fájl létrehozásához nevét."
+    - id: targetNames
+      type: System.String[]
+      description: "A projekt felépítéséhez a cél neve. Több cél egymástól pontosvesszővel (;). <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    - id: globalProperties
+      type: System.Collections.IDictionary
+      description: "Egy <xref:System.Collections.IDictionary>a projekt alkalmazandó további globális tulajdonságait.</xref:System.Collections.IDictionary> A kulcs és értéket kell <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> adattípusokat."
+    - id: targetOutputs
+      type: System.Collections.IDictionary
+      description: "A kimenetek minden egyes megadott válaszol-e. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    - id: toolsVersion
+      type: System.String
+      description: "Alapértelmezett érték = &quot;3.5.&quot; Megadja a használandó buildjéhez eszközkészlet verzióját. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a build sikeres volt. Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
+  overload: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  id: BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Lehetővé teszi, hogy a feladatok a megadott projektfájlokat több processzorral vagy több core processzorral rendelkező párhuzamos build kezdeményezése. Ha a buildek sikeres, a megadott cél kimenetének ad vissza, ha van."
+  remarks: "Mindkét `targetNames` és `targetOutputs` elfogadása `null` értékeket. Ha nincs célja meg van adva, az alapértelmezett célok épülnek. Cél kimenetek mezeje <xref:Microsoft.Build.Framework.ITaskItem>tömbök indexelik a cél neve.</xref:Microsoft.Build.Framework.ITaskItem>"
+  syntax:
+    content: public bool BuildProjectFilesInParallel (string[] projectFileNames, string[] targetNames, System.Collections.IDictionary[] globalProperties, System.Collections.IDictionary[] targetOutputsPerProject, string[] toolsVersion, bool useResultsCache, bool unloadProjectsOnCompletion);
+    parameters:
+    - id: projectFileNames
+      type: System.String[]
+      description: "A projekt fájlok létrehozásához nevét."
+    - id: targetNames
+      type: System.String[]
+      description: "A projekt felépítéséhez a cél neve. Több cél egymástól pontosvesszővel (;). <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    - id: globalProperties
+      type: System.Collections.IDictionary[]
+      description: "Egy <xref:System.Collections.IDictionary>a projekt alkalmazandó további globális tulajdonságait.</xref:System.Collections.IDictionary> A kulcs és értéket kell <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> adattípusokat. A tömb bejegyzések lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
+    - id: targetOutputsPerProject
+      type: System.Collections.IDictionary[]
+      description: "A kimenetek minden egyes megadott válaszol-e. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    - id: toolsVersion
+      type: System.String[]
+      description: "Alapértelmezett érték = &quot;3.5.&quot; Megadja a használandó buildjéhez eszközkészlet verzióját. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>elfogadható értékek a következők."
+    - id: useResultsCache
+      type: System.Boolean
+      description: "Ha <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, a művelet futtatása csak akkor, ha a gyorsítótár már nem tartalmazza az eredményt. A művelet után az eredmény tárolódik a gyorsítótárban."
+    - id: unloadProjectsOnCompletion
+      type: System.Boolean
+      description: "Ha <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> a projekt távolítva a memóriából, a művelet befejeződése után."
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha a build sikeres volt, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha más módon."
+  overload: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  id: IsRunningMultipleNodes
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
+  fullName: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Visszaadja, hogy fut-e a rendszer egy vagy több processor módban."
+  remarks: "A build motor egyprocesszoros módban van (`IsRunningMultipleNodes` = `false`) Ha az inicializált 1-nél processzorok számát és a build motor nem egy gyermek motor. A build motor többprocesszoros módban van (`IsRunningMultipleNodes` = `true`) processzorok 1-nél nagyobb számú inicializált, vagy ha a build motor egy gyermek motor."
+  syntax:
+    content: public bool IsRunningMultipleNodes { get; }
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a rendszer a többprocesszoros módban fut. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> más módon."
+  overload: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes*
+  exceptions: []
+  platform:
+  - net462
+references:
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  nameWithType: IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+- uid: System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.String[]
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Collections.IDictionary
+  parent: System.Collections
+  isExternal: true
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+- uid: System.Collections.IDictionary[]
+  parent: System.Collections
+  isExternal: true
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary[]
+  spec.csharp:
+  - uid: System.Collections.IDictionary
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
+  fullName: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFile
+  nameWithType: IBuildEngine2.BuildProjectFile
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFilesInParallel
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
