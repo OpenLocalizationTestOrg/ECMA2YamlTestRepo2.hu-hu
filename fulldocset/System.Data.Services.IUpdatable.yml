@@ -21,8 +21,8 @@ items:
   nameWithType: IUpdatable
   fullName: System.Data.Services.IUpdatable
   type: Interface
-  summary: "An interface used to insert or update a resource by the HTTP POST method."
-  remarks: "The IUpdatable interface is resource independent. The methods that return objects representing resources can return anything.       The returned object is an opaque object that represents the resource. To use the reference to read or update a value, the same opaque object is passed back to IUpdatable.       Implementation of IUpdatable must track the mapping between this opaque object to the object it represents. When the resource is serialized and a common language runtime (CLR) instance of the correct type is needed, the ResolveResource method on IUpdatable is called with the opaque object.       To serialize the object, call the <xref:System.Data.Services.IUpdatable.ResolveResource%2A> method on IUpdatable."
+  summary: "A HTTP POST metódus beszúrása vagy frissítése erőforrás használt felület."
+  remarks: "Az IUpdatable objektumfelület független erőforrás. A módszereket, amelyek az erőforrások közti objektumokat adjanak vissza semmit adhat vissza.       A visszaadott objektumot képviselő az erőforrás nem átlátszó objektum. A hivatkozás segítségével olvasni vagy frissíteni az értéket, az átlátszatlan objektumon visszaküldik az IUpdatable.       IUpdatable végrehajtásának kell nyomon követnie a leképezési Ez az objektum, amely nem átlátszó objektum között. Ha az erőforrás szerializált, és a közös nyelvi futtatókörnyezet (CLR) a megfelelő típus példánya szükséges, az objektum IUpdatable a ResolveResource metódus hívása.       Az objektum szerializálása, hívja meg a <xref:System.Data.Services.IUpdatable.ResolveResource%2A>IUpdatable metódusa.</xref:System.Data.Services.IUpdatable.ResolveResource%2A>"
   syntax:
     content: public interface IUpdatable
   implements: []
@@ -40,19 +40,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Adds the specified value to the collection."
+  summary: "A megadott értéket ad hozzá a gyűjteményhez."
   syntax:
     content: public void AddReferenceToCollection (object targetResource, string propertyName, object resourceToBeAdded);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "Target object that defines the property."
+      description: "Az célobjektum, amely meghatározza a tulajdonság."
     - id: propertyName
       type: System.String
-      description: "The name of the collection property to which the resource should be added.."
+      description: "A gyűjtemény tulajdonság, amelyhez hozzá kell lennie az erőforrás nevét..."
     - id: resourceToBeAdded
       type: System.Object
-      description: "The opaque object representing the resource to be added."
+      description: "Az erőforrás hozzáadandó képviselő nem átlátszó objektum."
   overload: System.Data.Services.IUpdatable.AddReferenceToCollection*
   exceptions: []
   platform:
@@ -69,7 +69,7 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Cancels a change to the data."
+  summary: "Visszavonja a változtatást."
   syntax:
     content: public void ClearChanges ();
     parameters: []
@@ -89,20 +89,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Creates the resource of the specified type and that belongs to the specified container."
-  remarks: "CreateResource is called to insert a new resource by the HTTP POST method. The first parameter points to the container that the resource belongs to and the second parameter is the namespace-qualified name of the resource type that needs to be created.       The second parameter is most useful when using inheritance. The return type need not be the actual CLR instance of the resource. It can be anything, for example, a cookie, that the implementation requires."
+  summary: "Létrehozza az erőforrás a megadott típus, és hogy a megadott tárolóhoz tartozik."
+  remarks: "CreateResource a HTTP POST metódus neve lehet beszúrni egy új erőforrást. Az első paraméter mutat a tárolóhoz, amelybe az erőforrás tartozik, és a második paraméter az a névtér minősített név az erőforrástípust kell létrehozni.       A második paraméter öröklési használata esetén a leghasznosabb. A visszatérési típus nem kell az erőforrás a tényleges közös nyelvi Futtatókörnyezet példánya. Bármi, például egy cookie-t, a megvalósítás igénylő lehet."
   syntax:
     content: public object CreateResource (string containerName, string fullTypeName);
     parameters:
     - id: containerName
       type: System.String
-      description: "The name of the entity set to which the resource belongs."
+      description: "Az entitás neve, amelyhez az erőforrás tartozik beállítása."
     - id: fullTypeName
       type: System.String
-      description: "The full namespace-qualified type name of the resource."
+      description: "A teljes névtér minősített típusnév az erőforrás."
     return:
       type: System.Object
-      description: "The object representing a resource of specified type and belonging to the specified container."
+      description: "A megadott típusú erőforrást képviselő és a megadott tárolóhoz tartozó objektum."
   overload: System.Data.Services.IUpdatable.CreateResource*
   exceptions: []
   platform:
@@ -119,14 +119,14 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Deletes the specified resource."
-  remarks: "The `targetResource` is the opaque object returned by <xref:System.Data.Services.IUpdatable.GetResource%2A> or <xref:System.Data.Services.IUpdatable.CreateResource%2A>."
+  summary: "A megadott erőforrás törlése."
+  remarks: "A `targetResource` <xref:System.Data.Services.IUpdatable.GetResource%2A>vagy <xref:System.Data.Services.IUpdatable.CreateResource%2A>.</xref:System.Data.Services.IUpdatable.CreateResource%2A> </xref:System.Data.Services.IUpdatable.GetResource%2A> által visszaadott nem átlátszó objektum"
   syntax:
     content: public void DeleteResource (object targetResource);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The resource to be deleted."
+      description: "A törölni kívánt erőforrás."
   overload: System.Data.Services.IUpdatable.DeleteResource*
   exceptions: []
   platform:
@@ -143,19 +143,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the resource of the specified type identified by a query and type name."
+  summary: "A lekérdezés és a típust névvel azonosíthatók a megadott típusú erőforrás lekérése."
   syntax:
     content: public object GetResource (System.Linq.IQueryable query, string fullTypeName);
     parameters:
     - id: query
       type: System.Linq.IQueryable
-      description: "Language integrated query (LINQ) pointing to a particular resource."
+      description: "Nyelvi integrált lekérdezés (LINQ) egy adott erőforráshoz mutat."
     - id: fullTypeName
       type: System.String
-      description: "The fully qualified type name of resource."
+      description: "A teljesen minősített típusnév erőforrás."
     return:
       type: System.Object
-      description: "An opaque object representing a resource of the specified type, referenced by the specified query."
+      description: "A megadott lekérdezés által hivatkozott, a megadott típusú erőforrást képviselő nem átlátszó objektum."
   overload: System.Data.Services.IUpdatable.GetResource*
   exceptions: []
   platform:
@@ -172,20 +172,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value of the specified property on the target object."
-  remarks: "This method is called for scalar properties or complex properties. For a scalar property, the returned object should be the actual value."
+  summary: "A megadott tulajdonság értékének beolvasása a célobjektum."
+  remarks: "Ezt a módszert nevezik skaláris tulajdonságok és az összetett tulajdonságokat. Egy skaláris tulajdonság a visszaadott objektumot a tényleges értéknek kell lennie."
   syntax:
     content: public object GetValue (object targetResource, string propertyName);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "An opaque object that represents a resource."
+      description: "Nem átlátszó objektum, amely erőforrását jelöli."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be retrieved."
+      description: "A tulajdonság értékének meg kell beolvasni neve."
     return:
       type: System.Object
-      description: "The value of the object."
+      description: "Az objektum értéke."
   overload: System.Data.Services.IUpdatable.GetValue*
   exceptions: []
   platform:
@@ -202,20 +202,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Removes the specified value from the collection."
-  remarks: "Removes the specified resource from the collection identified by a navigation property on the target object. This operation deletes the relationship between the two resource objects bound by the relationship."
+  summary: "Eltávolítja a megadott érték a gyűjteményből."
+  remarks: "Eltávolítja a megadott erőforrás a célobjektum navigálási tulajdonság által azonosított gyűjteményből. Ez a művelet törli a a kapcsolat által kötött erőforrás két objektum közötti kapcsolat."
   syntax:
     content: public void RemoveReferenceFromCollection (object targetResource, string propertyName, object resourceToBeRemoved);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "A célobjektum, amely meghatározza a tulajdonság."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "A tulajdonság, amelynek az értéke frissíteni kell a neve."
     - id: resourceToBeRemoved
       type: System.Object
-      description: "The property value that needs to be removed."
+      description: "A tulajdonság értéke, amely el kell távolítani."
   overload: System.Data.Services.IUpdatable.RemoveReferenceFromCollection*
   exceptions: []
   platform:
@@ -232,16 +232,16 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Resets the resource identified by the parameter <code>resource </code>to its default value."
+  summary: "Alaphelyzetbe állítja a paraméter által azonosított <code> resource  </code>az alapértelmezett értékre."
   syntax:
     content: public object ResetResource (object resource);
     parameters:
     - id: resource
       type: System.Object
-      description: "The resource to be updated."
+      description: "Az erőforrás frissíteni kell."
     return:
       type: System.Object
-      description: "The resource with its value reset to the default value."
+      description: "Az erőforrás a értékével, az alapértelmezett értékre állnak vissza."
   overload: System.Data.Services.IUpdatable.ResetResource*
   exceptions: []
   platform:
@@ -258,17 +258,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Returns the instance of the resource represented by the specified resource object."
-  remarks: "This method is called to resolve the opaque object returned by the <xref:System.Data.Services.IUpdatable.CreateResource%2A> or <xref:System.Data.Services.IUpdatable.GetResource%2A> API into the CLR instance. This is normally called after <xref:System.Data.Services.IUpdatable.SaveChanges%2A> to serialize the resource for POST methods.       This method is also called if there are update interceptors invoked with the common language runtime (CLR) resource instances. It can be used if the provider supports optimistic concurrency and the resource type has concurrency tokens defined by <xref:System.Data.Services.ETagAttribute> in a CLR-based provider."
+  summary: "Az erőforrás a megadott erőforrás-objektum által jelképezett példányát adja vissza."
+  remarks: "Ezt a módszert nevezik, az objektum által visszaadott megoldásához a <xref:System.Data.Services.IUpdatable.CreateResource%2A>vagy <xref:System.Data.Services.IUpdatable.GetResource%2A>API azokat a közös nyelvi Futtatókörnyezet példánya.</xref:System.Data.Services.IUpdatable.GetResource%2A> </xref:System.Data.Services.IUpdatable.CreateResource%2A> Ezt általában nevezik után <xref:System.Data.Services.IUpdatable.SaveChanges%2A>szerializálni a POST metódus erőforrás.</xref:System.Data.Services.IUpdatable.SaveChanges%2A>       Ez a módszer néven is ismert frissítés elfogókat meghívva a közös nyelvi futtatókörnyezet (CLR) erőforrás-példányok esetén. Akkor használható, ha a szolgáltató egyidejű hozzáférések optimista támogatja, és az erőforrástípus által megadott egyidejűség jogkivonatok <xref:System.Data.Services.ETagAttribute>egy CLR-alapú szolgáltatóban.</xref:System.Data.Services.ETagAttribute>"
   syntax:
     content: public object ResolveResource (object resource);
     parameters:
     - id: resource
       type: System.Object
-      description: "The object representing the resource whose instance needs to be retrieved."
+      description: "Az erőforrás, amelynek példány kell beolvasni képviselő objektum."
     return:
       type: System.Object
-      description: "Returns the instance of the resource represented by the specified resource object."
+      description: "Az erőforrás a megadott erőforrás-objektum által jelképezett példányát adja vissza."
   overload: System.Data.Services.IUpdatable.ResolveResource*
   exceptions: []
   platform:
@@ -285,8 +285,8 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Saves all the changes that have been made by using the <xref href=&quot;System.Data.Services.IUpdatable&quot;></xref> APIs."
-  remarks: "The <xref:System.Data.Services.IUpdatable> implementation must track all changes until SaveChanges is called and then save all changes when SaveChanges is called. The <xref:System.Data.Services.IUpdatable> implementation is expected to save all of the changes or to reject all of the changes together."
+  summary: "A végrehajtott módosítások mentése a <xref href=&quot;System.Data.Services.IUpdatable&quot;> </xref> API-k."
+  remarks: "A <xref:System.Data.Services.IUpdatable>megvalósítási kell minden változásainak követése, amíg a SaveChanges metódus neve, és mentse újra összes módosítást, a SaveChanges metódus meghívásakor.</xref:System.Data.Services.IUpdatable> A <xref:System.Data.Services.IUpdatable>megvalósítási várt menti a módosításokat, vagy elutasításához módosításokat együtt.</xref:System.Data.Services.IUpdatable>"
   syntax:
     content: public void SaveChanges ();
     parameters: []
@@ -306,19 +306,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the value of the specified reference property on the target object."
+  summary: "A megadott hivatkozás tulajdonság beállítása a megfigyelni kívánt objektumot."
   syntax:
     content: public void SetReference (object targetResource, string propertyName, object propertyValue);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "A célobjektum, amely meghatározza a tulajdonság."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "A tulajdonság, amelynek az értéke frissíteni kell a neve."
     - id: propertyValue
       type: System.Object
-      description: "The property value to be updated."
+      description: "A frissítendő tulajdonság értéke."
   overload: System.Data.Services.IUpdatable.SetReference*
   exceptions: []
   platform:
@@ -335,19 +335,19 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the value of the property with the specified name on the target resource to the specified property value."
+  summary: "A megadott nevű tulajdonság értékének beállítása a cél erőforráson, hogy a megadott tulajdonság értékét."
   syntax:
     content: public void SetValue (object targetResource, string propertyName, object propertyValue);
     parameters:
     - id: targetResource
       type: System.Object
-      description: "The target object that defines the property."
+      description: "A célobjektum, amely meghatározza a tulajdonság."
     - id: propertyName
       type: System.String
-      description: "The name of the property whose value needs to be updated."
+      description: "A tulajdonság, amelynek az értéke frissíteni kell a neve."
     - id: propertyValue
       type: System.Object
-      description: "The property value for update."
+      description: "A frissítés tulajdonság értéke."
   overload: System.Data.Services.IUpdatable.SetValue*
   exceptions: []
   platform:

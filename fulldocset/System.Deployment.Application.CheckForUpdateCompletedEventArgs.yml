@@ -14,8 +14,8 @@ items:
   nameWithType: CheckForUpdateCompletedEventArgs
   fullName: System.Deployment.Application.CheckForUpdateCompletedEventArgs
   type: Class
-  summary: "Represents detailed update information obtained through a call to <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>."
-  remarks: "With CheckForUpdateCompletedEventArgs, you can decide whether to upgrade your ClickOnce application based on information about the newest version. <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable%2A> will return a Boolean value indicating whether there is a new update at all. The <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.AvailableVersion%2A> property provides the version number of the new version, while <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.MinimumRequiredVersion%2A> provides the earliest version that the user should have installed on the computer. <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired%2A> expresses whether the latest available update is required of the user. Finally, <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateSizeBytes%2A> expresses the total size of the update."
+  summary: "Részletes frissítésekkel kapcsolatos információk <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*>.</xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync*> hívásakor keresztül szerzett jelöli"
+  remarks: "A CheckForUpdateCompletedEventArgs dönthet úgy is, frissítsen a legújabb információk alapján ClickOnce alkalmazás-e. <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable%2A>jelzi, hogy van-e új frissítés minden logikai értéket ad eredményül.</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable%2A> A <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.AvailableVersion%2A>tulajdonság biztosítja az új verzió verziószáma közben <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.MinimumRequiredVersion%2A>biztosít a legkorábbi verziót, amely a felhasználó kell telepítette a számítógépen.</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.MinimumRequiredVersion%2A> </xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.AvailableVersion%2A> <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired%2A>fejezi ki, hogy a felhasználó szükség-e a legújabb frissítését.</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired%2A> Végezetül <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateSizeBytes%2A>fejezi ki a teljes mérete a frissítés.</xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateSizeBytes%2A>"
   example:
   - "The following code example uses <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable%2A> to determine if there is a new application update, and <xref:System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired%2A> to determine whether to ask the user to install the update.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/t-system.deployment.appl_1_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
@@ -38,13 +38,13 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the version number of the latest uninstalled version."
-  remarks: "You can use AvailableVersion to decide whether to install the update based on the severity of the update. For example, if only the <xref:System.Version.Build%2A> or <xref:System.Version.Revision%2A> version properties have changed, your application may not need to update until either the <xref:System.Version.Minor%2A> or <xref:System.Version.Major%2A> properties change."
+  summary: "Lekérdezi a verziószáma nem telepített legújabb verzióját."
+  remarks: "AvailableVersion segítségével határozza meg, hogy telepítette a frissítést, a frissítés a súlyosság alapján. Például, ha csak a <xref:System.Version.Build%2A>vagy <xref:System.Version.Revision%2A>verzió tulajdonságai megváltoztak, az alkalmazás nem frissítésére lehet szükség amíg újra nem indítják a <xref:System.Version.Minor%2A>vagy <xref:System.Version.Major%2A>tulajdonságainak módosítása.</xref:System.Version.Major%2A> </xref:System.Version.Minor%2A> </xref:System.Version.Revision%2A> </xref:System.Version.Build%2A>"
   syntax:
     content: public Version AvailableVersion { get; }
     return:
       type: System.Version
-      description: "The <xref:System.Version> expressing the major, minor, build and revision numbers of the latest version."
+      description: "A <xref:System.Version>alverziószám kifejezése a fő, a legújabb verzió és számok.</xref:System.Version>"
   overload: System.Deployment.Application.CheckForUpdateCompletedEventArgs.AvailableVersion*
   exceptions: []
   platform:
@@ -61,15 +61,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets a value indicating whether the update must be installed."
-  remarks: "When you deploy an update to your ClickOnce application, you can mark it as a required update, signaling to your application that it should upgrade immediately. You want mark the update if the latest version contains a critical update, or if it is incompatible with file formats or back-end data sources used by the former version."
+  summary: "Egy érték, amely jelzi, hogy a frissítés telepítve kell lekérdezi."
+  remarks: "Amikor frissítést telepít a ClickOnce alkalmazáshoz, megjelölheti azt egy kötelező frissítés, mert jelzés az alkalmazáshoz, hogy azonnal kell frissíteni. Azt szeretné, hogy a frissítés megjelölni, ha a legújabb verzióra olyan fontos frissítést tartalmaz, vagy nem kompatibilis a formátumok vagy a korábbi verziója által használt háttér-adatforrás esetén."
   example:
   - "The following code example uses IsUpdateRequired to determine whether to ask the user to install the update, or to install it without prompting.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/2aa4f4df-e487-4c83-87b0-_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
   syntax:
     content: public bool IsUpdateRequired { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the update is required; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a frissítés szükség; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Deployment.Application.CheckForUpdateCompletedEventArgs.IsUpdateRequired*
   exceptions: []
   platform:
@@ -86,15 +86,15 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the minimum version that the user must have installed on the computer."
-  remarks: "Applications can miss required updates when a user takes on a special assignment or is away from the computer for weeks or months. Use       MinimumRequiredVersion to determine if the user has not upgraded the application in a while, and has missed one or more required updates."
+  summary: "Lekérdezi a felhasználó a számítógépen telepítve kell rendelkeznie a megengedett legrégebbi verzió."
+  remarks: "Alkalmazások is teljesíti a szükséges frissítések, amikor a felhasználó egy különös hozzárendelés veszi vagy hetek vagy hónapok elhagyja a számítógépen van. Minimumrequiredversion tulajdonság segítségével határozza meg, ha a felhasználó nem frissítette az alkalmazást egy kicsit, és hiányzik egy vagy több szükséges frissítések."
   example:
   - "The following code example calls <xref:System.Deployment.Application.ApplicationDeployment.CheckForUpdateAsync%2A>, and forces an application update if MinimumRequiredVersion is greater than <xref:System.Deployment.Application.ApplicationDeployment.CurrentVersion%2A>.  \n  \n [!code-cs[ClickOnceAPI#10](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#10)]\n [!code-vb[ClickOnceAPI#10](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#10)]"
   syntax:
     content: public Version MinimumRequiredVersion { get; }
     return:
       type: System.Version
-      description: "A <xref:System.Version> object expressing the earliest version that all users must install."
+      description: "A <xref:System.Version>objektum kifejezése a legkorábbi verzióját telepíteni kell az összes felhasználó.</xref:System.Version>"
   overload: System.Deployment.Application.CheckForUpdateCompletedEventArgs.MinimumRequiredVersion*
   exceptions: []
   platform:
@@ -111,7 +111,7 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets whether an uninstalled update is available."
+  summary: "Lekérdezi, hogy nem telepített frissítés érhető el."
   remarks: ''
   example:
   - "The following code example inspects UpdateAvailable to determine whether or not there is an update to install.  \n  \n [!code-cs[ClickOnceAPI#1](~/add/codesnippet/csharp/ClickOnceAPI/Form1.cs#1)]\n [!code-cpp[ClickOnceAPI#1](~/add/codesnippet/cpp/847038a4-fd95-4e16-a133-_1.cpp)]\n [!code-vb[ClickOnceAPI#1](~/add/codesnippet/visualbasic/ClickOnceAPIVB/Form1.vb#1)]"
@@ -119,7 +119,7 @@ items:
     content: public bool UpdateAvailable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if new version of the application is available; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az alkalmazás új verziója érhető el; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateAvailable*
   exceptions: []
   platform:
@@ -136,12 +136,12 @@ items:
   assemblies:
   - System.Deployment
   namespace: System.Deployment.Application
-  summary: "Gets the size of the available update."
+  summary: "Lekérdezi az elérhető frissítésekkel méretét."
   syntax:
     content: public long UpdateSizeBytes { get; }
     return:
       type: System.Int64
-      description: "An <xref:System.Int64> describing the size, in bytes, of the available update. If no update is available, returns 0."
+      description: "Egy <xref:System.Int64>leíró méretét, bájtban az elérhető frissítésekkel.</xref:System.Int64> Ha a frissítés nem érhető el, a 0 értéket adja vissza."
   overload: System.Deployment.Application.CheckForUpdateCompletedEventArgs.UpdateSizeBytes*
   exceptions: []
   platform:
