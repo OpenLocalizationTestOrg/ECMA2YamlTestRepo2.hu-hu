@@ -19,8 +19,8 @@ items:
   nameWithType: ThreadState
   fullName: System.Threading.ThreadState
   type: Enum
-  summary: "Specifies the execution states of a <xref href=&quot;System.Threading.Thread&quot;></xref>."
-  remarks: "The ThreadState enumeration is of interest only in a few debugging scenarios. Your code should never use the thread state to synchronize the activities of threads.       ThreadState defines a set of all possible execution states for threads. Once a thread is created, it is in at least one of the states until it terminates. Threads created within the common language runtime are initially in the `Unstarted` state, while external threads that come into the runtime are already in the `Running` state. An `Unstarted` thread is transitioned into the `Running` state by calling <xref:System.Threading.Thread.Start%2A>. Not all combinations of `ThreadState` values are valid; for example, a thread cannot be in both the `Aborted` and `Unstarted` states.      > [!IMPORTANT] >  There are two thread state enumerations,ThreadState and <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.       The following table shows the actions that cause a change of state.      |Action|ThreadState|   |------------|-----------------|   |A thread is created within the common language runtime.|Unstarted|   |Another thread calls the <xref:System.Threading.Thread.Start%2A?displayProperty=fullName> method on the new thread, and the call returns.<br /><br /> The <xref:System.Threading.Thread.Start%2A> method does not return until the new thread has started running. There is no way to know at what point the new thread will start running, during the call to <xref:System.Threading.Thread.Start%2A>.|Running|   |The thread calls <xref:System.Threading.Thread.Sleep%2A>|WaitSleepJoin|   |The thread calls <xref:System.Threading.Monitor.Wait%2A> on another object.|WaitSleepJoin|   |The thread calls <xref:System.Threading.Thread.Join%2A> on another thread.|WaitSleepJoin|   |Another thread calls <xref:System.Threading.Thread.Interrupt%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Suspend%2A>|SuspendRequested|   |The thread responds to a <xref:System.Threading.Thread.Suspend%2A> request.|Suspended|   |Another thread calls <xref:System.Threading.Thread.Resume%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Abort%2A>|AbortRequested|   |The thread responds to a <xref:System.Threading.Thread.Abort%2A> request.|Stopped|   |A thread is terminated.|Stopped|       In addition to the states noted above, there is also the `Background` state, which indicates whether the thread is running in the background or foreground.       A thread can be in more than one state at a given time. For example, if a thread is blocked on a call to <xref:System.Threading.Monitor.Wait%2A>, and another thread calls <xref:System.Threading.Thread.Abort%2A> on the blocked thread, the blocked thread will be in both the `WaitSleepJoin` and the `AbortRequested` states at the same time. In this case, as soon as the thread returns from the call to <xref:System.Threading.Monitor.Wait%2A> or is interrupted, it will receive the <xref:System.Threading.ThreadAbortException> to begin aborting.       The <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> property of a thread provides the current state of a thread. Applications must use a bitmask to determine whether a thread is running. Since the value for `Running` is zero (0), test whether a thread is running by using C# code such as `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` or Visual Basic code such as `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`."
+  summary: "Adja meg a végrehajtási állapotát egy <xref href=&quot;System.Threading.Thread&quot;> </xref>."
+  remarks: "Csak néhány jelentőséggel bír az ThreadState enumerálás forgatókönyvek hibakeresést. A kód soha ne használja a szál állapota szálak tevékenységeit szinkronizálásához.       ThreadState szálak minden lehetséges végrehajtási állapotai álló készletet határoz meg. A szál létrehozása után is a állapotok közül legalább egy mindaddig, amíg a rendszer megszakítja. A közös nyelvi futtatókörnyezet belül létrehozott szálak kezdetben a rendszer a `Unstarted` állapotba kerül, amíg külső szálak, amelyek a futtatókörnyezet már szerepel a `Running` állapotát. Egy `Unstarted` szál átállítva van a `Running` <xref:System.Threading.Thread.Start%2A>.</xref:System.Threading.Thread.Start%2A> meghívásával állapot Nem minden kombinációi `ThreadState` értékek érvényesek; például a szál nem mind a `Aborted` és `Unstarted` állapotok.      > [!IMPORTANT] > Két szál állapota számbavételek, ThreadState és <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.</xref:System.Diagnostics.ThreadState?displayProperty=fullName>       Az alábbi táblázat a műveletek állapotának változást okozó.      | A művelet |} ThreadState |}   |------------|-----------------|   | Egy szál a közös nyelvi futtatókörnyezet belül jön létre. |} Kezdett |}   | Egy másik szál hívások a <xref:System.Threading.Thread.Start%2A?displayProperty=fullName>metódust, és az új szál a hívás adja vissza.</xref:System.Threading.Thread.Start%2A?displayProperty=fullName><br /><br /> A <xref:System.Threading.Thread.Start%2A>metódus nem ad vissza, amíg az új szál a futást megkezdte.</xref:System.Threading.Thread.Start%2A> Nincs mód tudni, hogy milyen pontot az új szál kezdi fut, <xref:System.Threading.Thread.Start%2A>hívása során. |} Futó |}   | A szál hívások <xref:System.Threading.Thread.Sleep%2A>|} WaitSleepJoin |}   | A hívások <xref:System.Threading.Monitor.Wait%2A>egy másik objektumra. |} WaitSleepJoin |}   | A hívások <xref:System.Threading.Thread.Join%2A>egy másik szálon. |} WaitSleepJoin |}   | Egy másik szál hívások <xref:System.Threading.Thread.Interrupt%2A>|} Futó |}   | Egy másik szál hívások <xref:System.Threading.Thread.Suspend%2A>|} SuspendRequested |}   | A szál válaszol-e a <xref:System.Threading.Thread.Suspend%2A>kérelmet. |} Felfüggesztve |}   | Egy másik szál hívások <xref:System.Threading.Thread.Resume%2A>|} Futó |}   | Egy másik szál hívások <xref:System.Threading.Thread.Abort%2A>|} AbortRequested |}   | A szál válaszol-e a <xref:System.Threading.Thread.Abort%2A>kérelmet. |} Leállítva |}   | A szál megszakadt. |} Leállítva |}       A fent leírt állapotok, mellett is van a `Background` állapotát, amely azt jelzi, hogy fut-e a szál az az előtérben vagy a háttérben.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Resume%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Interrupt%2A> </xref:System.Threading.Thread.Join%2A> </xref:System.Threading.Monitor.Wait%2A> </xref:System.Threading.Thread.Sleep%2A> </xref:System.Threading.Thread.Start%2A>       A szál egy adott időben egynél több állapota lehet. Például, ha a szál hívása blokkolva van <xref:System.Threading.Monitor.Wait%2A>, és egy másik szál hívások <xref:System.Threading.Thread.Abort%2A>a letiltott szálon a letiltott szál mindkét lesz a `WaitSleepJoin` és a `AbortRequested` állapotok egy időben.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Monitor.Wait%2A> Ebben az esetben, amint a szál ad vissza, a hívást <xref:System.Threading.Monitor.Wait%2A>, vagy nem szakítható meg, hogy megkapják a <xref:System.Threading.ThreadAbortException>megkezdéséhez megszakítása.</xref:System.Threading.ThreadAbortException> </xref:System.Threading.Monitor.Wait%2A>       A <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName>tulajdonság egy szál biztosít a szál aktuális állapotával.</xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> Alkalmazások meghatározása, hogy fut-e a szál bitmaszknak kell használnia. Óta értéke `Running` nulla (0), akkor ellenőrizze, hogy a szál fut, mint a C#-kódban `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` , illetve többek között a Visual Basic kód `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`."
   syntax:
     content: >-
       [System.Flags]
@@ -44,12 +44,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread state includes AbortRequested and the thread is now dead, but its state has not yet changed to Stopped."
+  summary: "A szál állapota tartalmaz AbortRequested és a szál elhalt, de az állapotot még nem módosult leállítva."
   syntax:
     content: Aborted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -65,12 +65,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; method has been invoked on the thread, but the thread has not yet received the pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref> that will attempt to terminate it."
+  summary: "A &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; módszert alkalmazzák a szálban, de a szálat még nem fogadták a függőben lévő <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref> , amely megkísérli leállítani azt."
   syntax:
     content: AbortRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -86,12 +86,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being executed as a background thread, as opposed to a foreground thread. This state is controlled by setting the &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; property."
+  summary: "A szál végrehajtott, a háttérszálon, szemben az előtérben történő szálnak. Ez az állapot beállítása szabályozza a &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; tulajdonság."
   syntax:
     content: Background
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -107,12 +107,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been started, it is not blocked, and there is no pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref>."
+  summary: "A szál már elindult, nem le van tiltva, és nem a függőben lévő <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref>."
   syntax:
     content: Running
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -128,12 +128,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has stopped."
+  summary: "A szál leállt."
   syntax:
     content: Stopped
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -149,12 +149,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to stop. This is for internal use only."
+  summary: "A szál leállítására vonatkozó kérelem. Ez a folyamat csak belső használatra."
   syntax:
     content: StopRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -170,12 +170,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been suspended."
+  summary: "A szál fel lett függesztve."
   syntax:
     content: Suspended
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -191,12 +191,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to suspend."
+  summary: "A szál felfüggesztésére vonatkozó kérelem."
   syntax:
     content: SuspendRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -212,12 +212,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; method has not been invoked on the thread."
+  summary: "A &lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; metódus nem hivatkoznak a szálban."
   syntax:
     content: Unstarted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -233,12 +233,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is blocked. This could be the result of calling &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, of requesting a lock — for example, by calling &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; — or of waiting on a thread synchronization object such as <xref:System.Threading.ManualResetEvent>."
+  summary: "A szál le van tiltva. Ennek oka lehet az eredménye hívása &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; vagy &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, a zárolási kérelmező – például meghívásával &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; , vagy &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; – vagy <xref:System.Threading.ManualResetEvent>.</xref:System.Threading.ManualResetEvent> például szál szinkronizálási objektumra Várakozás"
   syntax:
     content: WaitSleepJoin
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
