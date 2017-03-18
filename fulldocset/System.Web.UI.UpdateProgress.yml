@@ -26,8 +26,8 @@ items:
   nameWithType: UpdateProgress
   fullName: System.Web.UI.UpdateProgress
   type: Class
-  summary: "Provides visual feedback in the browser when the contents of one or more <xref href=&quot;System.Web.UI.UpdatePanel&quot;></xref> controls are updated."
-  remarks: "In this topic:      -   [Introduction](#introduction)      -   [Associating an UpdateProgress with an UpdatePanel Control](#associating_an_updateprogress_with_an_updatepanel_control)      -   [Specifying the Content of the UpdateProgress Control](#specifying_the_content_of_the_updateprogress_control)      -   [Putting UpdateProgress Controls on the Page](#putting_updateprogress_controls_on_the_page)      -   [Customizing When UpdateProgress Controls Are Displayed](#customizing_when_updateprogress_controls_are_displayed)      -   [Applying CSS Styles](#applying_styles)      -   [Declarative Syntax](#declarative_syntax)      <a name=&quot;introduction&quot;></a>    ## Introduction    The UpdateProgress control enables you to provide feedback about the progress of partial-page rendering. For postbacks or initial page rendering, UpdateProgress control content is not displayed.       The page can contain multiple UpdateProgress controls. Each one can be associated with a different <xref:System.Web.UI.UpdatePanel> control. Alternatively, you can use one UpdateProgress control and associate it with all the <xref:System.Web.UI.UpdatePanel> controls on the page.       The UpdateProgress control renders a `div` element that is displayed or hidden depending on where a postback originates and whether the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property of the UpdateProgress control is set.      <a name=&quot;associating_an_updateprogress_with_an_updatepanel_control&quot;></a>    ## Associating an UpdateProgress with an UpdatePanel Control    You associate UpdateProgress controls with an <xref:System.Web.UI.UpdatePanel> control by setting the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property of the UpdateProgress control. When a postback event originates from inside an <xref:System.Web.UI.UpdatePanel> control, any associated UpdateProgress controls are displayed. If you do not set the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property, the UpdateProgress control displays progress for any asynchronous postback that originates from inside any <xref:System.Web.UI.UpdatePanel> control. It is also displayed for any controls that are triggers for panels.       The <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property has the following effect on UpdateProgress control behavior:      -   When the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property is not set, the UpdateProgress control is displayed for the following postbacks:          -   Postbacks that originate from inside any <xref:System.Web.UI.UpdatePanel> control.          -   Postbacks that originate from controls that are asynchronous triggers for any <xref:System.Web.UI.UpdatePanel> control.      -   When the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property is set to an <xref:System.Web.UI.UpdatePanel> control ID, the UpdateProgress control is displayed for postbacks that originate from inside the associated <xref:System.Web.UI.UpdatePanel> control.       If the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property is set to a control that does not exist, the UpdateProgress control will never be shown.       If the <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A> property of the <xref:System.Web.UI.UpdatePanel> controls is set to `false` and a postback originates from inside an <xref:System.Web.UI.UpdatePanel> control, any associated UpdateProgress controls will still be displayed.      <a name=&quot;specifying_the_content_of_the_updateprogress_control&quot;></a>    ## Specifying the Content of the UpdateProgress Control    Use the <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> property to specify the message that is displayed by an UpdateProgress control. If the <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> property is empty, nothing is shown when the UpdateProgress control is displayed.       The template can contain HTML and markup. For example, you can display an animated image that notifies the user that the postback is processing. You can also display a button that the user can click to stop the partial-page update. Additionally, you might want to prevent all other postbacks while one is in progress. The following example shows client script that you can use to accomplish these tasks.       [!code-cs[System.Web.UI.UpdateProgress4#1](~/add/codesnippet/csharp/t-system.web.ui.updatepr_1.aspx)]  [!code-vb[System.Web.UI.UpdateProgress4#1](~/add/codesnippet/visualbasic/t-system.web.ui.updatepr_1.aspx)]       You can use the example code by setting the `onClick` attribute of an `HtmlButton` control to &quot;AbortPostBack()&quot;. For more information, see the  method and the  property of the  class.      <a name=&quot;putting_updateprogress_controls_on_the_page&quot;></a>    ## Putting UpdateProgress Controls on the Page    UpdateProgress controls can be inside or outside other <xref:System.Web.UI.UpdatePanel> controls. The display of the UpdateProgress control&quot;s template does not depend on where the UpdateProgress control is located. In a nested <xref:System.Web.UI.UpdatePanel> control, a child panel is inside a parent panel. In that case, a postback that originates from inside the child panel causes all UpdateProgress controls associated with the child panel and the parent panel to be displayed. If a postback originates from an immediate child control of the parent panel, only the UpdateProgress controls that are associated with the parent panel are displayed.      <a name=&quot;customizing_when_updateprogress_controls_are_displayed&quot;></a>    ## Customizing When UpdateProgress Controls Are Displayed    By default, the UpdateProgress control waits .5 seconds (500 milliseconds) before it displays its contents. This helps prevent the control from flashing if an asynchronous postback is very quick. You can specify the delay by setting the <xref:System.Web.UI.UpdateProgress.DisplayAfter%2A> property.       If you need finer control over when an UpdateProgress control is displayed, you can provide client script for the  and  events of the  class. In the `beginRequest` event handler, you can display the DOM element that represents the UpdateProgress control. In the `endRequest` event handler, you can hide it.       You must provide client script to display an UpdateProgress control when a target <xref:System.Web.UI.UpdatePanel> control is updated in the following circumstances:      -   When a postback from a control is registered as an asynchronous postback trigger for the panel, and there is an UpdateProgress control on the page. However, the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> property is not set to the panel&quot;s ID.      -   When postbacks from controls are registered as asynchronous postback controls by using the <xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A> method of the <xref:System.Web.UI.ScriptManager> control.      <a name=&quot;applying_styles&quot;></a>    ## Applying CSS Styles    The UpdateProgress control accepts expando attributes. This makes it possible to set a CSS class on the HTMLelements that the controls render. For example, you might create the markup shown in the following example:      ```   <asp:UpdateProgress runat=&quot;server&quot; class=&quot;myStyle&quot;>   </asp: UpdateProgress>    ```       The markup in the previous example renders HTML similar to the following when the page runs:      ```   <div id=&quot;ctl00_MainContent_UpdateProgress1&quot; class=&quot;myStyle&quot;>   </div>   ```      <a name=&quot;declarative_syntax&quot;></a>    ## Declarative Syntax      ```   <asp:UpdateProgress       AssociatedUpdatePanelID=&quot;string&quot;       DisplayAfter=&quot;integer&quot;       DynamicLayout=&quot;True|False&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <ProgressTemplate>               <!-- child controls -->           </ProgressTemplate>   </asp:UpdateProgress>   ```"
+  summary: "A böngészőben a visual visszajelzést biztosítanak a Ha a tartalom egy vagy több <xref href=&quot;System.Web.UI.UpdatePanel&quot;> </xref> vezérlők frissülnek."
+  remarks: "Ebben a témakörben:- [bemutatása](#introduction)      -   [egy UpdateProgress társít az UpdatePanel vezérlő](#associating_an_updateprogress_with_an_updatepanel_control)      -   [UpdateProgress vezérlő tartalmának megadása](#specifying_the_content_of_the_updateprogress_control)      -   [UpdateProgress vezérlő üzembe az oldalon](#putting_updateprogress_controls_on_the_page)      -   [testreszabása során UpdateProgress vezérlő megjelenik](#customizing_when_updateprogress_controls_are_displayed)      -   [alkalmazott CSS stílusok](#applying_styles)      -   [deklaratív Szintaxisán](#declarative_syntax) <a name=&quot;introduction&quot;> </a> ## Bevezetés az UpdateProgress vezérlő lehetővé teszi észrevétele részleges-oldal megjelenítési előrehaladását.       Visszaküldések vagy a kezdeti megjelenítési UpdateProgress vezérlő tartalma nem jelenik meg.       A lap több UpdateProgress vezérlő tartalmazhat. Minden egyes társítható egy másik <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel> Másik megoldásként használhat UpdateProgress vezérlő, és társítsa azt az összes a <xref:System.Web.UI.UpdatePanel>a lap.</xref:System.Web.UI.UpdatePanel>       Az UpdateProgress vezérlő Helyhierarchia egy `div` elem látható vagy rejtett attól függően, ahol a visszaküldés származik, és hogy a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>UpdateProgress vezérlő tulajdonsága.</xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>      <a name=&quot;associating_an_updateprogress_with_an_updatepanel_control&quot;></a>## Az UpdateProgress vezérlő társít egy UpdateProgress egy UpdatePanel vezérlő, amelyet társíthat egy <xref:System.Web.UI.UpdatePanel>vezérlő úgy, hogy a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>az UpdateProgress vezérlő tulajdonsága.</xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> </xref:System.Web.UI.UpdatePanel> Ha a visszaküldési esemény származik belül egy <xref:System.Web.UI.UpdatePanel>vezérlő, az esetleg hozzá tartozó UpdateProgress vezérlő megjelenik.</xref:System.Web.UI.UpdatePanel> Ha nincs megadva a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonság, az UpdateProgress vezérlő megjelennek a bármely aszinkron visszaküldést belül bármely származó <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> Azt is megjelenik a panelek kiváltó vezérlőket.       A <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonság a következő hatással van a UpdateProgress vezérlő viselkedés: – a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonság nincs beállítva, az UpdateProgress vezérlő a következő visszaküldések jelenik meg:-visszaküldések, amely belül bármely származik <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A> </xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>          -Az összes aszinkron kiváltó vezérlők eredő visszaküldések <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel>      – Amikor a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonsága egy <xref:System.Web.UI.UpdatePanel>vezérlő azonosítója, az UpdateProgress vezérlő nem jelenik meg, amely a társított belül kezdeményezhetik visszaküldések <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>       Ha a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonsága tartozó vezérlőelem nem létezik, az UpdateProgress vezérlő soha nem lesz látható.</xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>       Ha a <xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>tulajdonsága a <xref:System.Web.UI.UpdatePanel>vezérlők értéke `false` és visszaküldés származik belül egy <xref:System.Web.UI.UpdatePanel>vezérlő, az esetleg hozzá tartozó UpdateProgress vezérlő továbbra is megjelenik.</xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdatePanel.ChildrenAsTriggers%2A>      <a name=&quot;specifying_the_content_of_the_updateprogress_control&quot;></a>## UpdateProgress vezérlő használatát tartalmának megadása a <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A>a egy UpdateProgress vezérlő által megjelenített üzenet tulajdonság.</xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> Ha a <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A>tulajdonság üres, semmi nem látható, ha az UpdateProgress vezérlő jelenik meg.</xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A>       A sablon HTML és markup tartalmazhat. Megjelenítheti például animált kép, amely értesíti a felhasználót, hogy a visszaküldést feldolgozása folyamatban van. Akkor is megjelenhet egy, a felhasználó kattintva állítsa le a részleges-lap frissítése gombra. Emellett érdemes más visszaküldések tiltása, amíg folyamatban van egy. A következő példa bemutatja az ügyféloldali parancsprogram, amely segítségével elvégezni ezeket a feladatokat.       [!code-cs[System.Web.UI.UpdateProgress4#1](~/add/codesnippet/csharp/t-system.web.ui.updatepr_1.aspx)][!code-vb[System.Web.UI.UpdateProgress4#1](~/add/codesnippet/visualbasic/t-system.web.ui.updatepr_1.aspx) ] úgy, hogy a kód is használhatja a `onClick` attribútuma egy `HtmlButton` &quot;AbortPostBack()&quot; vezérlőt.   További információkért lásd: a metódus, és az osztály tulajdonságához tartozó.      <a name=&quot;putting_updateprogress_controls_on_the_page&quot;></a>## Oldalon UpdateProgress vezérlő UpdateProgress vezérlőit üzembe lehet belül vagy kívül más <xref:System.Web.UI.UpdatePanel>vezérlők.</xref:System.Web.UI.UpdatePanel> Az UpdateProgress vezérlő sablon megjelenítési nem függ a hol UpdateProgress vezérlő megtalálható. A beágyazott <xref:System.Web.UI.UpdatePanel>vezérlő, egy gyermek panel van egy szülő borító.</xref:System.Web.UI.UpdatePanel> Ebben az esetben a gyermek borító származó visszaküldés hatására a gyermek és a szülő panelen megjelenő társított összes UpdateProgress vezérlő. Ha a visszaküldést a szülő panel egy azonnali gyermekvezérlő származik, csak a szülő panel társított UpdateProgress vezérlő jelennek meg.      <a name=&quot;customizing_when_updateprogress_controls_are_displayed&quot;></a>## Testreszabása UpdateProgress vezérlő alapértelmezés szerint az UpdateProgress vezérlő.5 másodpercet (500 ezredmásodperc) vár megjelenésekor előtte megjeleníti a tartalmát. Ennek segítségével megakadályozhatja, hogy a vezérlő villogó nagyon gyorsan az aszinkron visszaküldés esetén. Megadhatja a késleltetést úgy, hogy a <xref:System.Web.UI.UpdateProgress.DisplayAfter%2A>tulajdonság.</xref:System.Web.UI.UpdateProgress.DisplayAfter%2A>       Ha módosítania kell, amikor megjelenik egy UpdateProgress vezérlő részletesebben vezérelheti, megadhatja a használt ügyféloldali parancsprogramot a és események osztály. Az a `beginRequest` eseménykezelő, megjelenítheti az UpdateProgress vezérlő jelölő DOM-elemnek. Az a `endRequest` eseménykezelő, elrejtheti.       Meg kell adnia egy UpdateProgress vezérlő, amikor egy cél megjelenítendő ügyféloldali parancsprogram <xref:System.Web.UI.UpdatePanel>vezérlő a következő esetekben frissül: – Ha a visszaküldést a vezérlőről egy aszinkron visszaküldési eseményindító a panel regisztrált, és nincs az UpdateProgress vezérlő az oldalon.</xref:System.Web.UI.UpdatePanel> Azonban a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>tulajdonság nincs beállítva a panel azonosító</xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>      – Amikor a vezérlők visszaküldések regisztrált aszinkron visszaküldési vezérlőelemként használatával a <xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A>metódusában a <xref:System.Web.UI.ScriptManager>vezérlő.</xref:System.Web.UI.ScriptManager> </xref:System.Web.UI.ScriptManager.RegisterAsyncPostBackControl%2A>      <a name=&quot;applying_styles&quot;></a>## Expando attribútumokat alkalmazott CSS-stílus az UpdateProgress vezérlő fogad el. Ez lehetővé teszi a HTMLelements, hogy a vezérlők jelenítsék meg a CSS-osztály beállítása. Például létrehozhatja a jelölőkód, az alábbi példában látható módon: ```   <asp:UpdateProgress runat=&quot;server&quot; class=&quot;myStyle&quot;>   </asp: UpdateProgress>    ``` az előző példában szereplő markup Renderelés HTML az alábbihoz hasonló a lap futtatása esetén: ```   <div id=&quot;ctl00_MainContent_UpdateProgress1&quot; class=&quot;myStyle&quot;>   </div>   ``` <a name=&quot;declarative_syntax&quot;> </a> ## deklaratív Szintaxisán      ```   <asp:UpdateProgress       AssociatedUpdatePanelID=&quot;string&quot;       DisplayAfter=&quot;integer&quot;       DynamicLayout=&quot;True|False&quot;       EnableTheming=&quot;True|False&quot;       EnableViewState=&quot;True|False&quot;       ID=&quot;string&quot;       OnDataBinding=&quot;DataBinding event handler&quot;       OnDisposed=&quot;Disposed event handler&quot;       OnInit=&quot;Init event handler&quot;       OnLoad=&quot;Load event handler&quot;       OnPreRender=&quot;PreRender event handler&quot;       OnUnload=&quot;Unload event handler&quot;       runat=&quot;server&quot;       SkinID=&quot;string&quot;       Visible=&quot;True|False&quot;   >           <ProgressTemplate>               <!-- child controls -->           </ProgressTemplate>   </asp:UpdateProgress>   ```"
   example:
   - "The following examples show different ways to use the UpdateProgress control to show progress during asynchronous postbacks.  \n  \n The following example shows one UpdateProgress control that displays progress status for two <xref:System.Web.UI.UpdatePanel> controls.  \n  \n [!code-vb[System.Web.UI.UpdateProgress1#1](~/add/codesnippet/visualbasic/t-system.web.ui.updatepr_2.aspx)]\n [!code-cs[System.Web.UI.UpdateProgress1#1](~/add/codesnippet/csharp/t-system.web.ui.updatepr_2.aspx)]  \n  \n This following example shows two UpdateProgress controls. Each control displays progress status for an associated <xref:System.Web.UI.UpdatePanel> control.  \n  \n [!code-vb[System.Web.UI.UpdateProgress2#1](~/add/codesnippet/visualbasic/t-system.web.ui.updatepr_3.aspx)]\n [!code-cs[System.Web.UI.UpdateProgress2#1](~/add/codesnippet/csharp/t-system.web.ui.updatepr_3.aspx)]"
   syntax:
@@ -168,8 +168,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> class."
-  remarks: "When you create an <xref:System.Web.UI.UpdateProgress> control dynamically, you create a custom template that inherits from the <xref:System.Web.UI.ITemplate> control. You specify markup in the <xref:System.Web.UI.ITemplate.InstantiateIn%2A> method, and then set the <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> property of the dynamically created <xref:System.Web.UI.UpdateProgress> control to a new instance of the custom template. When you create <xref:System.Web.UI.UpdateProgress> controls dynamically, you must do so during or before the <xref:System.Web.UI.Control.PreRender> event of the page. If you create the <xref:System.Web.UI.UpdateProgress> control later in the page life cycle, progress is not displayed."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> osztály."
+  remarks: "Amikor létrehoz egy <xref:System.Web.UI.UpdateProgress>dinamikusan szabályozhatja, létrehozhat egy egyéni sablont, amely örökli a <xref:System.Web.UI.ITemplate>vezérlő.</xref:System.Web.UI.ITemplate> </xref:System.Web.UI.UpdateProgress> A jelölés során megadhatja a <xref:System.Web.UI.ITemplate.InstantiateIn%2A>módszer, majd állítsa be a <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A>dinamikusan létrehozott tulajdonságának <xref:System.Web.UI.UpdateProgress>vezérlőt az egyéni sablont egy új példányát.</xref:System.Web.UI.UpdateProgress> </xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> </xref:System.Web.UI.ITemplate.InstantiateIn%2A> Amikor létrehoz <xref:System.Web.UI.UpdateProgress>szabályozza dinamikusan, Önnek kell megtennie során vagy azt megelőzően a <xref:System.Web.UI.Control.PreRender>esemény a lap.</xref:System.Web.UI.Control.PreRender> </xref:System.Web.UI.UpdateProgress> Ha hoz létre a <xref:System.Web.UI.UpdateProgress>a lap életciklusának, a folyamat későbbi szakaszában vezérlő nem jelenik meg.</xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: public UpdateProgress ();
     parameters: []
@@ -189,13 +189,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the ID of the <xref href=&quot;System.Web.UI.UpdatePanel&quot;></xref> control that the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control displays status for."
-  remarks: "The default value is an empty string, which means that the <xref:System.Web.UI.UpdateProgress> control is not associated with a specific <xref:System.Web.UI.UpdatePanel> control. Therefore, asynchronous postbacks that originate from inside any <xref:System.Web.UI.UpdatePanel> control or postbacks from controls that are triggers for the panel cause the <xref:System.Web.UI.UpdateProgress> control to display its <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> content.       You can set the AssociatedUpdatePanelID property to controls in the same naming container, in a parent naming container, or in the page."
+  summary: "Lekérdezi vagy beállítja az azonosítója a <xref href=&quot;System.Web.UI.UpdatePanel&quot;> </xref> , amely szabályozza a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő állapotát jeleníti meg."
+  remarks: "Az alapértelmezett érték: üres karakterlánc, amely azt jelenti, hogy a <xref:System.Web.UI.UpdateProgress>vezérlő nincs társítva egy adott <xref:System.Web.UI.UpdatePanel>vezérlő.</xref:System.Web.UI.UpdatePanel> </xref:System.Web.UI.UpdateProgress> Ezért aszinkron visszaküldések, amely oly módon belül bármely <xref:System.Web.UI.UpdatePanel>vezérlő vagy a Vezérlőpult okát kiváltó vezérlők visszaküldések a <xref:System.Web.UI.UpdateProgress>vezérlő megjelenítése a <xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A>tartalom.</xref:System.Web.UI.UpdateProgress.ProgressTemplate%2A> </xref:System.Web.UI.UpdateProgress> </xref:System.Web.UI.UpdatePanel>       Beállíthatja a következő associatedupdatepanelid tulajdonsághoz: tulajdonságát vezérlőkhöz, az azonos elnevező tárolónak, egy fölérendelt névhasználati tároló vagy a lap."
   syntax:
     content: public string AssociatedUpdatePanelID { get; set; }
     return:
       type: System.String
-      description: "The ID of the associated <xref href=&quot;System.Web.UI.UpdatePanel&quot;></xref> control. The default value is an empty string."
+      description: "A társított azonosítója <xref href=&quot;System.Web.UI.UpdatePanel&quot;> </xref> vezérlő. Az alapértelmezett érték: üres karakterlánc."
   overload: System.Web.UI.UpdateProgress.AssociatedUpdatePanelID*
   exceptions: []
   platform:
@@ -212,12 +212,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the cascading style sheet (CSS) attributes of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control."
+  summary: "Lekérdezi vagy beállítja a kaszkádolt stílusát (CSS) lap attribútumait a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő."
   syntax:
     content: public System.Web.UI.AttributeCollection Attributes { get; }
     return:
       type: System.Web.UI.AttributeCollection
-      description: "The names of the CSS attribute."
+      description: "A CSS-attribútum neve."
   overload: System.Web.UI.UpdateProgress.Attributes*
   exceptions: []
   platform:
@@ -234,12 +234,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets a <xref href=&quot;System.Web.UI.ControlCollection&quot;></xref> object that represents the child controls of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control."
+  summary: "Lekérdezi a <xref href=&quot;System.Web.UI.ControlCollection&quot;> </xref> a gyermek képviselő objektum ellenőrzése a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő."
   syntax:
     content: public override System.Web.UI.ControlCollection Controls { get; }
     return:
       type: System.Web.UI.ControlCollection
-      description: "The collection of child controls for the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control."
+      description: "Tartozó gyermekvezérlők gyűjteménye a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő."
   overload: System.Web.UI.UpdateProgress.Controls*
   exceptions: []
   platform:
@@ -256,7 +256,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Called to create any child controls that the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control contains in preparation for posting back or rendering."
+  summary: "Nevű alárendelt létrehozásához szabályozza, hogy a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő tartalmaz visszaküldés vagy megjelenítés előkészítésekor."
   syntax:
     content: protected override void CreateChildControls ();
     parameters: []
@@ -276,7 +276,7 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Binds a data source to the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control and all its child controls."
+  summary: "Az adatforráshoz van kötve a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő és a gyermekvezérlőket."
   syntax:
     content: public override void DataBind ();
     parameters: []
@@ -296,17 +296,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the value in milliseconds before the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control is displayed."
+  summary: "Lekérdezi vagy beállítja a előtt ezredmásodpercben a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő jelenik meg."
   syntax:
     content: public int DisplayAfter { get; set; }
     return:
       type: System.Int32
-      description: "An integer that represents the number of milliseconds before the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control&quot;s progress template is displayed. The default is 500 milliseconds (.5 seconds)."
+      description: "Egész szám, amely előtt ezredmásodpercben jelöli a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő folyamatsablon jelenik meg. Az alapértelmezett érték 500 ezredmásodperc (.5 másodperc)."
   overload: System.Web.UI.UpdateProgress.DisplayAfter*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The DisplayAfter property is less than zero."
+    description: "A displayafter tulajdonságnak tulajdonság nullánál kisebb."
   platform:
   - net462
 - uid: System.Web.UI.UpdateProgress.DynamicLayout
@@ -321,13 +321,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets a value that determines whether the progress template is rendered dynamically."
-  remarks: "The DynamicLayout property determines whether space for the progress template&quot;s contents is allocated on the page only when it is needed.       When the DynamicLayout property is `true`, space for the progress template&quot;s contents is not allocated when the page is first rendered. Instead, the page changes dynamically to display the contents when it is required. In the `style` property of the `div` element that contains the progress template in the rendered markup, the `display` attribute is set to `none`.       When the DynamicLayout property is `false`, space for the progress template&quot;s contents is allocated when the page is first rendered, and the <xref:System.Web.UI.UpdateProgress> control content is physically part of the page layout. In the `style` property of the `div` element that contains the progress template in the rendered markup, the `display` attribute is set to `block`, and the `visibility` attribute is initially set to `hidden`."
+  summary: "Lekérdezi vagy beállítja egy érték, amely meghatározza, hogy a folyamatsablon megjelenítése dinamikusan."
+  remarks: "A DynamicLayout tulajdonság határozza meg, hogy a folyamatsablon tartalom esetén legyen lefoglalva terület az oldalon csak akkor, ha van rá szükség.       Ha a DynamicLayout tulajdonság van `true`, a folyamatsablon tartalom esetén ne legyen lefoglalva terület során először a lap megjelenítése. Ehelyett a lap dinamikusan változik a jelenítsen meg tartalmát, ha szükséges. Az a `style` tulajdonsága a `div` elem, amely tartalmazza a megjelenített jelölés során, a folyamat-sablon a `display` attribútum van beállítva `none`.       A DynamicLayout tulajdonság esetén `false`, először a lap megjelenítése, amikor a folyamatsablon tartalma adhatja lefoglalt és a <xref:System.Web.UI.UpdateProgress>vezérlőelem tartalmát része fizikailag a lapelrendezés.</xref:System.Web.UI.UpdateProgress> Az a `style` tulajdonsága a `div` elem, amely tartalmazza a megjelenített jelölés során, a folyamat-sablon a `display` attribútum értéke `block`, és a `visibility` attribútum alapértelmezés szerint `hidden`."
   syntax:
     content: public bool DynamicLayout { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the progress template is rendered dynamically; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a folyamatsablon megjelenítése dinamikusan; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.UpdateProgress.DynamicLayout*
   exceptions: []
   platform:
@@ -344,14 +344,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Returns a list of components, behaviors, and client controls that are required for the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control&quot;s client functionality."
-  remarks: "The <xref:System.Web.UI.UpdateProgress> control requires the [!INCLUDE[atlaslib_current_ext](~/add/includes/atlaslib-current-ext-md.md)] client library. This client class is registered in the GetScriptDescriptors method and the <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>, <xref:System.Web.UI.UpdateProgress.DisplayAfter%2A>, and <xref:System.Web.UI.UpdateProgress.DynamicLayout%2A> property values."
+  summary: "Vezérlők, a szükséges összetevőket, viselkedések és ügyfél listáját adja vissza a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő ügyfél funkciót."
+  remarks: "A <xref:System.Web.UI.UpdateProgress>vezérlőelem megköveteli a [!INCLUDE[atlaslib_current_ext](~/add/includes/atlaslib-current-ext-md.md)] ügyfélkódtár.</xref:System.Web.UI.UpdateProgress> Az ügyfél osztály regisztrálva van a GetScriptDescriptors metódus és a <xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>, <xref:System.Web.UI.UpdateProgress.DisplayAfter%2A>, és <xref:System.Web.UI.UpdateProgress.DynamicLayout%2A>tulajdonságértékek.</xref:System.Web.UI.UpdateProgress.DynamicLayout%2A> </xref:System.Web.UI.UpdateProgress.DisplayAfter%2A> </xref:System.Web.UI.UpdateProgress.AssociatedUpdatePanelID%2A>"
   syntax:
     content: protected virtual System.Collections.Generic.IEnumerable<System.Web.UI.ScriptDescriptor> GetScriptDescriptors ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.Web.UI.ScriptDescriptor}
-      description: "An <xref:System.Collections.IEnumerable> collection that contains <xref href=&quot;System.Web.UI.ScriptDescriptor&quot;></xref> objects."
+      description: "Egy <xref:System.Collections.IEnumerable>tartalmazó gyűjteményt <xref href=&quot;System.Web.UI.ScriptDescriptor&quot;> </xref> objektumok.</xref:System.Collections.IEnumerable>"
   overload: System.Web.UI.UpdateProgress.GetScriptDescriptors*
   exceptions: []
   platform:
@@ -368,14 +368,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Returns a list of client script library dependencies for the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.UpdateProgress> control does not have any server scriptdependencies."
+  summary: "A könyvtár függőségeit ügyféloldali parancsprogram listáját adja vissza a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő."
+  remarks: "A <xref:System.Web.UI.UpdateProgress>vezérlő nincs bármely kiszolgáló scriptdependencies.</xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: protected virtual System.Collections.Generic.IEnumerable<System.Web.UI.ScriptReference> GetScriptReferences ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.Web.UI.ScriptReference}
-      description: "An <xref:System.Collections.IEnumerable> collection that contains <xref href=&quot;System.Web.UI.ScriptReference&quot;></xref> objects."
+      description: "Egy <xref:System.Collections.IEnumerable>tartalmazó gyűjteményt <xref href=&quot;System.Web.UI.ScriptReference&quot;> </xref> objektumok.</xref:System.Collections.IEnumerable>"
   overload: System.Web.UI.UpdateProgress.GetScriptReferences*
   exceptions: []
   platform:
@@ -392,13 +392,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event."
+  summary: "Kiváltja a <xref href=&quot;System.Web.UI.Control.PreRender&quot;> </xref> esemény."
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "The event data."
+      description: "Az eseményadatok."
   overload: System.Web.UI.UpdateProgress.OnPreRender*
   exceptions: []
   platform:
@@ -415,13 +415,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Gets or sets the template that defines the content of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control."
-  remarks: "The template must be defined. Otherwise, an exception is thrown during the <xref:System.Web.UI.UpdateProgress> control&quot;s `Init` event. You can specify the ProgressTemplate property declaratively by adding markup to the `ProgressTemplate` element. If there is no markup in the `ProgressTemplate` element, nothing is displayed for the <xref:System.Web.UI.UpdateProgress> control.       If you are creating <xref:System.Web.UI.UpdateProgress> controls dynamically, you can create a custom template that inherits from the <xref:System.Web.UI.ITemplate> control. You specify markup in the <xref:System.Web.UI.ITemplate.InstantiateIn%2A> method, and then set the ProgressTemplate property of the dynamically created <xref:System.Web.UI.UpdateProgress> control to a new instance of the custom template. If you create <xref:System.Web.UI.UpdateProgress> controls dynamically, do so during or before the <xref:System.Web.UI.Control.PreRender> event of the page. If you create the <xref:System.Web.UI.UpdateProgress> control later in the page life cycle, progress is not displayed."
+  summary: "Lekérdezi vagy beállítja azt a sablont, amely meghatározza a tartalmát a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő."
+  remarks: "A sablon meg kell határozni. Ellenkező esetben a rendszer kivételt során hoz létre a <xref:System.Web.UI.UpdateProgress>vezérlő `Init` esemény.</xref:System.Web.UI.UpdateProgress> A progresstemplate sablon tulajdonság deklaratív módon adhat meg, a jelölés hozzáadásával a `ProgressTemplate` elemet. Ha nincs jelölését a `ProgressTemplate` elem, semmi nem jelenik meg a <xref:System.Web.UI.UpdateProgress>vezérlő.</xref:System.Web.UI.UpdateProgress>       Létrehozásakor <xref:System.Web.UI.UpdateProgress>szabályozza dinamikusan, létrehozhat egy egyéni sablont, amely örökli a <xref:System.Web.UI.ITemplate>vezérlő.</xref:System.Web.UI.ITemplate> </xref:System.Web.UI.UpdateProgress> A jelölés során megadhatja a <xref:System.Web.UI.ITemplate.InstantiateIn%2A>metódust, és majd állítsa be a progresstemplate sablon tulajdonsága dinamikusan létrehozott <xref:System.Web.UI.UpdateProgress>vezérlőt az egyéni sablont egy új példányát.</xref:System.Web.UI.UpdateProgress> </xref:System.Web.UI.ITemplate.InstantiateIn%2A> Ha létre <xref:System.Web.UI.UpdateProgress>vezérlők dinamikusan, ehhez során vagy azt megelőzően a <xref:System.Web.UI.Control.PreRender>esemény a lap.</xref:System.Web.UI.Control.PreRender> </xref:System.Web.UI.UpdateProgress> Ha hoz létre a <xref:System.Web.UI.UpdateProgress>a lap életciklusának, a folyamat későbbi szakaszában vezérlő nem jelenik meg.</xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: public System.Web.UI.ITemplate ProgressTemplate { get; set; }
     return:
       type: System.Web.UI.ITemplate
-      description: "An <xref href=&quot;System.Web.UI.ITemplate&quot;></xref> instance that defines the content of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Egy <xref href=&quot;System.Web.UI.ITemplate&quot;> </xref> példány tartalmát meghatározó a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> vezérlő. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.UpdateProgress.ProgressTemplate*
   exceptions: []
   platform:
@@ -438,14 +438,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Writes the rendered content of the <xref href=&quot;System.Web.UI.UpdateProgress&quot;></xref> control to the browser by using the supplied <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The Render method is used by control developers to extend the functionality of the <xref:System.Web.UI.UpdateProgress> control.       The Render method writes the rendered content of the <xref:System.Web.UI.UpdateProgress> control to the browser by using the supplied <xref:System.Web.UI.HtmlTextWriter> object. When you override the Render method in a derived class, call the base class&quot;s Render method so that the child controls of the <xref:System.Web.UI.UpdateProgress> control are rendered."
+  summary: "A megjelenített tartalma írja a <xref href=&quot;System.Web.UI.UpdateProgress&quot;> </xref> a böngésző használatával a megadott vezérlő <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> objektum."
+  remarks: "A Render metódus bővítése vezérlők fejlesztői használja a <xref:System.Web.UI.UpdateProgress>vezérlő.</xref:System.Web.UI.UpdateProgress>       A Render metódus írási műveletek megjelenített tartalmát a <xref:System.Web.UI.UpdateProgress>a böngésző használatával a megadott vezérlő <xref:System.Web.UI.HtmlTextWriter>objektum.</xref:System.Web.UI.HtmlTextWriter> </xref:System.Web.UI.UpdateProgress> A Render metódus a származtatott osztály bírálja felül, ha az alaposztály Render metódus hívása, hogy a gyermek ellenőrzése a <xref:System.Web.UI.UpdateProgress>vezérlő vannak leképezve.</xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: protected override void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An object that represents the output stream for rendering HTML content."
+      description: "A kimeneti adatfolyamba, a HTML-tartalmakat megjelenítése képviselő objektum."
   overload: System.Web.UI.UpdateProgress.Render*
   exceptions: []
   platform:
@@ -463,17 +463,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Returns an attribute of a Web control by using the specified name."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.UpdateProgress> instance is cast to an <xref:System.Web.UI.IAttributeAccessor> interface."
+  summary: "A megadott név segítségével adja vissza egy webes vezérlő attribútuma."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.UpdateProgress>példány típusúvá egy <xref:System.Web.UI.IAttributeAccessor>felületet.</xref:System.Web.UI.IAttributeAccessor> </xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: string IAttributeAccessor.GetAttribute (string key);
     parameters:
     - id: key
       type: System.String
-      description: "The name of the attribute to return."
+      description: "A visszaadandó attribútum neve."
     return:
       type: System.String
-      description: "The value of the attribute."
+      description: "Az attribútum értékét."
   overload: System.Web.UI.UpdateProgress.System#Web#UI#IAttributeAccessor#GetAttribute*
   exceptions: []
   platform:
@@ -491,17 +491,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "Sets the value of the specified user-control attribute."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.UpdateProgress> instance is cast to an <xref:System.Web.UI.IAttributeAccessor> interface."
+  summary: "A megadott felhasználó-vezérlő attribútum értékének beállítása."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.UpdateProgress>példány típusúvá egy <xref:System.Web.UI.IAttributeAccessor>felületet.</xref:System.Web.UI.IAttributeAccessor> </xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: void IAttributeAccessor.SetAttribute (string key, string value);
     parameters:
     - id: key
       type: System.String
-      description: "The name of the attribute to set."
+      description: "Az attribútum beállítása neve."
     - id: value
       type: System.String
-      description: "The value of the attribute to set."
+      description: "A beállítandó attribútum értéke."
   overload: System.Web.UI.UpdateProgress.System#Web#UI#IAttributeAccessor#SetAttribute*
   exceptions: []
   platform:
@@ -519,14 +519,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "For a description of this member, see &lt;xref:System.Web.UI.IScriptControl.GetScriptDescriptors%2A?displayProperty=fullName&gt;."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.UpdateProgress> instance is cast to an <xref:System.Web.UI.IScriptControl> interface."
+  summary: "Ez a tag ismertetését lásd: &lt;xref:System.Web.UI.IScriptControl.GetScriptDescriptors%2A?displayProperty=fullName&gt;."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.UpdateProgress>példány típusúvá egy <xref:System.Web.UI.IScriptControl>felületet.</xref:System.Web.UI.IScriptControl> </xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: System.Collections.Generic.IEnumerable<System.Web.UI.ScriptDescriptor> IScriptControl.GetScriptDescriptors ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.Web.UI.ScriptDescriptor}
-      description: "A collection of <xref href=&quot;System.Web.UI.ScriptDescriptor&quot;></xref> objects."
+      description: "A gyűjtemény <xref href=&quot;System.Web.UI.ScriptDescriptor&quot;> </xref> objektumok."
   overload: System.Web.UI.UpdateProgress.System#Web#UI#IScriptControl#GetScriptDescriptors*
   exceptions: []
   platform:
@@ -544,14 +544,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI
-  summary: "For a description of this member, see &lt;xref:System.Web.UI.IScriptControl.GetScriptReferences%2A?displayProperty=fullName&gt;."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.UpdateProgress> instance is cast to an <xref:System.Web.UI.IScriptControl> interface."
+  summary: "Ez a tag ismertetését lásd: &lt;xref:System.Web.UI.IScriptControl.GetScriptReferences%2A?displayProperty=fullName&gt;."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.UpdateProgress>példány típusúvá egy <xref:System.Web.UI.IScriptControl>felületet.</xref:System.Web.UI.IScriptControl> </xref:System.Web.UI.UpdateProgress>"
   syntax:
     content: System.Collections.Generic.IEnumerable<System.Web.UI.ScriptReference> IScriptControl.GetScriptReferences ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.Web.UI.ScriptReference}
-      description: "A collection of <xref href=&quot;System.Web.UI.ScriptReference&quot;></xref> objects."
+      description: "A gyűjtemény <xref href=&quot;System.Web.UI.ScriptReference&quot;> </xref> objektumok."
   overload: System.Web.UI.UpdateProgress.System#Web#UI#IScriptControl#GetScriptReferences*
   exceptions: []
   platform:

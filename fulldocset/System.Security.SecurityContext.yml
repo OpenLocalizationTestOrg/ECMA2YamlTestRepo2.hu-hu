@@ -18,7 +18,7 @@ items:
   nameWithType: SecurityContext
   fullName: System.Security.SecurityContext
   type: Class
-  summary: "Encapsulates and propagates all security-related data for execution contexts transferred across threads. This class cannot be inherited."
+  summary: "Magában foglalja, és továbbítsa a végrehajtási környezet szálak között továbbított összes biztonsági adat. Ez az osztály nem örökölhető."
   remarks: "A SecurityContext object captures all security-related information for a logical thread, including the information contained in the <xref:System.Security.Principal.WindowsIdentity> and <xref:System.Threading.CompressedStack> objects.  This configuration allows the Windows identity and the security elements on the stack to be propagated automatically when the SecurityContext is copied and transferred across asynchronous threads.  \n  \n> [!NOTE]\n>  The common language runtime (CLR) is aware of impersonation operations performed using only managed code, not of impersonation performed outside of managed code, such as through platform invoke to unmanaged code or through direct calls to Win32 functions. Only managed <xref:System.Security.Principal.WindowsIdentity> objects can flow across asynchronous points, unless the `alwaysFlowImpersonationPolicy` element has been set to `true` (`<alwaysFlowImpersonationPolicy enabled=\"true\"/>`). Setting the `alwaysFlowImpersonationPolicy` element to `true` specifies that the Windows identity always flows across asynchronous points, regardless of how impersonation was performed. For more information about flowing unmanaged impersonation across asynchronous points, see [\\&lt;alwaysFlowImpersonationPolicy\\&gt; Element](../Topic/%3CalwaysFlowImpersonationPolicy%3E%20Element.md).  \n  \n The SecurityContext is part of the larger <xref:System.Threading.ExecutionContext> and flows or migrates when the <xref:System.Threading.ExecutionContext> flows or migrates.  \n  \n> [!IMPORTANT]\n>  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic."
   syntax:
     content: 'public sealed class SecurityContext : IDisposable'
@@ -41,14 +41,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Captures the security context for the current thread."
-  remarks: "The captured security context can be applied to another thread. The <xref:System.Security.SecurityContext> consists of the <xref:System.Threading.CompressedStack> and the <xref:System.Security.Principal.WindowsIdentity> for the executing thread."
+  summary: "A biztonsági környezet az aktuális szál rögzíti."
+  remarks: "A rögzített biztonsági környezetet egy másik szál alkalmazhatja. A <xref:System.Security.SecurityContext>áll a <xref:System.Threading.CompressedStack>és a <xref:System.Security.Principal.WindowsIdentity>a végrehajtás alatt álló szál.</xref:System.Security.Principal.WindowsIdentity> </xref:System.Threading.CompressedStack> </xref:System.Security.SecurityContext>"
   syntax:
     content: public static System.Security.SecurityContext Capture ();
     parameters: []
     return:
       type: System.Security.SecurityContext
-      description: "The security context for the current thread."
+      description: "Az aktuális szál biztonsági környezetében."
   overload: System.Security.SecurityContext.Capture*
   exceptions: []
   platform:
@@ -65,19 +65,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Creates a copy of the current security context."
-  remarks: "The current context must have been acquired through a capture or a copy operation. This method is useful for applying a captured <xref:System.Security.SecurityContext> to multiple threads."
+  summary: "Az aktuális biztonsági környezet másolatát hozza létre."
+  remarks: "Az aktuális környezetben kell szerezni a rögzítési vagy a másolási műveletek keresztül. Ez a módszer akkor hasznos, ha alkalmazása egy rögzített <xref:System.Security.SecurityContext>több szálak számát.</xref:System.Security.SecurityContext>"
   syntax:
     content: public System.Security.SecurityContext CreateCopy ();
     parameters: []
     return:
       type: System.Security.SecurityContext
-      description: "The security context for the current thread."
+      description: "Az aktuális szál biztonsági környezetében."
   overload: System.Security.SecurityContext.CreateCopy*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current security context has been previously used, was marshaled across application domains, or was not acquired through the <xref:System.Security.SecurityContext.Capture*> method."
+    description: "Az aktuális biztonsági környezet korábban már használatban van, lett át alkalmazástartományok között, vagy beszerzett nem volt a <xref:System.Security.SecurityContext.Capture*>metódus.</xref:System.Security.SecurityContext.Capture*>"
   platform:
   - net462
 - uid: System.Security.SecurityContext.Dispose
@@ -92,8 +92,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Releases all resources used by the current instance of the <xref href=&quot;System.Security.SecurityContext&quot;></xref> class."
-  remarks: "Call `Dispose` when you are finished using the <xref:System.Security.SecurityContext>. The `Dispose` method leaves the <xref:System.Security.SecurityContext> in an unusable state. After calling `Dispose`, you must release all references to the <xref:System.Security.SecurityContext> so the garbage collector can reclaim the memory that the <xref:System.Security.SecurityContext> was occupying.       For more information, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md) and [Implementing a Dispose Method](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  Always call `Dispose` before you release your last reference to the <xref:System.Security.SecurityContext>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.Security.SecurityContext> object&quot;s `Finalize` method."
+  summary: "Feloldja a jelenlegi példány által használt erőforrások a <xref href=&quot;System.Security.SecurityContext&quot;> </xref> osztály."
+  remarks: "Hívás `Dispose` amikor elkészült, a <xref:System.Security.SecurityContext>.</xref:System.Security.SecurityContext> használatával A `Dispose` metódus leaves a <xref:System.Security.SecurityContext>használhatatlan állapotban.</xref:System.Security.SecurityContext> Hívása után `Dispose`, fel kell szabadítania mutató összes hivatkozást az <xref:System.Security.SecurityContext>, a szemétgyűjtő is visszaszerezni a memória, amely a <xref:System.Security.SecurityContext>lett elfoglaló.</xref:System.Security.SecurityContext> </xref:System.Security.SecurityContext>       További információkért lásd: [nem felügyelt erőforrások tisztítás](~/add/includes/ajax-current-ext-md.md) és [eldobásakor metódusának](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Mindig hívás `Dispose` az <xref:System.Security.SecurityContext>.</xref:System.Security.SecurityContext> utolsó referenciaként a engedélyezés előtt Ellenkező esetben az erőforrásoknak nem szabadul szemétgyűjtő hívást csak a <xref:System.Security.SecurityContext>objektum `Finalize` metódus.</xref:System.Security.SecurityContext>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -113,14 +113,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines whether the flow of the security context has been suppressed."
-  remarks: "The IsFlowSuppressed method is used by infrastructure components to determine whether to transfer the <xref:System.Security.SecurityContext> information during asynchronous operations."
+  summary: "Határozza meg, hogy a biztonsági környezet áramló van tiltva."
+  remarks: "A IsFlowSuppressed metódus szükség van-e át az infrastruktúra-összetevőihez használja a <xref:System.Security.SecurityContext>aszinkron műveletek során.</xref:System.Security.SecurityContext>"
   syntax:
     content: public static bool IsFlowSuppressed ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the flow has been suppressed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az adatfolyam le van tiltva; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.SecurityContext.IsFlowSuppressed*
   exceptions: []
   platform:
@@ -137,14 +137,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines whether the flow of the Windows identity portion of the current security context has been suppressed."
-  remarks: "The IsWindowsIdentityFlowSuppressed method is used by infrastructure components to determine whether to transfer the Windows identity information when the <xref:System.Security.SecurityContext> migrates during asynchronous operations."
+  summary: "Meghatározza, hogy-e tiltva a Windows identity része az aktuális biztonsági környezet áramló."
+  remarks: "A IsWindowsIdentityFlowSuppressed módszer segítségével infrastruktúra-összetevőihez szükség van-e a Windows-azonosító adatok átvitele során a <xref:System.Security.SecurityContext>áttelepíti aszinkron műveletek során.</xref:System.Security.SecurityContext>"
   syntax:
     content: public static bool IsWindowsIdentityFlowSuppressed ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the flow has been suppressed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az adatfolyam le van tiltva; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.SecurityContext.IsWindowsIdentityFlowSuppressed*
   exceptions: []
   platform:
@@ -161,8 +161,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Restores the flow of the security context across asynchronous threads."
-  remarks: "The RestoreFlow method is called by the <xref:System.Threading.AsyncFlowControl.Undo%2A?displayProperty=fullName> method to reverse the effect of a prior <xref:System.Security.SecurityContext.SuppressFlow%2A> method call."
+  summary: "Visszaállítja a biztonsági környezet áramló aszinkron szálak között."
+  remarks: "A RestoreFlow metódust a <xref:System.Threading.AsyncFlowControl.Undo%2A?displayProperty=fullName>módszert visszavonjon egy előző <xref:System.Security.SecurityContext.SuppressFlow%2A>metódus hívása.</xref:System.Security.SecurityContext.SuppressFlow%2A> </xref:System.Threading.AsyncFlowControl.Undo%2A?displayProperty=fullName>"
   syntax:
     content: public static void RestoreFlow ();
     parameters: []
@@ -170,7 +170,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The security context is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+    description: "A biztonsági környezet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc."
   platform:
   - net462
 - uid: System.Security.SecurityContext.Run(System.Security.SecurityContext,System.Threading.ContextCallback,System.Object)
@@ -185,8 +185,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Runs the specified method in the specified security context on the current thread."
-  remarks: "The security context for the current thread is returned to its previous state when the method call is complete."
+  summary: "Az aktuális szálon megadott biztonsági környezetben fut a megadott metódust."
+  remarks: "A biztonsági környezet az aktuális szál a korábbi állapotába küld vissza a metódushívás befejezésekor."
   example:
   - "The following code example shows how to use the Run method to execute a method in a specified security context.  \n  \n [!code-cs[System.Security.SecurityContext.Run#1](~/add/codesnippet/csharp/f32751be-87d3-46b4-a1da-_1.cs)]\n [!code-vb[System.Security.SecurityContext.Run#1](~/add/codesnippet/visualbasic/f32751be-87d3-46b4-a1da-_1.vb)]"
   syntax:
@@ -194,18 +194,18 @@ items:
     parameters:
     - id: securityContext
       type: System.Security.SecurityContext
-      description: "The security context to set."
+      description: "A biztonsági környezet beállítása."
     - id: callback
       type: System.Threading.ContextCallback
-      description: "The delegate that represents the method to run in the specified security context."
+      description: "A delegált esetén, amely a megadott biztonsági környezetben történő futtatásra mód."
     - id: state
       type: System.Object
-      description: "The object to pass to the callback method."
+      description: "Az objektum átadása a visszahívási metódus."
   overload: System.Security.SecurityContext.Run*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>securityContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>securityContext</code> was not acquired through a capture operation.       -or-       <code>securityContext</code> has already been used as the argument to a Run method call."
+    description: "<code>securityContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – <code>securityContext</code> rögzítési művelet nem lett beszerzett.       – vagy – <code>securityContext</code> már felhasználták Futtatás metódushívások argumentumaként."
   platform:
   - net462
 - uid: System.Security.SecurityContext.SuppressFlow
@@ -220,14 +220,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Suppresses the flow of the security context across asynchronous threads."
-  remarks: "Use this method to suppress the flow of <xref:System.Security.SecurityContext> information on the current thread for asynchronous operations.       The common language runtime (CLR) is only aware of the impersonation operations performed using managed code. The CLR has no knowledge of impersonation performed outside of managed code, such as platform invokes to unmanaged code that does the impersonation, or through calls to Win32 functions. To flow identity across asynchronous points you must use the managed <xref:System.Security.Principal.WindowsIdentity> and <xref:System.Security.Principal.WindowsImpersonationContext> methods.       Use the <xref:System.Threading.AsyncFlowControl.Undo%2A> method on the returned <xref:System.Threading.AsyncFlowControl> structure to return the <xref:System.Security.SecurityContext> object to its previous state.       This method is protected with a <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> for <xref:System.Security.Permissions.SecurityPermissionFlag?displayProperty=fullName> permission. A fully trusted component can call this method to suppress the flow of the <xref:System.Security.SecurityContext> information during asynchronous calls. When the flow is suppressed, the <xref:System.Security.SecurityContext.Capture%2A> method returns `null`."
+  summary: "Letiltja a biztonsági környezet áramló aszinkron szálak között."
+  remarks: "Ezt a módszert arra, hogy letiltsa a áramló <xref:System.Security.SecurityContext>információk az aktuális szálon aszinkron műveletek.</xref:System.Security.SecurityContext>       A közös nyelvi futtatókörnyezet (CLR) csak tehát tudatában a megszemélyesítés műveletek a felügyelt kód használatával történik. A közös nyelvi Futtatókörnyezet van nem ismeri a megszemélyesítési végrehajtását kívül felügyelt kód, pl. platform hív meg, és nem felügyelt kód, amelyet a megszemélyesítési paramétereket, vagy Win32 hívások keresztül. Folyamat identitása kell használnia a felügyelt aszinkron pontok között <xref:System.Security.Principal.WindowsIdentity>és <xref:System.Security.Principal.WindowsImpersonationContext>módszerek.</xref:System.Security.Principal.WindowsImpersonationContext> </xref:System.Security.Principal.WindowsIdentity>       Használja a <xref:System.Threading.AsyncFlowControl.Undo%2A>metódust a visszaadott <xref:System.Threading.AsyncFlowControl>struktúra vissza a <xref:System.Security.SecurityContext>objektum korábbi állapotába.</xref:System.Security.SecurityContext> </xref:System.Threading.AsyncFlowControl> </xref:System.Threading.AsyncFlowControl.Undo%2A>       Ez a módszer jelszavas védelemmel van ellátva a <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>a <xref:System.Security.Permissions.SecurityPermissionFlag?displayProperty=fullName>engedély.</xref:System.Security.Permissions.SecurityPermissionFlag?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> A teljesen megbízható összetevő áramló letiltásához a metódus hívása a <xref:System.Security.SecurityContext>adatai aszinkron hívás közben.</xref:System.Security.SecurityContext> Ha a folyamat le lesz tiltva, a <xref:System.Security.SecurityContext.Capture%2A>metódus beolvasása `null`.</xref:System.Security.SecurityContext.Capture%2A>"
   syntax:
     content: public static System.Threading.AsyncFlowControl SuppressFlow ();
     parameters: []
     return:
       type: System.Threading.AsyncFlowControl
-      description: "An <xref href=&quot;System.Threading.AsyncFlowControl&quot;></xref> structure for restoring the flow."
+      description: "Egy <xref href=&quot;System.Threading.AsyncFlowControl&quot;> </xref> struktúra, a folyamat visszaállítására."
   overload: System.Security.SecurityContext.SuppressFlow*
   exceptions: []
   platform:
@@ -244,14 +244,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Suppresses the flow of the Windows identity portion of the current security context across asynchronous threads."
+  summary: "Letiltja a Windows identity része az aktuális biztonsági környezet áramló aszinkron szálak között."
   remarks: "Use this method to suppress the flow of the Windows identity when the <xref:System.Security.SecurityContext> migrates across asynchronous threads.  \n  \n Use the <xref:System.Threading.AsyncFlowControl.Undo%2A> method on the returned <xref:System.Threading.AsyncFlowControl> structure to return the <xref:System.Security.SecurityContext> object to its previous state.  \n  \n> [!NOTE]\n>  The common language runtime (CLR) is aware of impersonation operations performed using only managed code, not of impersonation performed outside of managed code, such as through platform invoke to unmanaged code or through direct calls to Win32 functions. Only managed <xref:System.Security.Principal.WindowsIdentity> objects can flow across asynchronous points, unless the `alwaysFlowImpersonationPolicy` element has been set to `true` (`<alwaysFlowImpersonationPolicy enabled=\"true\"/>`). Setting the `alwaysFlowImpersonationPolicy` element to `true` specifies that the Windows identity always flows across asynchronous points, regardless of how impersonation was performed. For more information about flowing unmanaged impersonation across asynchronous points, see [\\<alwaysFlowImpersonationPolicy> Element](../Topic/%3CalwaysFlowImpersonationPolicy%3E%20Element.md)."
   syntax:
     content: public static System.Threading.AsyncFlowControl SuppressFlowWindowsIdentity ();
     parameters: []
     return:
       type: System.Threading.AsyncFlowControl
-      description: "A structure for restoring the flow."
+      description: "A folyamat visszaállítására struktúrában."
   overload: System.Security.SecurityContext.SuppressFlowWindowsIdentity*
   exceptions: []
   platform:

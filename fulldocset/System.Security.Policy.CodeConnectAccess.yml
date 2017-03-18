@@ -20,8 +20,8 @@ items:
   nameWithType: CodeConnectAccess
   fullName: System.Security.Policy.CodeConnectAccess
   type: Class
-  summary: "Specifies the network resource access that is granted to code."
-  remarks: "This class is used in conjunction with the <xref:System.Security.Policy.NetCodeGroup> class to control how executing code can connect back to the site it was downloaded from. These classes provide programmatic control of the <xref:System.Net.WebPermission> granted to executing code that controls what schemes and ports the code can use access its origin site. You can specify scheme and port pairs that are permitted based on the scheme in the URL where the code originates.       To create a CodeConnectAccess object based on the code&quot;s origin scheme, use the <xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A> method.       To create a CodeConnectAccess object that can use any scheme but is restricted by port, use the <xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A> method."
+  summary: "Adja meg a hálózati erőforrás-hozzáférés biztosított, adott kódot."
+  remarks: "Ez az osztály használható együtt a <xref:System.Security.Policy.NetCodeGroup>szabályozására, hogyan kód végrehajtása is kapcsolódjon a helyhez az osztály a letöltött.</xref:System.Security.Policy.NetCodeGroup> Ezeket az osztályokat a programozott ellenőrzést nyújtanak a <xref:System.Net.WebPermission>futott, amely meghatározza, milyen sémák és a kód használható portok hozzáférni a származási hely számára.</xref:System.Net.WebPermission> Megadhatja a protokollt és portot párok, amelyeknél engedélyezve van a rendszerben az URL-cím, ahonnan a kód származnak.       A kód származási rendszerben CodeConnectAccess objektum létrehozásához használja a <xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A>metódus.</xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A>       Bármilyen rendszer is használhat, de port korlátozza CodeConnectAccess objektum létrehozásához használja a <xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A>metódus.</xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A>"
   example:
   - "The following code example creates a <xref:System.Security.Policy.NetCodeGroup> object and adds it to the User policy level.  \n  \n [!code-cs[NclCodeGroup#3](~/add/codesnippet/csharp/t-system.security.policy_5_1.cs)]\n [!code-cpp[NclCodeGroup#3](~/add/codesnippet/cpp/t-system.security.policy_5_1.cpp)]"
   syntax:
@@ -47,8 +47,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> class."
-  remarks: "The <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A> property is set using the `allowScheme` parameter. The scheme is converted to lowercase. The value of <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A> controls the scheme that executing code can use to connect to a network resource.       The <xref:System.Security.Policy.CodeConnectAccess.Port%2A> property is set using the `allowPort` parameter. The value of <xref:System.Security.Policy.CodeConnectAccess.Port%2A> controls the port that executing code can use to connect to a network resource."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> osztály."
+  remarks: "A <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A>tulajdonság értéke, használja a `allowScheme` paraméter.</xref:System.Security.Policy.CodeConnectAccess.Scheme%2A> Csupa kisbetűssé alakítja a rendszer. Értékének <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A>szabályozza a rendszer, amely a kód végrehajtása használatával csatlakozzon egy hálózati erőforráshoz.</xref:System.Security.Policy.CodeConnectAccess.Scheme%2A>       A <xref:System.Security.Policy.CodeConnectAccess.Port%2A>tulajdonság értéke, használja a `allowPort` paraméter.</xref:System.Security.Policy.CodeConnectAccess.Port%2A> Értékének <xref:System.Security.Policy.CodeConnectAccess.Port%2A>szabályozza a portot, amelyet a kód végrehajtása használatával csatlakozzon egy hálózati erőforráshoz.</xref:System.Security.Policy.CodeConnectAccess.Port%2A>"
   example:
   - "The following code example demonstrates creating a <xref:System.Security.Policy.CodeConnectAccess> object that permits downloaded code to connect back to its origin server using the HTTP protocol and the same port it was downloaded on. For an example that demonstrates using <xref:System.Security.Policy.CodeConnectAccess> objects to create a code group and adding the code group to a policy level, see the <xref:System.Security.Policy.CodeConnectAccess> class overview.  \n  \n [!code-cs[NclCodeGroup#2](~/add/codesnippet/csharp/m-system.security.policy_3_1.cs)]\n [!code-cpp[NclCodeGroup#2](~/add/codesnippet/cpp/m-system.security.policy_3_1.cpp)]"
   syntax:
@@ -56,15 +56,15 @@ items:
     parameters:
     - id: allowScheme
       type: System.String
-      description: "The URI scheme represented by the current instance."
+      description: "Az aktuális példány által képviselt URI-séma."
     - id: allowPort
       type: System.Int32
-      description: "The port represented by the current instance."
+      description: "A port, az aktuális példány képviseli."
   overload: System.Security.Policy.CodeConnectAccess.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>allowScheme</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>allowScheme</code> is an empty string (&quot;&quot;).       -or-       <code>allowScheme</code> contains characters that are not permitted in schemes.       -or-       <code>allowPort</code> is less than 0.       -or-       <code>allowPort</code> is greater than 65,535."
+    description: "<code>allowScheme</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – <code>allowScheme</code> egy üres karakterlánc (&quot;&quot;).       – vagy – <code>allowScheme</code> sémák nem engedélyezett karaktereket tartalmaz.       – vagy – <code>allowPort</code> 0-nál kisebb.       – vagy – <code>allowPort</code> nagyobb, mint 65 535."
   platform:
   - net462
 - uid: System.Security.Policy.CodeConnectAccess.AnyScheme
@@ -79,15 +79,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Contains the string value that represents the scheme wildcard."
-  remarks: "As an alternative to constructing a <xref:System.Security.Policy.CodeConnectAccess> object using this value, you can call the <xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A> method to obtain a <xref:System.Security.Policy.CodeConnectAccess> object that represents a specified port and any scheme.       The value of this field is &quot;*&quot;."
+  summary: "A rendszer helyettesítő jelölő karakterlánc értékét tartalmazza."
+  remarks: "Ahelyett, hogy hozhat létre egy <xref:System.Security.Policy.CodeConnectAccess>objektumba ezt az értéket hívása a <xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A>beszerzéséhez egy <xref:System.Security.Policy.CodeConnectAccess>megadott port és a programon képviselő objektum.</xref:System.Security.Policy.CodeConnectAccess> </xref:System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess%2A> </xref:System.Security.Policy.CodeConnectAccess>       Ez a mező értéke a &quot;*&quot;."
   example:
   - "The following code example displays the value of this field.  \n  \n [!code-cs[NclCodeGroup#6](~/add/codesnippet/csharp/f-system.security.policy_2_1.cs)]\n [!code-cpp[NclCodeGroup#6](~/add/codesnippet/cpp/f-system.security.policy_2_1.cpp)]"
   syntax:
     content: public static readonly string AnyScheme;
     return:
       type: System.String
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -103,8 +103,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Returns a <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> instance that represents access to the specified port using any scheme."
-  remarks: "The <xref:System.Security.Policy.CodeConnectAccess> instance returned by this method uses the scheme wildcard value <xref:System.Security.Policy.CodeConnectAccess> (&quot;*&quot;) to represent the scheme."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> -példányt, a megadott port bármely séma használatával való hozzáférést jelöli."
+  remarks: "A <xref:System.Security.Policy.CodeConnectAccess>séma helyettesítő értéket használja, ez a metódus által visszaadott példány <xref:System.Security.Policy.CodeConnectAccess>(&quot;*&quot;) a rendszer képviselő.</xref:System.Security.Policy.CodeConnectAccess> </xref:System.Security.Policy.CodeConnectAccess>"
   example:
   - "The following code example demonstrates calling this method. For an example that demonstrates using <xref:System.Security.Policy.CodeConnectAccess> objects to create a code group and adding the code group to a policy level, see the <xref:System.Security.Policy.CodeConnectAccess> class overview.  \n  \n [!code-cs[NclCodeGroup#5](~/add/codesnippet/csharp/m-system.security.policy_25_1.cs)]\n [!code-cpp[NclCodeGroup#5](~/add/codesnippet/cpp/m-system.security.policy_25_1.cpp)]"
   syntax:
@@ -112,15 +112,15 @@ items:
     parameters:
     - id: allowPort
       type: System.Int32
-      description: "The port represented by the returned instance."
+      description: "A port, a visszaadott példány képviseli."
     return:
       type: System.Security.Policy.CodeConnectAccess
-      description: "A <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> instance for the specified port."
+      description: "A <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> példány a megadott port."
   overload: System.Security.Policy.CodeConnectAccess.CreateAnySchemeAccess*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>allowPort</code> is less than 0.       -or-       <code>allowPort</code> is greater than 65,535."
+    description: "<code>allowPort</code>értéke 0-nál kisebb.       – vagy – <code>allowPort</code> nagyobb, mint 65 535."
   platform:
   - net462
 - uid: System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess(System.Int32)
@@ -135,8 +135,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Returns a <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> instance that represents access to the specified port using the code&quot;s scheme of origin."
-  remarks: "The <xref:System.Security.Policy.CodeConnectAccess> instance returned by this method has the scheme value <xref:System.Security.Policy.CodeConnectAccess>. The origin scheme is the scheme value from the URI where the code originated."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> -példányt, a megadott port a kód séma származási való hozzáférést jelöli."
+  remarks: "<xref:System.Security.Policy.CodeConnectAccess>Ez a metódus által visszaadott példány <xref:System.Security.Policy.CodeConnectAccess>.</xref:System.Security.Policy.CodeConnectAccess> séma értékkel rendelkezik.</xref:System.Security.Policy.CodeConnectAccess> A forrás-séma érték a rendszer a kód származási helyének URI."
   example:
   - "The following code example demonstrates using <xref:System.Security.Policy.CodeConnectAccess> objects to create a code group and adding the code group to a policy level.  \n  \n [!code-cs[NclCodeGroup#3](~/add/codesnippet/csharp/492d74c3-750c-4ac2-93f8-_1.cs)]\n [!code-cpp[NclCodeGroup#3](~/add/codesnippet/cpp/492d74c3-750c-4ac2-93f8-_1.cpp)]"
   syntax:
@@ -144,15 +144,15 @@ items:
     parameters:
     - id: allowPort
       type: System.Int32
-      description: "The port represented by the returned instance."
+      description: "A port, a visszaadott példány képviseli."
     return:
       type: System.Security.Policy.CodeConnectAccess
-      description: "A <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> instance for the specified port."
+      description: "A <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> példány a megadott port."
   overload: System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>allowPort</code> is less than 0.       -or-       <code>allowPort</code> is greater than 65,535."
+    description: "<code>allowPort</code>értéke 0-nál kisebb.       – vagy – <code>allowPort</code> nagyobb, mint 65 535."
   platform:
   - net462
 - uid: System.Security.Policy.CodeConnectAccess.DefaultPort
@@ -167,15 +167,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Contains the value used to represent the default port."
-  remarks: "To create a <xref:System.Security.Policy.CodeConnectAccess> object that has the default port for a specified scheme, use this field as the `allowPort` parameter of the <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> constructor.       The value of this field is -3."
+  summary: "Az alapértelmezett port képviseli értéket tartalmaz."
+  remarks: "Létrehozásához egy <xref:System.Security.Policy.CodeConnectAccess>objektum, amely rendelkezik egy megadott rendszer alapértelmezett portját használja ezt a mezőt, mint a `allowPort` paramétere a <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A>konstruktor.</xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> </xref:System.Security.Policy.CodeConnectAccess>       Ez a mező értéke -3."
   example:
   - "The following code example demonstrates creating a <xref:System.Security.Policy.CodeConnectAccess> object that specifies FTP for the scheme and the default port for FTP.  \n  \n [!code-cs[NclCodeGroup#1](~/add/codesnippet/csharp/f-system.security.policy_0_1.cs)]\n [!code-cpp[NclCodeGroup#1](~/add/codesnippet/cpp/f-system.security.policy_0_1.cpp)]"
   syntax:
     content: public static readonly int DefaultPort;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -191,17 +191,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Returns a value indicating whether two <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> objects represent the same scheme and port."
-  remarks: "Two <xref:System.Security.Policy.CodeConnectAccess> objects are equal if their <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A> and <xref:System.Security.Policy.CodeConnectAccess.Port%2A> property values are equal."
+  summary: "Visszaadja egy érték, amely azt jelzi, hogy két <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> objektumnak ugyanazt a protokollt és port meghatároznia."
+  remarks: "Két <xref:System.Security.Policy.CodeConnectAccess>objektumok egyenlőek. Ha a <xref:System.Security.Policy.CodeConnectAccess.Scheme%2A>és <xref:System.Security.Policy.CodeConnectAccess.Port%2A>tulajdonság értékei megegyeznek.</xref:System.Security.Policy.CodeConnectAccess.Port%2A> </xref:System.Security.Policy.CodeConnectAccess.Scheme%2A> </xref:System.Security.Policy.CodeConnectAccess>"
   syntax:
     content: public override bool Equals (object o);
     parameters:
     - id: o
       type: System.Object
-      description: "The object to compare to the current <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;></xref> object."
+      description: "Az objektum az aktuális összehasonlítandó <xref href=&quot;System.Security.Policy.CodeConnectAccess&quot;> </xref> objektum."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the two objects represent the same scheme and port; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a két objektum képviseli, ugyanazt a protokollt és port; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Policy.CodeConnectAccess.Equals*
   exceptions: []
   platform:
@@ -218,13 +218,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Serves as a hash function for a particular type."
+  summary: "Egy adott típusának a kivonatoló függvényt funkcionál."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref:System.Object>."
+      description: "Az aktuális <xref:System.Object>.</xref:System.Object> kivonatoló kódot"
   overload: System.Security.Policy.CodeConnectAccess.GetHashCode*
   exceptions: []
   platform:
@@ -241,15 +241,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Contains the value used to represent the port value in the URI where code originated."
-  remarks: "To create a <xref:System.Security.Policy.CodeConnectAccess> object that has the same port as the port in the executing code&quot;s URL evidence, use this field as the `allowPort` parameter of the <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> constructor.       The value of this field is -4."
+  summary: "A kód származási helyének URI azonosítójában port értékének ábrázolásához értéket tartalmaz."
+  remarks: "Létrehozásához egy <xref:System.Security.Policy.CodeConnectAccess>objektum, amely rendelkezik ugyanazt a portot a végrehajtás alatt álló kódot URL-címe alapján, a portot használja ezt a mezőt, mint a `allowPort` paramétere a <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A>konstruktor.</xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> </xref:System.Security.Policy.CodeConnectAccess>       Ez a mező értéke -4."
   example:
   - "The following code example demonstrates creating a <xref:System.Security.Policy.CodeConnectAccess> object that specifies the HTTP scheme and origin port.  \n  \n [!code-cs[NclCodeGroup#2](~/add/codesnippet/csharp/f-system.security.policy_1_1.cs)]\n [!code-cpp[NclCodeGroup#2](~/add/codesnippet/cpp/f-system.security.policy_1_1.cpp)]"
   syntax:
     content: public static readonly int OriginPort;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -265,15 +265,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Contains the value used to represent the scheme in the URL where the code originated."
-  remarks: "Do not use this field with the <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> constructor. Instead, use the <xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A> method.       The value of this field is &quot;$origin&quot;."
+  summary: "Az értéket határoz meg az URL-címben a rendszer a kód származási helyének tartalmazza."
+  remarks: "Ne használja ezt a mezőt a <xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A>konstruktor.</xref:System.Security.Policy.CodeConnectAccess.%23ctor%2A> Ehelyett használja a <xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A>metódus.</xref:System.Security.Policy.CodeConnectAccess.CreateOriginSchemeAccess%2A>       Ez a mező értéke &quot;$origin&quot;."
   example:
   - "The following code example displays the value of this field.  \n  \n [!code-cs[NclCodeGroup#6](~/add/codesnippet/csharp/f-system.security.policy_3_1.cs)]\n [!code-cpp[NclCodeGroup#6](~/add/codesnippet/cpp/f-system.security.policy_3_1.cpp)]"
   syntax:
     content: public static readonly string OriginScheme;
     return:
       type: System.String
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -289,15 +289,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the port represented by the current instance."
-  remarks: "Port values are between 0 and 65,535. The port value is specified when you create an instance of <xref:System.Security.Policy.CodeConnectAccess>."
+  summary: "Lekérdezi a port, az aktuális példány képviseli."
+  remarks: "Port értéke 0 és 65535 közötti lehet. A port értékének <xref:System.Security.Policy.CodeConnectAccess>.</xref:System.Security.Policy.CodeConnectAccess> példányának létrehozásakor van megadva."
   example:
   - "The following code example demonstrates displaying the value of this property.  \n  \n [!code-cs[NclCodeGroup#4](~/add/codesnippet/csharp/p-system.security.policy_5_1.cs)]\n [!code-cpp[NclCodeGroup#4](~/add/codesnippet/cpp/p-system.security.policy_5_1.cpp)]"
   syntax:
     content: public int Port { get; }
     return:
       type: System.Int32
-      description: "A <xref:System.Int32> value that identifies a computer port used in conjunction with the <xref:System.Security.Policy.CodeConnectAccess.Scheme*> property."
+      description: "A <xref:System.Int32>érték, amely megállapítja, hogy a számítógép portot együtt használható a <xref:System.Security.Policy.CodeConnectAccess.Scheme*>tulajdonság.</xref:System.Security.Policy.CodeConnectAccess.Scheme*> </xref:System.Int32>"
   overload: System.Security.Policy.CodeConnectAccess.Port*
   exceptions: []
   platform:
@@ -314,15 +314,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the URI scheme represented by the current instance."
-  remarks: "The scheme value is specified when you create an instance of <xref:System.Security.Policy.CodeConnectAccess>."
+  summary: "Lekérdezi az aktuális példány által képviselt URI-séma."
+  remarks: "A rendszer érték <xref:System.Security.Policy.CodeConnectAccess>.</xref:System.Security.Policy.CodeConnectAccess> példányának létrehozásakor van megadva."
   example:
   - "The following code example demonstrates displaying the value of this property.  \n  \n [!code-cs[NclCodeGroup#4](~/add/codesnippet/csharp/p-system.security.policy_10_1.cs)]\n [!code-cpp[NclCodeGroup#4](~/add/codesnippet/cpp/p-system.security.policy_10_1.cpp)]"
   syntax:
     content: public string Scheme { get; }
     return:
       type: System.String
-      description: "A <xref:System.String> that identifies a URI scheme, converted to lowercase."
+      description: "A <xref:System.String>, amely azonosítja a kisbetűs URI-séma.</xref:System.String>"
   overload: System.Security.Policy.CodeConnectAccess.Scheme*
   exceptions: []
   platform:

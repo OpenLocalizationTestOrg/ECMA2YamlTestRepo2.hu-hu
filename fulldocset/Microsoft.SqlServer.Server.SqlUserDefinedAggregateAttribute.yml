@@ -18,8 +18,8 @@ items:
   nameWithType: SqlUserDefinedAggregateAttribute
   fullName: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute
   type: Class
-  summary: "Indicates that the type should be registered as a user-defined aggregate. The properties on the attribute reflect the physical attributes used when the type is registered with SQL Server. This class cannot be inherited."
-  remarks: "SQL Server creates a user-defined aggregate that is bound to the class definition that has the SqlUserDefinedAggregateAttribute custom attribute. Every user-defined aggregate must be annotated with this attribute.       See &quot;CLR User-Defined Aggregates&quot; in SQL Server 2005 Books Online for more information on user-defined aggregates and examples."
+  summary: "Azt jelzi, hogy a típus, egy felhasználó által definiált összesítő kell regisztrálni. Az attribútum tulajdonságainak használható, ha a típus regisztrálva van az SQL Server fizikai attribútumait tükrözi. Ez az osztály nem örökölhető."
+  remarks: "SQL Server hoz létre a felhasználó által definiált összesítésben, amely az osztálydefinícióban, amely rendelkezik a SqlUserDefinedAggregateAttribute egyéni attribútum van kötve. Minden felhasználó által definiált összesítő kell feliratozni ezzel az attribútummal.       Tekintse meg az SQL Server 2005 Online könyvek &quot;CLR-beli felhasználói összesítések&quot; További információ a felhasználó által definiált összesítések és példák."
   example:
   - "The following example shows the SqlUserDefinedAggregateAttribute attribute for a user-defined aggregate.  The aggregate uses custom serialization, has a maximum size of 8000 bytes when serialized, and is invariant to nulls, duplicates, and order.  \n  \n [!code-vb[DataWorks SqlUserDefinedAggregateAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_5_1.vb)]\n [!code-cs[DataWorks SqlUserDefinedAggregateAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_5_1.cs)]"
   syntax:
@@ -45,13 +45,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "A required attribute on a user-defined aggregate, used to indicate that the given type is a user-defined aggregate and the storage format of the user-defined aggregate."
+  summary: "Azt jelzi, hogy az adott típus egy felhasználó által definiált összesítő és a tárolási formátum a felhasználó által definiált összesítés használt egy felhasználó által definiált összesítő egy szükséges attribútum."
   syntax:
     content: public SqlUserDefinedAggregateAttribute (Microsoft.SqlServer.Server.Format format);
     parameters:
     - id: format
       type: Microsoft.SqlServer.Server.Format
-      description: "One of the <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> values representing the serialization format of the aggregate."
+      description: "Egy a <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref> értéknek a szerializálási formátum az összesítést."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.#ctor*
   exceptions: []
   platform:
@@ -68,7 +68,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format as a <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref>."
+  summary: "A szerializálási formátum, mint egy <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref>."
   remarks: ''
   example:
   - >-
@@ -78,7 +78,7 @@ items:
     content: public Microsoft.SqlServer.Server.Format Format { get; }
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "A <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> representing the serialization format."
+      description: "A <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref> képviselő szerializálási formátum."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.Format*
   exceptions: []
   platform:
@@ -95,13 +95,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to duplicates."
-  remarks: "Used by the query processor, this property is `true` if the aggregate is invariant to duplicates. That is, the aggregate of S, {X} is the same as aggregate of S when X is already in S. For example, aggregate functions such as MIN and MAX satisfy this property, while SUM does not.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects both the plan selected and the results returned by the query."
+  summary: "Azt jelzi, hogy az összesítő állandó a duplikált elemek."
+  remarks: "A lekérdezésfeldolgozó használják, ez a tulajdonság akkor `true` összesített állandó a duplikátumok esetén is. Ez azt jelenti, hogy a S, összesítés {X} azonos S az aggregate akkor, ha X már szerepel a használatát. Például például a MIN és MAX aggregátumfüggvény elégíti ki ezt a tulajdonságot, SUM azonban nem.       A tulajdonság beállítása nem megfelelő azt eredményezheti, hogy helytelen lekérdezés eredményeit. Ez a tulajdonság nincs egy optimalizáló leírás; az hatással van a kiválasztott terv és a lekérdezés által adott eredmények is."
   syntax:
     content: public bool IsInvariantToDuplicates { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to duplicates; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a összesítés állandó a duplikátumok; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToDuplicates*
   exceptions: []
   platform:
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to nulls."
-  remarks: "Used by the query processor, this property is `true` if the aggregate is invariant to nulls. That is, the aggregate of S, {NULL} is the same as aggregate of S. For example, aggregate functions such as MIN and MAX satisfy this property, while COUNT(*) does not.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query."
+  summary: "Azt jelzi, hogy az összesítő állandó a null értékeket."
+  remarks: "A lekérdezésfeldolgozó használják, ez a tulajdonság akkor `true` összesített állandó a NULL értékek esetén is. Ez azt jelenti, hogy a összesítés s {NULL} megegyezik a %s összesítés Például például a MIN és MAX aggregátumfüggvény elégíti ki ezt a tulajdonságot, COUNT(*) azonban nem.       A tulajdonság beállítása nem megfelelő azt eredményezheti, hogy helytelen lekérdezés eredményeit. Ez a tulajdonság nincs egy optimalizáló leírás; a kiválasztott terv és a lekérdezés által adott eredmények befolyásolja."
   syntax:
     content: public bool IsInvariantToNulls { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to nulls; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a összesítés állandó a NULL értékek; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToNulls*
   exceptions: []
   platform:
@@ -141,13 +141,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate is invariant to order."
-  remarks: "Reserved for future use. This property is not currently used by the query processor: order is currently not guaranteed.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query.       The default value for this property is `false`."
+  summary: "Azt jelzi, hogy az összesítő állandó rendezéshez."
+  remarks: "Jövőbeli használatra fenntartva. Ez a tulajdonság nem jelenleg használja a lekérdezésfeldolgozó: sorrend jelenleg nem garantált.       A tulajdonság beállítása nem megfelelő azt eredményezheti, hogy helytelen lekérdezés eredményeit. Ez a tulajdonság nincs egy optimalizáló leírás; a kiválasztott terv és a lekérdezés által adott eredmények befolyásolja.       Az alapértelmezett érték a tulajdonság `false`."
   syntax:
     content: public bool IsInvariantToOrder { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate is invariant to order; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a összesítés állandó rendezéshez; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsInvariantToOrder*
   exceptions: []
   platform:
@@ -164,13 +164,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the aggregate returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no values have been accumulated."
-  remarks: "Used by the query processor, this property is `true` if the aggregate returns `null` if no values have been accumulated.       Incorrectly setting this property can result in incorrect query results. This property is not an optimizer hint; it affects the plan selected and the results returned by the query."
+  summary: "Azt jelzi, hogy az összesítő függvény <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha rendelkezik lett halmozott értékek."
+  remarks: "A lekérdezésfeldolgozó használják, ez a tulajdonság akkor `true` az összesítő függvény `null` Ha rendelkezik lett halmozott értékek.       A tulajdonság beállítása nem megfelelő azt eredményezheti, hogy helytelen lekérdezés eredményeit. Ez a tulajdonság nincs egy optimalizáló leírás; a kiválasztott terv és a lekérdezés által adott eredmények befolyásolja."
   syntax:
     content: public bool IsNullIfEmpty { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the aggregate returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no values have been accumulated; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az összesítő függvény <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , ha nincs érték halmozott; egyéb <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.IsNullIfEmpty*
   exceptions: []
   platform:
@@ -187,13 +187,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The maximum size, in bytes, of the aggregate instance."
-  remarks: "This property does not have to be specified for Native format serialization.       You must specify the MaxByteSize property with the UserDefined serialization <xref:Microsoft.SqlServer.Server.Format>.       The maximum allowed value for this property is specified by the <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue> field.       The maximum size allowed is 2 gigabytes (GB). You can specify a number from 1 to 8000 bytes, or -1 to represent a value larger than 8000 bytes, up to 2 gigabytes.       For an aggregate with user-defined serialization specified, MaxByteSize refers to the total size of the serialized data. Consider an aggregate serializing a string of 10 characters (<xref:System.Char>). When the string is serialized using a <xref:System.IO.BinaryWriter>, the total size of the serialized string is 22 bytes: 2 bytes per Unicode UTF-16 character, multiplied by the maximum number of characters, plus 2 control bytes of overhead incurred from serializing a binary stream. So, when determining the value of MaxByteSize, the total size of the serialized data must be considered: the size of the data serialized in binary form plus the overhead incurred by serialization."
+  summary: "A maximális méretét, bájtban összesített példány."
+  remarks: "Ez a tulajdonság nem rendelkezik a natív szerializálás adható meg.       Meg kell adnia az értéket a MaxByteSize tulajdonságnak a UserDefined szerializálási <xref:Microsoft.SqlServer.Server.Format>.</xref:Microsoft.SqlServer.Server.Format>       Ez a tulajdonság által megadott megengedett maximális értéket a <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue>mező.</xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSizeValue>       A maximális megengedett mérete 2 gigabájt (GB). Megadhat egy 1 és szám 8000 bájtos vagy -1 8000 bájtos, legfeljebb 2 GB-nál nagyobb érték ábrázolásához.       A megadott felhasználó által definiált szerializálás aggregátum, az értéket a MaxByteSize a szerializált adatok teljes mérete hivatkozik. Fontolja meg a 10 karakterből álló karakterlánc szerializálása aggregátum (<xref:System.Char>).</xref:System.Char> Ha a karakterlánc szerializált használatával egy <xref:System.IO.BinaryWriter>, a szerializált karakterlánc teljes mérete 22 bájt: 2 bájt / Unicode UTF-16 karaktert, és a maximális karakterszámot, valamint a felmerülő 2 vezérlő bájt terheléssel bináris adatfolyam szerializálásakor.</xref:System.IO.BinaryWriter> Igen, a MaxByteSize értékének meghatározásakor a szerializált adatok teljes mérete figyelembe kell venni: szerializálási által összege bináris formában szerializált adatok."
   syntax:
     content: public int MaxByteSize { get; set; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value representing the maximum size of the aggregate instance."
+      description: "Egy <xref:System.Int32>érték összesített példány maximális méretét.</xref:System.Int32>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.MaxByteSize*
   exceptions: []
   platform:
@@ -210,13 +210,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The maximum size, in bytes, required to store the state of this aggregate instance during computation."
-  remarks: "An <xref:System.Int32> value representing the maximum size of the aggregate instance."
+  summary: "A maximális méretét, bájtban során számítási ez aggregált példány állapotának tárolásához szükséges."
+  remarks: "Egy <xref:System.Int32>érték összesített példány maximális méretét.</xref:System.Int32>"
   syntax:
     content: public const int MaxByteSizeValue = 8000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -232,12 +232,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name of the aggregate."
+  summary: "Az összesítés neve."
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name of the aggregate."
+      description: "A <xref:System.String>összesített nevét képviselő érték.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute.Name*
   exceptions: []
   platform:

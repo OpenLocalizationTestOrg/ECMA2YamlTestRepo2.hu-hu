@@ -32,8 +32,8 @@ items:
   nameWithType: CodeGroup
   fullName: System.Security.Policy.CodeGroup
   type: Class
-  summary: "Represents the abstract base class from which all implementations of code groups must derive."
-  remarks: "Code groups are the building blocks of code access security policy. Each policy level consists of a root code group that can have child code groups. Each child code group can have their own child code groups; this behavior extends to any number of levels, forming a tree. Each code group has a membership condition that determines if a given assembly belongs to it based on the evidence for that assembly.       Only those code groups whose membership conditions match a given assembly&quot;s evidence will be applied. If a matching code group has child code groups, then those children whose membership conditions also match the supplied evidence will likewise be applied."
+  summary: "A kódot, mely minden implementációiból csoportok kell származnia absztrakt alaposztálya jelöli."
+  remarks: "Kód csoportok építőelemei a kódhozzáférés-biztonsági házirend. Minden egyes házirendszint áll egy legfelső szintű kódcsoport, amelyeken kód csoportokat. Minden gyermek kódcsoport rendelkezhet saját kód csoportokat; Ez a viselkedés szintek, a fát alkotó tetszőleges számú kiterjed. Minden kód csoport rendelkezik a tagsági feltételű határozza meg, hogy ha egy adott szerelvény tartozik, az, hogy a szerelvény bizonyító adatok alapján.       Csak kód csoport tagsági feltételei felel meg a megadott szerelvény bizonyító lépnek érvénybe. Ha egy egyező kódcsoport kód csoportokat, majd e gyermekeket tagsági feltételei is egyezik a megadott bizonyító adatok hasonlóképpen alkalmazandó."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -57,17 +57,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Initializes a new instance of <xref href=&quot;System.Security.Policy.CodeGroup&quot;></xref>."
-  remarks: "This constructor creates a basic code group and should be called from the constructors of custom code groups. You can add child code groups using the <xref:System.Security.Policy.CodeGroup.AddChild%2A> method."
+  summary: "Egy új példányát inicializálja <xref href=&quot;System.Security.Policy.CodeGroup&quot;> </xref>."
+  remarks: "Ez a konstruktor alapvető kód csoportot hoz létre, és a egyéni kód csoportok konstruktorok kell megnyitni. Gyermek kód csoportok használatával adhat hozzá a <xref:System.Security.Policy.CodeGroup.AddChild%2A>metódus.</xref:System.Security.Policy.CodeGroup.AddChild%2A>"
   syntax:
     content: protected CodeGroup (System.Security.Policy.IMembershipCondition membershipCondition, System.Security.Policy.PolicyStatement policy);
     parameters:
     - id: membershipCondition
       type: System.Security.Policy.IMembershipCondition
-      description: "A membership condition that tests evidence to determine whether this code group applies policy."
+      description: "A tagsági feltétele annak meghatározásához, hogy a kód csoport érvényes-e a házirend bizonyító adatok teljesítménytesztet."
     - id: policy
       type: System.Security.Policy.PolicyStatement
-      description: "The policy statement for the code group in the form of a permission set and attributes to grant code that matches the membership condition."
+      description: "A házirend-utasítás a kód csoport egy engedélycsoport és attribútumok formája, amely megfelel a tagsági feltételű kód megadását."
   overload: System.Security.Policy.CodeGroup.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -75,7 +75,7 @@ items:
     description: "The <code>membershipCondition</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type of the <code>membershipCondition</code> parameter is not valid.       -or-       The type of the <code>policy</code> parameter is not valid."
+    description: "Milyen típusú a <code> membershipCondition </code> paraméter érvénytelen.       - vagy - típusát a <code> policy </code> paraméter érvénytelen."
   platform:
   - net462
 - uid: System.Security.Policy.CodeGroup.AddChild(System.Security.Policy.CodeGroup)
@@ -90,13 +90,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Adds a child code group to the current code group."
+  summary: "Az aktuális kód csoporthoz ad hozzá egy gyermekcsoporthoz kódot."
   syntax:
     content: public void AddChild (System.Security.Policy.CodeGroup group);
     parameters:
     - id: group
       type: System.Security.Policy.CodeGroup
-      description: "The code group to be added as a child. This new child code group is added to the end of the list."
+      description: "A kódcsoport gyermek lehet hozzáadni. Az új gyermek kódcsoport a lista végére kerül."
   overload: System.Security.Policy.CodeGroup.AddChild*
   exceptions:
   - type: System.ArgumentNullException
@@ -104,7 +104,7 @@ items:
     description: "The <code>group</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>group</code> parameter is not a valid code group."
+    description: "A <code> group </code> paraméter nem egy érvényes kódot csoportot."
   platform:
   - net462
 - uid: System.Security.Policy.CodeGroup.AttributeString
@@ -119,13 +119,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets a string representation of the attributes of the policy statement for the code group."
-  remarks: "The string representation is not localized."
+  summary: "Lekérdezi a házirend-utasítás a kód csoport attribútumait egy karakterláncos ábrázolása."
+  remarks: "A karakterlánc-ábrázolása nem honosított."
   syntax:
     content: public virtual string AttributeString { get; }
     return:
       type: System.String
-      description: "A string representation of the attributes of the policy statement for the code group."
+      description: "A házirend-utasítás a kód csoport attribútumhoz karakterlánc-ábrázolása."
   overload: System.Security.Policy.CodeGroup.AttributeString*
   exceptions: []
   platform:
@@ -142,21 +142,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets an ordered list of the child code groups of a code group."
-  remarks: "The order of child code groups is significant for certain code groups.      > [!NOTE] >  The return value is a copy of the child code list. Do not use the returned list to add a child code group; instead, use the <xref:System.Security.Policy.CodeGroup.AddChild%2A> method."
+  summary: "Lekérdezi vagy beállítja a kód csoportokat kód csoport rendezett listáját."
+  remarks: "Kód csoportokat bizonyos kód csoportok jelentős.      > [!NOTE] > Visszatérési értéke a gyermeklista a kód egy példányát. Ne használja a visszaadott lista egy gyermek; kódcsoport hozzáadása Ehelyett használja a <xref:System.Security.Policy.CodeGroup.AddChild%2A>metódus.</xref:System.Security.Policy.CodeGroup.AddChild%2A>"
   syntax:
     content: public System.Collections.IList Children { get; set; }
     return:
       type: System.Collections.IList
-      description: "A list of child code groups."
+      description: "A gyermek kód csoportok listáját."
   overload: System.Security.Policy.CodeGroup.Children*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt is made to set this property to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Ez a tulajdonság beállításához tett kísérlet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt is made to set this property with a list of children that are not <xref href=&quot;System.Security.Policy.CodeGroup&quot;></xref> objects."
+    description: "Kísérlet a listáját, amelyek nincsenek gyermekei tulajdonság beállításához <xref href=&quot;System.Security.Policy.CodeGroup&quot;> </xref> objektumok."
   platform:
   - net462
 - uid: System.Security.Policy.CodeGroup.Copy
@@ -171,14 +171,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, makes a deep copy of the current code group."
-  remarks: "This method makes a deep copy of the code group, so that copies of all objects the code group contains are also made."
+  summary: "Felülbírálja a származtatott osztály, ha az aktuális kódcsoport mély másolatot készít."
+  remarks: "Ez a módszer a kódcsoport mély másolatot készít az, hogy a kód csoportjába tartozó összes objektum példánya is."
   syntax:
     content: public abstract System.Security.Policy.CodeGroup Copy ();
     parameters: []
     return:
       type: System.Security.Policy.CodeGroup
-      description: "An equivalent copy of the current code group, including its membership conditions and child code groups."
+      description: "Egy ezzel egyenértékű másolatot készít az aktuális kódcsoport, beleértve a tagsági feltételek és a kód csoportokat."
   overload: System.Security.Policy.CodeGroup.Copy*
   exceptions: []
   platform:
@@ -195,17 +195,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, serializes properties and internal state specific to a derived code group and adds the serialization to the specified <xref href=&quot;System.Security.SecurityElement&quot;></xref>."
-  remarks: "<xref:System.Security.Policy.CodeGroup.ToXml%2A> cannot be overridden. If you need to serialize members specific to a particular implementation of <xref:System.Security.Policy.CodeGroup>, you must override CreateXml and serialize your members there. When the code group is serialized, <xref:System.Security.Policy.CodeGroup.ToXml%2A> calls CreateXml and adds your serialization to the <xref:System.Security.SecurityElement> created by <xref:System.Security.Policy.CodeGroup.ToXml%2A>.       The XML created using this method is deserialized by the <xref:System.Security.Policy.CodeGroup.ParseXml%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, tulajdonságait és a belső állapotot adott egy származtatott kódcsoportra rendezi sorba, és a szerializálási hozzáadja a megadott <xref href=&quot;System.Security.SecurityElement&quot;> </xref>."
+  remarks: "<xref:System.Security.Policy.CodeGroup.ToXml%2A>nem bírálható felül.</xref:System.Security.Policy.CodeGroup.ToXml%2A> Ha szeretné-e egy adott végrehajtásának jellemző tagok szerializálni <xref:System.Security.Policy.CodeGroup>, kell CreateXml bírálja felül, és a tag nem szerializálható.</xref:System.Security.Policy.CodeGroup> Ha a kódcsoport szerializált, <xref:System.Security.Policy.CodeGroup.ToXml%2A>meghívja a CreateXml, és hozzáadja a szerializálási <xref:System.Security.SecurityElement> <xref:System.Security.Policy.CodeGroup.ToXml%2A>.</xref:System.Security.Policy.CodeGroup.ToXml%2A> által létrehozott</xref:System.Security.SecurityElement> </xref:System.Security.Policy.CodeGroup.ToXml%2A>       Az ezzel az eljárással létrehozott XML-fájl által van deszerializálni a <xref:System.Security.Policy.CodeGroup.ParseXml%2A>metódus.</xref:System.Security.Policy.CodeGroup.ParseXml%2A>"
   syntax:
     content: protected virtual void CreateXml (System.Security.SecurityElement element, System.Security.Policy.PolicyLevel level);
     parameters:
     - id: element
       type: System.Security.SecurityElement
-      description: "The XML encoding to which to add the serialization."
+      description: "Az XML-kódolás, amelyhez a szerializálási hozzáadni."
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The policy level within which the code group exists."
+      description: "A házirendszint, amelyen belül a kód csoport létezik."
   overload: System.Security.Policy.CodeGroup.CreateXml*
   exceptions: []
   platform:
@@ -222,12 +222,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets the description of the code group."
+  summary: "Lekérdezi vagy beállítja a kód csoport leírása."
   syntax:
     content: public string Description { get; set; }
     return:
       type: System.String
-      description: "The description of the code group."
+      description: "A kódcsoport leírása."
   overload: System.Security.Policy.CodeGroup.Description*
   exceptions: []
   platform:
@@ -244,17 +244,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the specified code group is equivalent to the current code group."
-  remarks: "Two code groups are equivalent if they have the same <xref:System.Security.Policy.CodeGroup.Name%2A>, <xref:System.Security.Policy.CodeGroup.Description%2A>, and <xref:System.Security.Policy.CodeGroup.MembershipCondition%2A>.       This method tests the top-level code group only, not its child code groups."
+  summary: "Meghatározza, hogy a megadott kód csoport az aktuális kód csoportjának megfelelő-e."
+  remarks: "Két kód csoportok egyenlők, ha rendelkeznek azonos <xref:System.Security.Policy.CodeGroup.Name%2A>, <xref:System.Security.Policy.CodeGroup.Description%2A>, és <xref:System.Security.Policy.CodeGroup.MembershipCondition%2A>.</xref:System.Security.Policy.CodeGroup.MembershipCondition%2A> </xref:System.Security.Policy.CodeGroup.Description%2A> </xref:System.Security.Policy.CodeGroup.Name%2A>       Ez a módszer teszteli a legfelső szintű kódcsoport csak, nem tartozó kód csoportokat."
   syntax:
     content: public override bool Equals (object o);
     parameters:
     - id: o
       type: System.Object
-      description: "The code group to compare with the current code group."
+      description: "A kódcsoport az aktuális kódcsoport összehasonlítandó."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified code group is equivalent to the current code group; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott kód csoport megegyezik a jelenlegi kódcsoport; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Policy.CodeGroup.Equals*
   exceptions: []
   platform:
@@ -271,20 +271,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Determines whether the specified code group is equivalent to the current code group, checking the child code groups as well, if specified."
-  remarks: "Two code groups are equivalent if they have the same <xref:System.Security.Policy.CodeGroup.Name%2A>, <xref:System.Security.Policy.CodeGroup.Description%2A>, and <xref:System.Security.Policy.CodeGroup.MembershipCondition%2A>.       If the `compareChildren` parameter is `true`, this method will only return `true` if the current code group and all its child code groups are equivalent to the specified code group and all its child code groups."
+  summary: "Meghatározza, hogy a megadott kód csoport megfelelő az aktuális kód csoporthoz, az ellenőrzése a kód csoportokat is, ha meg van adva."
+  remarks: "Két kód csoportok egyenlők, ha rendelkeznek azonos <xref:System.Security.Policy.CodeGroup.Name%2A>, <xref:System.Security.Policy.CodeGroup.Description%2A>, és <xref:System.Security.Policy.CodeGroup.MembershipCondition%2A>.</xref:System.Security.Policy.CodeGroup.MembershipCondition%2A> </xref:System.Security.Policy.CodeGroup.Description%2A> </xref:System.Security.Policy.CodeGroup.Name%2A>       Ha a `compareChildren` paraméter `true`, csak adja vissza ezt a módszert `true` Ha az aktuális kódcsoport és tartozó kód minden csoportokat egyenértékűek a megadott kód és az összes tartozó kód csoportokat."
   syntax:
     content: public bool Equals (System.Security.Policy.CodeGroup cg, bool compareChildren);
     parameters:
     - id: cg
       type: System.Security.Policy.CodeGroup
-      description: "The code group to compare with the current code group."
+      description: "A kódcsoport az aktuális kódcsoport összehasonlítandó."
     - id: compareChildren
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to compare child code groups, as well; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az összehasonlítandó kód csoportokat, valamint; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified code group is equivalent to the current code group; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott kód csoport megegyezik a jelenlegi kódcsoport; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Policy.CodeGroup.Equals*
   exceptions: []
   platform:
@@ -301,13 +301,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Reconstructs a security object with a given state from an XML encoding."
+  summary: "Egy biztonsági objektumhoz, az XML-kódolás adott állapotú Rekonstruálja."
   syntax:
     content: public void FromXml (System.Security.SecurityElement e);
     parameters:
     - id: e
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "Az XML-hozza létre újból a biztonsági objektum használandó kódolás."
   overload: System.Security.Policy.CodeGroup.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -327,17 +327,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Reconstructs a security object with a given state and policy level from an XML encoding."
-  remarks: "The policy level context is provided for resolution of named permission sets."
+  summary: "Egy biztonsági objektumhoz megadott állapotú és az XML-kódolás házirendszint Rekonstruálja."
+  remarks: "A házirend szintű környezet elnevezett készletek feloldása valósul meg."
   syntax:
     content: public void FromXml (System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level);
     parameters:
     - id: e
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "Az XML-hozza létre újból a biztonsági objektum használandó kódolás."
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The policy level within which the code group exists."
+      description: "A házirendszint, amelyen belül a kód csoport létezik."
   overload: System.Security.Policy.CodeGroup.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -357,13 +357,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the hash code of the current code group."
+  summary: "Lekérdezi az aktuális kódcsoport kivonatkódját."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The hash code of the current code group."
+      description: "Az aktuális kódcsoport kivonatkódját."
   overload: System.Security.Policy.CodeGroup.GetHashCode*
   exceptions: []
   platform:
@@ -380,18 +380,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets the code group&quot;s membership condition."
-  remarks: "A membership condition tests evidence and returns a Boolean value that tells whether there is a match."
+  summary: "Lekérdezi vagy beállítja a kódcsoport tagsági feltétele."
+  remarks: "A tagsági feltételű bizonyító adatok teszteli, és egy logikai értéket, amely közli, hogy van-e egyező ad vissza."
   syntax:
     content: public System.Security.Policy.IMembershipCondition MembershipCondition { get; set; }
     return:
       type: System.Security.Policy.IMembershipCondition
-      description: "The membership condition that determines to which evidence the code group is applicable."
+      description: "A tagsági feltételű határozza meg, hogy milyen bizonyító adatok a kódcsoport esetén alkalmazható."
   overload: System.Security.Policy.CodeGroup.MembershipCondition*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt is made to set this parameter to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "A paraméter értéke kísérlet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.Policy.CodeGroup.MergeLogic
@@ -406,12 +406,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, gets the merge logic for the code group."
+  summary: "Felülbírálja a származtatott osztály, amikor lekéri az egyesítési logikai a kódcsoport."
   syntax:
     content: public abstract string MergeLogic { get; }
     return:
       type: System.String
-      description: "A description of the merge logic for the code group."
+      description: "A kódcsoport egyesítési logikáját leírását."
   overload: System.Security.Policy.CodeGroup.MergeLogic*
   exceptions: []
   platform:
@@ -428,12 +428,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets the name of the code group."
+  summary: "Lekérdezi vagy beállítja a kód csoport nevét."
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "The name of the code group."
+      description: "A kódcsoport neve."
   overload: System.Security.Policy.CodeGroup.Name*
   exceptions: []
   platform:
@@ -450,17 +450,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, reconstructs properties and internal state specific to a derived code group from the specified <xref href=&quot;System.Security.SecurityElement&quot;></xref>."
-  remarks: "<xref:System.Security.Policy.CodeGroup.FromXml%2A> cannot be overridden. If you need to deserialize members specific to a particular implementation of <xref:System.Security.Policy.CodeGroup>, you must override ParseXml and deserialize your members there. When the code group is deserialized, <xref:System.Security.Policy.CodeGroup.FromXml%2A> calls ParseXml and reconstructs your members from the <xref:System.Security.SecurityElement>.       This method deserializes XML created using <xref:System.Security.Policy.CodeGroup.CreateXml%2A>."
+  summary: "Ha a származtatott osztály felülbírálva, Rekonstruálja tulajdonságait és a belső állapotot adott egy származtatott kódcsoportra a megadott <xref href=&quot;System.Security.SecurityElement&quot;> </xref>."
+  remarks: "<xref:System.Security.Policy.CodeGroup.FromXml%2A>nem bírálható felül.</xref:System.Security.Policy.CodeGroup.FromXml%2A> Ha szeretné-e egy adott végrehajtásának jellemző tagok deszerializálni <xref:System.Security.Policy.CodeGroup>, kell ParseXml bírálja felül, és a tagok nem deszerializálható.</xref:System.Security.Policy.CodeGroup> Ha a kódcsoport deszerializálni van, <xref:System.Security.Policy.CodeGroup.FromXml%2A>meghívja a ParseXml és a tagok a <xref:System.Security.SecurityElement>.</xref:System.Security.SecurityElement> Rekonstruálja</xref:System.Security.Policy.CodeGroup.FromXml%2A>       Ez a módszer deserializes <xref:System.Security.Policy.CodeGroup.CreateXml%2A>.</xref:System.Security.Policy.CodeGroup.CreateXml%2A> használatával létrehozott XML"
   syntax:
     content: protected virtual void ParseXml (System.Security.SecurityElement e, System.Security.Policy.PolicyLevel level);
     parameters:
     - id: e
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the security object."
+      description: "Az XML-hozza létre újból a biztonsági objektum használandó kódolás."
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The policy level within which the code group exists."
+      description: "A házirendszint, amelyen belül a kód csoport létezik."
   overload: System.Security.Policy.CodeGroup.ParseXml*
   exceptions: []
   platform:
@@ -477,13 +477,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets the name of the named permission set for the code group."
-  remarks: "This property can be `null` if the code group contains an unnamed permission set."
+  summary: "A kódcsoport lekéri az elnevezett engedélycsoport neve."
+  remarks: "Ez a tulajdonság lehet `null` Ha a kód csoport tartalmaz egy névtelen engedélycsoport."
   syntax:
     content: public virtual string PermissionSetName { get; }
     return:
       type: System.String
-      description: "The name of a named permission set of the policy level."
+      description: "A házirend szintű elnevezett engedélycsoport neve."
   overload: System.Security.Policy.CodeGroup.PermissionSetName*
   exceptions: []
   platform:
@@ -500,15 +500,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Gets or sets the policy statement associated with the code group."
-  remarks: "The policy statement applies to code in assemblies when evidence matches the membership condition.       This property can also be set by passing a policy statement to the constructor."
+  summary: "Lekérdezi vagy beállítja a kód csoporthoz tartozó házirend-utasítás."
+  remarks: "A házirend-utasítás érvényes szerelvényekben kód bizonyító adatok megegyezik a tagsági feltétele.       Ez a tulajdonság beállíthatók úgy, hogy egy házirend-utasítás konstruktorának is."
   example:
   - "The following example sets the <xref:System.Security.Policy.PolicyStatement> for a code group.  \n  \n [!code-cs[Classic CodeGroup.PolicyStatement Example#1](~/add/codesnippet/csharp/p-system.security.policy_7_1.cs)]\n [!code-cpp[Classic CodeGroup.PolicyStatement Example#1](~/add/codesnippet/cpp/p-system.security.policy_7_1.cpp)]\n [!code-vb[Classic CodeGroup.PolicyStatement Example#1](~/add/codesnippet/visualbasic/p-system.security.policy_7_1.vb)]"
   syntax:
     content: public System.Security.Policy.PolicyStatement PolicyStatement { get; set; }
     return:
       type: System.Security.Policy.PolicyStatement
-      description: "The policy statement for the code group."
+      description: "A kódcsoport házirend-utasítás."
   overload: System.Security.Policy.CodeGroup.PolicyStatement*
   exceptions: []
   platform:
@@ -525,19 +525,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Removes the specified child code group."
-  remarks: "Only immediate child code groups can be removed with this method."
+  summary: "A megadott gyermek kódcsoport eltávolítása."
+  remarks: "Ezzel a módszerrel lehet eltávolítani, csak a közvetlenül alárendelt kód csoportok."
   syntax:
     content: public void RemoveChild (System.Security.Policy.CodeGroup group);
     parameters:
     - id: group
       type: System.Security.Policy.CodeGroup
-      description: "The code group to be removed as a child."
+      description: "A kódcsoport gyermek távolíthatók el."
   overload: System.Security.Policy.CodeGroup.RemoveChild*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>group</code> parameter is not an immediate child code group of the current code group."
+    description: "A <code> group </code> paraméter nincs a jelenlegi kód csoport egy azonnali gyermek kódcsoport."
   platform:
   - net462
 - uid: System.Security.Policy.CodeGroup.Resolve(System.Security.Policy.Evidence)
@@ -552,17 +552,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, resolves policy for the code group and its descendants for a set of evidence."
-  remarks: "Given evidence for an assembly to be loaded, this method evaluates the code group by checking the membership condition against the specified evidence. If there is a match, this method returns a policy statement for the code group, including evaluation of child code groups.       For a <xref:System.Security.Policy.UnionCodeGroup>, all child code groups whose membership condition match the specified evidence are also resolved, and all resulting policy statements are combined with the policy statement of the parent union code group. Each child code group type determines how all child groups under it are applied, depending on how the Resolve methods of these child groups work.       The .NET Framework security system uses Resolve on the policy levels to determine which permissions to grant to loaded code from the resulting policy statements and the code request on the assembly."
+  summary: "Ha felül van bírálva a származtatott osztály, oldja fel a kód házirend és a tanúsítás azon leszármazottai."
+  remarks: "Ez a módszer megadva egy szerelvényhez betöltését bizonyító adatok, a tagsági feltétele a megadott bizonyítása ellenőrzésével kiértékeli a kódcsoport. Ha van egyezés, ez a módszer egy házirend-utasítás a kód csoport, beleértve a kódot csoportokat értékelése adja vissza.       Az egy <xref:System.Security.Policy.UnionCodeGroup>, amelynek tagsági feltétel egyezik a megadott bizonyító adatok összes kódot csoportokat is megtörténik, és a házirend-utasítás a &quot;union&quot; kód a szülőcsoport összes eredményül kapott házirendi együtt.</xref:System.Security.Policy.UnionCodeGroup> Minden gyermek kód csoport típusa határozza meg, hogyan rajta az összes alárendelt csoportok alkalmazzák, attól függően, hogy a gyermekcsoportok Resolve módszerek működése.       A .NET-keretrendszer biztonsági rendszer hárítsa el a házirend szinteken milyen engedélyeket az betöltött kódnak az eredményül kapott házirendi és a kódot kér a szerelvény meghatározására használja."
   syntax:
     content: public abstract System.Security.Policy.PolicyStatement Resolve (System.Security.Policy.Evidence evidence);
     parameters:
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "The evidence for the assembly."
+      description: "A szerelvény bizonyító adatok."
     return:
       type: System.Security.Policy.PolicyStatement
-      description: "A policy statement that consists of the permissions granted by the code group with optional attributes, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the code group does not apply (the membership condition does not match the specified evidence)."
+      description: "A kódcsoport nem kötelező attribútum által megadott engedélyeket alkotó házirend-utasítás vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a kódcsoport nem érvényes (a tagsági feltétele nem felel meg a megadott bizonyító adatok)."
   overload: System.Security.Policy.CodeGroup.Resolve*
   exceptions: []
   platform:
@@ -579,17 +579,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "When overridden in a derived class, resolves matching code groups."
-  remarks: "This method has the same evaluation characteristics as <xref:System.Security.Policy.CodeGroup.Resolve%2A>. The code group that is returned contains child code groups, which in turn can have child code groups as necessary to reflect the complete set of code groups that were matched by the evidence provided."
+  summary: "Ha felül van bírálva a származtatott osztály, oldja fel a megfelelő kód csoportok."
+  remarks: "Ez a módszer <xref:System.Security.Policy.CodeGroup.Resolve%2A>.</xref:System.Security.Policy.CodeGroup.Resolve%2A> értékelési jellemzői egyeznek-e A kódcsoport visszaadott kód csoportokat, viszont lehet szükség volt a megadott bizonyítékokkal egyező kód csoportok teljes készletének megfelelően kód csoportokat tartalmazza."
   syntax:
     content: public abstract System.Security.Policy.CodeGroup ResolveMatchingCodeGroups (System.Security.Policy.Evidence evidence);
     parameters:
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "The evidence for the assembly."
+      description: "A szerelvény bizonyító adatok."
     return:
       type: System.Security.Policy.CodeGroup
-      description: "A <xref href=&quot;System.Security.Policy.CodeGroup&quot;></xref> that is the root of the tree of matching code groups."
+      description: "A <xref href=&quot;System.Security.Policy.CodeGroup&quot;> </xref> , amely a kód csoportok egyező a fa gyökere."
   overload: System.Security.Policy.CodeGroup.ResolveMatchingCodeGroups*
   exceptions: []
   platform:
@@ -606,13 +606,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates an XML encoding of the security object and its current state."
+  summary: "Létrehoz egy XML-kódolás az biztonsági objektum és a jelenlegi állapotában."
   syntax:
     content: public System.Security.SecurityElement ToXml ();
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the security object, including any state information."
+      description: "Az XML-kódolás biztonsági objektum, beleértve a semmilyen állapotra vonatkozó információt."
   overload: System.Security.Policy.CodeGroup.ToXml*
   exceptions: []
   platform:
@@ -629,17 +629,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Policy
-  summary: "Creates an XML encoding of the security object, its current state, and the policy level within which the code exists."
-  remarks: "The policy level context is provided for resolution of named permission sets."
+  summary: "Létrehoz egy XML-kódolás a objektumot, a jelenlegi állapotában és a házirendszint, amelyen belül a kód létezik."
+  remarks: "A házirend szintű környezet elnevezett készletek feloldása valósul meg."
   syntax:
     content: public System.Security.SecurityElement ToXml (System.Security.Policy.PolicyLevel level);
     parameters:
     - id: level
       type: System.Security.Policy.PolicyLevel
-      description: "The policy level within which the code group exists."
+      description: "A házirendszint, amelyen belül a kód csoport létezik."
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the security object, including any state information."
+      description: "Az XML-kódolás biztonsági objektum, beleértve a semmilyen állapotra vonatkozó információt."
   overload: System.Security.Policy.CodeGroup.ToXml*
   exceptions: []
   platform:

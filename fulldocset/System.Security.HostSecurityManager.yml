@@ -20,8 +20,8 @@ items:
   nameWithType: HostSecurityManager
   fullName: System.Security.HostSecurityManager
   type: Class
-  summary: "Allows the control and customization of security behavior for application domains."
-  remarks: "When you create a new <xref:System.AppDomain>, the common language runtime queries the <xref:System.AppDomainManager> for the presence of a HostSecurityManager, which participates in making security decisions for the <xref:System.AppDomain>.  Host providers should implement a host security manager that inherits from the HostSecurityManager class."
+  summary: "Lehetővé teszi, hogy a vezérlő és biztonsági beállításait az alkalmazás-tartományok testreszabása."
+  remarks: "Amikor létrehoz egy új <xref:System.AppDomain>a közös nyelvi futtatókörnyezet lekérdezi a <xref:System.AppDomainManager>egy HostSecurityManager, amelyek részt vesznek a <xref:System.AppDomain>.</xref:System.AppDomain> biztonsági döntések jelenlétét</xref:System.AppDomainManager> </xref:System.AppDomain>  Állomás szolgáltatók meg kell valósítania egy gazdagép biztonságkezelő, amely a HostSecurityManager osztály örökli."
   example:
   - "The following example shows a very simple implementation of a HostSecurityManager.  \n  \n [!code-cs[System.Security.HostSecurityManager#1](~/add/codesnippet/csharp/t-system.security.hostse_1.cs)]\n [!code-vb[System.Security.HostSecurityManager#1](~/add/codesnippet/visualbasic/t-system.security.hostse_1.vb)]"
   syntax:
@@ -49,7 +49,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.HostSecurityManager&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.HostSecurityManager&quot;> </xref> osztály."
   syntax:
     content: public HostSecurityManager ();
     parameters: []
@@ -69,8 +69,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines whether an application should be executed."
-  remarks: "This method can be overridden by a derived class. The base implementation calls the application security manager to determine if the application should be executed.       The base implementation does not use the activator evidence. However, an overridden implementation could use the activator evidence to determine the security evidence for the application domain attempting to activate the application."
+  summary: "Meghatározza, hogy egy alkalmazást úgy kell végrehajtani."
+  remarks: "Ez a módszer egy származtatott osztály felülbírálható. Az alapszintű megvalósítás meghívja az alkalmazás biztonsági határozza meg, ha az alkalmazást úgy kell végrehajtani.       Az alapszintű megvalósítás nem használja az aktiváló bizonyító adatok. Felülbírált megvalósítása azonban az aktiváló bizonyító adatok meghatározásához a biztonsági bizonyító adatok az alkalmazás aktiválásához kísérlet alkalmazástartományhoz használhatja."
   example:
   - "The following example shows how to override the DetermineApplicationTrust method for a custom host security manager. This example is part of a larger example provided for the <xref:System.Security.HostSecurityManager> class.  \n  \n [!code-cs[System.Security.HostSecurityManager#3](~/add/codesnippet/csharp/c64c31c7-d035-4489-84b0-_1.cs)]\n [!code-vb[System.Security.HostSecurityManager#3](~/add/codesnippet/visualbasic/c64c31c7-d035-4489-84b0-_1.vb)]"
   syntax:
@@ -78,27 +78,27 @@ items:
     parameters:
     - id: applicationEvidence
       type: System.Security.Policy.Evidence
-      description: "The evidence for the application to be activated."
+      description: "A tanúsítás aktiválni kell az alkalmazásra vonatkozóan."
     - id: activatorEvidence
       type: System.Security.Policy.Evidence
-      description: "Optionally, the evidence for the activating application domain."
+      description: "Másik lehetőségként a tanúsítás a aktiválásával alkalmazástartományhoz."
     - id: context
       type: System.Security.Policy.TrustManagerContext
-      description: "The trust context."
+      description: "A megbízható környezetben."
     return:
       type: System.Security.Policy.ApplicationTrust
-      description: "An object that contains trust information about the application."
+      description: "Az alkalmazás megbízhatósági adatait tartalmazó objektum."
   overload: System.Security.HostSecurityManager.DetermineApplicationTrust*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>applicationEvidence</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>applicationEvidence</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An <xref href=&quot;System.Runtime.Hosting.ActivationArguments&quot;></xref> object could not be found in the application evidence.       -or-       The <xref:System.Runtime.Hosting.ActivationArguments.ActivationContext*> property in the activation arguments is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Egy <xref href=&quot;System.Runtime.Hosting.ActivationArguments&quot;> </xref> objektum nem található az alkalmazás bizonyító adatai.       – vagy – a <xref:System.Runtime.Hosting.ActivationArguments.ActivationContext*>tulajdonság az aktiválási argumentumait <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Runtime.Hosting.ActivationArguments.ActivationContext*>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Security.Policy.ApplicationTrust&quot;></xref> grant set does not contain the minimum request set specified by the <xref href=&quot;System.ActivationContext&quot;></xref>."
+    description: "A <xref href=&quot;System.Security.Policy.ApplicationTrust&quot;> </xref> adja meg a minimális kérelem által megadott készlet nem tartalmaz a <xref href=&quot;System.ActivationContext&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.HostSecurityManager.DomainPolicy
@@ -113,18 +113,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "When overridden in a derived class, gets the security policy for the current application domain."
-  remarks: "This property can be overridden in a derived class. The base implementation always returns `null`.       This property is called at <xref:System.AppDomain> creation time. It allows a host to supply a policy for the current <xref:System.AppDomain>.  A policy level consists of the following:      -   A set of code groups organized into a single rooted tree.      -   A set of named permission sets that are referenced by the code groups to specify permissions to be granted to code belonging to the code group.      -   A list of fully trusted assemblies.      > [!IMPORTANT] >  See the Notes to Inheritors for the <xref:System.Security.HostSecurityManager> class for critical implementation information."
+  summary: "Felül van bírálva a származtatott osztály, amikor lekérdezi a biztonsági házirend az aktuális alkalmazás tartományhoz."
+  remarks: "Ez a tulajdonság egy származtatott osztályban felülbírálható. Az alapszintű megvalósítás mindig adja vissza `null`.       Ez a tulajdonság meghívható <xref:System.AppDomain>létrehozásának ideje.</xref:System.AppDomain> Ez lehetővé teszi, hogy a házirendet az aktuális <xref:System.AppDomain>.</xref:System.AppDomain>  Egy házirendszint a következőket tartalmazza:-kód csoportokat egyetlen rootolt fát rendezve.      -Olyan elnevezett készlet engedélyezhető a kód a csoporthoz tartozó kód engedélyeket adjanak meg a kódot csoportok által hivatkozott készlete.      -A teljesen megbízható szerelvények listája.      > [!IMPORTANT] > Lásd: a Megjegyzések az öröklőknek a <xref:System.Security.HostSecurityManager>kritikus implementációs információk osztály.</xref:System.Security.HostSecurityManager>"
   syntax:
     content: public virtual System.Security.Policy.PolicyLevel DomainPolicy { get; }
     return:
       type: System.Security.Policy.PolicyLevel
-      description: "The security policy for the current application domain. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Az aktuális alkalmazás tartomány biztonsági házirendje. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.HostSecurityManager.DomainPolicy*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This method uses code access security (CAS) policy, which is obsolete in the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)]. To enable CAS policy for compatibility with earlier versions of the .NET Framework, use the [&lt;legacyCasPolicy&gt; element](../Topic/%3CNetFx40_LegacySecurityPolicy%3E%20Element.md)."
+    description: "Ezt a módszert használja a kódhozzáférés-biztonsági (CAS) házirend, amely elavult az [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)]. Ahhoz, hogy a .NET-keretrendszer korábbi verzióival is kompatibilisek a Kódműködési biztonsági szabályzatot, használja a [ &lt;legacyCasPolicy&gt; elem](../Topic/%3CNetFx40_LegacySecurityPolicy%3E%20Element.md)."
   platform:
   - net462
 - uid: System.Security.HostSecurityManager.Flags
@@ -139,15 +139,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Gets the flag representing the security policy components of concern to the host."
-  remarks: "This property can be overridden in a derived class. The base implementation always returns <xref:System.Security.HostSecurityManagerOptions>.       The derived host can change the value of this property when only a subset of the <xref:System.Security.HostSecurityManagerOptions> is of interest.  The possible subsets include none, the refused set, the policy level, and assembly evidence."
+  summary: "Lekérdezi a probléma, amely a biztonsági házirend összetevőinek képviselő gazdagépre jelzőt."
+  remarks: "Ez a tulajdonság egy származtatott osztályban felülbírálható. Az alapszintű megvalósítás mindig <xref:System.Security.HostSecurityManagerOptions>.</xref:System.Security.HostSecurityManagerOptions> adja vissza.       A származtatott gazdagép ezt a tulajdonságot, ha csak egy részét az érték módosítására képes a <xref:System.Security.HostSecurityManagerOptions>jelentőségű.</xref:System.Security.HostSecurityManagerOptions>  A lehetséges részhalmazának például nincs, engedélycsoport, a házirendszint és szerelvényre vonatkozó tanúsító adatokat."
   example:
   - "The following example shows how to override the Flags property for a custom host security manager. This example is part of a larger example provided for the <xref:System.Security.HostSecurityManager> class.  \n  \n [!code-cs[System.Security.HostSecurityManager#2](~/add/codesnippet/csharp/p-system.security.hostse_1.cs)]\n [!code-vb[System.Security.HostSecurityManager#2](~/add/codesnippet/visualbasic/p-system.security.hostse_1.vb)]"
   syntax:
     content: public virtual System.Security.HostSecurityManagerOptions Flags { get; }
     return:
       type: System.Security.HostSecurityManagerOptions
-      description: "One of the enumeration values that specifies security policy components. The default is <xref href=&quot;System.Security.HostSecurityManagerOptions&quot;></xref>."
+      description: "A számbavételi érték, amely meghatározza a biztonsági házirend összetevőinek egyike. Az alapértelmezett érték <xref href=&quot;System.Security.HostSecurityManagerOptions&quot;> </xref>."
   overload: System.Security.HostSecurityManager.Flags*
   exceptions: []
   platform:
@@ -164,8 +164,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Requests a specific evidence type for the application domain."
-  remarks: "This method can be overridden by a derived class. The base implementation returns `null`.       The common language runtime calls this method when evidence of the specified type is needed for the current <xref:System.AppDomain>. The returned value is used as host-supplied evidence, and is stored in the <xref:System.AppDomain.Evidence%2A> collection of the <xref:System.AppDomain.CurrentDomain%2A> property. You can use the <xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName> method to obtain the generated evidence from the collection.       To get a callback to this method, hosts must specify the <xref:System.Security.HostSecurityManagerOptions> flag in the <xref:System.Security.HostSecurityManager.Flags%2A> property.       This method of generating evidence allows hosts to delay evidence generation for an <xref:System.AppDomain> until the evidence is needed. In the .NET Framework version 3.5 and earlier versions, it was necessary to provide <xref:System.AppDomain> evidence at load time by overriding the <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> method. We recommend that you use GenerateAppDomainEvidence to provide evidence instead of overriding <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A>.       The GenerateAppDomainEvidence method is called back into only for types of evidence that the host has specified in the override of the <xref:System.Security.HostSecurityManager.GetHostSuppliedAppDomainEvidenceTypes%2A> method.       A return value of `null` indicates that the host cannot generate evidence of this specific type."
+  summary: "Az alkalmazástartomány egy konkrét típusú kérelmek."
+  remarks: "Ez a módszer egy származtatott osztály felülbírálható. Az alapszintű megvalósítás adja vissza `null`.       A közös nyelvi futtatókörnyezet meghívja ezt a módszert, ha a megadott típusú tanúsító adatra van szükség az aktuális <xref:System.AppDomain>.</xref:System.AppDomain> A visszaadott érték állomás által megadott bizonyítékkal szolgál, és tárolja a <xref:System.AppDomain.Evidence%2A>gyűjteménye a <xref:System.AppDomain.CurrentDomain%2A>tulajdonság.</xref:System.AppDomain.CurrentDomain%2A> </xref:System.AppDomain.Evidence%2A> Használhatja a <xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName>a generált bizonyító adatok beszerzéséhez a gyűjteményből.</xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName>       Ahhoz, hogy ez a módszer egy visszahívást, állomások meg kell adnia a <xref:System.Security.HostSecurityManagerOptions>megjelölésre kerülnek a <xref:System.Security.HostSecurityManager.Flags%2A>tulajdonság.</xref:System.Security.HostSecurityManager.Flags%2A> </xref:System.Security.HostSecurityManagerOptions>       Ezt a módszert bizonyító adatok létrehozása lehetővé teszi a gazdagépek bizonyító adatok létrehozása a késleltetés egy <xref:System.AppDomain>mindaddig, amíg a tanúsítás van szükség.</xref:System.AppDomain> A .NET-keretrendszer 3.5-ös verziója és a korábbi verziók le kellett biztosítanak <xref:System.AppDomain>bizonyító adatok betöltése során felülbírálásával a <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A>metódus.</xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> </xref:System.AppDomain> Azt javasoljuk, hogy GenerateAppDomainEvidence bizonyító <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A>.</xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> felülírása helyett használja       A GenerateAppDomainEvidence metódus lehívásra kerül vissza azokat csak a megbizonyosodhat róla, hogy a gazdagép rendelkezik a felülbírálás a megadott típusú a <xref:System.Security.HostSecurityManager.GetHostSuppliedAppDomainEvidenceTypes%2A>metódus.</xref:System.Security.HostSecurityManager.GetHostSuppliedAppDomainEvidenceTypes%2A>       A visszatérési érték `null` azt jelzi, hogy a gazdagép nem hozható létre az adott típusú tanúsító adatot."
   example:
   - "The following example shows how to override the <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> method for a custom host security manager. This example is part of a larger example provided for the <xref:System.Security.HostSecurityManager> class.  \n  \n [!code-cs[System.Security.HostSecurityManager#6](~/add/codesnippet/csharp/m-system.security.hostse_1.cs)]\n [!code-vb[System.Security.HostSecurityManager#6](~/add/codesnippet/visualbasic/m-system.security.hostse_1.vb)]"
   syntax:
@@ -173,10 +173,10 @@ items:
     parameters:
     - id: evidenceType
       type: System.Type
-      description: "The evidence type."
+      description: "A tanúsítás típusa."
     return:
       type: System.Security.Policy.EvidenceBase
-      description: "The requested application domain evidence."
+      description: "A kért alkalmazás tartomány bizonyító adatok."
   overload: System.Security.HostSecurityManager.GenerateAppDomainEvidence*
   exceptions: []
   platform:
@@ -193,20 +193,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Requests a specific evidence type for the assembly."
-  remarks: "This method can be overridden by a derived class. The base implementation returns `null`.       The common language runtime calls this method when evidence of the specified type is needed for the current assembly. The returned value is used as host-supplied evidence, and is stored in the <xref:System.Reflection.Assembly.Evidence%2A> property. You can use the <xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName> method to obtain the generated evidence from the <xref:System.Reflection.Assembly.Evidence%2A> property.       To get a callback to this method, hosts must specify the <xref:System.Security.HostSecurityManagerOptions> flag in the <xref:System.Security.HostSecurityManager.Flags%2A> property.       This method of generating evidence allows hosts to delay evidence generation for an <xref:System.AppDomain> until the evidence is needed. In the .NET Framework 3.5 and earlier versions, it was necessary to provide <xref:System.AppDomain> evidence at load time by overriding the <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> method. We recommend that you use GenerateAssemblyEvidence to provide evidence instead of overriding <xref:System.Security.HostSecurityManager.ProvideAssemblyEvidence%2A>.       The GenerateAssemblyEvidence method is called back into only for types of evidence that the host has specified in the override of the <xref:System.Security.HostSecurityManager.GetHostSuppliedAssemblyEvidenceTypes%2A> method.       A return value of `null` indicates that the host cannot generate evidence of this specific type."
+  summary: "A szerelvény egy konkrét típus kérelmekre."
+  remarks: "Ez a módszer egy származtatott osztály felülbírálható. Az alapszintű megvalósítás adja vissza `null`.       A közös nyelvi futtatókörnyezet meghívja ezt a módszert, ha a megadott típusú tanúsító adatra van szükség, az aktuális szerelvény. A visszaadott érték állomás által megadott bizonyítékkal szolgál, és tárolja a <xref:System.Reflection.Assembly.Evidence%2A>tulajdonság.</xref:System.Reflection.Assembly.Evidence%2A> Használhatja a <xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName>létrehozott visszajelzésre beszerzéséhez a <xref:System.Reflection.Assembly.Evidence%2A>tulajdonság.</xref:System.Reflection.Assembly.Evidence%2A> </xref:System.Security.Policy.Evidence.GetAssemblyEvidence%2A?displayProperty=fullName>       Ahhoz, hogy ez a módszer egy visszahívást, állomások meg kell adnia a <xref:System.Security.HostSecurityManagerOptions>megjelölésre kerülnek a <xref:System.Security.HostSecurityManager.Flags%2A>tulajdonság.</xref:System.Security.HostSecurityManager.Flags%2A> </xref:System.Security.HostSecurityManagerOptions>       Ezt a módszert bizonyító adatok létrehozása lehetővé teszi a gazdagépek bizonyító adatok létrehozása a késleltetés egy <xref:System.AppDomain>mindaddig, amíg a tanúsítás van szükség.</xref:System.AppDomain> A .NET-keretrendszer 3.5 és a korábbi verziók le kellett biztosítanak <xref:System.AppDomain>bizonyító adatok betöltése során felülbírálásával a <xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A>metódus.</xref:System.Security.HostSecurityManager.ProvideAppDomainEvidence%2A> </xref:System.AppDomain> Azt javasoljuk, hogy GenerateAssemblyEvidence bizonyító <xref:System.Security.HostSecurityManager.ProvideAssemblyEvidence%2A>.</xref:System.Security.HostSecurityManager.ProvideAssemblyEvidence%2A> felülírása helyett használja       A GenerateAssemblyEvidence metódus lehívásra kerül vissza azokat csak a megbizonyosodhat róla, hogy a gazdagép rendelkezik a felülbírálás a megadott típusú a <xref:System.Security.HostSecurityManager.GetHostSuppliedAssemblyEvidenceTypes%2A>metódus.</xref:System.Security.HostSecurityManager.GetHostSuppliedAssemblyEvidenceTypes%2A>       A visszatérési érték `null` azt jelzi, hogy a gazdagép nem hozható létre az adott típusú tanúsító adatot."
   syntax:
     content: public virtual System.Security.Policy.EvidenceBase GenerateAssemblyEvidence (Type evidenceType, System.Reflection.Assembly assembly);
     parameters:
     - id: evidenceType
       type: System.Type
-      description: "The evidence type."
+      description: "A tanúsítás típusa."
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The target assembly."
+      description: "A tároló a szerelvényt."
     return:
       type: System.Security.Policy.EvidenceBase
-      description: "The requested assembly evidence."
+      description: "A kért szerelvény bizonyító adatok."
   overload: System.Security.HostSecurityManager.GenerateAssemblyEvidence*
   exceptions: []
   platform:
@@ -223,14 +223,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines which evidence types the host can supply for the application domain, if requested."
-  remarks: "This method can be overridden by a derived class. The base implementation returns `null`.       The types returned by this method determine whether the <xref:System.Security.HostSecurityManager.GenerateAppDomainEvidence%2A> method is called back into. The presence of a type in this list does not mean that the host must be able to generate this evidence type, but that it may be able to. For that reason, it is best to over-specify rather than under-specify the types in this list."
+  summary: "Ha a kért meghatározza, hogy a gazdagép megadhatja az alkalmazástartományt, milyen bizonyító adatok."
+  remarks: "Ez a módszer egy származtatott osztály felülbírálható. Az alapszintű megvalósítás adja vissza `null`.       Ez a metódus által visszaadott típusát határozza meg hogy a <xref:System.Security.HostSecurityManager.GenerateAppDomainEvidence%2A>metódus tért vissza a.</xref:System.Security.HostSecurityManager.GenerateAppDomainEvidence%2A> Ebben a listában egy típus meglétének nem jelenti azt, hogy a gazdagép hozható létre a tanúsítás típus képesnek kell lennie, de az, hogy képes lehet. Éppen ezért célszerű túlzott adja meg a-típusoknak a megadásához a következő felsorolásban szereplő helyett."
   syntax:
     content: public virtual Type[] GetHostSuppliedAppDomainEvidenceTypes ();
     parameters: []
     return:
       type: System.Type[]
-      description: "An array of evidence types."
+      description: "Bizonyító adatok típusok egy tömbjét."
   overload: System.Security.HostSecurityManager.GetHostSuppliedAppDomainEvidenceTypes*
   exceptions: []
   platform:
@@ -247,17 +247,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines which evidence types the host can supply for the assembly, if requested."
-  remarks: "This method can be overridden by a derived class. The base implementation returns `null`.       The types returned by this method determine whether the <xref:System.Security.HostSecurityManager.GenerateAssemblyEvidence%2A> method is called back into. The presence of a type in this list does not mean that the host must be able to generate this evidence type, but that it may be able to. For that reason, it is best to over-specify rather than under-specify the types in this list."
+  summary: "Meghatározza, hogy a gazdagép megadhatja a szerelvény bizonyító adatok milyen kérésre."
+  remarks: "Ez a módszer egy származtatott osztály felülbírálható. Az alapszintű megvalósítás adja vissza `null`.       Ez a metódus által visszaadott típusát határozza meg hogy a <xref:System.Security.HostSecurityManager.GenerateAssemblyEvidence%2A>metódus tért vissza a.</xref:System.Security.HostSecurityManager.GenerateAssemblyEvidence%2A> Ebben a listában egy típus meglétének nem jelenti azt, hogy a gazdagép hozható létre a tanúsítás típus képesnek kell lennie, de az, hogy képes lehet. Éppen ezért célszerű túlzott adja meg a-típusoknak a megadásához a következő felsorolásban szereplő helyett."
   syntax:
     content: public virtual Type[] GetHostSuppliedAssemblyEvidenceTypes (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The target assembly."
+      description: "A tároló a szerelvényt."
     return:
       type: System.Type[]
-      description: "An array of evidence types."
+      description: "Bizonyító adatok típusok egy tömbjét."
   overload: System.Security.HostSecurityManager.GetHostSuppliedAssemblyEvidenceTypes*
   exceptions: []
   platform:
@@ -274,17 +274,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Provides the application domain evidence for an assembly being loaded."
-  remarks: "This method can be overridden in a derived class.       This method is called whenever an <xref:System.AppDomain> object is created. The `inputEvidence` parameter is the computed evidence from the common language runtime. The host implementation can choose to extend or reduce the evidence. The return value is the evidence to be used for the application domain.  The base implementation always returns the evidence object passed in as the `inputEvidence` parameter.      > [!IMPORTANT] >  See the Notes to Inheritors for the <xref:System.Security.HostSecurityManager> class for critical implementation information."
+  summary: "Bizonyítékait is rögzíti az alkalmazás tartomány egy összeállítás betöltése."
+  remarks: "Ez a módszer egy származtatott osztályban felülbírálható.       Ezt a módszert nevezik. amikor egy <xref:System.AppDomain>objektum létrehozása.</xref:System.AppDomain> A `inputEvidence` paramétere a közös nyelvi futtatókörnyezet számított visszajelzésre. A gazdagép megvalósítási bővítése vagy csökkentése a tanúsítás választhat. A visszatérési értéke a tanúsítás alkalmazástartományt használandó.  Az alapszintű megvalósítás mindig az átadott bizonyító adatok objektumot adja vissza a `inputEvidence` paraméter.      > [!IMPORTANT] > Lásd: a Megjegyzések az öröklőknek a <xref:System.Security.HostSecurityManager>kritikus implementációs információk osztály.</xref:System.Security.HostSecurityManager>"
   syntax:
     content: public virtual System.Security.Policy.Evidence ProvideAppDomainEvidence (System.Security.Policy.Evidence inputEvidence);
     parameters:
     - id: inputEvidence
       type: System.Security.Policy.Evidence
-      description: "Additional evidence to add to the <xref href=&quot;System.AppDomain&quot;></xref> evidence."
+      description: "További bizonyító adatok hozzáadása a <xref href=&quot;System.AppDomain&quot;> </xref> bizonyító adatok."
     return:
       type: System.Security.Policy.Evidence
-      description: "The evidence to be used for the <xref href=&quot;System.AppDomain&quot;></xref>."
+      description: "A használandó bizonyíték a <xref href=&quot;System.AppDomain&quot;> </xref>."
   overload: System.Security.HostSecurityManager.ProvideAppDomainEvidence*
   exceptions: []
   platform:
@@ -301,8 +301,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Provides the assembly evidence for an assembly being loaded."
-  remarks: "This method can be overridden in a derived class.       This method is called whenever an assembly is loaded, either implicitly or explicitly. The passed in parameters are the assembly being loaded, and the computed evidence from the common language runtime. The host implementation can choose to extend or reduce the evidence. The return value is the evidence to be used for the assembly.  The base implementation always returns the evidence object passed in as the `inputEvidence` parameter.      > [!IMPORTANT] >  See the Notes to Inheritors for the <xref:System.Security.HostSecurityManager> class for critical implementation information."
+  summary: "Egy szerelvény betöltése a szerelvényre vonatkozó tanúsító adatokat biztosít."
+  remarks: "Ez a módszer egy származtatott osztályban felülbírálható.       Ezt a módszert nevezik, amikor egy szerelvény be töltve, implicit vagy explicit módon. Az átadott paraméterek a következők: a szerelvény betöltése, és a közös nyelvi futtatókörnyezet számított visszajelzésre. A gazdagép megvalósítási bővítése vagy csökkentése a tanúsítás választhat. Az eredményül kapott értéket a szerelvény használandó tanúsítás.  Az alapszintű megvalósítás mindig az átadott bizonyító adatok objektumot adja vissza a `inputEvidence` paraméter.      > [!IMPORTANT] > Lásd: a Megjegyzések az öröklőknek a <xref:System.Security.HostSecurityManager>kritikus implementációs információk osztály.</xref:System.Security.HostSecurityManager>"
   example:
   - "The following example shows how to override the ProvideAssemblyEvidence method for a custom host security manager. This example is part of a larger example provided for the <xref:System.Security.HostSecurityManager> class.  \n  \n [!code-cs[System.Security.HostSecurityManager#5](~/add/codesnippet/csharp/b37483ba-2dfe-4c5d-87e6-_1.cs)]\n [!code-vb[System.Security.HostSecurityManager#5](~/add/codesnippet/visualbasic/b37483ba-2dfe-4c5d-87e6-_1.vb)]"
   syntax:
@@ -310,13 +310,13 @@ items:
     parameters:
     - id: loadedAssembly
       type: System.Reflection.Assembly
-      description: "The loaded assembly."
+      description: "A betöltött szerelvény."
     - id: inputEvidence
       type: System.Security.Policy.Evidence
-      description: "Additional evidence to add to the assembly evidence."
+      description: "További bizonyíték a szerelvény bizonyító adatok hozzáadása."
     return:
       type: System.Security.Policy.Evidence
-      description: "The evidence to be used for the assembly."
+      description: "A szerelvény használandó bizonyító adatok."
   overload: System.Security.HostSecurityManager.ProvideAssemblyEvidence*
   exceptions: []
   platform:
@@ -333,22 +333,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Determines what permissions to grant to code based on the specified evidence."
-  remarks: "This method invokes the security policy engine, providing it with the specified evidence. The result is determined by the security policy."
+  summary: "Azt határozza meg, milyen engedélyeket az kód a megadott eredmények alapján."
+  remarks: "Ez a metódus meghívja a házirend-motor megadják a megadott bizonyíték a. Az eredmény a biztonsági házirend határozza meg."
   syntax:
     content: public virtual System.Security.PermissionSet ResolvePolicy (System.Security.Policy.Evidence evidence);
     parameters:
     - id: evidence
       type: System.Security.Policy.Evidence
-      description: "The evidence set used to evaluate policy."
+      description: "A tanúsítás használt házirend kiértékelése."
     return:
       type: System.Security.PermissionSet
-      description: "The permission set that can be granted by the security system."
+      description: "A biztonsági rendszer által biztosított engedélycsoport."
   overload: System.Security.HostSecurityManager.ResolvePolicy*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>evidence</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>evidence</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:
