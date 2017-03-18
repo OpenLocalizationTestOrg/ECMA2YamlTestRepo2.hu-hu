@@ -24,8 +24,8 @@ items:
   nameWithType: InstanceView
   fullName: System.Runtime.DurableInstancing.InstanceView
   type: Class
-  summary: "Represents a view of an instance. For example, the <xref:System.Runtime.DurableInstancing.InstanceStore.Execute*> method implementations return an InstanceView object that provides a view into the instance data in the persistence store."
-  remarks: "Each InstanceView object is associated with an InstanceHandle. For an InstanceView returned from InstanceStore.Execute, the associated handle is the one passed to Execute. For an InstanceView returned from InstancePersistenceContext.InstanceView, the associated handle is the one passed to TryCommand.       An InstanceHandle may have zero or more InstanceView objects associated with it at any given time. InstanceView objects returned from InstanceStore.Execute are immutable and represent a snapshot of the known instance state after the successful execution of that command. InstanceView objects returned from InstancePersistenceContext are mutable and represent the current known instance state as it is being updated during the execution of the command.  (If the command ultimately fails, this intermediate state is discarded)."
+  summary: "Egy nézet egy példány jelöli. Például a <xref:System.Runtime.DurableInstancing.InstanceStore.Execute*>metódus megvalósítások vissza, amely révén a példányok adatait az állapotmegőrző tárolóban a képet InstanceView objektumot.</xref:System.Runtime.DurableInstancing.InstanceStore.Execute*>"
+  remarks: "Minden egyes InstanceView objektum társítva van egy olyan instancehandle leíró. Egy adott vissza az InstanceStore.Execute InstanceView a társított leíró Execute átadott egy esetén. A társított leíró egy InstanceView InstancePersistenceContext.InstanceView által visszaadott, a TryCommand átadott egy esetén.       Egy olyan instancehandle leíró lehet nulla vagy több InstanceView objektumok egy adott időpontban társítva. Az InstanceStore.Execute által visszaadott InstanceView objektumok nem módosíthatók, és az ismert példány állapotának pillanatképe határoz meg, hogy a parancs sikeres végrehajtása után. InstancePersistenceContext által visszaadott InstanceView objektumok változtatható, és a jelenlegi ismert példány állapota jelölik frissül, a parancs végrehajtása közben.  (A parancs végső soron sikertelen, ha a köztes állapotát a rendszer törli)."
   syntax:
     content: public sealed class InstanceView
   inheritance:
@@ -46,12 +46,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets instance data as a dictionary of names and values."
+  summary: "Neveit és értékeit álló dictionary, lekérdezi a példányok adatait."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceData { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The instance data."
+      description: "A példányok adatait."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceData*
   exceptions: []
   platform:
@@ -68,12 +68,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceData property."
+  summary: "A InstanceData tulajdonság konzisztencia állapotát olvassa be."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceDataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency (None, In Doubt, and Partial) of the instance data. InstanceValueConsistency.None indicates that the InstanceData property holds a fully populated and locked set of instance data."
+      description: "A (nincs, bizonytalan, és a részleges) példány adatok konzisztenciáját. InstanceValueConsistency.None azt jelzi, hogy a InstanceData tulajdonság a példányok adatait teljesen ki van töltve, és zárolt készletét tartalmazza."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceDataConsistency*
   exceptions: []
   platform:
@@ -90,12 +90,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the identifier (ID) of the instance as a GUID."
+  summary: "Lekérdezi a azonosítót (ID) példány GUID."
   syntax:
     content: public Guid InstanceId { get; }
     return:
       type: System.Guid
-      description: "The ID of the instance or Guid.Empty if the associated instance handle is not bound to an instance."
+      description: "A példány vagy a Guid.Empty, ha a társított példány leíró nincs kötve példány azonosítója."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceId*
   exceptions: []
   platform:
@@ -112,12 +112,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the instance keys as a dictionary of instance key identifiers and associated <xref href=&quot;System.Runtime.DurableInstancing.InstanceKeyView&quot;></xref> objects."
+  summary: "A példány kulcsok lekérdezi a példány kulcs azonosítók dictionary, és a kapcsolódó <xref href=&quot;System.Runtime.DurableInstancing.InstanceKeyView&quot;> </xref> objektumok."
   syntax:
     content: public System.Collections.Generic.IDictionary<Guid,System.Runtime.DurableInstancing.InstanceKeyView> InstanceKeys { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Guid,System.Runtime.DurableInstancing.InstanceKeyView}
-      description: "A dictionary of instance key identifiers and their associated instance key view objects."
+      description: "Példány kulcs azonosítók dictionary és a társított példány kulcsával megtekintheti az objektumokat."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceKeys*
   exceptions: []
   platform:
@@ -134,12 +134,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceKeys property."
+  summary: "A InstanceKeys tulajdonság konzisztencia állapotát olvassa be."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceKeysConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency value of instance keys. InstanceValueConsistency.None indicates that the InstanceKeys property holds a fully populated and locked set of instance keys (though not necessarily each key’s metadata)."
+      description: "A példány kulcsok konzisztencia értéke. InstanceValueConsistency.None azt jelzi, hogy a InstanceKeys tulajdonság tartalmazza-e példány kulcsok teljesen ki van töltve, és zárolt készlete (bár a nem feltétlenül minden kulcs metaadatainak)."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceKeysConsistency*
   exceptions: []
   platform:
@@ -156,12 +156,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the metadata of an instance as a dictionary of names and <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;></xref> objects."
+  summary: "A metaadatok példány nevek álló dictionary, lekérdezi és <xref href=&quot;System.Runtime.DurableInstancing.InstanceValue&quot;> </xref> objektumok."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceMetadata { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "The metadata of the instance."
+      description: "A metaadat-példány."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceMetadata*
   exceptions: []
   platform:
@@ -178,12 +178,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceMetadata property."
+  summary: "A InstanceMetadata tulajdonság konzisztencia állapotát olvassa be."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceMetadataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency of the instance metadata. InstanceValueConsistency.None indicates that the InstanceMetadata property holds a fully populated and locked set of instance metadata."
+      description: "A példány metaadatok konzisztenciáját. InstanceValueConsistency.None azt jelzi, hogy a InstanceMetadata tulajdonság tartalmazza-e egy teljes mértékben ki van töltve, zárolt a példány metaadat-készlet."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceMetadataConsistency*
   exceptions: []
   platform:
@@ -200,12 +200,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the owner of the instance."
+  summary: "Lekérdezi a példány tulajdonosa."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceOwner InstanceOwner { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The owner of the instance. Returns null if the associated instance handle is not bound to an instance owner."
+      description: "A példány tulajdonosa. Ha a társított példány leíró nincs kötve példány tulajdonosa null értéket ad vissza."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwner*
   exceptions: []
   platform:
@@ -222,12 +222,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the metadata for an instance owner as a dictionary of names and values."
+  summary: "A metaadatok lekérése egy példánytulajdonos neveit és értékeit álló dictionary."
   syntax:
     content: public System.Collections.Generic.IDictionary<System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue> InstanceOwnerMetadata { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Runtime.DurableInstancing.InstanceValue}
-      description: "A dictionary containing instance-owner metadata."
+      description: "A szótár tartalmazó példánytulajdonoshoz metaadatok."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadata*
   exceptions: []
   platform:
@@ -244,12 +244,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the consistency status of the InstanceOwnerMetadata property."
+  summary: "A InstanceOwnerMetadata tulajdonság konzisztencia állapotát olvassa be."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceValueConsistency InstanceOwnerMetadataConsistency { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceValueConsistency
-      description: "The consistency of the instance owner metadata.  Returns null if the associated instance handle is not bound to an instance owner."
+      description: "A példány tulajdonos metaadatok konzisztenciáját.  Ha a társított példány leíró nincs kötve példány tulajdonosa null értéket ad vissza."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceOwnerMetadataConsistency*
   exceptions: []
   platform:
@@ -266,12 +266,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the state of the instance (Unknown, Uninitialized, Initialized, or Completed)."
+  summary: "A példány (ismeretlen, Uninitialized, Initialized vagy Befejezve) állapotának beolvasása."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceState InstanceState { get; }
     return:
       type: System.Runtime.DurableInstancing.InstanceState
-      description: "The state of the instance."
+      description: "A példány állapotát."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceState*
   exceptions: []
   platform:
@@ -288,12 +288,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets a collection of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects. The collection is automatically reset to empty each time a command is executed against the associated instance handle."
+  summary: "Lekérdezi a gyűjteménye <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> objektumok. A gyűjtemény automatikusan visszaáll az üres minden alkalommal, amikor a parancs végrehajtása a társított példány leíró ellen."
   syntax:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<System.Runtime.DurableInstancing.InstanceStoreQueryResult> InstanceStoreQueryResults { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Runtime.DurableInstancing.InstanceStoreQueryResult}
-      description: "A collection of <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;></xref> objects."
+      description: "A gyűjtemény <xref href=&quot;System.Runtime.DurableInstancing.InstanceStoreQueryResult&quot;> </xref> objektumok."
   overload: System.Runtime.DurableInstancing.InstanceView.InstanceStoreQueryResults*
   exceptions: []
   platform:
@@ -310,12 +310,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance."
+  summary: "Visszaad egy értéket, amely jelzi, hogy a társított példány leíró példánya van kötve."
   syntax:
     content: public bool IsBoundToInstance { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a társított példány kezelésére van kötve példány; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToInstance*
   exceptions: []
   platform:
@@ -332,12 +332,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance owner."
+  summary: "Visszaad egy értéket, amely jelzi, hogy a társított példány leíró egy példánytulajdonoshoz van kötve."
   syntax:
     content: public bool IsBoundToInstanceOwner { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance owner; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a társított példány kezelésére van kötve egy példánytulajdonos; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToInstanceOwner*
   exceptions: []
   platform:
@@ -354,12 +354,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the associated instance handle is bound to an instance lock."
+  summary: "Visszaad egy értéket, amely jelzi, hogy a társított példány leíró egy példány zárolási van kötve."
   syntax:
     content: public bool IsBoundToLock { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the associated instance handle is bound to an instance lock; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a társított példány kezelésére van kötve egy példány zárolási; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstanceView.IsBoundToLock*
   exceptions: []
   platform:

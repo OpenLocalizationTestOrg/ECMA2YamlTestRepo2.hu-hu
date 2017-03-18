@@ -11,8 +11,8 @@ items:
   nameWithType: FirstChanceExceptionEventArgs
   fullName: System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs
   type: Class
-  summary: "Provides data for the notification event that is raised when a managed exception first occurs, before the common language runtime begins searching for event handlers."
-  remarks: "This class provides the exception handler for the <xref:System.AppDomain.FirstChanceException?displayProperty=fullName> event with access to the exception."
+  summary: "Adatokat biztosít a értesítési esemény jelenik meg, ha egy felügyelt kivételek először történik, a közös nyelvi futtatókörnyezet megkezdése eseménykezelők keresése előtt."
+  remarks: "Ez az osztály a kivételkezelő a biztosít a <xref:System.AppDomain.FirstChanceException?displayProperty=fullName>hozzáféréssel a kivétel esemény.</xref:System.AppDomain.FirstChanceException?displayProperty=fullName>"
   example:
   - "The following example creates a series of application domains named `Child_0` through `Child_3`, with a `Worker` object in each application domain. Each `Worker` object has a reference to the `Worker` object in the next application domain, except for the `Worker` in the last application domain. The <xref:System.AppDomain.FirstChanceException> event is handled in all application domains except `Child_1`.  \n  \n When the application domains have been created, the default application domain calls the `TestException` method for the first child application domain. Each `Worker` object calls the `TestException` method for the next, until the last `Worker` throws an exception that is either handled or unhandled. Thus, the current thread passes through all the application domains, and `TestException` is added to the stack in each application domain.  \n  \n When the last `Worker` object handles the exception, the <xref:System.AppDomain.FirstChanceException> event is raised only in the last application domain. The other application domains never get a chance to handle the exception, so the event is not raised.  \n  \n When the last `Worker` object does not handle the exception, the <xref:System.AppDomain.FirstChanceException> event is raised in each application domain that has an event handler. After each event handler has finished, the stack continues to unwind until the exception is caught by the default application domain.  \n  \n> [!NOTE]\n>  To see how the stack display grows as the event is raised closer and closer to the default application domain, change `e.Exception.Message` to `e.Exception` in the `FirstChanceHandler` event handlers. Notice that when `TestException` is called across application domain boundaries, it appears twice: once for the proxy and once for the stub.  \n  \n [!code-vb[System.AppDomain.FirstChanceException#1](~/add/codesnippet/visualbasic/t-system.runtime.excepti_1.vb)]\n [!code-cs[System.AppDomain.FirstChanceException#1](~/add/codesnippet/csharp/t-system.runtime.excepti_1.cs)]"
   syntax:
@@ -35,14 +35,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ExceptionServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs&quot;></xref> class with a specified exception."
-  remarks: "This constructor is called by the common language runtime, not by application code."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs&quot;> </xref> osztály megadott kivétel miatt."
+  remarks: "Ez a konstruktor nem az alkalmazás kódjának a közös nyelvi futtatókörnyezet hívja."
   syntax:
     content: public FirstChanceExceptionEventArgs (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception that was just thrown by managed code, and that will be examined by the <xref href=&quot;System.AppDomain.UnhandledException&quot;></xref> event."
+      description: "A kivételt, amely csak a felügyelt kód váltotta ki, és, hogy megvizsgálja a <xref href=&quot;System.AppDomain.UnhandledException&quot;> </xref> esemény."
   overload: System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.#ctor*
   exceptions: []
   platform:
@@ -59,13 +59,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.ExceptionServices
-  summary: "The managed exception object that corresponds to the exception thrown in managed code."
-  remarks: "The method that handles the <xref:System.AppDomain.UnhandledException?displayProperty=fullName> event can examine the exception and perform appropriate logging or other notification services.       For example code, see <xref:System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs>."
+  summary: "A felügyelt kivételek objektum, amely megfelel a kivétel lépett fel az a felügyelt kódban."
+  remarks: "A metódus, amely kezeli a <xref:System.AppDomain.UnhandledException?displayProperty=fullName>eseményt, vizsgálja meg a kivételt, és hajtsa végre a megfelelő naplózási vagy más értesítési szolgáltatások.</xref:System.AppDomain.UnhandledException?displayProperty=fullName>       Példakód lásd: <xref:System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs>.</xref:System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs>"
   syntax:
     content: public Exception Exception { get; }
     return:
       type: System.Exception
-      description: "The newly thrown exception."
+      description: "Az újonnan kivétel kivétel."
   overload: System.Runtime.ExceptionServices.FirstChanceExceptionEventArgs.Exception*
   exceptions: []
   platform:

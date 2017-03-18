@@ -14,8 +14,8 @@ items:
   nameWithType: ComCompatibleVersionAttribute
   fullName: System.Runtime.InteropServices.ComCompatibleVersionAttribute
   type: Class
-  summary: "Indicates to a COM client that all classes in the current version of an assembly are compatible with classes in an earlier version of the assembly."
-  remarks: "You can apply this attribute to assemblies.       By default, the [Tlbexp.exe (Type Library Exporter)](~/add/includes/ajax-current-ext-md.md) uses an assembly&quot;s version number to calculate class identifiers (CLSIDs). All public, COM-visible classes receive new CLSIDs each time you export a new assembly version.       You can apply the `ComCompatibleVersionAttribute` attribute to force all CLSIDs for classes in the current version of an assembly to be the same as CLSIDs for classes in an earlier version of the assembly. As long as the CLSIDs remain the same, a legacy COM application can use the later version of a compatible assembly after you uninstall the original assembly. If you apply the <xref:System.Runtime.InteropServices.GuidAttribute?displayProperty=fullName> to a class to explicitly set its CLSID, the `ComCompatibleVersionAttribute` has no effect.       The properties of this attribute combine to form the four parts of an assembly version. Always specify the lowest version that the current assembly is backward compatible with so that version is used to calculate all CLSIDs in the assembly."
+  summary: "Egy COM-ügyfél jelzi, hogy a szerelvény egy korábbi verziójában osztályok kompatibilisek legyenek-e minden osztály egy szerelvényt a jelenlegi verzióban."
+  remarks: "Ez az attribútum szerelvények alkalmazhat.       Alapértelmezés szerint a [Tlbexp.exe (típustár-exportáló)](~/add/includes/ajax-current-ext-md.md) használja egy szerelvény verziószáma (CLSID) kiszámításához. Az összes nyilvános, COM-látható osztályok kap új CLSID minden alkalommal, amikor egy új szerelvény verziója exportálását.       Alkalmazhatja a `ComCompatibleVersionAttribute` egy szerelvény CLSID megegyezik a korábbi verziójú, a szerelvény osztályokhoz jelenlegi verziójában osztályaihoz tartozó összes CLSID kényszerített attribútum. Mindaddig, amíg a CLSID változatlan marad, a hagyományos COM-alkalmazás használhatja a frissebb verzióval kompatibilis szerelvény az eredeti szerelvény eltávolítása után. Ha a <xref:System.Runtime.InteropServices.GuidAttribute?displayProperty=fullName>explicit módon meghatározhatja az a CLSID osztályhoz a `ComCompatibleVersionAttribute` nincs hatása.</xref:System.Runtime.InteropServices.GuidAttribute?displayProperty=fullName>       Ez az attribútum tulajdonságainak össze egy szerelvény verziója űrlap négy részeit. Mindig adja meg a legalacsonyabb verziószám arról, hogy az aktuális szerelvény visszamenőlegesen kompatibilis, a szerelvényben található összes CLSID kiszámításához használt verzió."
   example:
   - "The following example shows how to specify assembly version 1.0.0.0 in an assembly with a higher version number. Regardless of the new assembly version, all CLSIDs in the assembly are generated using version 1.0.0.0 instead of using the current assembly version.  \n  \n [!code-cpp[System.Runtime.InteropServices.ComCompatibleVersionAttribute#1](~/add/codesnippet/cpp/t-system.runtime.interop_11_1.cpp)]\n [!code-cs[System.Runtime.InteropServices.ComCompatibleVersionAttribute#1](~/add/codesnippet/csharp/t-system.runtime.interop_11_1.cs)]\n [!code-vb[System.Runtime.InteropServices.ComCompatibleVersionAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.interop_11_1.vb)]"
   syntax:
@@ -43,22 +43,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.ComCompatibleVersionAttribute&quot;></xref> class with the major version, minor version, build, and revision numbers of the assembly."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Runtime.InteropServices.ComCompatibleVersionAttribute&quot;> </xref> a főverzió, alverzió, elkészítéséhez és felülvizsgálati számok a szerelvény a osztályt."
   syntax:
     content: public ComCompatibleVersionAttribute (int major, int minor, int build, int revision);
     parameters:
     - id: major
       type: System.Int32
-      description: "The major version number of the assembly."
+      description: "A szerelvény fő verziószáma."
     - id: minor
       type: System.Int32
-      description: "The minor version number of the assembly."
+      description: "A szerelvény alverzió száma."
     - id: build
       type: System.Int32
-      description: "The build number of the assembly."
+      description: "A szerelvény buildszáma."
     - id: revision
       type: System.Int32
-      description: "The revision number of the assembly."
+      description: "A szerelvény verziószáma."
   overload: System.Runtime.InteropServices.ComCompatibleVersionAttribute.#ctor*
   exceptions: []
   platform:
@@ -75,12 +75,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the build number of the assembly."
+  summary: "Lekérdezi a szerelvény a buildszáma."
   syntax:
     content: public int BuildNumber { get; }
     return:
       type: System.Int32
-      description: "The build number of the assembly."
+      description: "A szerelvény buildszáma."
   overload: System.Runtime.InteropServices.ComCompatibleVersionAttribute.BuildNumber*
   exceptions: []
   platform:
@@ -97,12 +97,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the major version number of the assembly."
+  summary: "A szerelvény fő verziószámának beolvasása."
   syntax:
     content: public int MajorVersion { get; }
     return:
       type: System.Int32
-      description: "The major version number of the assembly."
+      description: "A szerelvény fő verziószáma."
   overload: System.Runtime.InteropServices.ComCompatibleVersionAttribute.MajorVersion*
   exceptions: []
   platform:
@@ -119,12 +119,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the minor version number of the assembly."
+  summary: "A szerelvény alverziószámának beolvasása."
   syntax:
     content: public int MinorVersion { get; }
     return:
       type: System.Int32
-      description: "The minor version number of the assembly."
+      description: "A szerelvény alverzió száma."
   overload: System.Runtime.InteropServices.ComCompatibleVersionAttribute.MinorVersion*
   exceptions: []
   platform:
@@ -141,12 +141,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the revision number of the assembly."
+  summary: "Lekérdezi a szerelvény verziószáma."
   syntax:
     content: public int RevisionNumber { get; }
     return:
       type: System.Int32
-      description: "The revision number of the assembly."
+      description: "A szerelvény verziószáma."
   overload: System.Runtime.InteropServices.ComCompatibleVersionAttribute.RevisionNumber*
   exceptions: []
   platform:

@@ -11,8 +11,8 @@ items:
   nameWithType: IFileChangeNotificationSystem
   fullName: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem
   type: Interface
-  summary: "Defines a way to expose a custom <xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;></xref> object to a cache implementation."
-  remarks: "In ASP.NET, the IFileChangeNotificationSystem interface provides access to internal file-change notification management.       The IFileChangeNotificationSystem interface is used internally by the <xref:System.Runtime.Caching.HostFileChangeMonitor> class.       When a cache implementation runs in an ASP.NET application domain, ASP.NET implements an IFileChangeNotificationSystem interface through the <xref:System.Runtime.Caching.ObjectCache.Host%2A> property. The <xref:System.Runtime.Caching.HostFileChangeMonitor> class detects this property and uses the ASP.NET file-change notification system to evict cache entries based on file-change notification.       In non-ASP.NET applications, there is no host environment that implements a custom IFileChangeNotificationSystem interface. As a result, the <xref:System.Runtime.Caching.HostFileChangeMonitor> class uses the <xref:System.IO.FileSystemWatcher> class of the CLR."
+  summary: "Határozza meg az olyan módon teszi közzé egyéni <xref href=&quot;System.Runtime.Caching.FileChangeMonitor&quot;> </xref> objektum gyorsítótár megvalósításához."
+  remarks: "Az ASP.NET a IFileChangeNotificationSystem felület belső fájl-módosítási értesítés felügyeleti hozzáférést biztosít.       A IFileChangeNotificationSystem felület belsőleg <xref:System.Runtime.Caching.HostFileChangeMonitor>osztályhoz.</xref:System.Runtime.Caching.HostFileChangeMonitor>       Amikor egy gyorsítótár-megvalósítással egy ASP.NET alkalmazás tartományban fut, az ASP.NET keresztül IFileChangeNotificationSystem illesztőfelületet valósít meg a <xref:System.Runtime.Caching.ObjectCache.Host%2A>tulajdonság.</xref:System.Runtime.Caching.ObjectCache.Host%2A> A <xref:System.Runtime.Caching.HostFileChangeMonitor>osztály észleli ezt a tulajdonságot, és használja az ASP.NET-módosításakor értesítési rendszer kizárása alapján a fájl-módosítási értesítés gyorsítótár-bejegyzéseket.</xref:System.Runtime.Caching.HostFileChangeMonitor>       -ASP.NET alkalmazások esetén nincs nem egy egyéni IFileChangeNotificationSystem felületet megvalósító gazdagép-környezetben. Ennek eredményeképpen a <xref:System.Runtime.Caching.HostFileChangeMonitor>osztályt használja a <xref:System.IO.FileSystemWatcher>osztály a CLR.</xref:System.IO.FileSystemWatcher> </xref:System.Runtime.Caching.HostFileChangeMonitor>"
   syntax:
     content: public interface IFileChangeNotificationSystem
   implements: []
@@ -30,26 +30,26 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Registers a file path to monitor with the host environment."
-  remarks: "This method is used by custom cache objects and custom change monitors that implement the host environment&quot;s <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register file paths for monitoring with the host environment. The StartMonitoring method is called by implementers of the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> interface in order to register a file or directory for change monitoring."
+  summary: "Regisztrálja a gazdagép-környezetben a figyelheti egy fájl elérési útját."
+  remarks: "Egyéni objektumok ezt a módszert használja, és egyéni módosíthatja a figyelőket, amelyek megvalósítják a gazdagép-környezetben <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>felületet a figyelés a gazdagép-környezetben a Fájlelérési utak regisztrálásához.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem> A StartMonitoring metódust hívja a implementers a <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>felület egy fájl vagy könyvtár módosítása figyelés regisztrálásához.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem>"
   syntax:
     content: public void StartMonitoring (string filePath, System.Runtime.Caching.OnChangedCallback onChangedCallback, out object state, out DateTimeOffset lastWriteTime, out long fileSize);
     parameters:
     - id: filePath
       type: System.String
-      description: "The fully qualified physical path of a directory or file to monitor for changes."
+      description: "A teljesen minősített fizikai elérési út egy könyvtár vagy fájl történő módosítások megfigyelésére."
     - id: onChangedCallback
       type: System.Runtime.Caching.OnChangedCallback
-      description: "A reference to a method that implements the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> delegate. When the monitored file or directory changes, the host environment&quot;s implementation of the <xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;></xref> interface raises an event by calling the <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;></xref> class."
+      description: "Egy hivatkozást egy metódust, amely megvalósítja a <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;> </xref> delegálni. Amikor a figyelt fájl vagy könyvtár változik, a gazdagép-környezetben megvalósítása a <xref href=&quot;System.Runtime.Caching.Hosting.IFileChangeNotificationSystem&quot;> </xref> felület meghívásával kivált egy eseményt az <xref href=&quot;System.Runtime.Caching.OnChangedCallback&quot;> </xref> osztály."
     - id: state
       type: System.Object
-      description: "The state that is supplied by the host environment. Cache implementations and custom change monitors should treat the state value as opaque. However, the state must be stored so that it can be sent to the host environment when the cache implementation calls the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*> method."
+      description: "A gazdagép-környezetben által biztosított állapota. Gyorsítótár-megoldások és az egyéni módosítás figyelők kell kezelje a állapotérték átlátszatlan. Azonban az állapot kell tárolni, hogy azt is küldhetők a gazdagép-környezetben, ha a gyorsítótár-megvalósítással meghívja a <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>metódus.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*>"
     - id: lastWriteTime
       type: System.DateTimeOffset
-      description: "When this method returns, contains the last date and time that a write operation occurred on `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "Ez a módszer adja vissza, ha tartalmazza a legutóbbi dátum és idő történt egy írási művelet `filePath`. Ez a paraméter lett átadva nem inicializált. Ez a paraméter a gazdagép-környezetben küld vissza."
     - id: fileSize
       type: System.Int64
-      description: "When this method returns, contains the total size of the monitored `filePath`. This parameter is passed uninitialized. This parameter is returned from the host environment."
+      description: "Ha ez a módszer ad vissza, tartalmazza a figyelt teljes mérete `filePath`. Ez a paraméter lett átadva nem inicializált. Ez a paraméter a gazdagép-környezetben küld vissza."
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*
   exceptions: []
   platform:
@@ -66,17 +66,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Ends change monitoring."
-  remarks: "The StopMonitoring method must be called by custom caches and custom change monitors that are being disposed by the host environment in order to stop monitoring file paths and directories."
+  summary: "Végpontok módosítása figyelését."
+  remarks: "Egyéni és a rendszer eldobására, amelyet a gazdagép-környezetben ahhoz, hogy a fájl elérési útja és könyvtárak figyelés leállításának egyéni módosítás figyelők által a StopMonitoring metódust kell meghívni."
   syntax:
     content: public void StopMonitoring (string filePath, object state);
     parameters:
     - id: filePath
       type: System.String
-      description: "The path of the file or folder to stop monitoring. This should match a file path value that was passed in an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "A fájl vagy a figyelés leállításának mappa elérési útja. Ez lett átadva egy korábbi hívás, hogy a fájl elérési útja értéket meg kell felelnie a <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>metódus.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
     - id: state
       type: System.Object
-      description: "The state information that was originally supplied by the host environment during an earlier call to the <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*> method."
+      description: "Az állapotadatokat, amelyek eredetileg szolgáltatta a gazdagép-környezetben való egy korábbi hívás során a <xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>metódus.</xref:System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StartMonitoring*>"
   overload: System.Runtime.Caching.Hosting.IFileChangeNotificationSystem.StopMonitoring*
   exceptions: []
   platform:

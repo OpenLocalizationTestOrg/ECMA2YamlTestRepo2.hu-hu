@@ -14,7 +14,7 @@ items:
   nameWithType: InstancePersistenceCommand
   fullName: System.Runtime.DurableInstancing.InstancePersistenceCommand
   type: Class
-  summary: "Base class for all persistence related commands. Commands are distinguished by their Name. Usually commands can also be distinguished by their derived type."
+  summary: "Alaposztály minden adatmegőrzési vonatkozó parancsokat. A név alapján megkülönböztetett parancsok. Általában parancsok is meg lehet különböztetni származtatott típus szerint."
   syntax:
     content: public abstract class InstancePersistenceCommand
   inheritance:
@@ -35,13 +35,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceCommand&quot;></xref> class."
+  summary: "Egy példányát inicializálja a <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceCommand&quot;> </xref> osztály."
   syntax:
     content: protected InstancePersistenceCommand (System.Xml.Linq.XName name);
     parameters:
     - id: name
       type: System.Xml.Linq.XName
-      description: "The XName (the combination of namespace and name) of the command."
+      description: "A XName (kombinációja névtere és neve), a parancsot."
   overload: System.Runtime.DurableInstancing.InstancePersistenceCommand.#ctor*
   exceptions: []
   platform:
@@ -58,13 +58,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Indicates whether the command could attempt to acquire a lock on the instance."
-  remarks: "The command classes that derive from this class can override this property to set it to `true`."
+  summary: "Azt jelzi, hogy a parancs a példányon zárolni kísérletet."
+  remarks: "A parancs osztályok, amelyek ez az osztály a felülírhatja ezt a tulajdonságot, állítsa be `true`."
   syntax:
     content: protected virtual bool AutomaticallyAcquiringLock { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the command acquires a lock on the instance;, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a parancs zárolás; példányon, ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstancePersistenceCommand.AutomaticallyAcquiringLock*
   exceptions: []
   platform:
@@ -81,13 +81,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Returns a value that indicates whether the persistence provider may choose not to enlist in the ambient transaction (Transaction.Currnet) when executing this command."
-  remarks: "The command classes that derive from this class can override this property to set it to `true`."
+  summary: "Visszaad egy értéket, amely jelzi, hogy az adatmegőrzési szolgáltató is dönthet, hogy nem a tranzakcióban való részvételre a környezeti tranzakció (Transaction.Currnet) Ez a parancs végrehajtása közben."
+  remarks: "A parancs osztályok, amelyek ez az osztály a felülírhatja ezt a tulajdonságot, állítsa be `true`."
   syntax:
     content: protected virtual bool IsTransactionEnlistmentOptional { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if enlisting in the transaction is optional for this command, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha a tranzakcióban történő besorolásakor nem kötelező a parancs, ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.DurableInstancing.InstancePersistenceCommand.IsTransactionEnlistmentOptional*
   exceptions: []
   platform:
@@ -104,12 +104,12 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets the name of the persistence command."
+  summary: "Lekérdezi a adatmegőrzési parancs nevét."
   syntax:
     content: public System.Xml.Linq.XName Name { get; }
     return:
       type: System.Xml.Linq.XName
-      description: "An XName (the combination of namespace and name)."
+      description: "Egy XName (kombinációja névtere és neve)."
   overload: System.Runtime.DurableInstancing.InstancePersistenceCommand.Name*
   exceptions: []
   platform:
@@ -126,14 +126,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Validates the command."
-  remarks: "Commands override Validate to ensure that a command is valid to execute at the current time. Implementations should throw an InvalidOperationException if the command is not valid to execute against the InstanceView passed as a parameter.  The Validate method is called by InstanceStore before the command is passed to InstanceStore.TryCommand."
+  summary: "A parancs ellenőrzi."
+  remarks: "Parancsok bírálnia a Validate annak érdekében, hogy egy parancs nem érvényes az aktuális időpontban végrehajtásához. Megvalósítások kell InvalidOperationException kivételt váltson ki, ha a parancs érvénytelen elleni paraméterként átadja a InstanceView végrehajtásához.  Mielőtt a parancs InstanceStore.TryCommand a Validate metódust hívja az InstanceStore."
   syntax:
     content: protected virtual void Validate (System.Runtime.DurableInstancing.InstanceView view);
     parameters:
     - id: view
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;></xref> object representing the current state of the instance handle."
+      description: "Egy <xref href=&quot;System.Runtime.DurableInstancing.InstanceView&quot;> </xref> a példányleíró aktuális állapotának képviselő objektum."
   overload: System.Runtime.DurableInstancing.InstancePersistenceCommand.Validate*
   exceptions: []
   platform:

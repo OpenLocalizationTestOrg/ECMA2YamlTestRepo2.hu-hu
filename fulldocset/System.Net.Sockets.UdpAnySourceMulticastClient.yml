@@ -24,7 +24,7 @@ items:
   nameWithType: UdpAnySourceMulticastClient
   fullName: System.Net.Sockets.UdpAnySourceMulticastClient
   type: Class
-  summary: "A client receiver for multicast traffic from any source, also known as Any Source Multicast (ASM) or Internet Standard Multicast (ISM)."
+  summary: "A csoportos küldéssel továbbított forgalmat forrásból, más néven bármely forrás csoportos küldési (ASM) vagy Internet szabványos csoportos küldési (ISM) ügyfél fogadó."
   syntax:
     content: >-
       [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
@@ -51,25 +51,25 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Creates a new <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> UDP client that can subscribe to a group address and receive datagrams from any source."
-  remarks: "The UdpAnySourceMulticastClient constructor associates a UDP multicast socket with a group address and port, but does not bind or otherwise use the socket.       The `groupAddress` parameter may be either an IPv6 or IPv4 multicast address.       The `localPort` parameter must not specify a port less than 1,024."
+  summary: "Létrehoz egy új <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> UDP ügyfél is egy csoport címet előfizetni, és datagramok fogadott forrásból."
+  remarks: "A UdpAnySourceMulticastClient konstruktor társítja a csoportos UDP-szoftvercsatorna egy csoport címet és portot, azonban nem köthető vagy más használata a szoftvercsatorna.       A `groupAddress` paramétere lehet IPv4 vagy IPv6 csoportos küldési cím.       A `localPort` paraméter nem szabad megadni, 1024-nál kisebb port."
   syntax:
     content: public UdpAnySourceMulticastClient (System.Net.IPAddress groupAddress, int localPort);
     parameters:
     - id: groupAddress
       type: System.Net.IPAddress
-      description: "The multicast group address for this receiver to subscribe to."
+      description: "A fogadó előfizetni csoportos címet."
     - id: localPort
       type: System.Int32
-      description: "The local port for this receiver to bind to."
+      description: "A fogadó lehet kötést létrehozni a helyi port."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>groupAddress</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. reference"
+    description: "<code>groupAddress</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. hivatkozás"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>localPort</code> is less than 0 -or- <code>localPort</code> is greater than 65,535."
+    description: "<code>localPort</code>0-nál kisebb – vagy – <code>localPort</code> nagyobb, mint 65 535."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.BeginJoinGroup(System.AsyncCallback,System.Object)
@@ -84,31 +84,31 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Binds the socket and begins a join operation to the multicast group to allow datagrams to be received from any group participant."
-  remarks: "The BeginJoinGroup method binds a UDP multicast socket to a local port and joins a multicast group to allow datagrams to be received from any multicast group participant. The local port and multicast group address are specified in the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A> constructor.       The method specified in the `callback` parameter is invoked when the operation to join the multicast group has completed.       If required by the runtime, the  BeginJoinGroup method also performs a policy check to verify that the client is allowed to access the multicast group. If the client is not allowed access, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>."
+  summary: "A szoftvercsatorna van kötve, és bármely csoport résztvevő nem érkezik datagramok engedélyezi a csoportos küldési csoporthoz illesztési művelet kezdődik."
+  remarks: "A BeginJoinGroup metódus csoportos UDP szoftvercsatorna helyi port van kötve, és csatlakozik egy csoporthoz bármely csoportos résztvevő nem érkezik datagramok engedélyezéséhez. A helyi port és a csoportos címet meg van adva a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A>konstruktor.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A>       A megadott metódust az `callback` paraméter nyílik meg, ha a csoportos küldési csoporthoz való csatlakoztatáshoz művelet befejeződött.       A futtatókörnyezet szükség esetén a BeginJoinGroup metódust is ellenőrzi a házirend ellenőrzése, hogy az ügyfelek hozzáférhetnek a csoportos. Ha az ügyfél nem engedélyezi a hozzáférést, <xref:System.Net.Sockets.SocketException>a <xref:System.Net.Sockets.SocketError>.</xref:System.Net.Sockets.SocketError> történt</xref:System.Net.Sockets.SocketException>"
   syntax:
     content: public IAsyncResult BeginJoinGroup (AsyncCallback callback, object state);
     parameters:
     - id: callback
       type: System.AsyncCallback
-      description: "A callback method to invoke when the operation completes."
+      description: "A visszahívási metódus meghívására a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "Nem kötelező állapotadatait, hogy a `callback` metódus ehhez a művelethez."
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "<xref:System.IAsyncResult>.</xref:System.IAsyncResult> Beolvasása       Egy <xref:System.IAsyncResult>, amely hivatkozik, ez a művelet.</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.BeginJoinGroup*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has already been joined or a join operation is currently in progress."
+    description: "A csoportos küldési csoport már csatlakoztatva van, vagy illesztési művelet van folyamatban."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -123,46 +123,46 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Begins the operation of receiving a packet from the joined multicast group and invokes the specified callback when a packet has arrived on the group from any sender."
-  remarks: "The BeginReceiveFromGroup method begins an operation of receiving a UDP packet from the joined multicast group from any sender. The local port and multicast group address are specified in the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A> constructor. The multicast client must also have completed a join to the multicast group.       The method specified in the `callback` parameter is invoked when a packet has received.       It is possible to have a socket failure if a receive operation fails synchronously, although this is uncommon with UDP. If a socket failure occurs, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A műveletet egy csomag fogadása a csatlakoztatott csoportos kezdődik, és a megadott visszahívási hív meg, ha a csomagot a csoport bármely feladótól érkezett."
+  remarks: "A BeginReceiveFromGroup metódus egy művelete UDP-csomagok fogadása egyetlen küldőtől illesztett csoportos kezdődik. A helyi port és a csoportos címet meg van adva a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A>konstruktor.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.%23ctor%2A> A csoportos küldési ügyfél végrehajtotta a csatlakozzon a csoportos küldési csoporthoz is.       A megadott metódust az `callback` csomagot kapott paraméter hív meg.       Lehetséges, hogy egy szoftvercsatorna hiba meghibásodásakor egy fogadási művelet szinkron módon történik, de ez nem ritka, az UDP. A szoftvercsatorna hiba lép fel, ha egy <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public IAsyncResult BeginReceiveFromGroup (byte[] buffer, int offset, int count, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to store the received data."
+      description: "A puffer fogadott adatok tárolására."
     - id: offset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the `buffer` where the data should be stored."
+      description: "Az eltolás bájtokban kezdetétől a `buffer` amelyben szeretné tárolni az adatokat."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to receive and store in the `buffer`."
+      description: "A legfeljebb hány bájtot kapnak, és tárolja a `buffer`."
     - id: callback
       type: System.AsyncCallback
-      description: "The callback method to invoke when the operation completes."
+      description: "A művelet befejeződése után a meghívni kívánt visszahívási metódus."
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "Nem kötelező állapotadatait, hogy a `callback` metódus ehhez a művelethez."
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "<xref:System.IAsyncResult>.</xref:System.IAsyncResult> Beolvasása       Egy <xref:System.IAsyncResult>, amely hivatkozik, ez a művelet.</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>buffer</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is less than 0       -or-       <code>offset</code> is greater than the length of the <code>buffer</code>.       -or-       <code>count</code> is less than 0       -or-       <code>offset</code> plus the count is greater than the length of the <code>buffer</code>."
+    description: "<code>offset</code>0-nál kisebb – vagy – <code>offset</code> hossza meghaladja a <code>buffer</code>.       – vagy – <code>count</code> 0-nál kisebb – vagy – <code>offset</code> és a számláló értéke nagyobb, mint a hosszát a <code>buffer</code>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendTo(System.Byte[],System.Int32,System.Int32,System.Net.IPEndPoint,System.AsyncCallback,System.Object)
@@ -177,49 +177,49 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Begins the operation of sending a unicast packet to the specified destination."
-  remarks: "The BeginSendTo method begins an operation of sending a UDP packet to the joined multicast group.       The client must have completed a join to the multicast group. The destination address specified in the `remoteEndPoint` parameter must have already sent a multicast packet to this receiver. Some protocols use this information to pass along flow control, quality of service statistics, or recovery messages.       The method specified in the `callback` parameter is invoked when a packet has received.       The transmission is only allowed if the address specified in the `remoteEndPoint` parameter has already sent a multicast packet to this receiver. If the client is not allowed access, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>.       If the destination port specified in the `remoteEndPoint` parameter is less than 1,024, a <xref:System.Net.Sockets.SocketException>is thrown with <xref:System.Net.Sockets.SocketError>.       It is possible to have a socket failure if a receive operation fails synchronously, although this is uncommon with UDP. If a socket failure occurs, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A művelet a megadott helyre küldött egyedi küldésű csomagok kezdődik."
+  remarks: "A BeginSendTo metódus egy művelete UDP csomagot küld a csatlakoztatott csoportos kezdődik.       Az ügyfél a csoportos csatlakozás elvégezve. A megadott célcím a `remoteEndPoint` paraméter kell elküldött egy csoportos küldésű csomagok a fogadóra. Néhány protokoll ezen információk használatával adják át a átvitelvezérlés szolgáltatás statisztika vagy helyreállítási üzenetek minőségét.       A megadott metódust az `callback` csomagot kapott paraméter hív meg.       Az átvitel csak akkor engedélyezett, ha a megadott címet a `remoteEndPoint` paraméter már elküldte a csoportos küldésű csomagok a fogadó. Ha az ügyfél nem engedélyezi a hozzáférést, <xref:System.Net.Sockets.SocketException>a <xref:System.Net.Sockets.SocketError>.</xref:System.Net.Sockets.SocketError> történt</xref:System.Net.Sockets.SocketException>       Ha a megadott célport a `remoteEndPoint` paraméter értéke kisebb, mint 1024, egy <xref:System.Net.Sockets.SocketException>a <xref:System.Net.Sockets.SocketError>.</xref:System.Net.Sockets.SocketError> történt</xref:System.Net.Sockets.SocketException>       Lehetséges, hogy egy szoftvercsatorna hiba meghibásodásakor egy fogadási művelet szinkron módon történik, de ez nem ritka, az UDP. A szoftvercsatorna hiba lép fel, ha egy <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public IAsyncResult BeginSendTo (byte[] buffer, int offset, int count, System.Net.IPEndPoint remoteEndPoint, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer that contains the data to send."
+      description: "A puffer, amely tartalmazza az adatokat küldhet."
     - id: offset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the `buffer` to read the data to be sent."
+      description: "Az eltolás bájtokban kezdetétől a `buffer` küldendő adatok olvasásához."
     - id: count
       type: System.Int32
-      description: "The number of bytes to send from the `buffer`."
+      description: "A küldött bájtok száma a `buffer`."
     - id: remoteEndPoint
       type: System.Net.IPEndPoint
-      description: "The remote endpoint to which the packet is to be sent."
+      description: "A távoli végpont, amelyhez a csomag küldendő van."
     - id: callback
       type: System.AsyncCallback
-      description: "The callback method to invoke when the operation completes."
+      description: "A művelet befejeződése után a meghívni kívánt visszahívási metódus."
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "Nem kötelező állapotadatait, hogy a `callback` metódus ehhez a művelethez."
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "<xref:System.IAsyncResult>.</xref:System.IAsyncResult> Beolvasása       Egy <xref:System.IAsyncResult>, amely hivatkozik, ez a művelet.</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>buffer</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is less than 0       -or-       <code>offset</code> is greater than the length of the <code>buffer</code>.       -or-       <code>count</code> is less than 0       -or-       <code>offset</code> plus the count is greater than the length of the <code>buffer</code>."
+    description: "<code>offset</code>0-nál kisebb – vagy – <code>offset</code> hossza meghaladja a <code>buffer</code>.       – vagy – <code>count</code> 0-nál kisebb – vagy – <code>offset</code> és a számláló értéke nagyobb, mint a hosszát a <code>buffer</code>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendToGroup(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -234,46 +234,46 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Begins the operation of sending a packet to a joined multicast group and invokes the specified callback when a packet has been sent to the group."
-  remarks: "The BeginSendToGroup method begins an operation of sending a UDP packet to the joined multicast group.       The client must have completed a join to the multicast group.       The method specified in the `callback` parameter is invoked when a packet has received.       It is possible to have a socket failure if a receive operation fails synchronously, although this is uncommon with UDP. If a socket failure occurs, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A csomag küldése egy csatlakoztatott csoportos működésének kezdődik, és a megadott visszahívási hív meg, ha egy csomagot a csoport el lett küldve."
+  remarks: "A BeginSendToGroup metódus egy művelete UDP csomagot küld a csatlakoztatott csoportos kezdődik.       Az ügyfél a csoportos csatlakozás elvégezve.       A megadott metódust az `callback` csomagot kapott paraméter hív meg.       Lehetséges, hogy egy szoftvercsatorna hiba meghibásodásakor egy fogadási művelet szinkron módon történik, de ez nem ritka, az UDP. A szoftvercsatorna hiba lép fel, ha egy <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public IAsyncResult BeginSendToGroup (byte[] buffer, int offset, int count, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer that contains the data to send."
+      description: "A puffer, amely tartalmazza az adatokat küldhet."
     - id: offset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the `buffer` to read the data to be sent."
+      description: "Az eltolás bájtokban kezdetétől a `buffer` küldendő adatok olvasásához."
     - id: count
       type: System.Int32
-      description: "The number of bytes to send from the `buffer`."
+      description: "A küldött bájtok száma a `buffer`."
     - id: callback
       type: System.AsyncCallback
-      description: "The callback method to invoke when the operation completes."
+      description: "A művelet befejeződése után a meghívni kívánt visszahívási metódus."
     - id: state
       type: System.Object
-      description: "Optional state information to pass to the `callback` method for this operation."
+      description: "Nem kötelező állapotadatait, hogy a `callback` metódus ehhez a művelethez."
     return:
       type: System.IAsyncResult
-      description: "Returns <xref:System.IAsyncResult>.       An <xref:System.IAsyncResult> that references this operation."
+      description: "<xref:System.IAsyncResult>.</xref:System.IAsyncResult> Beolvasása       Egy <xref:System.IAsyncResult>, amely hivatkozik, ez a művelet.</xref:System.IAsyncResult>"
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendToGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>buffer</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> is less than 0       -or-       <code>offset</code> is greater than the length of the <code>buffer</code>.       -or-       <code>count</code> is less than 0       -or-       <code>offset</code> plus the count is greater than the length of the <code>buffer</code>."
+    description: "<code>offset</code>0-nál kisebb – vagy – <code>offset</code> hossza meghaladja a <code>buffer</code>.       – vagy – <code>count</code> 0-nál kisebb – vagy – <code>offset</code> és a számláló értéke nagyobb, mint a hosszát a <code>buffer</code>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource(System.Net.IPAddress)
@@ -288,25 +288,25 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Blocks a source so that multicast packets originating from it are no longer received."
-  remarks: "The BlockSource method blocks multicast packets originating from a specified source address from being received. The client must have completed a join to the multicast group.       The `sourceAddress` parameter may be either an IPv6 or IPv4 address, but the `sourceAddress` parameter must match the address family of the multicast group that the client joined.       The method specified in the `callback` parameter is invoked when a packet has received.       If there is a socket failure while performing the block source operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "Blokkolja a forrás, hogy az abból származó csoportos küldésű csomagok nem érkezik."
+  remarks: "A BlockSource metódus blokkol egy adott forrásból származnak-cím a beérkező származó csoportos küldésű csomagok. Az ügyfél a csoportos csatlakozás elvégezve.       A `sourceAddress` IPv4 vagy IPv6-cím, lehet, de a `sourceAddress` paramétert meg kell egyeznie a címcsalád a csoportos küldési csoport, amely az ügyfél csatlakozott.       A megadott metódust az `callback` csomagot kapott paraméter hív meg.       Ha a blokk forrás művelet során. egy szoftvercsatorna sikertelen egy <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void BlockSource (System.Net.IPAddress sourceAddress);
     parameters:
     - id: sourceAddress
       type: System.Net.IPAddress
-      description: "The address of the source to block."
+      description: "A forrás blokkolására címe."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.Dispose
@@ -321,8 +321,8 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Leaves the multicast group and releases all resources used by the current instance of the <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> class and the underlying the <xref:System.Net.Sockets.Socket>."
-  remarks: "Call Dispose when you are finished using the <xref:System.Net.Sockets.UdpAnySourceMulticastClient>. The Dispose method leaves the <xref:System.Net.Sockets.UdpAnySourceMulticastClient> in an unusable state. After calling Dispose, you must release all references to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient>so the garbage collector can reclaim the memory that the <xref:System.Net.Sockets.UdpAnySourceMulticastClient>was occupying.       Always call Disposebefore you release your last reference to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.Net.Sockets.UdpAnySourceMulticastClient> object&quot;s <xref:System.Object.Finalize%2A> method."
+  summary: "A csoportos kilép, és kiadja az aktuális példány által használt összes erőforrást a <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> osztály és az alapul szolgáló a <xref:System.Net.Sockets.Socket>.</xref:System.Net.Sockets.Socket>"
+  remarks: "Dispose hívható, amikor végzett a <xref:System.Net.Sockets.UdpAnySourceMulticastClient>.</xref:System.Net.Sockets.UdpAnySourceMulticastClient> használatával A Dispose metódus elhagyja a <xref:System.Net.Sockets.UdpAnySourceMulticastClient>használhatatlan állapotban.</xref:System.Net.Sockets.UdpAnySourceMulticastClient> Hívása Dispose, után fel kell szabadítania mutató összes hivatkozást az <xref:System.Net.Sockets.UdpAnySourceMulticastClient>, a szemétgyűjtő is visszaszerezni a memória, amely a <xref:System.Net.Sockets.UdpAnySourceMulticastClient>lett elfoglaló.</xref:System.Net.Sockets.UdpAnySourceMulticastClient> </xref:System.Net.Sockets.UdpAnySourceMulticastClient>       Mindig hívja az <xref:System.Net.Sockets.UdpAnySourceMulticastClient>.</xref:System.Net.Sockets.UdpAnySourceMulticastClient> utolsó referenciaként a felszabadít Disposebefore Ellenkező esetben az erőforrásoknak nem szabadul szemétgyűjtő hívást csak a <xref:System.Net.Sockets.UdpAnySourceMulticastClient>objektum <xref:System.Object.Finalize%2A>metódus.</xref:System.Object.Finalize%2A> </xref:System.Net.Sockets.UdpAnySourceMulticastClient>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -342,25 +342,25 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the asynchronous join group operation to a multicast group."
-  remarks: "The EndJoinGroup method completes an asynchronous bind to a socket and join operation to a multicast group.       If required by the runtime, the  EndJoinGroup method also performs a policy check to verify that the client is allowed to access the multicast group. If the client is not allowed access, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>.       If there is a socket failure while performing the join group operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "Csoportos küldési csoportjának az aszinkron illesztési csoport művelet befejeződik."
+  remarks: "A EndJoinGroup metódus befejeződött egy aszinkron bind csoportos küldési csoportjának szoftvercsatorna és illesztési művelethez.       A futtatókörnyezet szükség esetén a EndJoinGroup metódust is ellenőrzi a házirend ellenőrzése, hogy az ügyfelek hozzáférhetnek a csoportos. Ha az ügyfél nem engedélyezi a hozzáférést, <xref:System.Net.Sockets.SocketException>a <xref:System.Net.Sockets.SocketError>.</xref:System.Net.Sockets.SocketError> történt</xref:System.Net.Sockets.SocketException>       Ha egy szoftvercsatorna sikertelen a csatlakozás csoport művelet végrehajtása közben a <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void EndJoinGroup (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous join operation."
+      description: "Az aszinkron csatlakoztatási művelet eredménye."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.EndJoinGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.EndReceiveFromGroup(System.IAsyncResult,System.Net.IPEndPoint@)
@@ -375,34 +375,34 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the asynchronous operation of receiving a packet from the joined multicast group and provides the information received."
-  remarks: "The EndReceiveFromGroup method completes an asynchronous operation to receive a packet from a multicast group.       If there is a socket failure while performing the receive operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A csomag fogadása a csatlakoztatott csoportos az aszinkron művelet befejeződik, és a kapott információkat nyújt."
+  remarks: "A EndReceiveFromGroup metódus befejezése úgy, hogy egy csomag fogadjon egy csoportos egy aszinkron művelet.       Ha hiba történik a szoftvercsatorna fogadási művelet végrehajtása közben a <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public int EndReceiveFromGroup (IAsyncResult result, out System.Net.IPEndPoint source);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous receive operation."
+      description: "Az aszinkron eredmény fogadási művelethez."
     - id: source
       type: System.Net.IPEndPoint
-      description: "The source endpoint where the packet was received from."
+      description: "A forrás végpont, ahol a csomag érkezett."
     return:
       type: System.Int32
-      description: "The length, in bytes, of the message stored in the buffer parameter passed to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup*> method."
+      description: "A, bájtban megadva, az üzenet hosszúságát átadott puffer paraméter tárolja a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup*>metódus.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup*>"
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.EndReceiveFromGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.EndSendTo(System.IAsyncResult)
@@ -417,28 +417,28 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the operation of sending a unicast packet to the specified destination."
-  remarks: "The EndSendTo method completes an asynchronous operation to send a packet to specified destination address.       If there is a socket failure while performing the receive operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A művelet a megadott helyre küldött egyedi küldésű csomagok befejeződik."
+  remarks: "A EndSendTo metódus befejeződött egy aszinkron művelet a megadott címre csomagot küldeni.       Ha hiba történik a szoftvercsatorna fogadási művelet végrehajtása közben a <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void EndSendTo (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous send operation."
+      description: "Az aszinkron küldés művelet eredménye."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.EndSendTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.EndSendToGroup(System.IAsyncResult)
@@ -453,28 +453,28 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Completes the operation of sending a packet to a multicast group."
-  remarks: "The EndSendToGroup method completes an asynchronous operation to send a packet to a multicast group.       If there is a socket failure while performing the receive operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "A csomagot küldeni egy csoportos művelet befejeződik."
+  remarks: "A EndSendToGroup metódus befejeződött egy aszinkron művelet csomagot küldeni a csoportos küldési csoportjának.       Ha hiba történik a szoftvercsatorna fogadási művelet végrehajtása közben a <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void EndSendToGroup (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the asynchronous send operation."
+      description: "Az aszinkron küldés művelet eredménye."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.EndSendToGroup*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>result</code> is a null reference (Nothing in Visual Basic)."
+    description: "<code>result</code>null (Nothing a Visual Basic) hivatkozás van."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.MulticastLoopback
@@ -489,21 +489,21 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Gets or sets a value that specifies whether outgoing multicast packets are delivered to the sending application."
-  remarks: "Multicast traffic is a scalable method for many-to-many communication on the Internet. A process subscribes to a multicast group address. Then, any packets sent by a subscribed process to the multicast group are received by every other process subscribed to the multicast address. The MulticastLoopback property controls whether any process on the local computer receives multicast packets sent by this client to the multicast group."
+  summary: "Lekérdezi vagy beállítja egy érték, amely megadja, hogy a küldő alkalmazás kimenő csoportos küldésű csomagok kézbesítve."
+  remarks: "Csoportos küldéssel továbbított forgalmat a méretezhető módszer az interneten a több-a-többhöz kommunikációhoz. A folyamat egy csoportos címet számítógépcsoportra fizetett elő. Ezt követően a csoportos előfizetett folyamat által küldött csomagoknak a csoportos küldési cím előfizetett minden más folyamat által fogadott. A MulticastLoopback a tulajdonság szabja meg, hogy e folyamat a helyi számítógép megkapja-e a csoportos ezen ügyfelek által küldött csoportos küldésű csomagok."
   syntax:
     content: public bool MulticastLoopback { get; set; }
     return:
       type: System.Boolean
-      description: "Returns <xref:System.Boolean>.       A value that indicates if outgoing packets to a multicast group are delivered to the sending application."
+      description: "<xref:System.Boolean>.</xref:System.Boolean> Beolvasása       Egy érték, amely azt jelzi, ha a kimenő csomagok a csoportos és a küldő alkalmazás kézbesítve."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.MulticastLoopback*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.ReceiveBufferSize
@@ -518,24 +518,24 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Gets or sets the size, in bytes, of the receive buffer of the <xref:System.Net.Sockets.Socket> used for multicast receive operations on this <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> instance."
-  remarks: "The ReceiveBufferSize property gets or sets the size, in bytes, of the receive buffer of the underlying <xref:System.Net.Sockets.Socket> used for multicast receive operations on this <xref:System.Net.Sockets.UdpAnySourceMulticastClient> instance. Specifically, the ReceiveBufferSize property controls the size of the buffer used by the stack when a packet arrives, but the application has not yet called the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A> method. If this buffer gets filled up and packets keep coming before the application calls the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A> and <xref:System.Net.Sockets.UdpAnySourceMulticastClient.EndReceiveFromGroup%2A> methods, old packets will get dropped. The application will never be able to receive the old packets, and will instead receive newer packets when it calls the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A> method.       The default size of the receive buffer on Windows is 8,192 bytes."
+  summary: "Lekérdezi vagy beállítja a méretét, bájtban a fogadási puffert a <xref:System.Net.Sockets.Socket>a csoportos fogadás műveleteihez használt <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> példány.</xref:System.Net.Sockets.Socket>"
+  remarks: "A ReceiveBufferSize tulajdonság lekérdezi vagy beállítja a, a fogadási puffert az alapul szolgáló bájtban <xref:System.Net.Sockets.Socket>a csoportos fogadás műveleteihez használt <xref:System.Net.Sockets.UdpAnySourceMulticastClient>példány.</xref:System.Net.Sockets.UdpAnySourceMulticastClient> </xref:System.Net.Sockets.Socket> Pontosabban, a ReceiveBufferSize a tulajdonság szabja meg érkezik, de az alkalmazás még nem hívása a verem által használt puffer mérete a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A>metódus.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A> Ha ez a puffer feltöltött lekérdezi és csomagok érkezni az alkalmazás-hívások előtt az <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A>és <xref:System.Net.Sockets.UdpAnySourceMulticastClient.EndReceiveFromGroup%2A>módszerek, régi csomagok fogja lekérni eldobott.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.EndReceiveFromGroup%2A> </xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A> Az alkalmazás soha nem lesz képes a régi csomagok fogadására, és ehelyett kap újabb csomagok, ha meghívja a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A>metódus.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginReceiveFromGroup%2A>       A fogadási puffert a Windows alapértelmezett mérete 8192 bájt."
   syntax:
     content: public int ReceiveBufferSize { get; set; }
     return:
       type: System.Int32
-      description: "Returns <xref:System.Int32>.       The size, in bytes, of the receive buffer."
+      description: "<xref:System.Int32>.</xref:System.Int32> Beolvasása       A mérete, a fogadási puffert."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.ReceiveBufferSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The buffer size specified is less than 0."
+    description: "A megadott pufferméret értéke 0-nál kisebb."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.SendBufferSize
@@ -550,24 +550,24 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Gets or sets the size, in bytes, of the send buffer of the <xref:System.Net.Sockets.Socket> used for multicast send operations on this <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> instance."
-  remarks: "The SendBufferSize property gets or sets the size, in bytes, of the send buffer of the underlying Socket used for multicast send operations on this <xref:System.Net.Sockets.UdpAnySourceMulticastClient> instance.       calls to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendToGroup%2A> or <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendTo%2A> methods will take longer to call the callback depending on the value of the SendBufferSize property if the send buffer is full. The SendBufferSize property only controls whether the user&quot;s buffer stays locked in physical memory until the send completes.       The default size of the send buffer on Windows is 8,192 bytes."
+  summary: "Lekérdezi vagy beállítja a méretet, a Küldés puffer bájtban a <xref:System.Net.Sockets.Socket>a csoportos küldés műveleteihez használt <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> példány.</xref:System.Net.Sockets.Socket>"
+  remarks: "A SendBufferSize tulajdonság lekérdezi vagy beállítja a, a csoportos küldés műveleteihez használt az alapul szolgáló szoftvercsatorna küldési puffer bájtban <xref:System.Net.Sockets.UdpAnySourceMulticastClient>példány.</xref:System.Net.Sockets.UdpAnySourceMulticastClient>       hívások a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendToGroup%2A>vagy <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendTo%2A>módszerek attól függően, hogy a SendBufferSize tulajdonság értékének a visszahívás felhívhatja a küldési puffer megtelt hosszabb ideig tart.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendTo%2A> </xref:System.Net.Sockets.UdpAnySourceMulticastClient.BeginSendToGroup%2A> A SendBufferSize tulajdonság csak szabályozza a felhasználói puffer marad zárolt-e a fizikai memóriában a küldési befejezéséig.       A Windows a küldési puffer alapértelmezett mérete 8192 bájt."
   syntax:
     content: public int SendBufferSize { get; set; }
     return:
       type: System.Int32
-      description: "Returns <xref:System.Int32>.       The size, in bytes, of the send buffer."
+      description: "<xref:System.Int32>.</xref:System.Int32> Beolvasása       A mérete, a Küldés puffer."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.SendBufferSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The buffer size specified is less than 0."
+    description: "A megadott pufferméret értéke 0-nál kisebb."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.Net.Sockets.UdpAnySourceMulticastClient.UnblockSource(System.Net.IPAddress)
@@ -582,25 +582,25 @@ items:
   assemblies:
   - System.Net
   namespace: System.Net.Sockets
-  summary: "Unblocks a source that was previously blocked by a call to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource*> method so that multicast packets originating from it can be received."
-  remarks: "The UnblockSource method unblocks multicast packets originating from a specified source address so they can be received. The specified source address must have previously been blocked by a call to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A> method.       The client must have completed a join to the multicast group.       The `sourceAddress` parameter may be either an IPv6 or IPv4 multicast address.       If the specified source address in the `sourceAddress` parameter was not previously blocked by a call to the <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A> method, a <xref:System.Net.Sockets.SocketException> is thrown with <xref:System.Net.Sockets.SocketError>.       If there is a socket failure while performing the unblock source operation, a <xref:System.Net.Sockets.SocketException> is thrown. The error received is specified as a member of the <xref:System.Net.Sockets.SocketError> enumeration."
+  summary: "Egy korábban letiltott hívásával forrás feloldja a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource*>metódust, hogy az abból származó csoportos küldésű csomagok fogadhatók.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource*>"
+  remarks: "A UnblockSource metódus feloldja a csoportos küldésű csomagok származó megadott forráscímről, így képes fogadni. A megadott forráscím kell korábban le lettek tiltva hívásával a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A>metódus.</xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A>       Az ügyfél a csoportos csatlakozás elvégezve.       A `sourceAddress` paramétere lehet IPv4 vagy IPv6 csoportos küldési cím.       Ha a cím a megadott forrás a `sourceAddress` paraméter korábban nem blokkolta a <xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A>metódust, egy <xref:System.Net.Sockets.SocketException>vált ki, a <xref:System.Net.Sockets.SocketError>.</xref:System.Net.Sockets.SocketError> </xref:System.Net.Sockets.SocketException> </xref:System.Net.Sockets.UdpAnySourceMulticastClient.BlockSource%2A> hívásával       Ha a Tiltás feloldása forrás művelet során. egy szoftvercsatorna sikertelen egy <xref:System.Net.Sockets.SocketException>vált ki.</xref:System.Net.Sockets.SocketException> Az észlelt hiba tagjaként van megadva a <xref:System.Net.Sockets.SocketError>számbavételi.</xref:System.Net.Sockets.SocketError>"
   syntax:
     content: public void UnblockSource (System.Net.IPAddress sourceAddress);
     parameters:
     - id: sourceAddress
       type: System.Net.IPAddress
-      description: "The address of the source to unblock."
+      description: "A cím a forrás feloldásához."
   overload: System.Net.Sockets.UdpAnySourceMulticastClient.UnblockSource*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The multicast group has not yet been joined."
+    description: "A csoportos még nem lett csatlakoztatva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.Net.Sockets.UdpAnySourceMulticastClient&quot;> </xref> használaton kívül lett helyezve."
   - type: System.Net.Sockets.SocketException
     commentId: T:System.Net.Sockets.SocketException
-    description: "An error occurred when attempting to access the socket. See the Remarks section for more information."
+    description: "Hiba történt a szoftvercsatorna eléréséhez. További információt a Megjegyzések című szakaszában talál."
   platform:
   - net462
 references:

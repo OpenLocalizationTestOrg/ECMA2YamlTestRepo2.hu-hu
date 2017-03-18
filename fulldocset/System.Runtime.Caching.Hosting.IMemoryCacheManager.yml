@@ -11,8 +11,8 @@ items:
   nameWithType: IMemoryCacheManager
   fullName: System.Runtime.Caching.Hosting.IMemoryCacheManager
   type: Interface
-  summary: "Defines an interface that a cache uses in order to communicate cache memory usage to a host environment."
-  remarks: "The IMemoryCacheManager interface is implemented by host environments such as ASP.NET, and is consumed by <xref:System.Runtime.Caching.ObjectCache> implementations that must interact with the host environment to determine memory usage. Because caches often consume significant quantities of memory, the IMemoryCacheManager interface helps host environments manage memory usage.       Typically, only <xref:System.Runtime.Caching.ObjectCache> implementations that manage cache objects in memory would use this interface."
+  summary: "Meghatározza a gyorsítótárat használó ahhoz, hogy a gyorsítótár-memória kihasználtsága egy gazdagép-környezetben való kommunikációhoz."
+  remarks: "A IMemoryCacheManager felület állomás környezetekben, például az ASP.NET megvalósítja, és fel <xref:System.Runtime.Caching.ObjectCache>által a gazdagép-környezetben memóriahasználat meghatározásához együtt kell működnie.</xref:System.Runtime.Caching.ObjectCache> Gyorsítótárak gyakran jelentős mennyiségű memória felhasználását, mert a IMemoryCacheManager felület segítségével környezeteknél, memória-felhasználás kezelésére.       Általában csak <xref:System.Runtime.Caching.ObjectCache>által a memória gyorsítótárának objektumok kezelése szeretné használni az adott csatolón.</xref:System.Runtime.Caching.ObjectCache>"
   syntax:
     content: public interface IMemoryCacheManager
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Removes all references to a cache in the host environment."
-  remarks: "If a cache has previously registered itself with the host environment, the cache can call the ReleaseCache method to release the reference. When a cache is being disposed, it should call the ReleaseCache method to make sure that no reference to the cache is held on the host."
+  summary: "A gyorsítótár mutató hivatkozások eltávolítása eltávolítja a gazdagép-környezetben."
+  remarks: "A gyorsítótár korábban regisztrált magát a gazdagép-környezetben, ha a gyorsítótár meghívhatja a ReleaseCache metódus hivatkozását. Ha a gyorsítótár eldobására, azt kell győződjön meg arról, hogy a gyorsítótár nincs hivatkozás tartják-e a gazdagépen a ReleaseCache metódus hívható meg."
   syntax:
     content: public void ReleaseCache (System.Runtime.Caching.MemoryCache cache);
     parameters:
     - id: cache
       type: System.Runtime.Caching.MemoryCache
-      description: "A reference to the cache."
+      description: "A gyorsítótár mutató hivatkozás."
   overload: System.Runtime.Caching.Hosting.IMemoryCacheManager.ReleaseCache*
   exceptions: []
   platform:
@@ -54,17 +54,17 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Reports the size of the current cache."
-  remarks: "A well-behaved cache implementation should use the UpdateCacheSize method to periodically report the size of the cache&quot;s memory footprint to the host environment.       The cache implementation that reports the size also passes a reference to itself as a parameter. This enables the host environment to perform the following tasks:      -   Maintain a list of known object caches.      -   Call the cache and request that the cache trim a percentage of cache items based on the reported size, if it is required."
+  summary: "A jelentés a jelenlegi gyorsítótár mérete."
+  remarks: "Egy jól behaved gyorsítótár-megvalósítással UpdateCacheSize metódus segítségével kell rendszeresen memóriaigény a gyorsítótár méretét jelenti a gazdagép-környezetben.       A gyorsítótár méretét megvalósított önmagára mutató hivatkozást is ad paraméterként. Ez lehetővé teszi, hogy a gazdagép-környezetben a következő feladatok végezhetők el:-ismert objektum gyorsítótárak listájának karbantartása.      -Hívja fel a gyorsítótárban, és, hogy a gyorsítótár a jelentett mérete alapján gyorsítótár elemek százalékaként trim, szükség esetén kérjen."
   syntax:
     content: public void UpdateCacheSize (long size, System.Runtime.Caching.MemoryCache cache);
     parameters:
     - id: size
       type: System.Int64
-      description: "The size of the memory, in bytes, that the cache consumes."
+      description: "A memória mérete, a gyorsítótár feldolgozó mérete."
     - id: cache
       type: System.Runtime.Caching.MemoryCache
-      description: "A reference to the cache."
+      description: "A gyorsítótár mutató hivatkozás."
   overload: System.Runtime.Caching.Hosting.IMemoryCacheManager.UpdateCacheSize*
   exceptions: []
   platform:

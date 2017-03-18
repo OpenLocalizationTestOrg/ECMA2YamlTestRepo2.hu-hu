@@ -12,8 +12,8 @@ items:
   nameWithType: DependencyAttribute
   fullName: System.Runtime.CompilerServices.DependencyAttribute
   type: Class
-  summary: "Indicates when a dependency is to be loaded by the referring assembly. This class cannot be inherited."
-  remarks: "This attribute is used by the [Ngen.exe (Native Image Generator)](~/add/includes/ajax-current-ext-md.md) to generate native assembly images.       Apply the DependencyAttribute attribute to a dependent assembly with a value of the <xref:System.Runtime.CompilerServices.LoadHint> enumeration to specify when a referring assembly is to load a dependency.       A dependency that is likely to be loaded (<xref:System.Runtime.CompilerServices.LoadHint>) will cause Ngen.exe to bind to that dependency.  Using this hint allows Ngen.exe to generate code that will result in a reduced working set and improved throughput  but at the cost of always loading the dependency when the parent assembly is loaded."
+  summary: "Azt jelzi, ha egy függőségi a hivatkozó szerelvény betöltését. Ez az osztály nem örökölhető."
+  remarks: "Ezt az attribútumot használja a [Ngen.exe (natív vonalaskép-készítő)](~/add/includes/ajax-current-ext-md.md) natív szerelvény lemezképek létrehozásához.       A DependencyAttribute attribútumot a függő szerelvény értékkel rendelkező alkalmazza a <xref:System.Runtime.CompilerServices.LoadHint>Adja meg, amikor a hivatkozó szerelvény betöltése függőség számbavételben.</xref:System.Runtime.CompilerServices.LoadHint>       Valószínűleg betöltött függőséget (<xref:System.Runtime.CompilerServices.LoadHint>) eredményezi a függőséget kötődni Ngen.exe.</xref:System.Runtime.CompilerServices.LoadHint>  A mutató használata lehetővé teszi, hogy a Ngen.exe kódgeneráláshoz, hogy egy kisebb munkakészlet és jobb teljesítményt de mindig betöltése a függőséget, ha a szülő szerelvény be töltve."
   example:
   - "The following example specifies that the native image generation service always binds to `AssemblyA` and sometimes binds to `AssemblyB`.  \n  \n [!code-vb[Runtime.CompilerServices.DependencyAttribute#1](~/add/codesnippet/visualbasic/t-system.runtime.compile_4_1.vb)]\n [!code-cs[Runtime.CompilerServices.DependencyAttribute#1](~/add/codesnippet/csharp/t-system.runtime.compile_4_1.cs)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.CompilerServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.CompilerServices.DependencyAttribute&quot;></xref> class with the specified <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;></xref> value."
-  remarks: "The <xref:System.Runtime.CompilerServices.DependencyAttribute> attribute gives the common language runtime hints on how tightly to bind to the dependency. The runtime uses these hints to help settle tradeoffs between lazy dependency load and efficient binding to the dependency. For example, hard binding allows the runtime to encode pointers to dependent native images, which results in a reduced working set. This attribute guides the runtime in making these decisions."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Runtime.CompilerServices.DependencyAttribute&quot;> </xref> és a megadott osztály <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;> </xref> érték."
+  remarks: "A <xref:System.Runtime.CompilerServices.DependencyAttribute>attribútum lehetőséget ad a közös nyelvi futtatókörnyezet mutatók szorosan való kötést létrehozni a függőség.</xref:System.Runtime.CompilerServices.DependencyAttribute> A futtatókörnyezet ezek az útmutatók a Lusta függőségi terhelés és a függőségi hatékony kötése közötti mellékhatásokkal rendezésére használja. Például rögzített kötés lehetővé teszi, hogy a futtatókörnyezet csökkentett munkakészlet eredményez, amelyek mutatókat biztosít a függő natív kép, kódolására. Ez az attribútum végig is vezeti a futtatókörnyezetet, ezek a döntések meghozatalában."
   example:
   - "The following example specifies that the native image generation service always binds to `AssemblyA` and sometimes binds to `AssemblyB`.  \n  \n [!code-vb[Runtime.CompilerServices.DependencyAttribute#1](~/add/codesnippet/visualbasic/477f6992-2013-45a5-998f-_1.vb)]\n [!code-cs[Runtime.CompilerServices.DependencyAttribute#1](~/add/codesnippet/csharp/477f6992-2013-45a5-998f-_1.cs)]"
   syntax:
@@ -48,10 +48,10 @@ items:
     parameters:
     - id: dependentAssemblyArgument
       type: System.String
-      description: "The dependent assembly to bind to."
+      description: "A függő szerelvény kötődni."
     - id: loadHintArgument
       type: System.Runtime.CompilerServices.LoadHint
-      description: "One of the <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;></xref> values."
+      description: "Egy a <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;> </xref> értékeket."
   overload: System.Runtime.CompilerServices.DependencyAttribute.#ctor*
   exceptions: []
   platform:
@@ -68,13 +68,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.CompilerServices
-  summary: "Gets the value of the dependent assembly."
-  remarks: "Use this property to return the name of the assembly that the native image generation service binds to."
+  summary: "A függő szerelvény értékének beolvasása."
+  remarks: "Ez a tulajdonság használatával a natív kép generációs szolgáltatás kötődik szerelvény nevét adja vissza."
   syntax:
     content: public string DependentAssembly { get; }
     return:
       type: System.String
-      description: "The name of the dependent assembly."
+      description: "A függő szerelvény neve."
   overload: System.Runtime.CompilerServices.DependencyAttribute.DependentAssembly*
   exceptions: []
   platform:
@@ -91,13 +91,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.CompilerServices
-  summary: "Gets the <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;></xref> value that indicates when an assembly is to load a dependency."
-  remarks: "Use this property to return the value of the <xref:System.Runtime.CompilerServices.LoadHint> enumeration used by the <xref:System.Runtime.CompilerServices.DependencyAttribute> attribute."
+  summary: "Lekérdezi a <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;> </xref> érték, amely azt jelzi, amikor egy szerelvény betöltése a függőség."
+  remarks: "Az érték a tulajdonság segítségével a <xref:System.Runtime.CompilerServices.LoadHint>enumerálása által használt a <xref:System.Runtime.CompilerServices.DependencyAttribute>attribútum.</xref:System.Runtime.CompilerServices.DependencyAttribute> </xref:System.Runtime.CompilerServices.LoadHint>"
   syntax:
     content: public System.Runtime.CompilerServices.LoadHint LoadHint { get; }
     return:
       type: System.Runtime.CompilerServices.LoadHint
-      description: "One of the <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;></xref> values."
+      description: "Egy a <xref href=&quot;System.Runtime.CompilerServices.LoadHint&quot;> </xref> értékeket."
   overload: System.Runtime.CompilerServices.DependencyAttribute.LoadHint*
   exceptions: []
   platform:

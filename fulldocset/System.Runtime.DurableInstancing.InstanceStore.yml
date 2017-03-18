@@ -30,8 +30,8 @@ items:
   nameWithType: InstanceStore
   fullName: System.Runtime.DurableInstancing.InstanceStore
   type: Class
-  summary: "Represents an instance store."
-  remarks: "A persistence provider provides access to an instance store through a concrete implementation of the InstanceStore class.       Persistence providers may call InstanceHandle.Free on handles passed to TryCommand, even after the command has finished executing. But persistence providers must not hold strong references to InstanceHandle or InstanceOwner objects, as this can prevent InstanceStore from being garbage collected.      > [!WARNING] >  Workflow definitions for persisted workflows cannot be changed. If a workflow definition is changed after it is persisted, the workflow runtime will crash when the workflow is reloaded."
+  summary: "Az Egypéldányos tároló jelöli."
+  remarks: "Olyan adatmegőrzési szolgáltatót az Egypéldányos tároló egy megvalósítását az InstanceStore osztály keresztül hozzáférést biztosít.       Adatmegőrzési szolgáltatók InstanceHandle.Free felkérhet leírók átadott TryCommand, ha a parancs végrehajtása befejeződött. De adatmegőrzési szolgáltató nem tartalmaz erős, ez is, hogy az InstanceStore nem szemétgyűjtő InstanceHandle vagy InstanceOwner objektumhoz, hivatkozik.      > [!WARNING] > Megőrzött munkafolyamatok munkafolyamat-definícióhoz nem módosítható. Ha egy munkafolyamat-definíciót követően azt is megőrződjenek módosul, a munkafolyamat futásidejű összeomlik, ha a munkafolyamat van töltve."
   syntax:
     content: public abstract class InstanceStore
   inheritance:
@@ -52,7 +52,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;></xref> class."
+  summary: "Egy példányát inicializálja a <xref href=&quot;System.Runtime.DurableInstancing.InstanceStore&quot;> </xref> osztály."
   syntax:
     content: protected InstanceStore ();
     parameters: []
@@ -72,29 +72,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Asynchronously executes persistence commands such as <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>."
-  remarks: "A host calls the BeginExecute method to execute a persistence command against an instance handle asynchronously. The host obtains the instance handle by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time."
+  summary: "Aszinkron módon történik, mint az adatmegőrzési parancsok végrehajtása <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> és <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>."
+  remarks: "A gazdagép meghívja a BeginExecute metódus a adatmegőrzési parancs egy példány leíró aszinkron módon. Az állomás megkapja a példányleíró figyelőn a <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>metódus.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> A példány leíró, amelyek megfelelnek a környezet és a tárgy, a parancs például egy példányát, a példány tulajdonos vagy a példány zárolási entitások hozzákötve.  Egyszerre csak egy parancs ki egy példányt leíró ellen."
   syntax:
     content: public IAsyncResult BeginExecute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Egy példányleíró."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "A parancs futtatását."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "A parancs végrehajtása időtúllépés értéke."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejeződéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "Az állapotadatokat."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "Az aszinkron művelet állapotát."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginExecute*
   exceptions: []
   platform:
@@ -111,29 +111,29 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed. If the command can be executed, executes the command asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the InstancePersistenceContext to provide the results of the command.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "Olyan adatmegőrzési szolgáltatót valósítja meg, hogy ez a módszer, amely megadja, hogy egy adott adatmegőrzési parancs hajtható végre. A parancs hajtható végre, ha aszinkron módon végrehajtja a parancsot."
+  remarks: "A parancs hajtható végre, ha az adatmegőrzési szolgáltató módszerekről meghívja az InstancePersistenceContext arra, hogy a parancs.      > [!WARNING] > Annak ellenére, hogy ez a módszer van deklarálva, `virtual` helyett `abstract`, nincs implementációja. Ez a metódus felül kell bírálni ahhoz, hogy funkciókat biztosítanak."
   syntax:
     content: protected virtual IAsyncResult BeginTryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "A példány környezetben."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The persistence command to be executed."
+      description: "Az adatmegőrzési parancs futtatását."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the command execution."
+      description: "A parancs végrehajtása időtúllépés értéke."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives notification of the completion of the asynchronous operation."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejeződéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The state information."
+      description: "Az állapotadatokat."
     return:
       type: System.IAsyncResult
-      description: "The state of the asynchronous operation."
+      description: "Az aszinkron művelet állapotát."
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginTryCommand*
   exceptions: []
   platform:
@@ -150,25 +150,25 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Begins an asynchronous operation to listen for any events raised by the instance store for a specific instance handle."
+  summary: "Egy aszinkron művelet bármely a számára egy adott példányt a példánytárolóban által kiváltott események figyelését kezdődik."
   syntax:
     content: public IAsyncResult BeginWaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Egy példányleíró."
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the operation times out."
+      description: "Az időszak, amely után a művelet időkorlátja lejár."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called after the asynchronous operation is complete."
+      description: "Az aszinkron művelet befejeződése után hívandó metódust."
     - id: state
       type: System.Object
-      description: "An object containing the state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait tartalmazó objektum."
     return:
       type: System.IAsyncResult
-      description: "Returns an <xref:System.IAsyncResult> object.."
+      description: "Visszaadja egy <xref:System.IAsyncResult>objektum...</xref:System.IAsyncResult>"
   overload: System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*
   exceptions: []
   platform:
@@ -185,13 +185,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle."
+  summary: "Létrehoz egy példányleíró."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "A példány leíró."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle.  If the DefaultInstanceOwner is set, the value is automatically bound as the new handle’s instance owner.  The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "Létrehoz egy példányleíró.  A DefaultInstanceOwner be van állítva, ha az érték automatikusan kötődik, az új leíró példánytulajdonoshoz.  Paraméterként átadja példányazonosító automatikusan az új leíró példányként van kötve."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (Guid instanceId);
     parameters:
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "Példány azonosítója. Nem lehet Guid.Empty."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "A példány leíró."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -234,16 +234,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.)"
+  summary: "Létrehoz egy példányleíró. Paraméterként átadja példánytulajdonos értéke nem null, ha az értéket automatikusan kötött az új leíró példány tulajdonosaként.  (Ellenkező esetben nem példánytulajdonoshoz van kötve, még akkor is, ha DefaultInstanceOwner be van állítva.)"
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The owner of an instance."
+      description: "A tulajdonos példány."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle. A null value indicates that the new handle should not be automatically bound to an instance owner."
+      description: "A példány leíró. Null érték azt jelzi, hogy az új leírója kell nem automatikusan köthető egy példánytulajdonoshoz."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -260,19 +260,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Creates an instance handle. If the instance owner passed as a parameter is not null, the value is automatically bound as the new handle’s instance owner.  (Otherwise, no instance owner is bound, even if DefaultInstanceOwner is set.) The instance identifier passed as a parameter is automatically bound as the new handle’s instance."
+  summary: "Létrehoz egy példányleíró. Paraméterként átadja példánytulajdonos értéke nem null, ha az értéket automatikusan kötött az új leíró példány tulajdonosaként.  (Ellenkező esetben nem példánytulajdonoshoz van kötve, még akkor is, ha DefaultInstanceOwner be van állítva.) Paraméterként átadja példányazonosító automatikusan az új leíró példányként van kötve."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceHandle CreateInstanceHandle (System.Runtime.DurableInstancing.InstanceOwner owner, Guid instanceId);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An InstanceOwner object  that represents the owner of an instance. Pass null as the value for this parameter to indicate that the new handle should not be automatically bound to an instance owner."
+      description: "A tulajdonosa, egy példányát képviselő InstanceOwner objektumot. Ez a paraméter azt jelzi, hogy az új leírója kell nem automatikusan köthető egy példánytulajdonos értéke NULL értéket átadni."
     - id: instanceId
       type: System.Guid
-      description: "An instance identifier. Must not be Guid.Empty."
+      description: "Példány azonosítója. Nem lehet Guid.Empty."
     return:
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle."
+      description: "A példány leíró."
   overload: System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle*
   exceptions: []
   platform:
@@ -289,13 +289,13 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets or sets the default instance owner."
-  remarks: "Some hosts infer the instance owner to use by reading this property. WorkflowApplication can use this property. WorkflowServiceHost does not use this property.       The DefaultInstanceOwner propery must be set to null when it is no longer necessary. InstanceStore objects might not be garbage collected if DefaultInstanceOwner is not null.      > [!WARNING] >  Even though this method is declared as `virtual` rather than `abstract`, there is no implementation. This method must be overridden in order to provide functionality."
+  summary: "Lekérdezi vagy beállítja az alapértelmezett példánytulajdonos."
+  remarks: "Egyes gazdagépek következtethető ki a példány tulajdonosa elolvasni ezt a tulajdonságot használja. WorkflowApplication használhatja ezt a tulajdonságot. A WorkflowServiceHost nem használja ezt a tulajdonságot.       A DefaultInstanceOwner tulajdonságot kell állítható be NULL értékre, ha már nincs szükség. Az InstanceStore objektum nem feltétlenül szemétgyűjtő Ha DefaultInstanceOwner nem null értékű.      > [!WARNING] > Annak ellenére, hogy ez a módszer van deklarálva, `virtual` helyett `abstract`, nincs implementációja. Ez a metódus felül kell bírálni ahhoz, hogy funkciókat biztosítanak."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceOwner DefaultInstanceOwner { get; set; }
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The default instance owner."
+      description: "Az alapértelmezett példánytulajdonos."
   overload: System.Runtime.DurableInstancing.InstanceStore.DefaultInstanceOwner*
   exceptions: []
   platform:
@@ -312,17 +312,17 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation."
-  remarks: "If BeginExecute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed."
+  summary: "Az aszinkron művelet véget ér."
+  remarks: "Ha BeginExecute egy tranzakció lett meghívva, ebben az állapotban nem véglegesített adatokat is tartalmazhat. Amikor a tranzakció véglegesítése sikeresen megtörtént, az adatokat a objektum tekinthető InstanceView véglegesítve lett."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView EndExecute (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "A művelet eredményét."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object  representing the known state of the instance after the successful completion of the command."
+      description: "A parancs sikeres befejezése után a példány ismert állapotba képviselő InstanceView objektum."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndExecute*
   exceptions: []
   platform:
@@ -339,7 +339,7 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends an asynchronous operation."
+  summary: "Egy aszinkron művelet véget ér."
   remarks: >-
     > [!WARNING]
 
@@ -349,10 +349,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result of the operation."
+      description: "A művelet eredményét."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return false if it doesn’t support the command passed to the BeginTryCommand method. Otherwise it should return true or throw an exception."
+      description: "Egy adatmegőrzési szolgáltató általi megvalósítása hamis értéket, ha az nem támogatja a parancs a BeginTryCommand metódusnak átadott kell visszaadnia. Ellenkező esetben kell igaz értéket ad vissza, vagy kivételt jelez."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndTryCommand*
   exceptions: []
   platform:
@@ -369,16 +369,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Ends the asynchronous operation initiated by the <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*> method."
+  summary: "Az aszinkron művelet által kezdeményezett befejezi a <xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>metódus.</xref:System.Runtime.DurableInstancing.InstanceStore.BeginWaitForEvents*>"
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> EndWaitForEvents (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "An IAsyncResult object that was handed over to the client by the Begin method."
+      description: "Egy IAsyncResult objektum, amely lett átadná az ügyfél által a Begin metódusból."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "Returns a list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "Olyan listát ad vissza <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> objektumok..."
   overload: System.Runtime.DurableInstancing.InstanceStore.EndWaitForEvents*
   exceptions: []
   platform:
@@ -395,23 +395,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: 'Executes a persistence command synchronously. Examples of persistence commands are: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;></xref> and <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;></xref>.'
-  remarks: "A host calls the Execute method to execute a persistence command against an instance handle, which the host obtains by invoking the <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> method. The instance handle may be bound to entities that represent the context and subject of the command, such as an instance, instance owner, or instance lock.  Only one command may be issued against an instance handle at a time.      > [!WARNING] >  If this method is executed with a <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, it will create an <xref:System.Runtime.DurableInstancing.InstanceOwner> and bind it to the instance. This means that no other process will be able to access that workflow; if the process ends, the workflow cannot be recovered or executed. If such a workflow is executed again, a <xref:System.Runtime.DurableInstancing.InstanceLockedException> will be thrown.   >    >  If <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> is not used, the instance store will create a temporary <xref:System.Runtime.DurableInstancing.InstanceOwner> that will be deleted at the end of the process. However, if the process ends before the workflow’s final persistence point, this exception will be thrown, unless the period of time specified in the **HostLockRenewalPeriod** parameter has expired."
+  summary: 'Adatmegőrzési parancs végrehajtása szinkron módon történik. Adatmegőrzési parancsok példák: <xref href=&quot;System.Activities.DurableInstancing.LoadWorkflowCommand&quot;> </xref> és <xref href=&quot;System.Activities.DurableInstancing.SaveWorkflowCommand&quot;> </xref>.'
+  remarks: "Egy gazdagép egy példány leíró, amely a gazdagép jut hozzá a figyelőn elleni adatmegőrzési parancs az Execute metódus meghívja a <xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A>metódus.</xref:System.Runtime.DurableInstancing.InstanceStore.CreateInstanceHandle%2A> A példány leíró, amelyek megfelelnek a környezet és a tárgy, a parancs például egy példányát, a példány tulajdonos vagy a példány zárolási entitások hozzákötve.  Egyszerre csak egy parancs ki egy példányt leíró ellen.      > [!WARNING] > Ha ez a metódus végrehajtásához egy <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>, az létrehoz egy <xref:System.Runtime.DurableInstancing.InstanceOwner>, majd kösse a példányt.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> Ez azt jelenti, hogy más folyamat nem fog tudni hozzáférni a munkafolyamatra; Ha a folyamat befejeződik, a munkafolyamat nem helyre vagy végre. Ha ilyen munkafolyamat ebben az esetben egy <xref:System.Runtime.DurableInstancing.InstanceLockedException>fog jelezni.</xref:System.Runtime.DurableInstancing.InstanceLockedException>   >> If <xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand>van használatban a példánytárolóban létrehoz egy ideiglenes <xref:System.Runtime.DurableInstancing.InstanceOwner>, amely törli a folyamat végén.</xref:System.Runtime.DurableInstancing.InstanceOwner> </xref:System.Activities.DurableInstancing.CreateWorkflowOwnerCommand> Azonban ha a folyamat befejeződik, a munkafolyamat végső adatmegőrzési pont előtt, a kivételt fog jelezni, ha az időszakban szerepel a **HostLockRenewalPeriod** paraméter érvényessége lejárt."
   syntax:
     content: public System.Runtime.DurableInstancing.InstanceView Execute (System.Runtime.DurableInstancing.InstanceHandle handle, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Egy példányleíró."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "A parancs futtatását."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout value for the operation."
+      description: "A művelet időtúllépés értéke."
     return:
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "An InstanceView object representing the known state of the instance after the successful completion of the command.  If Execute was called under a transaction, this state may include uncommitted data. Once the transaction is committed successfully, the data in the InstanceView object can be considered committed"
+      description: "A parancs sikeres befejezése után a példány ismert állapotba képviselő InstanceView objektum.  Ha a végrehajtás alatt egy tranzakció lett meghívva, ebben az állapotban nem véglegesített adatokat is tartalmazhat. Amikor a tranzakció véglegesítése sikeresen megtörtént, az adatokat a objektum tekinthető InstanceView véglegesített"
   overload: System.Runtime.DurableInstancing.InstanceStore.Execute*
   exceptions: []
   platform:
@@ -428,16 +428,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets all the signaled events bound to an <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object."
+  summary: "Lekérdezi a jelzett események kötött összes egy <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> objektum."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstancePersistenceEvent[] GetEvents (System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "An <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;></xref> object representing the owner of an instance."
+      description: "Egy <xref href=&quot;System.Runtime.DurableInstancing.InstanceOwner&quot;> </xref> egy példányát képviselő objektum."
     return:
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent[]
-      description: "Returns an array of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects.."
+      description: "Tömbjét adja vissza <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> objektumok..."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetEvents*
   exceptions: []
   platform:
@@ -454,14 +454,14 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Gets each InstanceOwner object that is bound to a valid instance handle or has not been garbage collected."
-  remarks: "Returns an array of InstanceOwner objects."
+  summary: "Minden egyes InstanceOwner objektum, amely egy érvényes példányleíró van kötve, vagy nem lett szemétgyűjtő lekérdezi."
+  remarks: "InstanceOwner objektumok tömbjét adja vissza."
   syntax:
     content: protected System.Runtime.DurableInstancing.InstanceOwner[] GetInstanceOwners ();
     parameters: []
     return:
       type: System.Runtime.DurableInstancing.InstanceOwner[]
-      description: "The owner of the instance."
+      description: "A példány tulajdonosa."
   overload: System.Runtime.DurableInstancing.InstanceStore.GetInstanceOwners*
   exceptions: []
   platform:
@@ -478,16 +478,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when an instance handle is freed."
+  summary: "Meghívni, amikor egy példány leíró felszabadult."
   syntax:
     content: protected virtual void OnFreeInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle, object userContext);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that was freed."
+      description: "A példány-leíró felszabadult."
     - id: userContext
       type: System.Object
-      description: "The persistence provider’s user context information that was returned from OnNewInstanceHandle, or null if OnNewInstanceHandle is not overridden."
+      description: "Az adatmegőrzési szolgáltató felhasználói környezet adatainak által eredményül adott OnNewInstanceHandle, vagy null, ha OnNewInstanceHandle nem bírálják felül."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnFreeInstanceHandle*
   exceptions: []
   platform:
@@ -504,16 +504,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Invoked when a new instance handle is created."
+  summary: "Meghívni, amikor egy új program jön létre."
   syntax:
     content: protected virtual object OnNewInstanceHandle (System.Runtime.DurableInstancing.InstanceHandle instanceHandle);
     parameters:
     - id: instanceHandle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "An instance handle."
+      description: "Egy példányleíró."
     return:
       type: System.Object
-      description: "An object.  This user context object will be available to the persistence provider when commands are executed using the handle, and when the handle is freed."
+      description: "Egy objektum.  A felhasználói környezet objektum számára érhetők el az adatmegőrzési szolgáltató amikor parancsok végrehajtása a leíróját használva, és amikor a leíró felszabadult."
   overload: System.Runtime.DurableInstancing.InstanceStore.OnNewInstanceHandle*
   exceptions: []
   platform:
@@ -530,16 +530,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "Resets the signaled event and removes the event from the signaled events list maintained by the instance owner."
+  summary: "Alaphelyzetbe állítja a jelzett esemény, és távolít el az eseményt a jelzett események a példánytulajdonos tartja fenn."
   syntax:
     content: protected void ResetEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event that was signaled earlier and to be reset."
+      description: "Az adatmegőrzési eseményt, amely korábban volt jelzést és alaphelyzetbe kell állítani."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner associated with the persistence event."
+      description: "Az adatmegőrzési eseményhez tartozó példánytulajdonoshoz."
   overload: System.Runtime.DurableInstancing.InstanceStore.ResetEvent*
   exceptions: []
   platform:
@@ -556,16 +556,16 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "An instance store invokes this method to signal an event. A workflow host that subscribes for this persistence event receives it and takes an appropriate action."
+  summary: "Az Egypéldányos tároló hív meg, ez a módszer adott esemény. Egy munkafolyamat-gazda, hogy az adatmegőrzési eseményhez előfizet az fogad, és végrehajtja a megfelelő műveletet."
   syntax:
     content: protected void SignalEvent (System.Runtime.DurableInstancing.InstancePersistenceEvent persistenceEvent, System.Runtime.DurableInstancing.InstanceOwner owner);
     parameters:
     - id: persistenceEvent
       type: System.Runtime.DurableInstancing.InstancePersistenceEvent
-      description: "The persistence event to be signaled."
+      description: "Az adatmegőrzési esemény jelzést."
     - id: owner
       type: System.Runtime.DurableInstancing.InstanceOwner
-      description: "The instance owner."
+      description: "A példánytulajdonoshoz."
   overload: System.Runtime.DurableInstancing.InstanceStore.SignalEvent*
   exceptions: []
   platform:
@@ -582,23 +582,23 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A persistence provider implements this method, which determines whether a particular persistence command can be executed and if the command can be executed executes it asynchronously."
-  remarks: "If the command can be executed, the persistence provider calls relevant methods on the <xref:System.Runtime.DurableInstancing.InstancePersistenceContext> to provide the results of the command."
+  summary: "Olyan adatmegőrzési szolgáltatót valósítja meg, hogy ez a módszer, amely meghatározza, hogy egy adott adatmegőrzési parancs hajtható végre, és ha a parancs hajtható végre végrehajtja az aszinkron módon."
+  remarks: "A parancs hajtható végre, ha az adatmegőrzési szolgáltató meghívja a módszerekről a <xref:System.Runtime.DurableInstancing.InstancePersistenceContext>arra, hogy a parancs eredményeinek.</xref:System.Runtime.DurableInstancing.InstancePersistenceContext>"
   syntax:
     content: protected virtual bool TryCommand (System.Runtime.DurableInstancing.InstancePersistenceContext context, System.Runtime.DurableInstancing.InstancePersistenceCommand command, TimeSpan timeout);
     parameters:
     - id: context
       type: System.Runtime.DurableInstancing.InstancePersistenceContext
-      description: "The instance context."
+      description: "A példány környezetben."
     - id: command
       type: System.Runtime.DurableInstancing.InstancePersistenceCommand
-      description: "The command to be executed."
+      description: "A parancs futtatását."
     - id: timeout
       type: System.TimeSpan
-      description: "Timeout value for the operation."
+      description: "A művelet időtúllépési értéke."
     return:
       type: System.Boolean
-      description: "A persistence provider implementation should return <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it doesn’t support the command passed as a parameter; otherwise it should return <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> or throw an exception."
+      description: "Egy adatmegőrzési szolgáltató általi megvalósítása kell visszaadnia <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha; paraméterként átadja a parancs nem támogatja a ellenkező esetben azt kell visszaadnia <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> vagy kivételt jelez."
   overload: System.Runtime.DurableInstancing.InstanceStore.TryCommand*
   exceptions: []
   platform:
@@ -615,19 +615,19 @@ items:
   assemblies:
   - System.Runtime.DurableInstancing
   namespace: System.Runtime.DurableInstancing
-  summary: "A workflow host typically invokes this method to wait for an event to be signaled."
+  summary: "Egy munkafolyamat-gazda általában hív meg, ez a módszer egy adott esemény jelzést vár."
   syntax:
     content: public System.Collections.Generic.List<System.Runtime.DurableInstancing.InstancePersistenceEvent> WaitForEvents (System.Runtime.DurableInstancing.InstanceHandle handle, TimeSpan timeout);
     parameters:
     - id: handle
       type: System.Runtime.DurableInstancing.InstanceHandle
-      description: "The instance handle that is bound to the event."
+      description: "Az esemény kötött példányleíró."
     - id: timeout
       type: System.TimeSpan
-      description: "The time span after which the waiting operation times out."
+      description: "Az időtartam, mely után az a várakozási művelet időkorlátja lejár."
     return:
       type: System.Collections.Generic.List{System.Runtime.DurableInstancing.InstancePersistenceEvent}
-      description: "A list of <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;></xref> objects."
+      description: "Listája <xref href=&quot;System.Runtime.DurableInstancing.InstancePersistenceEvent&quot;> </xref> objektumok."
   overload: System.Runtime.DurableInstancing.InstanceStore.WaitForEvents*
   exceptions: []
   platform:

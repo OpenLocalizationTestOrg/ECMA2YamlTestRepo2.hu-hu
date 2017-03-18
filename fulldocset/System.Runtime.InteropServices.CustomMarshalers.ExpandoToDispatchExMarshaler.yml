@@ -15,8 +15,8 @@ items:
   nameWithType: ExpandoToDispatchExMarshaler
   fullName: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler
   type: Class
-  summary: "Marshals the COM <xref uid=&quot;langword_csharp_IDispatchEx&quot; name=&quot;IDispatchEx&quot; href=&quot;&quot;></xref> interface to either the .NET Framework <xref href=&quot;System.Runtime.InteropServices.Expando.IExpando&quot;></xref> interface, or to the <xref href=&quot;System.Reflection.IReflect&quot;></xref> interface, and vice versa."
-  remarks: "Because the CLR does not use this custom marshaler automatically, it must be declared as follows:      ```   void UseCustomMarshaler([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(ExpandoToDispatchExMarhsaler))] IExpando expando);   ```"
+  summary: "A COM marshals <xref uid=&quot;langword_csharp_IDispatchEx&quot; name=&quot;IDispatchEx&quot; href=&quot;&quot;> </xref> felületén vagy a .NET-keretrendszer <xref href=&quot;System.Runtime.InteropServices.Expando.IExpando&quot;> </xref> felületet, vagy a <xref href=&quot;System.Reflection.IReflect&quot;> </xref> felületet, és ez fordítva is igaz."
+  remarks: "A közös nyelvi Futtatókörnyezet nem használ automatikusan az egyedi átadás-előkészítő, mert típusúvá kell nyilvánítani az alábbiak szerint:```   void UseCustomMarshaler([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(ExpandoToDispatchExMarhsaler))] IExpando expando);   ```"
   syntax:
     content: 'public class ExpandoToDispatchExMarshaler : System.Runtime.InteropServices.ICustomMarshaler'
   inheritance:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the managed data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up managed data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A> method."
+  summary: "A felügyelt adatok szükséges karbantartás hajt végre, amikor már nincs szükség."
+  remarks: "A közös nyelvi futtató környezet meghívja ezt a metódust a lefoglalt felügyelt adatok törlése a <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A>metódus.</xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A>"
   syntax:
     content: public virtual void CleanUpManagedData (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be destroyed."
+      description: "A felügyelt objektumot meg kell semmisíteni."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.CleanUpManagedData*
   exceptions: []
   platform:
@@ -62,14 +62,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Performs necessary cleanup of the unmanaged data when it is no longer needed."
-  remarks: "The CLR calls this method to clean up the unmanaged data allocated in the <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A> method."
+  summary: "A nem felügyelt adatok szükséges karbantartás hajt végre, amikor már nincs szükség."
+  remarks: "A közös nyelvi futtató környezet meghívja ezt a metódust a lefoglalt nem felügyelt adatok törlése a <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A>metódus.</xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative%2A>"
   syntax:
     content: public virtual void CleanUpNativeData (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged data to be destroyed."
+      description: "A nem felügyelt adatok megsemmisítését mutató hivatkozások."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.CleanUpNativeData*
   exceptions: []
   platform:
@@ -86,22 +86,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns an instance of the custom marshaler."
-  remarks: "All custom marshalers must implement this method, although it is not part of the <xref:System.Runtime.InteropServices.ICustomMarshaler> interface definition."
+  summary: "Az egyedi átadás-előkészítő egy példányát adja vissza."
+  remarks: "Összes átadás-előkészítők meg kell valósítania ezt a módszert, de ez nem része a <xref:System.Runtime.InteropServices.ICustomMarshaler>felület.</xref:System.Runtime.InteropServices.ICustomMarshaler>"
   syntax:
     content: public static System.Runtime.InteropServices.ICustomMarshaler GetInstance (string pstrCookie);
     parameters:
     - id: pstrCookie
       type: System.String
-      description: "String &quot;cookie&quot; parameter that can be used by the custom marshaler."
+      description: "Az egyedi átadás-előkészítő által használható &quot;cookie&quot; paraméternek karakterlánc."
     return:
       type: System.Runtime.InteropServices.ICustomMarshaler
-      description: "An instance of the custom marshaler."
+      description: "Az egyedi átadás-előkészítő példánya."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.GetInstance*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>pstrCookie</code> is invalid."
+    description: "<code>pstrCookie</code>érvénytelen."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.GetNativeDataSize
@@ -116,14 +116,14 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Returns the size in bytes of the unmanaged data to be marshaled."
-  remarks: "Because custom marshaling of value types is not supported in the .NET Framework, this method always returns -1."
+  summary: "Bájt adható át végrehajtásra nem felügyelt adatok méretét adja vissza."
+  remarks: "A .NET-keretrendszer egyéni átadás-előkészítési értéktípusok nem támogatott, mert ez a metódus mindig&1; értéket ad vissza."
   syntax:
     content: public virtual int GetNativeDataSize ();
     parameters: []
     return:
       type: System.Int32
-      description: "-1 to indicate the type this marshaler handles is not a value type."
+      description: "Nincs értéktípus -1 és kezeli az átadás-előkészítő típusát jelzi."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.GetNativeDataSize*
   exceptions: []
   platform:
@@ -140,22 +140,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from managed code to unmanaged code."
-  remarks: "The CLR calls this method with the specified instance of a managed object to convert that object from managed code to unmanaged code, and it returns a pointer to the appropriate unmanaged object, representing the COM view of that object."
+  summary: "A felügyelt kódból nem felügyelt kód objektum marshals."
+  remarks: "A közös nyelvi futtató környezet meghívja a metódushoz megadott példánya egy felügyelt objektum objektumokat, amelyek a felügyelt kód átalakítása nem felügyelt kódot, és mutató visszatér a megfelelő nem felügyelt objektumot képviselő objektum COM nézetét."
   syntax:
     content: public virtual IntPtr MarshalManagedToNative (object pManagedObj);
     parameters:
     - id: pManagedObj
       type: System.Object
-      description: "The managed object to be converted."
+      description: "A felügyelt objektumra kell alakítani."
     return:
       type: System.IntPtr
-      description: "A pointer to the unmanaged object."
+      description: "A nem felügyelt objektumra mutató."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalManagedToNative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pManagedObj</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pManagedObj</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalNativeToManaged(System.IntPtr)
@@ -170,22 +170,22 @@ items:
   assemblies:
   - CustomMarshalers
   namespace: System.Runtime.InteropServices.CustomMarshalers
-  summary: "Marshals an object from unmanaged code to managed code."
-  remarks: "The CLR calls this method with the specified pointer to an unmanaged object to convert that object from unmanaged code to managed code, and returns a managed object representing the managed view of the unmanaged data."
+  summary: "Az objektum nem felügyelt kódból felügyelt kód marshals."
+  remarks: "A közös nyelvi futtató környezet meghívja ezt a metódust a megadott mutatót, hogy az objektum átalakítása felügyelt kód nem felügyelt kódból nem felügyelt objektumra, és a felügyelt jelképező a nem felügyelt adatok felügyelt nézetét."
   syntax:
     content: public virtual object MarshalNativeToManaged (IntPtr pNativeData);
     parameters:
     - id: pNativeData
       type: System.IntPtr
-      description: "A pointer to the unmanaged object to be converted."
+      description: "A nem felügyelt objektumra kell alakítani mutató."
     return:
       type: System.Object
-      description: "A managed object."
+      description: "A felügyelt objektum."
   overload: System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler.MarshalNativeToManaged*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>pNativeData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>pNativeData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

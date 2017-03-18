@@ -16,7 +16,7 @@ items:
   nameWithType: BinaryServerFormatterSink
   fullName: System.Runtime.Remoting.Channels.BinaryServerFormatterSink
   type: Class
-  summary: "Provides the implementation for a server formatter sink that uses the <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;></xref>."
+  summary: "A kiszolgáló formázógyűjtőjébe használó végrehajtására nyújt a <xref href=&quot;System.Runtime.Serialization.Formatters.Binary.BinaryFormatter&quot;> </xref>."
   remarks: "The request stream propagates from the server transport sink through the server channel sinks until it reaches the appropriate formatter sink. The formatter sink deserializes the message and passes it through the pipeline. A special dispatch sink is inserted at the end of the channel sink chain by the <xref:System.Runtime.Remoting.Channels.ChannelServices.CreateServerChannelSinkChain%2A?displayProperty=fullName> method, which is called by server channels to create the server channel sink chains. When the message reaches the dispatch sink, the dispatch sink passes the message to the remoting infrastructure.  \n  \n The following table shows the sink configuration properties that can be specified for the current sink provider.  \n  \n|Property|Description|  \n|--------------|-----------------|  \n|`includeVersions`|Specifies whether the formatter will include versioning information. Values `true` or `false`.|  \n|`strictBinding`|Indicates that a receiving formatter will first try to identify the type using complete version information if it exists before using only the type name and assembly name without version information. Values `true` or `false`. The default for both system-provided formatters is `false`.|  \n|`typeFilterLevel`|A string value that specifies the level of automatic deserialization that a server channel attempts. Supported values are `Low` (the default) and `Full`. For details about deserialization levels, see [&#91;\\<topic://cpconAutomaticDeserializationInNETRemoting>&#93;](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b).<br /><br /> This property is supported only by the .NET Framework version 1.1 on the following platforms: Windows 98, Windows NT 4.0, Windows Millennium Edition, Windows 2000, Windows XP Home Edition, Windows XP Professional, and Windows Server 2003 family.|  \n  \n> [!IMPORTANT]\n>  Using an instance of this object with untrusted data or across an unsecure channel is a security risk. Use this object only with trusted data and across a secure channel. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378)."
   syntax:
     content: 'public class BinaryServerFormatterSink : System.Runtime.Remoting.Channels.IServerChannelSink'
@@ -44,13 +44,13 @@ items:
     parameters:
     - id: protocol
       type: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.Protocol
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: nextSink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: receiver
       type: System.Runtime.Remoting.Channels.IChannelReceiver
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.#ctor*
   exceptions: []
   platform:
@@ -67,25 +67,25 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Requests processing of the response from a method call that is sent asynchronously."
+  summary: "Kérelmek feldolgozása aszinkron módon küldött metódus hívásakor a válasz."
   syntax:
     content: public void AsyncProcessResponse (System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers, System.IO.Stream stream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
-      description: "A stack of sinks that is leading back to the server transport sink."
+      description: "A verem nyelő vissza kialakulásához vezet a kiszolgáló átviteli gyűjtő."
     - id: state
       type: System.Object
-      description: "Information that is associated with the current sink, generated on the request side, and needed on the response side."
+      description: "Az aktuális fogadó társított, a kérelem oldalon létrehozása és a válasz oldalon szükséges adatokat."
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The response message."
+      description: "A válaszüzenet."
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to add to the return message that is heading to the client."
+      description: "A fejlécek, a visszatérési üzenetben, amely az ügyfél fejléc hozzáadása."
     - id: stream
       type: System.IO.Stream
-      description: "The stream that is heading back to the transport sink."
+      description: "Az adatfolyam, amely az átviteli gyűjtő vissza a fejléc."
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.AsyncProcessResponse*
   exceptions: []
   platform:
@@ -102,26 +102,26 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the <xref:System.IO.Stream> onto which the provided response message is to be serialized."
-  remarks: "This method is called when a response stream needs to be created."
+  summary: "Vissza a <xref:System.IO.Stream>alakzatot, amelyhez a megadott válasz üzenet szerializálandó.</xref:System.IO.Stream>"
+  remarks: "Ezt a módszert nevezik, amikor egy válaszfolyamnak kell létrehozni."
   syntax:
     content: public System.IO.Stream GetResponseStream (System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack sinkStack, object state, System.Runtime.Remoting.Messaging.IMessage msg, System.Runtime.Remoting.Channels.ITransportHeaders headers);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerResponseChannelSinkStack
-      description: "A stack of sinks that is leading back to the server transport sink."
+      description: "A verem nyelő vissza kialakulásához vezet a kiszolgáló átviteli gyűjtő."
     - id: state
       type: System.Object
-      description: "Information that is associated with the current sink, generated on the request side, and needed on the response side."
+      description: "Az aktuális fogadó társított, a kérelem oldalon létrehozása és a válasz oldalon szükséges adatokat."
     - id: msg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The response message to serialize."
+      description: "A válaszüzenet szerializálása."
     - id: headers
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "The headers to put in the response stream to the client."
+      description: "A fejlécek kerüljenek bele az ügyfélnek a válaszfolyamnak."
     return:
       type: System.IO.Stream
-      description: "The <xref:System.IO.Stream> onto which the provided response message is to be serialized."
+      description: "A <xref:System.IO.Stream>alakzatot, amelyhez a megadott válasz üzenet szerializálandó.</xref:System.IO.Stream>"
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.GetResponseStream*
   exceptions: []
   platform:
@@ -138,12 +138,12 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the next <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref> in the sink chain."
+  summary: "Lekérdezi a következő <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;> </xref> a fogadó lánc."
   syntax:
     content: public System.Runtime.Remoting.Channels.IServerChannelSink NextChannelSink { get; }
     return:
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The next <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;></xref> in the sink chain."
+      description: "A következő <xref href=&quot;System.Runtime.Remoting.Channels.IServerChannelSink&quot;> </xref> a fogadó lánc."
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.NextChannelSink*
   exceptions: []
   platform:
@@ -160,35 +160,35 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Requests message processing from the current sink."
-  remarks: "The proxy&quot;s job is to convert a method call that is invoked on it into a message. The message, which implements the <xref:System.Runtime.Remoting.Messaging.IMessage> interface, is passed from the client end to the server end by invoking <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> on message sink objects. Message sinks are chained together, which means that every message sink is responsible for calling <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> on the next message sink after the current message sink has finished its work. For instance, a synchronization-related message sink might cause a lock to be acquired or released and delegated to the downstream message sink.       When the formatter channel sink gets a message that needs to be sent over the channel, it calls <xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A>, passing the message as a parameter. The formatter sink then creates the transport header array and calls <xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A> on the formatter sink. This call is forwarded down the sink chain, and any sink can create a request stream that will be passed back to the formatter sink. After this call returns, the message is serialized, <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> is called on the first chain in the sink chain, and the message is passed to the channel sinks.       After the channel sinks get the message, they can write data to the stream, add headers to the header array, and add themselves to the sink stack before forwarding the call to the next sink. When the call reaches the transport sink at the end of the chain, the transport sink sends the headers and serialized message over the channel to the server, where the process is reversed.       When the message gets to the server side, the transport sink retrieves the headers and serialized message from the stream and forwards these through the sink chain until the formatter sink is reached. The formatter sink then deserializes the message and forwards it to the remoting infrastructure. Then, the remoting infrastructure turns the message into a method call, and calls the server object."
+  summary: "Kérelmek üzenetfeldolgozási az aktuális fogadó."
+  remarks: "A proxy folyamat konvertálni, amelyet a üzenetbe metódus hívásakor. Az üzenet, amely a <xref:System.Runtime.Remoting.Messaging.IMessage>csatoló, a kiszolgáló célból átadott ügyfél végéről, hogy <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A>üzenetet fogadó objektumokon.</xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> </xref:System.Runtime.Remoting.Messaging.IMessage> Üzenet mosdók kapcsolt együtt, ami azt jelenti, hogy minden üzenetet fogadó feladata hívása <xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A>meg az aktuális üzenetet fogadó teendőit befejezése után a következő üzenetet fogadó.</xref:System.Runtime.Remoting.Channels.IServerChannelSink.ProcessMessage%2A> Például egy szinkronizálási kapcsolatos üzenetet fogadó zárolást szerzett vagy kiadott és az alsóbb rétegbeli üzenetet fogadó delegálni okozhatja.       Ha a csatorna formázógyűjtőjébe lekérdezi egy üzenetet, amely kell küldeni a csatornán meghívja <xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A>, az üzenet átadott paraméterként.</xref:System.Runtime.Remoting.Messaging.IMessageSink.SyncProcessMessage%2A> A formázógyűjtőjébe létrehozza az átviteli fejléc tömb és hívások <xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A>a a formázógyűjtőjébe.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.GetRequestStream%2A> A hívás a fogadó láncban továbbíthatja a rendszer, és a fogadó hozhat létre a kérelem adatfolyama vissza a formázógyűjtőjébe az átadott. Ezután hívja értéket ad vissza, az üzenet szerializált, <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>a fogadó lánc első lánc neve és az üzenet átkerül a csatorna mosdók.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>       Után a csatorna fogadók esetében az üzenet jelenik meg, azok adatokat írni az adatfolyam, fejlécek vegye fel a fejléc tömb, és hozzáadják magukat a gyűjtőverem továbbítása a következő fogadó hívása előtt. Amikor a hívás elérte az átviteli gyűjtő a lánc végén, az átviteli gyűjtő elküldi a fejlécek, és szerializált üzenet a kiszolgálóra, amelyen a folyamat fordított csatornán keresztül.       Ha az üzenet a kiszolgálóoldali lekérdezi, az átviteli gyűjtő lekéri a fejlécek és szerializált üzenet be az adatfolyamból, és ezek a fogadó lánc keresztül továbbítja, a formázógyűjtőjébe eléréséig. A formázógyűjtőjébe majd deserializes az üzenet, majd továbbítja azt a távoli eljáráshívási infrastruktúrában. A távelérési infrastruktúrában, majd az üzenet alakítja át a metódus hívása, és meghívja a server objektum."
   syntax:
     content: public System.Runtime.Remoting.Channels.ServerProcessing ProcessMessage (System.Runtime.Remoting.Channels.IServerChannelSinkStack sinkStack, System.Runtime.Remoting.Messaging.IMessage requestMsg, System.Runtime.Remoting.Channels.ITransportHeaders requestHeaders, System.IO.Stream requestStream, out System.Runtime.Remoting.Messaging.IMessage responseMsg, out System.Runtime.Remoting.Channels.ITransportHeaders responseHeaders, out System.IO.Stream responseStream);
     parameters:
     - id: sinkStack
       type: System.Runtime.Remoting.Channels.IServerChannelSinkStack
-      description: "A stack of channel sinks that called the current sink."
+      description: "Egy csatorna verem fogadók esetében, amelyek az aktuális fogadó neve."
     - id: requestMsg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "The message that contains the request."
+      description: "Az üzenet, amely tartalmazza a kérelmet."
     - id: requestHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "Headers that are retrieved from the incoming message from the client."
+      description: "A bejövő üzenet az ügyféltől lekért fejléceket."
     - id: requestStream
       type: System.IO.Stream
-      description: "The stream that needs to be processed and passed on to the deserialization sink."
+      description: "Az adatfolyam, amely kell feldolgozni, és átadja a deszerializálás fogadó."
     - id: responseMsg
       type: System.Runtime.Remoting.Messaging.IMessage
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref> that holds the response message. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;> </xref> , amely tartalmazza a válaszüzenetben. Ez a paraméter lett átadva nem inicializált."
     - id: responseHeaders
       type: System.Runtime.Remoting.Channels.ITransportHeaders
-      description: "When this method returns, contains a <xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;></xref> that holds the headers to add to the return message that is heading to the client. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.Runtime.Remoting.Channels.ITransportHeaders&quot;> </xref> , amely tartalmazza a fejlécek, a visszatérési üzenetben, amely az ügyfél fejléc hozzáadása. Ez a paraméter lett átadva nem inicializált."
     - id: responseStream
       type: System.IO.Stream
-      description: "When this method returns, contains a <xref:System.IO.Stream> that is heading to the transport sink. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref:System.IO.Stream>, amely az átviteli gyűjtő címsort.</xref:System.IO.Stream> Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Runtime.Remoting.Channels.ServerProcessing
-      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;></xref> status value that provides information about how the message was processed."
+      description: "A <xref href=&quot;System.Runtime.Remoting.Channels.ServerProcessing&quot;> </xref> állapotértéket adott, az üzenet feldolgozásával kapcsolatos információkat nyújt."
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.ProcessMessage*
   exceptions: []
   platform:
@@ -205,13 +205,13 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets a <xref:System.Collections.IDictionary> of properties for the current channel sink."
-  remarks: "For more information, see [&#91;\\<topic://cpconchannelformatterconfigurationproperties>&#93;](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe)."
+  summary: "Lekérdezi a <xref:System.Collections.IDictionary>az aktuális csatornagyűjtő tulajdonságait.</xref:System.Collections.IDictionary>"
+  remarks: "További információkért lásd: [[\\<topic://cpconchannelformatterconfigurationproperties >]](http://msdn.microsoft.com/en-us/226ecf74-ebbd-4ea0-a701-dcf4441deefe)."
   syntax:
     content: public System.Collections.IDictionary Properties { get; }
     return:
       type: System.Collections.IDictionary
-      description: "A <xref:System.Collections.IDictionary> of properties for the current channel sink."
+      description: "A <xref:System.Collections.IDictionary>az aktuális csatornagyűjtő tulajdonságait.</xref:System.Collections.IDictionary>"
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.Properties*
   exceptions: []
   platform:
@@ -228,13 +228,13 @@ items:
   assemblies:
   - System.Runtime.Remoting
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets or sets the <xref uid=&quot;langword_csharp_TypeFilterLevel&quot; name=&quot;TypeFilterLevel&quot; href=&quot;&quot;></xref> value of automatic deserialization that the <xref uid=&quot;langword_csharp_BinaryServerFormatterSink&quot; name=&quot;BinaryServerFormatterSink&quot; href=&quot;&quot;></xref> performs."
-  remarks: "Supported values are `Low` (the default) and `Full`. For details about deserialization levels, see [Automatic Deserialization in .NET Remoting](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b)."
+  summary: "Lekérdezi vagy beállítja a <xref uid=&quot;langword_csharp_TypeFilterLevel&quot; name=&quot;TypeFilterLevel&quot; href=&quot;&quot;> </xref> automatikus értékének deszerializálási, amely a <xref uid=&quot;langword_csharp_BinaryServerFormatterSink&quot; name=&quot;BinaryServerFormatterSink&quot; href=&quot;&quot;> </xref> hajt végre."
+  remarks: "Támogatott értékek a következők `Low` (alapértelmezett) és `Full`. Deszerializálási szintekkel kapcsolatos részletekért lásd: [a távoli .NET automatikus deszerializálása](http://msdn.microsoft.com/en-us/313a0e88-5b2b-4a17-8391-0ddf9f7a787b)."
   syntax:
     content: public System.Runtime.Serialization.Formatters.TypeFilterLevel TypeFilterLevel { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.TypeFilterLevel
-      description: "The <xref uid=&quot;langword_csharp_TypeFilterLevel&quot; name=&quot;TypeFilterLevel&quot; href=&quot;&quot;></xref> that represents the current automatic deserialization level."
+      description: "A <xref uid=&quot;langword_csharp_TypeFilterLevel&quot; name=&quot;TypeFilterLevel&quot; href=&quot;&quot;> </xref> , amely az aktuális automatikus deszerializálása szintjét jelöli."
   overload: System.Runtime.Remoting.Channels.BinaryServerFormatterSink.TypeFilterLevel*
   exceptions: []
   platform:

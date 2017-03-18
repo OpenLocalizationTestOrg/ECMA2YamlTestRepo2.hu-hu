@@ -13,8 +13,8 @@ items:
   nameWithType: WindowsRuntimeMetadata
   fullName: System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata
   type: Class
-  summary: "Provides an event for resolving reflection-only type requests for types that are provided by Windows Metadata files, and methods for performing the resolution."
-  remarks: "Unlike the .NET Framework, assembly identity isn’t important for [!INCLUDE[wrt](~/add/includes/wrt-md.md)] types. In the [!INCLUDE[wrt](~/add/includes/wrt-md.md)], Windows Metadata files (.WinMD files) contain only metadata, not code. Types can move from one Windows Metadata file to another in a service pack release, so it’s important to be able to locate the Windows Metadata files that are associated with a namespace.      > [!NOTE] >  Sub-namespaces don’t imply containment. That is, namespace A.B isn&quot;t contained in namespace A."
+  summary: "Egy esemény biztosít csak reflexiós típust kérelmeket, amelyek Windows metaadatfájlokban által biztosított, és a probléma megoldása módszerei feloldását."
+  remarks: "Ellentétben a .NET-keretrendszer szerelvény identitása nem fontos a [!INCLUDE[wrt](~/add/includes/wrt-md.md)] típusok. Az a [!INCLUDE[wrt](~/add/includes/wrt-md.md)], Windows metaadat-fájlok (. Eseménydeklarációkban fájlok) tartalmaznak a csak metaadatokat, nem a kódot. Típusok is áthelyezése egy Windows metaadatfájl másik a service pack kiadás, ezért fontos, hogy a Windows Metaadatfájlok névtér társított találja.      > [!NOTE] > Sub-névterek elszigetelési ne utalnak. Ez azt jelenti, hogy nem található névtér A.B névtér A."
   syntax:
     content: public static class WindowsRuntimeMetadata
   inheritance:
@@ -35,12 +35,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices.WindowsRuntime
-  summary: "Occurs when the resolution of a Windows Metadata file fails in the design environment."
+  summary: "Akkor következik be, amikor a Windows metaadatfájl felbontását a tervezési környezetben sikertelen."
   syntax:
     content: public static event EventHandler<System.Runtime.InteropServices.WindowsRuntime.DesignerNamespaceResolveEventArgs> DesignerNamespaceResolve;
     return:
       type: System.EventHandler{System.Runtime.InteropServices.WindowsRuntime.DesignerNamespaceResolveEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -56,13 +56,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices.WindowsRuntime
-  summary: "Occurs when the resolution of a Windows Metadata file fails in the reflection-only context."
-  remarks: "After this event is raised and handled, it is not raised again for the lifetime of the application domain. The list of files that defines the namespace cannot be changed. This event is analogous to the <xref:System.AppDomain.ReflectionOnlyAssemblyResolve> event for managed assemblies.       See the <xref:System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs> class.      > [!IMPORTANT] >  The event handler for this event should not throw exceptions."
+  summary: "Akkor következik be, amikor a Windows metaadatfájl feloldása sikertelen csak reflexiós környezetben."
+  remarks: "Ez az esemény jelenik meg, és kezelni, azt nem következik be újra az alkalmazástartomány élettartama idején. Nem lehet módosítani a fájlok listáját, amely meghatározza azt a névteret. Ez az esemény csatlakoztatja, akkor a <xref:System.AppDomain.ReflectionOnlyAssemblyResolve>esemény felügyelt szerelvények.</xref:System.AppDomain.ReflectionOnlyAssemblyResolve>       Tekintse meg az <xref:System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs>osztályhoz.</xref:System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs>      > [!IMPORTANT] > Ezt az eseményt az eseménykezelő nem kell előidéznie a kivételeket."
   syntax:
     content: public static event EventHandler<System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs> ReflectionOnlyNamespaceResolve;
     return:
       type: System.EventHandler{System.Runtime.InteropServices.WindowsRuntime.NamespaceResolveEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -78,28 +78,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices.WindowsRuntime
-  summary: "Locates the Windows Metadata files for the specified namespace, given the specified locations to search."
-  remarks: "Calling this method overload is equivalent to calling the <xref:System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace%28System.String%2CSystem.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%29> method overload and specifying `null` for the `windowsSdkFilePath` parameter."
+  summary: "A megadott helyet a kereséshez megadott megkeresi a Windows Metaadatfájlok a megadott névtér esetében."
+  remarks: "Ez hívása megegyezik hívása a <xref:System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace%28System.String%2CSystem.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%29>metódus túlterhelési és megadásával `null` a a `windowsSdkFilePath` paraméter.</xref:System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace%28System.String%2CSystem.String%2CSystem.Collections.Generic.IEnumerable%7BSystem.String%7D%29>"
   syntax:
     content: public static System.Collections.Generic.IEnumerable<string> ResolveNamespace (string namespaceName, System.Collections.Generic.IEnumerable<string> packageGraphFilePaths);
     parameters:
     - id: namespaceName
       type: System.String
-      description: "The namespace to resolve."
+      description: "A névtér feloldásához."
     - id: packageGraphFilePaths
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "The application paths to search for Windows Metadata files, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to search only for Windows Metadata files from the operating system installation."
+      description: "Az alkalmazás elérési utak Windows metaadatfájlokban kereséséhez vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> csak az operációs rendszer telepítése a Windows-metaadatok fájlok keresése."
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "An enumerable list of strings that represent the Windows Metadata files that define <code>namespaceName</code>."
+      description: "A karakterláncok, amelyek megfelelnek a Windows Metaadatfájlok, amelyek meghatározzák egy enumerálható listájához <code> namespaceName </code>."
   overload: System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The operating system version does not support the [!INCLUDE[wrt](~/add/includes/wrt-md.md)]."
+    description: "Az operációs rendszer verziója nem támogatja a [!INCLUDE[wrt](~/add/includes/wrt-md.md)]."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>namespaceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>namespaceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace(System.String,System.String,System.Collections.Generic.IEnumerable{System.String})
@@ -114,31 +114,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices.WindowsRuntime
-  summary: "Locates the Windows Metadata files for the specified namespace, given the specified locations to search."
-  remarks: "The path you specify for `windowsSdkFilePath` is searched only for namespaces that begin with Windows."
+  summary: "A megadott helyet a kereséshez megadott megkeresi a Windows Metaadatfájlok a megadott névtér esetében."
+  remarks: "Az elérési út `windowsSdkFilePath` csak a Windows kezdetű névterek keres."
   syntax:
     content: public static System.Collections.Generic.IEnumerable<string> ResolveNamespace (string namespaceName, string windowsSdkFilePath, System.Collections.Generic.IEnumerable<string> packageGraphFilePaths);
     parameters:
     - id: namespaceName
       type: System.String
-      description: "The namespace to resolve."
+      description: "A névtér feloldásához."
     - id: windowsSdkFilePath
       type: System.String
-      description: "The path to search for Windows Metadata files provided by the SDK, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to search for Windows Metadata files from the operating system installation."
+      description: "Keresse meg az SDK által biztosított Windows Metaadatfájlok elérési útja vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> az operációs rendszer telepítése a Windows-metaadatok fájlok keresése."
     - id: packageGraphFilePaths
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "The application paths to search for Windows Metadata files."
+      description: "Az alkalmazás elérési Windows metaadatfájlokban kereséséhez."
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "An enumerable list of strings that represent the Windows Metadata files that define <code>namespaceName</code>."
+      description: "A karakterláncok, amelyek megfelelnek a Windows Metaadatfájlok, amelyek meghatározzák egy enumerálható listájához <code> namespaceName </code>."
   overload: System.Runtime.InteropServices.WindowsRuntime.WindowsRuntimeMetadata.ResolveNamespace*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The operating system version does not support the [!INCLUDE[wrt](~/add/includes/wrt-md.md)]."
+    description: "Az operációs rendszer verziója nem támogatja a [!INCLUDE[wrt](~/add/includes/wrt-md.md)]."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>namespaceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>namespaceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

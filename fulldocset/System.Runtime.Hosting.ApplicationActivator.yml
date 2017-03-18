@@ -13,8 +13,8 @@ items:
   nameWithType: ApplicationActivator
   fullName: System.Runtime.Hosting.ApplicationActivator
   type: Class
-  summary: "Provides the base class for the activation of manifest-based assemblies."
-  remarks: "There is a single designated instance of the ApplicationActivator class in each <xref:System.AppDomain> to which all activation calls are routed. The <xref:System.AppDomainManager> for the current <xref:System.AppDomain> can provide its own custom ApplicationActivator for this purpose. If a custom ApplicationActivator is not provided, an instance of the default ApplicationActivator is created.       The following steps describe the behavior of the default <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A> method implementation:      1.  Checks if the <xref:System.ActivationContext> of the add-in to be activated matches the <xref:System.ActivationContext> of the current domain; if not, proceeds to step 2. Otherwise, executes the assembly and returns the result wrapped in an object handle.      2.  Activates the add-in in a new <xref:System.AppDomain>. The following steps are taken to initialize a new <xref:System.AppDomain> using the <xref:System.Runtime.Hosting.ActivationArguments> for the add-in.          1.  Creates a new <xref:System.AppDomainSetup> object using an <xref:System.Runtime.Hosting.ActivationArguments> object containing the activation context for the add-in.          2.  Calls the <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> method to create a new domain using the <xref:System.AppDomainSetup> object.          3.  The <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> method calls the <xref:System.Security.HostSecurityManager.DetermineApplicationTrust%2A?displayProperty=fullName> method to acquire an <xref:System.Security.Policy.ApplicationTrust> object for the add-in. If the <xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A> property returns `true`, the add-in is executed. If not, <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> throws a <xref:System.Security.Policy.PolicyException> indicating that execution permission could not be acquired.          4.  If the add-in is trusted to run, then a new <xref:System.AppDomain> is created and configured for the <xref:System.ActivationContext> of the add-in, and the add-in is loaded and executed.          5.  The result of the activation of the add-in is returned, wrapped in an object handle.       A custom activator can tailor the activation of an add-in to a particular set of circumstances. For example, a custom activator could find an existing <xref:System.AppDomain> to activate this add-in instead of creating a new domain every time.       The following steps describe the behavior of a custom ApplicationActivator that activates an add-in in an existing <xref:System.AppDomain>:      1.  The custom activator finds a domain that has the same <xref:System.ActivationContext> as the add-in that is being activated.      2.  If the <xref:System.ActivationContext> has never been seen before in the process, the custom activator creates a new <xref:System.AppDomain> for this <xref:System.ActivationContext> by calling the <xref:System.AppDomain.CreateDomain%2A> method directly, or delegating this activity to the <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> in the base class.      3.  If there is an existing domain with the same <xref:System.ActivationContext>, then the activator can delegate the <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A> method call to the ApplicationActivator in the target domain. Note that this would be a cross-domain call to an ApplicationActivator that resides in the target <xref:System.AppDomain>."
+  summary: "Az alaposztály biztosít szerelvények jegyzékfájl-alapú aktiválást."
+  remarks: "A ApplicationActivator osztály minden kijelölt egyetlen példánya van <xref:System.AppDomain>mely összes aktiválás hívások útválasztása.</xref:System.AppDomain> A <xref:System.AppDomainManager>az aktuális <xref:System.AppDomain>erre a célra a saját egyéni ApplicationActivator biztosíthat.</xref:System.AppDomain> </xref:System.AppDomainManager> Ha egy egyéni ApplicationActivator nem áll rendelkezésre, az alapértelmezett példánya ApplicationActivator jön létre.       A következő lépések azt mutatják be az alapértelmezett viselkedése <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A>metódus megvalósításában: 1.</xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A>  Ellenőrzi, hogy a <xref:System.ActivationContext>a bővítmény kell aktivált megegyezik a <xref:System.ActivationContext>az aktuális tartomány; Ha nem, a 2. lépés folytatódik.</xref:System.ActivationContext> </xref:System.ActivationContext> Ellenkező esetben a szerelvény végrehajtja, és egy csomagolni eredményét adja vissza.      2.  A bővítmény a egy új <xref:System.AppDomain>.</xref:System.AppDomain> aktiválása A következő lépésekkel <xref:System.AppDomain>a használatával <xref:System.Runtime.Hosting.ActivationArguments>a bővítményt. az</xref:System.Runtime.Hosting.ActivationArguments> </xref:System.AppDomain> új inicializálása          1.  Létrehoz egy új <xref:System.AppDomainSetup>objektum használatával egy <xref:System.Runtime.Hosting.ActivationArguments>objektum, amely tartalmazza az aktiválási környezet esetében a beépülő modult.</xref:System.Runtime.Hosting.ActivationArguments> </xref:System.AppDomainSetup>          2.  Hívások a <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>módszer új tartomány létrehozása a <xref:System.AppDomainSetup>objektum.</xref:System.AppDomainSetup> </xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>          3.  A <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>metódus meghívja a <xref:System.Security.HostSecurityManager.DetermineApplicationTrust%2A?displayProperty=fullName>metódus egy <xref:System.Security.Policy.ApplicationTrust>objektum a bővítményt. az</xref:System.Security.Policy.ApplicationTrust> beszerzése</xref:System.Security.HostSecurityManager.DetermineApplicationTrust%2A?displayProperty=fullName> </xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> Ha a <xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A>tulajdonság beolvasása `true`, a végrehajtása.</xref:System.Security.Policy.ApplicationTrust.IsApplicationTrustedToRun%2A> Ha nem, <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>jelez a <xref:System.Security.Policy.PolicyException>jelzi, hogy végrehajtási engedélyt nem zárolható.</xref:System.Security.Policy.PolicyException> </xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>          4.  Ha a megbízható futtatása, majd egy új <xref:System.AppDomain>létrehozása és beállítása a <xref:System.ActivationContext>a bővítmény és a betöltött és végrehajtani.</xref:System.ActivationContext> </xref:System.AppDomain>          5.  Az eredmény a aktiválási lett visszaadva, akkor egy csomagolni.       Egy egyéni aktiváló átalakítható bővítmény egy meghatározott körülmények között az aktiválást. Például egy egyéni aktiváló találta egy meglévő <xref:System.AppDomain>a beépülő modul helyett egy új tartományt létre minden alkalommal aktiválásához.</xref:System.AppDomain>       A következő lépések bemutatják egy egyéni ApplicationActivator bővítmény egy meglévő aktiváló viselkedését <xref:System.AppDomain>: 1.</xref:System.AppDomain>  Az egyéni aktiváló talál azonos tartományhoz <xref:System.ActivationContext>, a bővítmény, amely aktiválása folyamatban van.</xref:System.ActivationContext>      2.  Ha a <xref:System.ActivationContext>soha nem is látható volt előtt a folyamat során az egyéni aktiváló létrehoz egy új <xref:System.AppDomain>esetében ez <xref:System.ActivationContext>a <xref:System.AppDomain.CreateDomain%2A>metódus közvetlenül, vagy a tevékenység a <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A>az alap osztálynál</xref:System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper%2A> delegálása</xref:System.AppDomain.CreateDomain%2A> </xref:System.ActivationContext> </xref:System.AppDomain> </xref:System.ActivationContext>      3.  Egy meglévő tartomány azonos <xref:System.ActivationContext>, majd az aktiváló delegálhatja a <xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A>metódus hívásakor a céltartomány ApplicationActivator.</xref:System.Runtime.Hosting.ApplicationActivator.CreateInstance%2A> </xref:System.ActivationContext> Vegye figyelembe, hogy ez lenne egy ApplicationActivator <xref:System.AppDomain>.</xref:System.AppDomain> célja a tartományok közötti hívása"
   example:
   - "The following code example shows how to obtain an ApplicationActivator object from the current <xref:System.AppDomain.DomainManager%2A> for a manifest-based application.  \n  \n [!code-vb[System.Runtime.Hosting.ApplicationActivator#1](~/add/codesnippet/visualbasic/t-system.runtime.hosting_0_1.vb)]\n [!code-cs[System.Runtime.Hosting.ApplicationActivator#1](~/add/codesnippet/csharp/t-system.runtime.hosting_0_1.cs)]"
   syntax:
@@ -40,7 +40,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Hosting.ApplicationActivator&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Runtime.Hosting.ApplicationActivator&quot;> </xref> osztály."
   syntax:
     content: public ApplicationActivator ();
     parameters: []
@@ -60,22 +60,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Hosting
-  summary: "Creates an instance of the application to be activated, using the specified activation context."
-  remarks: "This method is intended for the manifest-based activation of applications."
+  summary: "A megadott aktiválási környezet használatával hoz létre aktiválni kell, hogy az alkalmazás egy példánya."
+  remarks: "Ez a módszer a jegyzékfájl-alapú aktiválási kérelmek számára készült."
   syntax:
     content: public virtual System.Runtime.Remoting.ObjectHandle CreateInstance (ActivationContext activationContext);
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "An <xref href=&quot;System.ActivationContext&quot;></xref> that identifies the application to activate."
+      description: "Egy <xref href=&quot;System.ActivationContext&quot;> </xref> , amely azonosítja az alkalmazás aktiválásához."
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: "An <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;></xref> that is a wrapper for the return value of the application execution. The return value must be unwrapped to access the real object."
+      description: "Egy <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;> </xref> az alkalmazásfuttatás visszatérési értéke, amely egy burkolót. Az eredményül kapott értéket a tényleges objektum eléréséhez burkolatlan kell lennie."
   overload: System.Runtime.Hosting.ApplicationActivator.CreateInstance*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>activationContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>activationContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.Hosting.ApplicationActivator.CreateInstance(System.ActivationContext,System.String[])
@@ -90,25 +90,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Hosting
-  summary: "Creates an instance of the application to be activated, using the specified activation context  and custom activation data."
-  remarks: "This method is intended for the manifest-based activation of applications. The activation data consists of information such as the query string portion of a URL."
+  summary: "A megadott aktiválási környezet és az egyéni aktiválási adatok használatával hoz létre aktiválni kell, hogy az alkalmazás egy példánya."
+  remarks: "Ez a módszer a jegyzékfájl-alapú aktiválási kérelmek számára készült. Az aktiválási adatok például a lekérdezési karakterláncra vonatkozó részében egy URL-cím áll."
   syntax:
     content: public virtual System.Runtime.Remoting.ObjectHandle CreateInstance (ActivationContext activationContext, string[] activationCustomData);
     parameters:
     - id: activationContext
       type: System.ActivationContext
-      description: "An <xref href=&quot;System.ActivationContext&quot;></xref> that identifies the application to activate."
+      description: "Egy <xref href=&quot;System.ActivationContext&quot;> </xref> , amely azonosítja az alkalmazás aktiválásához."
     - id: activationCustomData
       type: System.String[]
-      description: "Custom activation data."
+      description: "Egyéni aktiválási adatokhoz."
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: "An <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;></xref> that is a wrapper for the return value of the application execution. The return value must be unwrapped to access the real object."
+      description: "Egy <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;> </xref> az alkalmazásfuttatás visszatérési értéke, amely egy burkolót. Az eredményül kapott értéket a tényleges objektum eléréséhez burkolatlan kell lennie."
   overload: System.Runtime.Hosting.ApplicationActivator.CreateInstance*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>activationContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>activationContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper(System.AppDomainSetup)
@@ -123,25 +123,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Hosting
-  summary: "Creates an instance of an application using the specified <xref href=&quot;System.AppDomainSetup&quot;></xref> object."
-  remarks: "This method is intended for the manifest-based activation of applications."
+  summary: "A megadott használó alkalmazások az példányát <xref href=&quot;System.AppDomainSetup&quot;> </xref> objektum."
+  remarks: "Ez a módszer a jegyzékfájl-alapú aktiválási kérelmek számára készült."
   syntax:
     content: protected static System.Runtime.Remoting.ObjectHandle CreateInstanceHelper (AppDomainSetup adSetup);
     parameters:
     - id: adSetup
       type: System.AppDomainSetup
-      description: "An <xref href=&quot;System.AppDomainSetup&quot;></xref> object whose <xref:System.AppDomainSetup.ActivationArguments*> property identifies the application to activate."
+      description: "Egy <xref href=&quot;System.AppDomainSetup&quot;> </xref> objektum, amelynek <xref:System.AppDomainSetup.ActivationArguments*>tulajdonság azonosítja az alkalmazás aktiválásához.</xref:System.AppDomainSetup.ActivationArguments*>"
     return:
       type: System.Runtime.Remoting.ObjectHandle
-      description: "An <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;></xref> that is a wrapper for the return value of the application execution. The return value must be unwrapped to access the real object."
+      description: "Egy <xref href=&quot;System.Runtime.Remoting.ObjectHandle&quot;> </xref> az alkalmazásfuttatás visszatérési értéke, amely egy burkolót. Az eredményül kapott értéket a tényleges objektum eléréséhez burkolatlan kell lennie."
   overload: System.Runtime.Hosting.ApplicationActivator.CreateInstanceHelper*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.AppDomainSetup.ActivationArguments*> property of <code>adSetup </code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "The <xref:System.AppDomainSetup.ActivationArguments*> property of <code>adSetup </code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.</xref:System.AppDomainSetup.ActivationArguments*>"
   - type: System.Security.Policy.PolicyException
     commentId: T:System.Security.Policy.PolicyException
-    description: "The application instance failed to execute because the policy settings on the current application domain do not provide permission for this application to run."
+    description: "Az alkalmazáspéldány végrehajtása sikertelen, mert a házirend-beállításokat, a jelenlegi alkalmazás tartományban nem ad meg az alkalmazás futtatásához engedély."
   platform:
   - net462
 references:
