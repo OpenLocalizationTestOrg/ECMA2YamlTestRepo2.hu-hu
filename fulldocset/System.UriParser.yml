@@ -19,8 +19,8 @@ items:
   nameWithType: UriParser
   fullName: System.UriParser
   type: Class
-  summary: "Parses a new URI scheme. This is an abstract class."
-  remarks: "The UriParser class enables you to create parsers for new URI schemes. You can write these parsers in their entirety, or the parsers can be derived from well-known schemes (HTTP, FTP, and other schemes based on network protocols). If you want to create a completely new parser, inherit from <xref:System.GenericUriParser>. If you want to create a parser that extends a well-known URI scheme, inherit from <xref:System.FtpStyleUriParser>, <xref:System.HttpStyleUriParser>, <xref:System.FileStyleUriParser>, <xref:System.GopherStyleUriParser>, or <xref:System.LdapStyleUriParser>.       Microsoft strongly recommends that you use a parser shipped with the .NET Framework. Building your own parser increases the complexity of your application, and will not perform as well as the shipped parsers."
+  summary: "Egy új URI-séma elemzi. Ez az absztrakt osztály."
+  remarks: "A UriParser osztály új URI-séma elemzők létrehozását teszi lehetővé. Ezek elemzők egészében írhat, vagy az elemzők származtatható jól ismert séma (HTTP, FTP és más rendszerek hálózati protokollok alapján). Ha szeretne létrehozni egy teljesen új elemző, <xref:System.GenericUriParser>.</xref:System.GenericUriParser> öröklése Ha szeretne létrehozni egy elemző, amely kiterjeszti a jól ismert URI-séma, örökölhet <xref:System.FtpStyleUriParser>, <xref:System.HttpStyleUriParser>, <xref:System.FileStyleUriParser>, <xref:System.GopherStyleUriParser>, vagy <xref:System.LdapStyleUriParser>.</xref:System.LdapStyleUriParser> </xref:System.GopherStyleUriParser> </xref:System.FileStyleUriParser> </xref:System.HttpStyleUriParser> </xref:System.FtpStyleUriParser>       A Microsoft nyomatékosan javasolja, hogy a .NET-keretrendszer rendszerrel szállított egy elemző használja. Saját elemző növeli az alkalmazás összetettségét, és nem hajt végre, valamint a szállított elemzők."
   syntax:
     content: public abstract class UriParser
   inheritance:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Constructs a default URI parser."
+  summary: "Egy alapértelmezett URI elemzési hoz létre."
   syntax:
     content: protected UriParser ();
     parameters: []
@@ -61,23 +61,23 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Gets the components from a URI."
-  remarks: "Use the GetComponents method to determine the value of various parts of the URI, such as the <xref:System.UriComponents>, <xref:System.UriComponents>, or <xref:System.UriComponents>.       The components are returned in the order that they appear in the URI. For example, if <xref:System.UriComponents> is specified, it appears first."
+  summary: "Az összetevők lekérése egy URI-t."
+  remarks: "A GetComponents módszer segítségével határozza meg, mint az URI különböző részeivel értékét a <xref:System.UriComponents>, <xref:System.UriComponents>, vagy <xref:System.UriComponents>.</xref:System.UriComponents> </xref:System.UriComponents> </xref:System.UriComponents>       Az összetevők visszaadja a megadott sorrendben jelennek meg az URI azonosító. Például ha <xref:System.UriComponents>meg van adva, akkor jelenik meg először.</xref:System.UriComponents>"
   syntax:
     content: protected virtual string GetComponents (Uri uri, UriComponents components, UriFormat format);
     parameters:
     - id: uri
       type: System.Uri
-      description: "The URI to parse."
+      description: "Az URI-elemzése."
     - id: components
       type: System.UriComponents
-      description: "The <xref:System.UriComponents> to retrieve from `uri`."
+      description: "A <xref:System.UriComponents>lekérése `uri`.</xref:System.UriComponents>"
     - id: format
       type: System.UriFormat
-      description: "One of the <xref:System.UriFormat> values that controls how special characters are escaped."
+      description: "Egy a <xref:System.UriFormat>, amely meghatározza, hogyan különleges karakterek értékek vannak escape-karaktersorozatot.</xref:System.UriFormat>"
     return:
       type: System.String
-      description: "A string that contains the components."
+      description: "Az összetevők tartalmazó karakterlánc."
   overload: System.UriParser.GetComponents*
   exceptions:
   - type: System.ArgumentOutOfRangeException
@@ -100,17 +100,17 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Initialize the state of the parser and validate the URI."
-  remarks: "The InitializeAndValidate method is called every time a <xref:System.Uri> is instantiated."
+  summary: "Az elemző szerinti inicializálása, és ellenőrizze az URI azonosító."
+  remarks: "A InitializeAndValidate metódus lehívásra kerül minden esetben egy <xref:System.Uri>létrejön.</xref:System.Uri>"
   syntax:
     content: protected virtual void InitializeAndValidate (Uri uri, out UriFormatException parsingError);
     parameters:
     - id: uri
       type: System.Uri
-      description: "The T:System.Uri to validate."
+      description: "A T:System.Uri érvényesítéséhez."
     - id: parsingError
       type: System.UriFormatException
-      description: "Validation errors, if any."
+      description: "Érvényesítési hiba, ha van ilyen."
   overload: System.UriParser.InitializeAndValidate*
   exceptions: []
   platform:
@@ -127,19 +127,19 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Determines whether <code>baseUri</code> is a base URI for <code>relativeUri</code>."
+  summary: "Meghatározza, hogy <code> baseUri </code> az alap URI-azonosítójának <code> relativeUri </code>."
   syntax:
     content: protected virtual bool IsBaseOf (Uri baseUri, Uri relativeUri);
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "The base URI."
+      description: "Az alap URI-azonosító."
     - id: relativeUri
       type: System.Uri
-      description: "The URI to test."
+      description: "Az URI-teszteléséhez."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>baseUri</code> is a base URI for <code>relativeUri</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>if <code>baseUri</code> is a base URI for <code>relativeUri</code>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.UriParser.IsBaseOf*
   exceptions: []
   platform:
@@ -156,24 +156,24 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Indicates whether the parser for a scheme is registered."
+  summary: "Azt jelzi, hogy regisztrálva van-e a program egy séma segítségével."
   syntax:
     content: public static bool IsKnownScheme (string schemeName);
     parameters:
     - id: schemeName
       type: System.String
-      description: "The scheme name to check."
+      description: "Ellenőrizze a séma neve."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>schemeName</code> has been registered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> schemeName </code> megtörtént regisztrált; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.UriParser.IsKnownScheme*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>schemeName</code> parameter is null."
+    description: "A <code> schemeName </code> paraméterek egyike null értékű."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>schemeName</code> parameter is not valid."
+    description: "A <code> schemeName </code> paraméter érvénytelen."
   platform:
   - net462
 - uid: System.UriParser.IsWellFormedOriginalString(System.Uri)
@@ -188,17 +188,17 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Indicates whether a URI is well-formed."
-  remarks: "The IsWellFormedOriginalString method will return false if:      -   The string is not correctly escaped per RFC 2396.      -   The string represents an absolute URI that references an implicit file URI.      -   The string represents an absolute URI that is missing a forward slash before the path component.      -   The string contains unescaped backslashes, even if they will be treated as forward slashes."
+  summary: "Azt jelzi, hogy URI formátumú."
+  remarks: "A IsWellFormedOriginalString metódus hamis vissza, ha:-a karakterlánc nem megfelelő escape-karakterrel megjelölve RFC 2396 száma.      -A karakterlánc egy URI-implicit fájlra hivatkozó abszolút URI jelöli.      -A karakterlánc egy abszolút URI-azonosító hiányzik az elérési út összetevő előtt perjellel jelöli.      -A karakterlánc unescaped fordított tartalmaz, akkor is, ha azok perjellel kell tekinteni."
   syntax:
     content: protected virtual bool IsWellFormedOriginalString (Uri uri);
     parameters:
     - id: uri
       type: System.Uri
-      description: "The URI to check."
+      description: "Az URI-ellenőrzése."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>uri</code> is well-formed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> uri </code> szabályos; egyéb, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.UriParser.IsWellFormedOriginalString*
   exceptions: []
   platform:
@@ -215,14 +215,14 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Invoked by a <xref:System.Uri> constructor to get a <xref href=&quot;System.UriParser&quot;></xref> instance"
-  remarks: "The default implementation returns the same <xref:System.UriParser> instance. You may need to override this method and return a different <xref:System.UriParser> for each invocation if you are operating in a multithreaded environment."
+  summary: "Által meghívott egy <xref:System.Uri>konstruktort az beszerzése egy <xref href=&quot;System.UriParser&quot;> </xref> példány</xref:System.Uri>"
+  remarks: "Az alapértelmezett implementációja adja vissza, az azonos <xref:System.UriParser>példány.</xref:System.UriParser> Bírálja felül ezt a módszert, és vissza egy másik szeretne <xref:System.UriParser>többszálas környezetben működnek, ha egyes elindításaihoz.</xref:System.UriParser>"
   syntax:
     content: protected virtual UriParser OnNewUri ();
     parameters: []
     return:
       type: System.UriParser
-      description: "A <xref href=&quot;System.UriParser&quot;></xref> for the constructed <xref:System.Uri>."
+      description: "A <xref href=&quot;System.UriParser&quot;> </xref> felépített <xref:System.Uri>.</xref:System.Uri>"
   overload: System.UriParser.OnNewUri*
   exceptions: []
   platform:
@@ -239,16 +239,16 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Invoked by the Framework when a <xref href=&quot;System.UriParser&quot;></xref> method is registered."
+  summary: "A keretrendszer által meghívott amikor egy <xref href=&quot;System.UriParser&quot;> </xref> metódus regisztrálva van-e."
   syntax:
     content: protected virtual void OnRegister (string schemeName, int defaultPort);
     parameters:
     - id: schemeName
       type: System.String
-      description: "The scheme that is associated with this <xref href=&quot;System.UriParser&quot;></xref>."
+      description: "A rendszer a társított <xref href=&quot;System.UriParser&quot;> </xref>."
     - id: defaultPort
       type: System.Int32
-      description: "The port number of the scheme."
+      description: "A portszám, a rendszer."
   overload: System.UriParser.OnRegister*
   exceptions: []
   platform:
@@ -265,20 +265,20 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Associates a scheme and port number with a <xref href=&quot;System.UriParser&quot;></xref>."
-  remarks: "If the `defaultPort` parameter is set to -1, the Register method registers no default value for the port number."
+  summary: "A rendszer és a port számát társítja a <xref href=&quot;System.UriParser&quot;> </xref>."
+  remarks: "Ha a `defaultPort` paraméter értéke -1, a regisztrálási metódusa nincs alapértelmezett értéke a port számát regisztrálja."
   syntax:
     content: public static void Register (UriParser uriParser, string schemeName, int defaultPort);
     parameters:
     - id: uriParser
       type: System.UriParser
-      description: "The URI parser to register."
+      description: "Az URI elemző regisztrálni."
     - id: schemeName
       type: System.String
-      description: "The name of the scheme that is associated with this parser."
+      description: "A rendszer ebbe az elemzőbe társított neve."
     - id: defaultPort
       type: System.Int32
-      description: "The default port number for the specified scheme."
+      description: "Az alapértelmezett portszám a megadott séma."
   overload: System.UriParser.Register*
   exceptions:
   - type: System.ArgumentNullException
@@ -301,23 +301,23 @@ items:
   assemblies:
   - System
   namespace: System
-  summary: "Called by <xref:System.Uri> constructors and &lt;xref:System.Uri.TryCreate%2A?displayProperty=fullName&gt; to resolve a relative URI."
-  remarks: "<xref:System.Uri> constructors and <xref:System.Uri.TryCreate%2A?displayProperty=fullName> use Resolve to construct a URI from `baseUri` and `relativeUri`.       If a parsing error occurs, the returned string for the resolved relative <xref:System.Uri> is null."
+  summary: "Által meghívott <xref:System.Uri>konstruktorok és &lt;xref:System.Uri.TryCreate%2A?displayProperty=fullName&gt; relatív URI feloldásához.</xref:System.Uri>"
+  remarks: "<xref:System.Uri>konstruktorok és <xref:System.Uri.TryCreate%2A?displayProperty=fullName>Resolve segítségével hozható létre URI a `baseUri` és `relativeUri`.</xref:System.Uri.TryCreate%2A?displayProperty=fullName></xref:System.Uri>       Ha egy elemzési hiba akkor fordul elő, a feloldott relatív visszaadott karakterlánc <xref:System.Uri>Null értékű.</xref:System.Uri>"
   syntax:
     content: protected virtual string Resolve (Uri baseUri, Uri relativeUri, out UriFormatException parsingError);
     parameters:
     - id: baseUri
       type: System.Uri
-      description: "A base URI."
+      description: "Egy alap URI-azonosító."
     - id: relativeUri
       type: System.Uri
-      description: "A relative URI."
+      description: "Relatív URI."
     - id: parsingError
       type: System.UriFormatException
-      description: "Errors during the resolve process, if any."
+      description: "Hibák a feloldása során, ha van ilyen."
     return:
       type: System.String
-      description: "The string of the resolved relative <xref:System.Uri>."
+      description: "A feloldott relatív <xref:System.Uri>.</xref:System.Uri> karakterlánc"
   overload: System.UriParser.Resolve*
   exceptions:
   - type: System.InvalidOperationException

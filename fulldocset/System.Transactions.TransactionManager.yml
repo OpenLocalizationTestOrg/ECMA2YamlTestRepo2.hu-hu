@@ -15,8 +15,8 @@ items:
   nameWithType: TransactionManager
   fullName: System.Transactions.TransactionManager
   type: Class
-  summary: "Contains methods used for transaction management. This class cannot be inherited."
-  remarks: "This class contains static properties and methods used to obtain information about the default transaction options. It also contains several static methods used for recovery of a durable resource when the durable resource fails. No special action is required of a durable resource if the Microsoft Distributed Transaction Coordinator (MSDTC) fails."
+  summary: "Tranzakció-kezelésre szolgáló metódust tartalmaz. Ez az osztály nem örökölhető."
+  remarks: "Ez az osztály tartalmazza a statikus tulajdonságok és az alapértelmezett információt szerezni a tranzakciós lehetőségek használt módszer. Helyreállítási tartós erőforrás használatos, ha a tartós erőforrás nem tud több statikus metódusok is tartalmaz. Különleges intézkedés nem szükséges egy tartós erőforrást, ha a Microsoft elosztott tranzakciók koordinátora (MSDTC) sikertelen."
   syntax:
     content: public static class TransactionManager
   inheritance:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the default timeout interval for new transactions."
-  remarks: "The timeout interval of a transaction is the time within which the transaction must be completed. If the transaction manager has not heard from all transaction participants within the timeout interval, it aborts the transaction.       This value can be set in the `DefaultSettingsSection` of the config file."
+  summary: "Lekérdezi az alapértelmezett időkorlát új tranzakciók."
+  remarks: "A tranzakció időkorlátja az az idő, amelyen belül a tranzakció el kell végezni. A tranzakciókezelő nem rendelkezik őt összes tranzakció résztvevőitől az időkorlát, ha a tranzakció megszakítása.       Ez az érték állítható be a `DefaultSettingsSection` a konfigurációs fájl."
   syntax:
     content: public static TimeSpan DefaultTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "A <xref:System.TimeSpan> value that specifies the timeout interval for new transactions."
+      description: "A <xref:System.TimeSpan>érték, amely meghatározza az időkorlát új tranzakciók.</xref:System.TimeSpan>"
   overload: System.Transactions.TransactionManager.DefaultTimeout*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Indicates that a distributed transaction has started."
-  remarks: "**Caution** Signing up for this event degrades the performance of all distributed transactions. Local transactions are not monitored as performance is affected even more.       **Note** This method uses <xref:System.Security.Permissions.SecurityAction> to prevent it from being called from untrusted code; however, only the immediate caller is required to possess the `FullTrust` permission set."
+  summary: "Azt jelzi, hogy az elosztott tranzakció elindult."
+  remarks: "**Figyelmeztetés** iratkozik fel, az ezt az eseményt csökkenti az összes elosztott tranzakciók teljesítményét. A helyi tranzakciók nem figyeli, a teljesítmény továbbiakat is érinti.       **Megjegyzés:** ezt a módszert használja <xref:System.Security.Permissions.SecurityAction>akadályoznia, hogy a nem megbízható kód hívása; azonban csak a közvetlen hívónak kell rendelkeznie a `FullTrust` engedélycsoport.</xref:System.Security.Permissions.SecurityAction>"
   syntax:
     content: public static event System.Transactions.TransactionStartedEventHandler DistributedTransactionStarted;
     return:
       type: System.Transactions.TransactionStartedEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -82,13 +82,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets or sets a custom transaction factory."
-  remarks: '**Note** This method uses <xref:System.Security.Permissions.SecurityAction> to prevent it from being called from untrusted code; however, only the immediate caller is required to possess the `FullTrust` permission set.'
+  summary: "Lekérdezi vagy beállítja az egyéni tranzakció gyár."
+  remarks: '**Megjegyzés:** ezt a módszert használja <xref:System.Security.Permissions.SecurityAction>akadályoznia, hogy a nem megbízható kód hívása; azonban csak a közvetlen hívónak kell rendelkeznie a `FullTrust` engedélycsoport.</xref:System.Security.Permissions.SecurityAction>'
   syntax:
     content: public static System.Transactions.HostCurrentTransactionCallback HostCurrentCallback { get; set; }
     return:
       type: System.Transactions.HostCurrentTransactionCallback
-      description: "A <xref href=&quot;System.Transactions.HostCurrentTransactionCallback&quot;></xref> that contains a custom transaction factory."
+      description: "A <xref href=&quot;System.Transactions.HostCurrentTransactionCallback&quot;> </xref> , amely tartalmaz egy egyéni tranzakció gyári."
   overload: System.Transactions.TransactionManager.HostCurrentCallback*
   exceptions: []
   platform:
@@ -105,13 +105,13 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the default maximum timeout interval for new transactions."
-  remarks: "For an explanation of the timeout interval, see the documentation for the <xref:System.Transactions.TransactionManager.DefaultTimeout%2A> property.       This value can be set in the `MachineSettingsSection` of the config file."
+  summary: "Lekérdezi az alapértelmezett maximális időkorlátja új tranzakciók."
+  remarks: "Az időkorlát magyarázatot dokumentációjában a <xref:System.Transactions.TransactionManager.DefaultTimeout%2A>tulajdonság.</xref:System.Transactions.TransactionManager.DefaultTimeout%2A>       Ez az érték állítható be a `MachineSettingsSection` a konfigurációs fájl."
   syntax:
     content: public static TimeSpan MaximumTimeout { get; }
     return:
       type: System.TimeSpan
-      description: "A <xref:System.TimeSpan> value that specifies the maximum timeout interval that is allowed when creating new transactions."
+      description: "A <xref:System.TimeSpan>érték, amely meghatározza, hogy új tranzakciók létrehozásakor maximális időkorlátja.</xref:System.TimeSpan>"
   overload: System.Transactions.TransactionManager.MaximumTimeout*
   exceptions: []
   platform:
@@ -128,14 +128,14 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Notifies the transaction manager that a resource manager recovering from failure has finished reenlisting in all unresolved transactions."
-  remarks: "All durable resource managers should do recovery when they first start up by calling the <xref:System.Transactions.TransactionManager.Reenlist%2A> method for each outstanding transaction.  Only when all of the reenlistments are done should the resource manager call RecoveryComplete.       For more information on recovery, see [Performing Recovery](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691).       **Note** This method uses <xref:System.Security.Permissions.SecurityAction> to prevent it from being called from untrusted code; however, only the immediate caller is required to possess the `FullTrust` permission set."
+  summary: "Egy erőforrás-kezelő történő helyreállítás sikertelen befejeződésének összes feloldatlan tranzakcióknál reenlisting tranzakció felettesét is értesíti."
+  remarks: "Minden állandó erőforrás-kezelők kell helyreállításával próbálkozik, amikor először kezdi meghívásával a <xref:System.Transactions.TransactionManager.Reenlist%2A>metódus minden függőben lévő tranzakció.</xref:System.Transactions.TransactionManager.Reenlist%2A>  Csak akkor, ha az összes a reenlistments végzett az erőforrás-kezelő kell hívnia RecoveryComplete.       A helyreállítási további információkért lásd: [végrehajtása helyreállítási](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691).       **Megjegyzés:** ezt a módszert használja <xref:System.Security.Permissions.SecurityAction>akadályoznia, hogy a nem megbízható kód hívása; azonban csak a közvetlen hívónak kell rendelkeznie a `FullTrust` engedélycsoport.</xref:System.Security.Permissions.SecurityAction>"
   syntax:
     content: public static void RecoveryComplete (Guid resourceManagerIdentifier);
     parameters:
     - id: resourceManagerIdentifier
       type: System.Guid
-      description: "A <xref:System.Guid> that uniquely identifies the resource to be recovered from."
+      description: "A <xref:System.Guid>, amely egyedileg azonosítja az erőforrás a helyre kell állítani.</xref:System.Guid>"
   overload: System.Transactions.TransactionManager.RecoveryComplete*
   exceptions:
   - type: System.ArgumentNullException
@@ -155,34 +155,34 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Reenlists a durable participant in a transaction."
-  remarks: "A resource manager facilitates resolution of durable enlistments in a transaction by reenlisting the transaction participant after resource failure.       The `resourceManagerIdentifier` parameter is used to consistently label the participant of a transaction in the event of a resource failure.  When calling the Reenlist method, the resource manager must provide the same `resourceManagerIdentifier` as it used when it originally called the <xref:System.Transactions.Transaction.EnlistDurable%2A> method during enlistment, or a <xref:System.Transactions.TransactionException> is thrown.       When a participant is reenlisted using this method, the phase 2 methods of <xref:System.Transactions.IEnlistmentNotification> that correspond to the transaction&quot;s outcome (that is, <xref:System.Transactions.IEnlistmentNotification.Commit%2A> , <xref:System.Transactions.IEnlistmentNotification.Rollback%2A> or <xref:System.Transactions.IEnlistmentNotification.InDoubt%2A> ) are called as appropriate.       After the participants are successfully reenlisted, you should then call <xref:System.Transactions.TransactionManager.RecoveryComplete%2A> to complete the recovery.       You should only call this method when a resource manager restarts from failure. In addition, you should only reenlist unresolved transactions logged by a resource manager during the initial Prepare phase of a two-phase commit. Any attempt to call this method at invalid times can produce erroneous results.       If the transaction manager fails, and your resource manager performs recovery only a short time after you called the <xref:System.Transactions.PreparingEnlistment.Prepared%2A> method on an enlistment in phase 1 of the Two-Phase Commit protocol, your resource manager might either receive the <xref:System.Transactions.IEnlistmentNotification.InDoubt%2A> or <xref:System.Transactions.IEnlistmentNotification.Rollback%2A> callback.       For more information on recovery, see [Performing Recovery](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691).       **Note** This method uses <xref:System.Security.Permissions.SecurityAction> to prevent it from being called from untrusted code; however, only the immediate caller is required to possess the `FullTrust` permission set."
+  summary: "Reenlists egyik állandó résztvevőtől szerepel egy tranzakcióban."
+  remarks: "Egy erőforrás-kezelő aktív felek részvételét a tranzakcióban feloldása könnyíti meg által a tranzakció résztvevő reenlisting erőforrás-meghibásodás után.       A `resourceManagerIdentifier` paraméterrel következetesen címke a résztvevő egy tranzakciót egy erőforrás meghibásodása esetén.  Reenlist metódus hívásakor az erőforrás-kezelő biztosítania kell a azonos `resourceManagerIdentifier` , mert meghívásakor használt azt eredetileg a <xref:System.Transactions.Transaction.EnlistDurable%2A>metódus során bejegyzési, vagy egy <xref:System.Transactions.TransactionException>vált ki.</xref:System.Transactions.TransactionException> </xref:System.Transactions.Transaction.EnlistDurable%2A>       Ha egy résztvevőt reenlisted van ezzel a módszerrel, a 2. fázis módszerek <xref:System.Transactions.IEnlistmentNotification>, amelyek megfelelnek a tranzakció eredményét (Ez azt jelenti, hogy <xref:System.Transactions.IEnlistmentNotification.Commit%2A>, <xref:System.Transactions.IEnlistmentNotification.Rollback%2A>vagy <xref:System.Transactions.IEnlistmentNotification.InDoubt%2A>) megfelelő nevezzük.</xref:System.Transactions.IEnlistmentNotification.InDoubt%2A> </xref:System.Transactions.IEnlistmentNotification.Rollback%2A> </xref:System.Transactions.IEnlistmentNotification.Commit%2A> </xref:System.Transactions.IEnlistmentNotification>       Miután a résztvevők sikeresen reenlisted vannak, majd hívja a <xref:System.Transactions.TransactionManager.RecoveryComplete%2A>helyreállításának befejezéséhez.</xref:System.Transactions.TransactionManager.RecoveryComplete%2A>       Ez a metódus csak egy erőforrás-kezelő újraindításakor történt hiba után célszerű hívni. Emellett egy kétfázisú végrehajtási kezdeti előkészítési fázisban egy erőforrás-kezelő által naplózott feloldatlan tranzakciók csak újralistázást. Ez a metódus hívása érvénytelen időpontokban tett bármilyen kísérlet hibás eredményt is.       Ha a tranzakciókezelő nem sikerül, és az erőforrás-kezelő helyreállítást hajt végre csak rövid idő után hívott a <xref:System.Transactions.PreparingEnlistment.Prepared%2A>ennél az 1. fázis a kétfázisú véglegesítése protokoll metódust, az erőforrás-kezelő vagy fordulhat elő a <xref:System.Transactions.IEnlistmentNotification.InDoubt%2A>vagy <xref:System.Transactions.IEnlistmentNotification.Rollback%2A>visszahívás.</xref:System.Transactions.IEnlistmentNotification.Rollback%2A> </xref:System.Transactions.IEnlistmentNotification.InDoubt%2A> </xref:System.Transactions.PreparingEnlistment.Prepared%2A>       A helyreállítási további információkért lásd: [végrehajtása helyreállítási](http://msdn.microsoft.com/en-us/d342c5c7-da64-4a4c-8e63-b52f4fbf2691).       **Megjegyzés:** ezt a módszert használja <xref:System.Security.Permissions.SecurityAction>akadályoznia, hogy a nem megbízható kód hívása; azonban csak a közvetlen hívónak kell rendelkeznie a `FullTrust` engedélycsoport.</xref:System.Security.Permissions.SecurityAction>"
   syntax:
     content: public static System.Transactions.Enlistment Reenlist (Guid resourceManagerIdentifier, byte[] recoveryInformation, System.Transactions.IEnlistmentNotification enlistmentNotification);
     parameters:
     - id: resourceManagerIdentifier
       type: System.Guid
-      description: "A <xref:System.Guid> that uniquely identifies the resource manager."
+      description: "A <xref:System.Guid>, amely egyedileg azonosítja az erőforrás-kezelő.</xref:System.Guid>"
     - id: recoveryInformation
       type: System.Byte[]
-      description: "Contains additional information of recovery information."
+      description: "A helyreállítási információk további információkat tartalmaz."
     - id: enlistmentNotification
       type: System.Transactions.IEnlistmentNotification
-      description: "A resource object that implements <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;></xref> to receive notifications."
+      description: "Egy objektum, amely megvalósítja az <xref href=&quot;System.Transactions.IEnlistmentNotification&quot;> </xref> értesítéseket."
     return:
       type: System.Transactions.Enlistment
-      description: "An <xref href=&quot;System.Transactions.Enlistment&quot;></xref> that describes the enlistment."
+      description: "Egy <xref href=&quot;System.Transactions.Enlistment&quot;> </xref> , amely leírja, hogy a bejelentkezés."
   overload: System.Transactions.TransactionManager.Reenlist*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>recoveryInformation</code> is invalid.       -or-       Transaction Manager information in <code>recoveryInformation</code> does not match the configured transaction manager.       -or-       <code>RecoveryInformation</code> is not recognized by <xref href=&quot;System.Transactions&quot;></xref>."
+    description: "<code>recoveryInformation</code>érvénytelen.       – vagy – a tranzakciókezelő információk <code>recoveryInformation</code> nem egyezik meg a beállított tranzakciókezelővel.       – vagy – <code>RecoveryInformation</code> nem ismeri fel <xref href=&quot;System.Transactions&quot;> </xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<xref:System.Transactions.TransactionManager.RecoveryComplete*> has already been called for the specified <code>resourceManagerIdentifier</code>. The reenlistment is rejected."
+    description: "<xref:System.Transactions.TransactionManager.RecoveryComplete*>hívása már megtörtént a megadott <code> resourceManagerIdentifier </code>.</xref:System.Transactions.TransactionManager.RecoveryComplete*> A tranzakcióállapot elutasítva."
   - type: System.Transactions.TransactionException
     commentId: T:System.Transactions.TransactionException
-    description: "The <code>resourceManagerIdentifier</code> does not match the content of the specified recovery information in <code>recoveryInformation</code>."
+    description: "A <code> resourceManagerIdentifier </code> nem egyezik a megadott helyreállítási adatok tartalmának <code> recoveryInformation </code>."
   platform:
   - net462
 references:

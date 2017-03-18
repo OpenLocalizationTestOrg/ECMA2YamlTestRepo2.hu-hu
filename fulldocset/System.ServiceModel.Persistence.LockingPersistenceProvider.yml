@@ -29,8 +29,8 @@ items:
   nameWithType: LockingPersistenceProvider
   fullName: System.ServiceModel.Persistence.LockingPersistenceProvider
   type: Class
-  summary: "The abstract base class from which all durable service persistence providers that implement locking are derived."
-  remarks: "In addition to persistence, the LockingPersistenceProvider class implements locking of service state data records. Methods that interact with persisted data (such as the `Load` method) have an optional parameter (`lockInstance`) that defines whether locks on the data in question are released or maintained."
+  summary: "Az absztrakt alaposztály amelyből valamennyi tartós adatmegőrzési szolgáltató, amelyek megvalósítják a zárolás származik."
+  remarks: "Adatmegőrzési, mellett a LockingPersistenceProvider osztály megvalósítja az szolgáltatás állapota rekordok zárolását. Metódusokat tárolt adatok (például a `Load` metódus) rendelkezik egy nem kötelező paraméter (`lockInstance`), mely meghatározza, hogy a szóban forgó adatok zárolását lettek közzétéve vagy karbantartása."
   syntax:
     content: >-
       [System.Obsolete("The WF3 types are deprecated.  Instead, please use the new WF4 types from System.Activities.*")]
@@ -63,13 +63,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, creates a new instance of the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> class, configured with the specified identity value."
+  summary: "A származtatott osztály megadásuk hoz létre egy új példányát a <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;> </xref> osztály konfigurálva a megadott azonosító értékét."
   syntax:
     content: protected LockingPersistenceProvider (Guid id);
     parameters:
     - id: id
       type: System.Guid
-      description: "The unique identifier to be associated with this persistence provider instance."
+      description: "Az adatmegőrzési szolgáltató példányhoz tartozó egyedi azonosítója."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor*
   exceptions: []
   platform:
@@ -86,26 +86,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method does not unlock the instance after saving the state information."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> method, which takes an additional parameter to determine whether the instance is unlocked. This method passes `false` as a value for this parameter to the calling method."
+  summary: "Egy aszinkron művelet létrehozásához példány állapotadatokat az állapotmegőrző tárolóban, a paraméterek használatával kezdődik. Ez a módszer nem példány zárolásának feloldására a történő mentésekor az állapotadatokat."
+  remarks: "Ez a metódus meghívja a a <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A>metódus, amely annak megállapítására irányult, hogy a példány zárolásának a további paramétert.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> Ez a módszer továbbítja `false` ezt a paramétert a hívó metódus értékeként."
   syntax:
     content: public override IAsyncResult BeginCreate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "A példány, amelynek állapotadatait mentéskor az állapotmegőrző tárolóban."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Az időköz, amelyben a kell művelet csatornainicializálásnak nélkül."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -122,28 +122,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method unlocks the instance after saving the instance state if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Egy aszinkron művelet létrehozásához példány állapotadatokat az állapotmegőrző tárolóban, a paraméterek használatával kezdődik. Ez a módszer feloldja a példány után mentse a példány állapota, ha az értéke a <code> unlockInstance </code> paraméter <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginCreate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "A példány, amelynek állapotadatait mentéskor az állapotmegőrző tárolóban."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Az időköz, amelyben a kell művelet csatornainicializálásnak nélkül."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány fel kell oldani az állapotmegőrző tárolóban; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -160,23 +160,23 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method does not lock the instance."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>, which takes an additional parameter that specifies whether the instance must be locked in the persistence store. This method passes `false` as a value for this parameter to the calling method."
+  summary: "Egy aszinkron művelet állapota alapján az állapotmegőrző tárolóban, a paraméterek használatával példány betöltésére kezdődik. Ez a módszer nem zárolja a példányt."
+  remarks: "Ez a metódus meghívja a a <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>, ami egy további paramétert fogad, amely megadja, hogy a példány zárolni kell az állapotmegőrző tárolóban lévő.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A> Ez a módszer továbbítja `false` ezt a paramétert a hívó metódus értékeként."
   syntax:
     content: public override IAsyncResult BeginLoad (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Az időköz, amelyben a kell művelet csatornainicializálásnak nélkül."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -193,25 +193,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method locks the instance after loading the instance state if the value of the <code>lockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Egy aszinkron művelet állapota alapján az állapotmegőrző tárolóban, a paraméterek használatával példány betöltésére kezdődik. Ez a módszer zárolja a példányt betöltése a példány állapota, ha után értékének a <code> lockInstance </code> paraméter <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginLoad (TimeSpan timeout, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "Olyan időszak, amelyben a művelet előtt ki kell tölteni közbeni időtúllépés miatt meghiúsult."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány zárolni kell; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -228,25 +228,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call does not lock the instance in the persistence store."
+  summary: "A származtatott osztály megadásuk jelöli a LoadIfChanged fázis elején. A LoadIfChanged fázis következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató és az állapotadatokat az állapotmegőrző tárolóban módosítva lett. A metódus hívása nem zárolja a példányt a az állapotmegőrző tárolóban."
   syntax:
     content: public override IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Az időszak, amely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "A jogkivonatot adott vissza a korábbi <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> a hívó által tárolt módszer, amely az aktuális állapotát jeleníti meg."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -263,28 +263,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call lets you specify whether you want to lock the instance in the persistence store."
+  summary: "A származtatott osztály megadásuk jelöli a LoadIfChanged fázis elején. A LoadIfChanged fázis következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató és az állapotadatokat az állapotmegőrző tárolóban módosítva lett. A metódus hívása lehetővé teszi adja meg, hogy az állapotmegőrző tárolóban szereplő példány zárolását."
   syntax:
     content: public virtual IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Az időszak, amely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "A jogkivonatot adott vissza a korábbi <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> a hívó által tárolt módszer, amely az aktuális állapotát jeleníti meg."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is locked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány zárolása az állapotmegőrző tárolóban; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -301,22 +301,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to unlock an instance in the persistence store."
+  summary: "Egy aszinkron művelet az állapotmegőrző tárolóban található egy példány zárolásának feloldására kezdődik."
   syntax:
     content: public abstract IAsyncResult BeginUnlock (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "Olyan időszak, amelyben a művelet előtt ki kell tölteni közbeni időtúllépés miatt meghiúsult."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Az aszinkron művelethez társított állapotadatait."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock*
   exceptions: []
   platform:
@@ -333,26 +333,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation does not unlock the instance in the instance store."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A> method and passes a `false` value for the `unlockInstance` parameter."
+  summary: "Egy aszinkron művelet példány állapota információinak frissítése a az állapotmegőrző tárolóban, az átadott paraméterek használatával kezdődik. Ez a művelet a példány, a példány tárolóban nem zárolásának feloldására."
+  remarks: "Ez a metódus meghívja a a <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>metódus és cserél egy `false` értékét a `unlockInstance` paraméter.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>"
   syntax:
     content: public override IAsyncResult BeginUpdate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "A példány, amelynek állapotadatait frissíthető az állapotmegőrző tárolóban."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "Az időköz, amelyben a művelet időtúllépés nélkül kell végeznie."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation is completed."
+      description: "A delegált esetén, amely a értesítést kapjon, ha a művelet befejezését."
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "Az aszinkron művelet vonatkozó állapotadatokat."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -369,28 +369,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation locks the instance in the persistence store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Egy aszinkron művelet példány állapota információinak frissítése a az állapotmegőrző tárolóban, az átadott paraméterek használatával kezdődik. Ez a művelet az állapotmegőrző tárolóban szereplő példány zárolja, ha az értéke a <code> unlockInstance </code> paraméter <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginUpdate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "A példány, amelynek állapotadatait frissíthető az állapotmegőrző tárolóban."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "Az időköz, amelyben a művelet időtúllépés nélkül kell végeznie."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked after the instance state is updated in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány zárolni kell, miután a példány állapota frissül az állapotmegőrző tárolóban; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "A delegált esetén, amely a értesítést kap, a művelet befejeződése után."
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "Az aszinkron művelet vonatkozó állapotadatokat."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Egy aszinkron művelet állapotát."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -407,19 +407,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Creates instance state information in the persistence store using parameters passed into the method. This method does not unlock the instance in the persistence store after saving the instance state."
+  summary: "Példány állapotadatokat az állapotmegőrző tárolóban, a metódusnak átadott paraméterek használatával hoz létre. Ez a módszer nem példány zárolásának feloldására a található az állapotmegőrző tárolóban példány állapotának mentése után."
   syntax:
     content: public override object Create (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information must be saved into the persistence store."
+      description: "A példány objektum, amelynek állapotadatait menteni kell az állapotmegőrző tárolóban a."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete before timing out."
+      description: "Az időköz, amelyben a művelet időtúllépés előtt kell be."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Az állapotadatokat."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -436,22 +436,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "This method creates instance state information in the persistence store using parameters passed into the method. The method unlocks the instance in the instance store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Ez a módszer példány állapotadatokat az állapotmegőrző tárolóban, a metódusnak átadott paraméterek használatával hoz létre. A metódus feloldja a példánytárolóban a példány, ha az értéke a <code> unlockInstance </code> paraméter <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract object Create (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information is saved into the persistence store."
+      description: "A példány objektum, amelynek állapotadatait mentéskor az állapotmegőrző tárolóban."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval within which the operation must complete before timing out."
+      description: "Az időköz, amelyen belül a művelet időtúllépés előtt teljesítendő."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány fel kell oldani az állapotmegőrző tárolóban; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Az állapotadatokat."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Ends the asynchronous operation to unlock an instance in the persistence store."
+  summary: "Befejeződik az aszinkron művelet az állapotmegőrző tárolóban található egy példány zárolásának feloldására."
   syntax:
     content: public abstract void EndUnlock (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result returned by the unlock operation."
+      description: "A feloldási művelet által visszaadott eredmény."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock*
   exceptions: []
   platform:
@@ -491,17 +491,17 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads service state information from the persistence store without locking the instance."
-  remarks: "This method invokes the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A> method with `lockInstance` parameter set to `false`."
+  summary: "Terhelések szolgáltatás állapotadatait a megőrzési tárolóból anélkül, hogy a példány zárolását."
+  remarks: "Ez a metódus meghívja a <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>metódus `lockInstance` paraméter `false`.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>"
   syntax:
     content: public override object Load (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     return:
       type: System.Object
-      description: "The service state information."
+      description: "A szolgáltatás állapotára vonatkozó információ."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -518,19 +518,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads state information from the persistence store after locking the instance."
+  summary: "Terhelések állapotinformáció a megőrzési tárolóból után a példány zárolását."
   syntax:
     content: public abstract object Load (TimeSpan timeout, bool lockInstance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the persistence provider aborts this operation."
+      description: "Az időszak, amely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány zároltnak kell lennie; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Az állapotadatokat."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -547,22 +547,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method does not lock the instance in the persistence store."
+  summary: "Tölti be a példány állapotadatait a megőrzési tárolóból, ha az állapotadatokat az adatokat a hívó által betöltött utolsó óta megváltozott. Ez a módszer nem zárolja a példány található az állapotmegőrző tárolóban."
   syntax:
     content: public override bool LoadIfChanged (TimeSpan timeout, object instanceToken, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Az időszak, amely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method calls, which represents the current state held by the caller."
+      description: "Az előző visszatérési értékeként <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> metódushívások, amely a hívó által tárolt aktuális állapotát jeleníti meg."
     - id: instance
       type: System.Object
-      description: "The actual instance state information."
+      description: "A tényleges példány állapotadatait."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány az állapotmegőrző tárolóban; a művelet végén zárolva van Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -579,25 +579,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method also lets the caller specify whether to lock the instance in the persistence store."
+  summary: "Tölti be a példány állapotadatait a megőrzési tárolóból, ha az állapotadatokat az adatokat a hívó által betöltött utolsó óta megváltozott. Ezt a módszert is lehetővé teszi a hívó adja meg, hogy az állapotmegőrző tárolóban szereplő példány zárolását."
   syntax:
     content: public virtual bool LoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Az időszak, amely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous Create or Update method calls, which represents the current state held by the caller."
+      description: "A visszatérési értékeként a korábbi létrehozás vagy frissítés-metódushívások, amely a hívó által tárolt aktuális állapotát jeleníti meg."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány az állapotmegőrző tárolóban; a művelet végén zárolva van Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "A példány állapotadatait."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány az állapotmegőrző tárolóban; a művelet végén zárolva van Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -614,13 +614,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Unlocks the instance whose ID is specified when constructing the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> object in the persistence store."
+  summary: "A példány, amelyek azonosítója meg van adva, térített feloldja a <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;> </xref> objektum az az állapotmegőrző tárolóban."
   syntax:
     content: public abstract void Unlock (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató megszakítja a műveletet."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock*
   exceptions: []
   platform:
@@ -637,19 +637,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk frissíti az állapotmegőrző tárolóban példány állapotinformáció. Ez a módszer nem példány zárolásának feloldására a található az állapotmegőrző tárolóban példány állapota információk frissítése után."
   syntax:
     content: public override object Update (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "A példány állapotadatait."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "A példány állapotadatait."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:
@@ -666,22 +666,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk frissíti az állapotmegőrző tárolóban példány állapotinformáció. Ez a módszer nem példány zárolásának feloldására a található az állapotmegőrző tárolóban példány állapota információk frissítése után."
   syntax:
     content: public abstract object Update (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "A példány állapotadatait."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató megszakítja a műveletet."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is unlocked after the instance state information is updated; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány zárolásának után frissíti a példány állapota adatait; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "A példány állapotadatait."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:

@@ -12,8 +12,8 @@ items:
   nameWithType: SecurityStateEncoder
   fullName: System.ServiceModel.Security.SecurityStateEncoder
   type: Class
-  summary: "An abstract class that can be implemented to encode the security state."
-  remarks: "This class is used to encode and decode the content of the security context token when a binding with message security that uses a stateful security context token is used. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] stateful security context tokens, see [How to: Create a Security Context Token for a Secure Session](~/add/includes/ajax-current-ext-md.md) topic.       Microsoft’s version of SecurityStateEncoder is <xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder>. It uses Microsoft’s [Windows Data Protection (DPAPI)](http://go.microsoft.com/fwlink/?LinkId=96704) technology to encrypt/decrypt the cookie. You can plug in a different mechanism for encrypting and decrypting cookies by implementing this class.       The encoding of the security state must ensure that the state is signed and encrypted for the service.       This class is used by the server when sending the security state as a cookie in the `SecurityContextToken` issued to the client.       An example implementation of this class is an `X509CertificateSecurityStateEncoder` that uses the service&quot;s certificate to sign and encrypt the security state."
+  summary: "Absztrakt osztály, amely a biztonsági állapot kódolni valósítható."
+  remarks: "Ez az osztály kódolásához, és a biztonsági környezet jogkivonata tartalmának dekódolni, egy állapot-nyilvántartó biztonsági környezet jogkivonata használó üzenetbiztonság egy kötés használata esetén használatos. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)]állapot-nyilvántartó biztonsági környezet jogkivonatokat, lásd: [hogyan: hozzon létre egy biztonsági környezeti Token a biztonságos munkamenet](~/add/includes/ajax-current-ext-md.md) témakör.       A Microsoft SecurityStateEncoder verziószáma <xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder>.</xref:System.ServiceModel.Security.DataProtectionSecurityStateEncoder> Használja a Microsoft [Windows Data Protection (DPAPI)](http://go.microsoft.com/fwlink/?LinkId=96704) technológiát a cookie titkosítása/visszafejtése. Egy másik mechanizmust titkosítása és visszafejtése a cookie-k Ez az osztály implementálásával csatlakoztatható.       A biztonsági állapot kódolás biztosítania kell, hogy állapotát, és a szolgáltatás titkosított.       Ez az osztály a kiszolgáló által használt, egy cookie-t a biztonsági állapotát küldésekor a `SecurityContextToken` kiadott az ügyfélnek.       Ez az osztály egy példa végrehajtása egy `X509CertificateSecurityStateEncoder` használó a szolgáltatás tanúsítvány aláírására és titkosítására biztonsági állapotát."
   syntax:
     content: public abstract class SecurityStateEncoder
   inheritance:
@@ -34,7 +34,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Security.SecurityStateEncoder&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Security.SecurityStateEncoder&quot;> </xref> osztály."
   syntax:
     content: protected SecurityStateEncoder ();
     parameters: []
@@ -54,16 +54,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Decodes the security state."
+  summary: "A biztonsági állapot dekódol."
   syntax:
     content: protected abstract byte[] DecodeSecurityState (byte[] data);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "Security data."
+      description: "Biztonsági adatokat."
     return:
       type: System.Byte[]
-      description: "A byte array that represents the security state."
+      description: "Egy bájttömböt, amely a biztonsági állapotát jeleníti meg."
   overload: System.ServiceModel.Security.SecurityStateEncoder.DecodeSecurityState*
   exceptions: []
   platform:
@@ -80,16 +80,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Security
-  summary: "Encodes the security state."
+  summary: "Kódolja a biztonsági állapotát."
   syntax:
     content: protected abstract byte[] EncodeSecurityState (byte[] data);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "The security state data."
+      description: "A biztonsági állapot adatait."
     return:
       type: System.Byte[]
-      description: "A byte array that results from encoding the security state."
+      description: "A biztonsági állapot kódolás annak az eredménye egy bájttömböt."
   overload: System.ServiceModel.Security.SecurityStateEncoder.EncodeSecurityState*
   exceptions: []
   platform:

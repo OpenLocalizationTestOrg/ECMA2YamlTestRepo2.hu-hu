@@ -13,8 +13,8 @@ items:
   nameWithType: ReliableSession
   fullName: System.ServiceModel.ReliableSession
   type: Class
-  summary: "Provides convenient access to the properties of a reliable session binding element that are available when using one of the system-provided bindings."
-  remarks: "The properties contained in the ReliableSession class are the subset of those contained in the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement> that are accessible from a predefined binding. This subset consists of the <xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A> and <xref:System.ServiceModel.ReliableSession.Ordered%2A> properties. The ReliableSession class references the same objects as does the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement>, so changing the value of one changes the value of the other too. This class gathers these two properties of reliable session binding element together for better discoverability."
+  summary: "Tetszés szerinti érhetők el, ha a rendszer által biztosított kötések egyikének használatával a megbízható munkamenet kötéselem tulajdonságainak hozzáférést biztosít."
+  remarks: "A ReliableSession osztály szereplő tulajdonságok a azoknak a részhalmazát képezik, a <xref:System.ServiceModel.Channels.ReliableSessionBindingElement>, amelyek egy előre meghatározott kötés elérhető.</xref:System.ServiceModel.Channels.ReliableSessionBindingElement> A részhalmaza áll a <xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A>és <xref:System.ServiceModel.ReliableSession.Ordered%2A>Tulajdonságok.</xref:System.ServiceModel.ReliableSession.Ordered%2A> </xref:System.ServiceModel.ReliableSession.InactivityTimeout%2A> A ReliableSession osztály hivatkozik, mint az azonos objektumokat a <xref:System.ServiceModel.Channels.ReliableSessionBindingElement>, így megváltoztatja az értéket az egyik értékét módosítja, a másik túl.</xref:System.ServiceModel.Channels.ReliableSessionBindingElement> Ez az osztály a két tulajdonság jobban felderíthetőség a megbízható munkamenet kötési elem összegyűjti."
   example:
   - "The following example shows how to create a new reliable session, and access and change the property values of that session. The ReliableSession class allows you to write:  \n  \n [!code-cs[UEReliableSession#1](~/add/codesnippet/csharp/t-system.servicemodel.re_0_1.cs)]\n [!code-vb[UEReliableSession#1](~/add/codesnippet/visualbasic/t-system.servicemodel.re_0_1.vb)]"
   syntax:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.ReliableSession&quot;> </xref> osztály."
   syntax:
     content: public ReliableSession ();
     parameters: []
@@ -57,7 +57,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ReliableSession&quot;></xref> class from a reliable session binding element."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.ReliableSession&quot;> </xref> a megbízható munkamenet kötéselem osztályt."
   remarks: ''
   example:
   - >-
@@ -68,7 +68,7 @@ items:
     parameters:
     - id: reliableSessionBindingElement
       type: System.ServiceModel.Channels.ReliableSessionBindingElement
-      description: "The <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> whose property values are used to initialize the reliable session."
+      description: "A <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> amelyek tulajdonság értékét a megbízható munkamenet inicializálása szolgálnak."
   overload: System.ServiceModel.ReliableSession.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -88,8 +88,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets an interval of time that a service can remain inactive before closing."
-  remarks: "The property gets and sets the value of the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A> property.       Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout property controls the maximum amount of time to keep an inactive session alive. If more than the InactivityTimeout specified time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher could independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages of any sort are received or if there is a failure on the sender.       Setting this timeout prevents the server from holding onto a security session if the client does not close it. If the security session has not received a message for the inactivity interval of time, it is closed by the server. This mitigates a potential denial of service attack.       When using a reliable session, there are two different inactivity timers that must be satisfied to keep the connection alive. If either of these inactivity timers goes off, then the connection is dropped.      -   The first inactivity timer is on the reliable session and is called the InactivityTimeout. This inactivity timer fires if no messages, either application or infrastructure, are received within the timeout period. An infrastructure message is a message that is generated for the purpose of one of the protocols in the channel stack, such as a keep alive or an acknowledgment, rather than containing application data.      -   The second inactivity timer is on the service and uses the <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> setting of the binding. This inactivity timer fires if no application messages are received within the timeout period.       Since the connection is dropped if either inactivity timer fires, increasing InactivityTimeout once it is greater than <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> has no effect. The default for both of these timeouts is 10 minutes, so you always have to increase both of them to make a difference when using a reliable session."
+  summary: "Lekérdezi vagy beállítja az időtartam, amely egy szolgáltatás ennyi ideig inaktív Bezárás előtt."
+  remarks: "A tulajdonság és az értékének beállítása a <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A>tulajdonság.</xref:System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout%2A>       Tevékenység csatornán történt egy alkalmazás vagy infrastruktúra-üzenet fogadásakor típusúként van definiálva. A tétlen időtúllépés a tulajdonság szabja meg a maximális időt egy inaktív munkamenet életben tartása. Ha több tevékenység nélküli továbbítja a InactivityTimeout megadott időtartam alatt, a munkamenet megszakadt az infrastruktúra és a csatorna hibák. A megbízható munkamenet egyoldalúan van bontva.       Ha a küldő alkalmazás rendelkezik majd a megbízható munkamenet küldendő üzenetek általában nem jelzett inaktivitási; Ehelyett egy életben tartási mechanizmus tartja a munkamenet aktív határozatlan ideig. Vegye figyelembe, hogy a kézbesítő sikerült egymástól függetlenül megszakítása a megbízható munkamenet, ha nincs alkalmazás üzenetek küldött és fogadott. Így az inaktivitási időkorlátját általában lejár hálózati feltételek mellett úgy, hogy a rendezés nem üzenetek fogadása, vagy ha a küldő hiba esetén.       Ez az időkorlát beállítása megakadályozza, hogy a kiszolgáló az ügyfél nem zárja be, ha a biztonsági munkamenet alakzatot okozó. Ha a biztonsági munkamenet az inaktivitási időtartam, nem kapott üzenetet, a kiszolgáló lezárták. Ez csökkenti a lehetséges szolgáltatásmegtagadási támadások.       A megbízható munkamenet használatakor nincsenek két különböző inaktivitási időzítő, amely a kapcsolat életben teljesülniük kell. Ha ezek inaktivitási időzítő valamelyikét visszatér, a kapcsolat megszakad.      -Az első inaktivitási időzítő a megbízható munkamenet és a InactivityTimeout nevezik. Az inaktivitási időzítő következik be, ha nincs üzenetek, alkalmazás vagy infrastruktúra, a határidőn belül. Az infrastruktúra üzenet egy üzenetet, amely akkor jön létre, a csatorna verem, például egy keep-alive protokollok egyikét vagy egy visszaigazoló ahelyett, hogy adatokat tartalmazó alkalmazás céljából.      – A második inaktivitási időzítő szolgáltatás, és használja a <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A>beállítása a kötés.</xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> Az inaktivitási időzítő következik be, ha nincs alkalmazás üzenetek fogadása az időkorláton belül.       A kapcsolat megszakad, ha bármelyik inaktivitási időzítő következik be, mert növelése InactivityTimeout, amennyiben az értéke nagyobb, mint <xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A>nincs hatása.</xref:System.ServiceModel.Channels.Binding.ReceiveTimeout%2A> A mindkét ezek időtúllépések alapértelmezés 10 percig, így mindig azokat, hogy eltérés, a megbízható munkamenet használatakor mindkét növelése érdekében."
   example:
   - >-
     [!code-cs[UEReliableSession#2](~/add/codesnippet/csharp/p-system.servicemodel.re_0_1.cs)]
@@ -98,12 +98,12 @@ items:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "A <xref:System.TimeSpan>, amely megadja, hogy a szolgáltatás inaktív Bezárás előtt időintervallum.</xref:System.TimeSpan> Az alapértelmezett érték 10 perc."
   overload: System.ServiceModel.ReliableSession.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "A beállított érték értéke kisebb vagy egyenlő, mint nulla."
   platform:
   - net462
 - uid: System.ServiceModel.ReliableSession.Ordered
@@ -118,8 +118,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "The property gets and sets the value of the <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A> property."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy üzenetkézbesítést meg kell őriznie a sorrendet, amelyben üzenetek küldése történik."
+  remarks: "A tulajdonság és az értékének beállítása a <xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A>tulajdonság.</xref:System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered%2A>"
   example:
   - >-
     [!code-cs[UEReliableSession#2](~/add/codesnippet/csharp/p-system.servicemodel.re_1_1.cs)]
@@ -128,7 +128,7 @@ items:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha üzenetet kézbesíteni a sorrendben, amelyben elküldi őket; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.ReliableSession.Ordered*
   exceptions: []
   platform:

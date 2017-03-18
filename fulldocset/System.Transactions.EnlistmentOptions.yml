@@ -11,8 +11,8 @@ items:
   nameWithType: EnlistmentOptions
   fullName: System.Transactions.EnlistmentOptions
   type: Enum
-  summary: "Determines whether the object should be enlisted during the prepare phase."
-  remarks: "This enumeration is passed into the <xref:System.Transactions.Transaction.EnlistVolatile%2A> and <xref:System.Transactions.Transaction.EnlistDurable%2A> and methods to notify the transaction manager whether the resource manager needs to create another enlistment during the Prepare phase. For more information on enlistment, see [Enlisting Resources as Participants in a Transaction](http://msdn.microsoft.com/en-us/7bf66ce7-4190-4910-89d7-df4ad43e9f31).       If EnlistDuringPrepareRequired is specified during enlistment, the resource manager indicates that it wants to receive a Prepare notification while new enlistments are still allowed for the transaction. A resource manager who acts as a cache for another durable resource, such as a backend database, would probably use this option during enlistment. When the caching resource gets its Prepare notification, it transfers its content to the durable resource. By doing so, the durable resource enlists on the transaction to become a participant of the 2 Phase Commit (2PC) protocol. Before this happens, only the caching resource (not the durable resource) was enlisted.       If None is specified, the enlistment indicates that it will not receive a Prepare notification until it is too late to create new enlistments in 2PC. In our preceding scenario, if a caching resource specifies this option during enlistment, and attempts to flush its cache during the Prepare notification, the durable resource gets an exception when it attempts on enlisting since it is too late.       None should be used as a default."
+  summary: "Meghatározza, hogy az objektum az előkészítési fázisban lehet megindítani."
+  remarks: "Ez az enumerálás átad a a <xref:System.Transactions.Transaction.EnlistVolatile%2A>és <xref:System.Transactions.Transaction.EnlistDurable%2A>és módszerek, hogy az erőforrás-kezelő kell létrehoznia az előkészítési fázis során egy másik részvétel a tranzakciókezelő értesíteni.</xref:System.Transactions.Transaction.EnlistDurable%2A> </xref:System.Transactions.Transaction.EnlistVolatile%2A> A bejegyzési további információkért lásd: [történő besorolásakor erőforrások tranzakcióban résztvevőként](http://msdn.microsoft.com/en-us/7bf66ce7-4190-4910-89d7-df4ad43e9f31).       Ha EnlistDuringPrepareRequired bejegyzési során lett megadva, az erőforrás-kezelő azt jelzi, hogy kíván Prepare értesítést kaphat, miközben új részvételi továbbra is elindulhatnak a tranzakció. Egy erőforrás-kezelő, akik úgy működik, mint egy másik tartós erőforrás, például egy háttérbeli adatbázis, a gyorsítótárban valószínűleg használja ezt a beállítást a bejelentkezés során. A gyorsítótárazási erőforrás az előkészítési értesítést kap, ha a tartalom átvitele a tartós erőforráshoz. Ezzel a módszerrel a tartós erőforrás vesz legyen, a résztvevő 2 fázis véglegesítése a határidő (2PC) protokoll a tranzakcióban. Ez akkor fordul elő, mielőtt csak a gyorsítótárazási erőforrás (nem a tartós erőforrás) részvételt kezdeményezett.       Ha nincs megadva, a bejelentkezés azt jelzi, hogy nem kap egy Prepare értesítést mindaddig, amíg már nincs lehetőség 2PC új részvételi létrehozásához. Az előző esetben ha gyorsítótárazási erőforrást bejegyzési során ez a beállítás határozza meg, és a gyorsítótár ürítése Prepare értesítés során megpróbálja az állandó erőforrás beolvasása kivételt történő besorolásakor, mert már nincs lehetőség a kísérletek során.       Nincs alapértelmezés szerint kell használni."
   syntax:
     content: >-
       [System.Flags]
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "The object must enlist during the initial phase of the commitment process."
+  summary: "Az objektum az előfizetési folyamat kezdeti fázisában kell jegyeznie."
   syntax:
     content: EnlistDuringPrepareRequired
     return:
       type: System.Transactions.EnlistmentOptions
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "The object does not require enlistment during the initial phase of the commitment process."
+  summary: "Az objektum nem szükséges az előfizetési folyamat kezdeti fázisában általi bejegyzés."
   syntax:
     content: None
     return:
       type: System.Transactions.EnlistmentOptions
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

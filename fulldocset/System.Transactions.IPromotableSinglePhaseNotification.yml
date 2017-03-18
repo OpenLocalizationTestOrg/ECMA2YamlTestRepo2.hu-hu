@@ -12,8 +12,8 @@ items:
   nameWithType: IPromotableSinglePhaseNotification
   fullName: System.Transactions.IPromotableSinglePhaseNotification
   type: Interface
-  summary: "Describes an object that acts as a commit delegate for a non-distributed transaction internal to a resource manager."
-  remarks: "Promotable Enlistments (PSPE) allow a resource, such as a database, to take ownership of the transaction if it is the only entity participating in the transaction. Later, if needed, the <xref:System.Transactions> infrastructure can still escalate the transaction to MSDTC. For more information, see [Optimization Using Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb).       A resource manager that implements this interface delegates control of the commit of it&quot;s internal non-distributed transaction to an enlistment on a <xref:System.Transactions> transaction through the <xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A> method on the <xref:System.Transactions.Transaction> class.       If the <xref:System.Transactions.ITransactionPromoter.Promote%2A?displayProperty=fullName> method is called, your implementation of this interface must produce a distributed transaction in the form of a propagation token, and return it to <xref:System.Transactions>.       After you enlist an object that implements this interface as a participant of a transaction using the <xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A> method, the transaction manager then notifies the participant when the transaction is promoted, committed, or rolled back by invoking the <xref:System.Transactions.ITransactionPromoter.Promote%2A> method, the <xref:System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit%2A> method, or the <xref:System.Transactions.IPromotableSinglePhaseNotification.Rollback%2A> method of the object.       For more information, see [Optimization Using Single Phase Commit and Promotable Single Phase Notification](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
+  summary: "A belső erőforrás-kezelő nem elosztott tranzakció véglegesítési meghatalmazottként fellépő objektum ismerteti."
+  remarks: "Előléptethetőnek részvételi (PSPE) erőforrás, például egy adatbázis, a tranzakció, ha csak az entitás a tranzakcióban részt vevő tulajdonba engedélyezése. Ha szükséges, a <xref:System.Transactions>infrastruktúra továbbra is eszkalálása MSDTC tranzakció.</xref:System.Transactions> További információkért lásd: [optimalizálási használatával egyetlen fázis véglegesíteni és Előléptethetőnek egyetlen fázis értesítési](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb).       Egy erőforrás-kezelő, amely megvalósítja ezt a felületet biztosít annak belső nem elosztott tranzakció ennél a <xref:System.Transactions> <xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>módszer a <xref:System.Transactions.Transaction>osztályból</xref:System.Transactions.Transaction> </xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A> tranzakció</xref:System.Transactions> véglegesítése ellenőrzése       Ha a <xref:System.Transactions.ITransactionPromoter.Promote%2A?displayProperty=fullName>metódus lehívásra kerül, ez az interfész megvalósítását előállít egy propagálási jogkivonatában formájában elosztott tranzakció és Alapértelmezések <xref:System.Transactions>.</xref:System.Transactions> </xref:System.Transactions.ITransactionPromoter.Promote%2A?displayProperty=fullName>       Miután olyan objektum, amely megvalósítja ezt a felületet tranzakció használatával résztvevőként vesz igénybe a <xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>metódus, a tranzakciókezelő értesíti a résztvevő, ha a tranzakció van előléptetve, véglegesítés vagy visszaállítás figyelőn a <xref:System.Transactions.ITransactionPromoter.Promote%2A>metódus, a <xref:System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit%2A>metódus, vagy a <xref:System.Transactions.IPromotableSinglePhaseNotification.Rollback%2A>metódusa.</xref:System.Transactions.IPromotableSinglePhaseNotification.Rollback%2A> </xref:System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit%2A> </xref:System.Transactions.ITransactionPromoter.Promote%2A> </xref:System.Transactions.Transaction.EnlistPromotableSinglePhase%2A>       További információkért lásd: [optimalizálási használatával egyetlen fázis véglegesíteni és Előléptethetőnek egyetlen fázis értesítési](http://msdn.microsoft.com/en-us/653d51d1-b4bf-4e34-9a6f-aec073f0f5bb)."
   syntax:
     content: 'public interface IPromotableSinglePhaseNotification : System.Transactions.ITransactionPromoter'
   implements:
@@ -32,8 +32,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Notifies a transaction participant that enlistment has completed successfully."
-  remarks: "If initialization logic is required to prepare an enlisted object to participate in a transaction, it is preferable to implement that logic in this method instead of in a constructor. In this way, the initialization occurs only if the object is successfully enlisted as a transaction participant."
+  summary: "Értesíti a tranzakció résztvevő általi bejegyzés sikeresen befejeződött."
+  remarks: "A számlálóinicializálási logika készítse elő a tranzakcióban részt venni bejegyzett objektum szükséges, ha célszerű valósítja meg az adott programot az ezzel a módszerrel helyett konstruktorban. Ezzel a módszerrel az inicializálás csak akkor, ha az objektum sikeresen feliratkozott tranzakció résztvevőként következik be."
   syntax:
     content: public void Initialize ();
     parameters: []
@@ -41,7 +41,7 @@ items:
   exceptions:
   - type: System.Transactions.TransactionException
     commentId: T:System.Transactions.TransactionException
-    description: "An attempt to enlist or serialize a transaction."
+    description: "Besorolás, vagy egy tranzakció szerializálni kísérletek."
   platform:
   - net462
 - uid: System.Transactions.IPromotableSinglePhaseNotification.Rollback(System.Transactions.SinglePhaseEnlistment)
@@ -56,14 +56,14 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Notifies an enlisted object that the transaction is being rolled back."
-  remarks: "On receiving this notification, the PSPE should always rollback it&quot;s internal transaction and then reply with the <xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A> callback method on the `singlePhaseEnlistment` parameter.  If the PSPE replies with  <xref:System.Transactions.SinglePhaseEnlistment.Committed%2A> or <xref:System.Transactions.SinglePhaseEnlistment.InDoubt%2A>, an <xref:System.InvalidOperationException> is thrown from the callback."
+  summary: "A tranzakció visszaállítás alatt bejegyzett objektum értesíti."
+  remarks: "Az értesítés fogadásakor, a PSPE kell mindig belső tranzakció, és ezután visszaküldése visszaállítási a <xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A>visszahívási metódusa a `singlePhaseEnlistment` paraméter.</xref:System.Transactions.SinglePhaseEnlistment.Aborted%2A>  Ha a válasz a PSPE <xref:System.Transactions.SinglePhaseEnlistment.Committed%2A>vagy <xref:System.Transactions.SinglePhaseEnlistment.InDoubt%2A>, egy <xref:System.InvalidOperationException>történt a visszahívás.</xref:System.InvalidOperationException> </xref:System.Transactions.SinglePhaseEnlistment.InDoubt%2A> </xref:System.Transactions.SinglePhaseEnlistment.Committed%2A>"
   syntax:
     content: public void Rollback (System.Transactions.SinglePhaseEnlistment singlePhaseEnlistment);
     parameters:
     - id: singlePhaseEnlistment
       type: System.Transactions.SinglePhaseEnlistment
-      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;></xref> object used to send a response to the transaction manager."
+      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;> </xref> a tranzakciókezelő visszajelzés küldése való előkészítéséhez használt objektum."
   overload: System.Transactions.IPromotableSinglePhaseNotification.Rollback*
   exceptions: []
   platform:
@@ -80,14 +80,14 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Notifies an enlisted object that the transaction is being committed."
-  remarks: "This method notifies an enlisted object that the transaction is to be committed.       The `singlePhaseEnlistment` parameters contain callbacks that allow the implementation of this interface to notify the transaction manager of the outcome of the transaction, since the transaction manager has delegated control of the transaction. In the case of a promoted transaction, the transaction manager listens to the transaction outcome and overrides the response being sent.       On receiving this notification, the resource manager should attempt to commit it&quot;s internal transaction (or the distributed transaction if it has been escalated), and invoke one of the callback methods on the `singlePhaseEnlistment` parameter based on the outcome of committing it&quot;s transaction."
+  summary: "Egy bejegyzett értesíti, hogy a tranzakció véglegesítése objektum."
+  remarks: "Ez a módszer olyan bejegyzett objektumot, amely a tranzakció véglegesítése értesíti.       A `singlePhaseEnlistment` paramétereket tartalmaz, amelyek lehetővé teszik az adott illesztő értesíteni a tranzakció végrehajtása a tranzakció eredményét a manager objektum, mert a tranzakciókezelő adta át az irányítást a tranzakció visszahívások. A tranzakciókezelő előléptetett tranzakció, a tranzakció eredményének figyeli, és felülbírálja a választ küldött.       A ezt az értesítést kap, az erőforrás-kezelő véglegesítése fennállt belső tranzakció (vagy ha azt eszkalálódott elosztott tranzakció), és meghívja a visszahívási módszerek egyikét a megkíséreljék a `singlePhaseEnlistment` paraméter fennállt tranzakció véglegesítésekor eredménye alapján."
   syntax:
     content: public void SinglePhaseCommit (System.Transactions.SinglePhaseEnlistment singlePhaseEnlistment);
     parameters:
     - id: singlePhaseEnlistment
       type: System.Transactions.SinglePhaseEnlistment
-      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;></xref> interface used to send a response to the transaction manager."
+      description: "A <xref href=&quot;System.Transactions.SinglePhaseEnlistment&quot;> </xref> a tranzakciókezelő visszajelzés küldése használt felület."
   overload: System.Transactions.IPromotableSinglePhaseNotification.SinglePhaseCommit*
   exceptions: []
   platform:

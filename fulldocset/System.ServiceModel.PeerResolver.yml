@@ -16,8 +16,8 @@ items:
   nameWithType: PeerResolver
   fullName: System.ServiceModel.PeerResolver
   type: Class
-  summary: "Specifies a base type used to define the contract for the registration and resolution of a peer mesh ID to the endpoint addresses of nodes participating in the mesh."
-  remarks: "This class is the base class for the implementation of custom peer name resolvers. A peer name resolver is a discovery service used by peer channels to find peer nodes participating in a peer mesh. It is also used to &quot;register&quot; a node with a peer mesh, the mechanism by which the peer node becomes known and available from the peer mesh."
+  summary: "Adja meg a szerződés a regisztráció segítségével alaptípusa és társ feloldása háló azonosítója a végpont-címekre, a csomópontok részt vesz a háló adja meg."
+  remarks: "Ez az osztály az alaposztály egyéni peer name feloldókat végrehajtására. A társfeloldó név olyan társ csatornákon társ csomópontok részt vesz egy társ háló kereséséhez használt felderítési szolgáltatás. &quot;Regisztrálása&quot; csomópont társ rácsvonal, a mechanizmus, amellyel a társcsomópont lesz ismert, és elérhető a társ a(z) is használt."
   syntax:
     content: public abstract class PeerResolver
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.PeerResolver&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.PeerResolver&quot;> </xref> osztály."
   syntax:
     content: protected PeerResolver ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets whether the peer name resolver can share referrals."
+  summary: "Lekérdezi, hogy a társfeloldó átirányítások megoszthatnak-e."
   syntax:
     content: public abstract bool CanShareReferrals { get; }
     return:
       type: System.Boolean
-      description: "If true, the peer name resolver can share referrals; if false, it cannot."
+      description: "Igaz értéke esetén a társfeloldó oszthatnak meg az átirányítások; Ha értéke HAMIS, nem."
   overload: System.ServiceModel.PeerResolver.CanShareReferrals*
   exceptions: []
   platform:
@@ -80,23 +80,23 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes the current peer resolver instance with the new supplied endpoint address and settings."
-  remarks: "This method simply initializes the existing peer resolver instance; it does not create a new one. To create a new peer resolver, call the CreatePeerResolver method on the corresponding binding element (for example, <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>)."
+  summary: "Az új megadott végpontcím és beállításokkal aktuális társ feloldó példányt inicializál."
+  remarks: "Ez a metódus egyszerűen inicializálja a meglévő egyenrangú feloldó példány; nem hoz létre egy újat. Hozzon létre egy új társfeloldó, a CreatePeerResolver metódust hívja a megfelelő kötéselem (például <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>).</xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>"
   syntax:
     content: public virtual void Initialize (System.ServiceModel.EndpointAddress address, System.ServiceModel.Channels.Binding binding, System.ServiceModel.Description.ClientCredentials credentials, System.ServiceModel.PeerResolvers.PeerReferralPolicy referralPolicy);
     parameters:
     - id: address
       type: System.ServiceModel.EndpointAddress
-      description: "<xref:System.ServiceModel.EndpointAddress> that contains the new endpoint address of this peer resolver instance."
+      description: "<xref:System.ServiceModel.EndpointAddress>a társ-feloldó példány új végpont címét tartalmazza, amelyek.</xref:System.ServiceModel.EndpointAddress>"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "<xref:System.ServiceModel.Channels.Binding> that specifies the new network binding for this peer resolver."
+      description: "<xref:System.ServiceModel.Channels.Binding>amely megadja, hogy a társfeloldó új hálózati kötése.</xref:System.ServiceModel.Channels.Binding>"
     - id: credentials
       type: System.ServiceModel.Description.ClientCredentials
-      description: "<xref:System.ServiceModel.Description.ClientCredentials> that specifies the new client credentials for this peer resolver."
+      description: "<xref:System.ServiceModel.Description.ClientCredentials>a társfeloldó esetében, amely megadja az új ügyfél hitelesítő adatait.</xref:System.ServiceModel.Description.ClientCredentials>"
     - id: referralPolicy
       type: System.ServiceModel.PeerResolvers.PeerReferralPolicy
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref> that specifies the new referral policy for this peer resolver."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref>a társfeloldó esetében, amely megadja az új hivatkozási házirend."
   overload: System.ServiceModel.PeerResolver.Initialize*
   exceptions: []
   platform:
@@ -113,22 +113,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Registers a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a specific peer mesh."
+  summary: "Regisztrálja a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> egy adott társ háló esetében."
   syntax:
     content: public abstract object Register (string meshId, System.ServiceModel.PeerNodeAddress nodeAddress, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The ID of the peer mesh in which the peer node is to be registered."
+      description: "A társ háló, amelyben a társcsomópont regisztrálni kell az azonosítója."
     - id: nodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> to be registered with the peer mesh."
+      description: "A <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> lehet regisztrálni a társ háló."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to register with the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "A sikeres a társ háló regisztrálni a kísérlet megszakítása előtti várakozási idő hosszát. Ha a sikertelen lesz, <xref:System.TimeoutException>jelenik meg, az a társ.</xref:System.TimeoutException>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the registration ID. This registration ID object is passed to the <xref:System.ServiceModel.PeerResolver.Update*> and <xref:System.ServiceModel.PeerResolver.Unregister*> methods."
+      description: "Egy <xref:System.Object>, amely jelzi, hogy a regisztrációs azonosítót.</xref:System.Object> A regisztrációs azonosítója objektum átadott a <> </> *> és <> </> *> módszerek."
   overload: System.ServiceModel.PeerResolver.Register*
   exceptions: []
   platform:
@@ -145,22 +145,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Resolves the supplied mesh ID to zero or more endpoint addresses of nodes participating in the peer mesh."
+  summary: "A megadott háló azonosítója a csomópontok részt vesz a társ háló nulla vagy több végpont-címekre mutat."
   syntax:
     content: public abstract System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.PeerNodeAddress> Resolve (string meshId, int maxAddresses, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The mesh ID of the peer mesh within which the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing participating nodes are to be obtained."
+      description: "A háló azonosítója a társ háló, amelyen belül a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> objektumokat, jelző részt vevő csomópontja be lesznek szerezve van."
     - id: maxAddresses
       type: System.Int32
-      description: "The number of endpoint addresses to return."
+      description: "A végpont címét vissza száma."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to resolve endpoint addresses within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "A sikeres a társ hálón végpont címek feloldására irányuló kísérlet megszakítása előtti várakozási idő hosszát. Ha a sikertelen lesz, <xref:System.TimeoutException>jelenik meg, az a társ.</xref:System.TimeoutException>"
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.ServiceModel.PeerNodeAddress}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; that contains <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing nodes participating in the peer mesh."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; tartalmazó <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> csomópontok részt vesz a társ háló képviselő objektum."
   overload: System.ServiceModel.PeerResolver.Resolve*
   exceptions: []
   platform:
@@ -177,17 +177,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Removes the registration entry for a node from a peer mesh."
-  remarks: "A registration ID is a peer resolver token, that, at the very minimum, represents the tuple of a peer node ID and the mesh ID. This ID value must have been obtained in a previous call to <xref:System.ServiceModel.PeerResolver.Register%2A>.       Unregister is called in two specific cases:      -   When the <xref:System.ServiceModel.PeerNode> is leaving the peer mesh (usually as the result of closing the last peer channel or service host that is associated with it).      -   When the <xref:System.ServiceModel.PeerNode> can find no available endpoint addresses of other nodes participating in the peer mesh. As a result, the <xref:System.ServiceModel.PeerNode> is no longer reachable, and it will attempt to call Unregister to unregister itself from the <xref:System.ServiceModel.PeerResolver>. If other peer nodes within the mesh become available subsequent to unregistration, the node can re-register itself by calling <xref:System.ServiceModel.PeerResolver.Register%2A> and obtaining a new registration ID."
+  summary: "A regisztrációs bejegyzés, a csomópont eltávolítása a társ-háló."
+  remarks: "A regisztrációs Azonosítót egy társ feloldó, jelképező jogkivonatot, a nagyon minimális, a rekord a társ csomópont-Azonosítót és a háló azonosítót. Ezt az azonosító értéket kell szerzett <xref:System.ServiceModel.PeerResolver.Register%2A>.</xref:System.ServiceModel.PeerResolver.Register%2A> egy előző hívása közben       Regisztrációját két adott esetben elnevezése: – a <xref:System.ServiceModel.PeerNode>, hagyja a társ háló (általában eredményeként az utolsó társ csatorna vagy szolgáltatásgazda társított azt a záró).</xref:System.ServiceModel.PeerNode>      – Amikor a <xref:System.ServiceModel.PeerNode>nem érhető el-végpont cím, más csomópontok részt vesz a társ háló található.</xref:System.ServiceModel.PeerNode> Ennek eredményeképpen a <xref:System.ServiceModel.PeerNode>már nem érhető el, és megkísérli törölni magát a <xref:System.ServiceModel.PeerResolver>.</xref:System.ServiceModel.PeerResolver> Unregister hívás</xref:System.ServiceModel.PeerNode> Más társ csomópontok a hálón megszüntetni a regisztrációt követően elérhetővé válnak, ha a csomópont újra regisztrálhatja saját magát hívásával <xref:System.ServiceModel.PeerResolver.Register%2A>és egy új regisztrációs azonosítót.</xref:System.ServiceModel.PeerResolver.Register%2A>"
   syntax:
     content: public abstract void Unregister (object registrationId, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID for the node obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>."
+      description: "A csomópont egy korábbi hívás <xref:System.ServiceModel.PeerResolver.Register*>.</xref:System.ServiceModel.PeerResolver.Register*> kapott egy regisztrációs azonosítója"
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for a successful removal of the registration from the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Mennyi ideig vár a társ háló a regisztráció sikeres eltávolítását. Ha a sikertelen lesz, <xref:System.TimeoutException>jelenik meg, az a társ.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Unregister*
   exceptions: []
   platform:
@@ -204,20 +204,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Updates the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a node registered with a specific peer mesh."
-  remarks: "Update is called when the address of the <xref:System.ServiceModel.PeerNode> changes on the local machine."
+  summary: "Frissítések a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> egy adott társ rácsvonal regisztrált csomópont."
+  remarks: "Frissítés lesz meghívva címét a <xref:System.ServiceModel.PeerNode>módosításokat a helyi gépen.</xref:System.ServiceModel.PeerNode>"
   syntax:
     content: public abstract void Update (object registrationId, System.ServiceModel.PeerNodeAddress updatedNodeAddress, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID token for the node, obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>"
+      description: "A csomópont egy korábbi hívás által előállított regisztrációs azonosítója jogkivonat<xref:System.ServiceModel.PeerResolver.Register*></xref:System.ServiceModel.PeerResolver.Register*>"
     - id: updatedNodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The updated endpoint address (and other multihoming IP addresses)."
+      description: "A frissített végpontcím (és más többhelyűségével IP-címek)."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to update the node&quot;s registration within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "A sikeres a csomópont regisztrációs a társ hálón frissítésére tett kísérlet megszakítása előtti várakozási idő hosszát. Ha a sikertelen lesz, <xref:System.TimeoutException>jelenik meg, az a társ.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Update*
   exceptions: []
   platform:

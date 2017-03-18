@@ -26,8 +26,8 @@ items:
   nameWithType: PersistenceProvider
   fullName: System.ServiceModel.Persistence.PersistenceProvider
   type: Class
-  summary: "The abstract base class from which all durable service persistence providers are derived."
-  remarks: "Users can create classes derived from this type to create durable service persistence providers that use custom persistence stores, such as third-party databases, the file system, or storage systems accessed remotely. To create a system-provided implementation of this type that uses Microsoft SQL Server as a persistence store, see <xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>.      > [!NOTE] >  When creating persistence provider implementations, it is important to maintain the thread&quot;s original identity in the new provider&quot;s methods (such as <xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A>. Otherwise, security loopholes could be created, because operations would then run under the wrong identity."
+  summary: "Az absztrakt alaposztály amelyből valamennyi tartós adatmegőrzési szolgáltató származik."
+  remarks: "Felhasználók hozhatnak létre a tartós megőrzését szolgáltatók, amelyek használják egyéni megőrzési áruházak, például a külső adatbázisok, a fájlrendszer vagy a tárolórendszerek távolról létrehozásához származtatott osztályokat. Ez a típus, amely egy állapotmegőrző tárolóban használja a Microsoft SQL Server rendszer által biztosított végrehajtásának létrehozásához lásd: <xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>.</xref:System.ServiceModel.Persistence.SqlPersistenceProviderFactory>      > [!NOTE] > Létrehozásakor adatmegőrzési szolgáltató megvalósításokhoz, fontos a szál eredeti ad meg az új szolgáltató módszerrel (például <xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A>.</xref:System.ServiceModel.Persistence.PersistenceProvider.Load%2A> karbantartása Ellenkező esetben biztonsági hiányosságok sikerült hozható létre, mert tevékenységek majd helytelen identitás alatt futnak."
   example:
   - For an implementation of this type that uses the file system as a persistence store, see the FilePersistenceProviderFactory.cs file in the DurableServiceFactory SDK sample.
   syntax:
@@ -53,7 +53,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, initializes a new instance of the <xref href=&quot;System.ServiceModel.Persistence.PersistenceProvider&quot;></xref> class."
+  summary: "Egy származtatott osztályban megadásuk egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Persistence.PersistenceProvider&quot;> </xref> osztály."
   remarks: ''
   example:
   - "The following code demonstrates how to use the <xref:System.ServiceModel.Persistence.PersistenceProvider> constructor. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#0](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#0)]"
@@ -62,7 +62,7 @@ items:
     parameters:
     - id: id
       type: System.Guid
-      description: "The unique identifier of the service state data being saved."
+      description: "A szolgáltatás állapota mentett adat egyedi azonosítója."
   overload: System.ServiceModel.Persistence.PersistenceProvider.#ctor*
   exceptions: []
   platform:
@@ -79,7 +79,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Create phase. The Create phase occurs when service instance records are first created in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk jelenti. a Create fázis elején. A létrehozás fázis következik be, amikor először létrejönnek szolgáltatás példány rekordok az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginCreate method.  \n  \n [!code-cs[PersistenceProvider#14](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#14)]"
@@ -88,19 +88,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginCreate asynchronous method call."
+      description: "A BeginCreate aszinkron metódushívások állapotát."
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -117,7 +117,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Delete phase. The Delete phase occurs when service state data is permanently deleted from the persistence store."
+  summary: "A származtatott osztály megadásuk jelenti. a Delete fázis elején. A Delete fázis következik be, amikor a szolgáltatás állapotát az véglegesen törlődni fog a megőrzési tárolóból."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the `BeginDelete` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#6](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#6)]"
@@ -126,19 +126,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginDelete asynchronous method call."
+      description: "A BeginDelete aszinkron metódushívások állapotát."
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginDelete*
   exceptions: []
   platform:
@@ -155,7 +155,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Load phase. The Load phase occurs when state data is loaded into the persistence provider from the persistence store."
+  summary: "Egy származtatott osztályban megadásuk jelenti. a betöltés fázis elején. A betöltési szakasza következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the `BeginLoad` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#7](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#7)]"
@@ -164,16 +164,16 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginLoad asynchronous method call."
+      description: "A BeginLoad aszinkron metódushívások állapotát."
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -190,7 +190,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store, and the state data in the persistence store has been changed."
+  summary: "A származtatott osztály megadásuk jelöli a LoadIfChanged fázis elején. A LoadIfChanged fázis következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató, és az állapotadatokat az állapotmegőrző tárolóban módosítva lett."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginLoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#11](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#11)]"
@@ -199,19 +199,19 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref:System.ServiceModel.Persistence.PersistenceProvider.Create*> or <xref:System.ServiceModel.Persistence.PersistenceProvider.Update*> that represents the current state held by the caller."
+      description: "A jogkivonatot adott vissza a korábbi <> </> *> vagy <> </> *>, amely a hívó által tárolt aktuális állapotát jeleníti meg."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginLoadIfChanged asynchronous method call."
+      description: "A BeginLoadIfChanged aszinkron metódushívások állapotát."
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -228,7 +228,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the Update phase. The Update phase occurs when service state data is updated in the persistence store."
+  summary: "A származtatott osztály megadásuk jelenti. a frissítési fázis elején. A frissítési fázis következik be, amikor a rendszerállapot-adatok frissítése az az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the BeginUpdate method.  \n  \n [!code-cs[PersistenceProvider#17](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#17)]"
@@ -237,19 +237,19 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "A művelet befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti a többi művelettől aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "The state of the BeginUpdate asynchronous method call."
+      description: "A BeginUpdate aszinkron metódushívások állapotát."
   overload: System.ServiceModel.Persistence.PersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -266,7 +266,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, creates a service state record in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk szolgáltatás állapot rekord létrehozása az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Create method.  \n  \n [!code-cs[PersistenceProvider#15](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#15)]"
@@ -275,13 +275,13 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "A példány token megfelelő az előbb mentett állapotra. Ez átadhatók <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>annak meghatározásához, hogy az állapotmegőrző tárolóban lévő állapottal eltér az állapot létrehozása hívásakor.</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Create*
   exceptions: []
   platform:
@@ -298,7 +298,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, permanently deletes service state information from the persistence store."
+  summary: "A származtatott osztály megadásuk véglegesen törli szolgáltatás állapotadatait a megőrző tárolóból."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Delete method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#9](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#9)]"
@@ -307,10 +307,10 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
   overload: System.ServiceModel.Persistence.PersistenceProvider.Delete*
   exceptions: []
   platform:
@@ -327,7 +327,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Create phase. The Create phase occurs when service state records are first created in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk jelenti. a Create szakasz végén. A létrehozás fázis következik be, amikor a szolgáltatás állapotát rögzíti először létrejönnek az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndCreate method.  \n  \n [!code-cs[PersistenceProvider#16](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#16)]"
@@ -336,10 +336,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "A művelet eredménye hivatkozik."
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "A példány token megfelelő az előbb mentett állapotra. Ez átadhatók <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>annak meghatározásához, hogy az állapotmegőrző tárolóban lévő állapottal eltér az állapot létrehozása hívásakor.</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndCreate*
   exceptions: []
   platform:
@@ -356,7 +356,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Delete phase. The Delete phase occurs when state data is permanently deleted from the persistence store."
+  summary: "Egy származtatott osztályban megadásuk jelenti. a Delete szakasz végén. A Delete fázis következik be, amikor az állapot adat véglegesen törlődik a megőrző tárolóból."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndDelete method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. For more information, see the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#5](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#5)]"
@@ -365,7 +365,7 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "A művelet eredménye hivatkozik."
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndDelete*
   exceptions: []
   platform:
@@ -382,7 +382,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the Load phase. The Load phase occurs when state data is loaded into the persistence provider from the persistence store."
+  summary: "A származtatott osztály megadásuk jelöli a betöltési szakasz végén. A betöltési szakasza következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató."
   remarks: ''
   example:
   - "The following code demonstrates how to use the `EndLoad` method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#1](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#1)]"
@@ -391,10 +391,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "A művelet eredménye hivatkozik."
     return:
       type: System.Object
-      description: "The service state information."
+      description: "A szolgáltatás állapotára vonatkozó információ."
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndLoad*
   exceptions: []
   platform:
@@ -411,7 +411,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the end of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store, and the state data in the persistence store has been changed."
+  summary: "A származtatott osztály megadásuk jelöli a LoadIfChanged szakasz végén. A LoadIfChanged fázis következik be, amikor az állapotadatok betölti a megőrzési tárolóból az adatmegőrzési szolgáltató, és az állapotadatokat az állapotmegőrző tárolóban módosítva lett."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndLoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#12](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#12)]"
@@ -420,13 +420,13 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "A művelet eredménye hivatkozik."
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance <xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;></xref> parameter has been set with the latest copy from the persistence store; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the locally cached state is already up-to-date."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a példány <xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;> </xref> a megőrzési tárolóból; paraméter van beállítva a legújabb példányra <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> ha helyileg tárolt állapota már naprakész."
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndLoadIfChanged*
   exceptions: []
   platform:
@@ -443,7 +443,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Represents the end of the Update phase. The Update phase occurs when service state records are updated in the persistence store."
+  summary: "A frissítési fázis végét jelöli. A frissítési fázis következik be, amikor a szolgáltatás állapotát rögzíti frissülnek az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the EndUpdate method.  \n  \n [!code-cs[PersistenceProvider#19](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#19)]"
@@ -452,10 +452,10 @@ items:
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the result of the operation."
+      description: "A művelet eredménye hivatkozik."
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "A példány token megfelelő az előbb mentett állapotra. Ez átadhatók <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>annak meghatározásához, hogy az állapotmegőrző tárolóban lévő állapottal eltér az állapot létrehozása hívásakor.</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.EndUpdate*
   exceptions: []
   platform:
@@ -472,7 +472,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Represents the <xref:System.Guid> associated with this instance."
+  summary: "Jelzi a <xref:System.Guid>ezen példányához tartozó.</xref:System.Guid>"
   remarks: ''
   example:
   - "The following code demonstrates how to use the Id property.  \n  \n [!code-cs[PersistenceProvider#10](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#10)]"
@@ -480,7 +480,7 @@ items:
     content: public Guid Id { get; }
     return:
       type: System.Guid
-      description: "The GUID associated with this instance."
+      description: "Ezen példányához tartozó GUID azonosítója."
   overload: System.ServiceModel.Persistence.PersistenceProvider.Id*
   exceptions: []
   platform:
@@ -497,8 +497,8 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, loads service state information from the persistence store."
-  remarks: "Changes made to the security token in the Load method, if not reverted, stay in effect for the remainder of that message&quot;s processing. This means that the service operation&quot;s user code, the response message path through the dispatcher, as well as any error paths, run in the changed security context."
+  summary: "A származtatott osztály megadásuk betölti a szolgáltatás állapotadatait a megőrző tárolóból."
+  remarks: "Módosításokat végzett a biztonsági jogkivonatot a betöltési metódust, ha nem tért vissza, a hátralévő részét adott üzenet feldolgozása érvényben marad. Ez azt jelenti, hogy a szolgáltatási művelet felhasználói kód, a kézbesítő a válasz üzenet elérési úttal, valamint bármely hiba történt az elérési utak a módosított biztonsági környezetében futnak."
   example:
   - "The following code demonstrates how to implement the Load method. This code example is part of the DurableServiceFactory SDK sample from the FilePersistenceProviderFactory.cs file. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]the DurableServiceFactory SDK sample.  \n  \n [!code-cs[PersistenceProvider#3](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#3)]"
   syntax:
@@ -506,10 +506,10 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     return:
       type: System.Object
-      description: "The loaded instance state."
+      description: "A betöltött példányhoz állapota."
   overload: System.ServiceModel.Persistence.PersistenceProvider.Load*
   exceptions: []
   platform:
@@ -526,7 +526,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, loads service state information from the persistence store if that data has been changed."
+  summary: "Egy származtatott osztályban megadásuk betölti szolgáltatás állapotadatait a megőrzési tárolóból, ha módosult az adatok."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the LoadIfChanged method.  \n  \n [!code-cs[PersistenceProvider#13](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#13)]"
@@ -535,16 +535,16 @@ items:
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref:System.ServiceModel.Persistence.PersistenceProvider.Create*> or <xref:System.ServiceModel.Persistence.PersistenceProvider.Update*>, which represents the current state held by the caller."
+      description: "A jogkivonatot adott vissza a korábbi <> </> *> vagy <> </> *>, amely a hívó által tárolt aktuális állapotát jeleníti meg."
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>instance</code><xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;></xref> parameter has been set with the latest copy from the persistence store; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the locally cached state is already up to date."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <code> instance </code> <xref uid=&quot;langword_csharp_out&quot; name=&quot;out&quot; href=&quot;&quot;> </xref> a megőrzési tárolóból; paraméter van beállítva a legújabb példányra <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> ha helyileg tárolt állapota már naprakészek legyenek."
   overload: System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -561,7 +561,7 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates service state records in the persistence store."
+  summary: "Egy származtatott osztályban megadásuk frissítések szolgáltatási állapotrekordjainak található az állapotmegőrző tárolóban."
   remarks: ''
   example:
   - "The following code demonstrates how to implement the Update method.  \n  \n [!code-cs[PersistenceProvider#18](~/add/codesnippet/csharp/persistenceprovider/filepersistenceprovider.cs#18)]"
@@ -570,13 +570,13 @@ items:
     parameters:
     - id: instance
       type: System.Object
-      description: "The actual instance state."
+      description: "A tényleges példány állapota."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "A megadott időtartam, mely után az adatmegőrzési szolgáltató Ez a kísérlet megszakítása."
     return:
       type: System.Object
-      description: "The instance token corresponding to the state just saved. This can be passed to <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*> to determine whether the state in the persistence store differs from the state when Create was called."
+      description: "A példány token megfelelő az előbb mentett állapotra. Ez átadhatók <xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>annak meghatározásához, hogy az állapotmegőrző tárolóban lévő állapottal eltér az állapot létrehozása hívásakor.</xref:System.ServiceModel.Persistence.PersistenceProvider.LoadIfChanged*>"
   overload: System.ServiceModel.Persistence.PersistenceProvider.Update*
   exceptions: []
   platform:

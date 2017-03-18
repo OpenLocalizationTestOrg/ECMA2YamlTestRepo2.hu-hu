@@ -15,8 +15,8 @@ items:
   nameWithType: SoapProcessingBehavior
   fullName: System.ServiceModel.Routing.SoapProcessingBehavior
   type: Class
-  summary: "Defines the client endpoint behavior used to marshal messages between different binding types and message versions."
-  remarks: "SOAP processing is the process where messages are converted between message versions.       Processing messages from one <xref:System.ServiceModel.Channels.MessageVersion> to another is accomplished by constructing a new WCF message that contains the body part and relevant headers from the incoming WCF message. Headers that are specific to addressing, or that are understood at the router level, are not used during construction of the new WCF message because these headers are either of a different version (in the case of addressing headers) or have been processed as part of the communication between the client and the router.       Whether a header is placed in the outbound message is determined by whether or not it was marked as understood as it passed through the incoming channel layer. Headers that are not understood (such as custom headers) are not removed and so pass through the routing service."
+  summary: "Meghatározza az üzenetek különböző kötési típusok és üzenetverzió közötti átadásra való előkészítéséhez használt ügyfél végpont viselkedését."
+  remarks: "SOAP-feldolgozás az a folyamat, ahol üzenetek alakítja a üzenet verziói között.       Az egyik üzenetek feldolgozása <xref:System.ServiceModel.Channels.MessageVersion>másik úgy hajthatja végre hozhat létre egy új WCF üzenet, amely tartalmazza a törzsrész és a megfelelő fejléceket a bejövő WCF-üzenetből.</xref:System.ServiceModel.Channels.MessageVersion> Kifejezetten az címzést, vagy, hogy az útválasztó szintjén értendők fejlécek nem használják az új WCF üzenet konstrukció során, mert ezek a fejlécek vagy egy másik verzió (esetén címzési fejlécekkel együtt), vagy az ügyfél és az útválasztó közötti kommunikáció részeként dolgozott.       E fejléc bekerül a kimenő üzenet-e a lett megjelölve, megértettem, akkor továbbítja a bejövő csatorna réteg határozza meg. Van (például egyéni fejlécek) nem értelmezhető fejlécek eltávolítása nem történik meg, és így továbbítása az útválasztási szolgáltatás."
   syntax:
     content: 'public class SoapProcessingBehavior : System.ServiceModel.Description.IEndpointBehavior'
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Creates a new instance of the <xref href=&quot;System.ServiceModel.Routing.SoapProcessingBehavior&quot;></xref> class."
+  summary: "Létrehoz egy új példányt a <xref href=&quot;System.ServiceModel.Routing.SoapProcessingBehavior&quot;> </xref> osztály."
   syntax:
     content: public SoapProcessingBehavior ();
     parameters: []
@@ -58,16 +58,16 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Adds new binding elements to an endpoint."
+  summary: "Új kötőelemekké ad hozzá egy végpontot."
   syntax:
     content: public void AddBindingParameters (System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint to apply the binding elements to."
+      description: "A szolgáltatási végpont kötése elemek alkalmazandó."
     - id: bindingParameters
       type: System.ServiceModel.Channels.BindingParameterCollection
-      description: "The binding parameter collection to apply to the endpoint."
+      description: "A kötés paramétergyűjteményben a végponthoz való alkalmazásához."
   overload: System.ServiceModel.Routing.SoapProcessingBehavior.AddBindingParameters*
   exceptions: []
   platform:
@@ -84,16 +84,16 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Applies the specified endpoint behavior to the client."
+  summary: "Az ügyfél a megadott végpontviselkedéshez vonatkozik."
   syntax:
     content: public void ApplyClientBehavior (System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.ClientRuntime clientRuntime);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint to apply to the client."
+      description: "A szolgáltatásvégpont az ügyfélre."
     - id: clientRuntime
       type: System.ServiceModel.Dispatcher.ClientRuntime
-      description: "The runtime on the client."
+      description: "A futtatókörnyezet, az ügyfélen."
   overload: System.ServiceModel.Routing.SoapProcessingBehavior.ApplyClientBehavior*
   exceptions: []
   platform:
@@ -110,16 +110,16 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Applies the specified endpoint behavior to the endpoint dispatcher."
+  summary: "A megadott végpontviselkedéshez vonatkozik a végponti kézbesítőnek."
   syntax:
     content: public void ApplyDispatchBehavior (System.ServiceModel.Description.ServiceEndpoint endpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint to apply to the client."
+      description: "A szolgáltatásvégpont az ügyfélre."
     - id: endpointDispatcher
       type: System.ServiceModel.Dispatcher.EndpointDispatcher
-      description: "The endpoint dispatcher."
+      description: "A végponti kézbesítőnek."
   overload: System.ServiceModel.Routing.SoapProcessingBehavior.ApplyDispatchBehavior*
   exceptions: []
   platform:
@@ -136,13 +136,13 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Gets or sets a value that indicates whether messages should be processed."
-  remarks: "By default, the <xref:System.ServiceModel.Routing.RoutingBehavior> creates and attaches a new <xref:System.ServiceModel.Routing.SoapProcessingBehavior> with ProcessMessages set to `true` for each client endpoint. If you do not want to use the <xref:System.ServiceModel.Routing.SoapProcessingBehavior> on a specific endpoint, create a new <xref:System.ServiceModel.Routing.SoapProcessingBehavior> with this value set to `false`, and then attach it to the endpoint on which you do not want processing to occur. If the <xref:System.ServiceModel.Routing.RoutingBehavior> observes that a client already has a <xref:System.ServiceModel.Routing.SoapProcessingBehavior>, it does not attempt to attach another.       To disable the application of <xref:System.ServiceModel.Routing.SoapProcessingBehavior> on any endpoint, disable SOAP processing on the <xref:System.ServiceModel.Routing.RoutingBehavior> and the <xref:System.ServiceModel.Routing.RoutingConfiguration>."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy az üzenetek fel kell dolgozni."
+  remarks: "Alapértelmezés szerint a <xref:System.ServiceModel.Routing.RoutingBehavior>hoz létre, és csatolja új <xref:System.ServiceModel.Routing.SoapProcessingBehavior>ProcessMessages beállítása a `true` ügyfél végpontok.</xref:System.ServiceModel.Routing.SoapProcessingBehavior> </xref:System.ServiceModel.Routing.RoutingBehavior> Ha nem szeretné használni a <xref:System.ServiceModel.Routing.SoapProcessingBehavior>egy különös végpontot, hozzon létre egy új <xref:System.ServiceModel.Routing.SoapProcessingBehavior>ezen érték `false`, majd csatolja a végponthoz, amelyeken nem szeretné, hogy feldolgozása megtörténik.</xref:System.ServiceModel.Routing.SoapProcessingBehavior> </xref:System.ServiceModel.Routing.SoapProcessingBehavior> Ha a <xref:System.ServiceModel.Routing.RoutingBehavior>figyelembe veszi, hogy az ügyfél már rendelkezik egy <xref:System.ServiceModel.Routing.SoapProcessingBehavior>, próbáljon csatlakoztatni egy másik.</xref:System.ServiceModel.Routing.SoapProcessingBehavior> </xref:System.ServiceModel.Routing.RoutingBehavior>       <xref:System.ServiceModel.Routing.SoapProcessingBehavior>A tetszőleges végpontot, tiltsa le a SOAP-feldolgozás <xref:System.ServiceModel.Routing.RoutingBehavior>és a <xref:System.ServiceModel.Routing.RoutingConfiguration>.</xref:System.ServiceModel.Routing.RoutingConfiguration> </xref:System.ServiceModel.Routing.RoutingBehavior> </xref:System.ServiceModel.Routing.SoapProcessingBehavior> alkalmazásának letiltása"
   syntax:
     content: public bool ProcessMessages { get; set; }
     return:
       type: System.Boolean
-      description: '**true** if messages should be marshaled; otherwise, **false**. The default value is **true**.'
+      description: '**Igaz** üzenetek kell átadásra előkészített, ha sikertelen, ha **hamis**. Az alapértelmezett érték **igaz**.'
   overload: System.ServiceModel.Routing.SoapProcessingBehavior.ProcessMessages*
   exceptions: []
   platform:
@@ -159,13 +159,13 @@ items:
   assemblies:
   - System.ServiceModel.Routing
   namespace: System.ServiceModel.Routing
-  summary: "Validates the service endpoint."
+  summary: "A szolgáltatásvégpont ellenőrzi."
   syntax:
     content: public void Validate (System.ServiceModel.Description.ServiceEndpoint endpoint);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint to validate."
+      description: "A szolgáltatásvégpont érvényesítéséhez."
   overload: System.ServiceModel.Routing.SoapProcessingBehavior.Validate*
   exceptions: []
   platform:

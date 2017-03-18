@@ -13,8 +13,8 @@ items:
   nameWithType: ReceiveErrorHandling
   fullName: System.ServiceModel.ReceiveErrorHandling
   type: Enum
-  summary: "An enumeration that specifies handling for a poison message."
-  remarks: "A poison message is a message that fails repeated attempts to deliver to the application. This is applicable only when using a Message Queuing (MSMQ)-based binding. The default value is `Fault`, which faults the listener and therefore the ServiceHost. In the case where the service was to fault because of a poison message, a <xref:System.ServiceModel.MsmqPoisonMessageException> is thrown. The exception contains the `LookupId` of the MSMQ message that can be used to move the message out of the way using System.Messaging API. Certain values of the ReceiveErrorHandling enumeration such as `Reject` and `Move` are only available on [!INCLUDE[wv](~/add/includes/wv-md.md)]. You control poison message handling by setting the <xref:System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling%2A> property to one of the values of this enumeration."
+  summary: "Az elhalt üzenetek kezelésének megadó felsorolásoknak."
+  remarks: "Az elhalt üzenet egy üzenetet, amely az alkalmazás kézbesíthet ismételt kísérletek sikertelen. Ez a tulajdonság csak akkor, ha egy Message Queuing MSMQ-alapú kötés vonatkozik. Az alapértelmezett érték `Fault`, amelyek a figyelő, és ezért a ServiceHost hibákat. Abban az esetben, ha a szolgáltatás nem a tartalék poison üzenetet, mert egy <xref:System.ServiceModel.MsmqPoisonMessageException>vált ki.</xref:System.ServiceModel.MsmqPoisonMessageException> A kivétel tartalmazza a `LookupId` az MSMQ üzenet helyezni a bevezetés System.Messaging API-val használható. Bizonyos többek között a ReceiveErrorHandling számbavétel értékeinek `Reject` és `Move` csak érhetők el a [!INCLUDE[wv](~/add/includes/wv-md.md)]. Elhalt üzenetek kezelésére beállításával szabályozhatja a <xref:System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling%2A>tulajdonságot valamelyik Ez az enumerálás értékeit.</xref:System.ServiceModel.Channels.MsmqBindingElementBase.ReceiveErrorHandling%2A>"
   example:
   - "The following configuration code illustrates how to set this property in the service configuration file:  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -35,13 +35,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "This option drops the poison message. The message never gets delivered to the application. If the message&quot;s TTL had already expired at this point, then the message may appear in the sender&quot;s Dead Letter Queue. If not, the message does not appear anywhere. This option indicates that the user does not really care if the message is lost."
-  remarks: 'Applicable platforms: [!INCLUDE[wxp](~/add/includes/wxp-md.md)], [!INCLUDE[ws2003](~/add/includes/ws2003-md.md)], and [!INCLUDE[wv](~/add/includes/wv-md.md)].'
+  summary: "Ez a beállítás az elhalt üzenet esik. Az üzenet soha nem lekérdezi kézbesítve lesz az alkalmazásnak. Ha az üzenet TTL rendelkezett már lejárt ezen a ponton, majd az üzenet jelenhet meg a küldő kézbesítetlen levelek várólistájára. Ha nem, akkor az üzenet nem jelenik meg a tetszőleges helyre. Ez a beállítás azt jelzi, hogy a felhasználó nem igazán fontos, ha az üzenet elveszik."
+  remarks: 'Megfelelő platformokat: [!INCLUDE[wxp](~/add/includes/wxp-md.md)], [!INCLUDE[ws2003](~/add/includes/ws2003-md.md)], és [!INCLUDE[wv](~/add/includes/wv-md.md)].'
   syntax:
     content: Drop
     return:
       type: System.ServiceModel.ReceiveErrorHandling
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -57,13 +57,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "This option sends a fault to the listener that caused the ServiceHost to fault. The message must be removed from the application queue by some external mechanism before the application can continue to process messages from the queue."
-  remarks: 'Applicable platforms: Windows XP, Windows Server 2003, and Windows Vista.'
+  summary: "Ez a beállítás küld a figyelő a ServiceHost a hibát okozó hibát. Az üzenet kell lennie a várólistáról eltávolított alkalmazás egy külső mechanizmus által az alkalmazás a várólistában lévő üzenetek feldolgozásához folytatása előtt."
+  remarks: 'Megfelelő platformokat: Windows XP, Windows Server 2003 és Windows Vista.'
   syntax:
     content: Fault
     return:
       type: System.ServiceModel.ReceiveErrorHandling
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -79,13 +79,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "This moves the poison message to a Poison Message Queue for later processing by a poison message handling application."
-  remarks: 'Applicable platforms: [!INCLUDE[wv](~/add/includes/wv-md.md)] only.'
+  summary: "Ez áthelyezi az elhalt üzenet az elhalt üzenet-várólista alkalmazás kezelése az elhalt üzenet későbbi feldolgozásra."
+  remarks: 'Megfelelő platformokat: [!INCLUDE[wv](~/add/includes/wv-md.md)] csak.'
   syntax:
     content: Move
     return:
       type: System.ServiceModel.ReceiveErrorHandling
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -101,13 +101,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "This instructs MSMQ to send a negative acknowledgement back to the sending queue manager that the message cannot be received by the application. The message is placed in the sending queue manager&quot;s Dead Letter Queue."
-  remarks: 'Applicable platforms: [!INCLUDE[wv](~/add/includes/wv-md.md)] only.'
+  summary: "Ez arra utasítja az MSMQ, amelyeket visszaküld egy negatív nyugtázása a küldési várólista-kezelő, hogy az üzenet nem fogadható az alkalmazás. Az üzenet a küldési várólista-kezelő halott levél várósor kerül."
+  remarks: 'Megfelelő platformokat: [!INCLUDE[wv](~/add/includes/wv-md.md)] csak.'
   syntax:
     content: Reject
     return:
       type: System.ServiceModel.ReceiveErrorHandling
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

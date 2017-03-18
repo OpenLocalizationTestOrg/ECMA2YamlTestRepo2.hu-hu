@@ -16,8 +16,8 @@ items:
   nameWithType: PeerNode
   fullName: System.ServiceModel.PeerNode
   type: Class
-  summary: "Defines the instance of of a peer node used by an application participating in a specific peer mesh."
-  remarks: "A peer node can host multiple peer channels within the mesh as long as they share a common URI and host name in the <xref:System.ServiceModel.EndpointAddress> supplied to the binding for each channel.       If two or more peer channels defined for a peer node are created with separate bindings, then the <xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>, <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>, and <xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> properties must be identical on all bindings.       If a subsequent channel binding is created after the first one for the same peer node instance, then the <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property on this and subsequent bindings must be less than or equal to the value of <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> property as set on the first channel binding."
+  summary: "Meghatározza az egy adott társ rácsvonal részt egy alkalmazás által használt társcsomópont példányát."
+  remarks: "A társ csomópontokra több társ csatornát a hálóban, amíg a közös URI és az állomás nevét a közös a <xref:System.ServiceModel.EndpointAddress>a kötés minden csatorna számára megadott.</xref:System.ServiceModel.EndpointAddress>       Ha két vagy több olyan társcsomópont definiált társ csatornák jönnek létre külön definiált kötésekkel, akkor a <xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>, <xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A>, és <xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A>Tulajdonságok meg kell egyeznie az összes kötését.</xref:System.ServiceModel.NetPeerTcpBinding.Resolver%2A> </xref:System.ServiceModel.NetPeerTcpBinding.ListenIPAddress%2A> </xref:System.ServiceModel.NetPeerTcpBinding.Port%2A>       Ha a következő csatornakötés létrejön társ csomópont ugyanazon, az első után a <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>Ez a tulajdonság és későbbi kötések értékének kisebbnek kell lennie <xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>tulajdonságot az első csatornakötéssel tehet közzé vannak megadva.</xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A> </xref:System.ServiceModel.NetPeerTcpBinding.MaxReceivedMessageSize%2A>"
   syntax:
     content: 'public sealed class PeerNode : System.ServiceModel.IOnlineStatus'
   inheritance:
@@ -39,13 +39,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets a value indicating whether the peer node is online and able to send messages to neighboring nodes in the peer mesh."
-  remarks: "&quot;Online&quot; indicates that a peer node has available neighbor nodes. &quot;Offline&quot; indicates that a peer node has no available neighbors."
+  summary: "Egy a társ csomópont online állapotú, és képes üzeneteket küldeni a társ háló szomszédos csomópontok voltát jelző érték beolvasása."
+  remarks: "&quot;Online&quot; azt jelzi, hogy egy társcsomópont elérhető szomszédos csomópontok. &quot;Offline&quot; azt jelzi, hogy rendelkezik-e a társcsomópont nincs elérhető szomszédok."
   syntax:
     content: public bool IsOnline { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the peer node is online; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a társ csomópont online; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.PeerNode.IsOnline*
   exceptions: []
   platform:
@@ -62,18 +62,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets and sets a custom filter for messages received over the peer channel."
-  remarks: "The message filter must be a derived type and should be recast to that type to use any custom features defined on it."
+  summary: "Lekérdezi és beállítja a társcsatornán protokollal fogadott üzenetek egyéni szűrőt."
+  remarks: "A üzenetszűrő származtatott típusúnak kell lennie, és adott típusra bármely definiált egyéni szolgáltatásainak használatával át kell dolgozni."
   syntax:
     content: public System.ServiceModel.PeerMessagePropagationFilter MessagePropagationFilter { get; set; }
     return:
       type: System.ServiceModel.PeerMessagePropagationFilter
-      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref> that contains a custom message filter."
+      description: "<xref href=&quot;System.ServiceModel.PeerMessagePropagationFilter&quot;></xref>amely tartalmaz egy egyéni üzenetszűrő."
   overload: System.ServiceModel.PeerNode.MessagePropagationFilter*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Csatorna meg nyitva a figyelésre."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.Offline
@@ -88,13 +88,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when the peer node goes offline from the peer mesh."
-  remarks: "An offline peer node has no neighbor nodes within the peer mesh to which it can connect."
+  summary: "Jelek, amikor a társról offline állapotba kerül a társcsomópont a háló."
+  remarks: "Egy kapcsolat nélküli társcsomópont szomszédos csomópontok nem rendelkezik a társ hálón, amelyhez csatlakozhat."
   syntax:
     content: public event EventHandler Offline;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -110,13 +110,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Signals when a peer node comes online within the peer mesh."
-  remarks: "An online peer node has at least one neighbor node within the peer mesh to which it is connected."
+  summary: "Ha egy társ csomópont visszatér online társ hálón belüli jelek."
+  remarks: "Egy online társcsomópont szomszédos legalább egy csomópont van a társ hálón, amelyhez csatlakozik."
   syntax:
     content: public event EventHandler Online;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -132,17 +132,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the network port on which the peer node is listening."
+  summary: "Lekérdezi a hálózati portot, amelyen az társcsomópont figyeli."
   syntax:
     content: public int Port { get; }
     return:
       type: System.Int32
-      description: "<xref:System.Int32> that specifies the network port on which the peer node is listening."
+      description: "<xref:System.Int32>amely megadja, hogy a hálózati portot, amelyen az társcsomópont figyeli.</xref:System.Int32>"
   overload: System.ServiceModel.PeerNode.Port*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Csatorna meg nyitva a figyelésre."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.RefreshConnection
@@ -157,7 +157,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Refreshes the connection with the peer mesh."
+  summary: "A kapcsolat a társ háló frissíti."
   syntax:
     content: public void RefreshConnection ();
     parameters: []
@@ -165,19 +165,19 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No channel is open for listening."
+    description: "Csatorna meg nyitva a figyelésre."
   - type: System.TimeoutException
     commentId: T:System.TimeoutException
-    description: "The refresh operation timed out."
+    description: "A frissítési művelet túllépte az időkorlátot."
   - type: System.ServiceModel.CommunicationException
     commentId: T:System.ServiceModel.CommunicationException
-    description: "A network error occurred during the refresh attempt."
+    description: "Hálózati hiba történt a frissítési kísérlet során."
   - type: System.ServiceModel.CommunicationObjectAbortedException
     commentId: T:System.ServiceModel.CommunicationObjectAbortedException
-    description: "The connection aborted during the refresh attempt."
+    description: "A kapcsolat megszakadt, a frissítési kísérlet során."
   - type: System.ServiceModel.CommunicationObjectFaultedException
     commentId: T:System.ServiceModel.CommunicationObjectFaultedException
-    description: "The connection faulted during the refresh attempt."
+    description: "A kapcsolat a frissítési kísérlet során hibát jelzett."
   platform:
   - net462
 - uid: System.ServiceModel.PeerNode.ToString
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Provides a string representation of a peer node."
+  summary: "Itt egy olyan társcsomópont karakterláncos ábrázolása."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "<xref:System.String> value that contains the mesh ID of the peer node if the mesh ID is set; otherwise, it returns the type."
+      description: "<xref:System.String>érték, amely tartalmazza a társcsomópont a háló azonosítója, ha a háló azonosítója be van állítva; Ellenkező esetben azt típusát adja vissza.</xref:System.String>"
   overload: System.ServiceModel.PeerNode.ToString*
   exceptions: []
   platform:

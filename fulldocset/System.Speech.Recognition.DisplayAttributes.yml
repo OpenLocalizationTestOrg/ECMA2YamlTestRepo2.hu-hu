@@ -14,8 +14,8 @@ items:
   nameWithType: DisplayAttributes
   fullName: System.Speech.Recognition.DisplayAttributes
   type: Enum
-  summary: "Lists the options that the <xref href=&quot;System.Speech.Recognition.SpeechRecognitionEngine&quot;></xref> object can use to specify white space for the display of a word or punctuation mark."
-  remarks: "Windows Desktop Speech returns recognized phrases as collections of <xref:System.Speech.Recognition.RecognizedWordUnit> or <xref:System.Speech.Recognition.ReplacementText> objects. Each object corresponds to a single word or punctuation mark. The `DisplayAttributes` property of a <xref:System.Speech.Recognition.RecognizedWordUnit> or <xref:System.Speech.Recognition.ReplacementText> uses a member of the DisplayAttributes enumeration to describe how print spacing is handled around a given word or punctuation mark.       Two or more members of the `DisplayAttributes` enumeration may be combined by a bit-wise `OR` to specify how a particular word should be displayed.      > [!NOTE] >  The display formatting that the speech recognizer uses is language specific.       For example, suppose the input phrase to a recognition engine using the default system grammar provided by <xref:System.Speech.Recognition.DictationGrammar> is &quot;Hello comma he said period&quot;. Then the recognition engine returns a <xref:System.Speech.Recognition.RecognizedPhrase> containing five <xref:System.Speech.Recognition.RecognizedWordUnit> objects containing the following strings with the following `DisplayAttributes` values.      |Item|`DisplayAttributes`|   |----------|-------------------------|   |Hello|OneTrailingSpace|   |,|OneTrailingSpace &#124; ConsumeLeadingSpaces|   |he|OneTrailingSpace|   |said|OneTrailingSpace|   |.|OneTrailingSpace &#124; ConsumeLeadingSpaces|       The text returned for this recognized phrase is printed as: &quot;Hello, he said.&quot;"
+  summary: "A beállítások, amelyek a <xref href=&quot;System.Speech.Recognition.SpeechRecognitionEngine&quot;> </xref> objektum segítségével adja meg egy szót vagy írásjel megjelenítéséhez használt szóköz."
+  remarks: "Windows asztali beszéd felismert kifejezések adja vissza a gyűjtemények <xref:System.Speech.Recognition.RecognizedWordUnit>vagy <xref:System.Speech.Recognition.ReplacementText>objektumok.</xref:System.Speech.Recognition.ReplacementText> </xref:System.Speech.Recognition.RecognizedWordUnit> Az egyes objektumok felel meg egyetlen szó vagy írásjel. A `DisplayAttributes` tulajdonsága egy <xref:System.Speech.Recognition.RecognizedWordUnit>vagy <xref:System.Speech.Recognition.ReplacementText>használ a DisplayAttributes számbavétel tagjai ismertetik, hogyan nyomtatási térköze kell kezelni egy adott szó vagy írásjel.</xref:System.Speech.Recognition.ReplacementText> </xref:System.Speech.Recognition.RecognizedWordUnit>       Két vagy több tagja a `DisplayAttributes` számbavételi bitszintű által összegyűjtött `OR` adhatja meg, hogyan jelenjen-e egy adott szó.      > [!NOTE] > A megjelenítési formátumának, hogy használja-e a beszédfelismerési az adott nyelv.       Tegyük fel például, a bemeneti kifejezést a motor által biztosított alapértelmezett rendszer nyelvtani használatával <xref:System.Speech.Recognition.DictationGrammar>&quot;Hello vessző ő időszak említett&quot;.</xref:System.Speech.Recognition.DictationGrammar> Ezután a motor visszaadja a <xref:System.Speech.Recognition.RecognizedPhrase>tartalmazó öt <xref:System.Speech.Recognition.RecognizedWordUnit>tartalmazó a következő objektumokat a következő karakterláncok `DisplayAttributes` értékek.</xref:System.Speech.Recognition.RecognizedWordUnit> </xref:System.Speech.Recognition.RecognizedPhrase>      | Elem |} `DisplayAttributes`|   |----------|-------------------------|   | Hello |} OneTrailingSpace |}   |,| OneTrailingSpace |} ConsumeLeadingSpaces |}   |} ő |} OneTrailingSpace |}   |} említett |} OneTrailingSpace |}   |.| OneTrailingSpace |} ConsumeLeadingSpaces |}       A szöveg visszaadott a felismert kifejezés nyomtatása van: &quot;Hello, hogy említett.&quot;"
   example:
   - "The following example uses the <xref:System.Speech.Recognition.RecognizedWordUnit.DisplayAttributes%2A> property of a list of <xref:System.Speech.Recognition.RecognizedWordUnit> objects to format the words as a phrase.  \n  \n```c#  \n  \n// Use the DisplayAttributes property to format speech as text.   \n  \nstatic string GetDisplayText(List<RecognizedWordUnit> words)  \n{  \n  StringBuilder sb = new StringBuilder();  \n  \n  // Concatenate the word units together. Use the DisplayAttributes  \n  // property of each word unit to add or remove white space around  \n  // the word unit.  \n  foreach (RecognizedWordUnit word in words)  \n  {  \n    if ((word.DisplayAttributes  \n      & DisplayAttributes.ConsumeLeadingSpaces) != 0))  \n    {  \n      sb = new StringBuilder(sb.ToString().TrimEnd());  \n    }  \n  \n    sb.Append(word.Text);  \n  \n    if ((word.DisplayAttributes  \n      & DisplayAttributes.OneTrailingSpace) != 0)  \n    {  \n      sb.Append(\" \");  \n    }  \n    else if ((word.DisplayAttributes  \n      & DisplayAttributes.TwoTrailingSpaces) != 0)  \n    {  \n      sb.Append(\"  \");  \n    }  \n  }  \n  \n  return sb.ToString();  \n}  \n  \n```"
   syntax:
@@ -39,12 +39,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "The item has no spaces preceding it."
+  summary: "Az elemnek azt megelőző szóközök nélkül."
   syntax:
     content: ConsumeLeadingSpaces
     return:
       type: System.Speech.Recognition.DisplayAttributes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -60,12 +60,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "The item does not specify how white space is handled."
+  summary: "Az elem nem határoz meg szóköz kezelésének módját."
   syntax:
     content: None
     return:
       type: System.Speech.Recognition.DisplayAttributes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -81,12 +81,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "The item has one space following it."
+  summary: "A cikk több lemezterületre van."
   syntax:
     content: OneTrailingSpace
     return:
       type: System.Speech.Recognition.DisplayAttributes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -102,12 +102,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "The item has two spaces following it."
+  summary: "A cikk azt a következő két szóközt tartalmaz."
   syntax:
     content: TwoTrailingSpaces
     return:
       type: System.Speech.Recognition.DisplayAttributes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -123,12 +123,12 @@ items:
   assemblies:
   - System.Speech
   namespace: System.Speech.Recognition
-  summary: "The item has no spaces following it."
+  summary: "Az elemnek a következő, szóközök nélkül."
   syntax:
     content: ZeroTrailingSpaces
     return:
       type: System.Speech.Recognition.DisplayAttributes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

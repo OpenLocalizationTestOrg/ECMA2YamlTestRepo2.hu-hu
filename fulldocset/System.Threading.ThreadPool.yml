@@ -28,8 +28,8 @@ items:
   nameWithType: ThreadPool
   fullName: System.Threading.ThreadPool
   type: Class
-  summary: "Provides a pool of threads that can be used to execute tasks, post work items, process asynchronous I/O, wait on behalf of other threads, and process timers."
-  remarks: "Many applications create threads that spend a great deal of time in the sleeping state, waiting for an event to occur. Other threads might enter a sleeping state only to be awakened periodically to poll for a change or update status information. The thread pool enables you to use threads more efficiently by providing your application with a pool of worker threads that are managed by the system. Examples of operations that use thread pool threads include the following:      -   When you create a <xref:System.Threading.Tasks.Task> or <xref:System.Threading.Tasks.Task%601> object to perform some task asynchronously, by default the task is scheduled to run on a thread pool thread.      -   Asynchronous timers use the thread pool. Thread pool threads execute callbacks from the <xref:System.Threading.Timer?displayProperty=fullName> class and raise events from the <xref:System.Timers.Timer?displayProperty=fullName> class.      -   When you use registered wait handles, a system thread monitors the status of the wait handles. When a wait operation completes, a worker thread from the thread pool executes the corresponding callback function.      -   When you call the <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> method to queue a method for execution on a thread pool thread. You do this by passing the method a <xref:System.Threading.WaitCallback> delegate.   The delegate has the signature      <CodeContentPlaceHolder>0</CodeContentPlaceHolder>   <CodeContentPlaceHolder>1</CodeContentPlaceHolder>        where `state` is an object that contains data to be used by the delegate. The actual data can be passed to the delegate by calling the <xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29> method.      > [!NOTE] >  The threads in the managed thread pool are background threads. That is, their <xref:System.Threading.Thread.IsBackground%2A> properties are `true`. This means that a ThreadPool thread will not keep an application running after all foreground threads have exited.      > [!IMPORTANT] >  When the thread pool reuses a thread, it does not clear the data in thread local storage or in fields that are marked with the <xref:System.ThreadStaticAttribute> attribute. Therefore, when a method examines thread local storage or fields that are marked with the <xref:System.ThreadStaticAttribute> attribute, the values it finds might be left over from an earlier use of the thread pool thread.       You can also queue work items that are not related to a wait operation to the thread pool. To request that a work item be handled by a thread in the thread pool, call the <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> method. This method takes as a parameter a reference to the method or delegate that will be called by the thread selected from the thread pool. There is no way to cancel a work item after it has been queued.       Timer-queue timers and registered wait operations also use the thread pool. Their callback functions are queued to the thread pool.       There is one thread pool per process. Beginning with the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the default size of the thread pool for a process depends on several factors, such as the size of the virtual address space. A process can call the <xref:System.Threading.ThreadPool.GetMaxThreads%2A> method to determine the number of threads. The number of threads in the thread pool can be changed by using the <xref:System.Threading.ThreadPool.SetMaxThreads%2A> method. Each thread uses the default stack size and runs at the default priority.      > [!NOTE] >  Unmanaged code that hosts the .NET Framework can change the size of the thread pool by using the `CorSetMaxThreads` function, defined in the mscoree.h file.       The thread pool provides new worker threads or I/O completion threads on demand until it reaches the minimum for each category. When a minimum is reached, the thread pool can create additional threads in that category or wait until some tasks complete. Beginning with the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the thread pool creates and destroys worker threads in order to optimize throughput, which is defined as the number of tasks that complete per unit of time. Too few threads might not make optimal use of available resources, whereas too many threads could increase resource contention.      > [!NOTE] >  When demand is low, the actual number of thread pool threads can fall below the minimum values.       You can use the <xref:System.Threading.ThreadPool.GetMinThreads%2A> method to obtain these minimum values.      > [!CAUTION] >  You can use the <xref:System.Threading.ThreadPool.SetMinThreads%2A> method to increase the minimum number of threads. However, unnecessarily increasing these values can cause performance problems. If too many tasks start at the same time, all of them might appear to be slow. In most cases the thread pool will perform better with its own algorithm for allocating threads."
+  summary: "Egyes feladatok végrehajtása, munkaelemek, feldolgozása aszinkron i/o, várjon, amíg más szálak nevében, és időzítőket feldolgozásához használható szálak biztosít."
+  remarks: "Számos alkalmazás létrehozása, amely nagy mennyiségű idő az alvó állapotban várakozik egy adott esemény bekövetkezzen töltött szálak. Más szálak alvó állapotba előfordulhat, hogy csak a kérdezze le az olyan módosítás vagy állapotinformációk frissítése rendszeresen aktiválva. A szálkészlet lehetővé teszi a szálak hatékonyabban használja azáltal, hogy az alkalmazás munkavégző szál, a rendszer által felügyelt készletét. Szál készlet szálak használó műveletek közé tartoznak a következők: - létrehozásakor egy <xref:System.Threading.Tasks.Task>vagy <xref:System.Threading.Tasks.Task%601>objektum néhány feladat végrehajtásához aszinkron módon történik, a feladat van ütemezve egy szál készlet szálon alapértelmezés szerint.</xref:System.Threading.Tasks.Task%601> </xref:System.Threading.Tasks.Task>      -Aszinkron időzítők használja a szálkészlethez. Szál készlet szálak visszahívások végre az <xref:System.Threading.Timer?displayProperty=fullName>osztály és rhető események a az <xref:System.Timers.Timer?displayProperty=fullName>osztályhoz.</xref:System.Timers.Timer?displayProperty=fullName> </xref:System.Threading.Timer?displayProperty=fullName>      -Ha regisztrált várakozási kezeli, a rendszer szál várakozási használt leírók számának állapotát figyeli. Egy Várjon, amíg a művelet befejezése után a szál készlet egy munkavégző szál végrehajtja a megfelelő visszahívási függvény.      -Hívás esetén a <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>módszer várólistába módszert a végrehajtási szál készlet szálban.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> A metódus átadásával ehhez a <xref:System.Threading.WaitCallback>delegálása.</xref:System.Threading.WaitCallback>   A delegált aláírása <CodeContentPlaceHolder>0</CodeContentPlaceHolder><CodeContentPlaceHolder>1</CodeContentPlaceHolder> ahol `state` olyan objektum, amely tartalmazza a delegált által használt adatok.    A tényleges adatok átadhatók a delegált meghívásával a <xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29>metódus.</xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29>      > [!NOTE] > A felügyelt szálkészlet szála háttérszál. Ez azt jelenti, hogy azok <xref:System.Threading.Thread.IsBackground%2A>tulajdonság `true`.</xref:System.Threading.Thread.IsBackground%2A> Ez azt jelenti, hogy a szálkészlet szál nem közli a után az összes előtérbeli szálak kiléptek futó alkalmazáshoz.      > [!IMPORTANT] > A szálkészlet a rendszer újból felhasználja a szál, amikor az adatok szál helyi tárolóhoz vagy a megjelölt mezők nem törli a <xref:System.ThreadStaticAttribute>attribútum.</xref:System.ThreadStaticAttribute> Ezért, ha metódus megvizsgálja a szál helyi tárolóhoz vagy a mezők, amely lesznek megjelölve a <xref:System.ThreadStaticAttribute>attribútum, az értékeket megtalálja maradhat egy korábbi használatát, a szál készlet szál.</xref:System.ThreadStaticAttribute>       Várjon, amíg a szálkészlethez művelethez nem kapcsolódó munkaelemek várólistán tárolható. Kérte, hogy egy munkaelem egy szál a szálkészlet kell kezelnie, hívja meg a <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>metódus.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> Ez a módszer paraméterként egy hivatkozást a metódus vagy delegált esetén, amely a szálkészlet kiválasztott szál fogja meghívni. Nincs mód munkaelem megszakítja, miután várólistára került.       Időzítő-várólista időzítői és a regisztrált várakozási műveletek is használják a szálkészlethez. A visszahívások várólistára kerülnek a szálkészlethez.       Nincs több szálkészlet folyamatonként. Verziótól kezdve a [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], a szálkészlet-folyamat az alapértelmezett méret számos tényezőtől függ, például a virtuális címtartomány mérete. A folyamat meghívhatja a <xref:System.Threading.ThreadPool.GetMaxThreads%2A>módszert szálak számának meghatározásához.</xref:System.Threading.ThreadPool.GetMaxThreads%2A> A szálkészlet szálak számát használatával módosítható a <xref:System.Threading.ThreadPool.SetMaxThreads%2A>metódus.</xref:System.Threading.ThreadPool.SetMaxThreads%2A> Minden egyes szál használja az alapértelmezett hívásverem mérete, és az alapértelmezett prioritással futtatja.      > [!NOTE] >, Amelyen a .NET-keretrendszer nem felügyelt kód használatával módosíthatja a szálkészlet méretét a `CorSetMaxThreads` függvényt, a mscoree.h fájlban.       A szálkészlet nyújt új munkaszálat vagy i/o-végrehajtási szálak az igény szerinti kategóriákhoz tartozó minimális eléréséig. Legalább elérésekor, a szálkészlet kategória további szálat létrehozni, vagy várjon, amíg befejeződik néhány feladatot. Verziótól kezdve a [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], a szálkészlet hoz létre, és munkaszál megsemmisít átviteli sebességben, ami van definiálva, feladatok, amelyek befejezik időegység alatt optimalizálása érdekében. Túl kevés szálak nem tehetik a rendelkezésre álló erőforrások optimális használatát, mivel túl sok szál Erőforrásverseny nő.      > [!NOTE] > Alacsony igény esetén a minimális értékek csökkenhet is a szál készlet szálak aktuális száma.       Használhatja a <xref:System.Threading.ThreadPool.GetMinThreads%2A>beszerzéséhez minimális értékeiről.</xref:System.Threading.ThreadPool.GetMinThreads%2A>      > [!CAUTION] > Használhatja a <xref:System.Threading.ThreadPool.SetMinThreads%2A>metódus szálak minimális számának növeléséhez.</xref:System.Threading.ThreadPool.SetMinThreads%2A> Azonban ezeket az értékeket feleslegesen növelése teljesítményproblémákat okozhat. Ha túl sok feladatok egyszerre indul el, az összes úgy tűnhet, hogy lassú lehet. A legtöbb esetben a szálkészlet javítja a teljesítményt a saját algoritmussal szálak felosztásához."
   example:
   - "In the following example, the main application thread  queues a method named `ThreadProc` to execute on a thread pool thread, sleeps for one second, and then exits. The `ThreadProc` method simply displays a message.  \n  \n [!code-cpp[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/cpp/t-system.threading.threa_5_1.cpp)]\n [!code-vb[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/visualbasic/t-system.threading.threa_5_1.vb)]\n [!code-cs[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/csharp/t-system.threading.threa_5_1.cs)]  \n  \n If you comment out the call to the <xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName> method, the main thread exits before         method runs on the thread pool thread.  The thread pool uses background         threads, which do not keep the application running if all foreground threads have terminated.  (This         is a simple example of a race condition.)"
   syntax:
@@ -52,21 +52,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Binds an operating system handle to the <xref href=&quot;System.Threading.ThreadPool&quot;></xref>."
+  summary: "Az operációs rendszer leírójának köti a <xref href=&quot;System.Threading.ThreadPool&quot;> </xref>."
   syntax:
     content: public static bool BindHandle (IntPtr osHandle);
     parameters:
     - id: osHandle
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> that holds the handle. The handle must have been opened for overlapped I/O on the unmanaged side."
+      description: "Egy <xref:System.IntPtr>, amely tartalmazza a leíró.</xref:System.IntPtr> A leíró kell lett megnyitva a nem felügyelt oldalon átlapolt i/o műveletekhez."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the handle is bound; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a leíró kötött; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Threading.ThreadPool.BindHandle*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.BindHandle(System.Runtime.InteropServices.SafeHandle)
@@ -81,22 +81,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Binds an operating system handle to the <xref href=&quot;System.Threading.ThreadPool&quot;></xref>."
-  remarks: "The `osHandle` parameter should be a <xref:Microsoft.Win32.SafeHandles.SafeFileHandle>, which derives from the abstract <xref:System.Runtime.InteropServices.SafeHandle> class."
+  summary: "Az operációs rendszer leírójának köti a <xref href=&quot;System.Threading.ThreadPool&quot;> </xref>."
+  remarks: "A `osHandle` paraméter kell <xref:Microsoft.Win32.SafeHandles.SafeFileHandle>, amelyek az absztrakt <xref:System.Runtime.InteropServices.SafeHandle>osztályból</xref:System.Runtime.InteropServices.SafeHandle> származik</xref:Microsoft.Win32.SafeHandles.SafeFileHandle>"
   syntax:
     content: public static bool BindHandle (System.Runtime.InteropServices.SafeHandle osHandle);
     parameters:
     - id: osHandle
       type: System.Runtime.InteropServices.SafeHandle
-      description: "A <xref:System.Runtime.InteropServices.SafeHandle> that holds the operating system handle. The handle must have been opened for overlapped I/O on the unmanaged side."
+      description: "A <xref:System.Runtime.InteropServices.SafeHandle>, amely tartalmazza az operációs rendszer leírójának.</xref:System.Runtime.InteropServices.SafeHandle> A leíró kell lett megnyitva a nem felügyelt oldalon átlapolt i/o műveletekhez."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the handle is bound; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a leíró kötött; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Threading.ThreadPool.BindHandle*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>osHandle</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>osHandle</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.GetAvailableThreads(System.Int32@,System.Int32@)
@@ -111,8 +111,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Retrieves the difference between the maximum number of thread pool threads returned by the <xref:System.Threading.ThreadPool.GetMaxThreads*> method, and the number currently active."
-  remarks: "When GetAvailableThreads returns, the variable specified by `workerThreads` contains the number of additional worker threads that can be started, and the variable specified by `completionPortThreads` contains the number of additional asynchronous I/O threads that can be started.       If there are no available threads, additional thread pool requests remain queued until thread pool threads become available."
+  summary: "Lekéri a a szálak maximális számát szál készlet által visszaadott közötti különbség a <xref:System.Threading.ThreadPool.GetMaxThreads*>metódust, és a jelenleg aktív számát.</xref:System.Threading.ThreadPool.GetMaxThreads*>"
+  remarks: "Ha GetAvailableThreads adja vissza, a változó által megadott `workerThreads` további munkaszál elindítható, és a változó által megadott számú tartalmaz `completionPortThreads` indíthatók el, további aszinkron i/o szálak számát tartalmazza.       Ha nincs elérhető szálak, további szál kérelem marad várakozó szál készlet szálak elérhetővé válnak."
   example:
   - "The following example displays the number of worker threads and I/O threads available when a simple app is started.  \n  \n [!code-cs[System.Threading.ThreadPool.GetAvailableThreads#2](~/add/codesnippet/csharp/m-system.threading.threa_23_1.cs)]\n [!code-vb[System.Threading.ThreadPool.GetAvailableThreads#2](~/add/codesnippet/visualbasic/m-system.threading.threa_23_1.vb)]"
   syntax:
@@ -120,10 +120,10 @@ items:
     parameters:
     - id: workerThreads
       type: System.Int32
-      description: "The number of available worker threads."
+      description: "A rendelkezésre álló munkavégző szál száma."
     - id: completionPortThreads
       type: System.Int32
-      description: "The number of available asynchronous I/O threads."
+      description: "A rendelkezésre álló aszinkron i/o-szálak száma."
   overload: System.Threading.ThreadPool.GetAvailableThreads*
   exceptions: []
   platform:
@@ -140,8 +140,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Retrieves the number of requests to the thread pool that can be active concurrently. All requests above that number remain queued until thread pool threads become available."
-  remarks: "When GetMaxThreads returns, the variable specified by `workerThreads` contains the maximum number of worker threads allowed in the thread pool, and the variable specified by `completionPortThreads` contains the maximum number of asynchronous I/O threads allowed in the thread pool.       You can use the <xref:System.Threading.ThreadPool.GetAvailableThreads%2A> method to determine the actual number of threads in the thread pool at any given time.       You can use the <xref:System.Threading.ThreadPool.SetMaxThreads%2A> to set the maximum number of worker threads and asynchronous I/O threads in the thread pool.       You can queue as many thread pool requests as system memory allows. If there are more requests than thread pool threads, the additional requests remain queued until thread pool threads become available."
+  summary: "Lekéri a szálkészlethez aktív lehet egyidejű kérelmek számát jelenti. Felett, hogy a kívánt összes kérelem maradnak amíg szál készlet szálak elérhetővé válnak."
+  remarks: "Ha GetMaxThreads adja vissza, a változó által megadott `workerThreads` tartalmazza a szálkészlet engedélyezett munkaszál, és a változó által meghatározott maximális számának `completionPortThreads` a szálkészlet engedélyezett aszinkron i/o-szálak maximális számát tartalmazza.       Használhatja a <xref:System.Threading.ThreadPool.GetAvailableThreads%2A>módszerrel határozható meg a szálkészlet szálak aktuális száma az adott időpontban.</xref:System.Threading.ThreadPool.GetAvailableThreads%2A>       Használhatja a <xref:System.Threading.ThreadPool.SetMaxThreads%2A>beállítani a munkaszálak és aszinkron i/o-szálak maximális száma a szálkészlethez.</xref:System.Threading.ThreadPool.SetMaxThreads%2A>       Mivel sok szál kérelem rendszermemória lehetővé teszi várólistán tárolható. Ha nincs több mint szál készlet szálak, a további kérelmeket marad aszinkron szál készlet szálak elérhetővé válnak."
   example:
   - "The following code example shows how to retrieve a count of the maximum and available number of threads in the thread pool. A work item is queued that uses `FileStream` to asynchronously write to two files. The callback methods are timed to overlap. A worker thread handles the work item and, depending on the speed and number of processors on the computer, one or two completion port threads handle the write operations.  \n  \n [!code-cpp[System.Threading.ThreadPool.GetAvailableThreads#1](~/add/codesnippet/cpp/m-system.threading.threa_14_1.cpp)]\n [!code-cs[System.Threading.ThreadPool.GetAvailableThreads#1](~/add/codesnippet/csharp/m-system.threading.threa_14_1.cs)]\n [!code-vb[System.Threading.ThreadPool.GetAvailableThreads#1](~/add/codesnippet/visualbasic/m-system.threading.threa_14_1.vb)]"
   syntax:
@@ -149,10 +149,10 @@ items:
     parameters:
     - id: workerThreads
       type: System.Int32
-      description: "The maximum number of worker threads in the thread pool."
+      description: "A szálkészlet a munkaszálak maximális száma."
     - id: completionPortThreads
       type: System.Int32
-      description: "The maximum number of asynchronous I/O threads in the thread pool."
+      description: "A szálkészlet aszinkron i/o szálak maximális száma."
   overload: System.Threading.ThreadPool.GetMaxThreads*
   exceptions: []
   platform:
@@ -169,8 +169,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Retrieves the minimum number of threads the thread pool creates on demand, as new requests are made, before switching to an algorithm for managing thread creation and destruction."
-  remarks: "The thread pool provides new worker threads or I/O completion threads on demand until it reaches the minimum for each category. By default, the minimum number of threads is set to the number of processors on a system. When the minimum is reached, the thread pool can create additional threads in that category or wait until some tasks complete. Beginning with the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the thread pool creates and destroys threads in order to optimize throughput, which is defined as the number of tasks that complete per unit of time. Too few threads might not make optimal use of available resources, whereas too many threads could increase resource contention.      > [!NOTE] >  When demand is low, the actual number of thread pool threads can fall below the minimum values."
+  summary: "Lekéri a szálkészlet hoz létre az igény szerinti szálak minimális száma, új kérések, szál létrehozása és megsemmisítése kezelésére szolgáló algoritmus átváltás előtt."
+  remarks: "A szálkészlet nyújt új munkaszálat vagy i/o-végrehajtási szálak az igény szerinti kategóriákhoz tartozó minimális eléréséig. Alapértelmezés szerint a minimális szálak értékre van állítva a rendszer processzorainak számát. A minimális elérésekor, a szálkészlet kategória további szálat létrehozni, vagy várjon, amíg befejeződik néhány feladatot. Verziótól kezdve a [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], a szálkészlet hoz létre, és szálak megsemmisít átviteli sebességben, ami van definiálva, feladatok, amelyek befejezik időegység alatt optimalizálása érdekében. Túl kevés szálak nem tehetik a rendelkezésre álló erőforrások optimális használatát, mivel túl sok szál Erőforrásverseny nő.      > [!NOTE] > Alacsony igény esetén a minimális értékek csökkenhet is a szál készlet szálak aktuális száma."
   example:
   - "The following example sets the minimum number of worker threads to four, and preserves the original value for the minimum number of asynchronous I/O completion threads.  \n  \n [!code-vb[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/visualbasic/m-system.threading.threa_20_1.vb)]\n [!code-cs[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/csharp/m-system.threading.threa_20_1.cs)]\n [!code-cpp[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/cpp/m-system.threading.threa_20_1.cpp)]"
   syntax:
@@ -178,10 +178,10 @@ items:
     parameters:
     - id: workerThreads
       type: System.Int32
-      description: "When this method returns, contains the minimum number of worker threads that the thread pool creates on demand."
+      description: "Ez a módszer adja vissza, ha, amely a szálkészlet igény szerinti hoz munkaszál minimális számát tartalmazza."
     - id: completionPortThreads
       type: System.Int32
-      description: "When this method returns, contains the minimum number of asynchronous I/O threads that the thread pool creates on demand."
+      description: "Ez a módszer adja vissza, ha aszinkron i/o-szálak, amely a szálkészlet igény szerinti hoz minimális számát tartalmazza."
   overload: System.Threading.ThreadPool.GetMinThreads*
   exceptions: []
   platform:
@@ -198,8 +198,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Queues a method for execution. The method executes when a thread pool thread becomes available."
-  remarks: "You can place data required by the queued method in the instance fields of the class in which the method is defined, or you can use the <xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29> overload that accepts an object containing the necessary data.      > [!NOTE] >  Visual Basic users can omit the <xref:System.Threading.WaitCallback> constructor, and simply use the `AddressOf` operator when passing the callback method to <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>. Visual Basic automatically calls the correct delegate constructor.      ## Version Information    In the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "Várólisták végrehajtandó metódus. A metódus hajtja végre, amikor egy szál készlet szál elérhetővé válik."
+  remarks: "Elhelyezheti a szolgáltatáspéldány-mezők, amelyben módszerét, vagy használhatja az osztály az aszinkron metódus által a <xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29>, amely fogadja a szükséges adatokat tartalmazó objektum túlterhelési.</xref:System.Threading.ThreadPool.QueueUserWorkItem%28System.Threading.WaitCallback%2CSystem.Object%29>      > [!NOTE] > Visual Basic-felhasználók kihagyhatja a <xref:System.Threading.WaitCallback>konstruktor, és egyszerűen használhatja a `AddressOf` operátor számára történő átadásakor a visszahívási metódus <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> </xref:System.Threading.WaitCallback> Visual Basic automatikusan meghívja a megfelelő delegált konstruktorában.      ## Verzió információkat a a .NET-keretrendszer 2.0-s, a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>tulajdonság értéke propagálja munkaszál várólistára használatával a <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>metódus.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   example:
   - "The following example uses the QueueUserWorkItem method overload to queue a task, which is represented by the `ThreadProc` method, to execute when a thread becomes available. No task information is supplied with this overload. Therefore, the information that is available to the `ThreadProc` method is limited to the object the method belongs to.  \n  \n [!code-cpp[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/cpp/m-system.threading.threa_22_1.cpp)]\n [!code-vb[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/visualbasic/m-system.threading.threa_22_1.vb)]\n [!code-cs[System.Threading.ThreadPool QueueUserWorkItem0#1](~/add/codesnippet/csharp/m-system.threading.threa_22_1.cs)]"
   syntax:
@@ -207,18 +207,18 @@ items:
     parameters:
     - id: callBack
       type: System.Threading.WaitCallback
-      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;></xref> that represents the method to be executed."
+      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;> </xref> , amely jelöli, a végrehajtandó metódus."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is successfully queued; <xref:System.NotSupportedException> is thrown if the work item could not be queued."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a metódus sikeresen várólistára; <xref:System.NotSupportedException>vált ki, ha a munkaelem nem helyezi várólistára.</xref:System.NotSupportedException>"
   overload: System.Threading.ThreadPool.QueueUserWorkItem*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>callBack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>callBack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The common language runtime (CLR) is hosted, and the host does not support this action."
+    description: "A közös nyelvi futtatókörnyezet (CLR) van-e tárolva, és a gazdagép nem támogatja ezt a műveletet."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.QueueUserWorkItem(System.Threading.WaitCallback,System.Object)
@@ -233,8 +233,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Queues a method for execution, and specifies an object containing data to be used by the method. The method executes when a thread pool thread becomes available."
-  remarks: "If the callback method requires complex data, you can define a class to contain the data.      > [!NOTE] >  Visual Basic users can omit the <xref:System.Threading.WaitCallback> constructor, and simply use the `AddressOf` operator when passing the callback method to QueueUserWorkItem. Visual Basic automatically calls the correct delegate constructor.      ## Version Information    In the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "A végrehajtási metódus várólisták, és adja meg a metódus által használt adatokat tartalmazó objektum. A metódus hajtja végre, amikor egy szál készlet szál elérhetővé válik."
+  remarks: "Ha visszahívási metódus összetett adatokra van szüksége, megadhat egy osztály az adatokat tartalmazza.      > [!NOTE] > Visual Basic-felhasználók kihagyhatja a <xref:System.Threading.WaitCallback>konstruktor, és egyszerűen használhatja a `AddressOf` üzemeltető számára történő átadásakor a visszahívási metódus QueueUserWorkItem.</xref:System.Threading.WaitCallback> Visual Basic automatikusan meghívja a megfelelő delegált konstruktorában.      ## Verzió információkat a a .NET-keretrendszer 2.0-s, a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>tulajdonság értéke propagálja munkaszál várólistára használatával a <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>metódus.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   example:
   - "The following example shows how to create an object that contains task information. It also demonstrates how to pass that object to a task that is queued for execution by the thread pool.  \n  \n [!code-cpp[System.Threading.ThreadPool QueueUserWorkItem1#1](~/add/codesnippet/cpp/9389ae71-aa49-4ceb-9b0a-_1.cpp)]\n [!code-cs[System.Threading.ThreadPool QueueUserWorkItem1#1](~/add/codesnippet/csharp/9389ae71-aa49-4ceb-9b0a-_1.cs)]\n [!code-vb[System.Threading.ThreadPool QueueUserWorkItem1#1](~/add/codesnippet/visualbasic/9389ae71-aa49-4ceb-9b0a-_1.vb)]"
   syntax:
@@ -242,21 +242,21 @@ items:
     parameters:
     - id: callBack
       type: System.Threading.WaitCallback
-      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;></xref> representing the method to execute."
+      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;> </xref> képviselő végrehajtandó metódus."
     - id: state
       type: System.Object
-      description: "An object containing data to be used by the method."
+      description: "A metódus által használt adatokat tartalmazó objektum."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is successfully queued; <xref:System.NotSupportedException> is thrown if the work item could not be queued."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a metódus sikeresen várólistára; <xref:System.NotSupportedException>vált ki, ha a munkaelem nem helyezi várólistára.</xref:System.NotSupportedException>"
   overload: System.Threading.ThreadPool.QueueUserWorkItem*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The common language runtime (CLR) is hosted, and the host does not support this action."
+    description: "A közös nyelvi futtatókörnyezet (CLR) van-e tárolva, és a gazdagép nem támogatja ezt a műveletet."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>callBack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>callBack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.Int32,System.Boolean)
@@ -271,34 +271,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a 32-bit signed integer for the time-out in milliseconds."
-  remarks: "When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer.       The RegisterWaitForSingleObject method queues the specified delegate to the thread pool. A worker thread will execute the delegate when one of the following occurs:      -   The specified object is in the signaled state.      -   The time-out interval elapses.       The RegisterWaitForSingleObject method checks the current state of the specified object&quot;s <xref:System.Threading.WaitHandle>. If the object&quot;s state is unsignaled, the method registers a wait operation. The wait operation is performed by a thread from the thread pool. The delegate is executed by a worker thread when the object&quot;s state becomes signaled or the time-out interval elapses. If the `timeOutInterval` parameter is not 0 (zero) and the `executeOnlyOnce` parameter is `false`, the timer is reset every time the event is signaled or the time-out interval elapses.      > [!IMPORTANT] >  Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread. Instead of a <xref:System.Threading.Mutex>, use a <xref:System.Threading.Semaphore> with a maximum count of 1.       To cancel the wait operation, call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method.       The wait thread uses the Win32 `WaitForMultipleObjects` function to monitor registered wait operations. Therefore, if you must use the same native operating system handle in multiple calls to RegisterWaitForSingleObject, you must duplicate the handle using the Win32 `DuplicateHandle` function. Note that you should not pulse an event object passed to RegisterWaitForSingleObject, because the wait thread might not detect that the event is signaled before it is reset.       Before returning, the function modifies the state of some types of synchronization objects. Modification occurs only for the object whose signaled state caused the wait condition to be satisfied. For example, the count of a semaphore is decreased by one.      ## Version Information    Starting with the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a 32 bites előjeles egész számokat az időtúllépési ezredmásodpercben.</xref:System.Threading.WaitHandle>"
+  remarks: "Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A registerwaitforsingleobject függvény metódus várólisták a meghatározott delegált a szálkészlethez. Egy munkavégző szál végrehajtja a delegált esetén a következők egyikét:-a megadott objektum a jelzett állapotban van.      -A időtúllépés eltelt.       A registerwaitforsingleobject függvény metódust a megadott objektum <xref:System.Threading.WaitHandle>.</xref:System.Threading.WaitHandle> aktuális állapotát ellenőrzi. Ha az objektum állapota unsignaled, a metódus regisztrál egy várakozási művelet. A várakozási művelet egy szál a szálkészlet végzi. A delegált végrehajtása egy munkavégző szál által az objektum állapota jelzést válik, vagy a időtúllépés lejárta. Ha a `timeOutInterval` paraméter nem 0 (nulla) és a `executeOnlyOnce` paraméter `false`, az időzítő pedig nullázásra kerül minden alkalommal, amikor az esemény leállítási jelzést kapott, vagy az időtúllépési időtartam.      > [!IMPORTANT] > Használata egy <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex> Ahelyett, hogy egy <xref:System.Threading.Mutex>, használja a <xref:System.Threading.Semaphore>a maximális számát 1.</xref:System.Threading.Semaphore> </xref:System.Threading.Mutex>       A várakozási műveletet mégsem folytatja, hívja meg a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A várakozási szálat használ a Win32 `WaitForMultipleObjects` függvény regisztrált várakozási műveletek figyelését. Ezért, ha a ugyanazon operációs rendszere leíró kell használnia a registerwaitforsingleobject függvény több hívást, kell másolatot készít a használatával a Win32-leíró `DuplicateHandle` függvény. Vegye figyelembe, hogy az esemény registerwaitforsingleobject függvény, átadott objektum nem meg kell impulzusos, mert előfordulhat, hogy a várakozási szál nem észleli az, hogy az esemény leállítási jelzést kapott előtt alaphelyzetbe áll.       Kell a visszatérésre, a függvény bizonyos típusú szinkronizálási objektumok állapotának módosítása. Módosítása csak az objektum, amelynek jelzett állapot miatt a várakozási feltétel teljesítettnek történik. Például egy szemafor száma csökken.      ## Verzió információk kezdve a .NET-keretrendszer 2.0-s verziója a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>munkaszál propagálja tulajdonság értéke várólistára használatával a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   syntax:
     content: public static System.Threading.RegisteredWaitHandle RegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, int millisecondsTimeOutInterval, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;></xref> delegate to call when the `waitObject` parameter is signaled."
+      description: "A <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;> </xref> delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate."
+      description: "A következő delegáltnak átadott objektum."
     - id: millisecondsTimeOutInterval
       type: System.Int32
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> that encapsulates the native handle."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> , amely magában foglalja a natív leíró."
   overload: System.Threading.ThreadPool.RegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>millisecondsTimeOutInterval</code> parameter is less than -1."
+    description: "A <code> millisecondsTimeOutInterval </code> paraméter értéke kisebb, mint -1."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.Int64,System.Boolean)
@@ -313,34 +313,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a 64-bit signed integer for the time-out in milliseconds."
-  remarks: "When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer.       The RegisterWaitForSingleObject method queues the specified delegate to the thread pool. A worker thread will execute the delegate when one of the following occurs:      -   The specified object is in the signaled state.      -   The time-out interval elapses.       The RegisterWaitForSingleObject method checks the current state of the specified object&quot;s <xref:System.Threading.WaitHandle>. If the object&quot;s state is unsignaled, the method registers a wait operation. The wait operation is performed by a thread from the thread pool. The delegate is executed by a worker thread when the object&quot;s state becomes signaled or the time-out interval elapses. If the `timeOutInterval` parameter is not 0 (zero) and the `executeOnlyOnce` parameter is `false`, the timer is reset every time the event is signaled or the time-out interval elapses.      > [!IMPORTANT] >  Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread. Instead of a <xref:System.Threading.Mutex>, use a <xref:System.Threading.Semaphore> with a maximum count of 1.       To cancel the wait operation, call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method.       The wait thread uses the Win32 `WaitForMultipleObjects` function to monitor registered wait operations. Therefore, if you must use the same native operating system handle in multiple calls to RegisterWaitForSingleObject, you must duplicate the handle using the Win32 `DuplicateHandle` function. Note that you should not pulse an event object passed to RegisterWaitForSingleObject, because the wait thread might not detect that the event is signaled before it is reset.       Before returning, the function modifies the state of some types of synchronization objects. Modification occurs only for the object whose signaled state caused the wait condition to be satisfied. For example, the count of a semaphore is decreased by one.      ## Version Information    Starting with the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a 64 bites előjeles egész számokat az időtúllépési ezredmásodpercben.</xref:System.Threading.WaitHandle>"
+  remarks: "Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A registerwaitforsingleobject függvény metódus várólisták a meghatározott delegált a szálkészlethez. Egy munkavégző szál végrehajtja a delegált esetén a következők egyikét:-a megadott objektum a jelzett állapotban van.      -A időtúllépés eltelt.       A registerwaitforsingleobject függvény metódust a megadott objektum <xref:System.Threading.WaitHandle>.</xref:System.Threading.WaitHandle> aktuális állapotát ellenőrzi. Ha az objektum állapota unsignaled, a metódus regisztrál egy várakozási művelet. A várakozási művelet egy szál a szálkészlet végzi. A delegált végrehajtása egy munkavégző szál által az objektum állapota jelzést válik, vagy a időtúllépés lejárta. Ha a `timeOutInterval` paraméter nem 0 (nulla) és a `executeOnlyOnce` paraméter `false`, az időzítő pedig nullázásra kerül minden alkalommal, amikor az esemény leállítási jelzést kapott, vagy az időtúllépési időtartam.      > [!IMPORTANT] > Használata egy <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex> Ahelyett, hogy egy <xref:System.Threading.Mutex>, használja a <xref:System.Threading.Semaphore>a maximális számát 1.</xref:System.Threading.Semaphore> </xref:System.Threading.Mutex>       A várakozási műveletet mégsem folytatja, hívja meg a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A várakozási szálat használ a Win32 `WaitForMultipleObjects` függvény regisztrált várakozási műveletek figyelését. Ezért, ha a ugyanazon operációs rendszere leíró kell használnia a registerwaitforsingleobject függvény több hívást, kell másolatot készít a használatával a Win32-leíró `DuplicateHandle` függvény. Vegye figyelembe, hogy az esemény registerwaitforsingleobject függvény, átadott objektum nem meg kell impulzusos, mert előfordulhat, hogy a várakozási szál nem észleli az, hogy az esemény leállítási jelzést kapott előtt alaphelyzetbe áll.       Kell a visszatérésre, a függvény bizonyos típusú szinkronizálási objektumok állapotának módosítása. Módosítása csak az objektum, amelynek jelzett állapot miatt a várakozási feltétel teljesítettnek történik. Például egy szemafor száma csökken.      ## Verzió információk kezdve a .NET-keretrendszer 2.0-s verziója a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>munkaszál propagálja tulajdonság értéke várólistára használatával a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   syntax:
     content: public static System.Threading.RegisteredWaitHandle RegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, long millisecondsTimeOutInterval, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;></xref> delegate to call when the `waitObject` parameter is signaled."
+      description: "A <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;> </xref> delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object passed to the delegate."
+      description: "Az objektum lett átadva a delegált."
     - id: millisecondsTimeOutInterval
       type: System.Int64
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> that encapsulates the native handle."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> , amely magában foglalja a natív leíró."
   overload: System.Threading.ThreadPool.RegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>millisecondsTimeOutInterval</code> parameter is less than -1."
+    description: "A <code> millisecondsTimeOutInterval </code> paraméter értéke kisebb, mint -1."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.TimeSpan,System.Boolean)
@@ -355,37 +355,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a <xref:System.TimeSpan> value for the time-out."
-  remarks: "When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer.       The RegisterWaitForSingleObject method queues the specified delegate to the thread pool. A worker thread will execute the delegate when one of the following occurs:      -   The specified object is in the signaled state.      -   The time-out interval elapses.       The RegisterWaitForSingleObject method checks the current state of the specified object&quot;s <xref:System.Threading.WaitHandle>. If the object&quot;s state is unsignaled, the method registers a wait operation. The wait operation is performed by a thread from the thread pool. The delegate is executed by a worker thread when the object&quot;s state becomes signaled or the time-out interval elapses. If the `timeOutInterval` parameter is not 0 (zero) and the `executeOnlyOnce` parameter is `false`, the timer is reset every time the event is signaled or the time-out interval elapses.      > [!IMPORTANT] >  Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread. Instead of a <xref:System.Threading.Mutex>, use a <xref:System.Threading.Semaphore> with a maximum count of 1.       To cancel the wait operation, call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method.       The wait thread uses the Win32 `WaitForMultipleObjects` function to monitor registered wait operations. Therefore, if you must use the same native operating system handle in multiple calls to RegisterWaitForSingleObject, you must duplicate the handle using the Win32 `DuplicateHandle` function. Note that you should not pulse an event object passed to RegisterWaitForSingleObject, because the wait thread might not detect that the event is signaled before it is reset.       Before returning, the function modifies the state of some types of synchronization objects. Modification occurs only for the object whose signaled state caused the wait condition to be satisfied. For example, the count of a semaphore is decreased by one.      ## Version Information    Starting with the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a <xref:System.TimeSpan>az időtúllépési érték.</xref:System.TimeSpan> </xref:System.Threading.WaitHandle>"
+  remarks: "Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A registerwaitforsingleobject függvény metódus várólisták a meghatározott delegált a szálkészlethez. Egy munkavégző szál végrehajtja a delegált esetén a következők egyikét:-a megadott objektum a jelzett állapotban van.      -A időtúllépés eltelt.       A registerwaitforsingleobject függvény metódust a megadott objektum <xref:System.Threading.WaitHandle>.</xref:System.Threading.WaitHandle> aktuális állapotát ellenőrzi. Ha az objektum állapota unsignaled, a metódus regisztrál egy várakozási művelet. A várakozási művelet egy szál a szálkészlet végzi. A delegált végrehajtása egy munkavégző szál által az objektum állapota jelzést válik, vagy a időtúllépés lejárta. Ha a `timeOutInterval` paraméter nem 0 (nulla) és a `executeOnlyOnce` paraméter `false`, az időzítő pedig nullázásra kerül minden alkalommal, amikor az esemény leállítási jelzést kapott, vagy az időtúllépési időtartam.      > [!IMPORTANT] > Használata egy <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex> Ahelyett, hogy egy <xref:System.Threading.Mutex>, használja a <xref:System.Threading.Semaphore>a maximális számát 1.</xref:System.Threading.Semaphore> </xref:System.Threading.Mutex>       A várakozási műveletet mégsem folytatja, hívja meg a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A várakozási szálat használ a Win32 `WaitForMultipleObjects` függvény regisztrált várakozási műveletek figyelését. Ezért, ha a ugyanazon operációs rendszere leíró kell használnia a registerwaitforsingleobject függvény több hívást, kell másolatot készít a használatával a Win32-leíró `DuplicateHandle` függvény. Vegye figyelembe, hogy az esemény registerwaitforsingleobject függvény, átadott objektum nem meg kell impulzusos, mert előfordulhat, hogy a várakozási szál nem észleli az, hogy az esemény leállítási jelzést kapott előtt alaphelyzetbe áll.       Kell a visszatérésre, a függvény bizonyos típusú szinkronizálási objektumok állapotának módosítása. Módosítása csak az objektum, amelynek jelzett állapot miatt a várakozási feltétel teljesítettnek történik. Például egy szemafor száma csökken.      ## Verzió információk kezdve a .NET-keretrendszer 2.0-s verziója a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>munkaszál propagálja tulajdonság értéke várólistára használatával a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   syntax:
     content: public static System.Threading.RegisteredWaitHandle RegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, TimeSpan timeout, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;></xref> delegate to call when the `waitObject` parameter is signaled."
+      description: "A <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;> </xref> delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object passed to the delegate."
+      description: "Az objektum lett átadva a delegált."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out represented by a <xref:System.TimeSpan>. If `timeout` is 0 (zero), the function tests the object&quot;s state and returns immediately. If `timeout` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időtúllépés <xref:System.TimeSpan>.</xref:System.TimeSpan> által képviselt Ha `timeout` 0 (nulla), a függvény megvizsgálja az objektum állapota, és azonnal visszaadja. Ha `timeout` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> that encapsulates the native handle."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> , amely magában foglalja a natív leíró."
   overload: System.Threading.ThreadPool.RegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>timeout</code> parameter is less than -1."
+    description: "A <code> timeout </code> paraméter értéke kisebb, mint -1."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <code>timeout</code> parameter is greater than &lt;xref:System.Int32.MaxValue?displayProperty=fullName&gt;."
+    description: "A <code> timeout </code> paraméter értéke nagyobb, mint &lt;xref:System.Int32.MaxValue?displayProperty=fullName&gt;."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.RegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)
@@ -400,8 +400,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a 32-bit unsigned integer for the time-out in milliseconds."
-  remarks: "When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer.       The <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method queues the specified delegate to the thread pool. A worker thread will execute the delegate when one of the following occurs:      -   The specified object is in the signaled state.      -   The time-out interval elapses.       The <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>method checks the current state of the specified object&quot;s <xref:System.Threading.WaitHandle>. If the object&quot;s state is unsignaled, the method registers a wait operation. The wait operation is performed by a thread from the thread pool. The delegate is executed by a worker thread when the object&quot;s state becomes signaled or the time-out interval elapses. If the `timeOutInterval` parameter is not 0 (zero) and the `executeOnlyOnce` parameter is `false`, the timer is reset every time the event is signaled or the time-out interval elapses.      > [!IMPORTANT] >  Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread. Instead of a <xref:System.Threading.Mutex>, use a <xref:System.Threading.Semaphore> with a maximum count of 1.       To cancel the wait operation, call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method.       The wait thread uses the Win32 `WaitForMultipleObjects` function to monitor registered wait operations. Therefore, if you must use the same native operating system handle in multiple calls to <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>, you must duplicate the handle using the Win32 `DuplicateHandle` function. Note that you should not pulse an event object passed to <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>, because the wait thread might not detect that the event is signaled before it is reset.       Before returning, the function modifies the state of some types of synchronization objects. Modification occurs only for the object whose signaled state caused the wait condition to be satisfied. For example, the count of a semaphore is decreased by one.      ## Version Information    Starting with the .NET Framework version 2.0, the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property value is propagated to worker threads queued using the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method. In earlier versions, the principal information is not propagated."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a 32 bites előjel nélküli egész számokat az időtúllépési ezredmásodpercben.</xref:System.Threading.WaitHandle>"
+  remarks: "Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus várólisták a meghatározott delegált a szálkészlethez.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Egy munkavégző szál végrehajtja a delegált esetén a következők egyikét:-a megadott objektum a jelzett állapotban van.      -A időtúllépés eltelt.       A <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>módszer a megadott objektum <xref:System.Threading.WaitHandle>.</xref:System.Threading.WaitHandle> aktuális állapotát ellenőrzi.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Ha az objektum állapota unsignaled, a metódus regisztrál egy várakozási művelet. A várakozási művelet egy szál a szálkészlet végzi. A delegált végrehajtása egy munkavégző szál által az objektum állapota jelzést válik, vagy a időtúllépés lejárta. Ha a `timeOutInterval` paraméter nem 0 (nulla) és a `executeOnlyOnce` paraméter `false`, az időzítő pedig nullázásra kerül minden alkalommal, amikor az esemény leállítási jelzést kapott, vagy az időtúllépési időtartam.      > [!IMPORTANT] > Használata egy <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex> Ahelyett, hogy egy <xref:System.Threading.Mutex>, használja a <xref:System.Threading.Semaphore>a maximális számát 1.</xref:System.Threading.Semaphore> </xref:System.Threading.Mutex>       A várakozási műveletet mégsem folytatja, hívja meg a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>       A várakozási szálat használ a Win32 `WaitForMultipleObjects` függvény regisztrált várakozási műveletek figyelését. Ezért az ugyanazon operációs rendszere leírójának használata több hívások <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>, kell másolatot készít a használatával a Win32-leíró `DuplicateHandle` függvény.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Vegye figyelembe, hogy az esemény átadott objektum nem kell impulzusos <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>, mert előfordulhat, hogy a várakozási szál nem észleli az, hogy az esemény leállítási jelzést kapott előtt alaphelyzetbe áll.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>       Kell a visszatérésre, a függvény bizonyos típusú szinkronizálási objektumok állapotának módosítása. Módosítása csak az objektum, amelynek jelzett állapot miatt a várakozási feltétel teljesítettnek történik. Például egy szemafor száma csökken.      ## Verzió információk kezdve a .NET-keretrendszer 2.0-s verziója a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>munkaszál propagálja tulajdonság értéke várólistára használatával a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> </xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> A korábbi verziókban a fő információk nem terjeszthetők."
   example:
   - "The following example shows how to use the RegisterWaitForSingleObject method to execute a specified callback method when a specified wait handle is signaled. In this example, the callback method is `WaitProc`, and the wait handle is an <xref:System.Threading.AutoResetEvent>.  \n  \n The example defines a `TaskInfo` class to hold the information that is passed to the callback when it executes. The example creates a `TaskInfo` object and assigns it some string data. The <xref:System.Threading.RegisteredWaitHandle> that is returned by the RegisterWaitForSingleObject method is assigned to the `Handle` field of the `TaskInfo` object so that the callback method has access to the <xref:System.Threading.RegisteredWaitHandle>.  \n  \n In addition to specifying `TaskInfo` as the object to pass to the callback method, the call to the RegisterWaitForSingleObject method specifies the <xref:System.Threading.AutoResetEvent> that the task will wait for, a <xref:System.Threading.WaitOrTimerCallback> delegate that represents the `WaitProc` callback method, a one second time-out interval, and multiple callbacks.  \n  \n When the main thread signals the <xref:System.Threading.AutoResetEvent> by calling its <xref:System.Threading.EventWaitHandle.Set%2A> method, the <xref:System.Threading.WaitOrTimerCallback> delegate is invoked. The `WaitProc` method tests <xref:System.Threading.RegisteredWaitHandle> to determine whether a time-out occurred. If the callback was invoked because the wait handle was signaled, the `WaitProc` method unregisters the <xref:System.Threading.RegisteredWaitHandle>, stopping additional callbacks. In the case of a time-out, the task continues to wait. The `WaitProc` method ends by printing a message to the console.  \n  \n [!code-cs[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/add/codesnippet/csharp/2f901dc9-3ce0-4cdc-bf06-_1.cs)]\n [!code-cpp[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/add/codesnippet/cpp/2f901dc9-3ce0-4cdc-bf06-_1.cpp)]\n [!code-vb[System.Threading.ThreadPool RegisterWaitForSingleObject0#1](~/add/codesnippet/visualbasic/2f901dc9-3ce0-4cdc-bf06-_1.vb)]"
   syntax:
@@ -409,27 +409,27 @@ items:
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;></xref> delegate to call when the `waitObject` parameter is signaled."
+      description: "A <xref href=&quot;System.Threading.WaitOrTimerCallback&quot;> </xref> delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object passed to the delegate."
+      description: "Az objektum lett átadva a delegált."
     - id: millisecondsTimeOutInterval
       type: System.UInt32
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> that can be used to cancel the registered wait operation."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> , amely használható a regisztrált Várjon, amíg a művelet megszakításához."
   overload: System.Threading.ThreadPool.RegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>millisecondsTimeOutInterval</code> parameter is less than -1."
+    description: "A <code> millisecondsTimeOutInterval </code> paraméter értéke kisebb, mint -1."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.SetMaxThreads(System.Int32,System.Int32)
@@ -444,20 +444,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Sets the number of requests to the thread pool that can be active concurrently. All requests above that number remain queued until thread pool threads become available."
-  remarks: "You cannot set the maximum number of worker threads or I/O completion threads to a number smaller than the number of processors on the computer. To determine how many processors are present, retrieve the value of the <xref:System.Environment.ProcessorCount%2A?displayProperty=fullName> property. In addition, you cannot set the maximum number of worker threads or I/O completion threads to a number smaller than the corresponding minimum number of worker threads or I/O completion threads. To determine the minimum thread pool size,  call the <xref:System.Threading.ThreadPool.GetMinThreads%2A> method.       If the common language runtime is hosted, for example by Internet Information Services (IIS) or SQL Server, the host can limit or prevent changes to the thread pool size.       Use caution when changing the maximum number of threads in the thread pool. While your code might benefit, the changes might have an adverse effect on code libraries you use.       Setting the thread pool size too large can cause performance problems. If too many threads are executing at the same time, the task switching overhead becomes a significant factor."
+  summary: "A szálkészlet aktív lehet egyidejűleg állítja be kérelmek számát jelenti. Felett, hogy a kívánt összes kérelem maradnak amíg szál készlet szálak elérhetővé válnak."
+  remarks: "Nem állíthat munkaszál vagy i/o-végrehajtási szálak maximális száma szám kisebb, mint a processzorok száma. Annak meghatározásához, hány processzorok jelen, értékének beolvasása a <xref:System.Environment.ProcessorCount%2A?displayProperty=fullName>tulajdonság.</xref:System.Environment.ProcessorCount%2A?displayProperty=fullName> Ezenkívül nem be munkaszál vagy i/o végrehajtási szál a munkaszálak megfelelő minimális számánál kisebb számot vagy i/o-végrehajtási szálak maximális számát. Határozza meg a minimális szálkészlet méretét, hívja meg a <xref:System.Threading.ThreadPool.GetMinThreads%2A>metódus.</xref:System.Threading.ThreadPool.GetMinThreads%2A>       Ha a közös nyelvi futtatókörnyezet, például az Internet Information Services (IIS) vagy SQL Server által az állomás is korlátozható vagy módosításának megakadályozása a szálkészlet méretét.       Körültekintően járjon el, ha módosítja a szálkészlet szálak maximális számát. A kód előnye, a módosítások merülhetnek ártalmas kód szalagtárak használja.       A szál mérete túl nagy beállítása teljesítményproblémákat okozhat. Ha túl sok szál állnak végrehajtás alatt egy időben, a feladat váltás terhet válik a lényeges szempontja."
   syntax:
     content: public static bool SetMaxThreads (int workerThreads, int completionPortThreads);
     parameters:
     - id: workerThreads
       type: System.Int32
-      description: "The maximum number of worker threads in the thread pool."
+      description: "A szálkészlet a munkaszálak maximális száma."
     - id: completionPortThreads
       type: System.Int32
-      description: "The maximum number of asynchronous I/O threads in the thread pool."
+      description: "A szálkészlet aszinkron i/o szálak maximális száma."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the change is successful; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a módosítás sikeres; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Threading.ThreadPool.SetMaxThreads*
   exceptions: []
   platform:
@@ -474,8 +474,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Sets the minimum number of threads the thread pool creates on demand, as new requests are made, before switching to an algorithm for managing thread creation and destruction."
-  remarks: "The thread pool provides new worker threads or I/O completion threads on demand until it reaches the minimum for each category. When the minimum is reached, the thread pool can create additional threads in that category or wait until some tasks complete. Beginning with the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the thread pool creates and destroys threads in order to optimize throughput, which is defined as the number of tasks that complete per unit of time. Too few threads might not make optimal use of available resources, whereas too many threads could increase resource contention.       When demand is low, the actual number of thread pool threads can fall below the minimum values.       If you specify a negative number or a number larger than the maximum number of active thread pool threads (obtained using <xref:System.Threading.ThreadPool.GetMaxThreads%2A>), SetMinThreads returns `false` and does not change either of the minimum values.      > [!CAUTION] >  By default, the minimum number of threads is set to the number of processors on a system. You can use the SetMinThreads method to increase the minimum number ofthreads. However, unnecessarily increasing these values can cause performance problems. If too many tasks start at the same time, all of them might appear to be slow. In most cases, the thread pool will perform better with its own algorithm for allocating threads. Reducing the minimum to less than the number of processors can also hurt performance."
+  summary: "A szálkészlet hoz létre az igény szerinti szálak minimális száma beállítják új kérések, szál létrehozása és megsemmisítése kezelésére szolgáló algoritmus átváltás előtt."
+  remarks: "A szálkészlet nyújt új munkaszálat vagy i/o-végrehajtási szálak az igény szerinti kategóriákhoz tartozó minimális eléréséig. A minimális elérésekor, a szálkészlet kategória további szálat létrehozni, vagy várjon, amíg befejeződik néhány feladatot. Verziótól kezdve a [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], a szálkészlet hoz létre, és szálak megsemmisít átviteli sebességben, ami van definiálva, feladatok, amelyek befejezik időegység alatt optimalizálása érdekében. Túl kevés szálak nem tehetik a rendelkezésre álló erőforrások optimális használatát, mivel túl sok szál Erőforrásverseny nő.       Alacsony igény esetén a minimális érték alá eső értékeket szál készlet szálak aktuális száma is.       Ha megad egy negatív szám vagy egy szám nagyobb, mint az aktív szálon készlet szálak maximális száma (segítségével <xref:System.Threading.ThreadPool.GetMaxThreads%2A>), SetMinThreads adja vissza `false` nem változik a minimális értékek egyikét.</xref:System.Threading.ThreadPool.GetMaxThreads%2A>      > [!CAUTION] > Alapértelmezés szerint a minimális szálak értékre van állítva a rendszer processzorainak számát. A SetMinThreads módszer segítségével növelheti a minimális számú ofthreads. Azonban ezeket az értékeket feleslegesen növelése teljesítményproblémákat okozhat. Ha túl sok feladatok egyszerre indul el, az összes úgy tűnhet, hogy lassú lehet. A legtöbb esetben a szálkészlet javítja a teljesítményt a saját algoritmussal szálak felosztásához. A minimális csökkentése a kevesebb, mint a processzorok számát is hátrányosan befolyásolhatja a teljesítményt."
   example:
   - "The following example sets the minimum number of worker threads to four, and preserves the original value for the minimum number of asynchronous I/O completion threads.  \n  \n [!code-vb[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/visualbasic/m-system.threading.threa_10_1.vb)]\n [!code-cs[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/csharp/m-system.threading.threa_10_1.cs)]\n [!code-cpp[System.Threading.ThreadPool.GetSetMinThreads#1](~/add/codesnippet/cpp/m-system.threading.threa_10_1.cpp)]"
   syntax:
@@ -483,13 +483,13 @@ items:
     parameters:
     - id: workerThreads
       type: System.Int32
-      description: "The minimum number of worker threads that the thread pool creates on demand."
+      description: "A minimális száma, amely a szálkészlet igény szerinti hoz létre munkavégző szál."
     - id: completionPortThreads
       type: System.Int32
-      description: "The minimum number of asynchronous I/O threads that the thread pool creates on demand."
+      description: "A minimális, amely a szálkészlet igény szerinti hoz aszinkron i/o-szálak száma."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the change is successful; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a módosítás sikeres; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Threading.ThreadPool.SetMinThreads*
   exceptions: []
   platform:
@@ -506,17 +506,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Queues an overlapped I/O operation for execution."
-  remarks: "For information about using native Win32 overlapped I/O, see the <xref:System.Threading.Overlapped> class, the <xref:System.Threading.NativeOverlapped> structure, and the `OVERLAPPED` structure in the Win32 Platform SDK.      > [!CAUTION] >  Using the UnsafeQueueNativeOverlapped method could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeQueueNativeOverlapped, the stack of the thread pool thread does not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks."
+  summary: "Várólisták egy átlapolt i/o műveletekhez művelet végrehajtásához."
+  remarks: "A natív Win32 használatáról i/o átfedésben vannak, tekintse meg a <xref:System.Threading.Overlapped>osztály, a <xref:System.Threading.NativeOverlapped>struktúra, és a `OVERLAPPED` struktúra, a Win32 Platform SDK.</xref:System.Threading.NativeOverlapped> </xref:System.Threading.Overlapped>      > [!CAUTION] > A UnsafeQueueNativeOverlapped használatával metódus véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Ha work UnsafeQueueNativeOverlapped használatával szál készlet szálban kell várakoznia, a szál készlet szál a verem nem áll a tényleges hívóknak keretében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében."
   syntax:
     content: public static bool UnsafeQueueNativeOverlapped (System.Threading.NativeOverlapped* overlapped);
     parameters:
     - id: overlapped
       type: System.Threading.NativeOverlapped*
-      description: "The <xref href=&quot;System.Threading.NativeOverlapped&quot;></xref> structure to queue."
+      description: "A <xref href=&quot;System.Threading.NativeOverlapped&quot;> </xref> várólista szerkezetének."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the operation was successfully queued to an I/O completion port; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a művelet sikeresen várólistára került i/o-befejezési portra; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Threading.ThreadPool.UnsafeQueueNativeOverlapped*
   exceptions: []
   platform:
@@ -533,34 +533,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Queues the specified delegate to the thread pool, but does not propagate the calling stack to the worker thread."
-  remarks: "Unlike the <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> method, UnsafeQueueUserWorkItem does not propagate the calling stack to the worker thread. This allows code to lose the calling stack and thereby to elevate its security privileges.      > [!CAUTION] >  Using UnsafeQueueUserWorkItem could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeQueueUserWorkItem, the stack of the thread pool thread will not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks."
+  summary: "A megadott delegált a szálkészlethez várólisták, de a hívási veremben a munkavégző szál nem propagálja."
+  remarks: "Ellentétben a <xref:System.Threading.ThreadPool.QueueUserWorkItem%2A>metódus, UnsafeQueueUserWorkItem nem propagálja a hívási veremben a munkavégző szál.</xref:System.Threading.ThreadPool.QueueUserWorkItem%2A> Ez lehetővé teszi, hogy megszakítja a hívási verem, és ezáltal emelheti a saját biztonsági jogosultságait.      > [!CAUTION] > Használatával UnsafeQueueUserWorkItem véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Munkahelyi UnsafeQueueUserWorkItem használatával szál készlet szálban kell várakoznia, ha a szál készlet szál a verem nem lesz a tényleges hívóknak környezetében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében."
   syntax:
     content: public static bool UnsafeQueueUserWorkItem (System.Threading.WaitCallback callBack, object state);
     parameters:
     - id: callBack
       type: System.Threading.WaitCallback
-      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;></xref> that represents the delegate to invoke when a thread in the thread pool picks up the work item."
+      description: "A <xref href=&quot;System.Threading.WaitCallback&quot;> </xref> , amely a következő delegáltnak meghívni, amikor a szálkészlet szál szerzi be a munkaelem jelöli."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate when serviced from the thread pool."
+      description: "Az objektum, amely a szálkészlet továbbítódik a küldött, amikor javítás."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method succeeds; <xref:System.OutOfMemoryException> is thrown if the work item could not be queued."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a metódus sikeres; <xref:System.OutOfMemoryException>vált ki, ha a munkaelem nem helyezi várólistára.</xref:System.OutOfMemoryException>"
   overload: System.Threading.ThreadPool.UnsafeQueueUserWorkItem*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   - type: System.ApplicationException
     commentId: T:System.ApplicationException
-    description: "An out-of-memory condition was encountered."
+    description: "Egy kevés a memória állapot lépett fel."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "The work item could not be queued."
+    description: "A munkaelem nem helyezi várólistára."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>callBack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>callBack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.Int32,System.Boolean)
@@ -575,37 +575,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, using a 32-bit signed integer for the time-out in milliseconds. This method does not propagate the calling stack to the worker thread."
-  remarks: "Unlike the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method, UnsafeRegisterWaitForSingleObject does not propagate the calling stack to the worker thread. This allows code to lose the calling stack and thereby to elevate its security privileges.      > [!CAUTION] >  Using UnsafeRegisterWaitForSingleObject could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeRegisterWaitForSingleObject, the stack of the thread pool thread will not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks.       Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread.       When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, 32 bites előjeles egész számokat használ a időkorlát ezredmásodpercben.</xref:System.Threading.WaitHandle> Ez a módszer nem propagálja a munkavégző szál a hívási verem."
+  remarks: "Ellentétben a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus, UnsafeRegisterWaitForSingleObject nem propagálja a hívási veremben a munkavégző szál.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Ez lehetővé teszi, hogy megszakítja a hívási verem, és ezáltal emelheti a saját biztonsági jogosultságait.      > [!CAUTION] > Használatával UnsafeRegisterWaitForSingleObject véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Munkahelyi UnsafeRegisterWaitForSingleObject használatával szál készlet szálban kell várakoznia, ha a szál készlet szál a verem nem lesz a tényleges hívóknak környezetében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében.       Használja a <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex>       Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>"
   syntax:
     content: public static System.Threading.RegisteredWaitHandle UnsafeRegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, int millisecondsTimeOutInterval, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The delegate to call when the `waitObject` parameter is signaled."
+      description: "A delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate."
+      description: "A következő delegáltnak átadott objektum."
     - id: millisecondsTimeOutInterval
       type: System.Int32
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> object that can be used to cancel the registered wait operation."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> objektum, amely segítségével a regisztrált várakozási művelet megszakításához."
   overload: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>millisecondsTimeOutInterval</code> parameter is less than -1."
+    description: "A <code> millisecondsTimeOutInterval </code> paraméter értéke kisebb, mint -1."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.Int64,System.Boolean)
@@ -620,37 +620,37 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a 64-bit signed integer for the time-out in milliseconds. This method does not propagate the calling stack to the worker thread."
-  remarks: "Unlike the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method, UnsafeRegisterWaitForSingleObject does not propagate the calling stack to the worker thread. This allows code to lose the calling stack and thereby to elevate its security privileges.      > [!CAUTION] >  Using UnsafeRegisterWaitForSingleObject could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeRegisterWaitForSingleObject, the stack of the thread pool thread will not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks.       Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread.       When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a 64 bites előjeles egész számokat az időtúllépési ezredmásodpercben.</xref:System.Threading.WaitHandle> Ez a módszer nem propagálja a munkavégző szál a hívási verem."
+  remarks: "Ellentétben a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus, UnsafeRegisterWaitForSingleObject nem propagálja a hívási veremben a munkavégző szál.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Ez lehetővé teszi, hogy megszakítja a hívási verem, és ezáltal emelheti a saját biztonsági jogosultságait.      > [!CAUTION] > Használatával UnsafeRegisterWaitForSingleObject véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Munkahelyi UnsafeRegisterWaitForSingleObject használatával szál készlet szálban kell várakoznia, ha a szál készlet szál a verem nem lesz a tényleges hívóknak környezetében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében.       Használja a <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex>       Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>"
   syntax:
     content: public static System.Threading.RegisteredWaitHandle UnsafeRegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, long millisecondsTimeOutInterval, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The delegate to call when the `waitObject` parameter is signaled."
+      description: "A delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate."
+      description: "A következő delegáltnak átadott objektum."
     - id: millisecondsTimeOutInterval
       type: System.Int64
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> object that can be used to cancel the registered wait operation."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> objektum, amely segítségével a regisztrált várakozási művelet megszakításához."
   overload: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>millisecondsTimeOutInterval</code> parameter is less than -1."
+    description: "A <code> millisecondsTimeOutInterval </code> paraméter értéke kisebb, mint -1."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.TimeSpan,System.Boolean)
@@ -665,40 +665,40 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a <xref:System.TimeSpan> value for the time-out. This method does not propagate the calling stack to the worker thread."
-  remarks: "Unlike the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method, UnsafeRegisterWaitForSingleObject does not propagate the calling stack to the worker thread. This allows code to lose the calling stack and thereby to elevate its security privileges.      > [!CAUTION] >  Using UnsafeRegisterWaitForSingleObject could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeRegisterWaitForSingleObject, the stack of the thread pool thread will not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks.       Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread.       When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a <xref:System.TimeSpan>az időtúllépési érték.</xref:System.TimeSpan> </xref:System.Threading.WaitHandle> Ez a módszer nem propagálja a munkavégző szál a hívási verem."
+  remarks: "Ellentétben a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus, UnsafeRegisterWaitForSingleObject nem propagálja a hívási veremben a munkavégző szál.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Ez lehetővé teszi, hogy megszakítja a hívási verem, és ezáltal emelheti a saját biztonsági jogosultságait.      > [!CAUTION] > Használatával UnsafeRegisterWaitForSingleObject véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Munkahelyi UnsafeRegisterWaitForSingleObject használatával szál készlet szálban kell várakoznia, ha a szál készlet szál a verem nem lesz a tényleges hívóknak környezetében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében.       Használja a <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex>       Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>"
   syntax:
     content: public static System.Threading.RegisteredWaitHandle UnsafeRegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, TimeSpan timeout, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The delegate to call when the `waitObject` parameter is signaled."
+      description: "A delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate."
+      description: "A következő delegáltnak átadott objektum."
     - id: timeout
       type: System.TimeSpan
-      description: "The time-out represented by a <xref:System.TimeSpan>. If `timeout` is 0 (zero), the function tests the object&quot;s state and returns immediately. If `timeout` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időtúllépés <xref:System.TimeSpan>.</xref:System.TimeSpan> által képviselt Ha `timeout` 0 (nulla), a függvény megvizsgálja az objektum állapota, és azonnal visszaadja. Ha `timeout` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> object that can be used to cancel the registered wait operation."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> objektum, amely segítségével a regisztrált várakozási művelet megszakításához."
   overload: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>timeout</code> parameter is less than -1."
+    description: "A <code> timeout </code> paraméter értéke kisebb, mint -1."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <code>timeout</code> parameter is greater than &lt;xref:System.Int32.MaxValue?displayProperty=fullName&gt;."
+    description: "A <code> timeout </code> paraméter értéke nagyobb, mint &lt;xref:System.Int32.MaxValue?displayProperty=fullName&gt;."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   platform:
   - net462
 - uid: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject(System.Threading.WaitHandle,System.Threading.WaitOrTimerCallback,System.Object,System.UInt32,System.Boolean)
@@ -713,34 +713,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Registers a delegate to wait for a <xref:System.Threading.WaitHandle>, specifying a 32-bit unsigned integer for the time-out in milliseconds. This method does not propagate the calling stack to the worker thread."
-  remarks: "Unlike the <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> method, UnsafeRegisterWaitForSingleObject does not propagate the calling stack to the worker thread. This allows code to lose the calling stack and thereby to elevate its security privileges.      > [!CAUTION] >  Using UnsafeRegisterWaitForSingleObject could inadvertently open up a security hole. Code access security bases its permission checks on the permissions of all the callers on the stack. When work is queued on a thread pool thread using UnsafeRegisterWaitForSingleObject, the stack of the thread pool thread will not have the context of the actual callers. Malicious code might be able exploit this to avoid permission checks.       Using a <xref:System.Threading.Mutex> for `waitObject` does not provide mutual exclusion for the callbacks because the underlying Win32 API uses the default `WT_EXECUTEDEFAULT` flag, so each callback is dispatched on a separate thread pool thread.       When you are finished using the <xref:System.Threading.RegisteredWaitHandle> that is returned by this method, call its <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method to release references to the wait handle. We recommend that you always call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method, even if you specify `true` for `executeOnlyOnce`. Garbage collection works more efficiently if you call the <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> method instead of depending on the registered wait handle&quot;s finalizer."
+  summary: "Regisztrálja a történő várakozás delegált egy <xref:System.Threading.WaitHandle>, adja meg a 32 bites előjel nélküli egész számokat az időtúllépési ezredmásodpercben.</xref:System.Threading.WaitHandle> Ez a módszer nem propagálja a munkavégző szál a hívási verem."
+  remarks: "Ellentétben a <xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A>metódus, UnsafeRegisterWaitForSingleObject nem propagálja a hívási veremben a munkavégző szál.</xref:System.Threading.ThreadPool.RegisterWaitForSingleObject%2A> Ez lehetővé teszi, hogy megszakítja a hívási verem, és ezáltal emelheti a saját biztonsági jogosultságait.      > [!CAUTION] > Használatával UnsafeRegisterWaitForSingleObject véletlenül megnyithat egy biztonsági rést be. Kódelérés-biztonsági engedély ellenőrizze az összes hívó engedélyeit a veremben alapjait. Munkahelyi UnsafeRegisterWaitForSingleObject használatával szál készlet szálban kell várakoznia, ha a szál készlet szál a verem nem lesz a tényleges hívóknak környezetében. Rosszindulatú kódot lehet kihasználni a engedélyek ellenőrzését elkerülése érdekében.       Használja a <xref:System.Threading.Mutex>a `waitObject` nem biztosít a visszahívások kölcsönös kizárás, mert az alapul szolgáló Win32 API-t használja az alapértelmezett `WT_EXECUTEDEFAULT` , így minden visszahívási megtörténik egy külön szálban készlet szálon jelzőt.</xref:System.Threading.Mutex>       Ha készen használatával a <xref:System.Threading.RegisteredWaitHandle>, hogy ez a metódus által visszaadott, hívja az <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>való hivatkozást a várakozási leíró metódus.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> </xref:System.Threading.RegisteredWaitHandle> Azt javasoljuk, hogy mindig meghívja a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus, még akkor is, ha megadja `true` a `executeOnlyOnce`.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName> A szemétgyűjtés a lehető leghatékonyabban több hívásakor a <xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>metódus helyett attól függően, hogy a regisztrált várakozási leíró véglegesítőt.</xref:System.Threading.RegisteredWaitHandle.Unregister%2A?displayProperty=fullName>"
   syntax:
     content: public static System.Threading.RegisteredWaitHandle UnsafeRegisterWaitForSingleObject (System.Threading.WaitHandle waitObject, System.Threading.WaitOrTimerCallback callBack, object state, uint millisecondsTimeOutInterval, bool executeOnlyOnce);
     parameters:
     - id: waitObject
       type: System.Threading.WaitHandle
-      description: "The <xref:System.Threading.WaitHandle> to register. Use a <xref:System.Threading.WaitHandle> other than <xref:System.Threading.Mutex>."
+      description: "A <xref:System.Threading.WaitHandle>regisztrálni.</xref:System.Threading.WaitHandle> Egy <xref:System.Threading.WaitHandle>eltérő <xref:System.Threading.Mutex>.</xref:System.Threading.Mutex> </xref:System.Threading.WaitHandle> használata"
     - id: callBack
       type: System.Threading.WaitOrTimerCallback
-      description: "The delegate to call when the `waitObject` parameter is signaled."
+      description: "A delegált hívására, ha a `waitObject` paraméter leállítási jelzést kapott."
     - id: state
       type: System.Object
-      description: "The object that is passed to the delegate."
+      description: "A következő delegáltnak átadott objektum."
     - id: millisecondsTimeOutInterval
       type: System.UInt32
-      description: "The time-out in milliseconds. If the `millisecondsTimeOutInterval` parameter is 0 (zero), the function tests the object&quot;s state and returns immediately. If `millisecondsTimeOutInterval` is -1, the function&quot;s time-out interval never elapses."
+      description: "Az időkorlát ezredmásodpercben. Ha a `millisecondsTimeOutInterval` paraméter értéke 0 (nulla), a függvény az objektum állapota teszteli, és azonnal visszaadja az eredményeket. Ha `millisecondsTimeOutInterval` -1, a függvény időtúllépés soha nem telik."
     - id: executeOnlyOnce
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the thread will no longer wait on the `waitObject` parameter after the delegate has been called; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that the timer is reset every time the wait operation completes until the wait is unregistered."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a szál nem várakozik a `waitObject` paraméter után a meghatalmazott; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy az időzítő pedig nullázásra kerül minden alkalommal, amikor a várakozási művelet befejeződik, amíg a Várjon, amíg nem regisztrált."
     return:
       type: System.Threading.RegisteredWaitHandle
-      description: "The <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;></xref> object that can be used to cancel the registered wait operation."
+      description: "A <xref href=&quot;System.Threading.RegisteredWaitHandle&quot;> </xref> objektum, amely segítségével a regisztrált várakozási művelet megszakításához."
   overload: System.Threading.ThreadPool.UnsafeRegisterWaitForSingleObject*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   platform:
   - net462
 references:
