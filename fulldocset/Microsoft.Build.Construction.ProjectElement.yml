@@ -19,7 +19,7 @@ items:
   nameWithType: ProjectElement
   fullName: Microsoft.Build.Construction.ProjectElement
   type: Class
-  summary: "Abstract base class for MSBuild construction object model elements."
+  summary: "Az MSBuild konstrukció objektum modellelemeket absztrakt alaposztálya."
   syntax:
     content: public abstract class ProjectElement
   inheritance:
@@ -40,12 +40,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "All parent elements of this element, going up to the ProjectRootElement.       None if this is a ProjectRootElement.       None if this has not been attached to a parent yet."
+  summary: "Az ezen elem, melyek a ProjectRootElement legfeljebb összes szülő.       Ha ez nincs egy ProjectRootElement.       Nincs hatása, ha ez nem kapcsolódik a fölérendelt még."
   syntax:
     content: public System.Collections.Generic.IEnumerable<Microsoft.Build.Construction.ProjectElementContainer> AllParents { get; }
     return:
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Construction.ProjectElementContainer}
-      description: "Returns an enumerator over all parent elements. There are no parents elements if the project element is a ProjectRootElement or if this is not yet attached to a parent element."
+      description: "Minden szülőelemek keresztül adja vissza számbevevőre. Ha a projekt elem egy ProjectRootElement, vagy ha ez nincs még csatolva szülőelem, nincsenek nem szülők elemek."
   overload: Microsoft.Build.Construction.ProjectElement.AllParents*
   exceptions: []
   platform:
@@ -62,13 +62,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Gets or sets the Condition value.       It will return empty string IFF a condition attribute is legal but it’s not present or has no value.       It will return null IFF a Condition attribute is illegal on that element.       Removes the attribute if the value to set is empty.       It is possible for derived classes to throw an <xref:System.InvalidOperationException> if setting the condition is not applicable for those elements."
-  remarks: "Removes the Condition attribute if the value to set is set to null or an empty string. If the Condition attribute is not present, returns an empty string instead of throwing an exception because a nonexistent condition is implicitly true       For the &quot;ProjectExtensions&quot; element, the getter returns null and the setter throws an exception for any value."
+  summary: "Lekérdezi vagy beállítja a feltétel értékét.       Üres karakterlánc IFF egy feltétel attribútum jogi, de nincs jelen, vagy nem tartalmaz értéket ad vissza.       Null IFF egy feltétel attribútum nem engedélyezett az adott elemet ad vissza.       Eltávolítja a attribútum üres érték beállítása esetén.       Lehetséges, származtatott osztályok kell küldeni egy <xref:System.InvalidOperationException>Ha a feltétel beállítása esetén nem alkalmazható elemek.</xref:System.InvalidOperationException>"
+  remarks: "Eltávolítja a feltétel attribútum beállítása értéke null vagy üres karakterlánc. Ha a feltétel attribútum nincs jelen, helyett egy kivétel kiváltása, mert egy nem létező feltétel értéke a &quot;ProjectExtensions&quot; elem implicit módon igaz, a beolvasója null értéket ad vissza, és a beállító a kivételt a bármely érték üres karakterláncot ad vissza."
   syntax:
     content: public virtual string Condition { get; set; }
     return:
       type: System.String
-      description: "Returns the Condition attribute value. Returns an empty string if the attribute is not present."
+      description: "A feltétel attribútum értékét adja vissza. Üres karakterláncot ad vissza, ha az attribútum nem található."
   overload: Microsoft.Build.Construction.ProjectElement.Condition*
   exceptions: []
   platform:
@@ -85,7 +85,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Location of the &quot;Condition&quot; attribute on this element, if any.       If there is no such attribute, returns null."
+  summary: "A &quot;Feltétel&quot; attribútum ezen elem, ha bármely helyét.       Ha nincs ilyen attribútum, null értéket ad vissza."
   syntax:
     content: public virtual Microsoft.Build.Construction.ElementLocation ConditionLocation { get; }
     return:
@@ -107,12 +107,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "ProjectRootElement (possibly imported) that contains this Xml.       Cannot be null."
+  summary: "(Esetleg importált) ProjectRootElement, amely tartalmazza az XML-kód.       Nem lehet null."
   syntax:
     content: public Microsoft.Build.Construction.ProjectRootElement ContainingProject { get; }
     return:
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "Returns the project root container that contains this project."
+      description: "A projekt legfelső szintű tárolója, amely tartalmazza az ebben a projektben adja vissza."
   overload: Microsoft.Build.Construction.ProjectElement.ContainingProject*
   exceptions: []
   platform:
@@ -129,13 +129,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Gets or sets the Label value.       Returns empty string if it is not present.       Removes the attribute if the value to set is empty."
-  remarks: "Removes the attribute if the value to set is empty."
+  summary: "Lekérdezi vagy beállítja a felirat.       Ha nincs jelen, értéket ad vissza üres karakterlánc.       Eltávolítja a attribútum üres érték beállítása esetén."
+  remarks: "Eltávolítja a attribútum üres érték beállítása esetén."
   syntax:
     content: public string Label { get; set; }
     return:
       type: System.String
-      description: "Returns the label. Returns an empty string if no label is present."
+      description: "A címke adja vissza. Üres karakterláncot ad vissza, ha nincs címke található."
   overload: Microsoft.Build.Construction.ProjectElement.Label*
   exceptions: []
   platform:
@@ -152,7 +152,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Location of the &quot;Label&quot; attribute on this element, if any.       If there is no such attribute, returns null;"
+  summary: "Ez az elem, ha van ilyen &quot;Címke&quot; attribútumának helye.       Ha nincs ilyen attribútum, null értéket ad vissza;"
   syntax:
     content: public Microsoft.Build.Construction.ElementLocation LabelLocation { get; }
     return:
@@ -174,7 +174,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Location of the corresponding Xml element.       May not be correct if file is not saved, or file has been edited since it was last saved.       In the case of an unsaved edit, the location only contains the path to the file that the element originates from."
+  summary: "A megfelelő XML-elem helye.       Előfordulhat, ha nem sikerül, vagy a fájl utolsó mentése óta módosították.       Esetén nem mentett szerkesztési a hely csak tartalmaz a fájl elérési útja a elem származik."
   syntax:
     content: public Microsoft.Build.Construction.ElementLocation Location { get; }
     return:
@@ -196,12 +196,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Next sibling element.       May be null."
+  summary: "Következő testvér elemmel.       NULL értékű lehet."
   syntax:
     content: public Microsoft.Build.Construction.ProjectElement NextSibling { get; }
     return:
       type: Microsoft.Build.Construction.ProjectElement
-      description: "Returns the next sibling of this project element. Returns null if no next sibling exists."
+      description: "A projekt elem a következő testvére adja vissza. Ha nincs következő testvér létezik null értéket ad vissza."
   overload: Microsoft.Build.Construction.ProjectElement.NextSibling*
   exceptions: []
   platform:
@@ -218,13 +218,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Null if this is a ProjectRootElement.       Null if this has not been attached to a parent yet."
-  remarks: "Parent should only be set by ProjectElementContainer."
+  summary: "Ha ez egy ProjectRootElement null értékű.       Ha ez nem kapcsolódik a fölérendelt még null értékű."
+  remarks: "Szülő csak ProjectElementContainer által állítható be."
   syntax:
     content: public Microsoft.Build.Construction.ProjectElementContainer Parent { get; }
     return:
       type: Microsoft.Build.Construction.ProjectElementContainer
-      description: "Returns the project element container that contains this project."
+      description: "A projekt elemtárolóba, amely tartalmazza az ebben a projektben adja vissza."
   overload: Microsoft.Build.Construction.ProjectElement.Parent*
   exceptions: []
   platform:
@@ -241,12 +241,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Construction
-  summary: "Previous sibling element.       May be null."
+  summary: "Előző testvérének elemet.       NULL értékű lehet."
   syntax:
     content: public Microsoft.Build.Construction.ProjectElement PreviousSibling { get; }
     return:
       type: Microsoft.Build.Construction.ProjectElement
-      description: "Returns the previous sibling of this project element. Returns null if no previous sibling exists."
+      description: "A projekt elem az előző testvérének adja vissza. Ha nem az előző testvérének létezik null értéket ad vissza."
   overload: Microsoft.Build.Construction.ProjectElement.PreviousSibling*
   exceptions: []
   platform:

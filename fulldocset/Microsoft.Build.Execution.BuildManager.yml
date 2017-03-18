@@ -22,7 +22,7 @@ items:
   nameWithType: BuildManager
   fullName: Microsoft.Build.Execution.BuildManager
   type: Class
-  summary: "This class is the public entry point for executing builds."
+  summary: "Ez az osztály a nyilvános belépési pont buildek hajthatók végre."
   syntax:
     content: 'public class BuildManager : IDisposable'
   inheritance:
@@ -44,7 +44,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a new build manager without specifying a name."
+  summary: "Lekérdezi egy új build manager név megadása nélkül."
   syntax:
     content: public BuildManager ();
     parameters: []
@@ -64,14 +64,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Creates a new unnamed build manager."
-  remarks: "Create a new BuildManager. Creating multiple multi-processor aware build managers is not supported due to conflicts in the NodeManager."
+  summary: "Létrehoz egy új névtelen build manager."
+  remarks: "Hozzon létre egy új BuildManager. Több több processzor használatát build kezelők létrehozása nem támogatott a NodeManager az ütközés miatt."
   syntax:
     content: public BuildManager (string hostName);
     parameters:
     - id: hostName
       type: System.String
-      description: "The host for the build manager."
+      description: "A build manager a gazdagép."
   overload: Microsoft.Build.Execution.BuildManager.#ctor*
   exceptions: []
   platform:
@@ -88,18 +88,18 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Prepares the BuildManager to receive build requests."
+  summary: "Előkészíti a BuildManager build kérelmek fogadására."
   syntax:
     content: public void BeginBuild (Microsoft.Build.Execution.BuildParameters parameters);
     parameters:
     - id: parameters
       type: Microsoft.Build.Execution.BuildParameters
-      description: "The build parameters. May be null."
+      description: "A build paraméterek. NULL értékű lehet."
   overload: Microsoft.Build.Execution.BuildManager.BeginBuild*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if a build is already in progress."
+    description: "Vált ki, ha a build már folyamatban van."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.Build(Microsoft.Build.Execution.BuildParameters,Microsoft.Build.Execution.BuildRequestData)
@@ -114,25 +114,25 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a lone build request and blocks until results are available."
-  remarks: "Convenience method."
+  summary: "Elküldi egy egyetlen kérelmet és blokkok amíg eredmények érhetők el."
+  remarks: "Kényelmi metódust."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult Build (Microsoft.Build.Execution.BuildParameters parameters, Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: parameters
       type: Microsoft.Build.Execution.BuildParameters
-      description: "Build parameters."
+      description: "Build paraméterek."
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request data."
+      description: "Build kérelem adatai."
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build result."
+      description: "A build eredményt adja vissza."
   overload: Microsoft.Build.Execution.BuildManager.Build*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if a build is already in progress."
+    description: "Vált ki, ha a build már folyamatban van."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.BuildRequest(Microsoft.Build.Execution.BuildRequestData)
@@ -147,22 +147,22 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a build request and blocks until the results are available."
-  remarks: "Convenience method."
+  summary: "Elküldi a kérelmet, és a blokk mindaddig, amíg az eredmények érhetők el."
+  remarks: "Kényelmi metódust."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult BuildRequest (Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request."
+      description: "Létrehozására irányuló kérelem."
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build result."
+      description: "A build eredményt adja vissza."
   overload: Microsoft.Build.Execution.BuildManager.BuildRequest*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if StartBuild has not been called or if EndBuild has been called."
+    description: "Ha még nem volt meghívva StartBuild, vagy ha EndBuild hívása történt."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.CancelAllSubmissions
@@ -177,7 +177,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Cancels all outstanding submissions asynchronously."
+  summary: "Megszakítja az összes függőben lévő jelentések aszinkron módon."
   syntax:
     content: public void CancelAllSubmissions ();
     parameters: []
@@ -197,12 +197,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the singleton instance of the Build Manager."
+  summary: "Lekérdezi a Build Manager egyetlen példányát."
   syntax:
     content: public static Microsoft.Build.Execution.BuildManager DefaultBuildManager { get; }
     return:
       type: Microsoft.Build.Execution.BuildManager
-      description: "Returns the singleton instance of the Build Manager."
+      description: "A Build Manager egyetlen példányát adja vissza."
   overload: Microsoft.Build.Execution.BuildManager.DefaultBuildManager*
   exceptions: []
   platform:
@@ -219,7 +219,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Dispose of the build manager."
+  summary: "Számolja fel a build manager."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -239,8 +239,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Signals that no more build requests are expected (or allowed) and that the BuildManager may clean up."
-  remarks: "This call blocks until all currently pending requests are complete."
+  summary: "A jelek, hogy további build kérelmek nem várt vagy (engedélyezett), és a BuildManager előfordulhat, hogy tisztítása."
+  remarks: "A hívás blokkok, amíg az összes jelenleg várakozó kérelmek teljesülnek."
   syntax:
     content: public void EndBuild ();
     parameters: []
@@ -248,7 +248,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if there is no build in progress."
+    description: "Ha nincs folyamatban lévő építés kiváltva."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.Finalize
@@ -263,7 +263,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Finalize the building manager."
+  summary: "Véglegesítse az épület-kezelő."
   syntax:
     content: ~BuildManager ();
     parameters: []
@@ -283,16 +283,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a matching ProjectInstance from the BuildManager cache of previously built projects."
+  summary: "Lekérdezi a megfelelő ProjectInstance korábban beépített projektek a BuildManager gyorsítótárból."
   syntax:
     content: public Microsoft.Build.Execution.ProjectInstance GetProjectInstanceForBuild (Microsoft.Build.Evaluation.Project project);
     parameters:
     - id: project
       type: Microsoft.Build.Evaluation.Project
-      description: "The project for which an instance should be retrieved."
+      description: "A projekt, amely egy példányát kell olvasni."
     return:
       type: Microsoft.Build.Execution.ProjectInstance
-      description: "Returns a matching ProjectInstance from the BuildManager cache of previously built projects. If none exist, a new project instance will be created from the specified project."
+      description: "A BuildManager gyorsítótár korábbi projektek egyező ProjectInstance adja vissza. Ha még egy sem létezik, egy új projekt példány a megadott projekt alapján jön létre."
   overload: Microsoft.Build.Execution.BuildManager.GetProjectInstanceForBuild*
   exceptions: []
   platform:
@@ -309,21 +309,21 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a build request to the current build but does not start it immediately. Allows the user to perform asynchronous execution or access the submission ID prior to executing the request."
+  summary: "Build kérést küld az aktuális build, de nem indítsa el azonnal. A felhasználó is végezhetők vele aszinkron végrehajtási hozzáférni a kérelem végrehajtása előtt a küldésének azonosító."
   syntax:
     content: public Microsoft.Build.Execution.BuildSubmission PendBuildRequest (Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request data."
+      description: "Build kérelem adatai."
     return:
       type: Microsoft.Build.Execution.BuildSubmission
-      description: "Returns the submission that will be built."
+      description: "A létrehozandó küldése adja vissza."
   overload: Microsoft.Build.Execution.BuildManager.PendBuildRequest*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if StartBuild has not been called or if EndBuild has been called."
+    description: "Ha még nem volt meghívva StartBuild, vagy ha EndBuild hívása történt."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.ResetCaches
@@ -338,7 +338,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Clears out all of the build manager cached information."
+  summary: "Törli a buildet felelős minden gyorsítótárazott információ."
   syntax:
     content: public void ResetCaches ();
     parameters: []

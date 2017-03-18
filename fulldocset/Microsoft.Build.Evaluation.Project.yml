@@ -95,7 +95,7 @@ items:
   nameWithType: Project
   fullName: Microsoft.Build.Evaluation.Project
   type: Class
-  summary: "Represents a project with design time semantics. This class can load project files, edit items and properties and build projects."
+  summary: "Tervezési idő szemantika projekt jelöli. Ez az osztály betöltése projektfájlokat, elemek és tulajdonságainak szerkesztése és projektek létrehozása."
   syntax:
     content: >-
       [System.Diagnostics.DebuggerDisplay("{FullPath} EffectiveToolsVersion={ToolsVersion} #GlobalProperties={data.globalProperties.Count} #Properties={data.Properties.Count} #ItemTypes={data.ItemTypes.Count} #ItemDefinitions={data.ItemDefinitions.Count} #Items={data.Items.Count} #Targets={data.Targets.Count}")]
@@ -119,8 +119,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs an empty project using the global project collection global properties and default tools version."
-  remarks: "This project is added to the global project collection when it is given the full path to the source project file, typically by saving the project."
+  summary: "A globális projekt globális gyűjteménytulajdonságokkal és alapértelmezett eszközök verziója egy üres projektet hoz létre."
+  remarks: "Ebben a projektben hozzáadódik a globális gyűjtemény, ha a teljes elérési útja a forrásfájl projekt általában a projekt mentésével."
   syntax:
     content: public Project ();
     parameters: []
@@ -140,14 +140,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs an empty project and evaluates it using the given project root and the global project collection global properties and default tools version."
-  remarks: "This project is added to the global project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "Egy üres projektet hoz létre, és kiértékeli az adott projekt legfelső szintű és a globális projekt gyűjtemény globális tulajdonságok és az alapértelmezett eszközök verzió használatával."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a globális gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (Microsoft.Build.Construction.ProjectRootElement xml);
     parameters:
     - id: xml
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "ProjectRootElement to use for evaluation."
+      description: "Az értékelés használandó ProjectRootElement."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -164,14 +164,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs an empty project using the given project collection global properties and default tools version."
-  remarks: "This project is added to the given project collection when it is given the full path to the source project file, typically by saving the project."
+  summary: "Egy adott projekt globális gyűjteménytulajdonságokkal és alapértelmezett eszközök verzió üres projektet hoz létre."
+  remarks: "Ha a teljes elérési útja a forrásfájl projekt általában a projekt mentésével ebben a projektben a megadott gyűjtemény kerül."
   syntax:
     content: public Project (Microsoft.Build.Evaluation.ProjectCollection projectCollection);
     parameters:
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection that the new project is added to."
+      description: "A gyűjtemény az új projekt hozzáadott."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -188,19 +188,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it from the given source project file and with the global project collection global properties and default tools version."
-  remarks: "The project is added to the global project collection.       Throws InvalidOperationException if there is already a project in the project collection that evaluates this source project file. May throw IO-related exceptions."
+  summary: "Hoz létre a projektet, és a megadott forrás projektfájlból és a globális projekt globális gyűjteménytulajdonságokkal és alapértelmezett eszközök verzióval rendelkező értékeli ki."
+  remarks: "A Projekt hozzáadódik a globális gyűjtemény.       InvalidOperationException okoz, ha már van egy projekt, amely kiértékeli a forrás projektfájl projekt gyűjtemény. IO-kapcsolódó kivételeket generálhat."
   syntax:
     content: public Project (string projectFile);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The source project file to be evaluated."
+      description: "A projekt forrásfájl kell kiértékelni."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions:
   - type: Microsoft.Build.Exceptions.InvalidProjectFileException
     commentId: T:Microsoft.Build.Exceptions.InvalidProjectFileException
-    description: "If the evaluation fails."
+    description: "Ha a kiértékelés sikertelen lesz."
   platform:
   - net462
 - uid: Microsoft.Build.Evaluation.Project.#ctor(System.Xml.XmlReader)
@@ -215,14 +215,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates the source code from the given XML reader. The source code is evaluated with the global project collection global properties and default tools version."
-  remarks: "This project is added to the global project collection when it is given the full path to the source project file, typically by saving the project.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli a megadott XML-olvasó a forráskódot. A forráskód ki lesz értékelve a globális projekt globális gyűjteménytulajdonságokkal és alapértelmezett eszközök verzió."
+  remarks: "Ebben a projektben hozzáadódik a globális gyűjtemény, ha a teljes elérési útja a forrásfájl projekt általában a projekt mentésével.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (System.Xml.XmlReader xmlReader);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "XML-olvasó forráskódjának projekt olvasni."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -239,20 +239,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs an empty project and evaluates it using the given project root and with the given global properties and given tools version."
-  remarks: "This project is added to the global project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "Egy üres projektet hoz létre, és kiértékeli az adott projekt legfelső szintű használatával és az adott globális tulajdonságokkal, és a megadott eszközök verziója."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a globális gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (Microsoft.Build.Construction.ProjectRootElement xml, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion);
     parameters:
     - id: xml
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The project root to use for evaluation."
+      description: "A projekt root értékelésre használatára."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -269,20 +269,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs an empty project, to be evaluated with the given project collection and with the given global properties and given tools version."
-  remarks: "The project is added to the specified project collection when it is given the full path to the source project file, typically by saving the project."
+  summary: "Hoz létre egy üres projektet, kell értékelni a megadott gyűjtemény és az adott globális tulajdonságokkal és eszközök verziója."
+  remarks: "Ha a teljes elérési útja a forrásfájl projekt általában a projekt mentésével, a megadott gyűjtemény hozzáadja a projektet."
   syntax:
     content: public Project (System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);
     parameters:
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "The tools version used to evaluate the project. May be null."
+      description: "A projekt kiértékeléséhez használt eszközök verzió. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the new project will be added to."
+      description: "A gyűjtemény az új projekt kerülnek be."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -299,20 +299,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it from the given source project file and with the given global properties and given tools version."
-  remarks: "The project is added to the global project collection.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection. May throw IO-related exceptions."
+  summary: "A projekt hoz létre, és értékeli ki, a megadott forrás projektfájlból és az adott globális tulajdonságokkal és a megadott eszközök verziója."
+  remarks: "A Projekt hozzáadódik a globális gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve. IO-kapcsolódó kivételeket generálhat."
   syntax:
     content: public Project (string projectFile, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The path to the source project file to be evaluated."
+      description: "A fájl elérési útját a forrás projekt kell kiértékelni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -329,20 +329,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates the source code from the given XML reader. The source code is evaluated with the given global properties and given tools version."
-  remarks: "This project is added to the global project collection when it is given the full path to the source project file, typically by saving the project.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli a megadott XML-olvasó a forráskódot. A forráskód az adott globális tulajdonságokkal értékeli ki, és a megadott eszközök verziója."
+  remarks: "Ebben a projektben hozzáadódik a globális gyűjtemény, ha a teljes elérési útja a forrásfájl projekt általában a projekt mentésével.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (System.Xml.XmlReader xmlReader, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "XML-olvasó forráskódjának projekt olvasni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -359,23 +359,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it using the given project root and with the given global properties and given tools version."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli az adott projekt legfelső szintű használatával és az adott globális tulajdonságokkal, és a megadott eszközök verziója."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (Microsoft.Build.Construction.ProjectRootElement xml, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);
     parameters:
     - id: xml
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The project root to use for evaluation."
+      description: "A projekt root értékelésre használatára."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to."
+      description: "A projekt gyűjtemény a projekt kerül."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -392,23 +392,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it from the given source project file and with the given global properties and given tools version."
-  remarks: "The project is added to the given project collection.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection. May throw IO-related exceptions."
+  summary: "A projekt hoz létre, és értékeli ki, a megadott forrás projektfájlból és az adott globális tulajdonságokkal és a megadott eszközök verziója."
+  remarks: "A Projekt hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve. IO-kapcsolódó kivételeket generálhat."
   syntax:
     content: public Project (string projectFile, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The path to the source project file to be evaluated."
+      description: "A fájl elérési útját a forrás projekt kell kiértékelni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "The global properties. May be null."
+      description: "A globális tulajdonságokat. NULL értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "The tools version. May be null."
+      description: "Az eszközök verziója. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -425,23 +425,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates the source code from the given XML reader. The source code is evaluated with the given global properties and given tools version."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli a megadott XML-olvasó a forráskódot. A forráskód az adott globális tulajdonságokkal értékeli ki, és a megadott eszközök verziója."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (System.Xml.XmlReader xmlReader, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "XML-olvasó forráskódjának projekt olvasni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -458,26 +458,26 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it using the given project root and with the given global properties, given tools version, and given load settings."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli az adott projekt legfelső szintű használatával és az adott globális tulajdonságokkal megadott eszközök verziója, és a terheléselosztási beállításokat."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (Microsoft.Build.Construction.ProjectRootElement xml, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: xml
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The project root to use for evaluation."
+      description: "A projekt root értékelésre használatára."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -494,26 +494,26 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it from the given source project file and with the given global properties, given tools version, and given load settings."
-  remarks: "The project is added to the given project collection.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection. May throw IO-related exceptions."
+  summary: "A projekt hoz létre, és kiértékeli, hogy a megadott forrás projektfájlból és az adott globális tulajdonságokkal megadott eszközök verziója, és a terheléselosztási beállításokat."
+  remarks: "A Projekt hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve. IO-kapcsolódó kivételeket generálhat."
   syntax:
     content: public Project (string projectFile, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The path to the source project file to be evaluated."
+      description: "A fájl elérési útját a forrás projekt kell kiértékelni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "The tools version. May be null."
+      description: "Az eszközök verziója. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -530,26 +530,26 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates the source code from the given XML reader. The source code is evaluated with the given global properties and given tools version."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli a megadott XML-olvasó a forráskódot. A forráskód az adott globális tulajdonságokkal értékeli ki, és a megadott eszközök verziója."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (System.Xml.XmlReader xmlReader, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader from which to read project source code."
+      description: "XML-olvasó beolvasásának projekt forráskódot."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -566,29 +566,29 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it using the given project root and with the given global properties, tools and sub-toolset versions, project collection, and load settings."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "Hoz létre a projekt kiértékeli az adott projekt legfelső szintű használatával és az adott globális tulajdonságait, eszközök és sub-eszközkészlet verziói, a project gyűjtemény és -beállításokat."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (Microsoft.Build.Construction.ProjectRootElement xml, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: xml
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "The project root to use for evaluation."
+      description: "A projekt root értékelésre használatára."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: subToolsetVersion
       type: System.String
-      description: "Sub toolset version to evaluate with. May be null."
+      description: "Sub eszközkészlet verzió a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -605,29 +605,29 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates it from the given source project file and with the given global properties, tools and sub-toolset versions, project collection, and load settings."
-  remarks: "The project is added to the given project collection.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection. May throw IO-related exceptions."
+  summary: "A projekt hoz létre, és értékeli ki, a megadott forrás projektfájlból és az adott globális tulajdonságok, eszközök és sub-eszközkészlet verziók, gyűjtemény és terheléselosztási beállításokat."
+  remarks: "A Projekt hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve. IO-kapcsolódó kivételeket generálhat."
   syntax:
     content: public Project (string projectFile, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The path to the source project file to be evaluated."
+      description: "A fájl elérési útját a forrás projekt kell kiértékelni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "The tools version. May be null."
+      description: "Az eszközök verziója. NULL értékű lehet."
     - id: subToolsetVersion
       type: System.String
-      description: "The sub toolset version. May be null."
+      description: "A sub eszközkészlet verziója. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -644,29 +644,29 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Constructs a project and evaluates the source code from the given XML reader. The source code is evaluated with the given global properties, tools and sub-toolset versions, project collection, and load settings."
-  remarks: "This project is added to the given project collection when either this project or the given project root is given the full path to the source project file.       Throws InvalidProjectFileException if the evaluation fails. Throws InvalidOperationException if there is already an equivalent project loaded in the project collection."
+  summary: "A projekt hoz létre, és kiértékeli a megadott XML-olvasó a forráskódot. A forráskód ki lesz értékelve az adott globális tulajdonságok, eszközök és sub-eszközkészlet verziók, gyűjtemény és terheléselosztási beállításokat."
+  remarks: "Ez a projekt vagy az adott projekt legfelső szintű kap a teljes elérési útja arra, hogy a forrás projektfájl ebben a projektben hozzáadódik a megadott gyűjtemény.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz. A gyűjtemény InvalidOperationException jelez, ha már van egy azzal egyenértékű projekt betöltve."
   syntax:
     content: public Project (System.Xml.XmlReader xmlReader, System.Collections.Generic.IDictionary<string,string> globalProperties, string toolsVersion, string subToolsetVersion, Microsoft.Build.Evaluation.ProjectCollection projectCollection, Microsoft.Build.Evaluation.ProjectLoadSettings loadSettings);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "Xml reader to read project source code from."
+      description: "XML-olvasó forráskódjának projekt olvasni."
     - id: globalProperties
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Global properties to evaluate with. May be null in which case the containing project collection&quot;s global properties will be used."
+      description: "Globális tulajdonságok a kiértékeléséhez. Ebben az esetben a tartalmazó projektgyűjtemény globális tulajdonságok használható null értékű lehet."
     - id: toolsVersion
       type: System.String
-      description: "Tools version to evaluate with. May be null."
+      description: "Eszközök verziója a kiértékeléséhez. NULL értékű lehet."
     - id: subToolsetVersion
       type: System.String
-      description: "Sub Toolset version to evaluate with. May be null."
+      description: "Sub eszközkészlet verzió a kiértékeléséhez. NULL értékű lehet."
     - id: projectCollection
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "The project collection the project is added to. May not be null."
+      description: "A projekt gyűjtemény a projekt kerül. Nem lehet null."
     - id: loadSettings
       type: Microsoft.Build.Evaluation.ProjectLoadSettings
-      description: "The load settings to use for evaluation."
+      description: "A tesztelési használandó terheléselosztási beállításokat."
   overload: Microsoft.Build.Evaluation.Project.#ctor*
   exceptions: []
   platform:
@@ -683,20 +683,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds an item with no metadata to the project."
-  remarks: "Any metadata can be added later. Does not modify the project source if a wildcard expression already includes the new item.       Evaluation takes place on a best-effort basis. Items that are defined in the project source following the new item may be used for evaluation. Only this item is evaluated. Other items that might depend on it are not affected."
+  summary: "Nincsenek metaadatok elemet ad hozzá a projekthez."
+  remarks: "Minden metaadatot később is hozzáadhatók. Ha egy helyettesítő karakteres kifejezést már tartalmazza az új elem nem módosítja a projekt forrás.       Kiértékelési legjobb alapon történik. A projekt forrást az új elem meghatározott elemek értékelésre használható. Ez az elem csak ki lesz értékelve. Előfordulhat, hogy e szolgáltatástól függő egyéb elemek nem érintettek."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItem (string itemType, string unevaluatedInclude);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type of the added item."
+      description: "A hozzáadott elem elem típusa."
     - id: unevaluatedInclude
       type: System.String
-      description: "Include attribute of the item to be added."
+      description: "Vegye fel a hozzáadni kívánt elem attribútumát."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns the added item."
+      description: "A hozzáadott elemét adja vissza."
   overload: Microsoft.Build.Evaluation.Project.AddItem*
   exceptions: []
   platform:
@@ -713,23 +713,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds an item with the given metadata to the project."
-  remarks: "The metadata may be null, which indicates no metadata.       Evaluation takes place on a best-effort basis. Items that are defined in the project source following the new item may be used for evaluation. Only this item is evaluated. Other items that might depend on it are not affected."
+  summary: "A megadott metaadatok elemet ad hozzá a projekthez."
+  remarks: "A metaadatok lehet null, ami azt jelenti, hogy nincsenek-metaadatok.       Kiértékelési legjobb alapon történik. A projekt forrást az új elem meghatározott elemek értékelésre használható. Ez az elem csak ki lesz értékelve. Előfordulhat, hogy e szolgáltatástól függő egyéb elemek nem érintettek."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItem (string itemType, string unevaluatedInclude, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,string>> metadata);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type of the added item."
+      description: "A hozzáadott elem elem típusa."
     - id: unevaluatedInclude
       type: System.String
-      description: "Include attribute of the item to be added."
+      description: "Vegye fel a hozzáadni kívánt elem attribútumát."
     - id: metadata
       type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
-      description: "The metadata of the added item."
+      description: "A hozzáadott elem metaadatait."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns the added item."
+      description: "A hozzáadott elemét adja vissza."
   overload: Microsoft.Build.Evaluation.Project.AddItem*
   exceptions: []
   platform:
@@ -746,20 +746,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds an item with no metadata to the project.  Makes no effort to see if an existing wildcard would already match the new item, unless it is the first item in an item group.  Makes no effort to locate the new item near similar items."
-  remarks: "Appends the item to the first item group that does not have a condition and has either no children or whose first child is an item of the same type.       Evaluates on a best-effort basis: -expands with all items. Items that are defined in the XML below the new item may be used, even though in a real evaluation they would not be.       Only this item is evaluated. Other items that might depend on it are not affected.       This is a convenience that it is understood does not necessarily leave the project in a perfectly self consistent state until reevaluation."
+  summary: "Nincsenek metaadatok elemet ad hozzá a projekthez.  Nincs elérhető megtekintéséhez, ha egy meglévő helyettesítő már egyezik az új elem, kivéve, ha az első elem egy csoportot az teszi.  Nincs annak érdekében, hogy keresse meg az új elem közelében hasonló elemek teszi."
+  remarks: "A cikk hozzáfűzi a első Katalóguselem-csoport, amely nem rendelkezhet condition tulajdonsággal, és mindkét nincsenek gyermekei, vagy amelynek első gyermekét egy ugyanolyan típusú elemet.       A legjobb alapon értékelje:-az összes elemet bővíti. Az XML-fájl az új elem alatt meghatározott elemek használhatók, annak ellenére, hogy a valós próbaverzióra azok nem lenne.       Ez az elem csak ki lesz értékelve. Előfordulhat, hogy e szolgáltatástól függő egyéb elemek nem érintettek.       Ez az a könnyebb tisztában van does nem feltétlenül hagyja a projekt tökéletesen self konzisztens állapotban újrakiértékelési-ig."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItemFast (string itemType, string unevaluatedInclude);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type to be added."
+      description: "Elem típusa lehet hozzáadni."
     - id: unevaluatedInclude
       type: System.String
-      description: "The unevaluated Include attribute to be added to the item."
+      description: "A unevaluated Include attribútum fel kell venni az elemet."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns a list of the project items added."
+      description: "A hozzáadott Projekt cikkek listáját adja vissza."
   overload: Microsoft.Build.Evaluation.Project.AddItemFast*
   exceptions: []
   platform:
@@ -776,23 +776,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Adds an item with metadata to the project. Metadata may be null, indicating no metadata. Makes no effort to see if an existing wildcard would already match the new item, unless it is the first item in an item group. Makes no effort to locate the new item near similar items."
-  remarks: "Appends the item to the first item group that does not have a condition and has either no children or whose first child is an item of the same type.       Evaluates on a best-effort basis: -expands with all items. Items that are defined in the XML below the new item may be used, even though in a real evaluation they would not be.       Only this item is evaluated. Other items that might depend on it is not affected.       This is a convenience that it is understood does not necessarily leave the project in a perfectly self consistent state until reevaluation."
+  summary: "A projekt ad hozzá metaadatokat elemet. Metaadatok lehet null, nem metaadatok jelző. Nincs elérhető megtekintéséhez, ha egy meglévő helyettesítő már egyezik az új elem, kivéve, ha az első elem egy csoportot az teszi. Nincs annak érdekében, hogy keresse meg az új elem közelében hasonló elemek teszi."
+  remarks: "A cikk hozzáfűzi a első Katalóguselem-csoport, amely nem rendelkezhet condition tulajdonsággal, és mindkét nincsenek gyermekei, vagy amelynek első gyermekét egy ugyanolyan típusú elemet.       A legjobb alapon értékelje:-az összes elemet bővíti. Az XML-fájl az új elem alatt meghatározott elemek használhatók, annak ellenére, hogy a valós próbaverzióra azok nem lenne.       Ez az elem csak ki lesz értékelve. Előfordulhat, hogy e szolgáltatástól függő egyéb elemek nem érinti.       Ez az a könnyebb tisztában van does nem feltétlenül hagyja a projekt tökéletesen self konzisztens állapotban újrakiértékelési-ig."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ProjectItem> AddItemFast (string itemType, string unevaluatedInclude, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,string>> metadata);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type to be added."
+      description: "Elem típusa lehet hozzáadni."
     - id: unevaluatedInclude
       type: System.String
-      description: "The unevaluated Include attribute to be added to the item."
+      description: "A unevaluated Include attribútum fel kell venni az elemet."
     - id: metadata
       type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
-      description: "The metadata to be added."
+      description: "A metaadatok lehet hozzáadni."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns a list of the project items added."
+      description: "A hozzáadott Projekt cikkek listáját adja vissza."
   overload: Microsoft.Build.Evaluation.Project.AddItemFast*
   exceptions: []
   platform:
@@ -809,13 +809,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all item definition metadata encountered during evaluation."
-  remarks: "Item metadata is read during the second evaluation pass. Unlike metadata returned by the ItemDefinitions property, this metadata is ordered, and includes any metadata subsequently overridden with the same name and item type."
+  summary: "Lekéri az összes elem definíciója metaadatok észlelt a kiértékelés során."
+  remarks: "A második Kiértékelési fázis során elem metaadatait olvasható. Ellentétben a ItemDefinitions tulajdonsága által visszaadott metaadatok a metaadatok van rendezve, és magában foglalja a minden metaadatot, ezt követően lesznek felülírva ugyanazt a nevet és típusa."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectMetadata> AllEvaluatedItemDefinitionMetadata { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectMetadata}
-      description: "Returns all item definition metadata encountered during evaluation. This does not include any elements whose conditions did not evaluate to true, nor any item definition metadata added since the last evaluation."
+      description: "Az összes elem definíciója metaadatokat észlelt a kiértékelés során adja vissza. Ez nem tartalmaz, amelynek feltételek nem kiértékelésének eredménye true elemeket, és nem minden elem definíciója metaadatot az utolsó értékelés óta."
   overload: Microsoft.Build.Evaluation.Project.AllEvaluatedItemDefinitionMetadata*
   exceptions: []
   platform:
@@ -832,13 +832,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all items encountered during evaluation. These are read during the third evaluation pass."
-  remarks: "Unlike those items returned by the Items property, these are ordered with respect to all other items encountered during evaluation, not just ordered with respect to items of the same item type.       In some applications, this complete mutual ordering is significant, and such hosts can use this property.       The enumeration does not include any elements whose conditions did not evaluate to true, nor does it include any items added since the last evaluation."
+  summary: "Lekérdezi számbavevő keresztül összes elemet észlelt a kiértékelés során. Ezek a harmadik Kiértékelési fázis során olvasható."
+  remarks: "Ellentétben ezek a cikkek tulajdonság által visszaküldött elemek ezek rendezett minden más elemet észlelt a kiértékelés tekintetében azonos elem típusú elemek nem csak rendezett során tekintetében.       Egyes alkalmazásokban a teljes kölcsönös jelentős rendezést, és az ilyen állomások használhatja ezt a tulajdonságot.       A számbavétel nem tartalmazza a elemeket, amelyek feltételek nem kiértékelésének eredménye true, sem a óta az utolsó értékelés elemeket."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> AllEvaluatedItems { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns an enumerator over all items encountered during evaluation. These are read during the third evaluation pass."
+      description: "Adja vissza a számbavevő keresztül összes elemet észlelt a kiértékelés során. Ezek a harmadik Kiértékelési fázis során olvasható."
   overload: Microsoft.Build.Evaluation.Project.AllEvaluatedItems*
   exceptions: []
   platform:
@@ -855,13 +855,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all properties encountered during evaluation."
-  remarks: "These properties are read during the first evaluation pass. Unlike properties returned by the Properties property, these are ordered, and includes any properties subsequently overridden with the same name."
+  summary: "Lekéri az összes tulajdonság észlelt a kiértékelés során."
+  remarks: "Ezeket a tulajdonságokat az első fázisban értékelési olvasható. Ellentétben a Properties tulajdonság által visszaadott tulajdonságai ezek rendezett, és minden tulajdonságot, ezt követően felül ugyanazzal a névvel tartalmaz."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectProperty> AllEvaluatedProperties { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectProperty}
-      description: "Returns all properties encountered during evaluation. This does not include any properties whose conditions did not evaluate to true, nor any properties added since the last evaluation."
+      description: "Adja vissza az összes tulajdonság észlelt a kiértékelés során. Ez nem vonatkozik semmilyen tulajdonságot, amelynek feltételek nem kiértékelésének eredménye true, és nem minden tulajdonságot, az utolsó értékelés óta."
   overload: Microsoft.Build.Evaluation.Project.AllEvaluatedProperties*
   exceptions: []
   platform:
@@ -878,14 +878,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, using the default targets."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "A varázsló létrehozza a projektet az alapértelmezett célok."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build ();
     parameters: []
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -902,17 +902,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, using the default targets and the given logger."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "A projektet az alapértelmezett célozza meg, és az adott naplózó alkot."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (Microsoft.Build.Framework.ILogger logger);
     parameters:
     - id: logger
       type: Microsoft.Build.Framework.ILogger
-      description: "The logger to be used during the build."
+      description: "A létrehozás során használni kívánt naplózót."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -929,17 +929,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, using the default targets and the given loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "A varázsló létrehozza a projektet az alapértelmezett célozza meg, és az adott figyelő szoftverek."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers);
     parameters:
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "An enumerator over all loggers to be used during the build."
+      description: "A létrehozás során használt összes figyelő szoftverek keresztül számbavevő."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -956,17 +956,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given target."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ez a projekt létrehozása a megadott cél alkot."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string target);
     parameters:
     - id: target
       type: System.String
-      description: "The target to be built."
+      description: "A cél kialakítani."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -983,17 +983,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given targets."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ebben a projektben, az adott célok összeállításakor alkot."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string[] targets);
     parameters:
     - id: targets
       type: System.String[]
-      description: "An array of targets to be built."
+      description: "Célok kialakítani tömbjét."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1010,20 +1010,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, using the default targets and the given loggers and remote loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "A varázsló létrehozza a projektet az alapértelmezett célok és az adott figyelő szoftverek és a távoli figyelő szoftverek."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers);
     parameters:
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be used during the build."
+      description: "A figyelő a létrehozás során használt szoftverek."
     - id: remoteLoggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Logging.ForwardingLoggerRecord}
-      description: "The remote loggers to be used during the build."
+      description: "A létrehozás során használt távoli figyelő szoftverek."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1040,20 +1040,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given target and using the given loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ez a projekt létrehozása a megadott cél, és az adott figyelő szoftverek használatával hoz létre."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string target, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers);
     parameters:
     - id: target
       type: System.String
-      description: "The target to be built."
+      description: "A cél kialakítani."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be used during the build."
+      description: "A figyelő a létrehozás során használt szoftverek."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1070,20 +1070,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given targets and using the given loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ez a projekt létrehozása a megadott cél, és az adott figyelő szoftverek használatával hoz létre."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string[] targets, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers);
     parameters:
     - id: targets
       type: System.String[]
-      description: "The targets to be built."
+      description: "A célok kialakítani."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be used during the build."
+      description: "A figyelő a létrehozás során használt szoftverek."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1100,23 +1100,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given target and using the given loggers and remote loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ez a projekt létrehozása a megadott cél, és az adott figyelő szoftverek és a távoli figyelő szoftverek alkot."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string target, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers);
     parameters:
     - id: target
       type: System.String
-      description: "The target to be built."
+      description: "A cél kialakítani."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be used during the build."
+      description: "A figyelő a létrehozás során használt szoftverek."
     - id: remoteLoggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Logging.ForwardingLoggerRecord}
-      description: "The remote loggers to be used during the build."
+      description: "A létrehozás során használt távoli figyelő szoftverek."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1133,23 +1133,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Builds this project, building the given targets and using the given loggers and remote loggers."
-  remarks: "To set or get virtual items for build purposes, clone a project instance explicitly and build that. This method does not modify the project object."
+  summary: "Ez a projekt létrehozása a megadott célokat, és az adott figyelő szoftverek és a távoli figyelő szoftverek alkot."
+  remarks: "Sem virtuális elemek build célokra, explicit módon klónozza a projekt példánya, és létre, amely. Ez a módszer nem módosítja a projekt objektum."
   syntax:
     content: public bool Build (string[] targets, System.Collections.Generic.IEnumerable<Microsoft.Build.Framework.ILogger> loggers, System.Collections.Generic.IEnumerable<Microsoft.Build.Logging.ForwardingLoggerRecord> remoteLoggers);
     parameters:
     - id: targets
       type: System.String[]
-      description: "The targets to be built."
+      description: "A célok kialakítani."
     - id: loggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Framework.ILogger}
-      description: "The loggers to be used during the build."
+      description: "A figyelő a létrehozás során használt szoftverek."
     - id: remoteLoggers
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Logging.ForwardingLoggerRecord}
-      description: "The remote loggers to be used during the build."
+      description: "A létrehozás során használt távoli figyelő szoftverek."
     return:
       type: System.Boolean
-      description: "Returns true on success; false otherwise."
+      description: "Igaz értéket ad vissza a sikeres művelet; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.Build*
   exceptions: []
   platform:
@@ -1166,13 +1166,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a collection of possible property values for properties used to evaluate conditions found on properties, property groups, imports, and whens."
+  summary: "Lekérdezi a lehetséges tulajdonságértékek gyűjteménye található tulajdonságok, tulajdonság csoportok, importálja, a feltételek értékeléséhez használt tulajdonságok és mikor történjen meg."
   remarks: 'For example, if the following conditions existed on properties in a project: Condition="''$(Configuration)&#124;$(Platform)'' == ''Debug&#124;x86''" Condition="''$(Configuration)'' == ''Release''" the table would be populated with { "Configuration", { "Debug", "Release" }} { "Platform", { "x86" }} This collection is used by Visual Studio to determine the configurations defined in the project'
   syntax:
     content: public System.Collections.Generic.IDictionary<string,System.Collections.Generic.List<string>> ConditionedProperties { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Collections.Generic.List{System.String}}
-      description: "Returns a collection of possible property values for properties used to evaluate conditions found on properties, property groups, imports, and whens. The collection is in canonical form. The name of the entry is the name of the property to be evaluated, and the value is a list of possible property values."
+      description: "Lehetséges tulajdonságértékek található tulajdonságok, tulajdonság csoportok, importálja, a feltétel kiértékeléséhez használt tulajdonságok gyűjteményének beolvasása és mikor történjen meg. A gyűjtemény kanonikus alakja szerepel. A bejegyzés neve kiértékelendő tulajdonság nevét, a értéke pedig lehetséges tulajdonság értékek listáját."
   overload: Microsoft.Build.Evaluation.Project.ConditionedProperties*
   exceptions: []
   platform:
@@ -1189,14 +1189,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Creates a project instance based on this project, but completely disconnected from it."
-  remarks: "Can be used to build independently. The original project is evaluated before creating the instance, if necessary, so that the original project is marked as unmodified."
+  summary: "A projekt példánya, hanem teljesen bontotta a projekt alapján hoz létre."
+  remarks: "Használható önállóan létrehozásához. Az eredeti projektet a példány létrehozása előtt értékeli a rendszer, ha szükséges, hogy az eredeti projekt jelölésű változtatás nélkül."
   syntax:
     content: public Microsoft.Build.Execution.ProjectInstance CreateProjectInstance ();
     parameters: []
     return:
       type: Microsoft.Build.Execution.ProjectInstance
-      description: "Returns the project instance."
+      description: "A projekt példányt adja vissza."
   overload: Microsoft.Build.Evaluation.Project.CreateProjectInstance*
   exceptions: []
   platform:
@@ -1213,17 +1213,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Creates a project instance based on this project, but completely disconnected from it."
-  remarks: "Can be used to build independently. The original project is evaluated before creating the instance, if necessary, so that the original project is marked as unmodified."
+  summary: "A projekt példánya, hanem teljesen bontotta a projekt alapján hoz létre."
+  remarks: "Használható önállóan létrehozásához. Az eredeti projektet a példány létrehozása előtt értékeli a rendszer, ha szükséges, hogy az eredeti projekt jelölésű változtatás nélkül."
   syntax:
     content: public Microsoft.Build.Execution.ProjectInstance CreateProjectInstance (Microsoft.Build.Execution.ProjectInstanceSettings settings);
     parameters:
     - id: settings
       type: Microsoft.Build.Execution.ProjectInstanceSettings
-      description: "Determines whether created project instance is immutable and whether it contains a look up table to improve performance."
+      description: "Határozza meg, hogy létrehozott projekt példány nem módosítható, és tartalmazza-e egy keresse meg a tábla a teljesítmény javítása érdekében."
     return:
       type: Microsoft.Build.Execution.ProjectInstance
-      description: "Returns the project instance."
+      description: "A projekt példányt adja vissza."
   overload: Microsoft.Build.Evaluation.Project.CreateProjectInstance*
   exceptions: []
   platform:
@@ -1240,12 +1240,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the root directory for this project."
+  summary: "Lekérdezi a gyökérkönyvtár ebben a projektben."
   syntax:
     content: public string DirectoryPath { get; }
     return:
       type: System.String
-      description: "Returns the root directory for this project. The root directory is never null; in-memory projects use the current directory at the time of project load."
+      description: "A gyökérkönyvtár ebben a projektben adja vissza. A gyökérkönyvtár soha nem null. a memóriában projekt az aktuális könyvtárat használja a projekt betöltése során."
   overload: Microsoft.Build.Evaluation.Project.DirectoryPath*
   exceptions: []
   platform:
@@ -1262,12 +1262,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a flag the determines whether <xref:Microsoft.Build.Evaluation.Project.MarkDirty*> is temporarily disabled. This allows, for example, a global property to be set without the project getting marked dirty for reevaluation as a consequence."
+  summary: "Lekérdezi vagy beállítja azt a jelzőt a határozza meg, hogy <xref:Microsoft.Build.Evaluation.Project.MarkDirty*>ideiglenesen le van tiltva.</xref:Microsoft.Build.Evaluation.Project.MarkDirty*> Ez lehetővé teszi, például a projekt első inkonzisztensnek jelölt a újrakiértékelési következtében nélkül be kell állítani egy globális tulajdonságot."
   syntax:
     content: public bool DisableMarkDirty { get; set; }
     return:
       type: System.Boolean
-      description: "Returns a flag the determines whether <xref uid=&quot;langword_csharp_MarkDirty&quot; name=&quot;MarkDirty&quot; href=&quot;&quot;></xref> is temporarily disabled."
+      description: "Visszaadja a jelzőt a határozza meg, hogy <xref uid=&quot;langword_csharp_MarkDirty&quot; name=&quot;MarkDirty&quot; href=&quot;&quot;> </xref> ideiglenesen le van tiltva."
   overload: Microsoft.Build.Evaluation.Project.DisableMarkDirty*
   exceptions: []
   platform:
@@ -1284,13 +1284,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a number that is incremented every time that project is re-evaluated."
-  remarks: "This value should be compared with previous values to see if the project has been re-evaluated. It should not be used to determine how many times the project has been re-evaluated since it may be incremented by more than one for a given re-evaluation."
+  summary: "Lekérdezi egy szám, amely értéke eggyel növekszik, minden alkalommal, amikor erre a projektre újraértékelése is megtörténik."
+  remarks: "Ez az érték megjelenítéséhez, ha a projekt újbóli kiértékelése korábbi értékeket kell hasonlítani. Nem használandó annak meghatározásához, hogy hányszor a projekt óta újraértékelése is megtörténik egy adott újraértékelési az egynél több lehetséges, hogy növelhető."
   syntax:
     content: public int EvaluationCounter { get; }
     return:
       type: System.Int32
-      description: "Returns the incremented value."
+      description: "Növekménye értékét adja vissza."
   overload: Microsoft.Build.Evaluation.Project.EvaluationCounter*
   exceptions: []
   platform:
@@ -1307,17 +1307,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Evaluates the given string by expanding items and properties. The string is evaluated as if it were found at the very end of the project file."
-  remarks: "This method can be used when best-effort evaluation is sufficient."
+  summary: "Kiértékeli a megadott karakterlánc elemek és tulajdonságok kibontásával. A karakterlánc értékeli, ha a projektfájlban nagyon végén található azt."
+  remarks: "Ez a módszer is használható, ha a legjobb értékelési is elegendő."
   syntax:
     content: public string ExpandString (string unexpandedValue);
     parameters:
     - id: unexpandedValue
       type: System.String
-      description: "The string to be evaluated."
+      description: "A karakterlánc kell kiértékelni."
     return:
       type: System.String
-      description: "Returns the evaluated string."
+      description: "A kiértékelt karakterláncot ad vissza."
   overload: Microsoft.Build.Evaluation.Project.ExpandString*
   exceptions: []
   platform:
@@ -1334,13 +1334,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets the full path to the project source file."
-  remarks: "Setting this property on a project in a project collection renames the project."
+  summary: "Lekérdezi vagy beállítja a teljes elérési útja a projekt forrásfájl."
+  remarks: "Ez a tulajdonság egy gyűjtemény a projekt beállítását átnevezi a projektet."
   syntax:
     content: public string FullPath { get; set; }
     return:
       type: System.String
-      description: "Returns the full path to the project source file. Returns an empty string if the project was not loaded from disk."
+      description: "A projekt forrásfájl a teljes elérési útját adja vissza. Üres karakterláncot ad vissza, ha a projekt betöltése nem történt meg a lemezről."
   overload: Microsoft.Build.Evaluation.Project.FullPath*
   exceptions: []
   platform:
@@ -1357,16 +1357,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets evaluated, escaped value of the Include attribute of the provided items."
+  summary: "Lekérdezi a kiértékelése, escape-karakterrel megjelölve a megadott elemek felvétele attribútum értéke."
   syntax:
     content: public static string GetEvaluatedItemIncludeEscaped (Microsoft.Build.Evaluation.ProjectItem item);
     parameters:
     - id: item
       type: Microsoft.Build.Evaluation.ProjectItem
-      description: "The item to be evaluated and escaped."
+      description: "A cikk értékelése és escape-karakterrel megjelölve."
     return:
       type: System.String
-      description: "Returns the evaluated, escaped value of the Include attribute of the provided items."
+      description: "Vissza a kiértékelt escape-karaktersorozatot a megadott elemek felvétele attribútum értéke."
   overload: Microsoft.Build.Evaluation.Project.GetEvaluatedItemIncludeEscaped*
   exceptions: []
   platform:
@@ -1383,16 +1383,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the evaluated, escaped value of the Include attribute of the provided item definition."
+  summary: "A megadott elem definíciója Include attribútumának kiértékelt, escape-karakterrel megjelölt értékének beolvasása."
   syntax:
     content: public static string GetEvaluatedItemIncludeEscaped (Microsoft.Build.Evaluation.ProjectItemDefinition item);
     parameters:
     - id: item
       type: Microsoft.Build.Evaluation.ProjectItemDefinition
-      description: "The item definition to be evaluated and escaped."
+      description: "Az elem definíciója kiértékelése és escape-karakterrel megjelölve."
     return:
       type: System.String
-      description: "Returns the value of the Include attribute."
+      description: "A belefoglalási attribútum értékét adja vissza."
   overload: Microsoft.Build.Evaluation.Project.GetEvaluatedItemIncludeEscaped*
   exceptions: []
   platform:
@@ -1409,17 +1409,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all the items in the project of the given item type. If there are none, returns an empty list. Use AddItem or RemoveItem to modify items in this project."
-  remarks: "Use AddItem or RemoveItem to modify items in this project."
+  summary: "Minden elem lekérdezi a megadott elem típusa a projektben. Ha nincs, egy üres listát ad vissza. Ebben a projektben elemek additem metódust vagy a RemoveItem használja."
+  remarks: "Ebben a projektben elemek additem metódust vagy a RemoveItem használja."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> GetItems (string itemType);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type to be retrieved."
+      description: "Elemtípus kérhető."
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns all the items in the project of the given item type. Returns an empty list if there are no items with the given item name."
+      description: "A megadott elem típusa a projekt összes azon elemeit adja vissza. Egy üres listát ad vissza, ha nincsenek a megadott elem nevű elemek."
   overload: Microsoft.Build.Evaluation.Project.GetItems*
   exceptions: []
   platform:
@@ -1436,17 +1436,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets all items that have the given evaluated Include attribute."
-  remarks: "For example, this method might return all items that have the evaluated Include attribute &quot;component.cpp&quot;. Typically zero or one items are returned. However, there may be multiple items with the same path and different item types, or even with the same item types."
+  summary: "Lekérdezi a megadott kiértékelt Include attribútummal rendelkező összes elemet."
+  remarks: "Ez a módszer például előfordulhat, hogy vissza a kiértékelt Include &quot;component.cpp&quot; attribútummal rendelkező összes elemet. Általában nulla vagy egy elemet ad vissza. Előfordulhat azonban több elem a ugyanazt az elérési utat és a különböző konfigurációelem-típusok, vagy akár az azonos típusú elemekre."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> GetItemsByEvaluatedInclude (string evaluatedInclude);
     parameters:
     - id: evaluatedInclude
       type: System.String
-      description: "The evaluated Include attribute."
+      description: "A kiértékelt Include attribútum."
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns all items that have the given evaluated Include attribute."
+      description: "A megadott kiértékelt Include attribútummal rendelkező összes elemet adja vissza."
   overload: Microsoft.Build.Evaluation.Project.GetItemsByEvaluatedInclude*
   exceptions: []
   platform:
@@ -1463,17 +1463,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: 'Gets all the items in the project of the given type, whether or not their Condition attribute evaluates to true. This is a read-only list: use AddItem or RemoveItem to modify items in this project.'
-  remarks: "This is a read-only list. Use AddItem or RemoveItem to modify items in this project."
+  summary: 'Lekérdezi a megadott típusú, a projekt elemeinek, attól függetlenül, hogy a feltétel attribútum eredménye igaz. A csak olvasható lista: additem metódust vagy a RemoveItem használatával módosíthatja az elemek ebben a projektben.'
+  remarks: "A rendszer egy csak olvasható. Ebben a projektben elemek additem metódust vagy a RemoveItem használja."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> GetItemsIgnoringCondition (string itemType);
     parameters:
     - id: itemType
       type: System.String
-      description: "The item type to be retrieved."
+      description: "Elemtípus kérhető."
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns all the items in the project of the given type, whether or not their Condition attribute evaluates to true."
+      description: "Azon elemeit adja vissza a projektben a megadott típusú-e a feltétel attribútum eredménye igaz."
   overload: Microsoft.Build.Evaluation.Project.GetItemsIgnoringCondition*
   exceptions: []
   platform:
@@ -1490,14 +1490,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all the elements in the &quot;logical project&quot;. The logical project is defined as the unevaluated project obtained from the single MSBuild file that is the result of inlining the text of all imports of the original MSBuild project manifest file."
-  remarks: "The logical project is defined as the unevaluated project obtained from the single MSBuild file that is the result of including inline the text of all imports of the original MSBuild project manifest file."
+  summary: "Lekérdezi számbavevő keresztül az elemek a projektben&quot;logikai&quot;. A logikai projekt van definiálva, a unevaluated projekt eredménye egyetlen MSBuild fájl nyert inlining az eredeti MSBuild projekt jegyzékfájl összes import szövegét."
+  remarks: "A logikai projekt eredménye többek között a beágyazott egyetlen MSBuild fájl az eredeti MSBuild projekt jegyzékfájl összes import szövegét beszerzett a unevaluated projekt van definiálva."
   syntax:
     content: public System.Collections.Generic.IEnumerable<Microsoft.Build.Construction.ProjectElement> GetLogicalProject ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Construction.ProjectElement}
-      description: "Returns an enumerator over all the elements in the &quot;logical project&quot;."
+      description: "Adja vissza a számbavevő a projektben&quot;logikai&quot; összes elem alatt."
   overload: Microsoft.Build.Evaluation.Project.GetLogicalProject*
   exceptions: []
   platform:
@@ -1514,16 +1514,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the escaped value of the provided metadatum."
+  summary: "A megadott metadatum escape-karakterrel megjelölt értékének beolvasása."
   syntax:
     content: public static string GetMetadataValueEscaped (Microsoft.Build.Evaluation.ProjectMetadata metadatum);
     parameters:
     - id: metadatum
       type: Microsoft.Build.Evaluation.ProjectMetadata
-      description: "The metadatum to be escaped."
+      description: "A metadatum meg kell jelölni."
     return:
       type: System.String
-      description: "Gets the escaped value of the provided metadatum."
+      description: "A megadott metadatum escape-karakterrel megjelölt értékének beolvasása."
   overload: Microsoft.Build.Evaluation.Project.GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -1540,19 +1540,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the escaped value of the metadatum with the provided name on the provided item."
+  summary: "A megadott nevű metadatum escape-karakterrel megjelölt értékének lekérdezi a megadott elem."
   syntax:
     content: public static string GetMetadataValueEscaped (Microsoft.Build.Evaluation.ProjectItem item, string name);
     parameters:
     - id: item
       type: Microsoft.Build.Evaluation.ProjectItem
-      description: "The item whose metadata is to be escaped."
+      description: "Az elem, amelynek metaadatai kell megjelölni."
     - id: name
       type: System.String
-      description: "The name of the metadata to be escaped."
+      description: "Meg kell jelölni a metaadat neve."
     return:
       type: System.String
-      description: "Gets the escaped value of the metadatum with the provided name on the provided item."
+      description: "A megadott nevű metadatum escape-karakterrel megjelölt értékének lekérdezi a megadott elem."
   overload: Microsoft.Build.Evaluation.Project.GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -1569,19 +1569,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the escaped value of the metadatum with the provided name on the provided item definition."
+  summary: "A megadott nevű metadatum escape-karakterrel megjelölt értékének lekérdezi a megadott elem-definíciójában."
   syntax:
     content: public static string GetMetadataValueEscaped (Microsoft.Build.Evaluation.ProjectItemDefinition item, string name);
     parameters:
     - id: item
       type: Microsoft.Build.Evaluation.ProjectItemDefinition
-      description: "The item definition whose metadata is to be escaped."
+      description: "A konfigurációelem definícióját, amelynek metaadatai kell megjelölni."
     - id: name
       type: System.String
-      description: "The name of the metadata to be escaped."
+      description: "Meg kell jelölni a metaadat neve."
     return:
       type: System.String
-      description: "Returns the escaped value of the metadatum with the provided name on the provided item definition."
+      description: "A megadott nevű metadatum escape-karakterrel megjelölt értékét adja vissza a megadott elem-definíciójában."
   overload: Microsoft.Build.Evaluation.Project.GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -1598,16 +1598,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets any property in the project that has the specified name."
+  summary: "Bármely tulajdonság lekérdezi a projekt, amely a megadott névvel rendelkezik."
   syntax:
     content: public Microsoft.Build.Evaluation.ProjectProperty GetProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property to retrieve."
+      description: "A lekérdezni a tulajdonság nevét."
     return:
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "Returns any property in the project that has the specified name. Returns null if no property of that name exists."
+      description: "A projekt, amely rendelkezik a megadott név egyik tulajdonságnak sem adja vissza. Null értéket ad eredményül, ha egy ilyen nevű tulajdonság létezik-e."
   overload: Microsoft.Build.Evaluation.Project.GetProperty*
   exceptions: []
   platform:
@@ -1624,17 +1624,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the value of the given property in this project."
-  remarks: "A property with a value of empty string and no property at all are not distinguished between by this method. To determine if a property is set at all in the project, use GetProperty(name)."
+  summary: "Lekérdezi a megadott tulajdonság értéke ebben a projektben."
+  remarks: "Egy tulajdonság értéke az üres karakterlánc, és nem tulajdonság egyáltalán nem megkülönböztetett közötti ezzel a módszerrel. Határozza meg, ha egy tulajdonság értéke minden ebben a projektben, használja a GetProperty(name)."
   syntax:
     content: public string GetPropertyValue (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property whose value is retrieved."
+      description: "A tulajdonság, amelynek értékét a rendszer lekéri a neve."
     return:
       type: System.String
-      description: "Returns the value of the given property in this project. Return an empty string if no property of that name exists. Escape sequences are converted before returning the string."
+      description: "Ebben a projektben az adott tulajdonság értékét adja vissza. Üres karakterláncot adja vissza, ha nincs ilyen nevű tulajdonság. A karakterlánc visszatérése előtt escape-karaktersorozatokat konvertálja."
   overload: Microsoft.Build.Evaluation.Project.GetPropertyValue*
   exceptions: []
   platform:
@@ -1651,16 +1651,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Get the escaped value of the provided property."
+  summary: "A megadott tulajdonság escape-karakterrel megjelölt értékének beolvasása."
   syntax:
     content: public static string GetPropertyValueEscaped (Microsoft.Build.Evaluation.ProjectProperty property);
     parameters:
     - id: property
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "The property to be escaped."
+      description: "A tulajdonság, meg kell jelölni."
     return:
       type: System.String
-      description: "Returns the escaped value of the provided property."
+      description: "A megadott tulajdonság escape-karakterrel megjelölt értékét adja vissza."
   overload: Microsoft.Build.Evaluation.Project.GetPropertyValueEscaped*
   exceptions: []
   platform:
@@ -1677,13 +1677,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a dictionary of the global properties used for the evaluation of this project."
+  summary: "Ez a projekt értékeléséhez használt globális tulajdonságok dictionary lekérdezi."
   remarks: "This is the publicly exposed getter, that translates into a read-only dead IDictionary\\<string, string>.  \n  \n In order to easily tell when we're dirtied, setting and removing global properties is done with <xref:Microsoft.Build.Evaluation.Project.SetGlobalProperty%2A> and <xref:Microsoft.Build.Evaluation.Project.RemoveGlobalProperty%2A>."
   syntax:
     content: public System.Collections.Generic.IDictionary<string,string> GlobalProperties { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "Returns a dictionary of the global properties used for the evaluation of this project."
+      description: "Ez a projekt értékeléséhez használt globális tulajdonságok dictionary adja vissza."
   overload: Microsoft.Build.Evaluation.Project.GlobalProperties*
   exceptions: []
   platform:
@@ -1700,13 +1700,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a list of all the files that contributed to the evaluation of this project."
-  remarks: "The project root of this project is not included."
+  summary: "A fájlok értékelése után a projekt hozzájáruló listájának lekérése."
+  remarks: "Ez a projekt projekt gyökérkönyvtárában nincs megadva."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ResolvedImport> Imports { get; }
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ResolvedImport}
-      description: "Returns a list of all the files that contributed to the evaluation of this project.       The name of each item is the Import element that caused the file to be imported. The value of each item is the project root of the imported project. Import elements whose Condition attribute evaluated to false are not included."
+      description: "Ebben a projektben értékelésére a fájlok kívánják listáját adja vissza.       Minden elem értéke az importált elemből, ami miatt a fájl, importálandók. Minden elem értéke az importált projekt projekt gyökerében. Nincsenek importálási elemek, amelyek feltétel attribútuma hamis kiértékelése."
   overload: Microsoft.Build.Evaluation.Project.Imports*
   exceptions: []
   platform:
@@ -1723,12 +1723,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a list of duplicate imports if an import was imported multiple times. However, only the first import was used in evaluation."
+  summary: "Ismétlődő importálja listájának lekérése, ha az importálás nem importált több alkalommal. Azonban csak az első importálás kiértékelésekor lett megadva."
   syntax:
     content: public System.Collections.Generic.IList<Microsoft.Build.Evaluation.ResolvedImport> ImportsIncludingDuplicates { get; }
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Evaluation.ResolvedImport}
-      description: "Returns a list of duplicate imports."
+      description: "Ismétlődő importálja listáját adja vissza."
   overload: Microsoft.Build.Evaluation.Project.ImportsIncludingDuplicates*
   exceptions: []
   platform:
@@ -1745,13 +1745,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a property that selects whether the targets and tasks of this project can be built."
-  remarks: "Can be used for security purposes. By default, a new project has the same IsBuildEnabled setting as the parent project collection that contains it. When IsBuildEnabled is false, the Build method on this project fails."
+  summary: "Lekérdezi vagy beállítja a választja ki, hogy a célok és feladatok a projekt építhetők tulajdonságot."
+  remarks: "Biztonsági okokból használható. Új projekt alapértelmezés szerint rendelkezik a fölérendelt gyűjtemény, amely tartalmazza azt a azonos IsBuildEnabled beállítást. Ha IsBuildEnabled értéke false, a Build metódust ebben a projektben sikertelen lesz."
   syntax:
     content: public bool IsBuildEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "Returns true if the targets and tasks of this project can be built; false otherwise."
+      description: "Igaz értéket ad eredményül, ha a célok és feladatok a projekt építhetők; hamis más módon."
   overload: Microsoft.Build.Evaluation.Project.IsBuildEnabled*
   exceptions: []
   platform:
@@ -1768,13 +1768,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a property that indicates whether this project has been modified so that it must be reevaluated."
-  remarks: "A project is modified and must be reevaluated when the underlying project source code, including changes to imported files. A project is also modified must be reevaluated if the project tool set changes."
+  summary: "Lekérdezi egy tulajdonság, amely jelzi, hogy ez a projekt módosítva lett, hogy reevaluated lennie kell."
+  remarks: "A projekt módosul, és lehet reevaluated, alapul szolgáló projekt forráskódját, beleértve a módosítások fájlok importálásakor. A projekt is módosul reevaluated kell, ha a projekt eszköz módosításokat."
   syntax:
     content: public bool IsDirty { get; }
     return:
       type: System.Boolean
-      description: "Returns a property that indicates whether this project has been modified so that it must be reevaluated."
+      description: "Olyan tulajdonságon, amely azt jelzi, hogy ez a projekt módosítva lett, hogy azt kell reevaluated adja vissza."
   overload: Microsoft.Build.Evaluation.Project.IsDirty*
   exceptions: []
   platform:
@@ -1791,12 +1791,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a dictionary of item definitions in this project, keyed by item type."
+  summary: "Lekérdezi a cikk definíciók dictionary kulccsal a kapcsolódó elem típus szerint ebben a projektben."
   syntax:
     content: public System.Collections.Generic.IDictionary<string,Microsoft.Build.Evaluation.ProjectItemDefinition> ItemDefinitions { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Evaluation.ProjectItemDefinition}
-      description: "Returns a dictionary of item definitions in this project, keyed by item type."
+      description: "Ebben a projektben, kulccsal a kapcsolódó elem típus szerint a cikk definíciók dictionary adja vissza."
   overload: Microsoft.Build.Evaluation.Project.ItemDefinitions*
   exceptions: []
   platform:
@@ -1813,12 +1813,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all items in this project, ordered within groups of item types."
+  summary: "Lekérdezi számbavevő keresztül minden elem ebben a projektben, a konfigurációelem-típusok csoportokon belüli rendelt."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> Items { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns an enumerator over all items in this project, ordered within groups of item types."
+      description: "Ebben a projektben, a konfigurációelem-típusok csoportokon belüli rendelt összes elemén keresztül adja vissza számbevevőre."
   overload: Microsoft.Build.Evaluation.Project.Items*
   exceptions: []
   platform:
@@ -1835,13 +1835,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all items in this project, ordered within groups of item types."
-  remarks: "Can be used to display all items, even if they are not part of the build in the current configuration."
+  summary: "Lekérdezi számbavevő keresztül minden elem ebben a projektben, a konfigurációelem-típusok csoportokon belüli rendelt."
+  remarks: "Segítségével jeleníti meg az összes elemet, akkor is, ha nem a jelenlegi konfiguráció buildverziót részét."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectItem> ItemsIgnoringCondition { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectItem}
-      description: "Returns an enumerator over all items in this project., ordered within groups of item types, including items whose conditions evaluate to false, or are contained within item groups whose condition evaluates to false."
+      description: "A projekt., a konfigurációelem-típusok, köztük feltételei kiértékelheti hamis értékre, vagy Katalóguselem-csoportokat, amelyek feltétel hamis belüli elemek csoportokon belüli rendelt összes elemének keresztül adja vissza számbevevőre."
   overload: Microsoft.Build.Evaluation.Project.ItemsIgnoringCondition*
   exceptions: []
   platform:
@@ -1858,12 +1858,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all item types in this project."
+  summary: "Lekérdezi számbavevő keresztül az összes konfigurációelem-típusok ebben a projektben."
   syntax:
     content: public System.Collections.Generic.ICollection<string> ItemTypes { get; }
     return:
       type: System.Collections.Generic.ICollection{System.String}
-      description: "Returns an enumerator over all item types in this project. This is an ordered collection."
+      description: "Adja vissza a számbavevő keresztül az összes konfigurációelem-típusok ebben a projektben. Ez az egy rendezett gyűjteményt."
   overload: Microsoft.Build.Evaluation.Project.ItemTypes*
   exceptions: []
   platform:
@@ -1880,8 +1880,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Marks this project as modified."
-  remarks: "It is seldom necessary to call this method explicitly, because all edits affecting a project automatically mark it as modified.       Sometimes, however, this method must be called. For example, a project may have an Import element whose condition depends on a file that exists on a disk. If that file does not exist at evaluation time, and it is created after evaluation, then the project must be explicitly marked as modified.       The <xref:Microsoft.Build.Evaluation.Project.ReevaluateIfNecessary%2A> method uses this property to determine if an evaluation is necessary."
+  summary: "Ez a projekt módosítottként jelöli meg."
+  remarks: "Fontos ritkán metódushívás explicit módon, mert a projekt automatikusan érintő összes szerkesztést szabadként, módosítani.       Egyes esetekben azonban ezt a metódust kell meghívni. A projekt Előfordulhat például, egy importált elem, amelynek feltétel attól függ, egy fájlt, amely létezik a lemezen. Ha, hogy a fájl nem létezik kiértékelése során, és a próbaidőszakot követő létrejön, majd a projekt kell explicit módon megjelölni módosítva.       A <xref:Microsoft.Build.Evaluation.Project.ReevaluateIfNecessary%2A>metódus ezt a tulajdonságot használja annak megállapításához, hogy értékeléséhez szükséges.</xref:Microsoft.Build.Evaluation.Project.ReevaluateIfNecessary%2A>"
   syntax:
     content: public void MarkDirty ();
     parameters: []
@@ -1901,12 +1901,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the project collection which contains this project."
+  summary: "Lekérdezi a projekt gyűjteményt, amely tartalmazza az ebben a projektben."
   syntax:
     content: public Microsoft.Build.Evaluation.ProjectCollection ProjectCollection { get; }
     return:
       type: Microsoft.Build.Evaluation.ProjectCollection
-      description: "Returns the project collection which contains this project, which is never null."
+      description: "A projekt gyűjteményt, amely tartalmazza a projekt, amely soha nem null visszaadása."
   overload: Microsoft.Build.Evaluation.Project.ProjectCollection*
   exceptions: []
   platform:
@@ -1923,12 +1923,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "The location of the originating file itself, not any specific content within it. If the file has not been given a name, this is an empty location. This is a legitimate case of having no location."
+  summary: "A hely a származó fájl magát, nem minden adott tartalmakra. Ha a fájl nem megkapta-e a neve, az érték egy üres helyre. Ez jogos helyzet, hogy nincs hely."
   syntax:
     content: public Microsoft.Build.Construction.ElementLocation ProjectFileLocation { get; }
     return:
       type: Microsoft.Build.Construction.ElementLocation
-      description: "Returns the originating file location or an empty location."
+      description: "Visszaadja a származási helyét, vagy egy üres helyre."
   overload: Microsoft.Build.Evaluation.Project.ProjectFileLocation*
   exceptions: []
   platform:
@@ -1945,12 +1945,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all properties in this project. This is an unordered collection."
+  summary: "Lekérdezi számbavevő keresztül az összes tulajdonság ebben a projektben. Ez az egy rendezetlen gyűjteményt."
   syntax:
     content: public System.Collections.Generic.ICollection<Microsoft.Build.Evaluation.ProjectProperty> Properties { get; }
     return:
       type: System.Collections.Generic.ICollection{Microsoft.Build.Evaluation.ProjectProperty}
-      description: "Returns an enumerator over all properties in this project. Since properties are evaluated as they appear, this is an unordered collection."
+      description: "Ebben a projektben található összes tulajdonság keresztül adja vissza számbevevőre. Tulajdonságok szerint értékeli ki, mert ez az egy rendezetlen gyűjteményt."
   overload: Microsoft.Build.Evaluation.Project.Properties*
   exceptions: []
   platform:
@@ -1967,8 +1967,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Reevaluates the project to incorporate any changes."
-  remarks: "The project is reevaluated only if it is marked as modified. Reevaluation incorporates all changes made to the project source code.       Throws InvalidProjectFileException if the evaluation fails."
+  summary: "A projekt átfogó módosítások reevaluates."
+  remarks: "A projekt van reevaluated csak akkor, ha meg van jelölve, a módosított. Újrakiértékelési magában foglalja a projekt forráskódjához végrehajtott valamennyi módosítást.       InvalidProjectFileException okoz, ha a kiértékelés sikertelen lesz."
   syntax:
     content: public void ReevaluateIfNecessary ();
     parameters: []
@@ -1988,16 +1988,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes a global property and marks the project as modified."
+  summary: "Eltávolítja a globális tulajdonság, és módosítottként jelöli meg a projektet."
   syntax:
     content: public bool RemoveGlobalProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the global property to be removed."
+      description: "Az eltávolítani kívánt globális tulajdonság neve."
     return:
       type: System.Boolean
-      description: "Returns true if the value of the global property was set."
+      description: "Igaz értéket ad eredményül, ha a globális tulajdonság értékét be lett állítva."
   overload: Microsoft.Build.Evaluation.Project.RemoveGlobalProperty*
   exceptions: []
   platform:
@@ -2014,17 +2014,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes an item from the project. The item to be removed must be present in the project, and must not originate from an imported file."
-  remarks: "If the item group containing the item becomes empty, it is also removed.       If the item originates from a wildcard or semicolon-separated expression, the expression is first expanded into multiple items.       The project is updated, but no further evaluation occurs until reevaluation. For example, if an item of type &quot;i&quot; is removed, &quot;j&quot; which is evaluated from &quot;@(i)&quot; is not modified until reevaluation."
+  summary: "Egy elem eltávolítása a projektet. Az elem el kell távolítani a projekt jelen kell lennie, és nem kell származniuk, az importált fájl."
+  remarks: "Ha az elemet tartalmazó Katalóguselem-csoport üres, akkor is eltávolítja.       Ha a cikk egy helyettesítő karakteres vagy pontosvesszővel elválasztott kifejezés származik, a kifejezés első van ki több elem.       A projekt frissül, de nincs további ellenőrzés megy végbe, amíg újrakiértékelési. Például ha egy elem eltávolítják típusa &quot;i&quot;, &quot;j&quot;, amely ki lesz értékelve az &quot;@(i)&quot; újrakiértékelési amíg nem módosul."
   syntax:
     content: public bool RemoveItem (Microsoft.Build.Evaluation.ProjectItem item);
     parameters:
     - id: item
       type: Microsoft.Build.Evaluation.ProjectItem
-      description: "The item to be removed."
+      description: "Az elem el kell távolítani."
     return:
       type: System.Boolean
-      description: "Returns true if the item is present in this evaluated project; otherwise false. Normally this method returns true, since if the requested item is not present, the method throws an exception. If the item is present only in the ItemsIgnoringCondition collection, however, the method returns false."
+      description: "Igaz értéket ad eredményül, ha az elem szerepel a kiértékelt projekt; egyébként pedig hamis. Általában ez a módszer igaz értéket ad vissza, mert a kért elem nincs jelen, ha a metódus kivételt jelez. Ha az elem csak a ItemsIgnoringCondition gyűjteményben található, azonban a metódus hamis értéket ad vissza."
   overload: Microsoft.Build.Evaluation.Project.RemoveItem*
   exceptions: []
   platform:
@@ -2041,14 +2041,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes all the given items from the project, unless they originate from an imported project."
-  remarks: "If an item originates from an imported project, it is simply skipped."
+  summary: "A megadott elemek eltávolítja a projekt, kivéve, ha egy importált projektből származnak."
+  remarks: "Ha egy elem egy importált projekt származik, akkor egyszerűen kihagyva."
   syntax:
     content: public void RemoveItems (System.Collections.Generic.IEnumerable<Microsoft.Build.Evaluation.ProjectItem> items);
     parameters:
     - id: items
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Evaluation.ProjectItem}
-      description: "The items to be removed."
+      description: "Az elemek távolíthatók el."
   overload: Microsoft.Build.Evaluation.Project.RemoveItems*
   exceptions: []
   platform:
@@ -2065,17 +2065,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Removes an property from the project. The property to be removed must be present in the project, and must not originate from an imported file."
-  remarks: "If the property group containing the property becomes empty, it is also removed.       The project is updated, but no further evaluation occurs until reevaluation. For example, if &quot;p&quot; is removed, &quot;q&quot; which is evaluated from &quot;$(p)&quot; is not modified until reevaluation."
+  summary: "Eltávolítja a projekt egy tulajdonság. Az eltávolítandó tulajdonság a projekt jelen kell lennie, és nem kell származniuk, az importált fájl."
+  remarks: "Ha a tulajdonság csoportja. a tulajdonság üres, akkor is eltávolítja.       A projekt frissül, de nincs további ellenőrzés megy végbe, amíg újrakiértékelési. Például ha eltávolítják &quot;p&quot;, &quot;q&quot;, amely ki lesz értékelve a &quot;$(p)&quot; nem módosítja a amíg újrakiértékelési."
   syntax:
     content: public bool RemoveProperty (Microsoft.Build.Evaluation.ProjectProperty property);
     parameters:
     - id: property
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "The property to remove."
+      description: "Távolítsa el a tulajdonság."
     return:
       type: System.Boolean
-      description: "Returns true if the property is present in this evaluated project; otherwise false."
+      description: "Igaz értéket ad eredményül, ha a tulajdonság megtalálható-e a kiértékelt projekt; egyébként pedig hamis."
   overload: Microsoft.Build.Evaluation.Project.RemoveProperty*
   exceptions: []
   platform:
@@ -2092,7 +2092,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves the project to the file system, if modified, using the default character encoding."
+  summary: "Menti a projektet a fájlrendszerhez, ha módosítva, használja az alapértelmezett."
   syntax:
     content: public void Save ();
     parameters: []
@@ -2112,13 +2112,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves the project to the provided text writer, whether or not the project has been modified. Uses the character encoding of the text writer and marks the project as unmodified."
+  summary: "Menti a projekt megadott szöveges írta-e a projekt módosítva lett. A szöveg író karakterkódolású borítékok használ, és a projekt változatlan jelöli."
   syntax:
     content: public void Save (System.IO.TextWriter writer);
     parameters:
     - id: writer
       type: System.IO.TextWriter
-      description: "The text writer to save the project to."
+      description: "A szöveg író mentheti a projektet."
   overload: Microsoft.Build.Evaluation.Project.Save*
   exceptions: []
   platform:
@@ -2135,13 +2135,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves the project to the file system, if modified or if the path to the project source code changes, using the default character encoding."
+  summary: "Menti a projektet a fájlrendszerhez, ha módosítva vagy, ha megváltozik a projekt forráskód elérési útja, használja az alapértelmezett."
   syntax:
     content: public void Save (string path);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the project source code."
+      description: "A projekt forráskód elérési útja."
   overload: Microsoft.Build.Evaluation.Project.Save*
   exceptions: []
   platform:
@@ -2158,13 +2158,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves the project to the file system, if modified, using the given character encoding."
+  summary: "Menti a projektet a fájlrendszerhez, ha módosítja a megadott karakter kódolás használatával."
   syntax:
     content: public void Save (System.Text.Encoding encoding);
     parameters:
     - id: encoding
       type: System.Text.Encoding
-      description: "The character encoding used to save the project."
+      description: "A karakterkódolású borítékok tevékenységgel menthetők a projektet."
   overload: Microsoft.Build.Evaluation.Project.Save*
   exceptions: []
   platform:
@@ -2181,16 +2181,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves the project to the file system, if modified or if the path to the project source code changes, using the given character encoding."
+  summary: "Menti a projektet a fájlrendszer, ha módosítva vagy, ha megváltozik a projekt forráskód elérési útja, a megadott karakter kódolás használatával."
   syntax:
     content: public void Save (string path, System.Text.Encoding encoding);
     parameters:
     - id: path
       type: System.String
-      description: "The path to the project source code."
+      description: "A projekt forráskód elérési útja."
     - id: encoding
       type: System.Text.Encoding
-      description: "The character encoding used to save the project."
+      description: "A karakterkódolású borítékok tevékenységgel menthetők a projektet."
   overload: Microsoft.Build.Evaluation.Project.Save*
   exceptions: []
   platform:
@@ -2207,13 +2207,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Saves a &quot;logical&quot; or &quot;preprocessed&quot; project file, that includes all the imported files as if they formed a single file."
+  summary: "A &quot;logikai&quot; vagy &quot;előre feldolgozott&quot; projekt fájl tartalmazza az importált fájlok, mintha csak egyetlen fájl alakítanak menti."
   syntax:
     content: public void SaveLogicalProject (System.IO.TextWriter writer);
     parameters:
     - id: writer
       type: System.IO.TextWriter
-      description: "The writer that saves the project file."
+      description: "Az író projektfájl menti."
   overload: Microsoft.Build.Evaluation.Project.SaveLogicalProject*
   exceptions: []
   platform:
@@ -2230,19 +2230,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Sets a global property after the project has been evaluated. If the value changes, the project is marked to require reevaluation."
+  summary: "A globális tulajdonság beállítása, a projekt kiértékelése után. Ha megváltoztatja az értéket, a projekt újrakiértékelési megkövetelése van megjelölve."
   syntax:
     content: public bool SetGlobalProperty (string name, string escapedValue);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the global property to set."
+      description: "A globális tulajdonság beállítása neve."
     - id: escapedValue
       type: System.String
-      description: "The new value of the global property."
+      description: "Új globális tulajdonság értéke."
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the value changes, otherwise returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Visszaadja <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> , ha az érték megváltozik, egyéb esetben ad vissza <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Evaluation.Project.SetGlobalProperty*
   exceptions: []
   platform:
@@ -2259,20 +2259,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Sets or adds a property with the given name and value to the project. Overwrites the value of a property with the same name if it did not originate in an imported file."
-  remarks: "If there is no property with the given name, updates the last existing property with the given name that has no condition on itself or its property group, unless it originated in an imported file.       Otherwise, adds a new property in the first property group without a condition, creating a property group if necessary after the last existing property group, else at the start of the project.       Evaluation takes place on a best-effort basis. Properties that are defined in the project source following the new property may be used for evaluation. Only this property is evaluated. Other properties that might depend on it are not affected."
+  summary: "Beállítja, vagy egy tulajdonság az adott nevű és értékű ad hozzá a projekthez. Felülírja az azonos nevű tulajdonság értéke, ha nem származik az importált fájl."
+  remarks: "A megadott nevű tulajdonság nincs, ha frissíti a utolsó meglévő tulajdonság a megadott néven, amelynek nincs feltétel saját magát vagy a tulajdonságcsoport, kivéve, ha az importált fájl származik.       Ellenkező esetben hozzáadása az első tulajdonságcsoport egy feltétel nélkül szükség tulajdonság csoport létrehozása után az utolsó meglévő tulajdonságcsoport, más elején a projekt új tulajdonság.       Kiértékelési legjobb alapon történik. A projekt forrást az új tulajdonság a következő definiált tulajdonságok értékelésre használható. Ez a tulajdonság csak a rendszer értékeli ki. Előfordulhat, hogy e szolgáltatástól függő egyéb tulajdonságai nem érintettek."
   syntax:
     content: public Microsoft.Build.Evaluation.ProjectProperty SetProperty (string name, string unevaluatedValue);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property to set."
+      description: "A beállítandó tulajdonság nevét."
     - id: unevaluatedValue
       type: System.String
-      description: "The new unevaluated value of the property."
+      description: "Az új unevaluated a tulajdonság értékének."
     return:
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "Returns the property."
+      description: "A tulajdonság adja vissza."
   overload: Microsoft.Build.Evaluation.Project.SetProperty*
   exceptions: []
   platform:
@@ -2289,12 +2289,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets a flag the determines whether ReevaluateIfNecessary is temporarily disabled. This is useful when the host expects to make a number of reads and writes to the project, and wants to temporarily sacrifice correctness for performance."
+  summary: "Lekérdezi vagy beállítja azt a jelzőt a határozza meg, hogy ReevaluateIfNecessary ideiglenesen le van tiltva. Ez akkor hasznos, ha a gazdagép több olvasások vár, és a projekt ír, és szeretné ideiglenesen feláldozása a teljesítmény nézetet."
   syntax:
     content: public bool SkipEvaluation { get; set; }
     return:
       type: System.Boolean
-      description: "Returns a flag the determines whether ReevaluateIfNecessary is temporarily disabled."
+      description: "Visszaadja a jelzőt a határozza meg, hogy ReevaluateIfNecessary ideiglenesen le van tiltva."
   overload: Microsoft.Build.Evaluation.Project.SkipEvaluation*
   exceptions: []
   platform:
@@ -2311,12 +2311,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the value of the SubToolsetVersion attribute, if any. This value was combined with the value of the ToolsVersion attribute to determine the toolset properties for this project."
+  summary: "Lekérdezi a SubToolsetVersion attribútum értéke, ha van ilyen. Ez az érték volt kombinálja a ToolsVersion attribútum a projekt eszközkészlet tulajdonságok meghatározásához."
   syntax:
     content: public string SubToolsetVersion { get; }
     return:
       type: System.String
-      description: "Returns the SubToolsetVersion attribute value. Returns an empty string if the attribute is not present."
+      description: "A SubToolsetVersion attribútum értékét adja vissza. Üres karakterláncot ad vissza, ha az attribútum nem található."
   overload: Microsoft.Build.Evaluation.Project.SubToolsetVersion*
   exceptions: []
   platform:
@@ -2333,12 +2333,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets a dictionary of all targets in this project, keyed by target name."
+  summary: "Lekéri az összes cél dictionary ebben a projektben, cél nevű kulccsal."
   syntax:
     content: public System.Collections.Generic.IDictionary<string,Microsoft.Build.Execution.ProjectTargetInstance> Targets { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,Microsoft.Build.Execution.ProjectTargetInstance}
-      description: "Returns a dictionary of all targets in this project, keyed by target name. Overridden targets are not included in this collection. This dictionary is read-only."
+      description: "Adja vissza az összes cél dictionary ebben a projektben, cél nevű kulccsal. Felülbírált célok nem szerepelnek ebben a gyűjteményben. A szótár csak olvasható."
   overload: Microsoft.Build.Evaluation.Project.Targets*
   exceptions: []
   platform:
@@ -2355,13 +2355,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the tools version that this project was evaluated with, if any."
-  remarks: "Set by the constructor. This is not necessarily the same as the tools version on the Project tag, if any; it may have been externally specified, for example with a /tv switch on the command line. The actual tools version on the Project tag can be obtained from <xref:Microsoft.Build.Evaluation.Project.Xml%2A>. The tools version cannot be changed once the project has been created."
+  summary: "Lekérdezi az eszközök verziója, amely ebben a projektben, ha van ilyen."
+  remarks: "A konstruktor határozza meg. Ez nem feltétlenül ugyanaz, mint az eszközök verziója, a projekt címke az lehet, hogy külsőleg megadva, például egy /tv kapcsolóval a parancssorban. A projekt címke tényleges eszközök verziója érhető el a <xref:Microsoft.Build.Evaluation.Project.Xml%2A>.</xref:Microsoft.Build.Evaluation.Project.Xml%2A> Az eszközök verziója nem lehet módosítani, a projekt létrehozása után."
   syntax:
     content: public string ToolsVersion { get; }
     return:
       type: System.String
-      description: "Gets the tools version that this project was evaluated with, if any."
+      description: "Lekérdezi az eszközök verziója, amely ebben a projektben, ha van ilyen."
   overload: Microsoft.Build.Evaluation.Project.ToolsVersion*
   exceptions: []
   platform:
@@ -2378,13 +2378,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the root project associated with this project. Can never be null"
-  remarks: "There is no way to set this property. If you have a new project root, evaluate it into a new project."
+  summary: "Lekérdezi a legfelső szintű projekt projekthez. Nem lehet null"
+  remarks: "Nincs semmilyen módon nem lehet állítani ezt a tulajdonságot. Ha egy új projekt gyökérkönyvtárából, értékelje ki új projektben."
   syntax:
     content: public Microsoft.Build.Construction.ProjectRootElement Xml { get; }
     return:
       type: Microsoft.Build.Construction.ProjectRootElement
-      description: "Returns the root project associated with this project, which can never be null."
+      description: "Visszaadja a legfelső szintű projekt projekthez, amely soha nem lehet null."
   overload: Microsoft.Build.Evaluation.Project.Xml*
   exceptions: []
   platform:

@@ -17,8 +17,8 @@ items:
   nameWithType: IRegistrationServices
   fullName: System.Runtime.InteropServices.IRegistrationServices
   type: Interface
-  summary: "Provides a set of services for registering and unregistering managed assemblies for use from COM."
-  remarks: "Registration is needed when the objects within an assembly are being used by COM clients."
+  summary: "Biztosítja a szolgáltatások regisztrálásához és regisztrációjának törlése a felügyelt szerelvények használatra COM-környezetbe."
+  remarks: "Regisztrációs van szükség, ha az objektumok egy szerelvényben COM-ügyfelek által használt."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,13 +41,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the GUID of the COM category that contains the managed classes."
+  summary: "A COM-kategóriát, amely tartalmazza a felügyelt osztályokra GUID Azonosítóját adja vissza."
   syntax:
     content: public Guid GetManagedCategoryGuid ();
     parameters: []
     return:
       type: System.Guid
-      description: "The GUID of the COM category that contains the managed classes."
+      description: "A COM kategória, amely tartalmazza a felügyelt osztályokra GUID Azonosítóját."
   overload: System.Runtime.InteropServices.IRegistrationServices.GetManagedCategoryGuid*
   exceptions: []
   platform:
@@ -64,16 +64,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves the COM ProgID for a specified type."
+  summary: "Lekéri a COM ProgID megadott típus esetében."
   syntax:
     content: public string GetProgIdForType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type whose ProgID is being requested."
+      description: "A típus, amelynek ProgID vonatkozó kérelem."
     return:
       type: System.String
-      description: "The ProgID for the specified type."
+      description: "A megadott típus esetében ProgID."
   overload: System.Runtime.InteropServices.IRegistrationServices.GetProgIdForType*
   exceptions: []
   platform:
@@ -90,16 +90,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves a list of classes in an assembly that would be registered by a call to <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>."
+  summary: "Lekér egy listát azokról a <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*> hívásával regisztrált volna szerelvények osztályok"
   syntax:
     content: public Type[] GetRegistrableTypesInAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to search for classes."
+      description: "A szerelvény osztályok kereséséhez."
     return:
       type: System.Type[]
-      description: "A <xref:System.Type> array containing a list of classes in <code>assembly</code>."
+      description: "A <xref:System.Type>található osztályok listáját tartalmazó tömb <code> assembly </code>.</xref:System.Type>"
   overload: System.Runtime.InteropServices.IRegistrationServices.GetRegistrableTypesInAssembly*
   exceptions: []
   platform:
@@ -116,28 +116,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the classes in a managed assembly to enable creation from COM."
-  remarks: "`RegisterAssembly` adds the appropriate registry entries for the types in the specified assembly. This method also calls any registration functions found in the assembly.       Use <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName> to get an assembly."
+  summary: "Az osztályok regisztrálja az egy felügyelt szerelvényt a COM-környezetbe. létrehozásának engedélyezése"
+  remarks: "`RegisterAssembly`a megfelelő beállításjegyzék-bejegyzések a típusok hozzáadása a megadott szerelvény. Ez a módszer is meghívja a szerelvényben található regisztrációs függvényeket.       Használjon <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>megszerezni a szerelvényt.</xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>"
   syntax:
     content: public bool RegisterAssembly (System.Reflection.Assembly assembly, System.Runtime.InteropServices.AssemblyRegistrationFlags flags);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be registered."
+      description: "A szerelvény regisztrálni kell."
     - id: flags
       type: System.Runtime.InteropServices.AssemblyRegistrationFlags
-      description: "An <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;></xref> value indicating any special settings needed when registering `assembly`."
+      description: "Egy <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;> </xref> érték, amely jelzi a Speciális beállítások regisztrálásakor szükséges `assembly`."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully registered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> assembly </code> tartalmaz, amelyek sikeresen regisztrált, ha sikertelen volt <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha a szerelvény nem jogosult típusokat tartalmazza."
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – jelölésű metódus <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> nem <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>.       – vagy – nincs jelölésű egynél több metódus <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> a hierarchiában megadott mértékét.       – vagy – a metódus aláírása jelölésű <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> érvénytelen."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients(System.Type,System.Guid@)
@@ -152,17 +152,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the specified type with COM using the specified GUID."
-  remarks: "This method is equivalent to calling `CoRegisterClassObject` in COM."
+  summary: "Regisztrálja a megadott típus COM megadott GUID azonosítóval."
+  remarks: "Ez a módszer megegyezik hívása `CoRegisterClassObject` a COM-környezetbe."
   syntax:
     content: public void RegisterTypeForComClients (Type type, ref Guid g);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to be registered for use from COM."
+      description: "A típus a használatához a COM-környezetbe."
     - id: g
       type: System.Guid
-      description: "GUID used to register the specified type."
+      description: "A megadott típus regisztrálhatók GUID."
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients*
   exceptions: []
   platform:
@@ -179,16 +179,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type is a COM type."
+  summary: "Meghatározza, hogy a megadott típusnak a COM-típusú."
   syntax:
     content: public bool TypeRepresentsComType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to determine if it is a COM type."
+      description: "A típus határozzák meg, ha egy COM-típusú."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified type is a COM type; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a megadott típus esetén egy COM-típusú; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRepresentsComType*
   exceptions: []
   platform:
@@ -205,16 +205,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type requires registration."
+  summary: "Meghatározza, hogy szükséges-e a megadott típus regisztrációs."
   syntax:
     content: public bool TypeRequiresRegistration (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to check for COM registration requirements."
+      description: "A típus COM-regisztráció követelményeinek ellenőrzése."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the type must be registered for use from COM; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a típus COM; használatra szerepelnie kell Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRequiresRegistration*
   exceptions: []
   platform:
@@ -231,25 +231,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Unregisters the classes in a managed assembly."
-  remarks: '`UnregisterAssembly` removes the registry entries for the types in the specified assembly previously added by <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>. This method also calls any unregistration functions found in the assembly.'
+  summary: "Megszünteti egy felügyelt szerelvényt osztályát."
+  remarks: '`UnregisterAssembly`a beállításjegyzék-bejegyzések típusok eltávolítja a korábban hozzáadott <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A> megadott szerelvény Ez a módszer is meghívja regisztrációjának megszüntetése függvényeket található a szerelvényben.'
   syntax:
     content: public bool UnregisterAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be unregistered."
+      description: "A szerelvény regisztrációját."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully unregistered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> assembly </code> tartalmaz, amelyek sikeresen regisztrációjának törlése, ha sikertelen volt <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha a szerelvény nem jogosult típusokat tartalmazza."
   overload: System.Runtime.InteropServices.IRegistrationServices.UnregisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – jelölésű metódus <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> nem <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>.       – vagy – nincs jelölésű egynél több metódus <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> a hierarchiában megadott mértékét.       – vagy – a metódus aláírása jelölésű <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> érvénytelen."
   platform:
   - net462
 references:

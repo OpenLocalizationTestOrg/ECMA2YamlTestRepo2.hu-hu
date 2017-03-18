@@ -14,8 +14,8 @@ items:
   nameWithType: IConstructionCallMessage
   fullName: System.Runtime.Remoting.Activation.IConstructionCallMessage
   type: Interface
-  summary: "Represents the construction call request of an object."
-  remarks: "When the user creates an instance of a new client-activated object by calling `new` or <xref:System.Activator.CreateInstance%2A?displayProperty=fullName> and before the thread returns to the user code, a IConstructionCallMessage is sent to the remote application. When the construction message arrives at the remote application, it is processed by a remoting activator (either the default one, or one that is specified in the <xref:System.Runtime.Remoting.Activation.IConstructionCallMessage.Activator%2A> property) and a new object is created. The remoting application then returns a <xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage> to the local application. The <xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage> contains an instance of <xref:System.Runtime.Remoting.ObjRef>, which packages information about the remote object. The remoting infrastructure converts the <xref:System.Runtime.Remoting.ObjRef> instance into a proxy to the remote object, which is returned to the user code."
+  summary: "A konstrukció hívási kérés objektum jelöli."
+  remarks: "Amikor a felhasználó hoz létre egy új ügyfél által aktivált objektum egy példányát meghívásával `new` vagy <xref:System.Activator.CreateInstance%2A?displayProperty=fullName>, a szál adja vissza a felhasználói kód, mielőtt egy IConstructionCallMessage küldi el a távoli alkalmazáshoz.</xref:System.Activator.CreateInstance%2A?displayProperty=fullName> Amikor a konstrukció üzenet a távoli kérelem érkezik, a távoli eljáráshívás aktiváló által feldolgozott (az alapértelmezett, egy vagy több megadott érték a <xref:System.Runtime.Remoting.Activation.IConstructionCallMessage.Activator%2A>tulajdonság) és egy új objektumot hoz létre.</xref:System.Runtime.Remoting.Activation.IConstructionCallMessage.Activator%2A> A távoli eljáráshívás alkalmazás adja vissza egy <xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage>a helyi alkalmazáshoz.</xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage> A <xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage>példányának tartalmaz <xref:System.Runtime.Remoting.ObjRef>, amely a távoli objektum adatainak csomagok.</xref:System.Runtime.Remoting.ObjRef> </xref:System.Runtime.Remoting.Activation.IConstructionReturnMessage> A távoli eljáráshívási infrastruktúrában alakítja át a <xref:System.Runtime.Remoting.ObjRef>be a távoli objektum, amely a felhasználói kód küld vissza a proxyként példánya.</xref:System.Runtime.Remoting.ObjRef>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,17 +37,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Activation
-  summary: "Gets the type of the remote object to activate."
+  summary: "Lekérdezi a távoli objektum aktiválásához típusa."
   syntax:
     content: public Type ActivationType { get; }
     return:
       type: System.Type
-      description: "The type of the remote object to activate."
+      description: "A távoli objektum aktiválásához típusa."
   overload: System.Runtime.Remoting.Activation.IConstructionCallMessage.ActivationType*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Activation.IConstructionCallMessage.ActivationTypeName
@@ -62,17 +62,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Activation
-  summary: "Gets the full type name of the remote type to activate."
+  summary: "Lekérdezi a aktiválása távoli típus teljes nevét."
   syntax:
     content: public string ActivationTypeName { get; }
     return:
       type: System.String
-      description: "The full type name of the remote type to activate."
+      description: "A teljes típusnév aktiválása távoli típusú."
   overload: System.Runtime.Remoting.Activation.IConstructionCallMessage.ActivationTypeName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Activation.IConstructionCallMessage.Activator
@@ -87,18 +87,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Activation
-  summary: "Gets or sets the activator that activates the remote object."
-  remarks: "A chain of activators that are arranged in a hierarchy typically completes the various tasks that are involved in the activation process. If you intend to plug in a custom activator, then you should traverse the activator hierarchy and plug in your activator at the appropriate location. Use the <xref:System.Runtime.Remoting.Activation.IActivator.NextActivator%2A?displayProperty=fullName> property on the activator that is returned by the current property to traverse the chain of activators.       If you add your own activator into the message&quot;s activator chain on the client side, the activator may be serialized and transported to the server side, if deemed necessary. For this reason, custom activators should be fairly lightweight in terms of serialization requirements."
+  summary: "Lekérdezi vagy beállítja az aktiváló, amely a távoli objektum aktiválja."
+  remarks: "Általában a hierarchiában elrendezett elősegítő láncolata a különböző feladatokat, amelyek szerepet játszanak az aktiválási folyamat befejeződött. Ha azt tervezi, hogy csatlakoztassák a egyéni aktiváló, majd meg kell haladnak át a aktiváló hierarchia és a a aktiváló a megfelelő helyen. Használja a <xref:System.Runtime.Remoting.Activation.IActivator.NextActivator%2A?displayProperty=fullName>az aktiváló elősegítő láncolata átjárása aktuális tulajdonság által visszaadott tulajdonság.</xref:System.Runtime.Remoting.Activation.IActivator.NextActivator%2A?displayProperty=fullName>       Ha az üzenet aktiváló láncba ügyféloldali saját aktiváló ad hozzá, az aktiváló előfordulhat, hogy szerializálni és szállítani a kiszolgáló oldalán, ha szükséges. Emiatt egyéni elősegítő viszonylag könnyű szerializálási követelmények tekintetében kell lennie."
   syntax:
     content: public System.Runtime.Remoting.Activation.IActivator Activator { get; set; }
     return:
       type: System.Runtime.Remoting.Activation.IActivator
-      description: "The activator that activates the remote object."
+      description: "Az aktiváló, amely a távoli objektum aktiválja."
   overload: System.Runtime.Remoting.Activation.IConstructionCallMessage.Activator*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Activation.IConstructionCallMessage.CallSiteActivationAttributes
@@ -113,18 +113,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Activation
-  summary: "Gets the call site activation attributes."
-  remarks: "The CallSiteActivationAttributes indexer allows you to specify additional attributes to use during object activation. The user specifies the CallSiteActivationAttributes in the `activationAttributes` parameter to <xref:System.Activator.CreateInstance%2A?displayProperty=fullName>."
+  summary: "Lekérdezi a hívási hely aktiválási attribútumok."
+  remarks: "A CallSiteActivationAttributes indexelő adja meg az objektum az aktiválás során használandó további attribútumok teszi lehetővé. A felhasználó megadja a CallSiteActivationAttributes a `activationAttributes` <xref:System.Activator.CreateInstance%2A?displayProperty=fullName>.</xref:System.Activator.CreateInstance%2A?displayProperty=fullName> paraméter"
   syntax:
     content: public object[] CallSiteActivationAttributes { get; }
     return:
       type: System.Object[]
-      description: "The call site activation attributes."
+      description: "A hívási hely aktiválási attribútumok."
   overload: System.Runtime.Remoting.Activation.IConstructionCallMessage.CallSiteActivationAttributes*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Activation.IConstructionCallMessage.ContextProperties
@@ -139,18 +139,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Activation
-  summary: "Gets a list of context properties that define the context in which the object is to be created."
-  remarks: "A new object&quot;s context is generally chosen based on metadata attributes of the class. The context selection mechanism is extensible through custom attributes, also known as static context properties, which are compiled into the class metadata. When activating an object remotely, the ContextProperties contains the list of properties that were contributed by various attributes in the construction call message. These properties are used to create the context in which the server object is activated."
+  summary: "Adja meg a környezetben, ahol az, hogy hozható létre környezeti tulajdonságok listájának lekérése."
+  remarks: "Új objektum környezetben általában osztály metaadat-attribútumok alapján van kiválasztva. A környezet kijelölés módszer használata bővíthető keresztül egyéni attribútumok, más néven statikus környezetben tulajdonságai, amelyhez az osztály metaadatok van lefordítva. Aktiválásakor objektum távolról, a ContextProperties konstrukció hívás üzenetben különböző attribútumok hozzájáruló tulajdonságok listáját tartalmazza. Ezek a tulajdonságok használatával létrehozhat a környezetben, amelyben a server objektum aktiválva van."
   syntax:
     content: public System.Collections.IList ContextProperties { get; }
     return:
       type: System.Collections.IList
-      description: "A list of properties of the context in which to construct the object."
+      description: "A környezet, amelyben létrehozni az objektumot tulajdonságok listája."
   overload: System.Runtime.Remoting.Activation.IConstructionCallMessage.ContextProperties*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 references:

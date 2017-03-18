@@ -17,8 +17,8 @@ items:
   nameWithType: BuildSubmission
   fullName: Microsoft.Build.Execution.BuildSubmission
   type: Class
-  summary: "Represents a build request that has been submitted to the build manager for processing. The methods of this class may be used to execute synchronous or asynchronous build requests and to provide access to the results upon completion."
-  remarks: "This class is thread-safe."
+  summary: "A build kérelmeket, amelyek a rendszer továbbította a build-kezelő feldolgozás képviseli. Ez az osztály metódusai szinkron vagy aszinkron build kérések végrehajtásához, és hozzáférést biztosít az eredmények befejezését követően használható."
+  remarks: "Ez az osztály szálbiztos."
   syntax:
     content: public class BuildSubmission
   inheritance:
@@ -39,12 +39,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the asynchronous context provided to <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>, if any."
+  summary: "Lekérdezi vagy beállítja a megadott aszinkron környezet <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>, ha van ilyen.</xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>"
   syntax:
     content: public object AsyncContext { get; }
     return:
       type: System.Object
-      description: "Returns the asynchronous context provided to <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>. Returns null if no context is provided."
+      description: "A megadott <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>.</xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*> aszinkron környezet adja vissza Ha nincs környezet megadva, null értéket ad vissza."
   overload: Microsoft.Build.Execution.BuildSubmission.AsyncContext*
   exceptions: []
   platform:
@@ -61,12 +61,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the build manager this build submission is associated with."
+  summary: "Lekérdezi vagy beállítja a build-kezelő a build küldésének társítva van."
   syntax:
     content: public Microsoft.Build.Execution.BuildManager BuildManager { get; }
     return:
       type: Microsoft.Build.Execution.BuildManager
-      description: "Returns the build manager this build submission is associated with."
+      description: "Visszaadja a build-kezelő a build küldésének társítva."
   overload: Microsoft.Build.Execution.BuildSubmission.BuildManager*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the result of the build."
-  remarks: "The result is not valid until <xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A> is signalled."
+  summary: "Lekérdezi vagy beállítja a létrehozás eredménye."
+  remarks: "Az eredmény nincs érvényes, amíg <xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A>adja.</xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A>"
   syntax:
     content: public Microsoft.Build.Execution.BuildResult BuildResult { get; set; }
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the result of the build."
+      description: "A build eredményét adja vissza."
   overload: Microsoft.Build.Execution.BuildSubmission.BuildResult*
   exceptions: []
   platform:
@@ -106,18 +106,18 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Starts a build request synchronously and waits until results are available."
+  summary: "Szinkron módon elindítja a kérelmet, és megvárja, amíg az eredmények érhetők el."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult Execute ();
     parameters: []
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build request."
+      description: "Visszaadja a kérelmet."
   overload: Microsoft.Build.Execution.BuildSubmission.Execute*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The request has already been started or is already complete."
+    description: "A kérelem már el van indítva, vagy már befejeződött."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildSubmission.ExecuteAsync(Microsoft.Build.Execution.BuildSubmissionCompleteCallback,System.Object)
@@ -132,21 +132,21 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Starts a build request asynchronously and within the given context. Immediately returns control to the caller."
+  summary: "Elindítja a kérelmet, aszinkron módon történik, és az adott környezetben. Azonnal visszaadja a hívók számára."
   syntax:
     content: public void ExecuteAsync (Microsoft.Build.Execution.BuildSubmissionCompleteCallback callback, object context);
     parameters:
     - id: callback
       type: Microsoft.Build.Execution.BuildSubmissionCompleteCallback
-      description: "The callback method to call when the build submission is complete."
+      description: "A visszahívási metódus hívására a build küldése befejeződött."
     - id: context
       type: System.Object
-      description: "The context in which the build submission occurs."
+      description: "A környezet, amelyben a build küldése történik."
   overload: Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The request has already been started or is already complete."
+    description: "A kérelem már el van indítva, vagy már befejeződött."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildSubmission.IsCompleted
@@ -161,12 +161,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Determines whether this build submission is complete."
+  summary: "Meghatározza, hogy a build küldésének befejezése."
   syntax:
     content: public bool IsCompleted { get; }
     return:
       type: System.Boolean
-      description: "Returns true if this build submission is complete; false otherwise."
+      description: "Igaz értéket ad eredményül, ha a build küldésének befejezése; hamis más módon."
   overload: Microsoft.Build.Execution.BuildSubmission.IsCompleted*
   exceptions: []
   platform:
@@ -183,13 +183,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets an ID uniquely identifying this build submission."
-  remarks: "This ID is used to distinguish this build submission from other build submissions within the same build."
+  summary: "Lekérdezi vagy beállítja a build küldésének egyedi azonosítása Azonosítóval."
+  remarks: "Az azonosító olyan más build jelentések belül azonos buildjét build küldéskor megkülönböztetésére."
   syntax:
     content: public int SubmissionId { get; }
     return:
       type: System.Int32
-      description: "Returns an ID uniquely identifying this build submission."
+      description: "Egy Azonosítót, amely egyedileg azonosítja a build küldésének adja vissza."
   overload: Microsoft.Build.Execution.BuildSubmission.SubmissionId*
   exceptions: []
   platform:
@@ -206,12 +206,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a <xref:System.Threading.WaitHandle> object that will be signalled when the build is complete."
+  summary: "Lekérdezi a <xref:System.Threading.WaitHandle>objektum, amely a build befejezésekor kapott lesz.</xref:System.Threading.WaitHandle>"
   syntax:
     content: public System.Threading.WaitHandle WaitHandle { get; }
     return:
       type: System.Threading.WaitHandle
-      description: "Returns null until <xref:Microsoft.Build.Execution.BuildSubmission.Execute*> or <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*> returns, then returns the WaitHandle object."
+      description: "Amíg nem null értéket ad vissza <> </> *> vagy <> </> *> adja vissza, akkor a várakozási leíró objektum beállítása/beolvasása."
   overload: Microsoft.Build.Execution.BuildSubmission.WaitHandle*
   exceptions: []
   platform:
