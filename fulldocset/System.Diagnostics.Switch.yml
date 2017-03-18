@@ -19,8 +19,8 @@ items:
   nameWithType: Switch
   fullName: System.Diagnostics.Switch
   type: Class
-  summary: "Provides an abstract base class to create new debugging and tracing switches."
-  remarks: "A switch provides an efficient mechanism for controlling tracing and debugging output at run time using external settings. The Switch class implements default behavior for switches, allowing you to change the switch level at run time.       This class is the base class for the <xref:System.Diagnostics.BooleanSwitch>, <xref:System.Diagnostics.SourceSwitch> and the <xref:System.Diagnostics.TraceSwitch> classes. These switches meet most debugging and tracing needs. For more information about trace switches, see [Trace Switches](~/add/includes/ajax-current-ext-md.md).       You must enable tracing or debugging to use a switch. The following syntax is compiler specific. If you use compilers other than C# or Visual Basic, refer to the documentation for your compiler.      -   To enable debugging in C#, add the `/d:DEBUG` flag to the compiler command line when you compile your code, or you can add `#define DEBUG` to the top of your file. In Visual Basic, add the `/d:DEBUG=True` flag to the compiler command line.      -   To enable tracing using in C#, add the `/d:TRACE` flag to the compiler command line when you compile your code, or add `#define TRACE` to the top of your file. In Visual Basic, add the `/d:TRACE=True` flag to the compiler command line.       To set the level of your switch, edit the configuration file that corresponds to the name of your application. Within this file, you can add a switch and set its value, remove a switch, or clear all the switches previously set by the application. The configuration file should be formatted like the following example:      ```   <configuration>     <system.diagnostics>       <switches>         <add name=&quot;mySwitch&quot; value=&quot;true&quot; />       </switches>     </system.diagnostics>   </configuration>   ```       This example configuration section defines a <xref:System.Diagnostics.BooleanSwitch> with the <xref:System.Diagnostics.Switch.DisplayName%2A> property set to `mySwitch` and the <xref:System.Diagnostics.BooleanSwitch.Enabled%2A> value set to `true`. Within your application, you can use the configured switch value by creating a <xref:System.Diagnostics.BooleanSwitch> with the same name, as shown in the following code example.       [!code-cpp[Classic Switch Example#4](~/add/codesnippet/cpp/t-system.diagnostics.swi_0_1.cpp)]  [!code-cs[Classic Switch Example#4](~/add/codesnippet/csharp/t-system.diagnostics.swi_0_1.cs)]"
+  summary: "Itt egy absztrakt alaposztály új Hibakeresés és nyomkövetés kapcsolók létrehozásához."
+  remarks: "A kapcsoló külső beállításokkal futási időben a hibakeresési és nyomkövetési kimeneti vezérlése olyan hatékony módszert kínál. A kapcsoló osztály megvalósít kapcsolók, lehetővé téve a kapcsoló szintjének módosítása a futási időben alapértelmezett viselkedése.       Ez az osztály az alaposztálya a <xref:System.Diagnostics.BooleanSwitch>, <xref:System.Diagnostics.SourceSwitch>és a <xref:System.Diagnostics.TraceSwitch>osztályok.</xref:System.Diagnostics.TraceSwitch> </xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.BooleanSwitch> A kapcsolók felel meg a legtöbb Hibakeresés és nyomkövetés igényeinek. Nyomkövetési kapcsolóira vonatkozó további információkért lásd: [nyomkövetési kapcsolók](~/add/includes/ajax-current-ext-md.md).       Engedélyeznie kell a nyomkövetés vagy hibakeresés kapcsoló használatára. A következő fordító adott esetén. C# és Visual Basic eltérő compilers – használatakor, tekintse meg a fordító a dokumentációját.      -C#-hibakeresés engedélyezéséhez vegye fel a `/d:DEBUG` jelzőjét, hogy a fordító parancssor, amikor a kód fordítása, vagy hozzáadhat `#define DEBUG` a fájl elejéhez. A Visual Basic, adja hozzá a `/d:DEBUG=True` jelzőjét, hogy a fordító parancssori műveletet.      -C# segítségével nyomkövetés engedélyezéséhez vegye fel a `/d:TRACE` jelzőjét, hogy a kód fordítása, vagy adja hozzá a fordító parancssori `#define TRACE` a fájl elejéhez. A Visual Basic, adja hozzá a `/d:TRACE=True` jelzőjét, hogy a fordító parancssori műveletet.       A kapcsoló szintjének beállítása, szerkessze a konfigurációs fájl, amely megfelel az alkalmazás nevét. Ezen a fájlon belüli kapcsoló hozzáadása és az értékét állítsa, távolítsa el a kapcsolót, vagy törölje a kapcsolókat az alkalmazás által korábban megadott összes. A konfigurációs fájl az alábbi példához hasonló formátumban kell lennie: ```   <configuration>     <system.diagnostics>       <switches>         <add name=&quot;mySwitch&quot; value=&quot;true&quot; />       </switches>     </system.diagnostics>   </configuration>   ``` Ez például a konfigurációs szakasz egy <xref:System.Diagnostics.BooleanSwitch>rendelkező a <xref:System.Diagnostics.Switch.DisplayName%2A>tulajdonsága `mySwitch` és a <xref:System.Diagnostics.BooleanSwitch.Enabled%2A>értéke `true`.</xref:System.Diagnostics.BooleanSwitch.Enabled%2A> </xref:System.Diagnostics.Switch.DisplayName%2A> </xref:System.Diagnostics.BooleanSwitch> Az alkalmazáson belül is használhatja a konfigurált kapcsoló értéke hozzon létre egy <xref:System.Diagnostics.BooleanSwitch>azonos nevű, a következő kódrészlet példa látható.</xref:System.Diagnostics.BooleanSwitch>       [!code-cpp[Klasszikus kapcsoló például&#4;](~/add/codesnippet/cpp/t-system.diagnostics.swi_0_1.cpp)][!code-cs[klasszikus Switch&#4;. példa  ](~/add/codesnippet/csharp/t-system.diagnostics.swi_0_1.cs)]"
   example:
   - "The following example shows how to define a new Switch class with four levels of tracing that can be used to trace a call stack. You can use the switch to instrument your application to log each time the method is entered or exited.  \n  \n The first example creates the enumeration used to set the level of the switch.  \n  \n [!code-cpp[Classic Switch Example#1](~/add/codesnippet/cpp/t-system.diagnostics.swi_0_2.cpp)]\n [!code-cs[Classic Switch Example#1](~/add/codesnippet/csharp/t-system.diagnostics.swi_0_2.cs)]\n [!code-vb[Classic Switch Example#1](~/add/codesnippet/visualbasic/t-system.diagnostics.swi_0_2.vb)]  \n  \n The following example creates the new switch. The code implements a `Level` property to set the value of the new switch. `Level` calls the protected property <xref:System.Diagnostics.Switch.SwitchSetting%2A> that assigns the value to the new switch. This example also implements two assessor properties to get the assigned value of the switch.  \n  \n [!code-cpp[Classic Switch Example#2](~/add/codesnippet/cpp/t-system.diagnostics.swi_0_3.cpp)]\n [!code-cs[Classic Switch Example#2](~/add/codesnippet/csharp/t-system.diagnostics.swi_0_3.cs)]\n [!code-vb[Classic Switch Example#2](~/add/codesnippet/visualbasic/t-system.diagnostics.swi_0_3.vb)]  \n  \n The following example creates a new switch in `Main`. It creates a new switch and assigns it a value. Then, depending on the switch settings, it outputs debugging messages for entering and leaving the method.  \n  \n [!code-cpp[Classic Switch Example#3](~/add/codesnippet/cpp/t-system.diagnostics.swi_0_4.cpp)]\n [!code-cs[Classic Switch Example#3](~/add/codesnippet/csharp/t-system.diagnostics.swi_0_4.cs)]\n [!code-vb[Classic Switch Example#3](~/add/codesnippet/visualbasic/t-system.diagnostics.swi_0_4.vb)]"
   syntax:
@@ -43,17 +43,17 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Switch&quot;></xref> class."
-  remarks: "When you create a new <xref:System.Diagnostics.Switch> object, the value of the `displayName` parameter is used to find initial switch settings. The default value is an empty string (&quot;&quot;).       Within the XML configuration file, you can add a switch and set its value, remove a switch, or clear all the switches previously set by the application. Dynamic changes to the configuration file are not detected while the application is executing. You must stop and restart an application before changes to the configuration file take effect. The configuration file should be formatted like the following example:      ```   <configuration>     <system.diagnostics>       <switches>         <add name=&quot;mySwitch&quot; value=&quot;10&quot; />         <add name=&quot;myNewSwitch&quot; value=&quot;20&quot; />         <remove name=&quot;mySwitch&quot; />         <clear/>       </switches>     </system.diagnostics>   </configuration>   ```"
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Diagnostics.Switch&quot;> </xref> osztály."
+  remarks: "Amikor létrehoz egy új <xref:System.Diagnostics.Switch>objektum, értékét a `displayName` paraméter használható kezdeti kapcsoló beállításainak keresésére.</xref:System.Diagnostics.Switch> Az alapértelmezett érték: üres karakterlánc (&quot;&quot;).       Az XML konfigurációs fájl belül kapcsoló hozzáadása és az értékét állítsa, távolítsa el a kapcsolót, vagy törölje a kapcsolókat az alkalmazás által korábban megadott összes. Dinamikus a konfigurációs fájl nem észlel az alkalmazás van végrehajtása közben. Érvényesítéséhez állítsa le és indítsa újra a kérelmet a konfigurációs fájl módosítások érvénybe lépéséhez. A konfigurációs fájl az alábbi példához hasonló formátumban kell lennie:```   <configuration>     <system.diagnostics>       <switches>         <add name=&quot;mySwitch&quot; value=&quot;10&quot; />         <add name=&quot;myNewSwitch&quot; value=&quot;20&quot; />         <remove name=&quot;mySwitch&quot; />         <clear/>       </switches>     </system.diagnostics>   </configuration>   ```"
   syntax:
     content: protected Switch (string displayName, string description);
     parameters:
     - id: displayName
       type: System.String
-      description: "The name of the switch."
+      description: "A kapcsoló nevét."
     - id: description
       type: System.String
-      description: "The description for the switch."
+      description: "A leírás megadása a kapcsolóhoz."
   overload: System.Diagnostics.Switch.#ctor*
   exceptions: []
   platform:
@@ -70,20 +70,20 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Switch&quot;></xref> class, specifying the display name, description, and default value for the switch."
-  remarks: "The `displayName` parameter is used to set the value of the <xref:System.Diagnostics.Switch.DisplayName%2A> property, and the `description` parameter is use to set the value of the <xref:System.Diagnostics.Switch.Description%2A> property. The `defaultSwitchValue` parameter is the value for the switch if the <xref:System.Diagnostics.Switch.Value%2A> property is not set by code or by the configuration file attribute. See the <xref:System.Diagnostics.Switch.%23ctor%28System.String%2CSystem.String%29> overload for additional information."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Diagnostics.Switch&quot;> </xref> osztályt a megjelenített neve, leírása és alapértelmezett értéke a kapcsoló megadásával."
+  remarks: "A `displayName` paraméter értékének beállítására szolgál a <xref:System.Diagnostics.Switch.DisplayName%2A>tulajdonság, és a `description` paraméter segítségével állítsa be a a <xref:System.Diagnostics.Switch.Description%2A>tulajdonság.</xref:System.Diagnostics.Switch.Description%2A> </xref:System.Diagnostics.Switch.DisplayName%2A> A `defaultSwitchValue` paraméter megadása a kapcsolóhoz értéket, ha a <xref:System.Diagnostics.Switch.Value%2A>tulajdonság nincs beállítva a kódot, vagy a konfigurációs fájl attribútum.</xref:System.Diagnostics.Switch.Value%2A> Tekintse meg a <xref:System.Diagnostics.Switch.%23ctor%28System.String%2CSystem.String%29>információval túlterhelés.</xref:System.Diagnostics.Switch.%23ctor%28System.String%2CSystem.String%29>"
   syntax:
     content: protected Switch (string displayName, string description, string defaultSwitchValue);
     parameters:
     - id: displayName
       type: System.String
-      description: "The name of the switch."
+      description: "A kapcsoló nevét."
     - id: description
       type: System.String
-      description: "The description of the switch."
+      description: "A kapcsoló leírása."
     - id: defaultSwitchValue
       type: System.String
-      description: "The default value for the switch."
+      description: "Az alapértelmezett érték a kapcsolóhoz."
   overload: System.Diagnostics.Switch.#ctor*
   exceptions: []
   platform:
@@ -100,15 +100,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the custom switch attributes defined in the application configuration file."
-  remarks: "The Attributes property identifies the custom attributes referenced in the application&quot;s configuration file. Unreferenced custom attributes are not enumerated. Classes that inherit from the <xref:System.Diagnostics.Switch> class can add custom attributes by overriding the <xref:System.Diagnostics.Switch.GetSupportedAttributes%2A> method and returning a string array of custom attribute names."
+  summary: "Lekérdezi az alkalmazás konfigurációs fájljában definiált egyéni kapcsoló attribútumait."
+  remarks: "A attribútumok tulajdonsága azonosítja az alkalmazás konfigurációs fájljában hivatkozott egyéni attribútumait. Nem hivatkozott egyéni attribútumok nem sorolja. Öröklő a <xref:System.Diagnostics.Switch>osztály felülbírálásával adhat hozzá az egyéni attribútumok a <xref:System.Diagnostics.Switch.GetSupportedAttributes%2A>metódus törlését és az egyéni attribútumok nevében egy karakterlánc-tömbben.</xref:System.Diagnostics.Switch.GetSupportedAttributes%2A> </xref:System.Diagnostics.Switch>"
   example:
   - "The following code sample shows how to display the unrecognized attributes for a custom switch.  \n  \n [!code-cs[System.Diagnostics.TraceSource#15](~/add/codesnippet/csharp/p-system.diagnostics.swi_1_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource#15](~/add/codesnippet/visualbasic/p-system.diagnostics.swi_1_1.vb)]"
   syntax:
     content: public System.Collections.Specialized.StringDictionary Attributes { get; }
     return:
       type: System.Collections.Specialized.StringDictionary
-      description: "A <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;></xref> containing the case-insensitive custom attributes for the trace switch."
+      description: "A <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;> </xref> tartalmazó a nyomkövetési kapcsolóban nem betűérzékeny egyéni attribútumait."
   overload: System.Diagnostics.Switch.Attributes*
   exceptions: []
   platform:
@@ -125,13 +125,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets a description of the switch."
-  remarks: "This property should indicate the function of the switch; for example, &quot;Enables tracing for a directory watcher component.&quot; The value is set by the `descriptor` parameter in the <xref:System.Diagnostics.Switch.%23ctor%2A> constructor."
+  summary: "Lekérdezi a kapcsoló leírását."
+  remarks: "Ez a tulajdonság jelzi a függvény a kapcsoló; például &quot;lehetővé teszi, hogy nyomkövetés egy címtár-figyelő összetevő.&quot; Az érték a `descriptor` paramétere a <xref:System.Diagnostics.Switch.%23ctor%2A>konstruktor.</xref:System.Diagnostics.Switch.%23ctor%2A>"
   syntax:
     content: public string Description { get; }
     return:
       type: System.String
-      description: "The description of the switch. The default value is an empty string (&quot;&quot;)."
+      description: "A kapcsoló leírása. Az alapértelmezett érték: üres karakterlánc (&quot;&quot;)."
   overload: System.Diagnostics.Switch.Description*
   exceptions: []
   platform:
@@ -148,15 +148,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets a name used to identify the switch."
-  remarks: 'When you create a new <xref:System.Diagnostics.Switch> object, the DisplayName finds initial switch settings. For more information, see the <xref:System.Diagnostics.Switch.%23ctor%2A> constructor and [How to: Create, Initialize and Configure Trace Switches](~/add/includes/ajax-current-ext-md.md) in the Visual Studio documentation.'
+  summary: "Lekérdezi a kapcsoló azonosítására használt nevet."
+  remarks: 'Amikor létrehoz egy új <xref:System.Diagnostics.Switch>objektum, a DisplayName talál kezdeti kapcsoló beállításainak.</xref:System.Diagnostics.Switch> További információkért lásd: a <xref:System.Diagnostics.Switch.%23ctor%2A>konstruktor és [hogyan: hozzon létre, inicializálása és nyomkövetési kapcsolók konfigurálása](~/add/includes/ajax-current-ext-md.md) a Visual Studio dokumentáció.</xref:System.Diagnostics.Switch.%23ctor%2A>'
   example:
   - "The following code example displays the display name for the switch in use by a trace source.  This code example is part of a larger example that can be found in the <xref:System.Diagnostics.TraceSource> class summary.  \n  \n [!code-cs[System.Diagnostics.TraceSource#10](~/add/codesnippet/csharp/p-system.diagnostics.swi_0_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource#10](~/add/codesnippet/visualbasic/p-system.diagnostics.swi_0_1.vb)]"
   syntax:
     content: public string DisplayName { get; }
     return:
       type: System.String
-      description: "The name used to identify the switch. The default value is an empty string (&quot;&quot;)."
+      description: "A név alapján határozza meg a kapcsoló. Az alapértelmezett érték: üres karakterlánc (&quot;&quot;)."
   overload: System.Diagnostics.Switch.DisplayName*
   exceptions: []
   platform:
@@ -173,8 +173,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the custom attributes supported by the switch."
-  remarks: "The default implementation for the GetSupportedAttributes method returns `null`. If a switch is added in a configuration file and custom attributes are specified that are not included in the string array returned by GetSupportedAttributes, a <xref:System.Configuration.ConfigurationException> is thrown when the switch is loaded."
+  summary: "Lekérdezi az egyéni attribútumok a kapcsoló által támogatott."
+  remarks: "Az alapértelmezett implementációja GetSupportedAttributes metódus visszaadja `null`. Ha a kapcsoló szerepel-e a konfigurációs fájlban, és egyéni attribútum van megadva, amelyek nem szerepelnek a GetSupportedAttributes, által visszaadott karakterlánc-tömbben egy <xref:System.Configuration.ConfigurationException>fordul elő, ha a kapcsoló be van töltve.</xref:System.Configuration.ConfigurationException>"
   example:
   - "The following code sample shows an override of the GetSupportedAttributes method for a custom switch.  \n  \n [!code-cs[System.Diagnostics.TraceSource#34](~/add/codesnippet/csharp/m-system.diagnostics.swi_1_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource#34](~/add/codesnippet/visualbasic/m-system.diagnostics.swi_1_1.vb)]"
   syntax:
@@ -182,7 +182,7 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "A string array that contains the names of the custom attributes supported by the switch, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there no custom attributes are supported."
+      description: "A kapcsoló által támogatott egyéni attribútumok nevét tartalmazó karakterlánc-tömbben vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha nincs egyedi attribútumok nem támogatottak."
   overload: System.Diagnostics.Switch.GetSupportedAttributes*
   exceptions: []
   platform:
@@ -199,8 +199,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Invoked when the <xref:System.Diagnostics.Switch.SwitchSetting*> property is changed."
-  remarks: "OnSwitchSettingChanged is invoked the first time a switch reads the <xref:System.Diagnostics.Switch.SwitchSetting%2A> value from the configuration file and is invoked again each time the switch&quot;s value is changed."
+  summary: "Ha meghívni a <xref:System.Diagnostics.Switch.SwitchSetting*>tulajdonság megváltozásakor következik be.</xref:System.Diagnostics.Switch.SwitchSetting*>"
+  remarks: "OnSwitchSettingChanged először beolvassa a kapcsoló meghívták a <xref:System.Diagnostics.Switch.SwitchSetting%2A>értékét a konfigurációs fájlból, és újra minden alkalommal, amikor megváltozik a kapcsoló értéke meghívták.</xref:System.Diagnostics.Switch.SwitchSetting%2A>"
   syntax:
     content: protected virtual void OnSwitchSettingChanged ();
     parameters: []
@@ -220,8 +220,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Invoked when the <xref:System.Diagnostics.Switch.Value*> property is changed."
-  remarks: "The default implementation parses the new value of the <xref:System.Diagnostics.Switch.Value%2A> property to an integer value which it uses to set the <xref:System.Diagnostics.Switch.SwitchSetting%2A> property."
+  summary: "Ha meghívni a <xref:System.Diagnostics.Switch.Value*>tulajdonság megváltozásakor következik be.</xref:System.Diagnostics.Switch.Value*>"
+  remarks: "Az alapértelmezett implementációja elemzi a új értékét az <xref:System.Diagnostics.Switch.Value%2A>tulajdonságot egy egész számot, amely beállításához használja a <xref:System.Diagnostics.Switch.SwitchSetting%2A>tulajdonság.</xref:System.Diagnostics.Switch.SwitchSetting%2A> </xref:System.Diagnostics.Switch.Value%2A>"
   syntax:
     content: protected virtual void OnValueChanged ();
     parameters: []
@@ -241,12 +241,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the current setting for this switch."
+  summary: "Lekérdezi vagy beállítja az aktuális beállítás erre a kapcsolóra."
   syntax:
     content: protected int SwitchSetting { get; set; }
     return:
       type: System.Int32
-      description: "The current setting for this switch. The default is zero."
+      description: "Az aktuális beállítás erre a kapcsolóra. Az alapértelmezett érték nulla."
   overload: System.Diagnostics.Switch.SwitchSetting*
   exceptions: []
   platform:
@@ -263,18 +263,18 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the value of the switch."
-  remarks: "The <xref:System.Diagnostics.Switch.OnValueChanged%2A> method is called when the value of the Value property is changed. The <xref:System.Diagnostics.Switch.OnValueChanged%2A> method parses the value of this property and converts it to an integer value, which is then used to set the <xref:System.Diagnostics.Switch.SwitchSetting%2A> property."
+  summary: "Lekérdezi vagy beállítja a kapcsoló értékének."
+  remarks: "A <xref:System.Diagnostics.Switch.OnValueChanged%2A>metódus lehívásra kerül a Value tulajdonság értékének megváltozásakor.</xref:System.Diagnostics.Switch.OnValueChanged%2A> A <xref:System.Diagnostics.Switch.OnValueChanged%2A>metódus a tulajdonság értékének elemzi és konvertálása egész szám, amely majd beállítására szolgál a <xref:System.Diagnostics.Switch.SwitchSetting%2A>tulajdonság.</xref:System.Diagnostics.Switch.SwitchSetting%2A> </xref:System.Diagnostics.Switch.OnValueChanged%2A>"
   syntax:
     content: protected string Value { get; set; }
     return:
       type: System.String
-      description: "A string representing the value of the switch."
+      description: "A kapcsoló értékét képviselő karakterláncot."
   overload: System.Diagnostics.Switch.Value*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "The value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The value does not consist solely of an optional negative sign followed by a sequence of digits ranging from 0 to 9.       -or-       The value represents a number less than <xref:System.Int32.MinValue> or greater than <xref:System.Int32.MaxValue>."
+    description: "Az érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.       - vagy - érték nem állhat csak 0 és 9 közötti számjegyek sorozata követ egy választható negatív előjelet.       – vagy – az érték azt jelenti, a szám kisebb <xref:System.Int32.MinValue>vagy nagyobb, mint <xref:System.Int32.MaxValue>.</xref:System.Int32.MaxValue> </xref:System.Int32.MinValue>"
   platform:
   - net462
 references:

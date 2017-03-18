@@ -26,8 +26,8 @@ items:
   nameWithType: EventProvider
   fullName: System.Diagnostics.Eventing.EventProvider
   type: Class
-  summary: "Use this class to write events."
-  remarks: "To consume events written using the <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A> and <xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A> methods, the events must be defined in a manifest; events written using the <xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A> method do not require a manifest.       Events can contain the following managed data types:      -   bool      -   Boolean      -   byte      -   char      -   decimal      -   double      -   float      -   Guid      -   int      -   IntPtr      -   long      -   sbyte      -   short      -   string      -   uint      -   UInt64       If an event in your manifest uses the `Boolean` in-type, you cannot write the data element using a `Boolean` data type in your managed code. The `Boolean` in-type in your manifest expects a 4-byte value, and a `Boolean` data type in managed code is 1-byte. Instead, you must use an `int` data type to write the value. If you want to log a `Boolean` value, use the UInt8 in-type in your manifest."
+  summary: "Ez az osztály használatával beírni az eseményeket."
+  remarks: "Használatával írt események felhasználásához a <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A>és <xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A>módszerek, az események definiálni kell a jegyzék; használatával írt események a <xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A>metódus nem szükséges a jegyzék.</xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A> </xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A> </xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A>       Események a következő felügyelt adatok típust is tartalmazhatnak: - bool - logikai érték - bájt - char - decimális - duplán - lebegőpontos - Guid - int - IntPtr - hosszú - sbyte - rövid - karakterlánc - uint - UInt64, ha a jegyzékfájlban esemény használja a `Boolean` a típusát, akkor nem lehet írni az elem használatával egy `Boolean` adattípus a felügyelt kódban. A `Boolean` a-típus a jegyzékfájlban vár 4 bájtos értéket, és egy `Boolean` a felügyelt kódban adattípusa 1 bájtos. Ehelyett használjon egy `int` adattípus értéke írni. Ha bejelentkezik egy `Boolean` érték, használja a UInt8 a-típus a jegyzékfájlban."
   syntax:
     content: 'public class EventProvider : IDisposable'
   inheritance:
@@ -49,28 +49,28 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;></xref> class."
-  remarks: "Registers the provider. To remove the registration when finished, call the <xref:System.Diagnostics.Eventing.EventProvider.Close%2A> method."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;> </xref> osztály."
+  remarks: "Regisztrálja a szolgáltatót. Ha befejeződött a regisztráció törléséhez hívja a <xref:System.Diagnostics.Eventing.EventProvider.Close%2A>metódus.</xref:System.Diagnostics.Eventing.EventProvider.Close%2A>"
   syntax:
     content: public EventProvider (Guid providerGuid);
     parameters:
     - id: providerGuid
       type: System.Guid
-      description: "Guid that uniquely identifies the provider."
+      description: "GUID azonosítója, amely egyedileg azonosítja a szolgáltató."
   overload: System.Diagnostics.Eventing.EventProvider.#ctor*
   exceptions:
   - type: System.InsufficientMemoryException
     commentId: T:System.InsufficientMemoryException
-    description: "There is not enough memory to complete the operation."
+    description: "Nincs elég memória a művelet befejezéséhez."
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "The classes in the <xref href=&quot;System.Diagnostics.Eventing&quot;></xref> namespace work only on Windows Vista."
+    description: "Az osztályok a <xref href=&quot;System.Diagnostics.Eventing&quot;> </xref> csak Windows Vista névtér munkát."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>providerGuid</code> parameter cannot be null."
+    description: "A <code> providerGuid </code> paraméter nem lehet null."
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "An error returned by the ETW subsystem."
+    description: "Az ETW-alrendszere által visszaadott hiba."
   platform:
   - net462
 - uid: System.Diagnostics.Eventing.EventProvider.Close
@@ -85,8 +85,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Removes the provider&quot;s registration from the ETW subsystem and releases all unmanaged resources."
-  remarks: "You should call this method when finished instead of waiting for the system to dispose of the resources."
+  summary: "Az ETW alrendszer eltávolítja a szolgáltató regisztrációját, és feloldja a nem felügyelt erőforrások."
+  remarks: "Ez a metódus helyett Várakozás arra, hogy az erőforrást a rendszer a Befejezés után célszerű hívni."
   syntax:
     content: public virtual void Close ();
     parameters: []
@@ -94,7 +94,7 @@ items:
   exceptions:
   - type: System.ComponentModel.Win32Exception
     commentId: T:System.ComponentModel.Win32Exception
-    description: "An error returned by the ETW subsystem."
+    description: "Az ETW-alrendszere által visszaadott hiba."
   platform:
   - net462
 - uid: System.Diagnostics.Eventing.EventProvider.CreateActivityId
@@ -109,14 +109,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Creates a unique activity identifier for the provider."
-  remarks: "This is a static method."
+  summary: "A szolgáltató hoz létre egy tevékenység egyedi azonosítója."
+  remarks: "Ez a statikus módszer."
   syntax:
     content: public static Guid CreateActivityId ();
     parameters: []
     return:
       type: System.Guid
-      description: "A unique Guid that you use when calling the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId*> method to set the activity identifier for the provider."
+      description: "Egy egyedi GUID azonosítója, amelyekkel meghívásakor a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId*>beállítani a tevékenység azonosítóját a szolgáltató metódus.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId*>"
   overload: System.Diagnostics.Eventing.EventProvider.CreateActivityId*
   exceptions: []
   platform:
@@ -133,7 +133,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Releases the resources used by this <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;></xref> object."
+  summary: "Feloldja a által használt erőforrások <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;> </xref> objektum."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -153,13 +153,13 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Releases the resources used by this <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;></xref> object."
+  summary: "Feloldja a által használt erőforrások <xref href=&quot;System.Diagnostics.Eventing.EventProvider&quot;> </xref> objektum."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "This parameter is ignored by this method since there are no unmanaged resources."
+      description: "Ez a paraméter figyelmen kívül hagyja ezt a módszert, mert nincs nem felügyelt erőforrás."
   overload: System.Diagnostics.Eventing.EventProvider.Dispose*
   exceptions: []
   platform:
@@ -176,7 +176,7 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Frees resources and performs internal cleanup before the instance is reclaimed by garbage collection."
+  summary: "Erőforrások felszabadítja, és elvégzi a belső tisztítás ahhoz a példányhoz felszabadul szemétgyűjtés által."
   syntax:
     content: ~EventProvider ();
     parameters: []
@@ -196,14 +196,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Gets the last error associated with an event write failure."
-  remarks: "The <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A>, <xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A>, and <xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A> methods set this value if they fail to write the event.       This is a static method."
+  summary: "Lekérdezi az utolsó hiba társított egy esemény írása sikertelen."
+  remarks: "A <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A>, <xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A>, és <xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A>módszerek állítsa ezt az értéket, ha azt elmulasztják a esemény.</xref:System.Diagnostics.Eventing.EventProvider.WriteTransferEvent%2A> </xref:System.Diagnostics.Eventing.EventProvider.WriteMessageEvent%2A> </xref:System.Diagnostics.Eventing.EventProvider.WriteEvent%2A>       Ez a statikus módszer."
   syntax:
     content: public static System.Diagnostics.Eventing.EventProvider.WriteEventErrorCode GetLastWriteEventError ();
     parameters: []
     return:
       type: System.Diagnostics.Eventing.EventProvider.WriteEventErrorCode
-      description: "Use the value to determine the cause of an event write failure."
+      description: "Egy esemény írási hiba okának megállapításához értéket használja."
   overload: System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*
   exceptions: []
   platform:
@@ -220,14 +220,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Determines whether any session enabled the provider, regardless of the level and keyword values used to enable the provider."
-  remarks: "Typically, a provider does not call this method to determine whether the provider has been enabled by a session; the provider simply writes the event, and ETW determines whether the event is logged to the session. A provider may want to call this function if the provider needs to perform extra work to generate the event. In this case, calling this function first may save resources and time."
+  summary: "Meghatározza, hogy engedélyezett-e a szolgáltató, függetlenül a szint és kulcsszó a szolgáltató lehetővé teszi, hogy a munkamenet."
+  remarks: "Általában a szolgáltató nem hívja meg ezt a metódust határozza meg, hogy a szolgáltató engedélyezve van a munkamenet; a szolgáltató egyszerűen csak írja az eseményt, és az ETW határozza meg, hogy az eseményt a rendszer naplózza a munkamenet. A szolgáltató szeretné ezt a függvényt hívja, ha a szolgáltató számára szükséges-e az esemény létrehozásához további munka. Ebben az esetben a függvény hívása lehet, hogy mentenie erőforrással és idővel."
   syntax:
     content: public bool IsEnabled ();
     parameters: []
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the provider is enabled to any session; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> Ha engedélyezett a munkamenethez, ha sikertelen, a szolgáltató <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.Eventing.EventProvider.IsEnabled*
   exceptions: []
   platform:
@@ -244,20 +244,20 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Determines whether any session is requesting the specified event from the provider."
-  remarks: "Typically, a provider does not call this method to determine whether a session requested the specified event; the provider simply writes the event, and ETW determines whether the event is logged to a session. A provider may want to call this function if the provider needs to perform extra work to generate the event. In this case, calling this function first to determine if a session requested the event or not, may save resources and time."
+  summary: "Meghatározza, hogy a munkamenet a megadott esemény kér le a szolgáltató."
+  remarks: "Általában a szolgáltató nem hívja meg ezt a metódust határozza meg, hogy a munkamenet kért-e a megadott esemény; a szolgáltató egyszerűen csak írja az eseményt, és az ETW határozza meg, hogy az eseményt a rendszer naplózza a munkamenet. A szolgáltató szeretné ezt a függvényt hívja, ha a szolgáltató számára szükséges-e az esemény létrehozásához további munka. Ebben az esetben hívja meg ezt a funkciót először határozza meg, ha a munkamenet kért-e az esemény, vagy nem, előfordulhat, hogy menteni erőforrással és idővel."
   syntax:
     content: public bool IsEnabled (byte level, long keywords);
     parameters:
     - id: level
       type: System.Byte
-      description: "Level of detail included in the event."
+      description: "Az eseményben szereplő részletességi szintje."
     - id: keywords
       type: System.Int64
-      description: "Bit mask that specifies the event category. This mask should be the same keyword mask that is defined in the manifest for the event."
+      description: "Az bitmaszk, amely meghatározza az eseményforrásra. A maszk az azonos kulcsszó maszk a jegyzékfájlban, az eseményhez definiált kell lennie."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if any session is requesting the specified event; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> Ha bármely munkamenet kér a megadott esemény; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.Eventing.EventProvider.IsEnabled*
   exceptions: []
   platform:
@@ -274,14 +274,14 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Sets the current activity identifier used by the <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent*> methods."
-  remarks: "The identifier is stored in the thread context.       Note that in version 3.5 of the .NET framework, you had to set the `id` parameter of this method and the <xref:System.Diagnostics.CorrelationManager.ActivityId%2A> property value to the same identifier value. However, in version 4.0 of the framework, the SetActivityId method automatically sets the correlation activity identifier for you.       This is a static method."
+  summary: "Az aktuális tevékenység-azonosító által használt a <xref:System.Diagnostics.Eventing.EventProvider.WriteEvent*>módszerek.</xref:System.Diagnostics.Eventing.EventProvider.WriteEvent*>"
+  remarks: "A szál környezetben azonosítóját tárolja.       Vegye figyelembe, hogy a .NET-keretrendszer 3.5-ös verzióját a kellett állítani a `id` paraméter a metódus és a <xref:System.Diagnostics.CorrelationManager.ActivityId%2A>ugyanarra az értékre azonosítója tulajdonság értéke.</xref:System.Diagnostics.CorrelationManager.ActivityId%2A> Azonban a keretrendszer 4.0-s verzióját, a SetActivityId metódus automatikusan úgy állítja be a tevékenység korrelációs azonosító meg.       Ez a statikus módszer."
   syntax:
     content: public static void SetActivityId (ref Guid id);
     parameters:
     - id: id
       type: System.Guid
-      description: "A unique activity identifier that the <xref:System.Diagnostics.Eventing.EventProvider.CreateActivityId*> method returns."
+      description: "Egy tevékenység egyedi azonosítója, amely a <xref:System.Diagnostics.Eventing.EventProvider.CreateActivityId*>metódus értéket ad vissza.</xref:System.Diagnostics.Eventing.EventProvider.CreateActivityId*>"
   overload: System.Diagnostics.Eventing.EventProvider.SetActivityId*
   exceptions: []
   platform:
@@ -298,8 +298,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes an event. The event data is specified as an array of objects."
-  remarks: "If you call the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method to specify an activity identifier for the event, this method retrieves the identifier from the thread context and includes it with the event.       If the object type is not supported, the method writes the value of the object&quot;s <xref:System.Object.ToString%2A?displayProperty=fullName> method in the payload. For a list of supported object types, see the Remarks for the <xref:System.Diagnostics.Eventing.EventProvider> class."
+  summary: "Esemény írása egy eseménynaplóba. Az eseményadatok van megadva egy objektumokból álló tömb."
+  remarks: "Ha meghívja a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>módszert adja meg az esemény, ez a módszer tevékenység azonosítóját azonosítóját a szál környezetből olvassa be, és tartalmazza a az eseményhez.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>       Az objektumtípus nem támogatott, ha a metódus ír az objektum értékének <xref:System.Object.ToString%2A?displayProperty=fullName>metódus található a hasznos adatok között.</xref:System.Object.ToString%2A?displayProperty=fullName> Támogatott objektumtípusok listája tekintse meg az <xref:System.Diagnostics.Eventing.EventProvider>osztály</xref:System.Diagnostics.Eventing.EventProvider> a megjegyzések"
   example:
   - "```  \nprivate static Guid providerId = new Guid(\"{FB33FDA8-45FB-4df0-8A55-EEB4BA88E7E7}\");  \n  \nenum Keyword  \n{  \n    Read = 0x1,  \n    Write = 0x2,  \n    Local = 0x4,  \n    Remote = 0x8  \n}  \n  \nenum Level  \n{  \n    Critical = 1,  \n    Error,  \n    Warning,  \n    Information,  \n    Verbose  \n}  \n  \n    EventProvider provider = new EventProvider(providerId);  \n    EventDescriptor readEvent;  \n    string path = @\"<PATHGOESHERE>\";  \n    UInt64 bytesRead = <ASSIGNVALUE>;  \n  \n    if (provider.IsEnabled(Level.Information, (long)Keyword.Read))  \n    {  \n        unchecked  \n        {  \n            readEvent = new EventDescriptor(0x1, 0x0, 0x10, 0x4, 0x0, 0x0, (long)0x8000000000000005);  \n        }  \n  \n        if (!provider.WriteEvent(ref readEvent, new object[] { path, bytesRead }))  \n            Console.WriteLine(EventProvider.GetLastWriteEventError());  \n    }  \n  \n    provider.Close();  \n```"
   syntax:
@@ -307,18 +307,18 @@ items:
     parameters:
     - id: eventDescriptor
       type: System.Diagnostics.Eventing.EventDescriptor
-      description: "An instance of <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;></xref> that identifies the event to write."
+      description: "Egy példánya <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;> </xref> , amely azonosítja az esemény írása."
     - id: eventPayload
       type: System.Object[]
-      description: "An array of objects that contain the event data to write. The object must be in the order specified in the manifest. The array is limited to 32 objects, of which only eight may be strings. The maximum data size for the event is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event.       This parameter can be null."
+      description: "Az eseményadatok írási tartalmazó objektumokból álló tömb. Az objektum a jegyzékben megadott sorrendben kell lennie. A tömb 32 objektumok csak nyolc lehet karakterláncok korlátozódik. Az esemény adatok maximális mérete legfeljebb 64 KB csökkentve a esemény fejléceinek méretét. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza.       Lehet, hogy ez a paraméter null értékű."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; módszer a hiba okának megállapításához."
   overload: System.Diagnostics.Eventing.EventProvider.WriteEvent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>eventPayload</code> parameter contains too many objects or strings."
+    description: "A <code> eventPayload </code> paraméter túl sok objektumok vagy karakterláncok tartalmaz."
   platform:
   - net462
 - uid: System.Diagnostics.Eventing.EventProvider.WriteEvent(System.Diagnostics.Eventing.EventDescriptor@,System.String)
@@ -333,8 +333,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes an event. The event data is specified as a string."
-  remarks: "If you call the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method to specify an activity identifier for the event, this method retrieves the identifier from the thread context and includes it with the event.       The maximum string length is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+  summary: "Esemény írása egy eseménynaplóba. Az eseményadat a string típusúként van megadva."
+  remarks: "Ha meghívja a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>módszert adja meg az esemény, ez a módszer tevékenység azonosítóját azonosítóját a szál környezetből olvassa be, és tartalmazza a az eseményhez.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>       A karakterlánc maximális hossza legfeljebb 64 KB-os esemény fejlécének mérete csökkentve. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
   example:
   - "```  \nprivate static Guid providerId = new Guid(\"{FB33FDA8-45FB-4df0-8A55-EEB4BA88E7E7}\");  \n  \nEventProvider provider = new EventProvider(providerId);  \nEventDescriptor writeEvent;  \n  \nif (provider.IsEnabled())  \n{  \n     unchecked  \n     {  \n          writeEvent = new EventDescriptor(0x2, 0x0, 0x10, 0x3, 0x0, 0x0, (long)0x8000000000000006);  \n     }  \n  \n     if (!provider.WriteEvent(ref writeEvent, \"Write event.\"))  \n          Console.WriteLine(EventProvider.GetLastWriteEventError());  \n}  \n  \nprovider.Close();  \n```"
   syntax:
@@ -342,13 +342,13 @@ items:
     parameters:
     - id: eventDescriptor
       type: System.Diagnostics.Eventing.EventDescriptor
-      description: "An instance of <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;></xref> that identifies the event to write."
+      description: "Egy példánya <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;> </xref> , amely azonosítja az esemény írása."
     - id: data
       type: System.String
-      description: "The string to write as the event data."
+      description: "A karakterlánc a esemény Data írni."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; módszer a hiba okának megállapításához."
   overload: System.Diagnostics.Eventing.EventProvider.WriteEvent*
   exceptions:
   - type: System.ArgumentException
@@ -368,23 +368,23 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes an event. The event data is specified as a block of memory."
-  remarks: "If you call the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method to specify an activity identifier for the event, this method retrieves the identifier from the thread context and includes it with the event."
+  summary: "Esemény írása egy eseménynaplóba. Az eseményadat a memóriablokkjainak van megadva."
+  remarks: "Ha meghívja a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>módszert adja meg az esemény, ez a módszer tevékenység azonosítóját azonosítóját a szál környezetből olvassa be, és tartalmazza a az eseményhez.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>"
   syntax:
     content: protected bool WriteEvent (ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, int dataCount, IntPtr data);
     parameters:
     - id: eventDescriptor
       type: System.Diagnostics.Eventing.EventDescriptor
-      description: "An instance of <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;></xref> that identifies the event to write."
+      description: "Egy példánya <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;> </xref> , amely azonosítja az esemény írása."
     - id: dataCount
       type: System.Int32
-      description: "Size of the event data to which the `data` parameter points. The maximum event data size is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+      description: "Amely az eseményadatok mérete a `data` paraméter pontok. Az események maximális adatok mérete legfeljebb 64 KB csökkentve a esemény fejléceinek méretét. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
     - id: data
       type: System.IntPtr
-      description: "Pointer to the event data to write."
+      description: "Az eseményadatok írási mutat."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; módszer a hiba okának megállapításához."
   overload: System.Diagnostics.Eventing.EventProvider.WriteEvent*
   exceptions: []
   platform:
@@ -401,8 +401,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes an event that contains a string as its data."
-  remarks: "The maximum string length is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+  summary: "Esemény írása egy eseménynaplóba, amely tartalmaz egy karakterláncot, mint a hozzá kapcsolódó adatokat."
+  remarks: "A karakterlánc maximális hossza legfeljebb 64 KB-os esemény fejlécének mérete csökkentve. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
   example:
   - "```  \nif (!provider.WriteMessageEvent(\"Event string.\"))  \n    Console.WriteLine(EventProvider.GetLastWriteEventError());  \n```"
   syntax:
@@ -410,10 +410,10 @@ items:
     parameters:
     - id: eventMessage
       type: System.String
-      description: "String to write as the event data."
+      description: "Az eseményadatok írható karakterláncot."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; módszer a hiba okának megállapításához."
   overload: System.Diagnostics.Eventing.EventProvider.WriteMessageEvent*
   exceptions:
   - type: System.ArgumentException
@@ -433,8 +433,8 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Writes an event that contains a string as its data if the level and keyword value match the events requested by the session."
-  remarks: "The maximum string length is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+  summary: "Esemény írása egy eseménynaplóba karakterláncot tartalmazó az adatokat, ha a szint és kulcsszó érték felel meg az eseményeket, a munkamenet által kért."
+  remarks: "A karakterlánc maximális hossza legfeljebb 64 KB-os esemény fejlécének mérete csökkentve. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
   example:
   - "```  \n// Calling this method with level and keyword set to zero is the same  \n// as calling WriteMessageEvent(string); the event is always written.  \nif (!provider.WriteMessageEvent(\"Event string.\", 0, 0))  \n    Console.WriteLine(EventProvider.GetLastWriteEventError());  \n  \n// Event is written if the level value of the session is less than or equal to 3, and bit 1 of the session  \n// keyword bit-mask is set.  \nif (!provider.WriteMessageEvent(\"Event string.\", 3, 2))  \n    Console.WriteLine(EventProvider.GetLastWriteEventError());  \n```"
   syntax:
@@ -442,16 +442,16 @@ items:
     parameters:
     - id: eventMessage
       type: System.String
-      description: "String to write as the event data."
+      description: "Az eseményadatok írható karakterláncot."
     - id: eventLevel
       type: System.Byte
-      description: "Level of detail included in the event. If the provider uses a manifest to define the event, set this value to the same level defined in the manifest."
+      description: "Az eseményben szereplő részletességi szintje. A szolgáltató a jegyzék segítségével határozza meg az eseményt, ha az érték a jegyzékben meghatározott ugyanazon a szinten."
     - id: eventKeywords
       type: System.Int64
-      description: "Bit mask that specifies the event category. If the provider uses a manifest to define the event, set this value to the same keyword mask defined in the manifest."
+      description: "Az bitmaszk, amely meghatározza az eseményforrásra. A szolgáltató a jegyzék segítségével határozza meg az esemény, ha az érték a jegyzékben megadott azonos kulcsszó maszkkal."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a &lt;xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError%2A?displayProperty=fullName&gt; módszer a hiba okának megállapításához."
   overload: System.Diagnostics.Eventing.EventProvider.WriteMessageEvent*
   exceptions:
   - type: System.ArgumentException
@@ -471,28 +471,28 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Links events together when tracing events in an end-to-end scenario. The event data is specified as an array of objects."
-  remarks: "The method uses the activity ID set in the thread context to identify this component. To set the activity ID, call the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method.       If you use the <xref:System.Diagnostics.Trace> class, you do not use the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method to specify the activity ID. Instead, access the <xref:System.Diagnostics.Trace.CorrelationManager%2A> property to get the <xref:System.Diagnostics.CorrelationManager> object. Then, set the <xref:System.Diagnostics.CorrelationManager.ActivityId%2A> property to the activity ID. You must also set the `relatedActivityId` to a <xref:System.Diagnostics.CorrelationManager.ActivityId%2A> value."
+  summary: "Hivatkozások események együtt, egy végpontok közötti lévő események nyomon követésekor. Az eseményadatok van megadva egy objektumokból álló tömb."
+  remarks: "A metódusnak szál környezetében beállítása Tevékenységazonosító azonosításához ezt az összetevőt. Állítsa be a tevékenység azonosítója, hívja meg a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>metódus.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>       Ha használja a <xref:System.Diagnostics.Trace>osztály, nem használja <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>a tevékenység azonosítóját. Adja meg a metódus</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> </xref:System.Diagnostics.Trace> Ehelyett hozzáférni a <xref:System.Diagnostics.Trace.CorrelationManager%2A>tulajdonság használatával beolvassa a <xref:System.Diagnostics.CorrelationManager>objektum.</xref:System.Diagnostics.CorrelationManager> </xref:System.Diagnostics.Trace.CorrelationManager%2A> Ezt követően állítsa be a <xref:System.Diagnostics.CorrelationManager.ActivityId%2A>tulajdonság a tevékenység azonosítóját.</xref:System.Diagnostics.CorrelationManager.ActivityId%2A> Meg kell adnia a `relatedActivityId` való egy <xref:System.Diagnostics.CorrelationManager.ActivityId%2A>érték.</xref:System.Diagnostics.CorrelationManager.ActivityId%2A>"
   syntax:
     content: public bool WriteTransferEvent (ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, Guid relatedActivityId, object[] eventPayload);
     parameters:
     - id: eventDescriptor
       type: System.Diagnostics.Eventing.EventDescriptor
-      description: "An instance of <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;></xref> that identifies the event to write."
+      description: "Egy példánya <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;> </xref> , amely azonosítja az esemény írása."
     - id: relatedActivityId
       type: System.Guid
-      description: "Activity identifier from the previous component. Use this parameter to link your component&quot;s events to the previous component&quot;s events."
+      description: "Az előző összetevőtől tevékenység azonosítója Ez a paraméter használatával kapcsolhatja össze a összetevő események az előző összetevőt események."
     - id: eventPayload
       type: System.Object[]
-      description: "An array of objects that contain the event data to write. The data must be in the order specified in the manifest. The array is limited to 32 objects, of which only eight may be strings. The maximum data size for the event is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+      description: "Az eseményadatok írási tartalmazó objektumokból álló tömb. Az adatok a jegyzékben megadott sorrendben kell lennie. A tömb 32 objektumok csak nyolc lehet karakterláncok korlátozódik. Az esemény adatok maximális mérete legfeljebb 64 KB csökkentve a esemény fejléceinek méretét. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the <xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*> method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a <xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*>metódus a hiba okának megállapításához.</xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*>"
   overload: System.Diagnostics.Eventing.EventProvider.WriteTransferEvent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "If <code>eventPayload</code> contains too many objects or strings."
+    description: "Ha <code> eventPayload </code> túl sok objektumok vagy karakterláncok tartalmaz."
   platform:
   - net462
 - uid: System.Diagnostics.Eventing.EventProvider.WriteTransferEvent(System.Diagnostics.Eventing.EventDescriptor@,System.Guid,System.Int32,System.IntPtr)
@@ -507,26 +507,26 @@ items:
   assemblies:
   - System.Core
   namespace: System.Diagnostics.Eventing
-  summary: "Links events together when tracing events in an end-to-end scenario. The event data is specified as a block of memory."
-  remarks: "The method uses the activity ID set in the thread context to identify this component. To set the activity ID, call the <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A> method."
+  summary: "Hivatkozások események együtt, egy végpontok közötti lévő események nyomon követésekor. Az eseményadat a memóriablokkjainak van megadva."
+  remarks: "A metódusnak szál környezetében beállítása Tevékenységazonosító azonosításához ezt az összetevőt. Állítsa be a tevékenység azonosítója, hívja meg a <xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>metódus.</xref:System.Diagnostics.Eventing.EventProvider.SetActivityId%2A>"
   syntax:
     content: protected bool WriteTransferEvent (ref System.Diagnostics.Eventing.EventDescriptor eventDescriptor, Guid relatedActivityId, int dataCount, IntPtr data);
     parameters:
     - id: eventDescriptor
       type: System.Diagnostics.Eventing.EventDescriptor
-      description: "An instance of <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;></xref> that identifies the event to write."
+      description: "Egy példánya <xref href=&quot;System.Diagnostics.Eventing.EventDescriptor&quot;> </xref> , amely azonosítja az esemény írása."
     - id: relatedActivityId
       type: System.Guid
-      description: "Activity identifier from the previous component. Use this parameter to link your component&quot;s events to the previous component&quot;s events."
+      description: "Az előző összetevőtől tevékenység azonosítója Ez a paraméter használatával kapcsolhatja össze a összetevő események az előző összetevőt események."
     - id: dataCount
       type: System.Int32
-      description: "Size of the event data to which the `data` parameter points. The maximum event data size is limited to 64 KB minus the size of the event headers. The event size is less if the session&quot;s buffer size is less and the session includes extended data items with the event."
+      description: "Amely az eseményadatok mérete a `data` paraméter pontok. Az események maximális adatok mérete legfeljebb 64 KB csökkentve a esemény fejléceinek méretét. Esemény mérete kisebb, ha a munkamenet puffer mérete kisebb, és a munkamenet az esemény kibővített adatok elemeket tartalmazza."
     - id: data
       type: System.IntPtr
-      description: "Pointer to the event data to write."
+      description: "Az eseményadatok írási mutat."
     return:
       type: System.Boolean
-      description: "Is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the event is written; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If false, call the <xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*> method to determine the cause of the failure."
+      description: "Van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az esemény írva, ha sikertelen, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha hamis, a <xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*>metódus a hiba okának megállapításához.</xref:System.Diagnostics.Eventing.EventProvider.GetLastWriteEventError*>"
   overload: System.Diagnostics.Eventing.EventProvider.WriteTransferEvent*
   exceptions: []
   platform:

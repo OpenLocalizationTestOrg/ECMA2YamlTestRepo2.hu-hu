@@ -28,8 +28,8 @@ items:
   nameWithType: TaskItem
   fullName: Microsoft.Build.Utilities.TaskItem
   type: Class
-  summary: "Defines a single item of the project as it is passed into a task."
-  remarks: "TaskItem objects do not exactly correspond to item elements in project files. If they did, then tasks would have access to data that was not explicitly passed into the task through the project file. This is not a security issue, but rather an issue with project file clarity and transparency.       This class has to be sealed since the build engine instantiates its own copy of this type. If a third party were to extend this class, then the build engine will yield an undesired behavior."
+  summary: "Csak egy elemet a projekt határozza meg, mert feladattá átadva."
+  remarks: "TaskItem objektumok elem elemek projektfájlokban pontosan nem felelnek meg. Ha igen, feladatok, amelyek nem kifejezetten át lett a feladat a következő projektfájlban adatokhoz való hozzáférés lenne. Ez nem egy biztonsági probléma, hanem inkább projekt fájl egyértelműség és átláthatóság problémát.       Ez az osztály ki kell zárni, mivel a build motor példányosítja az ilyen típusú saját másolatot. Ha harmadik féltől származó volt ez az osztály kiterjesztése, majd a build motor eredményez, nem várt működését."
   syntax:
     content: 'public sealed class TaskItem : MarshalByRefObject, Microsoft.Build.Framework.ITaskItem2'
   inheritance:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class."
-  remarks: "This constructor enables this type to be COM-creatable."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor lehetővé teszi, hogy ez a típus csak COM-környezetből létrehozhatónak kell."
   syntax:
     content: public TaskItem ();
     parameters: []
@@ -76,13 +76,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified source <xref href=&quot;Microsoft.Build.Framework.ITaskItem&quot;></xref>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> osztály használata a megadott forrás <xref href=&quot;Microsoft.Build.Framework.ITaskItem&quot;> </xref>."
   syntax:
     content: public TaskItem (Microsoft.Build.Framework.ITaskItem sourceItem);
     parameters:
     - id: sourceItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The item to copy."
+      description: "Az elem másolása."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -99,13 +99,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified item-specification string."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> osztály a megadott elem-specifikáció karakterlánccal."
   syntax:
     content: public TaskItem (string itemSpec);
     parameters:
     - id: itemSpec
       type: System.String
-      description: "The item specification."
+      description: "A cikk megadása."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -122,16 +122,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified item-specification string and its metadata."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> osztály a megadott elem-specifikáció karakterlánc és a metaadatok használatával."
   syntax:
     content: public TaskItem (string itemSpec, System.Collections.IDictionary itemMetadata);
     parameters:
     - id: itemSpec
       type: System.String
-      description: "The item specification."
+      description: "A cikk megadása."
     - id: itemMetadata
       type: System.Collections.IDictionary
-      description: "The custom metadata for the item specification."
+      description: "A cikk megadását egyéni metaadatait."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -148,14 +148,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Clones the collection of custom metadata for the item specification."
-  remarks: "This method does not include built-in metadata."
+  summary: "Az elem megadását egyéni metaadat gyűjteménye klónokat."
+  remarks: "Ez a módszer nem tartalmazza a beépített metaadatok."
   syntax:
     content: public System.Collections.IDictionary CloneCustomMetadata ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that represents a clone of the custom metadata."
+      description: "Egy <xref:System.Collections.IDictionary>, amely jelöli az egyéni metaadat klónja.</xref:System.Collections.IDictionary>"
   overload: Microsoft.Build.Utilities.TaskItem.CloneCustomMetadata*
   exceptions: []
   platform:
@@ -172,14 +172,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Copies the item-specification metadata to the specified destination task item."
-  remarks: "If the metadata already exists on the destination item, then it is not overwritten. The original metadata value supersedes the copied metadata value.       This method does not copy the item specification to the destination task item."
+  summary: "A megadott célhely feladat elemhez-meghatározás metaadatokat másolja."
+  remarks: "Ha a célként megadott elem már létezik a metaadatokat, majd azt a rendszer nem felülírja. Az eredeti metaadatok értéket írja felül a másolt metaadataihoz megadott érték.       Ez a módszer nem másolja a cél elem a elem megadását."
   syntax:
     content: public void CopyMetadataTo (Microsoft.Build.Framework.ITaskItem destinationItem);
     parameters:
     - id: destinationItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The item that this method will copy metadata to."
+      description: "Ez a módszer másolatot készít a metaadatokra ahhoz, hogy elemet."
   overload: Microsoft.Build.Utilities.TaskItem.CopyMetadataTo*
   exceptions: []
   platform:
@@ -196,16 +196,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Retrieves the specified metadata on the item."
+  summary: "Lekérdezi a megadott metaadatot az elemen."
   syntax:
     content: public string GetMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of the metadata to retrieve."
+      description: "A metaadatok beolvasása neve."
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the metadata value."
+      description: "A <xref:System.String>, amely a metaadatokat értékét jelöli.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.GetMetadata*
   exceptions: []
   platform:
@@ -222,14 +222,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "When overridden in a derived class, gives task items infinite lease time."
-  remarks: "Otherwise, a limited lease of 5 minutes will result; and task instances can expire if they take a long time to process."
+  summary: "Ha felül van bírálva a származtatott osztály, révén feladat elemek végtelen bérleti idő."
+  remarks: "Egyéb esetben a korlátozott címbérlet, 5 perces ér véget; és a task példányokat is jár le, ha feldolgozása hosszú ideig tartanak."
   syntax:
     content: public override object InitializeLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify an infinite lifetime."
+      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>határozatlan megadása."
   overload: Microsoft.Build.Utilities.TaskItem.InitializeLifetimeService*
   exceptions: []
   platform:
@@ -246,13 +246,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the item specification."
-  remarks: "The <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A> for the following item declaration in a project file is `File.cs`.      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
+  summary: "Lekérdezi vagy beállítja az elem megadását."
+  remarks: "A <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>a következő cikk deklaráció projektben a fájl `File.cs`.</xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
   syntax:
     content: public string ItemSpec { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the item specification."
+      description: "A <xref:System.String>, amely jelzi, hogy a meghatározás.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.ItemSpec*
   exceptions: []
   platform:
@@ -269,12 +269,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the number of metadata set on the item."
+  summary: "Lekérdezi az elem be metaadatok száma."
   syntax:
     content: public int MetadataCount { get; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> that represents the count of metadata set on the item."
+      description: "Egy <xref:System.Int32>, az elem be metaadatok számát jelöli.</xref:System.Int32>"
   overload: Microsoft.Build.Utilities.TaskItem.MetadataCount*
   exceptions: []
   platform:
@@ -291,12 +291,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the names of all the metadata on the item."
+  summary: "A metaadatok nevei lekérdezi az elemen."
   syntax:
     content: public System.Collections.ICollection MetadataNames { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of metadata names."
+      description: "Egy <xref:System.Collections.ICollection>a metaadat-nevek.</xref:System.Collections.ICollection>"
   overload: Microsoft.Build.Utilities.TaskItem.MetadataNames*
   exceptions: []
   platform:
@@ -314,13 +314,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which returns a clone of the metadata on this object. Values returned are in their original escaped form."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>megvalósítása, ami visszaadja a metaadatok másolat ezen az objektumon. Visszaadott értékek: eredeti escape-karakterrel megjelölt formájukban."
   syntax:
     content: System.Collections.IDictionary ITaskItem2.CloneCustomMetadataEscaped ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "Returns the cloned metadata, with values&quot; escaping preserved."
+      description: "A klónozott metaadatokat értékek escape-karaktersorozat megőrzi a adja vissza."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#CloneCustomMetadataEscaped*
   exceptions: []
   platform:
@@ -338,12 +338,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which gets or sets the item include value.  For disk-based items this would be the file path."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>Lekérdezi vagy beállítja az elem megvalósítása adni.  Az elemek lemezes lenne a fájl elérési útját."
   syntax:
     content: string Microsoft.Build.Framework.ITaskItem2.EvaluatedIncludeEscaped { get; set; }
     return:
       type: System.String
-      description: "Returns the item include value."
+      description: "Az elemet ad vissza értéket tartalmazza."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#EvaluatedIncludeEscaped*
   exceptions: []
   platform:
@@ -361,16 +361,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which allows the values of metadata on the item to be queried."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>végrehajtása, amely lehetővé teszi a metaadatok értékeit az elem kérdezhető le."
   syntax:
     content: string ITaskItem2.GetMetadataValueEscaped (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata to be queried"
+      description: "A metaadatok kérdezhetők le"
     return:
       type: System.String
-      description: "Returns the escaped metadata value."
+      description: "Az escape-karakterrel megjelölt metaadatok értékét adja vissza."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -388,16 +388,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which allows a piece of custom metadata to be set on the item. Assumes that the value passed in is unescaped, and escapes the value as necessary in order to maintain its value."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>végrehajtása, amely lehetővé teszi, hogy egy adat egyéni metaadatokra ahhoz, hogy az elemen állítható be. Feltételezi, hogy az átadott értéknek unescaped, és az érték szükség szerint értéke megőrzése érdekében lehet kilépni."
   syntax:
     content: void ITaskItem2.SetMetadataValueLiteral (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata name."
+      description: "A metaadat-neve."
     - id: metadataValue
       type: System.String
-      description: "The metadata value."
+      description: "A metaadatok érték."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#SetMetadataValueLiteral*
   exceptions: []
   platform:
@@ -419,10 +419,10 @@ items:
     parameters:
     - id: taskItemToCast
       type: Microsoft.Build.Utilities.TaskItem
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.String
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: Microsoft.Build.Utilities.TaskItem.op_Explicit*
   exceptions: []
   platform:
@@ -439,13 +439,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Removes the specified metadata on the item."
+  summary: "Eltávolítja a megadott metaadatot az elemen."
   syntax:
     content: public void RemoveMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of metadata to remove."
+      description: "A metaadatok távolítsa el a neve."
   overload: Microsoft.Build.Utilities.TaskItem.RemoveMetadata*
   exceptions: []
   platform:
@@ -462,16 +462,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Sets or modifies the value of the specified metadata on the item."
+  summary: "Beállítja vagy módosítja a megadott metaadatot az elem értékét."
   syntax:
     content: public void SetMetadata (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of metadata to set or modify."
+      description: "A metaadatok beállítása vagy módosítása a neve."
     - id: metadataValue
       type: System.String
-      description: "The new value of metadata."
+      description: "A metaadatok új értékét."
   overload: Microsoft.Build.Utilities.TaskItem.SetMetadata*
   exceptions: []
   platform:
@@ -488,13 +488,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the item specification."
+  summary: "Lekérdezi a elem megadását."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the item specification."
+      description: "A <xref:System.String>, amely jelzi, hogy a meghatározás.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.ToString*
   exceptions: []
   platform:

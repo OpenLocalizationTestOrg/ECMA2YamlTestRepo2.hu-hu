@@ -12,7 +12,7 @@ items:
   nameWithType: IBuildEngine4
   fullName: Microsoft.Build.Framework.IBuildEngine4
   type: Interface
-  summary: "This interface extends IBuildEngine to provide a mechanism allowing tasks to share data between task invocations."
+  summary: "Ez az interfész kiterjeszti a IBuildEngine egy olyan mechanizmust, lehetővé téve a feladat indítások közötti adatmegosztásra feladatok számára."
   syntax:
     content: 'public interface IBuildEngine4 : Microsoft.Build.Framework.IBuildEngine3'
   implements:
@@ -31,19 +31,19 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Retrieves a previously registered task object stored with the specified key."
+  summary: "A megadott kulccsal tárolt korábban regisztrált feladatobjektum kéri le."
   syntax:
     content: public object GetRegisteredTaskObject (object key, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime);
     parameters:
     - id: key
       type: System.Object
-      description: "The key used to retrieve the object."
+      description: "A kulcs az objektum beolvasása."
     - id: lifetime
       type: Microsoft.Build.Framework.RegisteredTaskObjectLifetime
-      description: "The lifetime of the object."
+      description: "Az objektum élettartama."
     return:
       type: System.Object
-      description: "Returns a registered object, or null if there is no object registered under that key or if the object has been discarded through early collection."
+      description: "A regisztrált, vagy null, ha nincs objektum regisztrálva van kulcs, vagy ha az objektum el lett vetve korai gyűjtemény keresztül adja vissza."
   overload: Microsoft.Build.Framework.IBuildEngine4.GetRegisteredTaskObject*
   exceptions: []
   platform:
@@ -60,23 +60,23 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Registers an object with the system that will be disposed of at some specified time in the future."
-  remarks: "This method may be called by tasks which need to maintain state across task invocations, such as data caching tasks. It is strongly recommended that `allowEarlyCollection` be set to `true` if the object will retain any significant amount of data.       The thread on which the object is disposed may be arbitrarily, but it will not be disposed while the task is executing, even if `allowEarlyCollection` is set to `true`.       If the object implements IDisposable, IDisposable.Dispose will be invoked on the object before discarding it."
+  summary: "A rendszer, amely egy megadott időpontban a jövőben ártalmatlanítani objektum regisztrálja."
+  remarks: "Ez a metódus-állapot karbantartásához feladat indítások, például a gyorsítótárazási feladatok között igénylő feladatok hívható. Erősen ajánlott, amelyek `allowEarlyCollection` állítható `true` Ha az objektum megőrzik a jelentős mértékű.       A szál, amelyen az objektum eldobása önkényesen lehet, de azt fogja nem távolíthatók el, amíg a feladat fut, akkor is, ha `allowEarlyCollection` értéke `true`.       Ha az objektum megvalósítja IDisposable, IDisposable.Dispose előtt törlésük objektumon fog hívható."
   syntax:
     content: public void RegisterTaskObject (object key, object obj, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime, bool allowEarlyCollection);
     parameters:
     - id: key
       type: System.Object
-      description: "The key used to retrieve the object."
+      description: "A kulcs az objektum beolvasása."
     - id: obj
       type: System.Object
-      description: "The object to be held for later disposal."
+      description: "Az objektum újabb kivezetés fenntartani."
     - id: lifetime
       type: Microsoft.Build.Framework.RegisteredTaskObjectLifetime
-      description: "The lifetime of the object."
+      description: "Az objektum élettartama."
     - id: allowEarlyCollection
       type: System.Boolean
-      description: "Flag that determines whether the object can be disposed earlier than the requested time."
+      description: "Az jelzőt, amely meghatározza, hogy az objektum is távolíthatók el a kért idő-nél korábbi."
   overload: Microsoft.Build.Framework.IBuildEngine4.RegisterTaskObject*
   exceptions: []
   platform:
@@ -93,19 +93,19 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Unregisters a previously registered task object."
+  summary: "Megszünteti a korábban regisztrált task objektumot."
   syntax:
     content: public object UnregisterTaskObject (object key, Microsoft.Build.Framework.RegisteredTaskObjectLifetime lifetime);
     parameters:
     - id: key
       type: System.Object
-      description: "The key used to retrieve the object."
+      description: "A kulcs az objektum beolvasása."
     - id: lifetime
       type: Microsoft.Build.Framework.RegisteredTaskObjectLifetime
-      description: "The lifetime of the object."
+      description: "Az objektum élettartama."
     return:
       type: System.Object
-      description: "Returns a previously registered object, or null if there is no object registered under that key or if the object has been discarded through early collection."
+      description: "A korábban regisztrált, vagy null, ha nincs objektum regisztrálva van kulcs, vagy ha az objektum el lett vetve korai gyűjtemény keresztül adja vissza."
   overload: Microsoft.Build.Framework.IBuildEngine4.UnregisterTaskObject*
   exceptions: []
   platform:

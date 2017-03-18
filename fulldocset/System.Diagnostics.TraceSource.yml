@@ -26,7 +26,7 @@ items:
   nameWithType: TraceSource
   fullName: System.Diagnostics.TraceSource
   type: Class
-  summary: "Provides a set of methods and properties that enable applications to trace the execution of code and associate trace messages with their source."
+  summary: "Számos módszerek és tulajdonságait, amelyek lehetővé teszik az alkalmazások a kód végrehajtása és a nyomkövetési üzenetek társítani a forrásként."
   remarks: "The TraceSource class is used by applications to produce traces that can be associated with the application. TraceSource provides tracing methods that allow you to easily trace events, trace data, and issue informational traces. Trace output from TraceSource can be controlled by configuration file settings. The configuration file is located in the folder with the application executable and has the name of the application with the .config file name extension added. For example, the name of the configuration file for TraceSourceSample.exe is TraceSourceSample.exe.config. The configuration file can be used to determine where the trace information is to be sent and what levels of activity are to be traced. The following example shows the contents of a sample application configuration file.  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <sources>  \n      <source name=\"TraceTest\" switchName=\"SourceSwitch\"   \n        switchType=\"System.Diagnostics.SourceSwitch\" >  \n        <listeners>  \n          <add name=\"console\" />  \n          <remove name =\"Default\" />  \n        </listeners>  \n      </source>  \n    </sources>  \n    <switches>  \n      <!-- You can set the level at which tracing is to occur -->  \n      <add name=\"SourceSwitch\" value=\"Warning\" />  \n        <!-- You can turn tracing off -->  \n        <!--add name=\"SourceSwitch\" value=\"Off\" -->  \n    </switches>  \n    <sharedListeners>  \n      <add name=\"console\"   \n        type=\"System.Diagnostics.ConsoleTraceListener\"   \n        initializeData=\"false\"/>  \n    </sharedListeners>  \n    <trace autoflush=\"true\" indentsize=\"4\">  \n      <listeners>  \n        <add name=\"console\" />  \n      </listeners>  \n    </trace>  \n  </system.diagnostics>  \n</configuration>  \n```  \n  \n The TraceSource class is identified by the name of a source, typically the name of the application.  The trace messages coming from a particular component can be initiated by a particular trace source, allowing all messages coming from that component to be easily identified.  \n  \n TraceSource defines tracing methods but does not actually provide any specific mechanism for generating and storing tracing data. The tracing data is produced by trace listeners, which are plug-ins that can be loaded by trace sources.  \n  \n> [!NOTE]\n>  You should not call the tracing methods during finalization. Doing so can result in an <xref:System.ObjectDisposedException> being thrown.  \n  \n You can customize the tracing output's target by adding or removing <xref:System.Diagnostics.TraceListener> instances to or from the collection stored in the <xref:System.Diagnostics.TraceSource.Listeners%2A?displayProperty=fullName> property. By default, trace output is produced using an instance of the <xref:System.Diagnostics.DefaultTraceListener> class. The preceding configuration file example demonstrates removing the <xref:System.Diagnostics.DefaultTraceListener> and adding a <xref:System.Diagnostics.ConsoleTraceListener> to produce the trace output for the trace source. For more information, see [\\&lt;listeners\\&gt;](../Topic/%3Clisteners%3E%20Element%20for%20%3Csource%3E.md) and [\\&lt;sharedListeners\\&gt;](../Topic/%3CsharedListeners%3E%20Element.md).  \n  \n> [!NOTE]\n>  Adding a trace listener to the <xref:System.Diagnostics.TraceSource.Listeners%2A> collection can cause an exception to be thrown while tracing, if a resource used by the trace listener is not available. The conditions and the exception thrown depend on the trace listener and cannot be enumerated in this topic. It may be useful to place calls to the TraceSource methods in `try`/`catch` blocks to detect and handle any exceptions from trace listeners.  \n  \n The <xref:System.Diagnostics.SourceSwitch> class provides the means to dynamically control the tracing output. The preceding configuration file example shows how you can turn off tracing from a trace source and control the level at which tracing occurs.  You can modify the value of the source switch without recompiling your application. For information on using the configuration file to set a switch, see <xref:System.Diagnostics.Switch> and [How to: Create, Initialize and Configure Trace Switches](~/add/includes/ajax-current-ext-md.md).  \n  \n> [!NOTE]\n>  If you modify a configuration file while an application is executing, the application must be stopped and restarted or the <xref:System.Diagnostics.Trace.Refresh%2A> method must be called before the new settings take effect.  \n  \n The <xref:System.Diagnostics.TraceEventType> enumeration is used to define the event type of the trace message. Trace filters use the <xref:System.Diagnostics.TraceEventType> to determine if a trace listener should produce the trace message.  \n  \n The trace listeners can optionally have an additional layer of filtering through a trace filter.  If a trace listener has an associated filter, the listener calls the <xref:System.Diagnostics.TraceFilter.ShouldTrace%2A> method on that filter to determine whether or not to produce the trace information.  \n  \n The trace listeners use the values of the <xref:System.Diagnostics.Trace> class properties <xref:System.Diagnostics.Trace.Indent%2A>, <xref:System.Diagnostics.Trace.IndentSize%2A>, and <xref:System.Diagnostics.Trace.AutoFlush%2A> to format trace output. You can use configuration file attributes to set the <xref:System.Diagnostics.Trace.Indent%2A>, <xref:System.Diagnostics.Trace.IndentSize%2A>, and <xref:System.Diagnostics.Trace.AutoFlush%2A> properties. The following example sets the <xref:System.Diagnostics.Trace.AutoFlush%2A> property to `false` and the <xref:System.Diagnostics.Trace.IndentSize%2A> property to 3.  \n  \n```  \n<configuration>  \n  <system.diagnostics>  \n    <trace autoflush=\"false\" indentsize=\"3\" />  \n  </system.diagnostics>  \n</configuration>  \n```"
   example:
   - "The following code example shows the use of the TraceSource class to forward traces to listeners.  The example also demonstrates switch and filter usage.  \n  \n [!code-cpp[System.Diagnostics.TraceSource2#1](~/add/codesnippet/cpp/t-system.diagnostics.tra_3_1.cpp)]\n [!code-cs[System.Diagnostics.TraceSource2#1](~/add/codesnippet/csharp/t-system.diagnostics.tra_3_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#1](~/add/codesnippet/visualbasic/t-system.diagnostics.tra_3_1.vb)]"
@@ -50,8 +50,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.TraceSource&quot;></xref> class, using the specified name for the source."
-  remarks: "The source name is used to identify traces. It is used by a <xref:System.Diagnostics.SourceFilter> to determine whether a trace listener should produce the trace. The recommended practice is to use the name of the application for the source name.      > [!NOTE] >  It is not necessary to create a new <xref:System.Diagnostics.TraceSource> instance for each trace request. Create one <xref:System.Diagnostics.TraceSource> instance and use it for all trace requests for the application."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Diagnostics.TraceSource&quot;> </xref> osztály, az adatforrásra vonatkozóan megadott néven."
+  remarks: "Az adatforrás neve nyomkövetéseit azonosítására szolgál. Használja a <xref:System.Diagnostics.SourceFilter>annak meghatározásához, hogy egy nyomkövetés-figyelő a nyomkövetési kell előállítania.</xref:System.Diagnostics.SourceFilter> Az ajánlott eljárás, hogy az alkalmazás nevét használja a forrás neve.      > [!NOTE] > Nincs szükség, hozzon létre egy új <xref:System.Diagnostics.TraceSource>példány az egyes nyomkövetési kérelmek.</xref:System.Diagnostics.TraceSource> Hozzon létre egyet <xref:System.Diagnostics.TraceSource>példányt, és az alkalmazás összes tárolni kívánt nyomkövetési kérelmek használni.</xref:System.Diagnostics.TraceSource>"
   example:
   - "The following code example shows the use of the TraceSource constructor to create a new <xref:System.Diagnostics.TraceSource> object. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#9](~/add/codesnippet/csharp/m-system.diagnostics.tra_28_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#9](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_28_1.vb)]"
   syntax:
@@ -59,15 +59,15 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the source (typically, the name of the application)."
+      description: "A forrás (általában az alkalmazás neve) neve."
   overload: System.Diagnostics.TraceSource.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is an empty string (&quot;&quot;)."
+    description: "<code>name</code>üres karakterlánc (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.#ctor(System.String,System.Diagnostics.SourceLevels)
@@ -82,25 +82,25 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Initializes a new instance of the <xref href=&quot;System.Diagnostics.TraceSource&quot;></xref> class, using the specified name for the source and the default source level at which tracing is to occur."
-  remarks: "The source name is used to identify traces. It can be used by a <xref:System.Diagnostics.SourceSwitch> to determine if tracing is to occur and by a <xref:System.Diagnostics.SourceFilter> to determine whether to produce the trace. The default source level is used by an <xref:System.Diagnostics.EventTypeFilter> to determine if tracing is to occur based on the source level of the message to be traced.      > [!NOTE] >  It is not necessary to create a new <xref:System.Diagnostics.TraceSource> instance for each trace request. Create one <xref:System.Diagnostics.TraceSource> instance and use it for all trace requests for the application."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Diagnostics.TraceSource&quot;> </xref> osztályt, mely nyomkövetés során a forrás- és az alapértelmezett forrás szint számára megadott név alapján kerül sor."
+  remarks: "Az adatforrás neve nyomkövetéseit azonosítására szolgál. Által használható egy <xref:System.Diagnostics.SourceSwitch>annak megállapításához, hogy nyomkövetés megtörténik vagy egy <xref:System.Diagnostics.SourceFilter>annak megállapításához, hogy a nyomkövetési eredményezett.</xref:System.Diagnostics.SourceFilter> </xref:System.Diagnostics.SourceSwitch> Az alapértelmezett forrás szintet használja egy <xref:System.Diagnostics.EventTypeFilter>annak megállapításához, hogy nyomkövetés megtörténik a forrás szint nyomon követését az üzenet alapján.</xref:System.Diagnostics.EventTypeFilter>      > [!NOTE] > Nincs szükség, hozzon létre egy új <xref:System.Diagnostics.TraceSource>példány az egyes nyomkövetési kérelmek.</xref:System.Diagnostics.TraceSource> Hozzon létre egyet <xref:System.Diagnostics.TraceSource>példányt, és az alkalmazás összes tárolni kívánt nyomkövetési kérelmek használni.</xref:System.Diagnostics.TraceSource>"
   syntax:
     content: public TraceSource (string name, System.Diagnostics.SourceLevels defaultLevel);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the source, typically the name of the application."
+      description: "A forrás-, az alkalmazás nevét nevére."
     - id: defaultLevel
       type: System.Diagnostics.SourceLevels
-      description: "A bitwise combination of the enumeration values that specifies the default source level at which to trace."
+      description: "Tagértékeinek a számbavételi érték, amely meghatározza a nyomkövetés, amellyel forrás alapértelmezett szint."
   overload: System.Diagnostics.TraceSource.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is an empty string (&quot;&quot;)."
+    description: "<code>name</code>üres karakterlánc (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.Attributes
@@ -115,15 +115,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the custom switch attributes defined in the application configuration file."
-  remarks: "The Attributes property identifies the custom attributes referenced in the application&quot;s configuration file. Unreferenced custom attributes are not enumerated. Classes that inherit from the <xref:System.Diagnostics.TraceSource> class can add custom attributes by overriding the <xref:System.Diagnostics.Switch.GetSupportedAttributes%2A?displayProperty=fullName> method and returning a string array of custom attribute names.       The following is a sample of a trace source element specifying the custom attribute `SecondTraceSourceAttribute`:      ```   <sources>     <source name=&quot;TraceTest&quot; switchName=&quot;TestSourceSwitch&quot;        switchType=&quot;Testing.MySourceSwitch, TraceSample&quot;        SecondTraceSourceAttribute=&quot;two&quot;>     </source>   </sources>   ```"
+  summary: "Lekérdezi az alkalmazás konfigurációs fájljában definiált egyéni kapcsoló attribútumait."
+  remarks: "A attribútumok tulajdonsága azonosítja az alkalmazás konfigurációs fájljában hivatkozott egyéni attribútumait. Nem hivatkozott egyéni attribútumok nem sorolja. Öröklő a <xref:System.Diagnostics.TraceSource>osztály felülbírálásával adhat hozzá az egyéni attribútumok a <xref:System.Diagnostics.Switch.GetSupportedAttributes%2A?displayProperty=fullName>metódus törlését és az egyéni attribútumok nevében egy karakterlánc-tömbben.</xref:System.Diagnostics.Switch.GetSupportedAttributes%2A?displayProperty=fullName> </xref:System.Diagnostics.TraceSource>       Az alábbiakban található a nyomkövetési forrás elem adjon meg az egyéni attribútumot minta `SecondTraceSourceAttribute`:```   <sources>     <source name=&quot;TraceTest&quot; switchName=&quot;TestSourceSwitch&quot;        switchType=&quot;Testing.MySourceSwitch, TraceSample&quot;        SecondTraceSourceAttribute=&quot;two&quot;>     </source>   </sources>   ```"
   example:
   - "The following code sample shows how to display the custom attributes for a <xref:System.Diagnostics.TraceSource>.  This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#14](~/add/codesnippet/csharp/p-system.diagnostics.tra_7_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#14](~/add/codesnippet/visualbasic/p-system.diagnostics.tra_7_1.vb)]"
   syntax:
     content: public System.Collections.Specialized.StringDictionary Attributes { get; }
     return:
       type: System.Collections.Specialized.StringDictionary
-      description: "A <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;></xref> containing the custom attributes for the trace switch."
+      description: "A <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;> </xref> tartalmazó a nyomkövetési kapcsolóban egyéni attribútumait."
   overload: System.Diagnostics.TraceSource.Attributes*
   exceptions: []
   platform:
@@ -140,8 +140,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Closes all the trace listeners in the trace listener collection."
-  remarks: "The Close method calls the <xref:System.Diagnostics.TraceListener.Close%2A> method of each trace listener in the <xref:System.Diagnostics.TraceSource.Listeners%2A> collection."
+  summary: "A nyomkövetési figyelő gyűjtemény nyomkövetésfigyelők bezárása."
+  remarks: "A Close metódus hívások a <xref:System.Diagnostics.TraceListener.Close%2A>minden nyomkövetés-figyelő a módszer a <xref:System.Diagnostics.TraceSource.Listeners%2A>gyűjtemény.</xref:System.Diagnostics.TraceSource.Listeners%2A> </xref:System.Diagnostics.TraceListener.Close%2A>"
   example:
   - "The following code example shows how you can use the Close method to close all the listeners in the collection. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#33](~/add/codesnippet/csharp/m-system.diagnostics.tra_21_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#33](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_21_1.vb)]"
   syntax:
@@ -163,8 +163,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Flushes all the trace listeners in the trace listener collection."
-  remarks: "The Flush method calls the <xref:System.Diagnostics.TraceListener.Flush%2A> method of each trace listener in the <xref:System.Diagnostics.TraceSource.Listeners%2A> collection."
+  summary: "A nyomkövetési figyelő gyűjtemény nyomkövetésfigyelők kiürítése."
+  remarks: "A kiürítési metódushívások a <xref:System.Diagnostics.TraceListener.Flush%2A>minden nyomkövetés-figyelő a módszer a <xref:System.Diagnostics.TraceSource.Listeners%2A>gyűjtemény.</xref:System.Diagnostics.TraceSource.Listeners%2A> </xref:System.Diagnostics.TraceListener.Flush%2A>"
   example:
   - "The following code example shows how you can use the Flush method to flush all the listeners in the collection. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#33](~/add/codesnippet/csharp/m-system.diagnostics.tra_15_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#33](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_15_1.vb)]"
   syntax:
@@ -174,7 +174,7 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.GetSupportedAttributes
@@ -189,8 +189,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the custom attributes supported by the trace source."
-  remarks: "The default implementation for GetSupportedAttributes returns `null`."
+  summary: "Lekérdezi az egyéni attribútumok a nyomkövetési forrást által támogatott."
+  remarks: "Az alapértelmezett implementációja GetSupportedAttributes adja vissza `null`."
   example:
   - "The following code example shows an override of the GetSupportedAttributes method to identify the custom attributes for the `MyTraceSource` class.  \n  \n [!code-cs[System.Diagnostics.TraceSource#33](~/add/codesnippet/csharp/m-system.diagnostics.tra_0_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource#33](~/add/codesnippet/visualbasic/m-system.diagnostics.tra_0_1.vb)]"
   syntax:
@@ -198,7 +198,7 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "A string array naming the custom attributes supported by the trace source, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no custom attributes."
+      description: "A nyomkövetési forrást által támogatott egyéni attribútumok elnevezési karakterlánc-tömbben vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> nincs egyéni attribútum esetén."
   overload: System.Diagnostics.TraceSource.GetSupportedAttributes*
   exceptions: []
   platform:
@@ -215,13 +215,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the collection of trace listeners for the trace source."
-  remarks: "Use this property to access and perform operations on the trace listeners."
+  summary: "A nyomkövetési forrást nyomkövetésfigyelők gyűjteményének beolvasása."
+  remarks: "Ez a tulajdonság használatával eléréséhez és a nyomkövetésfigyelők meg műveleteket elvégezni."
   syntax:
     content: public System.Diagnostics.TraceListenerCollection Listeners { get; }
     return:
       type: System.Diagnostics.TraceListenerCollection
-      description: "A <xref href=&quot;System.Diagnostics.TraceListenerCollection&quot;></xref> that contains the active trace listeners associated with the source."
+      description: "A <xref href=&quot;System.Diagnostics.TraceListenerCollection&quot;> </xref> , amely tartalmazza a forrás társított active nyomkövetésfigyelők."
   overload: System.Diagnostics.TraceSource.Listeners*
   exceptions: []
   platform:
@@ -238,15 +238,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the name of the trace source."
-  remarks: "The name is set by the `name` parameter passed to the constructor. You can refer to the trace source by using the `name` attribute in the configuration file.       The following XML element shows referring to a trace source in the configuration file.      ```   <configuration>     <system.diagnostics>       <sources>         <source name=&quot;TraceTest&quot;>         </source>       </sources>     </system.diagnostics>   </configuration>   ```"
+  summary: "Lekérdezi a nyomkövetési forrás nevére."
+  remarks: "A név állítja be a `name` a konstruktornak átadott paraméter. A nyomkövetési forrást a használatával jelentheti a `name` attribútumot a konfigurációs fájlban.       A következő XML-elem látható utaló a nyomkövetési forrást a konfigurációs fájlban.      ```   <configuration>     <system.diagnostics>       <sources>         <source name=&quot;TraceTest&quot;>         </source>       </sources>     </system.diagnostics>   </configuration>   ```"
   example:
   - "The following code sample shows how to name a trace source in the constructor call.  This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#9](~/add/codesnippet/csharp/p-system.diagnostics.tra_0_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#9](~/add/codesnippet/visualbasic/p-system.diagnostics.tra_0_1.vb)]"
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The name of the trace source."
+      description: "A nyomkövetési forrást neve."
   overload: System.Diagnostics.TraceSource.Name*
   exceptions: []
   platform:
@@ -263,18 +263,18 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets or sets the source switch value."
-  remarks: "The Switch property allows the filtering of messages before the trace source calls the listeners.       The switch is used to check whether trace calls should be generated or ignored. Each trace method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> method of the <xref:System.Diagnostics.SourceSwitch> to determine whether to proceed with the trace. If the call returns `true`, the listeners are called."
+  summary: "Lekérdezi vagy beállítja a forrás kapcsoló értéke."
+  remarks: "A kapcsoló tulajdonság lehetővé teszi, hogy a nyomkövetési forrás hívások a figyelők előtt üzenetek szűrését.       Ellenőrizze, hogy nyomkövetési hívások létre kell-e, illetve figyelmen kívül hagyja a kapcsoló a használható. Minden nyomkövetési metódus meghívja a <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>metódusában a <xref:System.Diagnostics.SourceSwitch>annak megállapításához, hogy folytatja a nyomkövetési.</xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ha a hívás eredménye `true`, a figyelők nevezzük."
   syntax:
     content: public System.Diagnostics.SourceSwitch Switch { get; set; }
     return:
       type: System.Diagnostics.SourceSwitch
-      description: "A <xref href=&quot;System.Diagnostics.SourceSwitch&quot;></xref> object representing the source switch value."
+      description: "A <xref href=&quot;System.Diagnostics.SourceSwitch&quot;> </xref> forrás kapcsoló értékét képviselő objektum."
   overload: System.Diagnostics.TraceSource.Switch*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Switch is set to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Kapcsoló értéke <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceData(System.Diagnostics.TraceEventType,System.Int32,System.Object)
@@ -289,8 +289,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes trace data to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified event type, event identifier, and trace data."
-  remarks: "The TraceData method, like the <xref:System.Diagnostics.TraceSource.TraceEvent%2A> method, is intended for automated tools, but it also allows the attaching of an additional object, such as an exception instance, to the trace.       The TraceData method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A?displayProperty=fullName> method of the <xref:System.Diagnostics.SourceSwitch> object returned by the <xref:System.Diagnostics.TraceSource.Switch%2A> property. If <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> returns `true`, TraceData calls the corresponding <xref:System.Diagnostics.TraceListener.TraceData%2A> method on all listeners. Otherwise, TraceData returns without calling the listeners&quot; methods.      > [!NOTE] >  The <xref:System.Diagnostics.EventLogTraceListener> object is limited to a maximum `id` value of 65,535. If the `id` value specified is greater than 65,535, the <xref:System.Diagnostics.EventLogTraceListener> object uses 65,535."
+  summary: "A nyomkövetésfigyelők a nyomkövetési adatokat ír az <xref:System.Diagnostics.TraceSource.Listeners*>gyűjtemény a megadott esemény típusa, eseményazonosító és nyomkövetési adatok használatával.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceData módszer, például a <xref:System.Diagnostics.TraceSource.TraceEvent%2A>metódus, automatikus eszközök számára készült, de azt is lehetővé teszi, hogy egy további objektumot, például egy kivétel példányt, a nyomkövetést csatlakoztatása.</xref:System.Diagnostics.TraceSource.TraceEvent%2A>       A TraceData metódushívások a <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A?displayProperty=fullName>metódusában a <xref:System.Diagnostics.SourceSwitch>által visszaadott objektum a <xref:System.Diagnostics.TraceSource.Switch%2A>tulajdonság.</xref:System.Diagnostics.TraceSource.Switch%2A> </xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A?displayProperty=fullName> Ha <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>adja vissza `true`, TraceData meghívja a megfelelő <xref:System.Diagnostics.TraceListener.TraceData%2A>összes figyelői metódusa.</xref:System.Diagnostics.TraceListener.TraceData%2A> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ellenkező esetben TraceData adja vissza, a figyelők metódusok meghívása nélkül.      > [!NOTE] > A <xref:System.Diagnostics.EventLogTraceListener>objektum egy legfeljebb `id` értékének 65 535.</xref:System.Diagnostics.EventLogTraceListener> Ha a `id` megadott érték nagyobb, mint 65 535, a <xref:System.Diagnostics.EventLogTraceListener>objektum által használt 65 535.</xref:System.Diagnostics.EventLogTraceListener>"
   example:
   - "The following code example shows the use of the TraceData method to filter and forward a trace message to the listeners. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#28](~/add/codesnippet/csharp/65c1aeb6-b0df-4e32-8afc-_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#28](~/add/codesnippet/visualbasic/65c1aeb6-b0df-4e32-8afc-_1.vb)]"
   syntax:
@@ -298,18 +298,18 @@ items:
     parameters:
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the enumeration values that specifies the event type of the trace data."
+      description: "Az esemény adja meg a nyomkövetési adatok a számbavételi érték egyikét."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
     - id: data
       type: System.Object
-      description: "The trace data."
+      description: "A nyomkövetési adatokat."
   overload: System.Diagnostics.TraceSource.TraceData*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceData(System.Diagnostics.TraceEventType,System.Int32,System.Object[])
@@ -324,25 +324,25 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes trace data to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified event type, event identifier, and trace data array."
-  remarks: "The TraceData method, like the <xref:System.Diagnostics.TraceSource.TraceEvent%2A> method, is intended for automated tools, but it also allows the attaching of additional objects, such as an exception instance and a stack trace, to the trace.       The TraceData method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> method of the <xref:System.Diagnostics.SourceSwitch> object returned by the <xref:System.Diagnostics.TraceSource.Switch%2A> property. If <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> returns `true`, TraceData calls the corresponding <xref:System.Diagnostics.TraceListener.TraceData%2A> method on all listeners. Otherwise, TraceData returns without calling the listeners&quot; methods.      > [!NOTE] >  The <xref:System.Diagnostics.EventLogTraceListener> object is limited to a maximum `id` value of 65,535. If the `id` value specified is greater than 65,535, the <xref:System.Diagnostics.EventLogTraceListener> object uses 65,535."
+  summary: "A nyomkövetésfigyelők a nyomkövetési adatokat ír az <xref:System.Diagnostics.TraceSource.Listeners*>adatgyűjtést, a megadott eseménytípus eseményazonosító és nyomkövetési adatok tömb.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceData módszer, például a <xref:System.Diagnostics.TraceSource.TraceEvent%2A>metódus, automatikus eszközök számára készült, de lehetővé teszi további objektumok, például egy kivétel példány és egy Veremkivonat a követni kívánt csatolni.</xref:System.Diagnostics.TraceSource.TraceEvent%2A>       A TraceData metódushívások a <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>metódusában a <xref:System.Diagnostics.SourceSwitch>által visszaadott objektum a <xref:System.Diagnostics.TraceSource.Switch%2A>tulajdonság.</xref:System.Diagnostics.TraceSource.Switch%2A> </xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ha <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>adja vissza `true`, TraceData meghívja a megfelelő <xref:System.Diagnostics.TraceListener.TraceData%2A>összes figyelői metódusa.</xref:System.Diagnostics.TraceListener.TraceData%2A> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ellenkező esetben TraceData adja vissza, a figyelők metódusok meghívása nélkül.      > [!NOTE] > A <xref:System.Diagnostics.EventLogTraceListener>objektum egy legfeljebb `id` értékének 65 535.</xref:System.Diagnostics.EventLogTraceListener> Ha a `id` megadott érték nagyobb, mint 65 535, a <xref:System.Diagnostics.EventLogTraceListener>objektum által használt 65 535.</xref:System.Diagnostics.EventLogTraceListener>"
   syntax:
     content: public void TraceData (System.Diagnostics.TraceEventType eventType, int id, object[] data);
     parameters:
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the enumeration values that specifies the event type of the trace data."
+      description: "Az esemény adja meg a nyomkövetési adatok a számbavételi érték egyikét."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
     - id: data
       type: System.Object[]
-      description: "An object array containing the trace data."
+      description: "A nyomkövetési adatokat tartalmazó objektum tömb."
   overload: System.Diagnostics.TraceSource.TraceData*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceEvent(System.Diagnostics.TraceEventType,System.Int32)
@@ -357,8 +357,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes a trace event message to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified event type and event identifier."
-  remarks: "The TraceEvent method is intended to trace events that can be processed automatically by tools. For example, a monitoring tool can notify an administrator if a specific event is traced by a specific source.       The TraceEvent method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> method of the <xref:System.Diagnostics.SourceSwitch> object returned by the <xref:System.Diagnostics.TraceSource.Switch%2A> property. If <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> returns `true`, TraceEvent calls the corresponding <xref:System.Diagnostics.TraceListener.TraceEvent%2A> method of each listener. Otherwise, TraceEvent returns without calling the listeners&quot; methods.       The trace content is listener specific. If the method is not overridden by the listener implementation, the default output is the name of the trace source, its numeric identity, and the event type.  Additional trace content is dependent upon the listener&quot;s <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property value.      > [!NOTE] >  The <xref:System.Diagnostics.EventLogTraceListener> object is limited to a maximum `id` value of 65,535. If the `id` value specified is greater than 65,535, the <xref:System.Diagnostics.EventLogTraceListener> uses 65,535."
+  summary: "A nyomkövetésfigyelők a nyomkövetési esemény üzenetet ír a <xref:System.Diagnostics.TraceSource.Listeners*>adatgyűjtést, a megadott esemény típusa és eseményazonosító.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceEvent metódus olyan nyomkövetési események eszközök által automatikusan feldolgozható. Például egy felügyeleti eszköz értesítheti a rendszergazda, ha egy adott esemény megadott erőforrása által követett.       A TraceEvent metódushívások a <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>metódusában a <xref:System.Diagnostics.SourceSwitch>által visszaadott objektum a <xref:System.Diagnostics.TraceSource.Switch%2A>tulajdonság.</xref:System.Diagnostics.TraceSource.Switch%2A> </xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ha <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>adja vissza `true`, TraceEvent meghívja a megfelelő <xref:System.Diagnostics.TraceListener.TraceEvent%2A>minden egyes figyelő metódusában.</xref:System.Diagnostics.TraceListener.TraceEvent%2A> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ellenkező esetben TraceEvent adja vissza, a figyelők metódusok meghívása nélkül.       A nyomkövetés tartalmában az adott figyelő. A módszer a figyelő végrehajtása nem bírálja felül, ha az alapértelmezett eredménye a nyomkövetési forrást, numerikus identitása és az eseménytípus nevét.  További nyomkövetési tartalma függ a figyelő <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A>tulajdonság értéke.</xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A>      > [!NOTE] > A <xref:System.Diagnostics.EventLogTraceListener>objektum egy legfeljebb `id` értékének 65 535.</xref:System.Diagnostics.EventLogTraceListener> Ha a `id` megadott érték nagyobb, mint 65 535, a <xref:System.Diagnostics.EventLogTraceListener>65 535 használja.</xref:System.Diagnostics.EventLogTraceListener>"
   example:
   - "The following code example shows the use of the TraceEvent method to pass a trace event to the listeners. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#17](~/add/codesnippet/csharp/b6759a68-e7ea-4d5d-941c-_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#17](~/add/codesnippet/visualbasic/b6759a68-e7ea-4d5d-941c-_1.vb)]"
   syntax:
@@ -366,15 +366,15 @@ items:
     parameters:
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the enumeration values that specifies the event type of the trace data."
+      description: "Az esemény adja meg a nyomkövetési adatok a számbavételi érték egyikét."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
   overload: System.Diagnostics.TraceSource.TraceEvent*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceEvent(System.Diagnostics.TraceEventType,System.Int32,System.String)
@@ -389,8 +389,8 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes a trace event message to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified event type, event identifier, and message."
-  remarks: "The TraceEvent method is intended to trace events that can be processed automatically by tools. For example, a monitoring tool can notify an administrator if a specific event is traced by a specific source.       The TraceEvent method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> method of the <xref:System.Diagnostics.SourceSwitch> object returned by the <xref:System.Diagnostics.TraceSource.Switch%2A> property. If <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> returns `true`, TraceEvent calls the corresponding <xref:System.Diagnostics.TraceListener.TraceEvent%2A> method of each listener. Otherwise, TraceEvent returns without calling the listeners&quot; methods.       The trace content is listener specific. If the method is not overridden by the listener implementation, the default output is the name of the trace source, its numeric identity, the event type, and the message.  Additional trace content is dependent upon the listener&quot;s <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A> property value.      > [!NOTE] >  The <xref:System.Diagnostics.EventLogTraceListener> object is limited to a maximum `id` value of 65,535. If the `id` value specified is greater than 65,535, the <xref:System.Diagnostics.EventLogTraceListener> object uses 65,535."
+  summary: "A nyomkövetésfigyelők a nyomkövetési esemény üzenetet ír a <xref:System.Diagnostics.TraceSource.Listeners*>gyűjtemény a megadott esemény típusa, az esemény azonosítója és az üzenet.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceEvent metódus olyan nyomkövetési események eszközök által automatikusan feldolgozható. Például egy felügyeleti eszköz értesítheti a rendszergazda, ha egy adott esemény megadott erőforrása által követett.       A TraceEvent metódushívások a <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>metódusában a <xref:System.Diagnostics.SourceSwitch>által visszaadott objektum a <xref:System.Diagnostics.TraceSource.Switch%2A>tulajdonság.</xref:System.Diagnostics.TraceSource.Switch%2A> </xref:System.Diagnostics.SourceSwitch> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ha <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A>adja vissza `true`, TraceEvent meghívja a megfelelő <xref:System.Diagnostics.TraceListener.TraceEvent%2A>minden egyes figyelő metódusában.</xref:System.Diagnostics.TraceListener.TraceEvent%2A> </xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> Ellenkező esetben TraceEvent adja vissza, a figyelők metódusok meghívása nélkül.       A nyomkövetés tartalmában az adott figyelő. A módszer a figyelő végrehajtása nem bírálja felül, ha az alapértelmezett eredménye a nyomkövetési forrást, numerikus identitása, az esemény típusát és az üzenet nevét.  További nyomkövetési tartalma függ a figyelő <xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A>tulajdonság értéke.</xref:System.Diagnostics.TraceListener.TraceOutputOptions%2A>      > [!NOTE] > A <xref:System.Diagnostics.EventLogTraceListener>objektum egy legfeljebb `id` értékének 65 535.</xref:System.Diagnostics.EventLogTraceListener> Ha a `id` megadott érték nagyobb, mint 65 535, a <xref:System.Diagnostics.EventLogTraceListener>objektum által használt 65 535.</xref:System.Diagnostics.EventLogTraceListener>"
   example:
   - "The following code example shows the use of the <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%29> method to pass a trace event to the listeners. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#18](~/add/codesnippet/csharp/8dfa18b2-1bd6-4ef8-88ea-_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#18](~/add/codesnippet/visualbasic/8dfa18b2-1bd6-4ef8-88ea-_1.vb)]"
   syntax:
@@ -398,18 +398,18 @@ items:
     parameters:
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the enumeration values that specifies the event type of the trace data."
+      description: "Az esemény adja meg a nyomkövetési adatok a számbavételi érték egyikét."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
     - id: message
       type: System.String
-      description: "The trace message to write."
+      description: "A nyomkövetési üzenet az írása."
   overload: System.Diagnostics.TraceSource.TraceEvent*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceEvent(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])
@@ -424,7 +424,7 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes a trace event to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified event type, event identifier, and argument array and format."
+  summary: "A nyomkövetésfigyelők a nyomkövetési eseményt ír a <xref:System.Diagnostics.TraceSource.Listeners*>gyűjtemény a megadott esemény típusa, esemény azonosítóját, és argumentum tömb és formátum használatával.</xref:System.Diagnostics.TraceSource.Listeners*>"
   remarks: "For more information about the `format` parameter, see [Composite Formatting](~/add/includes/ajax-current-ext-md.md).  \n  \n The TraceEvent method is intended to trace events that can be processed automatically by tools. For example, a monitoring tool can notify an administrator if a specific event is traced by a specific source.  \n  \n The TraceEvent method calls the <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> method of the <xref:System.Diagnostics.SourceSwitch> object returned by the <xref:System.Diagnostics.TraceSource.Switch%2A> property. If <xref:System.Diagnostics.SourceSwitch.ShouldTrace%2A> returns `true`, TraceEvent calls the corresponding <xref:System.Diagnostics.TraceListener.TraceEvent%2A> method of each listener. Otherwise, TraceEvent returns without calling the listeners' methods.  \n  \n The trace content is listener specific. The default [TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object\\[\\])](assetId:///M:System.Diagnostics.TraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])?qualifyHint=False&autoUpgrade=False) method writes the source name, event type, and numeric identity in the trace header, then calls the [String.Format(IFormatProvider, String, Object\\[\\])](assetId:///M:System.String.Format(System.IFormatProvider,System.String,System.Object[])?qualifyHint=True&autoUpgrade=False) method, passing the `format` string and `args` array and using the <xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=fullName> property to format the string as the message output.  \n  \n> [!NOTE]\n>  The <xref:System.Diagnostics.EventLogTraceListener> object is limited to a maximum `id` value of 65,535. If the `id` value specified is greater than 65,535, the <xref:System.Diagnostics.EventLogTraceListener> object uses 65,535."
   example:
   - "The following code example shows the use of the <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%29> method to pass a trace event to the listeners. This code example is part of a larger example provided for the <xref:System.Diagnostics.TraceSource> class.  \n  \n [!code-cs[System.Diagnostics.TraceSource2#24](~/add/codesnippet/csharp/9afa3050-f770-4c89-8f1f-_1.cs)]\n [!code-vb[System.Diagnostics.TraceSource2#24](~/add/codesnippet/visualbasic/9afa3050-f770-4c89-8f1f-_1.vb)]"
@@ -433,27 +433,27 @@ items:
     parameters:
     - id: eventType
       type: System.Diagnostics.TraceEventType
-      description: "One of the enumeration values that specifies the event type of the trace data."
+      description: "Az esemény adja meg a nyomkövetési adatok a számbavételi érték egyikét."
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
     - id: format
       type: System.String
-      description: "A composite format string (see Remarks) that contains text intermixed with zero or more format items, which correspond to objects in the `args` array."
+      description: "Összetett formázó karakterlánc (lásd a megjegyzések), amely szöveget tartalmaz összekeverve nulla vagy több formátum elemek, amelyek megfelelnek az objektumok a `args` tömb."
     - id: args
       type: System.Object[]
-      description: "An <xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;></xref> array containing zero or more objects to format."
+      description: "Egy <xref uid=&quot;langword_csharp_object&quot; name=&quot;object&quot; href=&quot;&quot;> </xref> formázásához nulla vagy több objektumot tartalmazó tömb."
   overload: System.Diagnostics.TraceSource.TraceEvent*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>format</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>format</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.FormatException
     commentId: T:System.FormatException
-    description: "<code>format</code> is invalid.       -or-       The number that indicates an argument to format is less than zero, or greater than or equal to the number of specified objects to format."
+    description: "<code>format</code>érvénytelen.       – vagy – a szám, amely jelzi a formázásához argumentumot kisebb nullánál, vagy nagyobb, mint vagy egyenlő számú objektumok formázásához."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceInformation(System.String)
@@ -468,19 +468,19 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes an informational message to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified message."
-  remarks: "The TraceInformation method provides an informational message intended to be read by users and not by tools.       TraceInformation calls the <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29> method, setting `eventType` to <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> and passing the informative message as the message string. The <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29> method in turn calls the <xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29> method of each trace listener."
+  summary: "A nyomkövetésfigyelők, a tájékoztató üzenet ír a <xref:System.Diagnostics.TraceSource.Listeners*>adatgyűjtést, a megadott üzenet.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceInformation metódus biztosít egy tájékoztató üzenet, olvassa el a felhasználók és eszközök által nem javasolt.       TraceInformation hívások a <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29>módszer beállítása `eventType` való <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>, és átadja a tájékoztató üzenet üzenet karakterláncként kell beállítani.</xref:System.Diagnostics.TraceEventType?displayProperty=fullName> </xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29> A <xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29>metódus meghívja a <xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29>minden nyomkövetési figyelő metódusában.</xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29> </xref:System.Diagnostics.TraceSource.TraceEvent%28System.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29>"
   syntax:
     content: public void TraceInformation (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The informative message to write."
+      description: "Írás a tájékoztató üzenet."
   overload: System.Diagnostics.TraceSource.TraceInformation*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceInformation(System.String,System.Object[])
@@ -495,28 +495,28 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes an informational message to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified object array and formatting information."
+  summary: "A nyomkövetésfigyelők, a tájékoztató üzenet ír a <xref:System.Diagnostics.TraceSource.Listeners*>gyűjtemény a megadott objektum-köréről és formázást.</xref:System.Diagnostics.TraceSource.Listeners*>"
   remarks: "For more information about the `format` parameter, see [Composite Formatting](~/add/includes/ajax-current-ext-md.md).  \n  \n The TraceInformation method provides an informational message intended to be read by users and not by tools.  \n  \n TraceInformation calls the [TraceEvent(TraceEventType, Int32, String, Object\\[\\])](assetId:///M:System.Diagnostics.TraceSource.TraceEvent(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])?qualifyHint=False&autoUpgrade=False) method, setting `eventType` to <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> and passing the message content as an object array with formatting information. The [TraceEvent(TraceEventType, Int32, String, Object\\[\\])](assetId:///M:System.Diagnostics.TraceSource.TraceEvent(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])?qualifyHint=False&autoUpgrade=False) method in turn calls the [TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object\\[\\])](assetId:///M:System.Diagnostics.TraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])?qualifyHint=False&autoUpgrade=False) method of each trace listener."
   syntax:
     content: public void TraceInformation (string format, object[] args);
     parameters:
     - id: format
       type: System.String
-      description: "A composite format string (see Remarks) that contains text intermixed with zero or more format items, which correspond to objects in the `args` array."
+      description: "Összetett formázó karakterlánc (lásd a megjegyzések), amely szöveget tartalmaz összekeverve nulla vagy több formátum elemek, amelyek megfelelnek az objektumok a `args` tömb."
     - id: args
       type: System.Object[]
-      description: "An array containing zero or more objects to format."
+      description: "Nulla vagy több objektum formázása tartalmazó tömb."
   overload: System.Diagnostics.TraceSource.TraceInformation*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>format</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>format</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.FormatException
     commentId: T:System.FormatException
-    description: "<code>format</code> is invalid.       -or-       The number that indicates an argument to format is less than zero, or greater than or equal to the number of specified objects to format."
+    description: "<code>format</code>érvénytelen.       – vagy – a szám, amely jelzi a formázásához argumentumot kisebb nullánál, vagy nagyobb, mint vagy egyenlő számú objektumok formázásához."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "An attempt was made to trace an event during finalization."
+    description: "Kísérlet történt egy esemény nyomon követése véglegesítése során."
   platform:
   - net462
 - uid: System.Diagnostics.TraceSource.TraceTransfer(System.Int32,System.String,System.Guid)
@@ -531,20 +531,20 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Writes a trace transfer message to the trace listeners in the <xref:System.Diagnostics.TraceSource.Listeners*> collection using the specified numeric identifier, message, and related activity identifier."
-  remarks: "The TraceTransfer method calls the <xref:System.Diagnostics.TraceListener.TraceTransfer%2A> method of each trace listener in the <xref:System.Diagnostics.TraceSource.Listeners%2A> property to write the trace information. The default <xref:System.Diagnostics.TraceListener.TraceTransfer%2A> method in the base <xref:System.Diagnostics.TraceListener> class calls the <xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29?displayProperty=fullName> method to process the call, setting `eventType` to <xref:System.Diagnostics.TraceEventType?displayProperty=fullName> and appending a string representation of the `relatedActivityId` GUID to `message`.       TraceTransfer is intended to be used with the logical operations of a <xref:System.Diagnostics.CorrelationManager>. The `relatedActivityId` parameter relates to the <xref:System.Diagnostics.CorrelationManager.ActivityId%2A> property of a <xref:System.Diagnostics.CorrelationManager> object. If a logical operation begins in one activity and transfers to another, the second activity logs the transfer by calling the TraceTransfer method. The TraceTransfer call relates the new activity identity to the previous identity. The most likely consumer of this functionality is a trace viewer that can report logical operations that span multiple activities."
+  summary: "Nyomkövetési átviteli üzenetet ír a nyomkövetésfigyelők a a <xref:System.Diagnostics.TraceSource.Listeners*>adatgyűjtést, a megadott azonosítószáma, az üzenet és a kapcsolódó tevékenység azonosítója.</xref:System.Diagnostics.TraceSource.Listeners*>"
+  remarks: "A TraceTransfer metódushívások a <xref:System.Diagnostics.TraceListener.TraceTransfer%2A>minden nyomkövetés-figyelő a módszer a <xref:System.Diagnostics.TraceSource.Listeners%2A>tulajdonság a nyomkövetési adatokat írni.</xref:System.Diagnostics.TraceSource.Listeners%2A> </xref:System.Diagnostics.TraceListener.TraceTransfer%2A> Az alapértelmezett <xref:System.Diagnostics.TraceListener.TraceTransfer%2A>alaposztály metódus <xref:System.Diagnostics.TraceListener>hívások osztály a <xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29?displayProperty=fullName>metódus feldolgozni a hívást, beállítása `eventType` való <xref:System.Diagnostics.TraceEventType?displayProperty=fullName>és karakteres hozzáfűzése a `relatedActivityId` GUID `message`.</xref:System.Diagnostics.TraceEventType?displayProperty=fullName> </xref:System.Diagnostics.TraceListener.TraceEvent%28System.Diagnostics.TraceEventCache%2CSystem.String%2CSystem.Diagnostics.TraceEventType%2CSystem.Int32%2CSystem.String%29?displayProperty=fullName> </xref:System.Diagnostics.TraceListener> </xref:System.Diagnostics.TraceListener.TraceTransfer%2A>       TraceTransfer olyan <xref:System.Diagnostics.CorrelationManager>.</xref:System.Diagnostics.CorrelationManager> logikai műveletekkel együtt használható A `relatedActivityId` paraméter vonatkozik a <xref:System.Diagnostics.CorrelationManager.ActivityId%2A>tulajdonsága egy <xref:System.Diagnostics.CorrelationManager>objektum.</xref:System.Diagnostics.CorrelationManager> </xref:System.Diagnostics.CorrelationManager.ActivityId%2A> Ha egy logikai művelet egy tevékenységben kezdődik, és továbbítja a másikra, a második tevékenység naplózza az átvitel TraceTransfer metódus meghívásával. A TraceTransfer hívást az új tevékenység identitás vonatkozik a korábbi identitását. Ezt a funkciót az a legvalószínűbb fogyasztó egy nyomkövetés-megjelenítő, amely logikai műveleteket, amelyek több tevékenység több."
   syntax:
     content: public void TraceTransfer (int id, string message, Guid relatedActivityId);
     parameters:
     - id: id
       type: System.Int32
-      description: "A numeric identifier for the event."
+      description: "Az esemény azonosítószáma."
     - id: message
       type: System.String
-      description: "The trace message to write."
+      description: "A nyomkövetési üzenet az írása."
     - id: relatedActivityId
       type: System.Guid
-      description: "A structure that identifies the related activity."
+      description: "Egy struktúra, amely a kapcsolódó tevékenységet azonosítja."
   overload: System.Diagnostics.TraceSource.TraceTransfer*
   exceptions: []
   platform:

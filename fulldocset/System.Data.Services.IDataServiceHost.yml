@@ -29,8 +29,8 @@ items:
   nameWithType: IDataServiceHost
   fullName: System.Data.Services.IDataServiceHost
   type: Interface
-  summary: "Interface that specifies interactions between [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] and its hosting environment."
-  remarks: "Each component that hosts [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)], such as Windows Communication Foundation (WCF) must implement this interface. IDataServiceHost is the contract between [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] and its hosting environment. This abstraction allows the [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] runtime to be agnostic to any particular hosting environment. The interface provides [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] with access to inbound HTTP requests. A new object implementing this interface is instantiated for each HTTP request and is then used to inspect properties of the HTTP request and configure the HTTP response."
+  summary: "Felület, amely meghatározza a helyszolgáltatások közötti műveletek [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] és az üzemeltetési környezet."
+  remarks: "Minden egyes összetevő üzemeltető [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)], például a Windows Communication Foundation (WCF) meg kell valósítania a felületet. IDataServiceHost közötti szerződés [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] és az üzemeltetési környezet. Ez az absztrakció lehetővé teszi, hogy a [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] futásidejű kell független bármely konkrét üzemeltetési környezet. A felület révén [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] hozzáféréssel a bejövő HTTP-kérelmekre. Ez a felület végrehajtási új objektum létrejön az egyes HTTP-kérelmek, és ezután a HTTP-kérelem tulajdonságainak vizsgálata, és a HTTP-válasz konfigurálása történik."
   syntax:
     content: public interface IDataServiceHost
   implements: []
@@ -48,13 +48,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets an absolute URI that is the URI as sent by the client."
-  remarks: "The AbsoluteRequestUri property always returns the absolute URI from the client HTTP request. This enables consistent access to the request URI, even in cases where the host revises the URI."
+  summary: "Egy abszolút URI-azonosító, amely esetén az URI Azonosítót, mert az ügyfél által küldött lekérdezi."
+  remarks: "A AbsoluteRequestUri tulajdonsága mindig adja meg a abszolút URI-azonosító az ügyfél HTTP-kérelem. Ez lehetővé teszi, hogy a kérelem URI-azonosítója, még abban az esetben, ha a gazdagép felülvizsgálja az URI konzisztens hozzáférést."
   syntax:
     content: public Uri AbsoluteRequestUri { get; }
     return:
       type: System.Uri
-      description: "A string that is the absolute URI of the request."
+      description: "Egy karakterlánc, amely a kérelem abszolút URI."
   overload: System.Data.Services.IDataServiceHost.AbsoluteRequestUri*
   exceptions: []
   platform:
@@ -71,13 +71,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets an absolute URI that is the root URI of the data service."
-  remarks: "The AbsoluteServiceUri property always returns the absolute root URI of the service request. This enables consistent access to the root data service URI, even in cases where the host revises the URI."
+  summary: "Lekérdezi, hogy a legfelső szintű adatszolgáltatás URI abszolút URI."
+  remarks: "A AbsoluteServiceUri tulajdonsága mindig adja meg a kérelem URI-val abszolút gyökere. Ez lehetővé teszi, hogy a legfelső szintű szolgáltatás URI, még abban az esetben, ha a gazdagép felülvizsgálja az URI konzisztens hozzáférést."
   syntax:
     content: public Uri AbsoluteServiceUri { get; }
     return:
       type: System.Uri
-      description: "A string that is the absolute root URI of the data service."
+      description: "Egy karakterlánc, amely a abszolút URI adatszolgáltatás gyökere."
   overload: System.Data.Services.IDataServiceHost.AbsoluteServiceUri*
   exceptions: []
   platform:
@@ -94,17 +94,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets a data item identified by the identity key contained by the parameter of the method."
-  remarks: "The query string portion of an [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] URI is made up of key/value pairs, with the key and value separated by the ‘=’ character. `GetQueryStringItem` returns a data item for an identity key specified by the parameter of the method."
+  summary: "Lekérdezi a paraméter a metódus által tartalmazott identitáskulcs által azonosított adatelemet."
+  remarks: "A lekérdezési karakterlánc része egy [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] URI épül fel kulcs/érték párok, a kulcs és a &quot;=&quot; karakterrel elválasztó értékű. `GetQueryStringItem`egy metódus paraméter által megadott identitás kulcs adatelemet adja vissza."
   syntax:
     content: public string GetQueryStringItem (string item);
     parameters:
     - id: item
       type: System.String
-      description: "String value containing identity key of item requested."
+      description: "A kért elem identitás kulcsot tartalmazó karakterlánc."
     return:
       type: System.String
-      description: "The data item requested by the query serialized as a string."
+      description: "Az elem a lekérdezési karakterláncként szerializált kérte."
   overload: System.Data.Services.IDataServiceHost.GetQueryStringItem*
   exceptions: []
   platform:
@@ -121,13 +121,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Handles a data service exception using information in  the <code>args</code> parameter."
+  summary: "Kezeli a témakörben található információk alapján adatok szolgáltatás kivételt a <code> args </code> paraméter."
   syntax:
     content: public void ProcessException (System.Data.Services.HandleExceptionArgs args);
     parameters:
     - id: args
       type: System.Data.Services.HandleExceptionArgs
-      description: "<xref href=&quot;System.Data.Services.HandleExceptionArgs&quot;></xref> that contains information on the exception object."
+      description: "<xref href=&quot;System.Data.Services.HandleExceptionArgs&quot;></xref>a kivétel objektum, amely ismerteti."
   overload: System.Data.Services.IDataServiceHost.ProcessException*
   exceptions: []
   platform:
@@ -144,13 +144,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "The transport protocol specified by the request accept header."
-  remarks: "Protocols currently supported by [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] include JSON and AtomPub."
+  summary: "A kérelem által megadott átviteli protokoll fogadja el a fejlécet."
+  remarks: "Által támogatott protokollok [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] közé tartozik a JSON és az AtomPub."
   syntax:
     content: public string RequestAccept { get; }
     return:
       type: System.String
-      description: "String that indicates the transport protocol required by the request."
+      description: "Karakterlánc, amely azt jelzi, az átviteli protokoll a kérelem által igényelt."
   overload: System.Data.Services.IDataServiceHost.RequestAccept*
   exceptions: []
   platform:
@@ -167,13 +167,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets a string representing the value of the `Accept-Charset` HTTP header."
-  remarks: "Returns null if no `Accept-Charset` header is present on the request."
+  summary: "Lekérdezi a értékét képviselő karakterláncot a `Accept-Charset` HTTP-fejléc."
+  remarks: "Ha nem null értéket ad vissza `Accept-Charset` fejlécben megtalálható a kérelem."
   syntax:
     content: public string RequestAcceptCharSet { get; }
     return:
       type: System.String
-      description: "String representing the value of the `Accept-Charset` HTTP header."
+      description: "A értékét képviselő karakterláncot a `Accept-Charset` HTTP-fejléc."
   overload: System.Data.Services.IDataServiceHost.RequestAcceptCharSet*
   exceptions: []
   platform:
@@ -190,13 +190,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the transport protocol specified by the content type header."
-  remarks: "Protocols currently supported by [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] include JSON and AtomPub."
+  summary: "Lekérdezi a tartalomtípus-fejléc megadott átviteli protokoll."
+  remarks: "Által támogatott protokollok [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] közé tartozik a JSON és az AtomPub."
   syntax:
     content: public string RequestContentType { get; }
     return:
       type: System.String
-      description: "String value that indicates content type."
+      description: "Karakterlánc-érték, amely jelzi a tartalomtípushoz."
   overload: System.Data.Services.IDataServiceHost.RequestContentType*
   exceptions: []
   platform:
@@ -213,13 +213,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the request method of GET, PUT, POST, or DELETE."
-  remarks: "For more information about the properties supported by <xref:System.Data.Services.IDataServiceHost> and their use, see [WCF Data Services Client Library](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi a GET, PUT, POST vagy DELETE kérelmet metódusában."
+  remarks: "Tájékozódhat által támogatott tulajdonságokról <xref:System.Data.Services.IDataServiceHost>és a használatukat, lásd: [WCF Data Services ügyféloldali kódtár](~/add/includes/ajax-current-ext-md.md).</xref:System.Data.Services.IDataServiceHost>"
   syntax:
     content: public string RequestHttpMethod { get; }
     return:
       type: System.String
-      description: "String value that indicates request method."
+      description: "Karakterlánc-érték, amely jelzi a kérési metódust."
   overload: System.Data.Services.IDataServiceHost.RequestHttpMethod*
   exceptions: []
   platform:
@@ -236,12 +236,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value for the If-Match header on the current request."
+  summary: "Lekéri a az aktuális kérelem az If-Match fejléc értéke."
   syntax:
     content: public string RequestIfMatch { get; }
     return:
       type: System.String
-      description: "String value for the If-Match header on the current request."
+      description: "Az aktuális kérelem az If-Match fejléc a következő karakterlánc."
   overload: System.Data.Services.IDataServiceHost.RequestIfMatch*
   exceptions: []
   platform:
@@ -258,12 +258,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value for the If-None-Match header on the current request."
+  summary: "Lekéri a az aktuális kérelem az If-None-Match fejléc értéke."
   syntax:
     content: public string RequestIfNoneMatch { get; }
     return:
       type: System.String
-      description: "String value for the If-None-Match header on the current request."
+      description: "Az aktuális kérelem az If-None-Match fejléc értéke karakterlánc."
   overload: System.Data.Services.IDataServiceHost.RequestIfNoneMatch*
   exceptions: []
   platform:
@@ -280,12 +280,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value that identifies the highest version that the request client is able to process."
+  summary: "Az érték, amely azonosítja a legújabb verziót, amely képes feldolgozni a kérelmet ügyfél lekérdezi."
   syntax:
     content: public string RequestMaxVersion { get; }
     return:
       type: System.String
-      description: "A string that contains the highest version that the request client is able to process, possibly null."
+      description: "Egy karakterlánc, amely tartalmazza a legújabb verziót, amely a kérelem ügyfél képes kezelni, valószínűleg null értékű."
   overload: System.Data.Services.IDataServiceHost.RequestMaxVersion*
   exceptions: []
   platform:
@@ -302,12 +302,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the stream that contains the HTTP request body."
+  summary: "Lekérdezi az adatfolyam, amely tartalmazza a HTTP-kérés törzsében."
   syntax:
     content: public System.IO.Stream RequestStream { get; }
     return:
       type: System.IO.Stream
-      description: "<xref:System.IO.Stream> object that contains the request body."
+      description: "<xref:System.IO.Stream>objektum, amely tartalmazza a kérés törzsében.</xref:System.IO.Stream>"
   overload: System.Data.Services.IDataServiceHost.RequestStream*
   exceptions: []
   platform:
@@ -324,13 +324,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the value that identifies the version of the request that the client submitted, possibly null."
-  remarks: "If this value is null, the version is assumed to be 1.0."
+  summary: "Lekérdezi az érték, amely azonosítja a kérés elküldése megtörtént, az ügyfél esetleg NULL verzióját."
+  remarks: "Ha ez az érték null, a verzió 1.0 adottnak."
   syntax:
     content: public string RequestVersion { get; }
     return:
       type: System.String
-      description: "A string that identifies the version of the request that the client submitted, possibly null."
+      description: "Egy karakterlánc, amely azonosítja a kérés elküldése megtörtént, az ügyfél esetleg NULL verzióját."
   overload: System.Data.Services.IDataServiceHost.RequestVersion*
   exceptions: []
   platform:
@@ -347,12 +347,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets a string value that represents cache control information."
+  summary: "Lekérdezi a gyorsítótár kapcsolatos információ jelölő karakterlánc-érték."
   syntax:
     content: public string ResponseCacheControl { get; set; }
     return:
       type: System.String
-      description: "A string value that represents cache control information."
+      description: "Gyorsítótár kapcsolatos információ jelölő karakterlánc-érték."
   overload: System.Data.Services.IDataServiceHost.ResponseCacheControl*
   exceptions: []
   platform:
@@ -369,7 +369,7 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the transport protocol of the response."
+  summary: "Lekérdezi az átviteli protokoll a válasz."
   remarks: ''
   example:
   - For more information about the properties supported by <xref:System.Data.Services.IDataServiceHost> and their use, see [WCF Data Services Client Library](~/add/includes/ajax-current-ext-md.md).
@@ -377,7 +377,7 @@ items:
     content: public string ResponseContentType { get; set; }
     return:
       type: System.String
-      description: "String value containing the content type."
+      description: "A tartalom típust tartalmazó karakterlánc-érték."
   overload: System.Data.Services.IDataServiceHost.ResponseContentType*
   exceptions: []
   platform:
@@ -394,12 +394,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets an eTag value that represents the state of data in response."
+  summary: "Lekérdezi az egy eTag érték, amely az adatok válaszul állapotát jeleníti meg."
   syntax:
     content: public string ResponseETag { get; set; }
     return:
       type: System.String
-      description: "A string value that represents the eTag state value."
+      description: "Az eTag állapot értéket jelölő karakterlánc-érték."
   overload: System.Data.Services.IDataServiceHost.ResponseETag*
   exceptions: []
   platform:
@@ -416,15 +416,15 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets the service location."
-  remarks: "This property never returns null or `string.Empty`."
+  summary: "Lekérdezi vagy beállítja a szolgáltatás helyét."
+  remarks: "Ez a tulajdonság nem null értéket ad vissza, vagy `string.Empty`."
   example:
   - "The following URI contains the location of the service in the substring `http://myhost/myservice.svc`.  \n  \n```  \nhttp://myhost/myservice.svc/Customers, the response location would be http://myhost/myservice.svc  \n  \n```"
   syntax:
     content: public string ResponseLocation { get; set; }
     return:
       type: System.String
-      description: "String that contains the service location."
+      description: "Karakterlánc, amely tartalmazza a szolgáltatás helyét."
   overload: System.Data.Services.IDataServiceHost.ResponseLocation*
   exceptions: []
   platform:
@@ -441,12 +441,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets the response code that indicates results of query."
+  summary: "Lekérdezi vagy beállítja a válaszkód, amely jelzi a lekérdezés eredményeit."
   syntax:
     content: public int ResponseStatusCode { get; set; }
     return:
       type: System.Int32
-      description: "Integer value that contains the response code."
+      description: "Egész szám, amely tartalmazza a válaszkódot."
   overload: System.Data.Services.IDataServiceHost.ResponseStatusCode*
   exceptions: []
   platform:
@@ -463,13 +463,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the response stream to which the HTTP response body will be written."
-  remarks: "If a null stream is returned or an exception occurs when writing to the stream, [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] aborts the request."
+  summary: "Lekérdezi a válaszfolyamnak, amelyhez a HTTP-válasz törzsében lesz írva."
+  remarks: "Ha egy null-adatfolyam vissza vagy egy kivétel történt a adatfolyamba való írása közben [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] megszakítja a kérelmet."
   syntax:
     content: public System.IO.Stream ResponseStream { get; }
     return:
       type: System.IO.Stream
-      description: "<xref:System.IO.Stream> object to which the response body will be written."
+      description: "<xref:System.IO.Stream>az objektum, amelyhez az adott válasz törzsének lesz írva.</xref:System.IO.Stream>"
   overload: System.Data.Services.IDataServiceHost.ResponseStream*
   exceptions: []
   platform:
@@ -486,12 +486,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the version used by the host in the response."
+  summary: "Lekéri a válaszban a gazdagép által használt verzió."
   syntax:
     content: public string ResponseVersion { get; set; }
     return:
       type: System.String
-      description: "A string value that contains the host version."
+      description: "Egy karakterlánc-érték, amely tartalmazza a gazdagép verziószámánál."
   overload: System.Data.Services.IDataServiceHost.ResponseVersion*
   exceptions: []
   platform:

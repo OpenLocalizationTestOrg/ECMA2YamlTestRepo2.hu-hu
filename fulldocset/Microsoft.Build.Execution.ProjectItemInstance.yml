@@ -33,8 +33,8 @@ items:
   nameWithType: ProjectItemInstance
   fullName: Microsoft.Build.Execution.ProjectItemInstance
   type: Class
-  summary: "Wraps an evaluated item for build purposes."
-  remarks: "Does not store item element information, because all evaluation and verification has already been performed."
+  summary: "Build célokra kiértékelt cikk burkolja."
+  remarks: "Nincs elem elem adatokat tárol, mert már végrehajtotta az összes értékelési és ellenőrzési."
   syntax:
     content: >-
       [System.Diagnostics.DebuggerDisplay("{ItemType}={EvaluatedInclude} #DirectMetadata={DirectMetadataCount})")]
@@ -59,12 +59,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the number of pieces of metadata on this item."
+  summary: "Lekérdezi a több olyan metaadatok erre az elemre."
   syntax:
     content: public int DirectMetadataCount { get; }
     return:
       type: System.Int32
-      description: "Returns the number of pieces of metadata on this item."
+      description: "Ezt az elemet a metaadatok kódrészletek számát adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.DirectMetadataCount*
   exceptions: []
   platform:
@@ -81,12 +81,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the evaluated Include attribute value."
+  summary: "Lekérdezi a kiértékelt Include attribútum értéke."
   syntax:
     content: public string EvaluatedInclude { get; set; }
     return:
       type: System.String
-      description: "Returns the evaluated Include attribute value, which may be empty string."
+      description: "Értéket ad vissza a kiértékelt Include attribútum, amely lehet üres karakterlánc."
   overload: Microsoft.Build.Execution.ProjectItemInstance.EvaluatedInclude*
   exceptions: []
   platform:
@@ -103,17 +103,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Get the metadata with the given name, including metadata inherited from item definitions."
-  remarks: "Does not include any built-in metadata."
+  summary: "A megadott névvel a metaadatot beszerezni, a metaadatok elem definíciók öröklődik."
+  remarks: "Nem minden beépített metaadatot tartalmaz."
   syntax:
     content: public Microsoft.Build.Execution.ProjectMetadataInstance GetMetadata (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata."
+      description: "A metaadat neve."
     return:
       type: Microsoft.Build.Execution.ProjectMetadataInstance
-      description: "Returns the metadata with the given name. Returns null if no metadata exists with that name."
+      description: "A megadott nevű a metaadatokat adja vissza. Ha nincsenek metaadatok már létezik ilyen nevű null értéket ad vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.GetMetadata*
   exceptions: []
   platform:
@@ -130,17 +130,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the value of the metadata with the given name, including metadata inherited from item definitions."
-  remarks: "Includes built-in metadata.       To determine whether a piece of metadata is actually present but with an empty value, use <xref:Microsoft.Build.Execution.ProjectItemInstance.HasMetadata%2A>."
+  summary: "A megadott névvel, a metaadatok elem definíciók öröklődik a metaadatok értékének beolvasása."
+  remarks: "Beépített metaadatokat tartalmaz.       Annak megállapításához, hogy egy adat metaadatok ténylegesen megtalálható, de üres értékkel, használja a <xref:Microsoft.Build.Execution.ProjectItemInstance.HasMetadata%2A>.</xref:Microsoft.Build.Execution.ProjectItemInstance.HasMetadata%2A>"
   syntax:
     content: public string GetMetadataValue (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata."
+      description: "A metaadat neve."
     return:
       type: System.String
-      description: "Gets the value of the metadata with the given name, including metadata inherited from item definitions. Returns an empty string if no metadata exists with that name."
+      description: "A megadott névvel, a metaadatok elem definíciók öröklődik a metaadatok értékének beolvasása. Üres karakterláncot ad vissza, ha nincsenek metaadatok ezzel a névvel már létezik."
   overload: Microsoft.Build.Execution.ProjectItemInstance.GetMetadataValue*
   exceptions: []
   platform:
@@ -157,17 +157,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Determines whether the metadata with the given name is defined on this item (even if its value is empty string)."
-  remarks: "This searches built-in metadata and metadata from item definitions, because this method is used for batching, where it doesn&quot;t matter where the metadata originated."
+  summary: "Meghatározza, hogy a megadott nevű metaadat van definiálva erre az elemre (még akkor is, ha az értéke üres karakterlánc)."
+  remarks: "Ez keres beépített metaadatok és a metaadatok elem-definíciókat, mert ezt a módszert használja a kötegelés, ahol nem számít, a metaadatok származási helyének."
   syntax:
     content: public bool HasMetadata (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata."
+      description: "A metaadat neve."
     return:
       type: System.Boolean
-      description: "Returns true if the metadata with the given name is defined on this item (even if its value is empty string); false otherwise."
+      description: "Igaz értéket ad eredményül, ha a megadott nevű metaadatok van definiálva ehhez az elemhez (akkor is, ha az érték üres karakterláncot); hamis más módon."
   overload: Microsoft.Build.Execution.ProjectItemInstance.HasMetadata*
   exceptions: []
   platform:
@@ -184,13 +184,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the item type, for example &quot;Compile&quot;."
-  remarks: "This cannot be set, as it is used as the key into the project&quot;s items table."
+  summary: "Lekérdezi a típusa, pl. &quot;Fordítási&quot;."
+  remarks: "Nem állíthatók be, a kulcs a projekt elemek táblázatba használt."
   syntax:
     content: public string ItemType { get; }
     return:
       type: System.String
-      description: "Returns the item type, for example &quot;Compile&quot;."
+      description: "A konfigurációelem-típust, például &quot;Fordítási&quot; adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.ItemType*
   exceptions: []
   platform:
@@ -207,13 +207,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets an enumerator over the evaluated metadata of the item. This is a read-only collection."
-  remarks: "Does not include built-in metadata or metadata from item definitions.       To modify the metadata, use <xref:Microsoft.Build.Execution.ProjectItemInstance.SetMetadata%2A>."
+  summary: "Lekérdezi számbavevő a kiértékelt metaadatok elem alatt. Ez a gyűjtemény csak olvasható."
+  remarks: "Nem tartalmazza a beépített metaadataira, illetve a cikk definíciók metaadatok.       A metaadatok módosításához használja a <xref:Microsoft.Build.Execution.ProjectItemInstance.SetMetadata%2A>.</xref:Microsoft.Build.Execution.ProjectItemInstance.SetMetadata%2A>"
   syntax:
     content: public System.Collections.Generic.IEnumerable<Microsoft.Build.Execution.ProjectMetadataInstance> Metadata { get; }
     return:
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Execution.ProjectMetadataInstance}
-      description: "Returns an enumerator over the evaluated metadata of the item."
+      description: "A cikk a kiértékelt metaadatok keresztül adja vissza számbevevőre."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Metadata*
   exceptions: []
   platform:
@@ -230,13 +230,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the number of metadata entries, including metadata inherited from item definitions."
-  remarks: "Includes both custom and built-in metadata."
+  summary: "Lekérdezi a metaadat-bejegyzést, metaadatok öröklődés forrása: elem definíciók száma."
+  remarks: "Egyéni és a beépített metaadatokat tartalmaz."
   syntax:
     content: public int MetadataCount { get; }
     return:
       type: System.Int32
-      description: "Returns the number of metadata entries, including metadata inherited from item definitions"
+      description: "A metaadat-bejegyzést, cikk definíciók öröklődik metaadatok számát adja vissza"
   overload: Microsoft.Build.Execution.ProjectItemInstance.MetadataCount*
   exceptions: []
   platform:
@@ -253,13 +253,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets all metadata names of this item, including metadata inherited from item definitions."
-  remarks: "Includes names of built-in metadata."
+  summary: "Ennek az elemnek a metaadatok elem definíciók öröklődik nevei összes metaadatok lekérése."
+  remarks: "Beépített metaadatok nevét tartalmazza."
   syntax:
     content: public System.Collections.Generic.ICollection<string> MetadataNames { get; }
     return:
       type: System.Collections.Generic.ICollection{System.String}
-      description: "Returns all metadata names of this item, including metadata inherited from item definitions."
+      description: "Ennek az elemnek a metaadatok elem definíciók öröklődik minden metaadat nevét adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.MetadataNames*
   exceptions: []
   platform:
@@ -277,14 +277,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Gets the collection of custom metadata."
-  remarks: "-   Does not include built-in metadata.      -   This method should return a clone of the metadata.      -   Writing to this dictionary should not be reflected in the underlying item."
+  summary: "ITaskItem végrehajtására. Lekérdezi az egyéni metaadat gyűjteménye."
+  remarks: "-   Beépített metaadat nem tartalmaz.      – Ez a módszer a metaadatok másolat kell visszaadnia.      -Ehhez a szótárhoz való írás kell nem tükröződnek az alapul szolgáló elemet."
   syntax:
     content: System.Collections.IDictionary ITaskItem.CloneCustomMetadata ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "The collection of custom metadata."
+      description: "Az egyéni metaadat gyűjteménye."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#CloneCustomMetadata*
   exceptions: []
   platform:
@@ -302,14 +302,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Copies the custom metadata entries to another item."
-  remarks: "Follow the guidelines below when implementing this method.      -   Do not overwrite the <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A> property.      -   Do not overwrite existing metadata entries.      -   Do not copy metadata entries that do not make sense on the destination item."
+  summary: "ITaskItem végrehajtására. Másolja át az egyéni metaadat-bejegyzést egy másik elemhez."
+  remarks: "Az alábbi útmutatást követve amikor ez a metódus megvalósítása.      – Ne írja felül a <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>tulajdonság.</xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>      – Ne írja felül a meglévő metaadat-bejegyzést.      -Másolása nem célszerű a cél elem metaadat-bejegyzést."
   syntax:
     content: void ITaskItem.CopyMetadataTo (Microsoft.Build.Framework.ITaskItem destinationItem);
     parameters:
     - id: destinationItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The item to copy the metadata entries to."
+      description: "Az elem másolása a metaadat-bejegyzéseket."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#CopyMetadataTo*
   exceptions: []
   platform:
@@ -327,17 +327,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Gets the value of the specified metadata entry."
-  remarks: "Should not return null if metadata is not present."
+  summary: "ITaskItem végrehajtására. Lekérdezi a megadott metaadat-bejegyzést."
+  remarks: "Nem vissza null, ha metaadatok nem található."
   syntax:
     content: string ITaskItem.GetMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of the metadata entry."
+      description: "A metaadat-bejegyzés neve."
     return:
       type: System.String
-      description: "The value of the <code>attributeName</code> metadata."
+      description: "Értékét a <code> attributeName </code> metaadatok."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#GetMetadata*
   exceptions: []
   platform:
@@ -355,15 +355,15 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Gets or sets the item specification."
-  remarks: "The item specification is an arbitrary string. If the item represents a file on disk, the item specification will be the path of that file.       The <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A> for the following item declaration in a project file is `File.cs`.      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
+  summary: "ITaskItem végrehajtására. Lekérdezi vagy beállítja az elem megadását."
+  remarks: "A cikk megadását érték egy tetszőleges karakterlánc. Ha a cikk egy fájl a lemezen, a meghatározás lesz, hogy a fájl elérési útját.       A <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>a következő cikk deklaráció projektben a fájl `File.cs`.</xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
     content: string Microsoft.Build.Framework.ITaskItem.ItemSpec { get; set; }
     return:
       type: System.String
-      description: "The item specification."
+      description: "A cikk megadása."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#ItemSpec*
   exceptions: []
   platform:
@@ -381,12 +381,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Gets the names of the metadata entries associated with the item."
+  summary: "ITaskItem végrehajtására. Az elemhez tartozó metaadat-bejegyzést nevének beolvasása."
   syntax:
     content: System.Collections.ICollection Microsoft.Build.Framework.ITaskItem.MetadataNames { get; }
     return:
       type: System.Collections.ICollection
-      description: "The names of the metadata entries associated with the item."
+      description: "Az elemhez tartozó metaadat-bejegyzést nevei."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#MetadataNames*
   exceptions: []
   platform:
@@ -404,16 +404,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem implementation. Adds or changes a custom metadata entry to the item."
+  summary: "ITaskItem végrehajtására. Hozzáadja vagy módosítja egy egyéni metaadat-bejegyzést a cikkhez."
   syntax:
     content: void ITaskItem.SetMetadata (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "Metadata name to be added or changed."
+      description: "Metaadatok neve lehet felvenni vagy módosítani."
     - id: metadataValue
       type: System.String
-      description: "Metadata value to be added or changed."
+      description: "Metaadatok érték lehet felvenni vagy módosítani."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem#SetMetadata*
   exceptions: []
   platform:
@@ -431,13 +431,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem2 implementation. Returns a clone of the metadata on this object.  Values returned are in their original escaped form."
+  summary: "ITaskItem2 végrehajtására. Ez az objektum a metaadatok másolat adja vissza.  Visszaadott értékek: eredeti escape-karakterrel megjelölt formájukban."
   syntax:
     content: System.Collections.IDictionary ITaskItem2.CloneCustomMetadataEscaped ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "Returns the cloned metadata, with values&quot; escaping preserved."
+      description: "A klónozott metaadatokat értékek escape-karaktersorozat megőrzi a adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem2#CloneCustomMetadataEscaped*
   exceptions: []
   platform:
@@ -455,13 +455,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem2 implementation. Evaluated include value, escaped as necessary. May be empty string. Gets or sets the item include value e.g. for disk-based items this would be the file path."
-  remarks: "Taking the opportunity to fix the property name, although this doesn&quot;t make it obvious it&quot;s an improvement on ItemSpec."
+  summary: "ITaskItem2 végrehajtására. Kiértékelése érték, szükség szerint escape-karaktersorozatot tartalmaznak. Üres karakterlánc lehet. Lekérdezi vagy beállítja az elem közé tartoznak például érték lemez alapú cikkek lenne a fájl elérési útját."
+  remarks: "A lehetőségét a tulajdonságnév véve, bár ez nem teszi nyilvánvaló a ItemSpec javítása."
   syntax:
     content: string Microsoft.Build.Framework.ITaskItem2.EvaluatedIncludeEscaped { get; set; }
     return:
       type: System.String
-      description: "Returns the item include value."
+      description: "Az elemet ad vissza értéket tartalmazza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem2#EvaluatedIncludeEscaped*
   exceptions: []
   platform:
@@ -479,17 +479,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem2 implementation. Allows the values of metadata on the item to be queried."
-  remarks: "Taking the opportunity to fix the property name, although this doesn&quot;t make it obvious it&quot;s an improvement on GetMetadata."
+  summary: "ITaskItem2 végrehajtására. Lehetővé teszi, hogy a metaadatok értékeit az elem kérdezhető le."
+  remarks: "Hárítsa el a tulajdonságnév lehetőséget véve, bár ez nem teszi nyilvánvaló a GetMetadata javítása."
   syntax:
     content: string ITaskItem2.GetMetadataValueEscaped (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The metadata to be queried."
+      description: "A metaadatok kérdezhető le."
     return:
       type: System.String
-      description: "Returns the escaped metadata value."
+      description: "Az escape-karakterrel megjelölt metaadatok értékét adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem2#GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -507,17 +507,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "ITaskItem2 implementation. Allows a piece of custom metadata to be set on the item. Assumes that the value passed in is unescaped, and escapes the value as necessary in order to maintain its value."
-  remarks: "Taking the opportunity to fix the property name, although this doesn&quot;t make it obvious it&quot;s an improvement on SetMetadata."
+  summary: "ITaskItem2 végrehajtására. Lehetővé teszi, hogy egy adat egyéni metaadatokra ahhoz, hogy az elemen állítható be. Feltételezi, hogy az átadott értéknek unescaped, és az érték szükség szerint értéke megőrzése érdekében lehet kilépni."
+  remarks: "A lehetőségét a tulajdonságnév véve, bár ez nem teszi nyilvánvaló a SetMetadata javítása."
   syntax:
     content: void ITaskItem2.SetMetadataValueLiteral (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata name."
+      description: "A metaadat-neve."
     - id: metadataValue
       type: System.String
-      description: "The metadata value."
+      description: "A metaadatok érték."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Microsoft#Build#Framework#ITaskItem2#SetMetadataValueLiteral*
   exceptions: []
   platform:
@@ -534,12 +534,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the owning project."
+  summary: "A tulajdonos projekt beolvasása."
   syntax:
     content: public Microsoft.Build.Execution.ProjectInstance Project { get; }
     return:
       type: Microsoft.Build.Execution.ProjectInstance
-      description: "Returns the owning project."
+      description: "A tulajdonos projekt adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.Project*
   exceptions: []
   platform:
@@ -556,14 +556,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Removes metadata with the given name."
-  remarks: "This method is used by TaskItem."
+  summary: "Eltávolítja a megadott nevű metaadatok."
+  remarks: "Ez a módszer TaskItem használják."
   syntax:
     content: public void RemoveMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata name."
+      description: "A metaadat-neve."
   overload: Microsoft.Build.Execution.ProjectItemInstance.RemoveMetadata*
   exceptions: []
   platform:
@@ -580,13 +580,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Adds metadata with the given names and values. Overwrites any metadata with the same name already in the collection."
+  summary: "Hozzáadja a megadott neveit és értékeit metaadatait. Minden metaadatot felülírja ezzel a névvel már megtalálható a gyűjteményben."
   syntax:
     content: public void SetMetadata (System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string,string>> metadataDictionary);
     parameters:
     - id: metadataDictionary
       type: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}}
-      description: "The metadata to add."
+      description: "A metaadatok hozzáadása."
   overload: Microsoft.Build.Execution.ProjectItemInstance.SetMetadata*
   exceptions: []
   platform:
@@ -603,19 +603,19 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Add metadata with the given name and value. Overwrites any metadata with the same name already in the collection."
+  summary: "A megadott nevű és értékű metaadatokkal. Minden metaadatot felülírja ezzel a névvel már megtalálható a gyűjteményben."
   syntax:
     content: public Microsoft.Build.Execution.ProjectMetadataInstance SetMetadata (string name, string evaluatedValue);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata to add."
+      description: "A metaadatok hozzáadása neve."
     - id: evaluatedValue
       type: System.String
-      description: "The evaluated value of the metadata to add."
+      description: "A metaadatok hozzáadása kiértékelt értéke."
     return:
       type: Microsoft.Build.Execution.ProjectMetadataInstance
-      description: "Returns the new metadata."
+      description: "Az új metaadatokat adja vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.SetMetadata*
   exceptions: []
   platform:
@@ -632,13 +632,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a String that represents the current item."
+  summary: "Lekérdezi az aktuális elem jelölő karakterlánccá."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "Returns a String that represents the current item."
+      description: "Az aktuális elemet jelölő karakterláncot ad vissza."
   overload: Microsoft.Build.Execution.ProjectItemInstance.ToString*
   exceptions: []
   platform:

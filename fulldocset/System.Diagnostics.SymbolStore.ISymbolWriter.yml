@@ -29,8 +29,8 @@ items:
   nameWithType: ISymbolWriter
   fullName: System.Diagnostics.SymbolStore.ISymbolWriter
   type: Interface
-  summary: "Represents a symbol writer for managed code."
-  remarks: "The ISymbolWriter interface provides methods that define documents, sequence points, lexical scopes, and variables.      > [!NOTE] >  This interface is the managed counterpart of the `ISymUnmanagedWriter` interface, which is one of the unmanaged symbol store interfaces that provides an alternative way to read and write debug symbol information."
+  summary: "A felügyelt kód szimbólum író jelöli."
+  remarks: "A ISymbolWriter felület módszereket, amelyek a dokumentumok, a feladatütemezési pontok, a lexikális hatókörök és a változók megadása révén.      > [!NOTE] > Az illesztő felügyelt megfelelője a `ISymUnmanagedWriter` felület, amely a nem felügyelt szimbólum tároló felületek, amely alternatív megoldás a olvasási és írási hibakeresési szimbóluminformáció egyike."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -51,8 +51,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;></xref> and commits the symbols to the symbol store."
-  remarks: "After this call, <xref:System.Diagnostics.SymbolStore.ISymbolWriter> becomes invalid for further updates."
+  summary: "Bezárja <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;> </xref> és a szimbólumokat véglegesíti a szimbólum tárolójába."
+  remarks: "Ez a hívás után <xref:System.Diagnostics.SymbolStore.ISymbolWriter>További frissítések érvénytelenné válik.</xref:System.Diagnostics.SymbolStore.ISymbolWriter>"
   syntax:
     content: public void Close ();
     parameters: []
@@ -72,8 +72,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the current method."
-  remarks: "After a method is closed, you cannot define a symbol from within it."
+  summary: "Bezárja az aktuális metódust."
+  remarks: "Után egy metódus le van zárva, nem adhat meg benne a szimbólum."
   syntax:
     content: public void CloseMethod ();
     parameters: []
@@ -93,7 +93,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the most recent namespace."
+  summary: "A legutóbbi névtér bezárása."
   syntax:
     content: public void CloseNamespace ();
     parameters: []
@@ -113,14 +113,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the current lexical scope."
-  remarks: "After a scope is closed, you cannot define a variable from within it."
+  summary: "Bezárja az aktuális lexikális hatókörben."
+  remarks: "A hatókör lezárása után belül, akkor a változó nem lehet definiálni."
   syntax:
     content: public void CloseScope (int endOffset);
     parameters:
     - id: endOffset
       type: System.Int32
-      description: "The points past the last instruction in the scope."
+      description: "A pontok túli az utolsó utasítás hatókörében."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*
   exceptions: []
   platform:
@@ -137,25 +137,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a source document."
+  summary: "Meghatározza a forrásdokumentum."
   syntax:
     content: public System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument (string url, Guid language, Guid languageVendor, Guid documentType);
     parameters:
     - id: url
       type: System.String
-      description: "The URL that identifies the document."
+      description: "Az URL-címet, amely azonosítja a dokumentumot."
     - id: language
       type: System.Guid
-      description: "The document language. This parameter can be <xref:System.Guid>."
+      description: "A dokumentum nyelvét. Ez a paraméter lehet <xref:System.Guid>.</xref:System.Guid>"
     - id: languageVendor
       type: System.Guid
-      description: "The identity of the vendor for the document language. This parameter can be <xref:System.Guid>."
+      description: "A dokumentum nyelvhez szállító identitását. Ez a paraméter lehet <xref:System.Guid>.</xref:System.Guid>"
     - id: documentType
       type: System.Guid
-      description: "The type of the document. This parameter can be <xref:System.Guid>."
+      description: "A dokumentum típusa. Ez a paraméter lehet <xref:System.Guid>.</xref:System.Guid>"
     return:
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The object that represents the document."
+      description: "A dokumentum képviselő objektum."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineDocument*
   exceptions: []
   platform:
@@ -172,35 +172,35 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a field in a type or a global field."
-  remarks: "The DefineField method defines a single variable that is not within a method by using specified fields in classes, bit fields, and so on."
+  summary: "A típus vagy a globális mező mező határozza meg."
+  remarks: "A DefineField metódus, amely kívül esik a metódus megadott mezőkkel osztályok, bit, és így tovább egy változó határozza meg."
   syntax:
     content: public void DefineField (System.Diagnostics.SymbolStore.SymbolToken parent, string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: parent
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata type or method token."
+      description: "A metaadatok típusban vagy metódusban token."
     - id: name
       type: System.String
-      description: "The field name."
+      description: "A mező nevét."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the field attributes."
+      description: "A mező attribútum bitenkénti kombinációja."
     - id: signature
       type: System.Byte[]
-      description: "The field signature."
+      description: "A mező aláírása."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1` and `addr2`."
+      description: "A címet meg kell adnia a `addr1` és `addr2`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the field specification."
+      description: "A mező meghatározásának első cím."
     - id: addr2
       type: System.Int32
-      description: "The second address for the field specification."
+      description: "A mező meghatározásának második címe."
     - id: addr3
       type: System.Int32
-      description: "The third address for the field specification."
+      description: "A mező megadását a harmadik címnél."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineField*
   exceptions: []
   platform:
@@ -217,31 +217,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single global variable."
+  summary: "Egy globális változó határozza meg."
   syntax:
     content: public void DefineGlobalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: name
       type: System.String
-      description: "The global variable name."
+      description: "A globális változó neve."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the global variable attributes."
+      description: "A globális változók attribútum bitenkénti kombinálását."
     - id: signature
       type: System.Byte[]
-      description: "The global variable signature."
+      description: "A globális változó aláírása."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "A címet meg kell adnia a `addr1`, `addr2`, és `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the global variable specification."
+      description: "Az első címnél a globális változók megadását."
     - id: addr2
       type: System.Int32
-      description: "The second address for the global variable specification."
+      description: "A második címe a globális változók megadását."
     - id: addr3
       type: System.Int32
-      description: "The third address for the global variable specification."
+      description: "A harmadik címnél a globális változók megadását."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineGlobalVariable*
   exceptions: []
   platform:
@@ -258,38 +258,38 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single variable in the current lexical scope."
-  remarks: "The `startOffset` and `endOffset` parameters are optional. If their value is zero, they are ignored and the variable is defined throughout the entire scope. If their value is nonzero, the variable falls within the offsets of the current scope.       You can call DefineLocalVariable multiple times for a variable of the same name that occurs multiple times in different offset ranges throughout a scope. (In this case, start and end offsets must not overlap.)"
+  summary: "Egy változó meghatározza az aktuális lexikális hatókörben."
+  remarks: "A `startOffset` és `endOffset` paraméterek opcionálisak. Ha az érték nulla, figyelmen kívül hagyja, és a változó teljes névtértől van definiálva. Ha az érték nem nulla, a változó az aktuális hatókör eltolásának alá tartozik.       Kérjen DefineLocalVariable többször, több alkalommal fordul elő különböző eltolási tartományt teljes hatókör azonos nevű változó. (Ebben az esetben kezdő és záró eltolás nem lehet átfedésben.)"
   syntax:
     content: public void DefineLocalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);
     parameters:
     - id: name
       type: System.String
-      description: "The local variable name."
+      description: "A helyi változó neve."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the local variable attributes."
+      description: "A helyi változó attribútum bitenkénti kombinálását."
     - id: signature
       type: System.Byte[]
-      description: "The local variable signature."
+      description: "A helyi változó aláírása."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "A címet meg kell adnia a `addr1`, `addr2`, és `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the local variable specification."
+      description: "Az első címnél a helyi változó megadását."
     - id: addr2
       type: System.Int32
-      description: "The second address for the local variable specification."
+      description: "A második címét a helyi változó megadását."
     - id: addr3
       type: System.Int32
-      description: "The third address for the local variable specification."
+      description: "A harmadik címnél a helyi változó megadását."
     - id: startOffset
       type: System.Int32
-      description: "The start offset for the variable. If this parameter is zero, it is ignored and the variable is defined throughout the entire scope. If the parameter is nonzero, the variable falls within the offsets of the current scope."
+      description: "Az indítási eltolás a változó. Ha ez a paraméter értéke nulla, figyelmen kívül, és a változó teljes névtértől van definiálva. Ha a paraméter értéke nem nulla, a változó az aktuális hatókör eltolásának alá tartozik."
     - id: endOffset
       type: System.Int32
-      description: "The end offset for the variable. If this parameter is zero, it is ignored and the variable is defined throughout the entire scope. If the parameter is nonzero, the variable falls within the offsets of the current scope."
+      description: "A záró eltolás a változó. Ha ez a paraméter értéke nulla, figyelmen kívül, és a változó teljes névtértől van definiálva. Ha a paraméter értéke nem nulla, a változó az aktuális hatókör eltolásának alá tartozik."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineLocalVariable*
   exceptions: []
   platform:
@@ -306,32 +306,32 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single parameter in the current method. The type of each parameter is taken from its position within the signature of the method."
-  remarks: "If parameters are defined in the metadata for a given method, you do not have to define them again with calls to this method. Symbol readers need to check for these in the normal metadata first, and then use the symbol store."
+  summary: "Meghatározza az aktuális módszer egyetlen paramétert. Minden paraméter típusa a metódus aláírása belül pozícióját származik."
+  remarks: "Ha paraméterek az egy adott módszerrel metaadatok vannak megadva, nincs adhat meg hozzájuk újra ez a metódus hívása. Először ellenőrizze ezeket a normál metaadatai között, és használja a szimbólum tárolóban kell szimbólum olvasók."
   syntax:
     content: public void DefineParameter (string name, System.Reflection.ParameterAttributes attributes, int sequence, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: name
       type: System.String
-      description: "The parameter name."
+      description: "A paraméter neve."
     - id: attributes
       type: System.Reflection.ParameterAttributes
-      description: "A bitwise combination of the parameter attributes."
+      description: "A paraméter-attribútumok tagértékeinek."
     - id: sequence
       type: System.Int32
-      description: "The parameter signature."
+      description: "A paraméter aláírás."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "A címet meg kell adnia a `addr1`, `addr2`, és `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the parameter specification."
+      description: "A paraméter megadását az első címnél."
     - id: addr2
       type: System.Int32
-      description: "The second address for the parameter specification."
+      description: "A paraméter megadását második címe."
     - id: addr3
       type: System.Int32
-      description: "The third address for the parameter specification."
+      description: "A paraméter megadását a harmadik címnél."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineParameter*
   exceptions: []
   platform:
@@ -348,29 +348,29 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a group of sequence points within the current method."
-  remarks: "Each line and each column defines the start of a statement within a method. The arrays should be sorted in increasing order of offsets. The offset is always the offset from the start of the method, in bytes."
+  summary: "Az aktuális módszer belül feladatütemezési pontok olyan csoportját határozza meg."
+  remarks: "Minden egyes sorban, minden oszlop határozza meg a start metódus belül utasítás. A tömbök eltolások szerinti növekvő sorrendbe kell rendezni. Az eltolás a kezdetétől a metódus bájtban eltolás."
   syntax:
     content: public void DefineSequencePoints (System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int[] offsets, int[] lines, int[] columns, int[] endLines, int[] endColumns);
     parameters:
     - id: document
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document object for which the sequence points are being defined."
+      description: "A dokumentum típusú objektumhoz, amelynek a feladatütemezési pontok definiálva vannak."
     - id: offsets
       type: System.Int32[]
-      description: "The sequence point offsets measured from the beginning of methods."
+      description: "A feladatütemezési pont eltolások mért módszerek az elejétől."
     - id: lines
       type: System.Int32[]
-      description: "The document lines for the sequence points."
+      description: "A sorok feladatütemezési pontok."
     - id: columns
       type: System.Int32[]
-      description: "The document positions for the sequence points."
+      description: "A dokumentum pozíciók feladatütemezési pontok."
     - id: endLines
       type: System.Int32[]
-      description: "The document end lines for the sequence points."
+      description: "A záró sorok feladatütemezési pontok."
     - id: endColumns
       type: System.Int32[]
-      description: "The document end positions for the sequence points."
+      description: "A feladatütemezési pontok dokumentum záró pozíciójának."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineSequencePoints*
   exceptions: []
   platform:
@@ -387,20 +387,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Sets the metadata emitter interface to associate with a writer."
-  remarks: "Initialize also sets the output file name where the debugging symbols are written. This method can be called only once and must be called before any other writer methods."
+  summary: "Beállítja a metaadatok vezérlő felület egy író társítja."
+  remarks: "Inicializálni is beállítása a kimeneti fájl nevét, ahol a hibakeresési szimbólumok készültek. Ez a metódus csak egyszer hívható, és semmilyen más író metódus előtt hívható."
   syntax:
     content: public void Initialize (IntPtr emitter, string filename, bool fFullBuild);
     parameters:
     - id: emitter
       type: System.IntPtr
-      description: "The metadata emitter interface."
+      description: "A metaadatok vezérlő felületet."
     - id: filename
       type: System.String
-      description: "The file name for which the debugging symbols are written. Some writers require a file name, and others do not. If a file name is specified for a writer that does not use file names, this parameter is ignored."
+      description: "A fájl neve, amely a hibakeresési szimbólumok írja. Néhány írók fájl nevet kell megadni, mások pedig nem. Ha a fájl nevét a fájlnevek nem használó író van megadva, a rendszer figyelmen kívül hagyja ezt a paramétert."
     - id: fFullBuild
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> indicates that this is a full rebuild; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> indicates that this is an incremental compilation."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>azt jelzi, hogy ez egy teljes rebuild; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> jelzi, hogy ez egy növekményes fordítás."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.Initialize*
   exceptions: []
   platform:
@@ -417,14 +417,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a method to place symbol information into."
-  remarks: "The specified method becomes the current method for calls to define sequence points, parameters, and lexical scopes. There is an implicit lexical scope around the entire method. Reopening a method that has been previously closed erases any previously defined symbols for the method."
+  summary: "Megnyílik a szimbólum adatait helyezze módszerét."
+  remarks: "A megadott metódust az aktuális módszer feladatütemezési pontok, paraméterek és lexikális hatókörök hívások válik. A teljes metódus körül egy implicit lexikális hatókörben van. A módszer minden korábban definiált szimbólumok megnyitni egy módszert, amelyet korábban be lett zárva töröl."
   syntax:
     content: public void OpenMethod (System.Diagnostics.SymbolStore.SymbolToken method);
     parameters:
     - id: method
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for the method to be opened."
+      description: "A metaadatokat megadó lexikális elem módban kell megnyitni."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenMethod*
   exceptions: []
   platform:
@@ -441,14 +441,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a new namespace."
-  remarks: "Call this method before defining methods or variables that exist within a namespace. Namespaces can be nested."
+  summary: "Megnyílik egy új névtér."
+  remarks: "Ez a metódus meghívható módszerek vagy egy adott névtéren belül meglévő változók megadása előtt. Névterek egymásba ágyazható."
   syntax:
     content: public void OpenNamespace (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the new namespace."
+      description: "Az új névtér neve."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenNamespace*
   exceptions: []
   platform:
@@ -465,17 +465,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a new lexical scope in the current method."
-  remarks: "This scope becomes the new current scope and is pushed onto a stack of scopes. Scopes must form a hierarchy. Siblings are not allowed to overlap.       Scope identifiers are valid only in the current method."
+  summary: "Új lexikális hatókör megnyitása az aktuális metódust."
+  remarks: "Ebben a hatókörben válik az új aktuális hatókörben és hatókörök Jegyzettömb fejlesztőre. Hatókörök kell olyan hierarchiáját képezik. Azonos szintű átfedésbe hozni nem engedélyezettek.       Hatókör-azonosítók csak az aktuális módszer érvényesek."
   syntax:
     content: public int OpenScope (int startOffset);
     parameters:
     - id: startOffset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the method to the first instruction in the lexical scope."
+      description: "Az eltolás bájt, a módszer az első utasításba lexikális hatókörében az elejétől."
     return:
       type: System.Int32
-      description: "An opaque scope identifier that can be used with <xref:System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*> to define the start and end offsets of a scope at a later time. In this case, the offsets passed to OpenScope and <xref:System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*> are ignored. A scope identifier is valid only in the current method."
+      description: "Egy nem átlátszó hatókör-azonosító, amely használható <> </> *> egy későbbi időpontban a kezdő és záró eltolások hatókör definiálásához. Ebben az esetben az eltolások átadott OpenScope és <> </> *> figyelmen kívül lesznek hagyva. A hatókör-azonosító érvénytelen, csak az aktuális metódusban."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenScope*
   exceptions: []
   platform:
@@ -492,28 +492,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Specifies the true start and end of a method within a source file. Use SetMethodSourceRange to specify the extent of a method, independent of the sequence points that exist within the method."
+  summary: "Adja meg a true kezdő- és a forrás-fájlon belüli metódus végéhez. SetMethodSourceRange segítségével adjon meg egy metódust, a feladatütemezési pontokat, amelyeket a metódus belül független mértékének megfelelően csökkenti."
   syntax:
     content: public void SetMethodSourceRange (System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int startLine, int startColumn, System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int endLine, int endColumn);
     parameters:
     - id: startDoc
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document that contains the starting position."
+      description: "A kezdő helyzete tartalmazó dokumentumot."
     - id: startLine
       type: System.Int32
-      description: "The starting line number."
+      description: "A kezdő sorszám."
     - id: startColumn
       type: System.Int32
-      description: "The starting column."
+      description: "A kezdő oszlop."
     - id: endDoc
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document that contains the ending position."
+      description: "A dokumentumot, amely tartalmazza a szövegvégi pozíciót."
     - id: endLine
       type: System.Int32
-      description: "The ending line number."
+      description: "A záró sorszámot."
     - id: endColumn
       type: System.Int32
-      description: "The ending column number."
+      description: "A befejezési oszlopszám."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetMethodSourceRange*
   exceptions: []
   platform:
@@ -530,19 +530,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines the offset range for the specified lexical scope."
+  summary: "A tartományon a megadott lexikális hatókör határozza meg."
   syntax:
     content: public void SetScopeRange (int scopeID, int startOffset, int endOffset);
     parameters:
     - id: scopeID
       type: System.Int32
-      description: "The identifier of the lexical scope."
+      description: "A lexikális hatókör azonosítója."
     - id: startOffset
       type: System.Int32
-      description: "The byte offset of the beginning of the lexical scope."
+      description: "A lexikális hatókör elejére bájteltolás."
     - id: endOffset
       type: System.Int32
-      description: "The byte offset of the end of the lexical scope."
+      description: "A lexikális hatókör végén bájteltolás."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*
   exceptions: []
   platform:
@@ -559,20 +559,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines an attribute when given the attribute name and the attribute value."
-  remarks: "The SetSymAttribute method is only associated with symbolic information and is not a metadata custom attribute."
+  summary: "Ha az attribútumnév és attribútumérték adott attribútum határozza meg."
+  remarks: "A SetSymAttribute metódus csak társított szimbolikus információkat, és nem egy egyéni metaadat-attribútum."
   syntax:
     content: public void SetSymAttribute (System.Diagnostics.SymbolStore.SymbolToken parent, string name, byte[] data);
     parameters:
     - id: parent
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for which the attribute is being defined."
+      description: "A metaadatok jogkivonat, amelynek a attribútuma definiálva van."
     - id: name
       type: System.String
-      description: "The attribute name."
+      description: "Az attribútum nevét."
     - id: data
       type: System.Byte[]
-      description: "The attribute value."
+      description: "Az attribútum értéke."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetSymAttribute*
   exceptions: []
   platform:
@@ -589,14 +589,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Sets the underlying <xref uid=&quot;langword_csharp_ISymUnmanagedWriter&quot; name=&quot;ISymUnmanagedWriter&quot; href=&quot;&quot;></xref> (the corresponding unmanaged interface) that a managed <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;></xref> uses to emit symbols."
-  remarks: "The underlying `ISymUnmanagedWriter` (the corresponding unmanaged interface) represents a symbol writer for managed code. The interface provides methods for defining documents, sequence points, lexical scopes, and variables."
+  summary: "Beállítja az alapul szolgáló <xref uid=&quot;langword_csharp_ISymUnmanagedWriter&quot; name=&quot;ISymUnmanagedWriter&quot; href=&quot;&quot;> </xref> (a megfelelő nem felügyelt interface), amely egy felügyelt <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;> </xref> szimbólumok kibocsátás használ."
+  remarks: "Az alapul szolgáló `ISymUnmanagedWriter` (a megfelelő nem felügyelt felület) jelenti. a felügyelt kód szimbólum író. A kapcsolat definiálása dokumentumok, a feladatütemezési pontok, a lexikális hatókörök és a változók módszereket kínál."
   syntax:
     content: public void SetUnderlyingWriter (IntPtr underlyingWriter);
     parameters:
     - id: underlyingWriter
       type: System.IntPtr
-      description: "A pointer to code that represents the underlying writer."
+      description: "Az alapul szolgáló író kódját mutató hivatkozások."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUnderlyingWriter*
   exceptions: []
   platform:
@@ -613,14 +613,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Identifies the user-defined method as the entry point for the current module."
-  remarks: "This is normally your main method, rather than compiler-generated stubs before the main method."
+  summary: "A felhasználó által definiált módszer azonosítja az aktuális modul belépési pontként."
+  remarks: "Ez általában a fordító által létrehozott kódcsonkok előtt a fő metódus helyett a fő metódus."
   syntax:
     content: public void SetUserEntryPoint (System.Diagnostics.SymbolStore.SymbolToken entryMethod);
     parameters:
     - id: entryMethod
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for the method that is the user entry point."
+      description: "A metaadatokat megadó lexikális elem a metódus, amely a felhasználói belépési pont."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUserEntryPoint*
   exceptions: []
   platform:
@@ -637,14 +637,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Specifies that the given, fully qualified namespace name is used within the open lexical scope."
-  remarks: "Closing the current scope prevents this scope from using the namespace. The namespace remains in use in all scopes that inherit from the current open scope."
+  summary: "Meghatározza, hogy a megadott, teljesen minősített név használja-e nyitva lexikális hatókörén belül."
+  remarks: "Az aktuális hatókör bezárása megakadályozza, hogy a hatókör a névteret használ. A névtér marad használatban lévő szülőhatókörből származik a jelenlegi nyissa meg minden kijelölt hatókörnek."
   syntax:
     content: public void UsingNamespace (string fullName);
     parameters:
     - id: fullName
       type: System.String
-      description: "The fully qualified name of the namespace."
+      description: "A névtér teljesen minősített neve."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.UsingNamespace*
   exceptions: []
   platform:

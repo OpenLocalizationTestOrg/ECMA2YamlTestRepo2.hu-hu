@@ -60,7 +60,7 @@ items:
   nameWithType: ToolLocationHelper
   fullName: Microsoft.Build.Utilities.ToolLocationHelper
   type: Class
-  summary: "Provides utility methods for locating [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] and [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK files and directories."
+  summary: "Helyének segédprogram-metódusokat biztosít [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] és [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK fájlok és könyvtárak."
   remarks: ''
   example:
   - "The following example creates a <xref:Microsoft.Build.Utilities.ToolTask> that runs [Ilasm.exe (IL Assembler)](~/add/includes/ajax-current-ext-md.md). The <xref:Microsoft.Build.Utilities.CommandLineBuilder>, ToolLocationHelper, and <xref:Microsoft.Build.Utilities.TaskLoggingHelper> classes are used to generate the information needed to run the task.  \n  \n [!code-cs[msbuild_ToolTask#1](~/add/codesnippet/csharp/ILAsm/ILAsm.cs#1)]\n [!code-vb[msbuild_ToolTask#1](~/add/codesnippet/visualbasic/ILAsmVB/ILAsm.vb#1)]"
@@ -84,7 +84,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Clears the appDomain wide cache of platform and extension SDKs."
+  summary: "Kiüríti a appDomain széles gyorsítótárat platform és kiterjesztése SDK-k."
   syntax:
     content: public static void ClearSDKStaticCache ();
     parameters: []
@@ -104,32 +104,32 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a sorted list of <xref href=&quot;Microsoft.Build.Utilities.AssemblyFoldersExInfo&quot;></xref> objects which contain information about the directories in which the third party assemblies are registered. This information is used at build and design time."
-  remarks: "This method enumerates the `AssemblyFoldersEx` registry location and returns the list of `AssemblyFoldersExInfo`in the same order that they are searched for reference assemblies at design and build time.       On a 64-bit operating system, if targeting 64-bit, add in the 64-bit hive then the 32-bit hive; if targeting 32-bit, add in the 32-bit hive then the 64-bit hive. On 32-bit machine only add in the 32-bit hive."
+  summary: "Rendezett listájának lekérése <xref href=&quot;Microsoft.Build.Utilities.AssemblyFoldersExInfo&quot;> </xref> objektumok, amelyek információkkal szolgálnak a könyvtárakhoz, amelyben a harmadik féltől származó szerelvények regisztrált. Buildelés és tervezési időben ezt az információt használja."
+  remarks: "Ez a metódus a `AssemblyFoldersEx` beállításjegyzék-helyhez, és a listát ad vissza `AssemblyFoldersExInfo`ugyanabban a sorrendben, hogy a referencia szerelvényeket tervezési keresni, és build idő.       64 bites operációs rendszeren, ha 64 bites célzás adja hozzá a 64 bites hive majd a 32 bites hive; Ha 32 bites célzás, adja hozzá a 32 bites hive majd a 64 bites struktúra. Csak a 32 bites számítógépen adja hozzá a 32-bit-struktúrát."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.AssemblyFoldersExInfo> GetAssemblyFoldersExInfo (string registryRoot, string targetFrameworkVersion, string registryKeySuffix, string osVersion, string platform, System.Reflection.ProcessorArchitecture targetProcessorArchitecture);
     parameters:
     - id: registryRoot
       type: System.String
-      description: "The root registry location for the targeted framework. For .NET this is SOFTWARE\\MICROSOFT\\\\.NETFramework."
+      description: "A beállításjegyzék gyökerét a megcélzott keretrendszer. .NET-keretrendszerhez készült Ez az SOFTWARE\\MICROSOFT\\\\. NETFramework."
     - id: targetFrameworkVersion
       type: System.String
-      description: "The targeted framework version (2.0, 3.0, 3.5, 4.0, ….)."
+      description: "A megcélzott keretrendszer (2.0-s, 3.0-s, 3.5, 4.0,...)."
     - id: registryKeySuffix
       type: System.String
-      description: "The name of the folder, (AssemblyFoldersEx) could also be PocketPC\\AssemblyFoldersEx, or others."
+      description: "Az a mappa nevét, (AssemblyFoldersEx) PocketPC\\AssemblyFoldersEx, vagy más kell lenniük."
     - id: osVersion
       type: System.String
-      description: "The targeted minimum and maximum OS versions in the registry. These values are used to return only directories for OS versions between the declared minimum and maximum. If this value is blank or null, no filtering is done."
+      description: "A célként megadott minimális és maximális operációsrendszer-verziók a beállításjegyzékben. Ezek az értékek csak az operációsrendszer-verziók között a deklarált könyvtárak vissza a minimális és maximális szolgálnak. Ha ez az érték üres vagy null, nem szűrése történik."
     - id: platform
       type: System.String
-      description: "The targeted platform GUIDs. Used to return only directories which have a matching platform GUID. If this value is blank or null no filtering is done."
+      description: "A megcélzott platform GUID. Ad vissza, csak a megfelelő platform GUID rendelkező könyvtárak. Nincs szűrés történik, ha az érték üres vagy null."
     - id: targetProcessorArchitecture
       type: System.Reflection.ProcessorArchitecture
-      description: "The targeted processor architecture. This determines which registry hives are searched and in which order."
+      description: "A célként megadott processzorarchitektúra. Ez határozza meg, melyik rendszerleíró struktúrákat figyelembe veszi a keresésnél és milyen sorrendben."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.AssemblyFoldersExInfo}
-      description: "Returns list of <xref uid=&quot;langword_csharp_AssemblyFoldersExInfo&quot; name=&quot;AssemblyFoldersExInfo&quot; href=&quot;&quot;></xref>."
+      description: "Listáját adja vissza <xref uid=&quot;langword_csharp_AssemblyFoldersExInfo&quot; name=&quot;AssemblyFoldersExInfo&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetAssemblyFoldersExInfo*
   exceptions: []
   platform:
@@ -146,20 +146,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Creates a display name given the target framework details."
-  remarks: "This is the equivalent of the target framework moniker, but for display.       If one cannot be found from the redist list file, a synthesized one is returned, so there is always a display name."
+  summary: "Létrehoz egy megjelenítési nevet adni a cél keretrendszer részleteit."
+  remarks: "Ez megegyezik a cél keretrendszer kézjegyet, de megjelenítésre.       Ha egyik nem található a fájlból redist lista, szintetizált egy ad vissza, ezért mindig fennáll egy megjelenítési nevet."
   syntax:
     content: public static string GetDisplayNameForTargetFrameworkDirectory (string targetFrameworkDirectory, System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: targetFrameworkDirectory
       type: System.String
-      description: "The target framework directory."
+      description: "A keretrendszer célkönyvtár."
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "The framework name."
+      description: "A keretrendszer neveként."
     return:
       type: System.String
-      description: "Returns a display name given the target framework details."
+      description: "Egy megjelenítési nevet adni a cél keretrendszer részletes adatait adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDisplayNameForTargetFrameworkDirectory*
   exceptions: []
   platform:
@@ -176,16 +176,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the full name of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root registry key."
+  summary: "Lekérdezi a teljes nevét a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] legfelső szintű beállításkulcsot."
   syntax:
     content: public static string GetDotNetFrameworkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "A string containing the full name of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root registry key."
+      description: "A teljes nevét tartalmazó karakterláncot a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] legfelső szintű beállításkulcsot."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*
   exceptions: []
   platform:
@@ -202,16 +202,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the name of the value under the <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*> that contains the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK installation path."
+  summary: "Lekérdezi az érték a nevét a <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>, amely tartalmazza a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK telepítési elérési</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>"
   syntax:
     content: public static string GetDotNetFrameworkSdkInstallKeyValue (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "Returns a string containing the name of the registry key value under the <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*> that contains the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK installation path."
+      description: "A beállításkulcs-érték alatti nevét tartalmazó karakterlánc visszaadása. a <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>, amely tartalmazza a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK telepítési elérési út. az</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkRootRegistryKey*>"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkInstallKeyValue*
   exceptions: []
   platform:
@@ -228,19 +228,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Name of the value of GetDotNetFrameworkRootRegistryKey that contains the SDK install root path"
+  summary: "Neve az SDK-t tartalmazó GetDotNetFrameworkRootRegistryKey értékének elérési útjának gyökeréhez telepítése"
   syntax:
     content: public static string GetDotNetFrameworkSdkInstallKeyValue (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "A Visual Studio a kért SDK verzió társítva van"
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "<xref:System.String>.</xref:System.String> Beolvasása"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkInstallKeyValue*
   exceptions: []
   platform:
@@ -257,16 +257,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the full name of the .NET Framework SDK root registry key."
+  summary: "A .NET-keretrendszer SDK legfelső szintű beállításkulcs teljes nevét adja vissza."
   syntax:
     content: public static string GetDotNetFrameworkSdkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     return:
       type: System.String
-      description: "Returns a string representation of the registry key root which indicates where to find the .NETFramework sdk."
+      description: "A beállításjegyzékbeli kulcs gyökér, amely megadja, hogy hol található karakterlánc alakot adja vissza a. NETFramework sdk."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkRootRegistryKey*
   exceptions: []
   platform:
@@ -283,19 +283,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the full name of the .NET Framework SDK root registry key"
+  summary: "A .NET-keretrendszer SDK legfelső szintű beállításkulcs teljes nevét adja vissza"
   syntax:
     content: public static string GetDotNetFrameworkSdkRootRegistryKey (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "A Visual Studio a kért SDK verzió társítva van"
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "<xref:System.String>.</xref:System.String> Beolvasása"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkSdkRootRegistryKey*
   exceptions: []
   platform:
@@ -312,17 +312,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the prefix of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] folder."
-  remarks: "An example of the value returned is the string &quot;v2.0&quot;."
+  summary: "Az előtag lekérdezi a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] mappához."
+  remarks: "Példa a visszaadott érték: a karakterlánc a &quot;v2.0&quot;."
   syntax:
     content: public static string GetDotNetFrameworkVersionFolderPrefix (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "Returns the prefix of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] folder."
+      description: "Az előtag adja vissza a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] mappához."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetDotNetFrameworkVersionFolderPrefix*
   exceptions: []
   platform:
@@ -339,16 +339,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root directory."
+  summary: "Lekérdezi a teljes elérési útja a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] gyökérkönyvtár."
   syntax:
     content: public static string GetPathToDotNetFramework (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] root directory, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] is not installed."
+      description: "A teljes elérési útját tartalmazó karakterláncot a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] gyökérkönyvtárában, vagy egy null hivatkozás (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) Ha a megcélzott verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] nincs telepítve."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFramework*
   exceptions: []
   platform:
@@ -365,19 +365,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to the framework&quot;s root directory."
+  summary: "Lekérdezi a keretrendszer gyökérkönyvtár egy teljes elérési útja."
   syntax:
     content: public static string GetPathToDotNetFramework (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture, or DotNetFrameworkArchitecture.Current for the architecture this process is currently running under."
+      description: "Kívánt architektúráját, vagy a folyamat jelenleg fut. architektúrájának DotNetFrameworkArchitecture.Current."
     return:
       type: System.String
-      description: "Returns a fully qualified path to the framework&quot;s root directory."
+      description: "A keretrendszer gyökérkönyvtárba egy teljesen minősített elérési útját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFramework*
   exceptions: []
   platform:
@@ -394,7 +394,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] directory."
+  summary: "A fájl teljes elérési útja lekérdezi a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] könyvtár."
   remarks: ''
   example:
   - "The following example creates a <xref:Microsoft.Build.Utilities.ToolTask> that runs [Ilasm.exe (IL Assembler)](~/add/includes/ajax-current-ext-md.md). The <xref:Microsoft.Build.Utilities.CommandLineBuilder>, <xref:Microsoft.Build.Utilities.ToolLocationHelper>, and <xref:Microsoft.Build.Utilities.TaskLoggingHelper> classes are used to generate the information needed to run the task.  \n  \n [!code-cs[msbuild_ToolTask#1](~/add/codesnippet/csharp/ILAsm/ILAsm.cs#1)]\n [!code-vb[msbuild_ToolTask#1](~/add/codesnippet/visualbasic/ILAsmVB/ILAsm.vb#1)]"
@@ -403,13 +403,13 @@ items:
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] directory."
+      description: "A fájl található a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] könyvtár."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the specified file, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] is not installed."
+      description: "A teljes elérési útja a megadott fájl, vagy null hivatkozást tartalmazó karakterlánc (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) Ha a megcélzott verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] nincs telepítve."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile*
   exceptions: []
   platform:
@@ -426,22 +426,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the frameworks root directory for the specified architecture."
+  summary: "Lekérdezi a megadott architektúrájának keretrendszerek gyökérkönyvtárában egy fájlt egy teljes elérési útja."
   syntax:
     content: public static string GetPathToDotNetFrameworkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework directory"
+      description: "A .NET-keretrendszer könyvtárban található a fájl neve"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture, or DotNetFrameworkArchitecture.Current for the architecture this process is currently running under."
+      description: "Kívánt architektúráját, vagy a folyamat jelenleg fut. architektúrájának DotNetFrameworkArchitecture.Current."
     return:
       type: System.String
-      description: "Returns a fully qualified path to a file in the frameworks root directory."
+      description: "Keretrendszerek gyökérkönyvtárában fájlba egy teljesen minősített elérési útját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile*
   exceptions: []
   platform:
@@ -458,16 +458,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the reference assemblies location for the given framework version."
+  summary: "Az elérési útját adja vissza a megadott Framework hivatkozási szerelvények helyéhez."
   syntax:
     content: public static string GetPathToDotNetFrameworkReferenceAssemblies (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     return:
       type: System.String
-      description: "Returns a string containing the fully qualified path to the Reference Assemblies folder, or a null reference (Nothing in Visual Basic) if the targeted version of the .NET Framework is not installed."
+      description: "Ha nincs telepítve a .NET-keretrendszer célzott verzióját, amely tartalmazza a teljes elérési útja a hivatkozási szerelvények mappához, vagy null (Nothing a Visual Basic) hivatkozás karakterláncot ad vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkReferenceAssemblies*
   exceptions: []
   platform:
@@ -484,16 +484,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
+  summary: "Lekérdezi a \\bin könyvtárba, a teljes elérési útja a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK is not installed."
+      description: "A teljesen minősített a \\bin könyvtárának elérési útját tartalmazó karakterláncot a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, vagy egy null hivatkozás (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) Ha megcélzott verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK nincs telepítve."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdk*
   exceptions: []
   platform:
@@ -510,19 +510,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the &quot;bin&quot; directory of the .NET Framework SDK."
+  summary: "Az elérési útját &quot;bin&quot; könyvtárához, a .NET-keretrendszer SDK adja vissza."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio the requested SDK is associated with"
+      description: "A Visual Studio a kért SDK verzió társítva van"
     return:
       type: System.String
-      description: "Path string."
+      description: "Mappa útvonalát tartalmazó karakterlánc."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdk*
   exceptions: []
   platform:
@@ -539,20 +539,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path to a file in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
-  remarks: "The path for the SDK takes in consideration the processor architecture environment information for the calling process, so it might end up being &quot;.../bin/i64&quot;, for example.       Unlike <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A> and <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A> this method checks for the existence of the file, so that an invalid `fileName` returns null."
+  summary: "A fájl teljes elérési útja lekérdezi a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
+  remarks: "Az SDK elérési útját veszi figyelembe a hívó folyamat processzor architektúrája környezet adatait, akkor előfordulhat, hogy végül &quot;.../bin/i64&quot;, például folyamatban.       Eltérően <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A>és <xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A>ezt a módszert a fájl ellenőrzi, hogy érvénytelen `fileName` null értéket ad vissza.</xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile%2A> </xref:Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkFile%2A>"
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version);
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
+      description: "A fájl található a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "The version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] to target."
+      description: "A következő verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] cél."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the \\bin directory of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, or a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) if the targeted version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK is not installed."
+      description: "A teljesen minősített a \\bin könyvtárának elérési útját tartalmazó karakterláncot a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK, vagy egy null hivatkozás (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)]) Ha megcélzott verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] SDK nincs telepítve."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -569,22 +569,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the .NET Framework SDK."
+  summary: "Lekérdezi a .NET-keretrendszer SDK fájlt a teljes elérési útja."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: "A .NET-keretrendszer SDK könyvtárban található a fájl neve"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "The required architecture of the requested file."
+      description: "A kért fájl szükséges architektúrája."
     return:
       type: System.String
-      description: "Returns a fully qualified path to a file in the .NET Framework SDK. Throws an error if the .NET Framework SDK can&quot;t be found."
+      description: "A .NET-keretrendszer SDK egy fájlra egy teljesen minősített elérési útját adja vissza. Hibát jelez, ha a .NET-keretrendszer SDK nem található."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -601,22 +601,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a fully qualified path to a file in the .NET Framework SDK. Error if the .NET Framework SDK can&quot;t be found."
+  summary: "A .NET-keretrendszer SDK fájlt egy teljesen minősített elérési útvonalának lekérése. Hiba, ha a .NET-keretrendszer SDK nem található."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: "A .NET-keretrendszer SDK könyvtárban található a fájl neve"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "A kért SDK-val kapcsolatos Visual Studio verziójának."
     return:
       type: System.String
-      description: "Path string."
+      description: "Mappa útvonalát tartalmazó karakterlánc."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -633,25 +633,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a fully qualified path to a file in the .NET Framework SDK. Error if the .NET Framework SDK can&quot;t be found."
+  summary: "A .NET-keretrendszer SDK fájlt egy teljesen minősített elérési útvonalának lekérése. Hiba, ha a .NET-keretrendszer SDK nem található."
   syntax:
     content: public static string GetPathToDotNetFrameworkSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "File name to locate in the .NET Framework SDK directory"
+      description: "A .NET-keretrendszer SDK könyvtárban található a fájl neve"
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Version of the targeted .NET Framework"
+      description: "A célként megadott .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "A kért SDK-val kapcsolatos Visual Studio verziójának."
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "The required architecture of the requested file."
+      description: "A kért fájl szükséges architektúrája."
     return:
       type: System.String
-      description: "Path string."
+      description: "Mappa útvonalát tartalmazó karakterlánc."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToDotNetFrameworkSdkFile*
   exceptions: []
   platform:
@@ -668,22 +668,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the paths to the reference assemblies location for the given target framework."
-  remarks: "This method assumes that the requested ReferenceAssemblyRoot path will be the ProgramFiles directory that is specified by Environment.SpecialFolder.ProgramFiles. In addition, when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5, or 4, the correctly chained reference assembly paths for the legacy .NET Framework versions will be returned. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "Lekérdezi a megadott célkeretrendszer a hivatkozási szerelvények helyének elérési útvonalát."
+  remarks: "Ez a módszer feltételezi, hogy a kért ReferenceAssemblyRoot elérési út lesz a ProgramFiles Environment.SpecialFolder.ProgramFiles által megadott könyvtárban. Továbbá, ha a. NETFramework vagy a .NET-keretrendszer targetFrameworkIdentifiers láthatók, és targetFrameworkVersion 2.0-s, 3.0-s, 3.5-ös vagy 4, visszatér a megfelelő láncolt referencia szerelvény elérési útja a .NET-keretrendszer régebbi verzióit. A láncolás használja a meglévő GetPathToDotNetFrameworkReferenceAssemblies referencia szerelvény elérési kialakításához."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "The framework name."
+      description: "A keretrendszer neveként."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the paths to the reference assemblies location."
+      description: "Az elérési utak a hivatkozási szerelvények helyét adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "Ha a frameworkname objektum értéke null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies(System.String,System.Runtime.Versioning.FrameworkName)
@@ -698,20 +698,20 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the paths to the reference assemblies location for the given framework version relative to a given targetFrameworkRoot."
-  remarks: "This method does not check to see if the path exists or not."
+  summary: "Lekérdezi a megadott Framework egy adott targetFrameworkRoot viszonyítva a hivatkozási szerelvények helyének elérési útvonalát."
+  remarks: "Ez a módszer nem ellenőrizze, hogy az elérési út létezik-e vagy sem."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (string targetFrameworkRootPath, System.Runtime.Versioning.FrameworkName frameworkName);
     parameters:
     - id: targetFrameworkRootPath
       type: System.String
-      description: "Root directory which will be used to calculate the reference assembly path. The references assembies will be generated in the following way TargetFrameworkRootPath\\TargetFrameworkIdentifier\\TargetFrameworkVersion\\SubType\\TargetFrameworkSubType."
+      description: "A referencia szerelvény elérési útja kiszámításához használandó gyökérkönyvtár. A hivatkozások assembies az alábbi módon TargetFrameworkRootPath\\TargetFrameworkIdentifier\\TargetFrameworkVersion\\SubType\\TargetFrameworkSubType jön létre."
     - id: frameworkName
       type: System.Runtime.Versioning.FrameworkName
-      description: "A frameworkName class which represents a TargetFrameworkMoniker. This cannot be null."
+      description: "A frameworkname objektum osztályt, amely egy TargetFrameworkMoniker jelöli. Ez nem lehet null."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the paths to the reference assemblies location."
+      description: "Az elérési utak a hivatkozási szerelvények helyét adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions: []
   platform:
@@ -728,27 +728,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the paths to the reference assemblies location for the given target framework. This method will assume the requested ReferenceAssemblyRoot path will be the ProgramFiles directory specified by Environment.SpecialFolder.ProgramFiles In additon when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5 or 4.0 we will return the correctly chained reference assembly paths for the legacy .NET Framework versions. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "A megadott célkeretrendszer hivatkozási szerelvények helyéhez adja vissza az elérési utakat. Ezt a módszert fogja feltételezni, hogy a kért ReferenceAssemblyRoot elérési utat Environment.SpecialFolder.ProgramFiles a additon által megadott ProgramFiles könyvtárban lesz. Ha a. NETFramework vagy a .NET-keretrendszer targetFrameworkIdentifiers láthatók, és targetFrameworkVersion 2.0-s, 3.0-s, 3.5-ös vagy 4.0 azt ad vissza a megfelelő láncolt referencia szerelvény elérési útja a .NET-keretrendszer régebbi verziók. A láncolás használja a meglévő GetPathToDotNetFrameworkReferenceAssemblies referencia szerelvény elérési kialakításához."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetPathToReferenceAssemblies (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "Kifejezetten azonosítója"
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "Megcélzott alatt álló verzióval"
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "Kifejezetten profil"
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Collection of reference assembly locations."
+      description: "Referencia szerelvény helyek gyűjteménye."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToReferenceAssemblies*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "Ha a frameworkname objektum értéke null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries(System.String,System.String,System.String)
@@ -763,27 +763,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the reference assemblies location for the given target framework&quot;s standard libraries (i.e. mscorlib). This method will assume the requested ReferenceAssemblyRoot path will be the ProgramFiles directory specified by Environment.SpecialFolder.ProgramFiles In additon when the .NETFramework or .NET Framework targetFrameworkIdentifiers are seen and targetFrameworkVersion is 2.0, 3.0, 3.5 or 4.0 we will return the correctly chained reference assembly paths for the legacy .NET Framework versions. This chaining will use the existing GetPathToDotNetFrameworkReferenceAssemblies to build up the list of reference assembly paths."
+  summary: "Az elérési útját adja vissza a megadott célkeretrendszer szabványos függvénytárak (azaz az mscorlib használatát) referencia szerelvényeket helyéhez. Ezt a módszert fogja feltételezni, hogy a kért ReferenceAssemblyRoot elérési utat Environment.SpecialFolder.ProgramFiles a additon által megadott ProgramFiles könyvtárban lesz. Ha a. NETFramework vagy a .NET-keretrendszer targetFrameworkIdentifiers láthatók, és targetFrameworkVersion 2.0-s, 3.0-s, 3.5-ös vagy 4.0 azt ad vissza a megfelelő láncolt referencia szerelvény elérési útja a .NET-keretrendszer régebbi verziók. A láncolás használja a meglévő GetPathToDotNetFrameworkReferenceAssemblies referencia szerelvény elérési kialakításához."
   syntax:
     content: public static string GetPathToStandardLibraries (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "Kifejezetten azonosítója"
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "Megcélzott alatt álló verzióval"
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "Kifejezetten profil"
     return:
       type: System.String
-      description: "Collection of reference assembly locations."
+      description: "Referencia szerelvény helyek gyűjteménye."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "Ha a frameworkname objektum értéke null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries(System.String,System.String,System.String,System.String)
@@ -798,30 +798,30 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to mscorlib and system.dll"
+  summary: "Az elérési útját adja vissza a mscorlib használatát és a system.dll"
   syntax:
     content: public static string GetPathToStandardLibraries (string targetFrameworkIdentifier, string targetFrameworkVersion, string targetFrameworkProfile, string platformTarget);
     parameters:
     - id: targetFrameworkIdentifier
       type: System.String
-      description: "Identifier being targeted"
+      description: "Kifejezetten azonosítója"
     - id: targetFrameworkVersion
       type: System.String
-      description: "Version being targeted"
+      description: "Megcélzott alatt álló verzióval"
     - id: targetFrameworkProfile
       type: System.String
-      description: "Profile being targeted"
+      description: "Kifejezetten profil"
     - id: platformTarget
       type: System.String
-      description: "This is used to determine where we should look for the standard libraries. Note, this parameter is only used for .NET Framework 3.5 or less."
+      description: "Ennek segítségével határozza meg, ha igazolnia kell keresnie a szabványos függvénytárak. Vegye figyelembe, ez a paraméter csak a .NET-keretrendszer 3.5 használt vagy kisebb."
     return:
       type: System.String
-      description: "Collection of reference assembly locations."
+      description: "Referencia szerelvény helyek gyűjteménye."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToStandardLibraries*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "When the frameworkName is null"
+    description: "Ha a frameworkname objektum értéke null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile(System.String)
@@ -836,17 +836,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a fully qualified path to a file in the system directory."
-  remarks: "This API builds the full path plus filename for a file in the System folder. It doesn&quot;t check for the existence of the file prior to returning."
+  summary: "Lekérdezi a rendszer a fájl a teljes elérési útja."
+  remarks: "Ez az API hoz létre, a teljes elérési útja túl a rendszer mappában lévő fájl nevét. Az előtt vissza fájlok meglétét nem ellenőrzi."
   syntax:
     content: public static string GetPathToSystemFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The file to locate in the System folder."
+      description: "A fájl, a rendszer mappában található."
     return:
       type: System.String
-      description: "A string containing the fully qualified path to the the file in the system directory."
+      description: "A teljes elérési útját tartalmazó karakterláncot a a rendszer a fájl."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToSystemFile*
   exceptions: []
   platform:
@@ -863,19 +863,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to the Windows SDK for the desired .NET Framework and Visual Studio version. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "Az elérési útját adja vissza a Windows SDK-val a kívánt .NET-keretrendszer és a Visual Studio verziójának. Vegye figyelembe, hogy ez csak a támogatott a célként megadott .NET-keretrendszer 4.5-ös vagy újabb."
   syntax:
     content: public static string GetPathToWindowsSdk (Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version"
+      description: "Cél .NET-keretrendszer verziója"
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the SDK."
+      description: "Az SDK-val kapcsolatos Visual Studio verziójának."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK location"
+      description: "A megfelelő Windows SDK-helyét"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdk*
   exceptions: []
   platform:
@@ -892,22 +892,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to a file in the Windows SDK for the desired .NET Framework and Visual Studio version. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "A kívánt .NET-keretrendszer és a Visual Studio verziója a Windows SDK fájlba szeretné az elérési útját adja vissza. Vegye figyelembe, hogy ez csak a támogatott a célként megadott .NET-keretrendszer 4.5-ös vagy újabb."
   syntax:
     content: public static string GetPathToWindowsSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file being requested."
+      description: "A kért fájl neve."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version."
+      description: "Cél .NET-keretrendszer verziója."
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the SDK."
+      description: "Az SDK-val kapcsolatos Visual Studio verziójának."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK file"
+      description: "A megfelelő Windows SDK-fájl elérési útja"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdkFile*
   exceptions: []
   platform:
@@ -924,25 +924,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Returns the path to a file in the Windows SDK for the desired .NET Framework and Visual Studio version and the desired architecture. Note that this is only supported for a targeted .NET Framework version of 4.5 and above."
+  summary: "A Windows SDK-ban a kívánt .NET-keretrendszer és a Visual Studio verziójának és a kívánt architektúra fájlba az elérési útját adja vissza. Vegye figyelembe, hogy ez csak a támogatott a célként megadott .NET-keretrendszer 4.5-ös vagy újabb."
   syntax:
     content: public static string GetPathToWindowsSdkFile (string fileName, Microsoft.Build.Utilities.TargetDotNetFrameworkVersion version, Microsoft.Build.Utilities.VisualStudioVersion visualStudioVersion, Microsoft.Build.Utilities.DotNetFrameworkArchitecture architecture);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file being requested."
+      description: "A kért fájl neve."
     - id: version
       type: Microsoft.Build.Utilities.TargetDotNetFrameworkVersion
-      description: "Target .NET Framework version."
+      description: "Cél .NET-keretrendszer verziója."
     - id: visualStudioVersion
       type: Microsoft.Build.Utilities.VisualStudioVersion
-      description: "Version of Visual Studio associated with the requested SDK."
+      description: "A kért SDK-val kapcsolatos Visual Studio verziójának."
     - id: architecture
       type: Microsoft.Build.Utilities.DotNetFrameworkArchitecture
-      description: "Desired architecture of the resultant file."
+      description: "Az eredményül kapott fájlt kívánt architektúrája."
     return:
       type: System.String
-      description: "Path to the appropriate Windows SDK file"
+      description: "A megfelelő Windows SDK-fájl elérési útja"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPathToWindowsSdkFile*
   exceptions: []
   platform:
@@ -959,22 +959,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDK moniker and the targeted platform get the path to the SDK root if it exists."
+  summary: "Adott egy SDK kézjegy és a célként használni kívánt platform get elérési SDK gyökeréhez rá."
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, string targetPlatformVersion);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Moniker for the sdk"
+      description: "Az SDK-ban kézjegy"
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Identifier for the platform"
+      description: "A platform azonosítója"
     - id: targetPlatformVersion
       type: System.String
-      description: "Version of the platform"
+      description: "A platform verziója"
     return:
       type: System.String
-      description: "A full path to the sdk root if the sdk exists in the targeted platform or an empty string if it does not exist."
+      description: "A teljes elérési útja az sdk-gyökér, ha az sdk található a célként használni kívánt platform vagy üres karakterlánc, ha még nem létezik."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -991,22 +991,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "Egy SDKName tekintve targetPlatformIdentifier és TargetPlatformVersion keresési átadott alapértelmezett sdk helyét az sdk-neve.       Az sdk kézjegy formátuma SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "A telepítési helyének meghatározásához SDK neve."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "Az SDK-k található célként használni kívánt platform"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "Megcélzott platform verzió található készült SDK-k"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "Az SDK helyét, ha megtalálható, üres karakterlánc, ha nem található"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1023,28 +1023,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "Egy SDKName tekintve targetPlatformIdentifier és TargetPlatformVersion keresési átadott alapértelmezett sdk helyét az sdk-neve.       Az sdk kézjegy formátuma SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, string targetPlatformVersion, string diskRoots, string registryRoot);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "A telepítési helyének meghatározásához SDK neve."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "Az SDK-k található célként használni kívánt platform"
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version to find SDKs for"
+      description: "Megcélzott platform verzió található készült SDK-k"
     - id: diskRoots
       type: System.String
-      description: "List of disk roots to search for sdks within"
+      description: "Lemez gyökerek kereséséhez belül SDK-k listája"
     - id: registryRoot
       type: System.String
-      description: "Registry root to look for sdks within"
+      description: "Amelyet meg kíván keresni az SDK-k belül beállításjegyzék gyökér"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "Az SDK helyét, ha megtalálható, üres karakterlánc, ha nem található"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1061,28 +1061,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given an SDKName, targetPlatformIdentifier and TargetPlatformVersion search the default sdk locations for the passed in sdk name.       The format of the sdk moniker is SDKName, Version=X.X"
+  summary: "Egy SDKName tekintve targetPlatformIdentifier és TargetPlatformVersion keresési átadott alapértelmezett sdk helyét az sdk-neve.       Az sdk kézjegy formátuma SDKName, Version=X.X"
   syntax:
     content: public static string GetPlatformExtensionSDKLocation (string sdkMoniker, string targetPlatformIdentifier, Version targetPlatformVersion, string[] diskRoots, string registryRoot);
     parameters:
     - id: sdkMoniker
       type: System.String
-      description: "Name of the SDK to determine the installation location for."
+      description: "A telepítési helyének meghatározásához SDK neve."
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "Az SDK-k található célként használni kívánt platform"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "Megcélzott platform verzió található készült SDK-k"
     - id: diskRoots
       type: System.String[]
-      description: "List of disk roots to search for sdks within"
+      description: "Lemez gyökerek kereséséhez belül SDK-k listája"
     - id: registryRoot
       type: System.String
-      description: "Registry root to look for sdks within"
+      description: "Amelyet meg kíván keresni az SDK-k belül beállításjegyzék gyökér"
     return:
       type: System.String
-      description: "Location of the SDK if it is found, empty string if it could not be found"
+      description: "Az SDK helyét, ha megtalálható, üres karakterlánc, ha nem található"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocation*
   exceptions: []
   platform:
@@ -1099,19 +1099,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of SDK&quot;s installed on the machine for a given target platform"
+  summary: "A megadott cél platform jöhet létre a számítógépen telepített SDK listájának lekérdezése"
   syntax:
     content: public static System.Collections.Generic.IDictionary<string,string> GetPlatformExtensionSDKLocations (string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "Az SDK-k található célként használni kívánt platform"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "Megcélzott platform verzió található készült SDK-k"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "IDictionary of installed SDKS and their location. K:SDKName V:SDK installation location"
+      description: "IDictionary telepített SDK-k és azok helyétől. K:SDKName V:SDK telepítési helye"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocations*
   exceptions: []
   platform:
@@ -1128,25 +1128,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of SDK&quot;s installed on the machine for a given target platform"
+  summary: "A megadott cél platform jöhet létre a számítógépen telepített SDK listájának lekérdezése"
   syntax:
     content: public static System.Collections.Generic.IDictionary<string,string> GetPlatformExtensionSDKLocations (string[] diskRoots, string registryRoot, string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: diskRoots
       type: System.String[]
-      description: "Array of disk locations to search for sdks"
+      description: "Az SDK-k kereséséhez lemez helyének tömb"
     - id: registryRoot
       type: System.String
-      description: "Root registry location to look for sdks"
+      description: "Amelyet meg kíván keresni az SDK-k beállításjegyzék gyökere"
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform to find SDKs for"
+      description: "Az SDK-k található célként használni kívánt platform"
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version to find SDKs for"
+      description: "Megcélzott platform verzió található készült SDK-k"
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "IDictionary of installed SDKS and their location. K:SDKName V:SDK installation location"
+      description: "IDictionary telepített SDK-k és azok helyétől. K:SDKName V:SDK telepítési helye"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformExtensionSDKLocations*
   exceptions: []
   platform:
@@ -1163,19 +1163,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "Adott platform célazonosító és adott platform célverzió, keresse a Platform SDK target platform, az alapértelmezett SDK helyek."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, string targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "Megcélzott platform, amelynek SDK kereséséhez."
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version for which to find SDK."
+      description: "Megcélzott platform verzió, amelynek SDK kereséséhez."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "Visszaadja a helyét, az SDK-t megtalálja, ellenkező esetben, ha egy karakterláncot ad vissza üres, ha az SDK nem található."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1192,19 +1192,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "Adott platform célazonosító és adott platform célverzió, keresse a Platform SDK target platform, az alapértelmezett SDK helyek."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, Version targetPlatformVersion);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "Megcélzott platform, amelynek SDK kereséséhez."
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version for which to find SDK."
+      description: "Megcélzott platform verzió, amelynek SDK kereséséhez."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "Visszaadja a helyét, az SDK-t megtalálja, ellenkező esetben, ha egy karakterláncot ad vissza üres, ha az SDK nem található."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1221,25 +1221,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "Adott platform célazonosító és adott platform célverzió, keresse a Platform SDK target platform, az alapértelmezett SDK helyek."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, string targetPlatformVersion, string diskRoots, string registryRoot);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "Megcélzott platform, amelynek SDK kereséséhez."
     - id: targetPlatformVersion
       type: System.String
-      description: "Targeted platform version for which to find SDK."
+      description: "Megcélzott platform verzió, amelynek SDK kereséséhez."
     - id: diskRoots
       type: System.String
-      description: "Array of disk roots within which to search for SDK."
+      description: "Lemez gyökerek, amelyek között meg kell keresni az SDK tömbje."
     - id: registryRoot
       type: System.String
-      description: "Registry root within which to search for SDK."
+      description: "Beállításjegyzék root belül, amely SDK kereséséhez."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "Visszaadja a helyét, az SDK-t megtalálja, ellenkező esetben, ha egy karakterláncot ad vissza üres, ha az SDK nem található."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1256,25 +1256,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a target platform identifier and a target platform version, search the default SDK locations for the platform SDK for that target platform."
+  summary: "Adott platform célazonosító és adott platform célverzió, keresse a Platform SDK target platform, az alapértelmezett SDK helyek."
   syntax:
     content: public static string GetPlatformSDKLocation (string targetPlatformIdentifier, Version targetPlatformVersion, string[] diskRoots, string registryRoot);
     parameters:
     - id: targetPlatformIdentifier
       type: System.String
-      description: "Targeted platform for which to find SDK."
+      description: "Megcélzott platform, amelynek SDK kereséséhez."
     - id: targetPlatformVersion
       type: System.Version
-      description: "Targeted platform version for which to find SDK."
+      description: "Megcélzott platform verzió, amelynek SDK kereséséhez."
     - id: diskRoots
       type: System.String[]
-      description: "Array of disk roots within which to search for SDK."
+      description: "Lemez gyökerek, amelyek között meg kell keresni az SDK tömbje."
     - id: registryRoot
       type: System.String
-      description: "Registry root within which to search for SDK."
+      description: "Beállításjegyzék root belül, amely SDK kereséséhez."
     return:
       type: System.String
-      description: "Returns the location of the SDK if it is found, otherwise, returns an empty string if the SDK could not be found."
+      description: "Visszaadja a helyét, az SDK-t megtalálja, ellenkező esetben, ha egy karakterláncot ad vissza üres, ha az SDK nem található."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetPlatformSDKLocation*
   exceptions: []
   platform:
@@ -1291,13 +1291,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the root location for the reference assembly directory under the program files directory."
+  summary: "Lekérdezi a referencia szerelvény könyvtárat a program files könyvtár legfelső szintű helyét."
   syntax:
     content: public static string GetProgramFilesReferenceAssemblyRoot ();
     parameters: []
     return:
       type: System.String
-      description: "Returns the root location for the reference assembly directory."
+      description: "A referencia szerelvény könyvtár legfelső szintű helyét adja meg."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetProgramFilesReferenceAssemblyRoot*
   exceptions: []
   platform:
@@ -1314,16 +1314,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the design-time files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-mappák a tervezési idejű fájlokat tartalmazó az SDK-ban megadott SDK gyökerében beolvasása. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKDesignTimeFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a design-time folder."
+      description: "Az SDK-ban, amely a gyökérmappában található tartalmaznia kell egy tervezéskor mappát."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for design-time files in the SDK, in the order that must be used for the search."
+      description: "Tervezési idejű fájlok az SDK-ban, a megadott sorrendben kell használni a Keresés az keresése használt mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKDesignTimeFolders*
   exceptions: []
   platform:
@@ -1340,22 +1340,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the design-time files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-mappák a tervezési idejű fájlokat tartalmazó az SDK-ban megadott SDK gyökerében beolvasása. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKDesignTimeFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a design-time folder."
+      description: "Az SDK-ban, amely a gyökérmappában található tartalmaznia kell egy tervezéskor mappát."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "A konfiguráció az SDK-val van-e állítva. Ez az &quot;Debug&quot; vagy &quot;Kereskedelmi&quot;."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "Az architektúra, az SDK-val van-e állítva."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for design-time files in the SDK, in the order that must be used for the search."
+      description: "Tervezési idejű fájlok az SDK-ban, a megadott sorrendben kell használni a Keresés az keresése használt mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKDesignTimeFolders*
   exceptions: []
   platform:
@@ -1372,16 +1372,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the redist files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-ban megadott SDK gyökerében redist fájlokat tartalmazó SDK mappák listájának. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKRedistFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a redist folder."
+      description: "Az SDK-ban, amely a gyökérmappában található tartalmaznia kell egy redist mappában."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for redist files in the SDK, in the order that must be used for the search."
+      description: "Az SDK-ban, a megadott sorrendben kell használni a Keresés az redist fájlok keresése használt mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKRedistFolders*
   exceptions: []
   platform:
@@ -1398,22 +1398,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the redist files for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-ban megadott SDK gyökerében redist fájlokat tartalmazó SDK mappák listájának. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKRedistFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK, must contain a redist folder."
+      description: "Az SDK-ban, amely a gyökérmappában található tartalmaznia kell egy redist mappában."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "A konfiguráció az SDK-val van-e állítva. Ez az &quot;Debug&quot; vagy &quot;Kereskedelmi&quot;."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "Az architektúra, az SDK-val van-e állítva."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for redist files in the SDK, in the order that must be used for the search."
+      description: "Az SDK-ban, a megadott sorrendben kell használni a Keresés az redist fájlok keresése használt mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKRedistFolders*
   exceptions: []
   platform:
@@ -1430,16 +1430,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the references for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-mappák a hivatkozásokat tartalmaznak az SDK-ban megadott SDK gyökerében beolvasása. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKReferenceFolders (string sdkRoot);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK."
+      description: "A gyökérmappában található, az SDK-ban."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for references in the SDK, in the order that must be used for the search."
+      description: "Az SDK-t és a megadott sorrendben kell használni a Keresés az elemben található hivatkozások keresése során használandó mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKReferenceFolders*
   exceptions: []
   platform:
@@ -1456,22 +1456,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get the list of SDK folders which contain the references for the SDK at the specified SDK root. The list is in the order that must be used in searching for references."
+  summary: "Az SDK-mappák a hivatkozásokat tartalmaznak az SDK-ban megadott SDK gyökerében beolvasása. A lista van a megadott sorrendben hivatkozásainak keresése a kell használni."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSDKReferenceFolders (string sdkRoot, string targetConfiguration, string targetArchitecture);
     parameters:
     - id: sdkRoot
       type: System.String
-      description: "The root folder for the SDK."
+      description: "A gyökérmappában található, az SDK-ban."
     - id: targetConfiguration
       type: System.String
-      description: "The configuration the SDK is targeting. This is “Debug” or “Retail”."
+      description: "A konfiguráció az SDK-val van-e állítva. Ez az &quot;Debug&quot; vagy &quot;Kereskedelmi&quot;."
     - id: targetArchitecture
       type: System.String
-      description: "The architecture the SDK is targeting."
+      description: "Az architektúra, az SDK-val van-e állítva."
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "Returns the list of folders to be used in searching for references in the SDK, in the order that must be used for the search."
+      description: "Az SDK-t és a megadott sorrendben kell használni a Keresés az elemben található hivatkozások keresése során használandó mappák listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSDKReferenceFolders*
   exceptions: []
   platform:
@@ -1488,13 +1488,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a list of supported target framework monikers."
+  summary: "Támogatott cél keretrendszer monikerek listájának lekérése."
   syntax:
     content: public static System.Collections.Generic.IList<string> GetSupportedTargetFrameworks ();
     parameters: []
     return:
       type: System.Collections.Generic.IList{System.String}
-      description: "list of supported target framework monikers"
+      description: "támogatott cél keretrendszer monikerek listája"
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetSupportedTargetFrameworks*
   exceptions: []
   platform:
@@ -1511,13 +1511,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of target platform SDKs on the machine."
+  summary: "A gépen SDK-k célplatform listájának lekérése."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.TargetPlatformSDK> GetTargetPlatformSdks ();
     parameters: []
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.TargetPlatformSDK}
-      description: 'List of Target Platform SDKs, Item1: TargetPlatformName Item2: Version of SDK Item3: Path to sdk root'
+      description: 'Cél Platform SDK-k, Item1 listája: TargetPlatformName Item2: az SDK-verzió Item3: sdk gyökér elérési útja'
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetTargetPlatformSdks*
   exceptions: []
   platform:
@@ -1534,19 +1534,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Get a list of target platform SDKs on the machine."
+  summary: "A gépen SDK-k célplatform listájának lekérése."
   syntax:
     content: public static System.Collections.Generic.IList<Microsoft.Build.Utilities.TargetPlatformSDK> GetTargetPlatformSdks (string[] diskRoots, string registryRoot);
     parameters:
     - id: diskRoots
       type: System.String[]
-      description: "List of disk locations to search for platform SDKs."
+      description: "Lemez helyet a kereséshez Platform SDK-k listája."
     - id: registryRoot
       type: System.String
-      description: "Registry root location to look for platform SDKs."
+      description: "Beállításjegyzék gyökerét a platform SDK-k kereséséhez."
     return:
       type: System.Collections.Generic.IList{Microsoft.Build.Utilities.TargetPlatformSDK}
-      description: "Returns a list of target platform SDKs."
+      description: "SDK-k célplatform listáját adja vissza."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.GetTargetPlatformSdks*
   exceptions: []
   platform:
@@ -1563,19 +1563,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the highest version of a target framework moniker based on the identifier."
+  summary: "Lekérdezi az azonosítója alapján cél keretrendszer kézjegyet legmagasabb verzióval."
   syntax:
     content: public static System.Runtime.Versioning.FrameworkName HighestVersionOfTargetFrameworkIdentifier (string targetFrameworkRootDirectory, string frameworkIdentifier);
     parameters:
     - id: targetFrameworkRootDirectory
       type: System.String
-      description: "Target framework root directory."
+      description: "Cél keretrendszer gyökérkönyvtár."
     - id: frameworkIdentifier
       type: System.String
-      description: "Framework identifier."
+      description: "Keretrendszer-azonosítót."
     return:
       type: System.Runtime.Versioning.FrameworkName
-      description: "Returns the highest version of a target framework moniker based on the identifier. This method will only find full frameworks; no profiles will be returned."
+      description: "A legújabb verziót az azonosítója alapján cél keretrendszer kézjegyet adja vissza. Ez a módszer csak keres teljes keretrendszerek; az eredmény nem profil."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.HighestVersionOfTargetFrameworkIdentifier*
   exceptions: []
   platform:
@@ -1592,13 +1592,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the fully qualified path of the system directory."
-  remarks: "An example of the value returned is the string &quot;C:\\WinNT\\System32&quot;."
+  summary: "Lekérdezi a rendszer könyvtár teljes elérési útja."
+  remarks: "Példa a visszaadott érték: &quot;C:\\WinNT\\System32&quot; karakterlánc."
   syntax:
     content: public static string PathToSystem { get; }
     return:
       type: System.String
-      description: "A string containing a directory path to the system directory."
+      description: "A könyvtár elérési útja, a rendszer könyvtárához tartalmazó karakterlánc."
   overload: Microsoft.Build.Utilities.ToolLocationHelper.PathToSystem*
   exceptions: []
   platform:

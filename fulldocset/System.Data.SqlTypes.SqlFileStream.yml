@@ -34,8 +34,8 @@ items:
   nameWithType: SqlFileStream
   fullName: System.Data.SqlTypes.SqlFileStream
   type: Class
-  summary: "Exposes SQL Server data that is stored with the FILESTREAM column attribute as a sequence of bytes."
-  remarks: "The SqlFileStream class is used to work with `varbinary(max)` data stored with the FILESTREAM attribute in a SQL Server 2008 database. You must install the .NET Framework 3.5 SP1 (or later) to use <xref:System.Data.SqlTypes.SqlFileStream> to work with FILESTREAM data.       Specifying the FILESTREAM attribute on a `varbinary(max)` column causes SQL Server to store the data in the local NTFS file system instead of in the database file. Transact-SQL statements provide data manipulation capabilities within the server, and Win32 file system interfaces provide streaming access to the data.      > [!NOTE] >  Individual files stored in a FILESTREAM column cannot be opened directly from the NTFS file system. Streaming FILESTREAM data works only in the context of a SQL Server transaction.       The SqlFileStream class is derived from the <xref:System.IO.Stream> class, which represents an abstraction of a sequence of bytes from some arbitrary data source such as a file or a block of memory. You can read from a FILESTREAM by transferring data from a stream into a data structure such as an array of bytes. You can write to a FILESTREAM by transferring the data from a data structure into a stream. You can also seek within the stream, which allows you to query and modify data at the current position within the stream.       For conceptual documentation and code examples, see [FILESTREAM Data](~/add/includes/ajax-current-ext-md.md).       For documentation about setting up and configuring FILESTREAM data on SQL Server,  see [Designing and Implementing FILESTREAM Storage](http://go.microsoft.com/fwlink/?LinkId=121499) in SQL Server 2008 Books Online."
+  summary: "A FILESTREAM oszlopattribútum bájt sorozatot tárolt SQL Server-adatok közzététele."
+  remarks: "A SqlFileStream osztály használatával együttműködésre `varbinary(max)` a FILESTREAM attribútum egy SQL Server 2008-adatbázisban tárolt adatok. Telepítenie kell a .NET-keretrendszer 3.5 SP1 (vagy újabb) használata <xref:System.Data.SqlTypes.SqlFileStream>FILESTREAM adatok.</xref:System.Data.SqlTypes.SqlFileStream>       Adja meg a FILESTREAM attribútuma egy `varbinary(max)` oszlop hatására az SQL Server a helyi NTFS fájlrendszer ahelyett, hogy az adatbázis-fájlban lévő adatok tárolásához. Transact-SQL-utasítások adatok adatkezelési szolgáltatásokat a kiszolgáló, és Win32 fájl rendszer felületek adatfolyam férhetnek hozzá az adatokhoz.      > [!NOTE] > Egy FILESTREAM-oszlop tárolt egyes fájlok nem lehet megnyitni az NTFS fájlrendszer-ről. Adatfolyam-FILESTREAM-adatokhoz csak egy SQL Server tranzakció környezetében működik.       A SqlFileStream osztály származik a <xref:System.IO.Stream>osztályt, amely az egyes tetszőleges adatforrások, például fájlt vagy egy memóriablokkjainak bájt sorozatát absztrakciós jelöli.</xref:System.IO.Stream> A FILESTREAM olvasni adatok átvitele a folyam például bájttömb adatok struktúrába. A FILESTREAM írni olyan adatszerkezet egy adatfolyamba való mentésre az adatok átvitelét. A stream, amely lehetővé teszi lekérdezéséhez és módosíthatják az aktuális pozíció az adatfolyam belül adatokat belül is kérhet.       Fogalmi dokumentációjában és kódpéldák: [FILESTREAM adatok](~/add/includes/ajax-current-ext-md.md).       Beállítása és konfigurálása a FILESTREAM-adatokat az SQL Server dokumentációjában talál [megtervezése és végrehajtása FILESTREAM-tároló](http://go.microsoft.com/fwlink/?LinkId=121499) az SQL Server 2008 Books Online."
   syntax:
     content: 'public sealed class SqlFileStream : System.IO.Stream'
   inheritance:
@@ -56,46 +56,46 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref> class."
-  remarks: "If an exception is thrown, any open transactions should be rolled back. Otherwise, data loss can occur."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref> osztály."
+  remarks: "Ha a rendszer kivételt hoz létre, nyitott tranzakciók kell állítható vissza. Ellenkező esetben előfordulhat adatvesztés."
   syntax:
     content: public SqlFileStream (string path, byte[] transactionContext, System.IO.FileAccess access);
     parameters:
     - id: path
       type: System.String
-      description: "The logical path to the file. The path can be retrieved by using the Transact-SQL Pathname function on the underlying FILESTREAM column in the table."
+      description: "A logikai elérési utat a fájlhoz. Az elérési út lehet beolvasni az alapul szolgáló FILESTREAM oszlop a tábla a Transact-SQL Pathname függvény használatával."
     - id: transactionContext
       type: System.Byte[]
-      description: "The transaction context for the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method."
+      description: "A tranzakció környezetben a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> objektum. Alkalmazások a get_filestream_transaction_context függvényt metódus által visszaadott bájttömb kell visszaadnia."
     - id: access
       type: System.IO.FileAccess
-      description: "The access mode to use when opening the file. Supported <xref href=&quot;System.IO.FileAccess&quot;></xref> enumeration values are <xref href=&quot;System.IO.FileAccess&quot;></xref>, <xref href=&quot;System.IO.FileAccess&quot;></xref>, and <xref href=&quot;System.IO.FileAccess&quot;></xref>.       When using <xref uid=&quot;langword_csharp_FileAccess.Read&quot; name=&quot;FileAccess.Read&quot; href=&quot;&quot;></xref>, the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> object can be used to read all of the existing data.       When using <xref uid=&quot;langword_csharp_FileAccess.Write&quot; name=&quot;FileAccess.Write&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.       When using <xref uid=&quot;langword_csharp_FileAccess.ReadWrite&quot; name=&quot;FileAccess.ReadWrite&quot; href=&quot;&quot;></xref>, the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the <xref uid=&quot;langword_csharp_System.IO&quot; name=&quot;System.IO&quot; href=&quot;&quot;></xref><xref uid=&quot;langword_csharp_Seek&quot; name=&quot;Seek&quot; href=&quot;&quot;></xref> methods to move the handle position within the file to write or append new data."
+      description: "A fájl megnyitásakor használandó hozzáférési mód. Supported <xref href=&quot;System.IO.FileAccess&quot;></xref> enumeration values are <xref href=&quot;System.IO.FileAccess&quot;></xref>, <xref href=&quot;System.IO.FileAccess&quot;></xref>, and <xref href=&quot;System.IO.FileAccess&quot;></xref>.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.Read&quot; name=&quot;FileAccess.Read&quot; href=&quot;&quot;> </xref>, a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> objektum segítségével olvassa el a meglévő adatok.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.Write&quot; name=&quot;FileAccess.Write&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> nulla bájt fájlra mutat. Meglévő adatot felülír, amikor az objektum le van zárva, és a tranzakció.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.ReadWrite&quot; name=&quot;FileAccess.ReadWrite&quot; href=&quot;&quot;> </xref>, a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> egy fájlra, amely rendelkezik az összes adat. A leíró található a fájl elején. Egyikét használhatja a <xref uid=&quot;langword_csharp_System.IO&quot; name=&quot;System.IO&quot; href=&quot;&quot;> </xref> <xref uid=&quot;langword_csharp_Seek&quot; name=&quot;Seek&quot; href=&quot;&quot;> </xref> módszerek pozícióba való pozicionálására leíró írnia, vagy új adatok hozzáfűzése fájlon belül."
   overload: System.Data.SqlTypes.SqlFileStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is a null reference, or <code>transactionContext</code> is null."
+    description: "<code>path</code>egy null hivatkozás vagy <code>transactionContext</code> null értékű."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n <code>path</code> begins with \"\\\\\\\\.\\\\\", for example \"\\\\\\\\.\\PHYSICALDRIVE0 \".  \n  \n The handle returned by the call to NTCreateFile is not of type FILE_TYPE_DISK.  \n  \n <code>options</code> contains an unsupported value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "A fájl nem található."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred."
+    description: "I/o-hiba lépett fel."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid, such as being on an unmapped drive."
+    description: "A megadott <code> path </code> érvénytelen, például egy le nem képezett meghajtón folyamatban."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The access requested is not permitted by the operating system for the specified path. This occurs when Write or ReadWrite access is specified, and the file or directory is set for read-only access."
+    description: "A kért hozzáférés nem engedélyezett az operációs rendszer a megadott elérési. Ez akkor fordul elő, ha írási vagy ReadWrite hozzáférés meg van adva, és a fájl vagy könyvtár csak olvasási hozzáférésre van beállítva."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "NtCreateFile fails with error code set to ERROR_SHARING_VIOLATION."
+    description: "NtCreateFile állítsa be újra a következő hibakóddal meghiúsul."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.#ctor(System.String,System.Byte[],System.IO.FileAccess,System.IO.FileOptions,System.Int64)
@@ -110,52 +110,52 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref> class."
-  remarks: "If an exception is thrown, any open transactions should be rolled back. Otherwise, data loss can occur."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref> osztály."
+  remarks: "Ha a rendszer kivételt hoz létre, nyitott tranzakciók kell állítható vissza. Ellenkező esetben előfordulhat adatvesztés."
   syntax:
     content: public SqlFileStream (string path, byte[] transactionContext, System.IO.FileAccess access, System.IO.FileOptions options, long allocationSize);
     parameters:
     - id: path
       type: System.String
-      description: "The logical path to the file. The path can be retrieved by using the Transact-SQL Pathname function on the underlying FILESTREAM column in the table."
+      description: "A logikai elérési utat a fájlhoz. Az elérési út lehet beolvasni az alapul szolgáló FILESTREAM oszlop a tábla a Transact-SQL Pathname függvény használatával."
     - id: transactionContext
       type: System.Byte[]
-      description: "The transaction context for the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> object. When set to null, an implicit transaction will be used for the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> object. Applications should return the byte array returned by calling the GET_FILESTREAM_TRANSACTION_CONTEXT method."
+      description: "A tranzakció környezetben a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> objektum. Ha értéke null, az implicit tranzakciókban fog történni a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> objektum. Alkalmazások a get_filestream_transaction_context függvényt metódus által visszaadott bájttömb kell visszaadnia."
     - id: access
       type: System.IO.FileAccess
-      description: "The access mode to use when opening the file. Supported <xref href=&quot;System.IO.FileAccess&quot;></xref> enumeration values are <xref href=&quot;System.IO.FileAccess&quot;></xref>, <xref href=&quot;System.IO.FileAccess&quot;></xref>, and <xref href=&quot;System.IO.FileAccess&quot;></xref>.       When using <xref uid=&quot;langword_csharp_FileAccess.Read&quot; name=&quot;FileAccess.Read&quot; href=&quot;&quot;></xref>, the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> object can be used to read all of the existing data.       When using <xref uid=&quot;langword_csharp_FileAccess.Write&quot; name=&quot;FileAccess.Write&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> points to a zero byte file. Existing data will be overwritten when the object is closed and the transaction is committed.       When using <xref uid=&quot;langword_csharp_FileAccess.ReadWrite&quot; name=&quot;FileAccess.ReadWrite&quot; href=&quot;&quot;></xref>, the <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;></xref> points to a file which has all the existing data in it. The handle is positioned at the beginning of the file. You can use one of the <xref uid=&quot;langword_csharp_System.IO&quot; name=&quot;System.IO&quot; href=&quot;&quot;></xref><xref uid=&quot;langword_csharp_Seek&quot; name=&quot;Seek&quot; href=&quot;&quot;></xref> methods to move the handle position within the file to write or append new data."
+      description: "A fájl megnyitásakor használandó hozzáférési mód. Supported <xref href=&quot;System.IO.FileAccess&quot;></xref> enumeration values are <xref href=&quot;System.IO.FileAccess&quot;></xref>, <xref href=&quot;System.IO.FileAccess&quot;></xref>, and <xref href=&quot;System.IO.FileAccess&quot;></xref>.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.Read&quot; name=&quot;FileAccess.Read&quot; href=&quot;&quot;> </xref>, a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> objektum segítségével olvassa el a meglévő adatok.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.Write&quot; name=&quot;FileAccess.Write&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> nulla bájt fájlra mutat. Meglévő adatot felülír, amikor az objektum le van zárva, és a tranzakció.       Használata esetén <xref uid=&quot;langword_csharp_FileAccess.ReadWrite&quot; name=&quot;FileAccess.ReadWrite&quot; href=&quot;&quot;> </xref>, a <xref uid=&quot;langword_csharp_SqlFileStream&quot; name=&quot;SqlFileStream&quot; href=&quot;&quot;> </xref> egy fájlra, amely rendelkezik az összes adat. A leíró található a fájl elején. Egyikét használhatja a <xref uid=&quot;langword_csharp_System.IO&quot; name=&quot;System.IO&quot; href=&quot;&quot;> </xref> <xref uid=&quot;langword_csharp_Seek&quot; name=&quot;Seek&quot; href=&quot;&quot;> </xref> módszerek pozícióba való pozicionálására leíró írnia, vagy új adatok hozzáfűzése fájlon belül."
     - id: options
       type: System.IO.FileOptions
-      description: "Specifies the option to use while opening the file. Supported <xref href=&quot;System.IO.FileOptions&quot;></xref> values are <xref href=&quot;System.IO.FileOptions&quot;></xref>, <xref href=&quot;System.IO.FileOptions&quot;></xref>, <xref href=&quot;System.IO.FileOptions&quot;></xref>, and <xref href=&quot;System.IO.FileOptions&quot;></xref>."
+      description: "Adja meg azt a lehetőséget a fájl megnyitása közben. Supported <xref href=&quot;System.IO.FileOptions&quot;></xref> values are <xref href=&quot;System.IO.FileOptions&quot;></xref>, <xref href=&quot;System.IO.FileOptions&quot;></xref>, <xref href=&quot;System.IO.FileOptions&quot;></xref>, and <xref href=&quot;System.IO.FileOptions&quot;></xref>."
     - id: allocationSize
       type: System.Int64
-      description: "The allocation size to use while creating a file. If set to 0, the default value is used."
+      description: "A foglalási méretet használja a következő fájl létrehozása közben. Ha értéke 0, az alapértelmezett értéket használja."
   overload: System.Data.SqlTypes.SqlFileStream.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is a null reference, or <code>transactionContext</code> is null."
+    description: "<code>path</code>egy null hivatkozás vagy <code>transactionContext</code> null értékű."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
     description: "<code>path</code> is an empty string (\"\"), contains only white space, or contains one or more invalid characters.  \n  \n <code>path</code> begins with \"\\\\\\\\.\\\\\", for example \"\\\\\\\\.\\PHYSICALDRIVE0 \".  \n  \n The handle returned by call to NTCreateFile is not of type FILE_TYPE_DISK.  \n  \n <code>options</code> contains an unsupported value."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file cannot be found."
+    description: "A fájl nem található."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred."
+    description: "I/o-hiba lépett fel."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the required permission."
+    description: "A hívó nem rendelkezik a szükséges engedélyekkel."
   - type: System.IO.DirectoryNotFoundException
     commentId: T:System.IO.DirectoryNotFoundException
-    description: "The specified <code>path</code> is invalid, such as being on an unmapped drive."
+    description: "A megadott <code> path </code> érvénytelen, például egy le nem képezett meghajtón folyamatban."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The access requested is not permitted by the operating system for the specified path. This occurs when Write or ReadWrite access is specified, and the file or directory is set for read-only access."
+    description: "A kért hozzáférés nem engedélyezett az operációs rendszer a megadott elérési. Ez akkor fordul elő, ha írási vagy ReadWrite hozzáférés meg van adva, és a fájl vagy könyvtár csak olvasási hozzáférésre van beállítva."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "NtCreateFile fails with error code set to ERROR_SHARING_VIOLATION."
+    description: "NtCreateFile állítsa be újra a következő hibakóddal meghiúsul."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -170,34 +170,34 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Begins an asynchronous read operation."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A> property to determine whether the current instance supports reading."
+  summary: "Egy aszinkron olvasási művelet kezdődik."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>tulajdonság határozza meg, hogy támogatja-e az aktuális példány olvasási.</xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>"
   syntax:
     content: public override IAsyncResult BeginRead (byte[] buffer, int offset, int count, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to read the data into."
+      description: "A puffer az adatok olvasására."
     - id: offset
       type: System.Int32
-      description: "The byte offset in `buffer` at which to begin writing data read from the stream."
+      description: "Az eltolás bájtban `buffer` kezdőpontját az adatfolyamból beolvasott adatok írásakor."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to read."
+      description: "Olvassa el a bájtok maximális száma."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the read is complete."
+      description: "Egy nem kötelező aszinkron visszahívás, az olvasás befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous read request from other requests"
+      description: "A felhasználó által megadott objektum, amely az adott aszinkron olvasási kérelem megkülönbözteti küldött egyéb kérések"
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous read, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron Olvasás, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.Data.SqlTypes.SqlFileStream.BeginRead*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Reading data is not supported on the stream."
+    description: "Az adatfolyam adatok olvasása nem támogatott."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)
@@ -212,34 +212,34 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Begins an asynchronous write operation."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to determine whether the current instance supports writing."
+  summary: "Egy aszinkron írási művelet kezdődik."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>tulajdonságot megállapítása, hogy az aktuális példány támogatja az írást.</xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>"
   syntax:
     content: public override IAsyncResult BeginWrite (byte[] buffer, int offset, int count, AsyncCallback callback, object state);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to write data from."
+      description: "A puffer adatokat írni."
     - id: offset
       type: System.Int32
-      description: "The byte offset in `buffer` from which to begin writing."
+      description: "A bájteltolás a `buffer` kezdőpontjaként írást."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to write."
+      description: "Az írandó bájtok maximális száma."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the write is complete."
+      description: "Egy nem kötelező aszinkron visszahívás, az írási befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous write request from other requests."
+      description: "A felhasználó által megadott objektum, amely az adott aszinkron írási kérelem megkülönbözteti a küldött egyéb kérések."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous write, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron írás, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.Data.SqlTypes.SqlFileStream.BeginWrite*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "Writing data is not supported on the stream."
+    description: "Adatok írása az adatfolyam nem támogatott."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.CanRead
@@ -254,12 +254,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets a value indicating whether the current stream supports reading."
+  summary: "Egy érték, amely jelzi, hogy a jelenlegi adatfolyam támogatja-e olvasási lekérdezi."
   syntax:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream supports reading; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a jelenlegi adatfolyam támogatja az olvasást; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.CanRead*
   exceptions: []
   platform:
@@ -276,12 +276,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets a value indicating whether the current stream supports seeking."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy a jelenlegi adatfolyam támogatja-e a keresést."
   syntax:
     content: public override bool CanSeek { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream supports seeking; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a jelenlegi adatfolyam támogatja a keresést; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.CanSeek*
   exceptions: []
   platform:
@@ -298,12 +298,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets a value indicating whether the current stream can time out."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy a jelenlegi adatfolyam is túllépi az időkorlátot."
   syntax:
     content: public override bool CanTimeout { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream can time out; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a jelenlegi adatfolyam is időtúllépés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.CanTimeout*
   exceptions: []
   platform:
@@ -320,12 +320,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets a value indicating whether the current stream supports writing."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy a jelenlegi adatfolyam támogatja-e az írást."
   syntax:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream supports writing; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a jelenlegi adatfolyam támogatja az írást; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.CanWrite*
   exceptions: []
   platform:
@@ -347,7 +347,7 @@ items:
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Data.SqlTypes.SqlFileStream.Dispose*
   exceptions: []
   platform:
@@ -364,21 +364,21 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Waits for the pending asynchronous read to complete."
+  summary: "A függőben lévő aszinkron olvasás befejezéséhez vár."
   syntax:
     content: public override int EndRead (IAsyncResult asyncResult);
     parameters:
     - id: asyncResult
       type: System.IAsyncResult
-      description: "The reference to the pending asynchronous request to finish."
+      description: "A függőben lévő aszinkron kérelem befejezésének mutató hivatkozást."
     return:
       type: System.Int32
-      description: "The number of bytes read from the stream, between zero (0) and the number of bytes you requested. Streams return zero (0) only at the end of the stream, otherwise, they should block until at least one byte is available."
+      description: "A bájtok száma olvasható be az adatfolyamból, nulla (0) és a kért bájtok száma. Adatfolyamok térjen vissza a nulla (0), csak az adatfolyam végén, ellenkező esetben kell letiltják a addig, amíg legalább egy bájt nem érhető el."
   overload: System.Data.SqlTypes.SqlFileStream.EndRead*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.IAsyncResult> object did not come from the corresponding <xref uid=&quot;langword_csharp_BeginRead&quot; name=&quot;BeginRead&quot; href=&quot;&quot;></xref> method."
+    description: "A <xref:System.IAsyncResult>objektum nem származik a megfelelő <xref uid=&quot;langword_csharp_BeginRead&quot; name=&quot;BeginRead&quot; href=&quot;&quot;> </xref> metódus.</xref:System.IAsyncResult>"
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.EndWrite(System.IAsyncResult)
@@ -393,18 +393,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Ends an asynchronous write operation."
+  summary: "Egy aszinkron írási művelet véget ér."
   syntax:
     content: public override void EndWrite (IAsyncResult asyncResult);
     parameters:
     - id: asyncResult
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "A függőben lévő aszinkron i/o-kérelmek mutató hivatkozás."
   overload: System.Data.SqlTypes.SqlFileStream.EndWrite*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref:System.IAsyncResult> object did not come from the corresponding <xref uid=&quot;langword_csharp_BeginWrite&quot; name=&quot;BeginWrite&quot; href=&quot;&quot;></xref> method."
+    description: "A <xref:System.IAsyncResult>objektum nem származik a megfelelő <xref uid=&quot;langword_csharp_BeginWrite&quot; name=&quot;BeginWrite&quot; href=&quot;&quot;> </xref> metódus.</xref:System.IAsyncResult>"
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.Finalize
@@ -419,7 +419,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Ensures that resources are freed and other cleanup operations are performed when the garbage collector reclaims the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref>."
+  summary: "Ellenőrzi, hogy az erőforrások felszabadítását, és egyéb törlési művelet végrehajtása közben a szemétgyűjtő úgy szabadít fel a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref>."
   syntax:
     content: ~SqlFileStream ();
     parameters: []
@@ -439,7 +439,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "clears all buffers for this stream and causes any buffered data to be written to the underlying device."
+  summary: "törli az összes puffer adatfolyam, és a pufferelt adatokat írni az alapul szolgáló eszköz okoz."
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -459,12 +459,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets a value indicating the length of the current stream in bytes."
+  summary: "A jelenlegi adatfolyam bájtban hosszát jelző érték beolvasása."
   syntax:
     content: public override long Length { get; }
     return:
       type: System.Int64
-      description: "An <xref:System.Int64> indicating the length of the current stream in bytes."
+      description: "Egy <xref:System.Int64>a jelenlegi adatfolyam bájtban hosszát jelző.</xref:System.Int64>"
   overload: System.Data.SqlTypes.SqlFileStream.Length*
   exceptions: []
   platform:
@@ -481,12 +481,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets the logical path of the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref> passed to the constructor."
+  summary: "A logikai elérési útja lekérdezi a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref> a konstruktornak átadott."
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "A string value indicating the name of the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref>."
+      description: "Egy karakterláncértéket, amely nevét a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.Name*
   exceptions: []
   platform:
@@ -503,12 +503,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets or sets the position within the current stream."
+  summary: "Lekérdezi vagy beállítja a pozíciója a jelenlegi adatfolyam belül."
   syntax:
     content: public override long Position { get; set; }
     return:
       type: System.Int64
-      description: "The current position within the <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref>."
+      description: "Az aktuális pozíció belül a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref>."
   overload: System.Data.SqlTypes.SqlFileStream.Position*
   exceptions: []
   platform:
@@ -525,28 +525,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A> property to determine whether the current instance supports writing."
+  summary: "Az aktuális adatfolyamból bájt sorrendjét olvasó, és a pozíció az adatfolyam belül kiadásokban olvasott bájtok száma."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>tulajdonságot meghatározásához, hogy az aktuális példány támogatja az írást.</xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>"
   syntax:
     content: public override int Read (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. When this method returns, the buffer contains the specified byte array with the values between offset and (offset + count - 1) replaced by the bytes read from the current source."
+      description: "Bájttömb. Ha ez a módszer ad vissza, a puffer tartalmaz eltolás és (eltolás + száma - 1) a jelenlegi forrásból beolvasott bájtok helyébe közötti értékeket a megadott bájttömb."
     - id: offset
       type: System.Int32
-      description: "The zero-based byte offset in buffer at which to begin storing the data read from the current stream."
+      description: "A nulla alapú bájteltolás pufferben kezdőpontját az adatok tárolása az aktuális adatfolyamból beolvasott."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to be read from the current stream."
+      description: "Az aktuális adatfolyamból olvasandó bájtok maximális száma."
     return:
       type: System.Int32
-      description: "The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached."
+      description: "A puffer az olvasott bájtok teljes száma. Ez lehet kisebb, mint a bájtok száma irányuló kérés. Ha sok bájt még nem állnak rendelkezésre, vagy nulla (0), ha az adatfolyam végét elérte."
   overload: System.Data.SqlTypes.SqlFileStream.Read*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The object does not support reading of data."
+    description: "Az objektum nem támogatja az olvasást adatok."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.ReadByte
@@ -561,19 +561,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A> property to determine whether the current instance supports reading."
+  summary: "Egy olyan bájtot olvas be az adatfolyamból kiadásokban a pozíció az adatfolyam belül egy bájt, és az adatfolyam végén&1; értéket ad vissza."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>tulajdonság határozza meg, hogy támogatja-e az aktuális példány olvasási.</xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>"
   syntax:
     content: public override int ReadByte ();
     parameters: []
     return:
       type: System.Int32
-      description: "The unsigned byte cast to an <xref:System.Int32>, or -1 if at the end of the stream."
+      description: "Az előjel nélküli bájt típusúvá egy <xref:System.Int32>, vagy a -1, az adatfolyam végén.</xref:System.Int32>"
   overload: System.Data.SqlTypes.SqlFileStream.ReadByte*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The object does not support reading of data."
+    description: "Az objektum nem támogatja az olvasást adatok."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.ReadTimeout
@@ -588,12 +588,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets or sets a value, in milliseconds, that determines how long the stream will attempt to read before timing out."
+  summary: "Lekérdezi vagy beállítja egy érték ezredmásodpercben, határozza meg, hogy mennyi ideig kísérli meg az adatfolyam olvasására időkorlátját."
   syntax:
     content: public override int ReadTimeout { get; set; }
     return:
       type: System.Int32
-      description: "A value, in milliseconds, that determines how long the stream will attempt to read before timing out."
+      description: "Egy érték, ezredmásodpercben, amely meghatározza, mennyi ideig adatfolyam megkísérli időkorlátját olvasni."
   overload: System.Data.SqlTypes.SqlFileStream.ReadTimeout*
   exceptions: []
   platform:
@@ -610,19 +610,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Sets the position within the current stream."
+  summary: "A jelenlegi adatfolyam pozíciója állítja be."
   syntax:
     content: public override long Seek (long offset, System.IO.SeekOrigin origin);
     parameters:
     - id: offset
       type: System.Int64
-      description: "A byte offset relative to the `origin` parameter"
+      description: "A relatív bájteltolás a `origin` paraméter"
     - id: origin
       type: System.IO.SeekOrigin
-      description: "A value of type <xref:System.IO.SeekOrigin> indicating the reference point used to obtain the new position"
+      description: "A típus <xref:System.IO.SeekOrigin>a hivatkozási pont segítségével kéri le az új helyre jelző</xref:System.IO.SeekOrigin> érték"
     return:
       type: System.Int64
-      description: "The new position within the current stream."
+      description: "Az új helyre, a jelenlegi adatfolyam belül."
   overload: System.Data.SqlTypes.SqlFileStream.Seek*
   exceptions: []
   platform:
@@ -639,19 +639,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Sets the length of the current stream."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A> property to determine whether the current instance supports reading."
+  summary: "Beállítja a jelenlegi adatfolyam hossza."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>tulajdonság határozza meg, hogy támogatja-e az aktuális példány olvasási.</xref:System.Data.SqlTypes.SqlFileStream.CanRead%2A>"
   syntax:
     content: public override void SetLength (long value);
     parameters:
     - id: value
       type: System.Int64
-      description: "The desired length of the current stream in bytes."
+      description: "A jelenlegi adatfolyam bájtban kívánt hosszát."
   overload: System.Data.SqlTypes.SqlFileStream.SetLength*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The object does not support reading of data."
+    description: "Az objektum nem támogatja az olvasást adatok."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.TransactionContext
@@ -666,12 +666,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets or sets the transaction context for this <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref> object."
+  summary: "Lekérdezi vagy beállítja a tranzakciós környezet lett átadva a <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref> objektum."
   syntax:
     content: public byte[] TransactionContext { get; }
     return:
       type: System.Byte[]
-      description: "The <code>transactionContext</code> array that was passed to the constructor for this <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;></xref> object."
+      description: "A <code> transactionContext </code> ehhez a konstruktornak átadott tömb <xref href=&quot;System.Data.SqlTypes.SqlFileStream&quot;> </xref> objektum."
   overload: System.Data.SqlTypes.SqlFileStream.TransactionContext*
   exceptions: []
   platform:
@@ -688,25 +688,25 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to determine whether the current instance supports writing."
+  summary: "Bájtok sorozatát ír a jelenlegi adatfolyam, és az aktuális pozíció az adatfolyam belül kiadásokban által írt bájtok száma."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>tulajdonságot megállapítása, hogy az aktuális példány támogatja az írást.</xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>"
   syntax:
     content: public override void Write (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. This method copies `count` bytes from `buffer` to the current stream."
+      description: "Bájttömb. Ez a módszer másolja `count` bájt, forrás `buffer` a jelenlegi adatfolyam."
     - id: offset
       type: System.Int32
-      description: "The zero-based byte offset in `buffer` at which to begin copying bytes to the current stream."
+      description: "A nulla alapú bájteltolás a `buffer` kezdőpontját bájt másolása a jelenlegi adatfolyam."
     - id: count
       type: System.Int32
-      description: "The number of bytes to be written to the current stream."
+      description: "A jelenlegi adatfolyam írandó bájtok száma."
   overload: System.Data.SqlTypes.SqlFileStream.Write*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The object does not support writing of data."
+    description: "Az objektum nem támogatja az írást, az adatok."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.WriteByte(System.Byte)
@@ -721,19 +721,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Writes a byte to the current position in the stream and advances the position within the stream by one byte."
-  remarks: "Use the <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A> property to determine whether the current instance supports writing."
+  summary: "Egy olyan bájtot ír az aktuális pozíciót az adatfolyamban, és a pozíció az adatfolyam belül kiadásokban egy bájt."
+  remarks: "Használja a <xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>tulajdonságot megállapítása, hogy az aktuális példány támogatja az írást.</xref:System.Data.SqlTypes.SqlFileStream.CanWrite%2A>"
   syntax:
     content: public override void WriteByte (byte value);
     parameters:
     - id: value
       type: System.Byte
-      description: "The byte to write to the stream."
+      description: "Az adatfolyam írni bájt."
   overload: System.Data.SqlTypes.SqlFileStream.WriteByte*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The object does not support writing of data."
+    description: "Az objektum nem támogatja az írást, az adatok."
   platform:
   - net462
 - uid: System.Data.SqlTypes.SqlFileStream.WriteTimeout
@@ -748,12 +748,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlTypes
-  summary: "Gets or sets a value, in milliseconds, that determines how long the stream will attempt to write before timing out."
+  summary: "Lekérdezi vagy beállítja egy érték ezredmásodpercben, határozza meg, hogy mennyi ideig az adatfolyam fog írására történt kísérlet időkorlátját."
   syntax:
     content: public override int WriteTimeout { get; set; }
     return:
       type: System.Int32
-      description: "A value, in milliseconds, that determines how long the stream will attempt to write before timing out."
+      description: "Egy érték, ezredmásodpercben, amely meghatározza, mennyi ideig adatfolyam megkísérli időkorlátját írni."
   overload: System.Data.SqlTypes.SqlFileStream.WriteTimeout*
   exceptions: []
   platform:

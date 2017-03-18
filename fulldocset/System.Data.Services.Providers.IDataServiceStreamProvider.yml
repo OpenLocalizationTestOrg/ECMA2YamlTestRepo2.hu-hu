@@ -17,8 +17,8 @@ items:
   nameWithType: IDataServiceStreamProvider
   fullName: System.Data.Services.Providers.IDataServiceStreamProvider
   type: Interface
-  summary: "Enables binary data to be accessed and changed as a media resource that belongs to an entity that is a media link entry."
-  remarks: "The Open Data Protocol (OData) enables a binary data property of an entity exposed by a data service to be defined independently of an entry in a data feed by using a mechanism based on the following constructs:      -   Media resource - the binary large object data that is binary data, such as a video, audio, image or other media resources.      -   Media link entry - an AtomPub entry in a data feed that represents an entity and that has a reference to a related media resource.       For more information, see [Streaming Provider](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lehetővé teszi, hogy a bináris adatok elérése és módosult a média-erőforrások, amelyhez tartozik egy entitás, amely a médiakapcsolat-bejegyzést."
+  remarks: "A nyitott Data protokoll (OData) lehetővé teszi, hogy az entitás egy meghatározandó függetlenül bejegyzés egy olyan mechanizmus alapján a következő szerkezet használatával egy adatcsatornát az szolgáltatás által elérhetővé tett egy bináris adatok tulajdonság: - média-erőforrás - bináris adatok, például a video-, hang-és a bináris nagyobjektum adatok kép vagy egyéb adathordozó-erőforrásokat.      -Médiakapcsolati bejegyzésnek – egy AtomPub bejegyzésben egy adatcsatornát, amely egy entitás és, hogy legalább egy kapcsolódó média-erőforrásokhoz.       További információkért lásd: [adatfolyam-szolgáltató](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public interface IDataServiceStreamProvider
   implements: []
@@ -36,17 +36,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Deletes the associated media resource when a media link entry is deleted."
-  remarks: "The DeleteStream method provides the implementation to delete a media resource when its associated media link entry is deleted from the data service. For more information, see [Streaming Provider](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Törli a hozzá tartozó adathordozó-erőforrás a médiakapcsolat-bejegyzést törlésekor."
+  remarks: "A DeleteStream módszer lehetővé teszi, hogy törli a média-erőforrásokhoz, ha a kapcsolódó médiakapcsolat-bejegyzést töröltek, amelyek a szolgáltatás megvalósítása. További információkért lásd: [adatfolyam-szolgáltató](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public void DeleteStream (object entity, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The media link entry that is deleted."
+      description: "Az adathordozó-hivatkozáshoz törölt bejegyzés."
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance that processes the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> példánya, amely feldolgozza a kérést."
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.DeleteStream*
   exceptions:
   - type: System.ArgumentNullException
@@ -54,10 +54,10 @@ items:
     description: "When <code>entity</code> or <code>operationContext</code> are <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "When <code>entity</code> is not an entity that has a binary property to stream."
+    description: "Ha <code> entity </code> nincs olyan entitás, amely egy bináris tulajdonsága az adatfolyamhoz."
   - type: System.Data.Services.DataServiceException
     commentId: T:System.Data.Services.DataServiceException
-    description: "When the stream associated with the <code>entity</code> cannot be deleted."
+    description: "Ha az adatfolyam társított a <code> entity </code> nem lehet törölni."
   platform:
   - net462
 - uid: System.Data.Services.Providers.IDataServiceStreamProvider.GetReadStream(System.Object,System.String,System.Nullable{System.Boolean},System.Data.Services.DataServiceOperationContext)
@@ -72,26 +72,26 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns a stream that contains the media resource data for the specified entity, which is a media link entry."
-  remarks: "`eTag` is the value of an If-Match or If-None-Match header. The following values are supported:      -   `true` - when the eTag represents an If-Match header.      -   `false` - when the eTag represents an If-None-Match header.      -   `null` - when an If-Match or If-None-Match header is not present in the request.       The GetReadStream method is called by the data service runtime to acquire the stream that the data service returns to the client when the client requests the media resource for the specified `entity`, which is a media link entry. For more information, see [Streaming Provider](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Olyan adatfolyamra, amely tartalmazza az adathordozó erőforrás adatait a megadott entitás, amely a médiakapcsolat-bejegyzést ad vissza."
+  remarks: "`eTag`If-Match vagy If-None-Match fejléc értéke. A következő értékek használhatók:- `true` – Ha az ETag címke jelöli az If-Match fejléc.      - `false` – Ha az ETag címke jelöli egy If-None-Match fejlécben.      - `null` - amikor egy If-Match vagy If-None-Match fejlécben nem szerepel a kérelemben.       A GetReadStream metódus lehívásra kerül az adatok szolgáltatás futtatókörnyezet szerezni az adatfolyam, amely a szolgáltatás az ügyfélnek ad vissza, ha az ügyfél kéri a média-erőforrás a megadott `entity`, mely egy media link bejegyzés. További információkért lásd: [adatfolyam-szolgáltató](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public System.IO.Stream GetReadStream (object entity, string etag, Nullable<bool> checkETagForEquality, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The entity that is a media link entry with a related media resource."
+      description: "Az entitás, amely egy adathordozó hivatkozás kapcsolódó média-erőforrással rendelkező bejegyzés."
     - id: etag
       type: System.String
-      description: "The eTag value sent as part of the HTTP request that is sent to the data service."
+      description: "A HTTP-kérelmet küldött a szolgáltatás részeként küldött eTag érték."
     - id: checkETagForEquality
       type: System.Nullable{System.Boolean}
-      description: "A nullable <xref:System.Boolean> value that determines whether the data service must the type of eTag that is used."
+      description: "A nullázható <xref:System.Boolean>érték, amely meghatározza, hogy a szolgáltatás kell-e a használt eTag típusú.</xref:System.Boolean>"
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.IO.Stream
-      description: "The data <xref:System.IO.Stream> that contains the binary property data of the <code>entity</code>."
+      description: "Az adatok <xref:System.IO.Stream>bináris tulajdonság adatait, amely tartalmazza a <code> entity </code>.</xref:System.IO.Stream>"
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.GetReadStream*
   exceptions: []
   platform:
@@ -108,20 +108,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns the URI that is used to request the media resource that belongs to the specified entity."
-  remarks: "The GetReadStreamUri method is called by the data service runtime to obtain the URI that clients should use when they make retrieve (i.e., GET) requests for the media resource.       The <xref:System.Uri> value returned by the GetReadStreamUri method implementation is used as the edit-media link in the media link entry to references the location of the media resource.       When the method implementation returns null, the data service will construct a default <xref:System.Uri>, which is usually the URI of the entity appended with `/$value`."
+  summary: "Az URI, amely a média-erőforrás a megadott entitás tartozó kérhet adja vissza."
+  remarks: "A GetReadStreamUri metódus lehívásra kerül az adatok szolgáltatás futtatókörnyezet beszerzése az URI, amelyet az ügyfelek kell használnia, elkészítésekor beolvasása (azaz beszerzése) kérések a média-erőforrások esetében.       A <xref:System.Uri>GetReadStreamUri metódus megvalósítása által visszaadott érték szolgál a edit-media hivatkozásra a médiakapcsolat-bejegyzést útmutatót a média-erőforrás helye.</xref:System.Uri>       A metódus megvalósításában null értéket ad vissza, ha az adatszolgáltatás alapértelmezett hozható létre. <xref:System.Uri>, amely általában URI-azonosítója az entitás hozzáíródik van `/$value`.</xref:System.Uri>"
   syntax:
     content: public Uri GetReadStreamUri (object entity, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The entity that is a media link entry with a related media resource."
+      description: "Az entitás, amely egy adathordozó hivatkozás kapcsolódó média-erőforrással rendelkező bejegyzés."
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.Uri
-      description: "A <xref:System.Uri> value that is used to request the binary data stream."
+      description: "A <xref:System.Uri>érték, amely a bináris adatfolyamként kérésére szolgál.</xref:System.Uri>"
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.GetReadStreamUri*
   exceptions: []
   platform:
@@ -138,20 +138,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns the content type of the media resource that belongs to the specified entity."
-  remarks: "The GetStreamContentType method is called by the data service runtime to retrieve the Content-Type of the media resource that belongs to the specified `entity`. Use the GetStreamContentType method implementation to set the Content-Type of the media resource. Do not directly set the Content-Type header in your <xref:System.Data.Services.Providers.IDataServiceStreamProvider> provider implementation."
+  summary: "A média-erőforrás a megadott entitás tartozó tartalom típusát adja vissza."
+  remarks: "A GetStreamContentType metódust hívja a média-erőforrás, amely tagja a megadott tartalomtípus beolvasása az adatok szolgáltatás futásideje `entity`. A média-erőforrás a Content-Type beállításához használja a GetStreamContentType metódus megvalósításában. Nem állítható be közvetlenül a Content-Type fejléc a <xref:System.Data.Services.Providers.IDataServiceStreamProvider>szolgáltató általi megvalósítása.</xref:System.Data.Services.Providers.IDataServiceStreamProvider>"
   syntax:
     content: public string GetStreamContentType (object entity, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The entity that is a media link entry with a related media resource."
+      description: "Az entitás, amely egy adathordozó hivatkozás kapcsolódó média-erőforrással rendelkező bejegyzés."
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.String
-      description: "A valid Content-Type of the binary data."
+      description: "Egy érvényes Content-Type a bináris adatok."
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.GetStreamContentType*
   exceptions: []
   platform:
@@ -168,20 +168,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns the eTag of the media resource that belongs to the specified media link entry."
-  remarks: "The GetStreamETag method is called by the data service runtime to retrieve the eTag of the media resource that is associated with the `entity`.       You must implement the GetStreamETag method to enable the data service to manage concurrency for the media resource."
+  summary: "A média-erőforrás, amely a megadott médiakapcsolat-bejegyzést tartozik az eTag adja vissza."
+  remarks: "Az adatok szolgáltatás futásideje beolvasni a média-erőforrás, amelyhez társítva van az eTag a GetStreamETag metódust hívja a `entity`.       Meg kell valósítani a GetStreamETag metódus használatával engedélyezze a adatok szolgáltatást CONCURRENCY paraméterének értékét a média-erőforrások kezeléséhez."
   syntax:
     content: public string GetStreamETag (object entity, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The entity that is a media link entry with a related media resource."
+      description: "Az entitás, amely egy adathordozó hivatkozás kapcsolódó média-erőforrással rendelkező bejegyzés."
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.String
-      description: "eTag of the media resource associated with the <code>entity</code>."
+      description: "a média-erőforrással társítva az eTag a <code> entity </code>."
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.GetStreamETag*
   exceptions: []
   platform:
@@ -198,26 +198,26 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns the stream that the data service uses to write the binary data for the media resource received from the client that belongs to the specified entity."
-  remarks: "The GetWriteStream method is called by the data service runtime when an insert or update operation is being processed for the media resource that is associated with the `entity`.       The GetWriteStream method should never return a `null` value.       The `operationContext` is supplied as an argument because an implementer of this interface method will need information from the HTTP request headers to create a write stream. When you implement this method, you must perform concurrency checks as needed. If an If-Match or If-None-Match request header was included in the request, the `etag` will not be `null`. In this case, this method must perform the appropriate concurrency check. If the concurrency check passes, this method should return the requested stream. If the concurrency checks fail, the method should raise a <xref:System.Data.Services.DataServiceException> with the appropriate HTTP response code.       `eTag` is the value of an If-Match or If-None-Match header.       The following values of `checkETagForEquality` are supported:      -   `true` - when the eTag represents an If-Match header.      -   `false` - when the eTag represents an If-None-Match header.      -   `null` - when an If-Match or If-None-Match header is not present in the request.       When you implement this method, you must not set the Content-Type or eTag HTTP response headers because they are set by the data service runtime. You may set the remaining HTTP response headers by using the supplied `operationContext`.       When you implement this method, you should only set the properties on `operationContext` that are required for a successful response. Changing other properties on `operationContext` may corrupt the response from the data service.       The data service runtime closes the stream when all bytes have been successfully written to the stream. If an error occurs while writing to the stream, the data service generates an error response to the client.       When you implement the GetWriteStream method, you should raise the following exceptions as indicated:      |Exception type|Condition|   |--------------------|---------------|   |<xref:System.ArgumentNullException>|When `entity` or `operationContext` are `null`.|   |<xref:System.ArgumentException>|When `entity` does not have a binary property.|   |<xref:System.Data.Services.DataServiceException>|When a valid stream cannot be returned.|"
+  summary: "Az adatok szolgáltatás által használt, amely a megadott entitás tartozik az ügyféltől kapott média-erőforrások esetében a bináris adatokat írni az adatfolyamot adja vissza."
+  remarks: "A GetWriteStream metódus lehívásra kerül az adatok szolgáltatás futtatókörnyezet, amikor egy INSERT utasítás vagy frissítési művelet feldolgozása folyamatban van a média-erőforrás, amelyhez társítva van a `entity`.       A GetWriteStream metódus soha nem kell visszaadni egy `null` érték.       A `operationContext` argumentumként van megadva, mert az az illesztőfelület-metódus egy végrehajtó kell írási adatfolyam létrehozásához a HTTP-kérelmek fejléceinek adatait. Ezt a módszert alkalmazza, amikor el kell végeznie a feldolgozási ellenőrzések, igény szerint. Ha az If-Match vagy If-None-Match kérelemfejléc szerepelt a kérést, a `etag` nem lesz `null`. Ez a metódus ebben az esetben végezze el a megfelelő konkurencia ellenőrzése. A konkurencia ellenőrzése sikeres, ha ez a módszer a kért adatfolyamot kell visszaadnia. A feldolgozási ellenőrzi sikertelen lesz, ha a metódus kell tennie egy <xref:System.Data.Services.DataServiceException>és a megfelelő HTTP válaszkódot.</xref:System.Data.Services.DataServiceException>       `eTag`If-Match vagy If-None-Match fejléc értéke.       A következő értékeket a `checkETagForEquality` támogatottak:- `true` – Ha az ETag címke jelöli egy If-Match fejléc.      - `false` – Ha az ETag címke jelöli egy If-None-Match fejlécben.      - `null` - amikor egy If-Match vagy If-None-Match fejlécben nem szerepel a kérelemben.       Ha ezt a módszert alkalmazza, meg kell adni nem a Content-Type vagy eTag HTTP-válaszfejlécek, mert az adatok szolgáltatás futtatókörnyezet be lettek állítva. A megadott használatával lehet, hogy állítsa be a fennmaradó HTTP-válaszfejlécek `operationContext`.       Ha ezt a módszert alkalmazza, be kell állítani kell csak a Tulajdonságok `operationContext` , amelyek szükségesek a sikeres válasz. A többi tulajdonság módosítása `operationContext` adatszolgáltatás válaszát, megsérülhet.       Az adatok szolgáltatás futásideje bezáródik az adatfolyam összes bájt lett sikeresen írt az adatfolyamra. A adatfolyamba való írása közben hiba lép fel, ha az adatszolgáltatás állít elő, az ügyfél hibaválasz.       GetWriteStream metódus bevezetésekor jelöli kell tennie a következő kivételekkel: |} Kivétel típusa |} Az állapot |}   |--------------------|---------------|   | <xref:System.ArgumentNullException>| When `entity` or `operationContext` are `null`.|   | <xref:System.ArgumentException>| Amikor `entity` nincs bináris tulajdonsága. |}   | <xref:System.Data.Services.DataServiceException>| Ha egy érvényes adatfolyam nem adható vissza. |}</xref:System.Data.Services.DataServiceException> </xref:System.ArgumentException> </xref:System.ArgumentNullException>"
   syntax:
     content: public System.IO.Stream GetWriteStream (object entity, string etag, Nullable<bool> checkETagForEquality, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entity
       type: System.Object
-      description: "The entity that is a media link entry with a related media resource."
+      description: "Az entitás, amely egy adathordozó hivatkozás kapcsolódó média-erőforrással rendelkező bejegyzés."
     - id: etag
       type: System.String
-      description: "The eTag value that is sent as part of the HTTP request that is sent to the data service."
+      description: "A HTTP-kérelmet küldött a szolgáltatás részeként küldött eTag érték."
     - id: checkETagForEquality
       type: System.Nullable{System.Boolean}
-      description: "A nullable <xref:System.Boolean> value that indicates the type of concurrency check requested by the client."
+      description: "A nullázható <xref:System.Boolean>érték, amely az ügyfél által kért konkurencia ellenőrzése típusát jelzi.</xref:System.Boolean>"
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance that is used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.IO.Stream
-      description: "A valid <xref:System.Stream> the data service uses to write the contents of a binary data received from the client."
+      description: "Egy érvényes <xref:System.Stream>az adatok szolgáltatást használ, a bináris adatokat kapott az ügyféltől a tartalmát.</xref:System.Stream>"
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.GetWriteStream*
   exceptions: []
   platform:
@@ -234,20 +234,20 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Returns a namespace-qualified type name that represents the type that the data service runtime must create for the media link entry that is associated with the data stream for the media resource that is being inserted."
-  remarks: "The ResolveType method is called by the data service when a new entity that is a media link entry is being created together with its media resource. An implementer of this method must inspect the request headers in `operationContext` and return the namespace qualified type name that represents the type that the data service runtime must instantiate to create the media link entry that is associated with the new media resource. The string that represents this type name is passed to the <xref:System.Data.Services.IUpdatable.CreateResource%2A> method to create the media link entry.       When you implement the <xref:System.Data.Services.Providers.IDataServiceStreamProvider.GetWriteStream%2A> method, you should raise the following exceptions as indicated:      |Exception type|Condition|   |--------------------|---------------|   |<xref:System.ArgumentNullException>|When `operationContext` is `null`.|   |<xref:System.Data.Services.DataServiceException>|When an entity type name cannot be resolved based on the `operationContext`.|"
+  summary: "Visszaadja egy névtér minősített nevét, amely az adatok szolgáltatás futásideje létre kell hoznia a médiakapcsolat-bejegyzést a média-erőforrás beszúrni az adatfolyamban társított típusát jelöli."
+  remarks: "A ResolveType metódust hívja a adatszolgáltatás, amikor egy új entitást, amely a médiakapcsolat-bejegyzést a média-erőforrással együtt kerül létrehozásra. Ez a módszer egy végrehajtó meg kell vizsgálnia a kérelem fejlécében szereplő `operationContext` térjen vissza a névtér minősített típusnév, amely az adatok szolgáltatás futásideje az adathordozó létrehozásához a új média-erőforrás társított bejegyzést kell példányosítható típusát jelöli. A típusnév jelölő karakterlánc átadott a <xref:System.Data.Services.IUpdatable.CreateResource%2A>metódus hivatkozás bejegyzés az adathordozó létrehozásához.</xref:System.Data.Services.IUpdatable.CreateResource%2A>       <xref:System.Data.Services.Providers.IDataServiceStreamProvider.GetWriteStream%2A>Metódus bevezetésekor jelöli kell tennie a következő kivételekkel: |} Kivétel típusa |} Az állapot |}   |--------------------|---------------|   | <xref:System.ArgumentNullException>| When `operationContext` is `null`.|   | <xref:System.Data.Services.DataServiceException>| Ha egy entitás neve nem oldható fel alapján a `operationContext`. |}</xref:System.Data.Services.DataServiceException> </xref:System.ArgumentNullException> </xref:System.Data.Services.Providers.IDataServiceStreamProvider.GetWriteStream%2A>"
   syntax:
     content: public string ResolveType (string entitySetName, System.Data.Services.DataServiceOperationContext operationContext);
     parameters:
     - id: entitySetName
       type: System.String
-      description: "Fully-qualified entity set name."
+      description: "Teljesen minősített entitáskészlet neve."
     - id: operationContext
       type: System.Data.Services.DataServiceOperationContext
-      description: "The <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;></xref> instance that is used by the data service to process the request."
+      description: "A <xref href=&quot;System.Data.Services.DataServiceOperationContext&quot;> </xref> feldolgozni a kérelmet az szolgáltatás által használt példány."
     return:
       type: System.String
-      description: "A namespace-qualified type name."
+      description: "Egy névtér minősített típusnév."
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.ResolveType*
   exceptions: []
   platform:
@@ -264,13 +264,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services.Providers
-  summary: "Gets the size of the stream buffer."
-  remarks: "The default buffer size is 64K bytes."
+  summary: "Lekérdezi a adatfolyam puffer mérete."
+  remarks: "A puffer alapértelmezett mérete rendszer 64 kilobájt."
   syntax:
     content: public int StreamBufferSize { get; }
     return:
       type: System.Int32
-      description: "Integer that represents the size of buffer."
+      description: "A puffer mérete jelölő egész."
   overload: System.Data.Services.Providers.IDataServiceStreamProvider.StreamBufferSize*
   exceptions: []
   platform:

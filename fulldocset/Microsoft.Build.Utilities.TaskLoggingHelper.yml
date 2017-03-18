@@ -53,7 +53,7 @@ items:
   nameWithType: TaskLoggingHelper
   fullName: Microsoft.Build.Utilities.TaskLoggingHelper
   type: Class
-  summary: "Provides helper logging methods used by tasks."
+  summary: "Segítő feladatok naplózási módszert biztosít."
   remarks: ''
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
@@ -81,13 +81,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskLoggingHelper&quot;></xref> class and associates it with the specified task instance."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.Build.Utilities.TaskLoggingHelper&quot;> </xref> osztály és társítja azt az adott példány."
   syntax:
     content: public TaskLoggingHelper (Microsoft.Build.Framework.ITask taskInstance);
     parameters:
     - id: taskInstance
       type: Microsoft.Build.Framework.ITask
-      description: "The task containing an instance of this task."
+      description: "Ez a feladat példányának tartalmazó feladat."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
   platform:
@@ -104,16 +104,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Public constructor which can be used by task factories to assist them in logging messages."
+  summary: "Nyilvános konstruktort, amely a naplózási üzenetek segítésére feladat előállítók által használható."
   syntax:
     content: public TaskLoggingHelper (Microsoft.Build.Framework.IBuildEngine buildEngine, string taskName);
     parameters:
     - id: buildEngine
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "The build engine."
+      description: "A build motor."
     - id: taskName
       type: System.String
-      description: "The task name."
+      description: "A feladat nevét."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
   platform:
@@ -130,12 +130,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the build engine that is associated with the task."
+  summary: "Lekérdezi a build motor, amely a feladat tartozik."
   syntax:
     content: protected Microsoft.Build.Framework.IBuildEngine BuildEngine { get; }
     return:
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "An <xref href=&quot;Microsoft.Build.Framework.IBuildEngine&quot;></xref> that represents the instance of the build engine that is associated with the task."
+      description: "Egy <xref href=&quot;Microsoft.Build.Framework.IBuildEngine&quot;> </xref> , amely a build motor a tevékenységhez társított példányt jelenti."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.BuildEngine*
   exceptions: []
   platform:
@@ -152,8 +152,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Extracts the message code prefix from the given full message string."
-  remarks: 'Message code prefixes must match the following .NET regular expressions in order to be recognized: `^\s*[A-Za-z]+\d+:\s*`.'
+  summary: "Az üzenet kód előtag kibontja a megadott teljes üzenet karakterláncból."
+  remarks: 'Üzenet kód előtagok ahhoz, hogy ismerhetők meg kell egyeznie a következő .NET reguláris kifejezések: `^\s*[A-Za-z]+\d+:\s*`.'
   example:
   - 'If this method is given the full message string `MYTASK1001: This is an error message.` and it accepts `This is an error message.` as the value for the `messageWithoutCodePrefix` parameter, then it returns `MYTASK1001`.'
   syntax:
@@ -161,18 +161,18 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The full message to parse that includes code prefix."
+      description: "A teljes üzenet elemzése, amely tartalmazza az előtagot."
     - id: messageWithoutCodePrefix
       type: System.String
-      description: "The message with the code prefix removed."
+      description: "Eltávolítja az üzenetet a kód előtaggal."
     return:
       type: System.String
-      description: "The message code prefix that is extracted from the full message string, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no message code."
+      description: "Az üzenet kód előtagot, amely a teljes üzenet karakterláncból, ki kell olvasni vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha nincs üzenet kód."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.ExtractMessageCode*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.FormatResourceString(System.String,System.Object[])
@@ -187,31 +187,31 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Loads the specified resource string and optionally formats it using the given arguments."
-  remarks: "The culture of the current thread is used for formatting.       This method requires the owner task to have registered its resources with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.TaskResources%2A> property."
+  summary: "Betölti a megadott erőforrás-karakterlánc, és opcionálisan formázza azt a megadott argumentumokkal."
+  remarks: "A kulturális környezet, az aktuális szál a formázáshoz használt.       Ennél a módszernél a tulajdonos feladat regisztrált erőforrásait vagy a <xref:Microsoft.Build.Utilities.Task>alaposztály konstruktor, vagy a <xref:Microsoft.Build.Utilities.Task.TaskResources%2A>tulajdonság.</xref:Microsoft.Build.Utilities.Task.TaskResources%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public virtual string FormatResourceString (string resourceName, object[] args);
     parameters:
     - id: resourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: args
       type: System.Object[]
-      description: "Optional arguments for formatting the loaded string."
+      description: "Nem kötelező argumentumainak formázási a betöltött karakterláncot."
     return:
       type: System.String
-      description: "The formatted string."
+      description: "A formázott karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.FormatResourceString*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The string resource indicated by <code>resourceName</code> does not exist."
+    description: "A karakterlánc erőforrás által jelzett <code> resourceName </code> nem létezik."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:Microsoft.Build.Utilities.Task.TaskResources*> property of the owner task is not set."
+    description: "A <xref:Microsoft.Build.Utilities.Task.TaskResources*>a tulajdonos feladat tulajdonsága nincs beállítva.</xref:Microsoft.Build.Utilities.Task.TaskResources*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>resourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>resourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.FormatString(System.String,System.Object[])
@@ -226,25 +226,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Formats the given string using the given arguments."
-  remarks: "The culture of the current thread is used for formatting."
+  summary: "Formázza a megadott karakterlánc, a megadott argumentumokkal."
+  remarks: "A kulturális környezet, az aktuális szál a formázáshoz használt."
   syntax:
     content: public virtual string FormatString (string unformatted, object[] args);
     parameters:
     - id: unformatted
       type: System.String
-      description: "The string to format."
+      description: "A karakterláncot formázni."
     - id: args
       type: System.Object[]
-      description: "Arguments for formatting."
+      description: "Formázás argumentumai."
     return:
       type: System.String
-      description: "The formatted string."
+      description: "A formázott karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.FormatString*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>unformatted</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>unformatted</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.GetResourceMessage(System.String)
@@ -259,16 +259,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the message from resource in task library."
+  summary: "Az üzenet lekérése erőforrás feladat könyvtárban."
   syntax:
     content: public virtual string GetResourceMessage (string resourceName);
     parameters:
     - id: resourceName
       type: System.String
-      description: "The resource name."
+      description: "Az erőforrás nevét."
     return:
       type: System.String
-      description: "Returns the message from resource in task library."
+      description: "Az üzenet vissza erőforrás feladat könyvtárban."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.GetResourceMessage*
   exceptions: []
   platform:
@@ -285,7 +285,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a value that indicates whether the task has logged any errors through this logging helper object."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy a tevékenység által naplózott ki a hibákat, a naplózás segítő objektumon keresztül."
   remarks: ''
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
@@ -293,7 +293,7 @@ items:
     content: public bool HasLoggedErrors { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the task has logged any errors through this logging helper object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tevékenység által naplózott hiba – a naplózási segítő objektuma; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HasLoggedErrors*
   exceptions: []
   platform:
@@ -310,13 +310,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the prefix used to compose Help keywords from resource names."
-  remarks: "If a task does not have Help keywords associated with its messages, it can ignore this property or set it to `null`. If this property is set to an empty <xref:System.String>, resource names will be used verbatim as Help keywords."
+  summary: "Lekérdezi vagy beállítja a Súgó kulcsszavak erőforrásnevek a létrehozásához használt előtagot."
+  remarks: "Ha egy feladat nem rendelkezik az üzenetek társított súgó kulcsszavakat, hagyja figyelmen kívül ezt a tulajdonságot, vagy állítsa be `null`. Ha ez a tulajdonság értéke üres <xref:System.String>, pontosan súgó kulcsszavak erőforrásnevek fog történni.</xref:System.String>"
   syntax:
     content: public string HelpKeywordPrefix { get; set; }
     return:
       type: System.String
-      description: "The prefix used to compose Help keywords from resource names."
+      description: "A Súgó kulcsszavak erőforrásnevek a létrehozásához használt előtag."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HelpKeywordPrefix*
   exceptions: []
   platform:
@@ -333,13 +333,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "InitializeLifetimeService is called when the remote object is activated.       This method will determine how long the lifetime for the object will be.       Thread safe. However, InitializeLifetimeService and MarkAsInactive should only be called in that order, together or not at all, and no more than once."
+  summary: "A távoli objektum aktiválásakor InitializeLifetimeService neve.       Ez a módszer határozza meg, mennyi ideig lesz az objektum élettartama.       Többszálú futtatásra. Azonban InitializeLifetimeService és MarkAsInactive csak akkor szabad meghívni abban a sorrendben együtt vagy egyáltalán nem, és nem egynél többször."
   syntax:
     content: public override object InitializeLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "The lease object to control this object&quot;s lifetime."
+      description: "Ez az objektum élettartama vezérlésére bérleti objektum."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.InitializeLifetimeService*
   exceptions: []
   platform:
@@ -356,14 +356,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs the command line for an underlying tool, executable file, or shell command of a task."
-  remarks: "This method is not thread-safe."
+  summary: "Az alapul szolgáló eszköz, a végrehajtható fájl vagy a rendszerhéj-utasítás feladat parancssorának naplózza."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogCommandLine (string commandLine);
     parameters:
     - id: commandLine
       type: System.String
-      description: "The command line string."
+      description: "A parancssori parancsot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
   platform:
@@ -380,17 +380,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs the command line for an underlying tool, executable file, or shell command of a task using the specified importance level."
-  remarks: "This method is not thread-safe."
+  summary: "A parancssor az alapul szolgáló eszköz, a végrehajtható fájl vagy a rendszerhéj parancs a feladat a megadott fontossági szint használatával naplózza."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogCommandLine (Microsoft.Build.Framework.MessageImportance importance, string commandLine);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "Az értékek egyikének <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> azt jelzi, hogy a parancssor a fontossági szint."
     - id: commandLine
       type: System.String
-      description: "The command line string."
+      description: "A parancssori parancsot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
   platform:
@@ -407,45 +407,45 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a critical message using the specified string and other message details.       Thread safe."
+  summary: "A megadott karakterlánc és egyéb részletek kritikus üzenet naplózza.       Többszálú futtatásra."
   syntax:
     content: public void LogCriticalMessage (string subcategory, string code, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "Description of the warning type (can be null)."
+      description: "A figyelmeztetés típusa (üres is lehet) leírása."
     - id: code
       type: System.String
-      description: "Message code (can be null)."
+      description: "Üzenet kód (null is lehet)."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword for the host IDE (can be null)."
+      description: "A gazdagép (üres is lehet) IDE súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file causing the message (can be null)."
+      description: "Az üzenet (üres is lehet), amely a fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file causing the message (set to zero if not available)."
+      description: "A sort a fájl, amely az üzenet (nulla értékre, ha nem érhető el)."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file causing the message (set to zero if not available)."
+      description: "A fájl, amely az üzenet (nulla értékre, ha nem érhető el) oszlopában."
     - id: endLineNumber
       type: System.Int32
-      description: "The last line of a range of lines in the file causing the message (set to zero if not available)."
+      description: "Az üzenet (nulla értékre, ha nem érhető el), amely a fájl sorainak számos utolsó sora."
     - id: endColumnNumber
       type: System.Int32
-      description: "The last column of a range of columns in the file causing the message (set to zero if not available)."
+      description: "A fájlban, az üzenet (nulla értékre, ha nem érhető el), amely oszlopok számos utolsó oszlopa."
     - id: message
       type: System.String
-      description: "The message string."
+      description: "Az üzenet-karakterlánc."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCriticalMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `message` is null."
+    description: "Mikor történt `message` null értékű."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogError(System.String,System.Object[])
@@ -460,8 +460,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error with the specified message."
-  remarks: "This method is not thread-safe."
+  summary: "A megadott üzenet hiba jelentkezik."
+  remarks: "Ez a metódus nincs szálbiztos."
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
@@ -469,15 +469,15 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogError*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogError(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -492,46 +492,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified message and other error details."
-  remarks: "The parameters `subCategory`, `errorCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Naplózza a hibát a megadott üzenet és egyéb hiba részletes adatait."
+  remarks: "A paraméterek `subCategory`, `errorCode`, `helpKeyword`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogError (string subcategory, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "The description of the error type."
+      description: "A hiba típusa leírása."
     - id: errorCode
       type: System.String
-      description: "The error code."
+      description: "A hibakód."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the error."
+      description: "A hiba társítandó súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "A hibát tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "A sor a fájlban, ahol a hiba akkor fordul elő."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Az oszlop a fájlban, ahol a hiba akkor fordul elő."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "A sor végén a fájlban, ahol a hiba akkor fordul elő."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "Az end oszlopnak a fájlban, ahol a hiba akkor fordul elő."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogError*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception)
@@ -546,19 +546,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message from the given exception."
-  remarks: "No call stack will be shown."
+  summary: "Naplózza a hibát a megadott kivétel üzenetét használja."
+  remarks: "Nincs hívási verem jelenik meg."
   syntax:
     content: public void LogErrorFromException (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "A kivétel való bejelentkezéshez."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception,System.Boolean)
@@ -573,22 +573,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message, and optionally the stack trace, from the given exception."
-  remarks: "This method is not thread-safe."
+  summary: "Hiba történt az üzenet, és szükség esetén a Veremkivonat, a megadott kivétel használatával naplózza."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogErrorFromException (Exception exception, bool showStackTrace);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log"
+      description: "A kivétel bejelentkezni"
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az alábbi veremkivonatban szerepeljenek a napló; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception,System.Boolean,System.Boolean,System.String)
@@ -603,27 +603,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message, and optionally the stack-trace from the given exception and any inner exceptions."
+  summary: "Hiba történt az üzenet, és szükség esetén az adott kivétel és a belső kivételek Veremkivonat használatával naplózza."
   syntax:
     content: public void LogErrorFromException (Exception exception, bool showStackTrace, bool showDetail, string file);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "A kivétel való bejelentkezéshez."
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az alábbi veremkivonatban szerepeljenek a napló; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: showDetail
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to log exception types and any inner exceptions; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Kivétel típusa és a belső kivételek; bejelentkezni Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: file
       type: System.String
-      description: "The name of the file related to the exception, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the project file should be logged."
+      description: "A fájl a kivételhez kapcsolódó nevét vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a projektfájlban naplózni kell."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources(System.String,System.Object[])
@@ -638,22 +638,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string."
-  remarks: "This method is not thread-safe."
+  summary: "Hiba történt a megadott erőforrás-karakterlánc használatával naplózza."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogErrorFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -668,46 +668,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string and other error details."
-  remarks: "The parameters `subCategoryResourceName`, `errorCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Naplózza a hibát a megadott erőforrás-karakterlánc és más hiba részletes adatait."
+  remarks: "A paraméterek `subCategoryResourceName`, `errorCode`, `helpKeyword`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogErrorFromResources (string subcategoryResourceName, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the error type."
+      description: "A hiba típusa leíró karakterlánc-erőforrás nevét."
     - id: errorCode
       type: System.String
-      description: "The error code."
+      description: "A hibakód."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the error."
+      description: "A hiba társítandó súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "A hibát tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "A sor a fájlban, ahol a hiba akkor fordul elő."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Az oszlop a fájlban, ahol a hiba akkor fordul elő."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "A sor végén a fájlban, ahol a hiba akkor fordul elő."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "Az end oszlopnak a fájlban, ahol a hiba akkor fordul elő."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources(System.String,System.Object[])
@@ -722,22 +722,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error with an error code using the specified resource string."
-  remarks: "If the message begins with an error code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property."
+  summary: "Naplózza a hibát hibakódú használata a megadott erőforrás-karakterlánc."
+  remarks: "Az üzenet egy hibakódot kezdődik, ha a kód a kivont és üzenettel naplózza.       Súgó kulcsszó előtag adtak meg, ha is naplózza az üzenettel. A Súgó kulcsszó a karakterlánc-erőforrás nevét a következő Súgó kulcsszó előtaghoz hozzáfűzésével jön létre. Egy feladat sem kulcsszó súgó előtag biztosíthat a <xref:Microsoft.Build.Utilities.Task>alaposztály konstruktor, vagy a <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>tulajdonság.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public void LogErrorWithCodeFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -752,40 +752,40 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string and other error details."
-  remarks: "If the message begins with an error code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property.       The parameters `subCategoryResourceName`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Naplózza a hibát a megadott erőforrás-karakterlánc és más hiba részletes adatait."
+  remarks: "Az üzenet egy hibakódot kezdődik, ha a kód a kivont és üzenettel naplózza.       Súgó kulcsszó előtag adtak meg, ha is naplózza az üzenettel. A Súgó kulcsszó a karakterlánc-erőforrás nevét a következő Súgó kulcsszó előtaghoz hozzáfűzésével jön létre. Egy feladat sem kulcsszó súgó előtag biztosíthat a <xref:Microsoft.Build.Utilities.Task>alaposztály konstruktor, vagy a <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>tulajdonság.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>       A paraméterek `subCategoryResourceName`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogErrorWithCodeFromResources (string subcategoryResourceName, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the error type."
+      description: "A hiba típusa leíró karakterlánc-erőforrás nevét."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "A hibát tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "A sor a fájlban, ahol a hiba akkor fordul elő."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Az oszlop a fájlban, ahol a hiba akkor fordul elő."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "A sor végén a fájlban, ahol a hiba akkor fordul elő."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "Az end oszlopnak a fájlban, ahol a hiba akkor fordul elő."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished(System.String,System.String,System.String,System.Boolean)
@@ -800,22 +800,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Helps log the custom <xref href=&quot;Microsoft.Build.Framework.ExternalProjectFinishedEventArgs&quot;></xref> build event."
+  summary: "Segítséget nyújt az egyéni jelentkezzen <xref href=&quot;Microsoft.Build.Framework.ExternalProjectFinishedEventArgs&quot;> </xref> esemény létrehozása."
   syntax:
     content: public void LogExternalProjectFinished (string message, string helpKeyword, string projectFile, bool succeeded);
     parameters:
     - id: message
       type: System.String
-      description: "The text message."
+      description: "A szöveges üzenet."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword."
+      description: "A súgókulcsszót."
     - id: projectFile
       type: System.String
-      description: "The name of the project."
+      description: "A projekt nevét."
     - id: succeeded
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that project was built successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a projekt készült sikeresen; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished*
   exceptions: []
   platform:
@@ -832,22 +832,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Helps log the custom <xref href=&quot;Microsoft.Build.Framework.ExternalProjectStartedEventArgs&quot;></xref> build event."
+  summary: "Segítséget nyújt az egyéni jelentkezzen <xref href=&quot;Microsoft.Build.Framework.ExternalProjectStartedEventArgs&quot;> </xref> esemény létrehozása."
   syntax:
     content: public void LogExternalProjectStarted (string message, string helpKeyword, string projectFile, string targetNames);
     parameters:
     - id: message
       type: System.String
-      description: "The text message."
+      description: "A szöveges üzenet."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword."
+      description: "A súgókulcsszót."
     - id: projectFile
       type: System.String
-      description: "The name of the project."
+      description: "A projekt nevét."
     - id: targetNames
       type: System.String
-      description: "The targets to build. An empty string indicates default targets."
+      description: "A célok hozhat létre. Üres karakterlánc alapértelmezett célok jelzi."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectStarted*
   exceptions: []
   platform:
@@ -864,8 +864,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified string."
-  remarks: "The <xref:Microsoft.Build.Framework.MessageImportance> value of a message is `Normal` by default."
+  summary: "Naplózza az üzenetet a megadott karakterláncot."
+  remarks: "A <xref:Microsoft.Build.Framework.MessageImportance>üzenet értéke `Normal` alapértelmezés szerint.</xref:Microsoft.Build.Framework.MessageImportance>"
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
@@ -873,15 +873,15 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the message."
+      description: "Az üzenet formázásakor argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -896,25 +896,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified string and importance."
-  remarks: "Take care to order the parameters correctly or the other overload will be called inadvertently."
+  summary: "A megadott karakterlánc és a fontosság naplózza az üzenetet."
+  remarks: "Annak érdekében, hogy a paraméterek helyes sorrendben, vagy a más túlterhelési hívja meg a rendszer véletlenül."
   syntax:
     content: public void LogMessage (Microsoft.Build.Framework.MessageImportance importance, string message, object[] messageArgs);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of the message."
+      description: "Az egyik a számbavételi érték, amely meghatározza az üzenet fontosságát."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the message."
+      description: "Az üzenet formázásakor argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -929,48 +929,48 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message using the specified string and other message details.       Thread safe."
+  summary: "A megadott karakterlánc és más üzenet adatai egy üzenetet naplózza.       Többszálú futtatásra."
   syntax:
     content: public void LogMessage (string subcategory, string code, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, Microsoft.Build.Framework.MessageImportance importance, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "Description of the warning type (can be null)."
+      description: "A figyelmeztetés típusa (üres is lehet) leírása."
     - id: code
       type: System.String
-      description: "Message code (can be null)"
+      description: "Kódja (üres is lehet)"
     - id: helpKeyword
       type: System.String
-      description: "The help keyword for the host IDE (can be null)."
+      description: "A gazdagép (üres is lehet) IDE súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file causing the message (can be null)."
+      description: "Az üzenet (üres is lehet), amely a fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file causing the message (set to zero if not available)."
+      description: "A sort a fájl, amely az üzenet (nulla értékre, ha nem érhető el)."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file causing the message (set to zero if not available)."
+      description: "A fájl, amely az üzenet (nulla értékre, ha nem érhető el) oszlopában."
     - id: endLineNumber
       type: System.Int32
-      description: "The last line of a range of lines in the file causing the message (set to zero if not available)."
+      description: "Az üzenet (nulla értékre, ha nem érhető el), amely a fájl sorainak számos utolsó sora."
     - id: endColumnNumber
       type: System.Int32
-      description: "The last column of a range of columns in the file causing the message (set to zero if not available)."
+      description: "A fájlban, az üzenet (nulla értékre, ha nem érhető el), amely oszlopok számos utolsó oszlopa."
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "Importance of the message."
+      description: "Az üzenet fontosságát."
     - id: message
       type: System.String
-      description: "The message string."
+      description: "Az üzenet-karakterlánc."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `message` is null."
+    description: "Mikor történt `message` null értékű."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources(System.String,System.Object[])
@@ -985,22 +985,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified resource string."
-  remarks: "The <xref:Microsoft.Build.Framework.MessageImportance> value of a message is `Normal` by default."
+  summary: "Naplózza az üzenetet a megadott erőforrás-karakterláncot."
+  remarks: "A <xref:Microsoft.Build.Framework.MessageImportance>üzenet értéke `Normal` alapértelmezés szerint.</xref:Microsoft.Build.Framework.MessageImportance>"
   syntax:
     content: public void LogMessageFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources(Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -1015,25 +1015,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified resource string and importance."
-  remarks: "Take care to order the parameters correctly or the other overload will be called inadvertently."
+  summary: "A megadott erőforrás-karakterlánc és a fontosság naplózza az üzenetet."
+  remarks: "Annak érdekében, hogy a paraméterek helyes sorrendben, vagy a más túlterhelési hívja meg a rendszer véletlenül."
   syntax:
     content: public void LogMessageFromResources (Microsoft.Build.Framework.MessageImportance importance, string messageResourceName, object[] messageArgs);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of the message."
+      description: "Az egyik a számbavételi érték, amely meghatározza az üzenet fontosságát."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromText(System.String,Microsoft.Build.Framework.MessageImportance)
@@ -1048,25 +1048,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error message or warning from the given line of text."
-  remarks: "Errors messages and warnings are only logged for lines that fit the canonical format. All other lines are treated as messages."
+  summary: "Egy hiba vagy figyelmeztetés naplózza az adott sort."
+  remarks: "A kanonikus formátuma illeszkedő sorok csak naplózza a hibaüzeneteket és figyelmeztetéseket. A sorok üzenetek tekintendők."
   syntax:
     content: public bool LogMessageFromText (string lineOfText, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: lineOfText
       type: System.String
-      description: "The line of text to log from."
+      description: "A szövegsor jelentkezhet be a."
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "Az értékek egyikének <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> azt jelzi, hogy a parancssor a fontossági szint."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a naplózott hiba; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromText*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>lineOfText</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>lineOfText</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile(System.String)
@@ -1081,22 +1081,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs errors, warnings, and messages for each line of text in the given file."
-  remarks: "Errors and warnings are logged for lines that fit a particular canonical format. All other lines are logged as messages."
+  summary: "A megadott fájl hibák, figyelmeztetések és üzenetek az egyes szövegsor naplózza."
+  remarks: "Hibák és figyelmeztetések bekerülnek a naplóba sorok lefedett egy adott kanonikus formátuma. A sorok, a rendszer üzenetekként naplózza."
   syntax:
     content: public bool LogMessagesFromFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to log messages from."
+      description: "Az üzenetek naplózása a fájl neve."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate at least one error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>annak jelzésére, hogy legalább egy hibát naplózott; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile(System.String,Microsoft.Build.Framework.MessageImportance)
@@ -1111,25 +1111,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs errors, warnings, and messages for each line of text in the given file. Also logs the importance of messages."
-  remarks: "Errors and warnings are logged for lines that fit a particular canonical format. All other lines are logged as messages."
+  summary: "A megadott fájl hibák, figyelmeztetések és üzenetek az egyes szövegsor naplózza. Is naplózza az üzenetek fontosságát."
+  remarks: "Hibák és figyelmeztetések bekerülnek a naplóba sorok lefedett egy adott kanonikus formátuma. A sorok, a rendszer üzenetekként naplózza."
   syntax:
     content: public bool LogMessagesFromFile (string fileName, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to log messages from."
+      description: "Az üzenetek naplózása a fájl neve."
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of logged messages."
+      description: "Számbavételi érték, amely meghatározza a fontosságát naplózott üzeneteket."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate at least one error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>annak jelzésére, hogy legalább egy hibát naplózott; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `filename` is null."
+    description: "Mikor történt `filename` null értékű."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromStream(System.IO.TextReader,Microsoft.Build.Framework.MessageImportance)
@@ -1144,25 +1144,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error message or warning from the given stream."
-  remarks: "This method is not thread-safe."
+  summary: "Egy hiba vagy figyelmeztetés naplózza az adott adatfolyam."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public bool LogMessagesFromStream (System.IO.TextReader stream, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: stream
       type: System.IO.TextReader
-      description: "A <xref:System.IO.TextReader> that reads the stream to log from."
+      description: "A <xref:System.IO.TextReader>, amely beolvassa az adatfolyam jelentkezhet be a.</xref:System.IO.TextReader>"
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "Az értékek egyikének <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> azt jelzi, hogy a parancssor a fontossági szint."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a naplózott hiba; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromStream*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>stream</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning(System.String,System.Object[])
@@ -1177,22 +1177,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with the specified message."
-  remarks: "This method is not thread-safe."
+  summary: "A megadott üzenettel naplózza a figyelmeztetés."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogWarning (string message, object[] messageArgs);
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1207,46 +1207,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified message and other warning details."
-  remarks: "The parameters `subCategory`, `warningCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "A megadott üzenet és egyéb figyelmeztetés részletei figyelmeztetést naplóz."
+  remarks: "A paraméterek `subCategory`, `warningCode`, `helpKeyword`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogWarning (string subcategory, string warningCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "The description of the warning type."
+      description: "A figyelmeztetés típusának leírása."
     - id: warningCode
       type: System.String
-      description: "The warning code."
+      description: "A figyelmeztető kód."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the warning."
+      description: "A figyelmeztetés társítandó súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "A figyelmeztetés tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "A sor a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Az oszlop a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "A sor végén a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "Az end oszlopnak a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Az üzenet."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Nem kötelező argumentumainak formázási az üzenet karakterláncot."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException(System.Exception)
@@ -1261,19 +1261,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the message from the specified exception."
-  remarks: "This method is not thread-safe."
+  summary: "A megadott kivétel üzenetét használja figyelmeztetést naplóz."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogWarningFromException (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "A kivétel való bejelentkezéshez."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException(System.Exception,System.Boolean)
@@ -1288,22 +1288,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the message, and optionally the stack trace, from the given exception."
-  remarks: "This method is not thread-safe."
+  summary: "Naplózza az üzenetet, és szükség esetén a Veremkivonat, a megadott kivétel használatával figyelmeztetés."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogWarningFromException (Exception exception, bool showStackTrace);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log"
+      description: "A kivétel bejelentkezni"
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az alábbi veremkivonatban szerepeljenek a napló; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources(System.String,System.Object[])
@@ -1318,22 +1318,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified resource string."
-  remarks: "This method is not thread-safe."
+  summary: "A megadott erőforrás-karakterláncot figyelmeztetést naplóz."
+  remarks: "Ez a metódus nincs szálbiztos."
   syntax:
     content: public void LogWarningFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1348,46 +1348,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified resource string and other warning details."
-  remarks: "The parameters `subCategoryResourceName`, `warningCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "A megadott erőforrás-karakterlánc és más figyelmeztetés részletei figyelmeztetést naplóz."
+  remarks: "A paraméterek `subCategoryResourceName`, `warningCode`, `helpKeyword`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogWarningFromResources (string subcategoryResourceName, string warningCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the warning type."
+      description: "Figyelmeztetés-típust karakterlánc erőforrás neve."
     - id: warningCode
       type: System.String
-      description: "The warning code."
+      description: "A figyelmeztető kód."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the warning."
+      description: "A figyelmeztetés társítandó súgókulcsszót."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "A figyelmeztetés tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "A sor a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Az oszlop a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "A sor végén a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "Az end oszlopnak a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources(System.String,System.Object[])
@@ -1402,22 +1402,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with a warning code using the specified resource string."
-  remarks: "If the message begins with a warning code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property."
+  summary: "A megadott erőforrás-karakterláncot figyelmeztető kód figyelmeztetés jelentkezik."
+  remarks: "Az üzenet figyelmeztető kód kezdődik, ha a kód a kivont és üzenettel naplózza.       Súgó kulcsszó előtag adtak meg, ha is naplózza az üzenettel. A Súgó kulcsszó a karakterlánc-erőforrás nevét a következő Súgó kulcsszó előtaghoz hozzáfűzésével jön létre. Egy feladat sem kulcsszó súgó előtag biztosíthat a <xref:Microsoft.Build.Utilities.Task>alaposztály konstruktor, vagy a <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>tulajdonság.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public void LogWarningWithCodeFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1432,40 +1432,40 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with a warning code using the specified resource string and other warning details."
-  remarks: "If the message begins with a warning code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property.       The parameters `subCategoryResourceName`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "A megadott erőforrás-karakterlánc és más figyelmeztetés részletei figyelmeztető kód figyelmeztetés jelentkezik."
+  remarks: "Az üzenet figyelmeztető kód kezdődik, ha a kód a kivont és üzenettel naplózza.       Súgó kulcsszó előtag adtak meg, ha is naplózza az üzenettel. A Súgó kulcsszó a karakterlánc-erőforrás nevét a következő Súgó kulcsszó előtaghoz hozzáfűzésével jön létre. Egy feladat sem kulcsszó súgó előtag biztosíthat a <xref:Microsoft.Build.Utilities.Task>alaposztály konstruktor, vagy a <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>tulajdonság.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>       A paraméterek `subCategoryResourceName`, és `file` lehet `null`.       A paraméterek `lineNumber`, `columnNumber`, `endLineNumber`, és `endColumnNumber` 0-ra kell állítani, ha azok nem érhető el."
   syntax:
     content: public void LogWarningWithCodeFromResources (string subcategoryResourceName, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the warning type."
+      description: "Figyelmeztetés-típust karakterlánc erőforrás neve."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "A figyelmeztetés tartalmazó fájl elérési útja."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "A sor a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Az oszlop a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "A sor végén a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "Az end oszlopnak a fájlban, ahol a figyelmeztetés akkor következik be."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "A karakterlánc erőforrás betöltése nevét."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "A betöltött karakterlánc formátumának argumentumai."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.MarkAsInactive
@@ -1480,8 +1480,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Notifies this <xref uid=&quot;langword_csharp_TaskLoggingHelper&quot; name=&quot;TaskLoggingHelper&quot; href=&quot;&quot;></xref> that it is no longer needed."
-  remarks: "This method is thread safe, however, you must call both InitializeLifetimeService and MarkAsInactive, in that order, or you must call neither method, and you must call neither method than once."
+  summary: "Értesíti a <xref uid=&quot;langword_csharp_TaskLoggingHelper&quot; name=&quot;TaskLoggingHelper&quot; href=&quot;&quot;> </xref> , amely már nem szükséges."
+  remarks: "Ez a módszer többszálú futtatásra, azonban meg kell hívnia InitializeLifetimeService és a MarkAsInactive, ebben a sorrendben, vagy meg kell hívnia sem metódust, és meg kell hívnia sem metódust csak egyszer."
   syntax:
     content: public void MarkAsInactive ();
     parameters: []
@@ -1501,12 +1501,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the name of the parent task."
+  summary: "Lekérdezi a szülő feladat nevét."
   syntax:
     content: protected string TaskName { get; }
     return:
       type: System.String
-      description: "The name of the parent task."
+      description: "A Szülőtevékenység neve."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskName*
   exceptions: []
   platform:
@@ -1523,13 +1523,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the culture-specific resources used by the logging methods."
-  remarks: "If derived classes have localized strings, then they should register their resources with this property."
+  summary: "Lekérdezi vagy beállítja a naplózás módszerek által használt kulturális környezet-specifikus erőforrások."
+  remarks: "Származtatott osztályok rendelkezik honosított karakterláncok, ha majd azok kell regisztrálni az erőforrásaikat, ez a tulajdonság."
   syntax:
     content: public System.Resources.ResourceManager TaskResources { get; set; }
     return:
       type: System.Resources.ResourceManager
-      description: "A <xref:System.Resources.ResourceManager> that represents the culture-specific resources used by the logging methods. This value can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A <xref:System.Resources.ResourceManager>, amely a naplózási módszerek által használt kulturális környezet-specifikus erőforrások jelöli.</xref:System.Resources.ResourceManager> Az érték lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskResources*
   exceptions: []
   platform:

@@ -19,8 +19,8 @@ items:
   nameWithType: IDataServiceConfiguration
   fullName: System.Data.Services.IDataServiceConfiguration
   type: Interface
-  summary: "The IDataServiceConfiguration is used by [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] to set up the behavior of the service, including rights on entity sets and service operations, limits on the allowed requests, registering types not discoverable by default, and the default verbosity on error handling."
-  remarks: "This type is used by <xref:System.Data.Services.DataService%601> classes to configure the service by implementing a static method named InitializeService, returning void, and taking a single argument of type IDataServiceConfiguration. The configuration object may only be used during the call to service initialization."
+  summary: "A IDataServiceConfiguration által használt [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] jogosultságokkal a entitáskészletekben és szolgáltatási műveleteket, beleértve a szolgáltatás működésének beállításához korlátozza az engedélyezett kérelmek, alapértelmezés szerint, és az alapértelmezett részletességi a hibakezelés nem felderíthető típusok regisztrálása."
+  remarks: "Ezt a típust <xref:System.Data.Services.DataService%601>statikus metódus végrehajtása a szolgáltatás konfigurálásához osztályok nevű InitializeService, vissza &quot;void&quot;, és egyetlen argumentuma IDataServiceConfiguration típusú véve.</xref:System.Data.Services.DataService%601> A konfigurációs objektum csak a szolgáltatás inicializálása hívása során használható."
   syntax:
     content: public interface IDataServiceConfiguration
   implements: []
@@ -38,12 +38,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the maximum number of requests that can be handled in a batch."
+  summary: "Egy kötegben lekérdezi a kezelhető kérelmek maximális száma."
   syntax:
     content: public int MaxBatchCount { get; set; }
     return:
       type: System.Int32
-      description: "Integer value that indicates the maximum number of requests that can be handled in a batch."
+      description: "Egész szám, amely jelzi a kötegben kezelhető kérelmek maximális száma."
   overload: System.Data.Services.IDataServiceConfiguration.MaxBatchCount*
   exceptions: []
   platform:
@@ -60,12 +60,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the maximum number of change sets that can be handled in a batch."
+  summary: "Tudnak kezelni módosításkészletet maximális számának beolvasása kötegben."
   syntax:
     content: public int MaxChangesetCount { get; set; }
     return:
       type: System.Int32
-      description: "Integer value that indicates the maximum number of change sets that can be handled in a batch."
+      description: "Egész szám, amely azt jelzi, amely egy kötegelt kezelhető módosításkészletet maximális száma."
   overload: System.Data.Services.IDataServiceConfiguration.MaxChangesetCount*
   exceptions: []
   platform:
@@ -82,13 +82,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets the maximum number of segments that can be expanded by the $expand query option for all requests to the data service."
-  remarks: "If the limit is exceeded, a 400 Bad Request status code is returned. The value specified must be between 0 and `int.MaxValue`; otherwise, an `ArgumentOutOfRangeException` is thrown.       The following query string sample has two segments:"
+  summary: "Lekérdezi vagy beállítja azt a maximális számát és a $ bővíthetők szegmensek bontsa ki a lekérdezés beállítás megadása a szolgáltatás minden kérelemhez."
+  remarks: "Ha a meghaladja a korlátozást, 400 Hibás kérés állapotkód ad vissza. A megadott érték 0 között kell lennie, és `int.MaxValue`; ellenkező esetben egy `ArgumentOutOfRangeException` vált ki.       A következő lekérdezési karakterlánc minta két szegmensből áll:"
   syntax:
     content: public int MaxExpandCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of segments to expand."
+      description: "Bontsa ki a szegmensek maximális számát."
   overload: System.Data.Services.IDataServiceConfiguration.MaxExpandCount*
   exceptions: []
   platform:
@@ -105,13 +105,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets a maximum number of segments supported in a single `$expand` path for all requests to the data service."
-  remarks: "If the limit is exceeded, a 400 Bad Request status code is returned. The value specified must be between 0 and `int.MaxValue`; otherwise, an `ArgumentOutOfRangeException` is thrown.       The following query string sample has two segments in the first `$expand` path and one in the second `$expand` path:"
+  summary: "Lekérdezi vagy beállítja azt az egyetlen támogatott szegmensek maximális számát `$expand` adatszolgáltatás összes kérelem elérési útját."
+  remarks: "Ha a meghaladja a korlátozást, 400 Hibás kérés állapotkód ad vissza. A megadott érték 0 között kell lennie, és `int.MaxValue`; ellenkező esetben egy `ArgumentOutOfRangeException` vált ki.       A következő lekérdezési karakterlánc minta két szegmenst tartalmaz, az első `$expand` elérési utat és egy második `$expand` elérési útja:"
   syntax:
     content: public int MaxExpandDepth { get; set; }
     return:
       type: System.Int32
-      description: "Integer representing the maximum number of supported segments in `$expand` path."
+      description: "A maximális számát jelző egész számot támogatott szegmenseinek `$expand` elérési útja."
   overload: System.Data.Services.IDataServiceConfiguration.MaxExpandDepth*
   exceptions: []
   platform:
@@ -128,12 +128,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets the maximum number of objects that can be inserted in a single request."
+  summary: "Lekérdezi vagy beállítja az egy kérelemhez lehet beszúrni objektumok maximális számát."
   syntax:
     content: public int MaxObjectCountOnInsert { get; set; }
     return:
       type: System.Int32
-      description: "The integer value that contains the maximum number of objects that can be inserted in a single request."
+      description: "Az egész szám, amely tartalmazza az egy kérelemhez lehet beszúrni objektumok maximális számát."
   overload: System.Data.Services.IDataServiceConfiguration.MaxObjectCountOnInsert*
   exceptions: []
   platform:
@@ -150,12 +150,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the maximum number of results per collection."
+  summary: "Lekérdezi a gyűjteményenként eredmények maximális száma."
   syntax:
     content: public int MaxResultsPerCollection { get; set; }
     return:
       type: System.Int32
-      description: "The integer value that indicates the maximum number of results per collection."
+      description: "Az egész szám, amely jelzi a gyűjteményenként eredmények maximális száma."
   overload: System.Data.Services.IDataServiceConfiguration.MaxResultsPerCollection*
   exceptions: []
   platform:
@@ -172,13 +172,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Registers a resource type for use by the data service."
+  summary: "A data Service regisztrálja a használatra erőforrástípus."
   syntax:
     content: public void RegisterKnownType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The resource type to register."
+      description: "Az erőforrástípus regisztrálni."
   overload: System.Data.Services.IDataServiceConfiguration.RegisterKnownType*
   exceptions: []
   platform:
@@ -195,17 +195,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the access rules for the specified entity set."
-  remarks: "The default configuration is to deny access to resources. When a service is initialized the access rights must be enabled."
+  summary: "Beállítja a megadott entitás hozzáférési szabályainak beállítása."
+  remarks: "Az alapértelmezett konfigurálás az, hogy megtagadja a hozzáférést az erőforrásokhoz. A szolgáltatás inicializálásakor a hozzáférési jogok engedélyezve kell lennie."
   syntax:
     content: public void SetEntitySetAccessRule (string name, System.Data.Services.EntitySetRights rights);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the entity set for configured access."
+      description: "A beállított hozzáférés entitáskészlet neve."
     - id: rights
       type: System.Data.Services.EntitySetRights
-      description: "The rights allowed for the entity set."
+      description: "A jogosultságok, a következő entitáskészlet engedélyezett."
   overload: System.Data.Services.IDataServiceConfiguration.SetEntitySetAccessRule*
   exceptions: []
   platform:
@@ -222,17 +222,17 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Sets the access rules for the specified service operation."
-  remarks: "The default configuration is to deny access to resources. When a service is initialized, the access rights must be enabled."
+  summary: "A megadott műveletet hozzáférési szabályainak beállítása."
+  remarks: "Az alapértelmezett konfigurálás az, hogy megtagadja a hozzáférést az erőforrásokhoz. A szolgáltatás inicializálásakor a hozzáférési jogok engedélyezve kell lennie."
   syntax:
     content: public void SetServiceOperationAccessRule (string name, System.Data.Services.ServiceOperationRights rights);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the service operation on which to set access rights."
+      description: "A neve, amelyen beállítható a hozzáférési jogosultságokat a szolgáltatási művelet."
     - id: rights
       type: System.Data.Services.ServiceOperationRights
-      description: "The rights allowed according to <xref href=&quot;System.Data.Services.ServiceOperationRights&quot;></xref> enumeration."
+      description: "A jogok a következők szerint engedélyezett <xref href=&quot;System.Data.Services.ServiceOperationRights&quot;> </xref> enumerálása."
   overload: System.Data.Services.IDataServiceConfiguration.SetServiceOperationAccessRule*
   exceptions: []
   platform:
@@ -249,13 +249,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets or sets whether verbose errors are used by default for all responses from the data service."
-  remarks: "The response from a specified request can be overridden by the data service developer by overriding the `HandleException` method. Verbose errors should only be enabled during development, not in production environments, for security reasons."
+  summary: "Lekérdezi vagy beállítja, hogy részletes hibák esetén alapértelmezés szerint az adatszolgáltatás összes válaszát."
+  remarks: "A megadott kérelem válaszára felülbírálhatják az adatok service fejlesztői felülbírálásával a `HandleException` metódust. Részletes hibák csak akkor engedélyezhető, nem éles környezetben, biztonsági okokból a fejlesztés során."
   syntax:
     content: public bool UseVerboseErrors { get; set; }
     return:
       type: System.Boolean
-      description: "A Boolean value that indicates whether verbose errors are returned."
+      description: "Logikai érték, amely jelzi, hogy részletes jelez hibát."
   overload: System.Data.Services.IDataServiceConfiguration.UseVerboseErrors*
   exceptions: []
   platform:
