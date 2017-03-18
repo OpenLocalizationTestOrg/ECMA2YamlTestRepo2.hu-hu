@@ -12,8 +12,8 @@ items:
   nameWithType: IChannel
   fullName: System.Runtime.Remoting.Channels.IChannel
   type: Interface
-  summary: "Provides conduits for messages that cross remoting boundaries."
-  remarks: "Remoting boundaries can be <xref:System.Runtime.Remoting.Contexts.Context>s, <xref:System.AppDomain>s, processes, or computers. An application can cross these boundaries only by using channels. These crossings can be inbound and outbound. A channel can listen on an endpoint for inbound messages, send to an endpoint for outbound messages, or both. This provides an extensibility point in the runtime to plug in a wide range protocols, even though the runtime might not be at the other end of the channel.       Run-time objects can be used to represent a wide and rich set of semantics and entities. The channel provides the extensibility point to convert the messages to and from the specific protocols. If there are runtimes at both ends of the channel, a virtual channel is created between the two ends, in order to connect the client and server sink chains on either side of the boundary.       The client part of the channel is located at the end of a client context sink chain. The server part of the channel is located at the start of the server context sink chain. Messages are delivered to the client channel using the <xref:System.Runtime.Remoting.Messaging.IMessageSink> interface, travel through the channel, and are then received by the server channel. The server channel delivers the message to the first server context sink.       Channels must expose the IChannel interface, which provides informational properties such as the <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> and <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> properties. Channels can be registered using the <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName> method."
+  summary: "Távolítják biztosít a távoli eljáráshívás határok keresztezi üzeneteket."
+  remarks: "A távelérés a határok lehetnek <xref:System.Runtime.Remoting.Contexts.Context>s, <xref:System.AppDomain>s, folyamatok és a számítógépeken.</xref:System.AppDomain> </xref:System.Runtime.Remoting.Contexts.Context> Egy alkalmazás ezeket a határokat is kereszt-csak a csatornák használatával. Ezek kitérők bejövő és kimenő lehet. Egy csatorna is figyelni a végpont a bejövő üzenetek, egy végpontra kimenő üzenetek, vagy mindkettőt. Így lehetővé teszi a beépülő modul a széles körű protokollok, a futtatókörnyezet egy bővíthetőségi pontra, annak ellenére, hogy a futtatókörnyezet nem feltétlenül a csatorna egyéb végén.       Futásidejű objektumok segítségével szemantikáját és entitások széles és gazdag csoportját képviselik. A csatornát biztosít konvertálni az üzenetek az egyes protokollok érkező vagy oda irányuló bővítési pontot. Ha a csatorna mindkét végpontján futtatókörnyezeteket, egy virtuális csatorna létrehozása két vége, az ügyfél- és fogadó láncok mindkét oldalon, a határ csatlakozáshoz között.       Az ügyfél a csatorna része egy ügyfél környezetben fogadó lánc végén található. A kiszolgáló része a csatorna elején. a kiszolgáló a környezetben a fogadó lánc helyezkedik el. Az ügyfél csatorna használatával kézbesíti az üzeneteket a <xref:System.Runtime.Remoting.Messaging.IMessageSink>csatoló, a csatornán keresztül haladnak, és majd a kiszolgáló csatorna által fogadott.</xref:System.Runtime.Remoting.Messaging.IMessageSink> A kiszolgáló csatorna az első kiszolgáló környezetben fogadó kézbesíti az üzenetet.       Csatornák fel kell fednie a IChannel felület, amely tájékoztató tulajdonságok biztosít, mint a <xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A>és <xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A>Tulajdonságok.</xref:System.Runtime.Remoting.Channels.IChannel.ChannelPriority%2A> </xref:System.Runtime.Remoting.Channels.IChannel.ChannelName%2A> Csatornák használatával lehet regisztrálni a <xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>metódus.</xref:System.Runtime.Remoting.Channels.ChannelServices.RegisterChannel%2A?displayProperty=fullName>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,7 +34,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the name of the channel."
+  summary: "Lekéri a csatorna nevét."
   remarks: ''
   example:
   - >-
@@ -45,12 +45,12 @@ items:
     content: public string ChannelName { get; }
     return:
       type: System.String
-      description: "The name of the channel."
+      description: "A csatorna nevét."
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelName*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.ChannelPriority
@@ -65,8 +65,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets the priority of the channel."
-  remarks: "Higher numbers indicate higher priority, so a channel with priority of 50 has a higher priority than a channel with priority 25. The cross application domain channel has a priority of 100.       Client channels with higher priority are given the first chance to connect to a remote object specified by a URL or a particular channel data entry from a <xref:System.Runtime.Remoting.ObjRef>.       For server channels, the priority indicates the order in which their channel data will appear in a <xref:System.Runtime.Remoting.ObjRef>, which in turn affects the order in which clients will try to connect to the server object. If the server is listening on an HTTP channel with priority 50 and a TCP channel with priority 25 and the client has registered both an HTTP and TCP channel, then the client will use the HTTP channel to talk to the server."
+  summary: "Lekéri a csatorna prioritását."
+  remarks: "Nagyobb számmal magasabb prioritású, adja meg egy csatorna 50 prioritással rendelkezik magasabb prioritású, mint egy csatorna prioritású 25. Az alhálózatok közötti alkalmazás tartomány csatorna 100 prioritása.       A nagyobb prioritású ügyfél csatornák vannak megadva csatlakozni egy távoli objektum által megadott URL-címet vagy egy adott csatorna adatbevitel a <xref:System.Runtime.Remoting.ObjRef>.</xref:System.Runtime.Remoting.ObjRef> első alkalommal       Kiszolgálói csatornái, a prioritás Megadja, hogy a rendelés, amelyben az adatok megjelennek a <xref:System.Runtime.Remoting.ObjRef>, ami viszont hatással van a sorrendet, amelyben ügyfelek megpróbál csatlakozni a server objektum.</xref:System.Runtime.Remoting.ObjRef> Ha a kiszolgáló figyel a következőn egy HTTP-csatornán prioritású 50 és a prioritású 25-ös TCP-csatornán, és az ügyfél regisztrálva van-e egy HTTP- és a TCP-csatorna, majd az ügyfél használja a HTTP csatornán ügyfélcsatornája a kiszolgálóval."
   example:
   - >-
     [!code-cs[HttpServerChannel_Server_Client#5](~/add/codesnippet/csharp/p-system.runtime.remotin_5_1.cs)]
@@ -76,12 +76,12 @@ items:
     content: public int ChannelPriority { get; }
     return:
       type: System.Int32
-      description: "An integer that indicates the priority of the channel."
+      description: "A prioritás a csatorna jelző egész számot."
   overload: System.Runtime.Remoting.Channels.IChannel.ChannelPriority*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IChannel.Parse(System.String,System.String@)
@@ -96,7 +96,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Returns the object URI as an out parameter, and the URI of the current channel as the return value."
+  summary: "Az objektum URI egy kimeneti paramétert, és a visszatérési értékként a jelenlegi csatorna URI adja vissza."
   remarks: ''
   example:
   - >-
@@ -108,18 +108,18 @@ items:
     parameters:
     - id: url
       type: System.String
-      description: "The URL of the object."
+      description: "Az objektum URL-CÍMÉT."
     - id: objectURI
       type: System.String
-      description: "When this method returns, contains a <xref:System.String> that holds the object URI. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref:System.String>, amely tartalmazza az objektum URI.</xref:System.String> Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.String
-      description: "The URI of the current channel, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the URI does not belong to this channel."
+      description: "A jelenlegi csatorna URI vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha az URI azonosító nem tartozik ezen a csatornán."
   overload: System.Runtime.Remoting.Channels.IChannel.Parse*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 references:

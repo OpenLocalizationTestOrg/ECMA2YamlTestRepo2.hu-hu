@@ -13,8 +13,8 @@ items:
   nameWithType: ResolveEventArgs
   fullName: System.ResolveEventArgs
   type: Class
-  summary: "Provides data for loader resolution events, such as the <xref href=&quot;System.AppDomain.TypeResolve&quot;></xref>, <xref href=&quot;System.AppDomain.ResourceResolve&quot;></xref>, <xref href=&quot;System.AppDomain.ReflectionOnlyAssemblyResolve&quot;></xref>, and <xref href=&quot;System.AppDomain.AssemblyResolve&quot;></xref> events."
-  remarks: "When the loader cannot resolve an assembly reference and a handler has been provided for the appropriate loader resolution event, the event is raised and the ResolveEventArgs contains information about the item to be resolved.      -   The <xref:System.ResolveEventArgs.Name%2A> property contains the name of the item to be resolved.      -   Beginning with the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the <xref:System.ResolveEventArgs.RequestingAssembly%2A> property contains the assembly that requested an assembly that can provide the named item. For more information, see the <xref:System.ResolveEventArgs.RequestingAssembly%2A> property."
+  summary: "Adatokat biztosít a betöltő feloldási eseményeket, mint például a <xref href=&quot;System.AppDomain.TypeResolve&quot;> </xref>, <xref href=&quot;System.AppDomain.ResourceResolve&quot;> </xref>, <xref href=&quot;System.AppDomain.ReflectionOnlyAssemblyResolve&quot;> </xref>, és <xref href=&quot;System.AppDomain.AssemblyResolve&quot;> </xref> események."
+  remarks: "Ha a betöltője nem oldható fel egy szerelvényre mutató hivatkozás és a kezelő van megadva a megfelelő betöltő feloldási esemény, az esemény akkor következik be, és a ResolveEventArgs fel kell oldani az elemre vonatkozó információkat tartalmazza.      -A <xref:System.ResolveEventArgs.Name%2A>tulajdonság fel kell oldani az elem nevét tartalmazza.</xref:System.ResolveEventArgs.Name%2A>      -Verziótól kezdve a [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], a <xref:System.ResolveEventArgs.RequestingAssembly%2A>tulajdonsága tartalmazza a kért szerelvényt, amely képes biztosítani az elnevezett elem szerelvény.</xref:System.ResolveEventArgs.RequestingAssembly%2A> További információkért lásd: a <xref:System.ResolveEventArgs.RequestingAssembly%2A>tulajdonság.</xref:System.ResolveEventArgs.RequestingAssembly%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,14 +38,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ResolveEventArgs&quot;></xref> class, specifying the name of the item to resolve."
-  remarks: "This constructor is typically called only by the common language runtime."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ResolveEventArgs&quot;> </xref> osztály, az elem megoldásához nevét megadó."
+  remarks: "Ez a konstruktor csak a közös nyelvi futtatókörnyezet által általában nevezik."
   syntax:
     content: public ResolveEventArgs (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of an item to resolve."
+      description: "Egy elem megoldásához neve."
   overload: System.ResolveEventArgs.#ctor*
   exceptions: []
   platform:
@@ -62,16 +62,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ResolveEventArgs&quot;></xref> class, specifying the name of the item to resolve and the assembly whose dependency is being resolved."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ResolveEventArgs&quot;> </xref> osztály megoldásához elem és a szerelvény, amelynek függőségi oldják meg a név megadásával."
   syntax:
     content: public ResolveEventArgs (string name, System.Reflection.Assembly requestingAssembly);
     parameters:
     - id: name
       type: System.String
-      description: "The name of an item to resolve."
+      description: "Egy elem megoldásához neve."
     - id: requestingAssembly
       type: System.Reflection.Assembly
-      description: "The assembly whose dependency is being resolved."
+      description: "A szerelvény, amelynek függőségi megoldódik."
   overload: System.ResolveEventArgs.#ctor*
   exceptions: []
   platform:
@@ -88,13 +88,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the name of the item to resolve."
-  remarks: "For the <xref:System.AppDomain.AssemblyResolve> event, Name is the assembly name before policy is applied."
+  summary: "Lekérdezi a megoldásához elem nevét."
+  remarks: "Az a <xref:System.AppDomain.AssemblyResolve>esemény neve: a szerelvénynév házirend alkalmazása előtt.</xref:System.AppDomain.AssemblyResolve>"
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The name of the item to resolve."
+      description: "A megoldásához elem nevét."
   overload: System.ResolveEventArgs.Name*
   exceptions: []
   platform:
@@ -111,13 +111,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the assembly whose dependency is being resolved."
-  remarks: "The assembly that is returned by this property is an assembly that was unable to resolve the item specified by the <xref:System.ResolveEventArgs.Name%2A> property, because the item did not exist in that assembly, in any of its loaded dependencies, or in any dependencies the loader could find through probing.       For example, suppose the current assembly uses the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method to load assembly A from a directory outside the probing path, in order to use class CA. Suppose further that class CA uses class CB, in assembly B, and that assembly A has a compile-time reference to assembly B, also located outside the probing path. When the current assembly attempts to instantiate CA, the loader attempts to resolve the reference to assembly B. However, because assembly A was loaded by using the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method, the loader cannot resolve the dependency. If there is a handler for the <xref:System.AppDomain.AssemblyResolve?displayProperty=fullName> event, the event is raised, and the RequestingAssembly property of the resulting <xref:System.ResolveEventArgs> object contains assembly A, because assembly A is the assembly that is missing a dependency.       The semantics of the RequestingAssembly property vary, depending on how the requesting assembly was loaded:      -   Load context: The value of the property might be `null`. The load context is load-order independent, and the identity of the requesting assembly is not necessarily meaningful. A non-null example occurs when the <xref:System.Type.GetType%2A?displayProperty=fullName> method is called and the specified type is not known to the requesting assembly or any of its dependencies.      -   Load-from context: The property can be used as a probing hint, but the event handler should not get more than one request for a given assembly name.      -   No context (that is, the requesting assembly was loaded by using the <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> method, or as a byte stream, or in mixed mode): The handler can use the RequestingAssembly property to load different implementations of the same assembly based on the identity of the requesting assembly."
+  summary: "Lekérdezi a szerelvény, amelynek függőségi megoldódik."
+  remarks: "Ez a tulajdonság által visszaadott szerelvény egy szerelvény, amely nem tudta feloldani a megadott elem a <xref:System.ResolveEventArgs.Name%2A>tulajdonság, mert az elem nem létezik az adott szerelvénybe betöltött függőségeinek valamelyikében, vagy a bármely függőségek a betöltő találta keresztül probing.</xref:System.ResolveEventArgs.Name%2A>       Tegyük fel például, az aktuális szerelvény használja a <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>metódust a vizsgálathoz használt elérési utat kívüli könyvtárra osztály hitelesítésszolgáltató használatához A szerelvény betöltése.</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> Tegyük fel, hogy a hitelesítésszolgáltató osztály további osztály CB használ, a következő szerelvényben B, és hogy A szerelvény egy fordítási időben, a B kiszolgálóra, és szerelvényre mutató hivatkozást is kívül található a vizsgálathoz használt elérési utat. Ha az aktuális szerelvény próbál hitelesítésszolgáltató példányosítható, a betöltő megkísérli b szerelvényre mutató hivatkozás Azonban A szerelvény használatával lett betöltve, mert a <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>metódus, a betöltő nem oldható fel a függőség.</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName> Ha egy hibakezelőt a <xref:System.AppDomain.AssemblyResolve?displayProperty=fullName>esemény, az esemény akkor következik be, és a létrejövő RequestingAssembly tulajdonsága <xref:System.ResolveEventArgs>objektum tartalmazza A szerelvényt, mert A szerelvény a szerelvény, amely hiányzik egy függőségi.</xref:System.ResolveEventArgs> </xref:System.AppDomain.AssemblyResolve?displayProperty=fullName>       A RequestingAssembly tulajdonság szemantikáját eltérők lehetnek, attól függően, hogy a kérelmező szerelvény be van töltve:-betöltési környezetben: a tulajdonság értékének lehet `null`. A betöltési környezetben betöltési-sorrendjének független, és a kérelmező azonosságát szerelvény nincs feltétlenül értelmezhető. Egy null értékű például akkor fordul elő, amikor a <xref:System.Type.GetType%2A?displayProperty=fullName>metódus lehívásra kerül, és a megadott típus nem ismeri a kérelmező szerelvény vagy bármely olyan függősége.</xref:System.Type.GetType%2A?displayProperty=fullName>      -Betöltési-a környezetben: A tulajdonság a vizsgálathoz használt mutató használható, de az eseménykezelő nem kapja meg a megadott szerelvénynév egynél több kérelem.      -Nincs környezet (Ez azt jelenti, hogy a kérelmező szerelvény használatával lett betöltve a <xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>metódus, vagy egy bájtos adatfolyam, vagy vegyes módban): A kezelő a RequestingAssembly tulajdonság segítségével különböző példányait a kérelmező szerelvény identitása alapján ugyanaz a szerelvény betöltése.</xref:System.Reflection.Assembly.LoadFile%2A?displayProperty=fullName>"
   syntax:
     content: public System.Reflection.Assembly RequestingAssembly { get; }
     return:
       type: System.Reflection.Assembly
-      description: "The assembly that requested the item specified by the <xref:System.ResolveEventArgs.Name*> property."
+      description: "Az elem által meghatározott kért szerelvény a <xref:System.ResolveEventArgs.Name*>tulajdonság.</xref:System.ResolveEventArgs.Name*>"
   overload: System.ResolveEventArgs.RequestingAssembly*
   exceptions: []
   platform:
