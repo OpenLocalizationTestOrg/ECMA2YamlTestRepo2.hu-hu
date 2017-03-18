@@ -38,8 +38,8 @@ items:
   nameWithType: WebPartPersonalization
   fullName: System.Web.UI.WebControls.WebParts.WebPartPersonalization
   type: Class
-  summary: "Implements low-level personalization operations."
-  remarks: "This class implements the logic required to carry out lower-level personalization operations. Although the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> class manages the high-level life cycle of personalization, it is the WebPartPersonalization class that is responsible for actually implementing the physical steps necessary to carry out specific personalization actions. The WebPartPersonalization class in turn relies on an implementation of <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider> to communicate with the underlying data store for personalization information.       If you use the default implementation of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager>, it creates an instance of the WebPartPersonalization class that you can use by referencing the <xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> property. For example, to access the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property, you would specify `WebPartManager.Personalization.InitialScope`."
+  summary: "Alacsony szintű testreszabási műveletek valósít meg."
+  remarks: "Ez az osztály megvalósítja az alacsonyabb szintű testreszabási műveletek elvégzéséhez szükséges logikát. Bár a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>osztály kezeli a magas szintű életciklusának személyre szabása, a WebPartPersonalization osztály, amely felelős az ténylegesen végrehajtaná a fizikai adott testreszabási műveletek végrehajtásához szükséges lépéseket.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> A WebPartPersonalization osztály támaszkodik megvalósítása <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>az alapul szolgáló adattár személyre szabása információt kommunikálni.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider>       Ha az alapértelmezett implementációja a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>, létrehozza a Vezérlőpultjának használható WebPartPersonalization osztály egy példányát a <xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.Personalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> Például, hogy hozzáférést a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>tulajdonság, kellene megadnia `WebPartManager.Personalization.InitialScope`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   example:
   - "The following code example shows how the WebPartPersonalization class is used, as well as providing an example of how personalization scope affects the results of personalized properties. This example has five files:  \n  \n-   An .aspx page that declaratively creates two Web Part zones, each with a control.  \n  \n-   A user control called `Color.ascx` that allows a user to change a personalized property that applies a text box background color based on the user's authorization rights to modify state information and to enter shared scope.  \n  \n-   A user control called `Persmode.ascx` that indicates what the current page scope is and what rights the current user has to enter shared scope or to modify data; it also provides two buttons; one to change scope and one to reset current user personalization information.  \n  \n-   A login control that is used to authorize users.  \n  \n-   A Web.config file with a section that provides an example of authorizing a user to modify personalization state and to enter shared scope.  \n  \n The following code creates an aspx page  with a <xref:System.Web.UI.WebControls.WebParts.WebPartManager> and two Web Part zones and displays the `Color.ascx` and `Persmode.ascx` controls. The page loads a login page that is used to get the current user information. Use the ASP.NET Web Site Administration Tool in [!INCLUDE[vsprvsext](~/add/includes/ajax-current-ext-md.md)] to create users to access the page. See the Web.config file for an example of a user granted authorization in the configuration file to change scope and modify state information.  \n  \n [!code-cs[WebParts_WebPartPersonalization#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_1.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_1.aspx)]  \n  \n The following example code creates a login page. After a successful login, it redirects to the main aspx page.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#5](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_2.aspx)]\n [!code-vb[WebParts_WebPartPersonalization#5](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_2.aspx)]  \n  \n The following example code is a portion of the Web.config file for this application. This section shows how to set authorization for a user, in this case \"user2\", to enter shared personalization scope and to modify personalization state information. It also shows an example of a role, in this case \"admin\", that can be used to allow users in the \"admin\" role to enter shared personalization scope and to modify personalization state information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following example code creates a user control, called `Color.ascx`, that allows the user to change a personalized property, in this case the background color of two text boxes, based on the current personalization scope and the authorization rights of the user.  \n  \n> [!IMPORTANT]\n>  This example has a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](../Topic/Script%20Exploits%20Overview.md).  \n  \n [!code-cs[WebParts_WebPartPersonalization#3](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_4.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#3](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_4.ascx)]  \n  \n The following example code creates a user control, called `Persmode.ascx`, that shows the current personalization scope and the user rights to modify state and to enter shared scope. It also has a reset button for resetting the current personalization state.  \n  \n [!code-cs[WebParts_WebPartPersonalization#4](~/add/codesnippet/csharp/t-system.web.ui.webcontr_306_5.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#4](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_306_5.ascx)]"
   syntax:
@@ -65,19 +65,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "This constructor initializes an instance of this class and associates it with the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control on whose behalf the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance will carry out personalization operations."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor ezen osztály egy példányát inicializálja, és társítja azt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő, akinek a nevében a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>példány testreszabási műveletek végre fogja hajtani.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public WebPartPersonalization (System.Web.UI.WebControls.WebParts.WebPartManager owner);
     parameters:
     - id: owner
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> used to manage the personalization information"
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> használt a személyre szabási adatok kezelése"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>owner</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>owner</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState
@@ -92,8 +92,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "A személyre szabási adatok vonatkozik a szülő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, ez a metódus meghívja a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>metódust a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>személyesítés állapotának a megadott kijelzők szabályozására alkalmazni kívánt példány.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState ();
     parameters: []
@@ -116,22 +116,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Applies personalization data to the specified <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This method is called to apply personalization data to an individual <xref:System.Web.UI.WebControls.WebParts.WebPart>-derived class when requested to do so by the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control.       If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to apply personalization state to the supplied Web Parts control."
+  summary: "A személyre szabási adatok vonatkozik a megadott <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> szabályozhatja, hogy mikor ehhez a szülő által kért <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "Ezt a módszert nevezik megszemélyesítési adatok alkalmazása egy adott <xref:System.Web.UI.WebControls.WebParts.WebPart>-osztályt, ha a szülő ehhez szükség <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPart>       Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, ez a metódus meghívja a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A>metódust a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>személyesítés állapotának a megadott kijelzők szabályozására alkalmazni kívánt példány.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ApplyWebPartPersonalization%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>"
   syntax:
     content: protected virtual void ApplyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to which personalization data is to be applied."
+      description: "A kijelzők szabályozhatja, hogy mely személyre szabási adatok jelenti, hogy alkalmazható."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ApplyPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to apply personalization state to a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "Kísérlet történt egy kijelzők szabályozására, a szülő által nem kezelt személyes beállítási állapotot alkalmazni <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>webPart</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>webPart</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to apply personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n An attempt was made to apply personalization data more than once to the same Web Parts control."
@@ -149,15 +149,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "This property returns `true` if the user is authorized in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       The first time the property is called, it determines the user&quot;s right to enter <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope and caches the information. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not shown on subsequent calls to this property."
+  summary: "Jelzi, hogy a felhasználó jogosult-e adnia értéket ad vissza <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatókör."
+  remarks: "Ez a tulajdonság adja vissza `true` Ha a felhasználó jogosult-e a a <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>megadását <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>hatókör.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>       Először a tulajdonság neve, meghatározza, hogy a felhasználó jogosultságát megadását <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>hatókörre, gyorsítótárazza az adatokat.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>szótár módosítása után először ez tulajdonság neve, a módosítások nem láthatók a további hívások erre a tulajdonságra.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the CanEnterSharedScope property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/p-system.web.ui.webcontr_259_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_259_1.ascx)]"
   syntax:
     content: public bool CanEnterSharedScope { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a felhasználó jogosult-e meg <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatókör; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope*
   exceptions: []
   platform:
@@ -174,22 +174,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Changes the current page&quot;s <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance to the scope specified."
-  remarks: "This method changes the currently executing page&quot;s personalization scope to the new scope specified by the `newScope` parameter. This method is the protected helper method that is called by the public <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method. This protected method exists to handle future extensibility if there are more than two possible scopes to switch between.       If the current scope and `newScope` are the same value, then this method performs no operation."
+  summary: "Módosítja az aktuális oldalon <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> példány a megadott hatókörhöz."
+  remarks: "Ez a módszer a jelenleg végrehajtás alatt álló lap testreszabási hatókörében módosításai az új hatókört, amelyet a `newScope` paraméter. Ez a módszer a nagyközönség által védett segédmetódus <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> A védett metódus létezik-e kezelni jövőbeli kiterjeszthetőség, ha több mint két lehetséges hatókörök közötti váltáshoz.       Ha az aktuális hatókörben és `newScope` ugyanazt az értéket, akkor ez a módszer nem műveletet hajt végre."
   syntax:
     content: protected virtual void ChangeScope (System.Web.UI.WebControls.WebParts.PersonalizationScope scope);
     parameters:
     - id: scope
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The new personalization scope for the current page."
+      description: "Az új személyre szabása hatókör az aktuális lapon."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "If attempting to switch from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope, the current user does not have the user capability to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
+    description: "Ha megpróbálja váltani <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> a hatókör <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatókör, az aktuális felhasználó nem rendelkezik adja meg a felhasználó képes <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatókör."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>scope</code> is not a valid member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "<code>scope</code>tagja nem érvényes a <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> enumerálása."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState(System.Web.UI.WebControls.WebParts.WebPart,System.Web.UI.WebControls.WebParts.WebPart)
@@ -204,17 +204,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts the personalization state from one Web Parts control and applies it to a second Web Parts control."
-  remarks: "This method extracts the personalization state from `webPartA` and applies it to `webPartB`. This method assumes that `webPartA` and `webPartB` are the same type. If the Web Parts controls are <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> controls, the method copies the personalization state from the child control wrapped in `webPartA` to the child control wrapped in `webPartB`.       As part of the copy operation, `webPartB` is marked as &quot;dirty&quot;."
+  summary: "A személyesítés beállítási állapot a kijelzők egy vezérlőt, és alkalmazza azt egy második kijelzők vezérlő."
+  remarks: "Ez a módszer kibontja a személyre szabási állapot `webPartA` , és alkalmazza azt `webPartB`. Ez a módszer feltételezi, hogy `webPartA` és `webPartB` azonos típusú. Ha a kijelző vezérlő <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>vezérlők, a módszer másolja át a személyre szabási állapot csomagolni gyermekvezérlő `webPartA` gyermek vezérlőhöz csomagolni `webPartB`.</xref:System.Web.UI.WebControls.WebParts.GenericWebPart>       A másolási művelet részeként `webPartB` &quot;hibás&quot; van megjelölve."
   syntax:
     content: protected virtual void CopyPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPartA, System.Web.UI.WebControls.WebParts.WebPart webPartB);
     parameters:
     - id: webPartA
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control supplying the personalization data."
+      description: "A kijelzők vezérlő biztosítja a személyre szabási adatok."
     - id: webPartB
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control receiving the personalization data."
+      description: "A kijelzők vezérlő a személyre szabási adatok fogadását."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.CopyPersonalizationState*
   exceptions:
   - type: System.ArgumentNullException
@@ -237,18 +237,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether personalization is requested to be enabled for the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This property indicates whether personalization is requested to be enabled for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. Note that this is a subtle but important distinction from the intent of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means that the Enabled property must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element if personalization should be disabled. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "Visszaadja egy érték, amely jelzi, hogy személyre szabása kért-e engedélyezni kell a társított <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "Ez a tulajdonság azt jelzi, hogy személyre szabása kért-e engedélyezni kell a szülő <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> Vegye figyelembe, hogy ez egy finom, de fontos különbség és <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> rendeltetésből kiolvasott       Ez a tulajdonság csak akkor állítható a befejezése előtt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> A gyakorlatban ez azt jelenti, hogy az Enabled tulajdonságot meg kell a lap jelölőkódjában a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>elem, ha személyre szabása le kell tiltani.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> Azt is megteheti, ez a tulajdonság során állítható be a `PreInit` fázisában a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha engedélyezve van a Testreszabás; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "Kísérlet történt a tulajdonság értékének beállítása után a társított <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>metódus fejeződött be.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled(System.Boolean)
@@ -263,14 +263,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Ensures that the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance has completed initialization or that the current user has rights to modify personalization state."
+  summary: "Biztosítja, hogy a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> példány inicializálása vagy az, hogy az aktuális felhasználó rendelkezik-e a személyes beállítási állapot módosítására jogosultságokkal befejeződött."
   remarks: "This method is a helper method used in several <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> methods to ensure one of two things:  \n  \n-   The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance has completed initialization (for example, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method was called and successfully completed). This check is made if the `ensureModifiable` parameter equals `false`.  \n  \n     \\- or -  \n  \n-   The current user has rights to modify personalization state. This check is made if `ensureModifiable` equals `true`.  \n  \n The <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control also calls this method in a number of cases:  \n  \n-   To switch the display mode to something other than normal. The current user must have rights to modify personalization state.  \n  \n-   To add, delete, or move Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To connect, disconnect, and edit Web Parts controls. The current user must have rights to modify personalization state.  \n  \n-   To export the Web Parts controls on a page. The <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance must have completed initialization.  \n  \n-   To import Web Parts controls. The current user must have rights to modify personalization state."
   syntax:
     content: public void EnsureEnabled (bool ensureModifiable);
     parameters:
     - id: ensureModifiable
       type: System.Boolean
-      description: "A Boolean value indicating which type of check should be made."
+      description: "Egy logikai érték, amely az ellenőrzés típusát kell tenni."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.EnsureEnabled*
   exceptions:
   - type: System.InvalidOperationException
@@ -290,13 +290,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to enter <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> scope."
-  remarks: "The user right is represented by the string &quot;enterSharedScope&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "Jelöli a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> példányt adjon meg egy felhasználói engedély <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatókör."
+  remarks: "A felhasználói jogosultságot a &quot;enterSharedScope&quot; karakterlánc által képviselt a <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>példány.</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability EnterSharedScopeUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -312,8 +312,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control during its <xref:System.Web.UI.Page.SaveStateComplete> event.       This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "A személyre szabási adatok kibontja a szülő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, és a személyes beállítási állapot nem alaphelyzetbe állítása a lap lekérése során (például amikor a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>tulajdonság `false`), akkor ez a módszer a személyre szabási adatok kibontja a szülő <xref:System.Web.UI.WebControls.WebParts.WebPartManager>során végzett a <xref:System.Web.UI.Page.SaveStateComplete>esemény.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>       Ez a metódus meghívja a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>metódust a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>személyesítés beállítási állapot kibontani a szülő példány <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartManagerPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState ();
     parameters: []
@@ -336,19 +336,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Extracts personalization data from a Web Parts control when requested to do so by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, and personalization state is not being reset during the page request (such as when the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is `false`), then this method extracts personalization data from the Web Parts control specified by `webPart`. This method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A> method on the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState> instance to extract personalization state from the supplied Web Parts control."
+  summary: "A személyre szabási adatok kiolvassa a kijelzők vezérlő ehhez a szülő kérésekor <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, és a személyes beállítási állapot nem alaphelyzetbe állítása a lap lekérése során (például amikor a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>tulajdonság `false`), akkor ez a módszer a személyre szabási adatok kiolvassa a kijelzők vezérlő által megadott `webPart`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> Ez a metódus meghívja a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>metódust a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState>személyesítés beállítási állapot kibontani a megadott kijelzők vezérlő példányát.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState> </xref:System.Web.UI.WebControls.WebParts.PersonalizationState.ExtractWebPartPersonalization%2A>"
   syntax:
     content: protected virtual void ExtractPersonalizationState (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control containing personalization data to be extracted."
+      description: "A kijelzők kinyerni a személyre szabási adatok tartalmazó szabályozzák."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ExtractPersonalizationState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to extract personalization state from a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "Kísérlet történt a személyesítés beállítási állapot kibontani a szülő által nem kezelt kijelzők vezérlő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "An attempt was made to extract personalization state prior to the state being loaded from the underlying data store.  \n  \n \\- or -  \n  \n Personalization state has not been applied yet.  \n  \n \\- or -  \n  \n The <xref:System.Web.UI.Control.ID*> of the <xref href=\"System.Web.UI.WebControls.WebParts.WebPart\"></xref> has changed since personalization data was applied.  \n  \n \\- or -  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
@@ -366,17 +366,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Retrieves the authorization filter, if any, associated with the specified Web Parts control."
-  remarks: "This method retrieves the authorization filter, if any, associated with the Web Parts control identified by `webPartID`. Each Web Parts control that is serialized and managed by personalization is associated with a `webPartID` parameter. At run time, a page&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control can filter the controls displayed on a page by determining whether each Web Parts control is authorized. This authorization information is stored as a string in the data associated with each Web Parts control."
+  summary: "Lekéri az engedélyezési szűrőt, ha vannak ilyenek, a megadott kijelzők vezérlőhöz tartozó."
+  remarks: "Ez a módszer az engedélyezési szűrő kéri le, ha vannak ilyenek, a kijelzők vezérlő által azonosított társított `webPartID`. Minden egyes kijelzők vezérlő szerializált és kezeli a személyre szabási társítva van egy `webPartID` paraméter. At futási időt, egy lap tartozó <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő szűrheti a vezérlők meghatározása, hogy a kijelzők vezérlők számára engedélyezett-e egy oldalon megjelenő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> A hitelesítési információ tárolja az adatokat, minden egyes kijelzők vezérlőhöz karakterláncot."
   syntax:
     content: protected virtual string GetAuthorizationFilter (string webPartID);
     parameters:
     - id: webPartID
       type: System.String
-      description: "The ID of the Web Parts control associated with the filter to be retrieved."
+      description: "A kijelzők vezérlő azonosítója a szűrő társított kérhető."
     return:
       type: System.String
-      description: "The authorization filter for the specified Web Parts control."
+      description: "A megadott kijelzők vezérlő engedélyezési szűrő."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.GetAuthorizationFilter*
   exceptions:
   - type: System.InvalidOperationException
@@ -384,7 +384,7 @@ items:
     description: "An attempt was made to retrieve an authorization filter when <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*> is <xref uid=\"langword_csharp_false\" name=\"false\" href=\"\"></xref> by calling this method too early in the page life cycle.  \n  \n \\- or -  \n  \n An attempt was made to retrieve an authorization filter and no personalization state has been loaded.  \n  \n \\- or  \n  \n The personalization state returned from the data store was <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>webPartID</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;)."
+    description: "<code>webPartID</code>van <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc (&quot;&quot;)."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns a value indicating whether the current page and personalization scope have associated personalization data."
-  remarks: "This is a convenient method for determining whether the current page and scope combination has personalization data associated with it. Internally, the method calls <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A> on the provider to determine whether data exists."
+  summary: "Hogy az aktuális és a személyes beállításokat tartalmazó hatókörbe társított megszemélyesítési adatok jelző érték beolvasása."
+  remarks: "Ez az egy kényelmes módszert meghatározásához, hogy rendelkezik-e társítva a személyre szabási adatok az aktuális lap és hatókör kombinációja. Belsőleg, az metódushívások <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>annak meghatározásához, hogy létezik-e adatokat a szolgáltatót.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.GetCountOfState%2A>"
   syntax:
     content: public virtual bool HasPersonalizationState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the page has personalization data associated with it; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a lapnak; társított megszemélyesítési adatok Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.HasPersonalizationState*
   exceptions:
   - type: System.InvalidOperationException
@@ -425,21 +425,21 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the default personalization scope."
-  remarks: "This property represents the default personalization scope that should be used for the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control in the absence of previous knowledge about the proper scope. If this property is not explicitly set, it defaults to returning <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope> scope.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. In practice, this means InitialScope must be set in the page markup on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element. Alternatively, this property can be set during the `PreInit` phase of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "Lekérdezi vagy beállítja az alapértelmezett személyes beállításokat tartalmazó hatókörbe."
+  remarks: "Ez a tulajdonság adja meg az alapértelmezett személyes beállításokat tartalmazó hatókörbe, használja a rendszer a szülő <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő a megfelelő hatókörben előző ismerete hiányában.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> Ha ez a tulajdonság nincs megadva, alapértelmezés szerint az adatszolgáltató <xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>hatókör.</xref:System.Web.UI.WebControls.WebParts.PersonalizationScope>       Ez a tulajdonság csak akkor állítható a befejezése előtt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> A gyakorlatban ez azt jelenti, hogy InitialScope kell állítani a lap jelölőkódjában a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>elem.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> Azt is megteheti, ez a tulajdonság során állítható be a `PreInit` fázisában a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: public virtual System.Web.UI.WebControls.WebParts.PersonalizationScope InitialScope { get; set; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> indicating the default personalization scope of the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> , amely jelzi, a társított alapértelmezett testreszabási hatókörében <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the associated <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method had completed."
+    description: "Kísérlet történt a tulajdonság beállításához értéktől eltérőre a jelenlegi értéke után a társított <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>metódus fejeződött be.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to set a value of InitialScope that is not a member of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration."
+    description: "Kísérlet történt meg, amely nem tagja InitialScope érték a <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> enumerálása."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled
@@ -454,13 +454,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "Prior to loading personalization data, this property will always return `false`. For example, this property will return `false` during the `PreInit` phase. After the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called), this property will then return `true`.       This property is a publicly accessible alias for the protected <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A> property."
+  summary: "Egy érték, amely jelzi, hogy a személyre szabási engedélyezve van, és sikeresen betöltötte az ezen példányának a személyre szabási adatok beolvasása a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> osztály."
+  remarks: "Megszemélyesítési adatok betöltése előtt mindig visszatér a tulajdonság `false`. Például ennek a tulajdonságnak visszaadható `false` során a `PreInit` fázisban. Után a társított <xref:System.Web.UI.WebControls.WebParts.WebPartManager>tartozó <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus sikeresen befejeződött (számlálási időintervalluma a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>módszer neve), ez a tulajdonság fog majd térjen vissza `true`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>       Ez a tulajdonság akkor nyilvánosan elérhető aliasa a védett <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized%2A>"
   syntax:
     content: public bool IsEnabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is enabled for the current <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance and personalization data has successfully loaded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha személyre szabása engedélyezve van az aktuális <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> példány és a személyre szabási adatok sikeresen betöltve; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled*
   exceptions: []
   platform:
@@ -477,13 +477,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether personalization is enabled and has successfully loaded personalization data for this instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> class."
-  remarks: "If the personalization feature is enabled (if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> property is set to `true`), the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance is considered initialized immediately after the associated <xref:System.Web.UI.WebControls.WebParts.WebPartManager>&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method has successfully completed (during which the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method is called). Prior to loading personalization data, this property always returns `false`."
+  summary: "Egy érték, amely jelzi, hogy a személyre szabási engedélyezve van, és sikeresen betöltötte az ezen példányának a személyre szabási adatok beolvasása a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> osztály."
+  remarks: "Ha a személyre szabási szolgáltatás engedélyezve van (Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A>tulajdonság értéke `true`), a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>példánya tekinthető közvetlenül után a társított inicializálva <xref:System.Web.UI.WebControls.WebParts.WebPartManager>meg <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus sikeresen befejeződött (során, ami a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>módszer neve).</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Enabled%2A> Megszemélyesítési adatok betöltése előtt mindig adja meg ezt a tulajdonságot `false`."
   syntax:
     content: protected bool IsInitialized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if personalization is initialized for this instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha személyre szabása inicializálva van erre a példányra; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsInitialized*
   exceptions: []
   platform:
@@ -500,15 +500,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether the current user is authorized to modify state information."
-  remarks: "The first time this property is called, it caches the result of determining the user’s right to modify personalization state. If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A> dictionary is modified after the first time this property is called, changes are not reflected in subsequent calls to this property."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy engedélyezett-e az aktuális felhasználói állapot adatainak módosítása."
+  remarks: "Ez a tulajdonság neve, először a személyes beállítási állapot módosítására a felhasználó jobbra meghatározásánál eredményét gyorsítótárazza. Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>szótár módosítása után ez a tulajdonság neve először, nem tükröződnek az ezt követő hívások erre a tulajdonságra.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities%2A>"
   example:
   - "The following code demonstrates using the IsModifiable property. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#6](~/add/codesnippet/csharp/p-system.web.ui.webcontr_67_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#6](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_67_1.ascx)]"
   syntax:
     content: public bool IsModifiable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user is authorized to modify state information; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a felhasználó jogosult-e módosítani állapotadatokat; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable*
   exceptions: []
   platform:
@@ -525,14 +525,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes personalization."
-  remarks: "This is the main entry point for initializing personalization information on behalf of the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control. This method is called during the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. Normally, if personalization has been disabled on the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control, this method will never be called.       During the course of this method, the following initializations occur:      -   A reference to either the default personalization provider, or the custom provider indicated in the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> page markup or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> property, is obtained.      -   The provider is called to determine the user capabilities (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) for the currently executing user.      -   The personalization state for the current page/user/scope combination is loaded from the underlying data store by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) and stored within the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance.      -   The personalization scope for the current page/user/scope is determined by the provider (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>). Note that the result of this determination might be different than the value of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property.       The scope value returned from this method is used as the value for the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A> property.      > [!NOTE] >  An <xref:System.InvalidOperationException> exception due to personalization not being enabled will occur only if the Load method is called directly. In the ASP.NET implementation, an internal helper method is actually called to perform the load, and this helper method silently returns if personalization has not been enabled for the page."
+  summary: "Személyre szabás inicializál."
+  remarks: "Ez az a fő belépési pontjához inicializálása a szülő nevében személyre szabási adatainak <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> Ez a módszer elnevezése a szülő során <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> Normális esetben ha személyre szabása le van tiltva, a szülő <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő, ez a módszer nem fogja meghívni.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>       Során ezt a módszert, a következő előkészítésben fordulhat elő: - A hivatkozik, vagy az alapértelmezett megszemélyesítési szolgáltató, vagy az egyéni szolgáltató jelzett a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>lap jelölőkódjában vagy a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A>tulajdonság, egységekre.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>      -A szolgáltató beszerzését határozza meg a felhasználó tulajdonságait (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>) a jelenleg végrehajtás alatt lévő felhasználó számára.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineUserCapabilities%2A>      -A személyre szabási állapota a jelenlegi lap/felhasználó/hatókör kombinációja be van töltve az alapul szolgáló adattárolóból a szolgáltató (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>) és tárolt belül a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>példány.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.LoadPersonalizationState%2A>      -A testreszabási hatókörében az aktuális lap/felhasználó/hatókör határozza meg a szolgáltató (<xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A>).</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.DetermineInitialScope%2A> Vegye figyelembe, hogy ez a döntés eredménye lehet, hogy az értéke eltér a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>       Ez a metódus által visszaadott hatókör értékét használja a értéke a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope%2A>      > [!NOTE] > Egy <xref:System.InvalidOperationException>kivétel miatt a személyre szabási nem engedélyezett csak akkor, ha a Load metódus neve közvetlenül történik.</xref:System.InvalidOperationException> ASP.NET végrehajtása egy belső segédmetódus ténylegesen elnevezése a betöltése, és a segédmetódus adja vissza csendes módban, ha személyre szabása nem engedélyezett a lap."
   syntax:
     content: protected virtual System.Web.UI.WebControls.WebParts.PersonalizationScope Load ();
     parameters: []
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> a szülő-példány <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load*
   exceptions:
   - type: System.InvalidOperationException
@@ -546,7 +546,7 @@ items:
     description: "A problem occurred while loading and deserializing data.  \n  \n \\- or -  \n  \n An error occurred in the definition of a personalization provider in the configuration file."
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "The underlying personalization providers failed to initialize because a default provider could not be found or because a failure occurred while attempting to initialize a personalization provider."
+    description: "Az alapul szolgáló személyre szabása szolgáltatók nem sikerült inicializálni, mert az alapértelmezett szolgáltató nem található, vagy mert hiba történt, amikor a megszemélyesítési szolgáltató inicializálására tett kísérlet."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability
@@ -561,13 +561,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> instance of a user&quot;s authorization to modify personalization state."
-  remarks: "The user right is represented by the string &quot;modifyState&quot; in the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance."
+  summary: "Jelzi a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> példány engedély a felhasználó a személyes beállítási állapot módosítására."
+  remarks: "A felhasználói jogosultságot a &quot;modifyState&quot; karakterlánc által képviselt a <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>példány.</xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>"
   syntax:
     content: public static readonly System.Web.UI.WebControls.WebParts.WebPartUserCapability ModifyStateUserCapability;
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartUserCapability
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -583,18 +583,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the provider name for personalization."
-  remarks: "This property returns the value set for this property in the page declaration. If this property was not set, it returns <xref:System.String.Empty>. In this case, the page uses the default personalization provider specified in the configuration file.       This property can only be set prior to the completion of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> method. This means the ProviderName property must be set in the page declaration on the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> element.  Alternatively, this property can be set during the `PreInit` phase."
+  summary: "Lekérdezi vagy beállítja a megszemélyesítési szolgáltató nevét."
+  remarks: "Ez a tulajdonság a lap deklarációjában tulajdonság értékét adja vissza. Ha ez a tulajdonság nincs beállítva, <xref:System.String.Empty>.</xref:System.String.Empty> adja vissza Ebben az esetben a lap használja az alapértelmezett megszemélyesítési szolgáltató a konfigurációs fájlban megadott.       Ez a tulajdonság csak akkor állítható a befejezése előtt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> Ez azt jelenti, hogy a nyilatkozat oldalon kell beállítani a ProviderName tulajdonságot a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>elem.</xref:System.Web.UI.WebControls.WebParts.WebPartManager>  Azt is megteheti, ez a tulajdonság során állítható be a `PreInit` fázisban."
   syntax:
     content: public virtual string ProviderName { get; set; }
     return:
       type: System.String
-      description: "The name of the personalization provider."
+      description: "A megszemélyesítési szolgáltató neve."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ProviderName*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to set this property to a value other than its current value after the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*> method has completed."
+    description: "Kísérlet történt a tulajdonság beállításához értéktől eltérőre után az aktuális értékét az <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>metódus befejeződött.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.OnInit*>"
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState
@@ -609,8 +609,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Resets personalization data for the current page, scope, and user in the underlying data store."
-  remarks: "This method resets personalization data for the current page, scope, and user in the underlying data store. As a side effect of the reset, the currently executing page is re-executed by a <xref:System.Web.HttpServerUtility.Transfer%2A> call. Note that this transfer re-executes the current page as a `GET` request regardless of how the page was originally requested.       This method can be called at any time. Internally, this method calls the ResetPersonalizationState method on the provider. After data is successfully reset, the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> property is set to `true`. This property is used elsewhere by the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> instance to bypass extracting personalization data from control properties and saving it if data has already been reset."
+  summary: "Alaphelyzetbe állítja az aktuális oldalon, hatókör és az alapul szolgáló adattár a felhasználó személyre szabási adatok."
+  remarks: "A művelet visszaállítja az aktuális oldalon, hatókör és az alapul szolgáló adattár a felhasználó személyre szabási adatok. Az alaphelyzetbe állítás mellékhatása, mint a jelenleg végrehajtás alatt álló lap újból futtatja a <xref:System.Web.HttpServerUtility.Transfer%2A>hívása.</xref:System.Web.HttpServerUtility.Transfer%2A> Vegye figyelembe, hogy az átvitel újra végrehajtja az aktuális oldalon, a `GET` függetlenül attól, milyen a lap eredetileg kért kérelem.       Ez a módszer bármikor hívható. Belsőleg Ez a módszer a ResetPersonalizationState metódus meghívja a szolgáltató. Adatok sikeresen visszaállítva, miután a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A>tulajdonsága `true`.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState%2A> Ez a tulajdonság által máshol használható a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>megkerüljék a vezérlő tulajdonságai a személyre szabási adatok kibontása példány, és mentse azt, ha az adatok már alaphelyzetbe lett állítva.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>"
   syntax:
     content: public virtual void ResetPersonalizationState ();
     parameters: []
@@ -618,7 +618,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance cannot reference a valid personalization provider."
+    description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> példányt egy érvényes megszemélyesítési szolgáltatót nem lehet hivatkozni."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Save
@@ -633,8 +633,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves personalization data for the current page, scope, and user to the underlying data store."
-  remarks: "This method is called during the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event. Internally, the method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A> method on the provider.       Attempting to save personalization data when the currently executing user does not have the capability called <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> (within the current <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> instance) results in an <xref:System.InvalidOperationException> exception. Note that this would only be true if the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control called the protected Save method directly. In the ASP.NET implementation, an internal helper method is actually called to perform the save, and this helper method silently returns if the currently executing user does not have rights to modify data."
+  summary: "Az alapul szolgáló adattár menti az aktuális oldal, a hatókör és a felhasználó személyre szabási adatok."
+  remarks: "Ez a metódus neve alatt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.Page.SaveStateComplete>esemény.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> Belsőleg, az metódushívások a <xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>metódus a szolgáltatóra.</xref:System.Web.UI.WebControls.WebParts.PersonalizationProvider.SavePersonalizationState%2A>       A személyre szabási adatok menteni, ha a jelenleg végrehajtás alatt álló felhasználó nem rendelkezik a funkció hívása <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability>(az aktuális <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability>példány) eredményezi egy <xref:System.InvalidOperationException>kivétel.</xref:System.InvalidOperationException> </xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ModifyStateUserCapability> Vegye figyelembe, hogy ez csak akkor igaz Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő a védett metódus közvetlenül mentése.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> ASP.NET végrehajtása egy belső segédmetódus ténylegesen elnevezése a mentés végrehajtásához, és csendes visszaadja a segédmetódus, ha a jelenleg végrehajtás alatt álló felhasználónak nincs jogosultsága ahhoz, hogy módosíthatják az adatokat."
   syntax:
     content: protected virtual void Save ();
     parameters: []
@@ -657,13 +657,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the current personalization scope for the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control."
-  remarks: "This value is initially set based on the value returned from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> method. This value can be modified by calling the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A> method.       Note that this represents the scope used for applying and extracting personalization information. The value of this property might differ from the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A> property or the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> method."
+  summary: "Lekérdezi az aktuális személyes beállításokat tartalmazó hatókörbe a szülő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlő."
+  remarks: "A kezdeti értéke alapján által visszaadott értékét a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.Load%2A> Ez az érték módosítható meghívásával a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ToggleScope%2A>       Vegye figyelembe, hogy ez jelenti. a hatókör alkalmazása és személyre szabási adatainak beolvasása. Ez a tulajdonság értékének eltérhetnek a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>tulajdonság vagy a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ChangeScope%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.InitialScope%2A>"
   syntax:
     content: public System.Web.UI.WebControls.WebParts.PersonalizationScope Scope { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.PersonalizationScope
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> instance indicating the scope of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> hatóköre jelző példány a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.Scope*
   exceptions: []
   platform:
@@ -680,8 +680,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the parent <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method might invoke security checks and code access security permission checks. Internally, this method calls the <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A> method.       Note that the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control tracks &quot;dirty&quot; state internally and exposes the &quot;dirtiness&quot; of the manager through the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> property rather than through this method."
+  summary: "Jelöli meg a szülő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> vezérlőelemet jelöli meg a személyre szabási adatok módosított rendelkező (az &quot;hibás&quot;)."
+  remarks: "Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, ez a módszer jelöli meg a szülő <xref:System.Web.UI.WebControls.WebParts.WebPartManager>kezelése a &quot;hibás&quot;.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> Attól függően, hogy a megvalósítás részleteit a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő példánya <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, ezt a módszert lehet meghívni a biztonsági ellenőrzésen és code access security engedélyek ellenőrzését.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager> Belsőleg, ez a metódus meghívja a <xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>metódus.</xref:System.Web.UI.WebControls.WebParts.PersonalizationState.SetWebPartManagerDirty%2A>       Vegye figyelembe, hogy a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő belső &quot;hibás&quot; állapotát követi, és elérhetővé teszi a kezelőjéhez &quot;dirtiness&quot; a <xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A>tulajdonság helyett ezzel a metódussal.</xref:System.Web.UI.WebControls.WebParts.IPersonalizable.IsDirty%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty ();
     parameters: []
@@ -689,7 +689,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "Nincs a személyre szabási adatok be van töltve."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty(System.Web.UI.WebControls.WebParts.WebPart)
@@ -704,22 +704,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Marks the specified Web Parts control as having personalization data that has changed (is &quot;dirty&quot;)."
-  remarks: "If the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> property is set to `true`, this method marks the specified Web Parts control as &quot;dirty&quot;. Depending on the implementation details of the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s instance of <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, this method may invoke security checks and code access security permission checks."
+  summary: "A megadott kijelzők vezérlő megváltozott a személyre szabási adatok rendelkezőként jelöli meg (az &quot;hibás&quot;)."
+  remarks: "Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A>tulajdonsága `true`, ez a módszer jelöli meg, mint a &quot;hibás&quot; a megadott kijelzők vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsEnabled%2A> Attól függően, hogy a megvalósítás részleteit a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő példánya <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>, ez a módszer esetleg meghívása biztonsági ellenőrzéseket, és a code access security engedélyek ellenőrzését.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected virtual void SetDirty (System.Web.UI.WebControls.WebParts.WebPart webPart);
     parameters:
     - id: webPart
       type: System.Web.UI.WebControls.WebParts.WebPart
-      description: "The Web Parts control to be marked &quot;dirty&quot;."
+      description: "A kijelzők vezérlő &quot;hibás&quot; kell megjelölni."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.SetDirty*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Attempted to mark as &quot;dirty&quot; a Web Parts control that is not managed by the parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+    description: "&quot;Szabálytalan&quot; a szülő által nem kezelt kijelzők vezérlő megjelölése megpróbálta <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No personalization data has been loaded."
+    description: "Nincs a személyre szabási adatok be van töltve."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value that indicates whether the personalization data of the current page has been reset (for example, a request was made to delete the personalization data from the underlying data store)."
-  remarks: "If this property is set to `true`, it indicates that the personalization state for the current page has been reset and that extraction of personalization data from controls and subsequent save operations should be skipped. Currently, this property is automatically set to `true` by the personalization infrastructure if the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A> method is called.       Note that although there are no restrictions on when this property can be set, the property must be set to `true` prior to the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control&quot;s <xref:System.Web.UI.Page.SaveStateComplete> event to have any effect."
+  summary: "Lekérdez vagy beállít egy értéket, amely jelzi, hogy az aktuális lap a személyre szabási adatok alaphelyzetbe állítása (például egy kérelmet intéztek a személyre szabási adatok törlése az alapul szolgáló adattár)."
+  remarks: "Ha ez a tulajdonság értéke `true`, azt jelzi, hogy a jelenlegi lap a személyre szabási állapot alaphelyzetbe állítása és a személyre szabási adatok kinyerése a vezérlők és az azt követő műveletek mentése kihagyja. Jelenleg ez a tulajdonság értéke automatikusan `true` a személyre szabási infrastruktúra Ha a <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>metódust.</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.ResetPersonalizationState%2A>       Vegye figyelembe, hogy nincs korlátozás az, ha ez a tulajdonság beállítható ugyan, a tulajdonság értékre kell állítani `true` előtt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő <xref:System.Web.UI.Page.SaveStateComplete>esemény hatástalan.</xref:System.Web.UI.Page.SaveStateComplete> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected bool ShouldResetPersonalizationState { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the personalization state for the current page has been reset; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális oldalon személyes beállítási állapotának alaphelyzetbe állítása; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.ShouldResetPersonalizationState*
   exceptions: []
   platform:
@@ -757,8 +757,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Switches the current page&quot;s personalization scope from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> or from <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> to <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref>."
-  remarks: "This method toggles the currently executing page&quot;s personalization scope. Toggling the scope results in a <xref:System.Web.HttpServerUtility.Transfer%2A> back to the current executing page.       This method performs no operation if it is called while an export or import of a Web Parts control is occurring.       If a toggle scope request occurs for a page that was submitted via a `POST` request, then any query string values will be preserved during the transfer; query string parameters are not preserved if the page was submitted via a `GET` request."
+  summary: "Vált a jelenlegi lap személyes beállításokat tartalmazó hatókörbe való <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> való <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> vagy <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> való <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref>."
+  remarks: "Ez a módszer ki-és a jelenleg végrehajtás alatt álló lap személyes beállításokat tartalmazó hatókörbe. A hatókör való átváltással eredményezi egy <xref:System.Web.HttpServerUtility.Transfer%2A>az aktuális végrehajtó oldalra.</xref:System.Web.HttpServerUtility.Transfer%2A>       Ez a módszer nem műveletet hajt végre, ha azt nevezzük, az exportálás során, vagy a kijelzők vezérlő importálása folyamatban van.       Ha történik-e a váltógomb hatókör kérelem egy lap keresztül küldött egy `POST` kérést, majd a lekérdezési karakterlánc-értékek megőrzi az átvitel közben; a lekérdezési karakterlánc paramétereinek a rendszer nem őrzi meg, ha a lap keresztül küldött egy `GET` kérelmet."
   example:
   - "The following code demonstrates using the ToggleScope method. This code is part of a larger code sample found in the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class description.  \n  \n [!code-cs[WebParts_WebPartPersonalization#7](~/add/codesnippet/csharp/m-system.web.ui.webcontr_235_1.ascx)]\n [!code-vb[WebParts_WebPartPersonalization#7](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_235_1.ascx)]"
   syntax:
@@ -771,7 +771,7 @@ items:
     description: "The current user does not have the user capability to enter <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope when attempting to switch from <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope to <xref href=\"System.Web.UI.WebControls.WebParts.PersonalizationScope\"></xref> scope.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.WebControls.WebParts.WebPartPersonalization\"></xref> instance has not completed initialization.  \n  \n \\- or -  \n  \n The <xref href=\"System.Web.UI.Page\"></xref> instance for the associated <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n The value of the <xref:System.Web.UI.Page.Request*> property on the <xref href=\"System.Web.UI.WebControls.WebParts.WebPartManager\"></xref> control's associated <xref href=\"System.Web.UI.Page\"></xref> instance is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "An attempt was made to toggle to a scope that is not defined in the <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;></xref> enumeration. Technically, this situation should never occur."
+    description: "Kísérlet történt egy hatókörhöz, amely nincs definiálva a váltáshoz a <xref href=&quot;System.Web.UI.WebControls.WebParts.PersonalizationScope&quot;> </xref> enumerálása. Technikai szempontból ebben a helyzetben soha ne jöjjön létre."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities
@@ -786,13 +786,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the set of user capabilities from <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;></xref> granted to the current user."
+  summary: "Lekérdezi a felhasználó képességek a készlete <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartUserCapability&quot;> </xref> az aktuális felhasználó számára."
   remarks: 'Currently the <xref:System.Web.UI.WebControls.WebParts.WebPartUserCapability> class contains two values indicating a user''s capabilities: `modifyState` and `enterSharedScope`. For ease of use, the capabilities contained within the dictionary can be checked with the helper properties <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.IsModifiable%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization.CanEnterSharedScope%2A>. Note the restrictions on changing capabilities after either of these properties have been accessed; for details, see the description section of each property.'
   syntax:
     content: protected virtual System.Collections.IDictionary UserCapabilities { get; }
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing the set of user capabilities granted to the current user, or an empty <xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;></xref> if the user is anonymous."
+      description: "Egy <xref:System.Collections.IDictionary>felhasználói jogosultságokat kap az aktuális felhasználó, vagy egy üres készletét tartalmazó <xref href=&quot;System.Collections.Specialized.HybridDictionary&quot;> </xref> névtelen a felhasználó esetén.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.UserCapabilities*
   exceptions: []
   platform:
@@ -809,13 +809,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets an instance of the current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control associated with this <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;></xref> instance."
-  remarks: "Use this property to determine the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control associated with this instance of the <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> class."
+  summary: "Lekérdezi az aktuális szülő példányának <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> ez tartozó vezérlőelem <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartPersonalization&quot;> </xref> példány."
+  remarks: "Ez a tulajdonság segítségével határozza meg, <xref:System.Web.UI.WebControls.WebParts.WebPartManager>Ez az <xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization>osztály</xref:System.Web.UI.WebControls.WebParts.WebPartPersonalization> példánya tartozó vezérlőelem</xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   syntax:
     content: protected System.Web.UI.WebControls.WebParts.WebPartManager WebPartManager { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The current parent <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref>."
+      description: "Az aktuális szülő <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartPersonalization.WebPartManager*
   exceptions: []
   platform:

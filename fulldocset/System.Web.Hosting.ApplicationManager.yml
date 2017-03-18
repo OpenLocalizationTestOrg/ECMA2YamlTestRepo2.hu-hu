@@ -24,8 +24,8 @@ items:
   nameWithType: ApplicationManager
   fullName: System.Web.Hosting.ApplicationManager
   type: Class
-  summary: "Manages ASP.NET application domains for an ASP.NET hosting application."
-  remarks: "The ApplicationManager object provides lifetime management of objects in the hosting environment for an ASP.NET application. It is responsible for:      -   Activating and initializing ASP.NET applications.      -   Managing the application lifetime and the lifetime of objects registered in the application.      -   Exposing objects used by the hosting environment to process ASP.NET application requests.      -   Providing a list of applications running in the hosting process at any given moment."
+  summary: "ASP.NET alkalmazás tartományok kezelése az ASP.NET-alkalmazást."
+  remarks: "A ApplicationManager objektum életciklusának kezelését az objektumok az üzemeltetési környezetben egy ASP.NET-alkalmazás biztosítja. Felelős: - aktiválás és az ASP.NET-alkalmazások inicializálása.      -Az alkalmazás kezelése az alkalmazás élettartamának és objektumok élettartamát regisztrálja.      – Az ilyen objektumok az üzemeltetési környezetben használják az ASP.NET alkalmazás kérelmek feldolgozásához.      -Listájával, amely egy adott időpontban a üzemeltetési folyamatban futó alkalmazásokat."
   syntax:
     content: 'public sealed class ApplicationManager : MarshalByRefObject'
   inheritance:
@@ -50,8 +50,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Shuts down all application domains."
-  remarks: "If a call to the Close method reduces the reference count of applications using the application manager to 0, the Close method calls the <xref:System.Web.Hosting.ApplicationManager.ShutdownAll%2A> method."
+  summary: "Leállítja az összes alkalmazástartományban."
+  remarks: "Ha a Close metódus hívásakor a hivatkozások száma az alkalmazások, az alkalmazás-kezelővel 0-ra csökkenti, a Close metódus meghívja a <xref:System.Web.Hosting.ApplicationManager.ShutdownAll%2A>metódus.</xref:System.Web.Hosting.ApplicationManager.ShutdownAll%2A>"
   syntax:
     content: public void Close ();
     parameters: []
@@ -71,25 +71,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Creates an object for the specified application domain, based on type."
-  remarks: "CreateObject is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "A megadott tartomány típusától függően egy objektumot hoz létre."
+  remarks: "CreateObject megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public System.Web.Hosting.IRegisteredObject CreateObject (System.Web.Hosting.IApplicationHost appHost, Type type);
     parameters:
     - id: appHost
       type: System.Web.Hosting.IApplicationHost
-      description: "An <xref href=&quot;System.Web.Hosting.IApplicationHost&quot;></xref> object."
+      description: "Egy <xref href=&quot;System.Web.Hosting.IApplicationHost&quot;> </xref> objektum."
     - id: type
       type: System.Type
-      description: "The type of the object to create."
+      description: "A létrehozandó objektumnak típusa."
     return:
       type: System.Web.Hosting.IRegisteredObject
-      description: "A new object of the type specified in <code>type</code>."
+      description: "A megadott típusú új objektumot <code> type </code>."
   overload: System.Web.Hosting.ApplicationManager.CreateObject*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "A physical path for the application does not exist."
+    description: "Az alkalmazás fizikai elérési út nem létezik."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "<code>appHost</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
@@ -107,8 +107,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Creates an object for the specified application domain based on type, virtual and physical paths, and a Boolean value indicating failure behavior when an object of the specified type already exists."
-  remarks: "The CreateObject method is used to create and register objects in the application. Only one object of each type can be created. If you need to create multiple objects of the same type, you must implement an object factory. For more information, see the code example in this topic.       Each application, identified by a unique application identifier, runs in its own application domain. The CreateObject method creates an object of the specified type in the application domain of the application specified in the `appID` parameter. If an application domain does not exist for the specified application, one is created before the object is created.       The `failIfExists` parameter controls the behavior of the CreateObject method when an object of the specified type already exists in the application. When `failIfExists` is `true`, the CreateObject method throws an <xref:System.InvalidOperationException> exception.       When `failIfExists` is `false`, the CreateObject method returns the existing registered object of the specified type.       The CreateObject method calls the overload that takes an additional `throwOnError` parameter with `throwOnError` set to `false`."
+  summary: "Létrehoz egy objektum a megadott tartomány típusát, virtuális és fizikai elérési utat és egy logikai érték, ha már létezik a megadott típusú objektum, amely azt jelzi, hogy hiba viselkedés alapján."
+  remarks: "A CreateObject módszert létrehozni és regisztrálni az objektumok az alkalmazásban. Az egyes típusok csak egy objektum hozhatók létre. Ha több, azonos típusú objektumok létrehozásához szükséges, meg kell valósítani egy objektum gyári. További információkért lásd: a Kódpélda ebben a témakörben.       Azonosít egy egyedi azonosítót, az alkalmazások saját alkalmazástartomány futtatja. A CreateObject metódus objektumot hoz létre a megadott típusú alkalmazástartományt az alkalmazás szerepel a `appID` paraméter. Ha egy alkalmazástartomány a megadott alkalmazás nem létezik, egy jön létre, az objektum létrehozása előtt.       A `failIfExists` paraméter CreateObject metódus viselkedését vezérlő, ha a megadott típusú objektum már létezik az alkalmazásban. Ha `failIfExists` van `true`, a CreateObject metódus jelez egy <xref:System.InvalidOperationException>kivétel.</xref:System.InvalidOperationException>       Ha `failIfExists` van `false`, a CreateObject metódus visszaadja a megadott típus a meglévő regisztrált objektumot.       A CreateObject metódushívások további typedValue `throwOnError` paraméterrel `throwOnError` beállítása `false`."
   example:
   - "The following code example is an implementation of the object-factory design pattern for registered objects. Using the factory pattern enables you to register multiple instances of an object. The example contains two objects: `SampleComponent`, which is the object the application will use multiple instances of, and `SampleComponentFactory`, which manages a list of `SampleComponent` instances.  \n  \n [!code-cs[System.Web.Hosting.ApplicationManager#1](~/add/codesnippet/csharp/37d6d853-1462-44e9-b1c3-_1.cs)]\n [!code-vb[System.Web.Hosting.ApplicationManager#1](~/add/codesnippet/visualbasic/37d6d853-1462-44e9-b1c3-_1.vb)]"
   syntax:
@@ -116,22 +116,22 @@ items:
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier for the application that owns the object."
+      description: "Az objektumot birtokló alkalmazás egyedi azonosítója."
     - id: type
       type: System.Type
-      description: "The type of the object to create."
+      description: "A létrehozandó objektumnak típusa."
     - id: virtualPath
       type: System.String
-      description: "The virtual path to the application."
+      description: "Az alkalmazás virtuális elérési útja."
     - id: physicalPath
       type: System.String
-      description: "The physical path to the application."
+      description: "Az alkalmazás fizikai elérési útja."
     - id: failIfExists
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw an exception if an object of the specified type is currently registered; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to return the existing registered object of the specified type."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott típusú objektum kivételt jelenleg regisztrálva van; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> vissza a megadott típus a meglévő regisztrált objektumot."
     return:
       type: System.Web.Hosting.IRegisteredObject
-      description: "A new object of the specified <code>type</code>."
+      description: "A megadott új objektum <code> type </code>."
   overload: System.Web.Hosting.ApplicationManager.CreateObject*
   exceptions:
   - type: System.ArgumentException
@@ -142,7 +142,7 @@ items:
     description: "<code>appID</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>failIfExists</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and an object of the specified type is already registered."
+    description: "<code>failIfExists</code>van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> és a megadott típusú objektum már be van jegyezve."
   platform:
   - net462
 - uid: System.Web.Hosting.ApplicationManager.CreateObject(System.String,System.Type,System.String,System.String,System.Boolean,System.Boolean)
@@ -157,32 +157,32 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Creates an object for the specified application domain based on type, virtual and physical paths, a Boolean value indicating failure behavior when an object of the specified type already exists, and a Boolean value indicating whether hosting initialization error exceptions are thrown."
-  remarks: "This overload of the <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A> method provides the `throwOnError` parameter, which allows you to control whether hosting initialization exceptions are thrown. The overload of the <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A> method that does not provide `throwOnError` calls this overload with the parameter set to `false`."
+  summary: "Létrehoz egy objektum a megadott tartomány típusa, a virtuális és fizikai elérési útja, a logikai értéket a megadott típusú objektum már létezik, valamint hogy üzemeltetési inicializálási hiba kivételek jelző logikai érték, amely azt jelzi, hogy hiba viselkedés alapján."
+  remarks: "Ez túlterhelése a <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A>módszer lehetővé teszi a `throwOnError` paraméter, amely lehetővé teszi szabályozhatja, hogy üzemeltetési inicializálási kivételek.</xref:System.Web.Hosting.ApplicationManager.CreateObject%2A> A paraméterekkel nem rendelkező a <xref:System.Web.Hosting.ApplicationManager.CreateObject%2A>módszer, amely nem biztosít `throwOnError` a túlterhelési hívja a paraméter `false`.</xref:System.Web.Hosting.ApplicationManager.CreateObject%2A>"
   syntax:
     content: public System.Web.Hosting.IRegisteredObject CreateObject (string appId, Type type, string virtualPath, string physicalPath, bool failIfExists, bool throwOnError);
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier for the application that owns the object."
+      description: "Az objektumot birtokló alkalmazás egyedi azonosítója."
     - id: type
       type: System.Type
-      description: "The type of the object to create."
+      description: "A létrehozandó objektumnak típusa."
     - id: virtualPath
       type: System.String
-      description: "The virtual path to the application."
+      description: "Az alkalmazás virtuális elérési útja."
     - id: physicalPath
       type: System.String
-      description: "The physical path to the application."
+      description: "Az alkalmazás fizikai elérési útja."
     - id: failIfExists
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw an exception if an object of the specified type is currently registered; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to return the existing registered object of the specified type."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott típusú objektum kivételt jelenleg regisztrálva van; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> vissza a megadott típus a meglévő regisztrált objektumot."
     - id: throwOnError
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw exceptions for hosting initialization errors; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to not throw hosting initialization exceptions."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a throw kivételek üzemeltetéséhez inicializálási hibák; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> nem inicializálási kivételek üzemeltető throw való."
     return:
       type: System.Web.Hosting.IRegisteredObject
-      description: "A new object of the specified <code>type</code>."
+      description: "A megadott új objektum <code> type </code>."
   overload: System.Web.Hosting.ApplicationManager.CreateObject*
   exceptions:
   - type: System.ArgumentException
@@ -193,7 +193,7 @@ items:
     description: "<code>appID</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>.  \n  \n \\- or -  \n  \n <code>type</code> is <xref uid=\"langword_csharp_null\" name=\"null\" href=\"\"></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>failIfExists</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and an object of the specified type is already registered."
+    description: "<code>failIfExists</code>van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> és a megadott típusú objektum már be van jegyezve."
   platform:
   - net462
 - uid: System.Web.Hosting.ApplicationManager.GetAppDomain(System.String)
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Gets the application domain of the specified application."
+  summary: "Lekérdezi a megadott alkalmazás alkalmazástartományt."
   syntax:
     content: public AppDomain GetAppDomain (string appId);
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier for the application."
+      description: "Az alkalmazás egyedi azonosítója."
     return:
       type: System.AppDomain
-      description: "The application domain of the application."
+      description: "Az alkalmazás alkalmazástartományt."
   overload: System.Web.Hosting.ApplicationManager.GetAppDomain*
   exceptions: []
   platform:
@@ -234,16 +234,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Gets the application domain of an application using the specified host."
+  summary: "Lekérdezi a megadott állomás használó alkalmazások alkalmazástartományt."
   syntax:
     content: public AppDomain GetAppDomain (System.Web.Hosting.IApplicationHost appHost);
     parameters:
     - id: appHost
       type: System.Web.Hosting.IApplicationHost
-      description: "The host to get the application domain for."
+      description: "Az alkalmazástartomány az beszerzése a gazdagépet."
     return:
       type: System.AppDomain
-      description: "The application domain of the application."
+      description: "Az alkalmazás alkalmazástartományt."
   overload: System.Web.Hosting.ApplicationManager.GetAppDomain*
   exceptions: []
   platform:
@@ -260,8 +260,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Returns the single instance of the <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;></xref> object associated with this ASP.NET host process."
-  remarks: "Only one instance of the <xref:System.Web.Hosting.ApplicationManager> object is created by an ASP.NET host process in the default application domain. If an instance of the <xref:System.Web.Hosting.ApplicationManager> class is not available, the GetApplicationManager method first creates an instance of the <xref:System.Web.Hosting.ApplicationManager> class and then returns the newly created object. If an instance of the <xref:System.Web.Hosting.ApplicationManager> class was previously created, the GetApplicationManager method returns the existing object."
+  summary: "Az egyetlen példányát adja vissza a <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;> </xref> az ASP.NET gazdafolyamat rendelt objektumot."
+  remarks: "Csak egy példányát a <xref:System.Web.Hosting.ApplicationManager>objektum létrehozása egy ASP.NET-állomás folyamat a az alapértelmezett alkalmazástartomány.</xref:System.Web.Hosting.ApplicationManager> Ha egy példányát a <xref:System.Web.Hosting.ApplicationManager>osztály nem érhető el, a GetApplicationManager metódus először létrehoz egy példányát a <xref:System.Web.Hosting.ApplicationManager>osztályhoz, és ezután az újonnan létrehozott objektum beállítása/beolvasása.</xref:System.Web.Hosting.ApplicationManager> </xref:System.Web.Hosting.ApplicationManager> Ha egy példányát a <xref:System.Web.Hosting.ApplicationManager>osztály korábban létrejött, a GetApplicationManager metódus a meglévő objektum beállítása/beolvasása.</xref:System.Web.Hosting.ApplicationManager>"
   example:
   - "The following code example uses the GetApplicationManager method to retrieve the <xref:System.Web.Hosting.ApplicationManager> instance for a Web application.  \n  \n [!code-vb[System.Web.Hosting.ApplicationInfo#1](~/add/codesnippet/visualbasic/m-system.web.hosting.app_0_1.aspx)]\n [!code-cs[System.Web.Hosting.ApplicationInfo#1](~/add/codesnippet/csharp/m-system.web.hosting.app_0_1.aspx)]"
   syntax:
@@ -269,7 +269,7 @@ items:
     parameters: []
     return:
       type: System.Web.Hosting.ApplicationManager
-      description: "The single instance of the <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;></xref> object associated with the ASP.NET host process that is running."
+      description: "Az egyetlen példány futhat a <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;> </xref> futtató ASP.NET gazdafolyamat rendelt objektumot."
   overload: System.Web.Hosting.ApplicationManager.GetApplicationManager*
   exceptions: []
   platform:
@@ -286,24 +286,24 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Returns the registered object of the specified type from the specified application."
+  summary: "A megadott típusú regisztrált objektumot ad vissza a megadott alkalmazás."
   syntax:
     content: public System.Web.Hosting.IRegisteredObject GetObject (string appId, Type type);
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier for the application that owns the object."
+      description: "Az objektumot birtokló alkalmazás egyedi azonosítója."
     - id: type
       type: System.Type
-      description: "The type of the object to return."
+      description: "Vissza az objektum típusa."
     return:
       type: System.Web.Hosting.IRegisteredObject
-      description: "The registered object of the specified type; or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the type has not been registered through a call to the <xref:System.Web.Hosting.ApplicationManager.CreateObject*> method."
+      description: "A megadott típusú; bejegyzett objektum vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a típus nem lett regisztrálva keresztül hívása a <xref:System.Web.Hosting.ApplicationManager.CreateObject*>metódus.</xref:System.Web.Hosting.ApplicationManager.CreateObject*>"
   overload: System.Web.Hosting.ApplicationManager.GetObject*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       —or—       <code>type</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>appId</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       —or—       <code>type</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Hosting.ApplicationManager.GetRunningApplications
@@ -318,7 +318,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Returns a snapshot of running applications."
+  summary: "Adja vissza egy pillanatképet a futó alkalmazások."
   remarks: ''
   example:
   - "The following code example uses the GetRunningApplications method to display information about the applications managed by an <xref:System.Web.Hosting.ApplicationManager> instance.  \n  \n [!code-vb[System.Web.Hosting.ApplicationInfo#1](~/add/codesnippet/visualbasic/m-system.web.hosting.app_1_1.aspx)]\n [!code-cs[System.Web.Hosting.ApplicationInfo#1](~/add/codesnippet/csharp/m-system.web.hosting.app_1_1.aspx)]"
@@ -327,7 +327,7 @@ items:
     parameters: []
     return:
       type: System.Web.Hosting.ApplicationInfo[]
-      description: "An array of <xref href=&quot;System.Web.Hosting.ApplicationInfo&quot;></xref> objects that contain information about the applications managed by this <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;></xref> instance."
+      description: "A tömb <xref href=&quot;System.Web.Hosting.ApplicationInfo&quot;> </xref> objektumok által kezelt alkalmazásokban információkat tartalmazó <xref href=&quot;System.Web.Hosting.ApplicationManager&quot;> </xref> példány."
   overload: System.Web.Hosting.ApplicationManager.GetRunningApplications*
   exceptions: []
   platform:
@@ -344,8 +344,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Gives the application domain an infinite lifetime by preventing a lease from being created."
-  remarks: "This method overrides the <xref:System.MarshalByRefObject.InitializeLifetimeService%2A> method in its base class. It always returns `null` and thereby prevents a lease from being created that would limit the application domain&quot;s lifetime."
+  summary: "Az alkalmazástartomány biztosít egy végtelen élettartamát a címbérlet letiltásával létrehozás alatt áll."
+  remarks: "Ezt a módszert felülbírálja a <xref:System.MarshalByRefObject.InitializeLifetimeService%2A>metódus az alap osztályhoz.</xref:System.MarshalByRefObject.InitializeLifetimeService%2A> Mindig adja vissza `null` ezzel megakadályozza, hogy az a címbérlet jöjjön létre, amely korlátozza az alkalmazástartomány élettartamát."
   syntax:
     content: public override object InitializeLifetimeService ();
     parameters: []
@@ -368,14 +368,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Returns a value indicating whether all applications hosted by the process are idle and not processing requests."
-  remarks: "The IsIdle method returns `true` if all applications hosted by the process are idle."
+  summary: "Visszaad egy értéket, amely azt jelzi, hogy minden, a folyamat által üzemeltetett alkalmazások üresjárati, és nem dolgoz fel kérelmet."
+  remarks: "A IsIdle metódus visszaadja `true` üresjárati minden, a folyamat által üzemeltetett alkalmazások esetén."
   syntax:
     content: public bool IsIdle ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all applications in the process are idle; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a folyamatban szereplő összes alkalmazás üresjárati; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Hosting.ApplicationManager.IsIdle*
   exceptions: []
   platform:
@@ -392,7 +392,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Makes a thread-safe increment to the user reference count of the application manager instance."
+  summary: "A felhasználó üzenettörzstáblában manager alkalmazáspéldány hajt végre egy szálbiztos növekmény."
   syntax:
     content: public void Open ();
     parameters: []
@@ -412,8 +412,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Unloads all application resources."
-  remarks: "Calling the ShutdownAll method is equivalent to calling the <xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName> method in all application domains managed by this <xref:System.Web.Hosting.ApplicationManager> instance; however, the ShutdownAll method can be called from outside the managed application domains."
+  summary: "Eltávolítja az összes alkalmazás-erőforrásokat."
+  remarks: "A metódus hívása a ShutdownAll megegyezik hívása a <xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName>metódus által kezelt összes alkalmazás tartományokban <xref:System.Web.Hosting.ApplicationManager>azonban a ShutdownAll metódus nem hívható a kezelt alkalmazás tartományokon kívüli; példányhoz.</xref:System.Web.Hosting.ApplicationManager> </xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName>"
   syntax:
     content: public void ShutdownAll ();
     parameters: []
@@ -433,19 +433,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Unloads the specified application."
-  remarks: "Calling the ShutdownApplication method is equivalent to calling the <xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName> method for a specific application domain; however, the ShutdownApplication method can be called from outside managed application domains."
+  summary: "Eltávolítja a megadott alkalmazás."
+  remarks: "A metódus hívása a ShutdownApplication megegyezik hívása a <xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName>módszer egy adott alkalmazás tartomány; azonban a ShutdownApplication metódus hívása kívül felügyelt alkalmazás tartományokból.</xref:System.Web.Hosting.HostingEnvironment.InitiateShutdown%2A?displayProperty=fullName>"
   syntax:
     content: public void ShutdownApplication (string appId);
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier of the application to unload."
+      description: "Az alkalmazás memóriából való egyedi azonosítója."
   overload: System.Web.Hosting.ApplicationManager.ShutdownApplication*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>appId</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>appId</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Hosting.ApplicationManager.StopObject(System.String,System.Type)
@@ -460,16 +460,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Hosting
-  summary: "Removes the specified object from the list of registered objects in an application. If the object to be removed is the last remaining object in the list of registered objects in an application, the application is unloaded."
+  summary: "A megadott objektum eltávolítása az alkalmazásban regisztrált objektumok listáját. Ha az objektum el kell távolítani az utolsó megmaradt objektum regisztrált egy alkalmazást az objektumok listájában, az alkalmazás nincs betöltve."
   syntax:
     content: public void StopObject (string appId, Type type);
     parameters:
     - id: appId
       type: System.String
-      description: "The unique identifier for the application that owns the object."
+      description: "Az objektumot birtokló alkalmazás egyedi azonosítója."
     - id: type
       type: System.Type
-      description: "The type of the object to unload."
+      description: "A memóriából való objektum típusa."
   overload: System.Web.Hosting.ApplicationManager.StopObject*
   exceptions:
   - type: System.ArgumentNullException

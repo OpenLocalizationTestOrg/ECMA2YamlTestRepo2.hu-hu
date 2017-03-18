@@ -13,8 +13,8 @@ items:
   nameWithType: FileResponseElement
   fullName: System.Web.Caching.FileResponseElement
   type: Class
-  summary: "Represents part of an output-cache entry, stored as a file."
-  remarks: "The FileResponseElement class represents the body portion (instead of the header) of an output-cache entry. The data from a FileResponseElement object can be stored as either part or all of a file. Both ASP.NET and custom output-cache providers can return a response in multiple parts, using any combination of FileResponseElement objects. For example, a provider can return a response that is segmented into three different FileResponseElement objects, and each object can be retrieved from an offset into a different physical file."
+  summary: "Kimeneti gyorsítótár bejegyzése, tárolja a részét jelenti."
+  remarks: "A FileResponseElement osztály jelenti. a szervezet része (helyett a fejléc) kimeneti gyorsítótár bejegyzése. Az adatok FileResponseElement objektumból része, vagy az összes fájl is tárolhatók. ASP.NET és az egyéni kimeneti gyorsítótár-szolgáltatók visszatérhessen választ több részből FileResponseElement objektumok bármely kombinációjával. Például egy szolgáltató három FileResponseElement objektumokba adhat vissza egy választ, amely szegmentált van, és minden objektumot egy másik fizikai fájlba a eltolással kérhető."
   syntax:
     content: 'public class FileResponseElement : System.Web.Caching.ResponseElement'
   inheritance:
@@ -36,28 +36,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Caching.FileResponseElement&quot;></xref> class."
-  remarks: "If the complete output-cache response is contained in a single file, a provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using an offset of zero, and a length equal to the size of the whole file. If the complete output cache response is contained in only part of a file, a provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using the offset in the file where the output cache response starts, and a length equal to the size of the output-cache response that is stored in that file."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;> </xref> osztály."
+  remarks: "Ha egy fájl a teljes kimeneti gyorsítótár válasz tartalmazza, a szolgáltató inicializálja a <xref:System.Web.Caching.FileResponseElement>osztály eltolással nulla, és egy hosszának egyenlőnek a teljes fájl használatával.</xref:System.Web.Caching.FileResponseElement> A teljes kimeneti gyorsítótár válasz tartalmazza a fájl csak egy részét, ha egy szolgáltató inicializálja a <xref:System.Web.Caching.FileResponseElement>osztály a fájlt, ahol a kimeneti gyorsítótár válasz kezdődik, és a hosszának egyenlőnek a kimeneti gyorsítótár válasz, az adott fájlban tárolt eltolás segítségével.</xref:System.Web.Caching.FileResponseElement>"
   syntax:
     content: public FileResponseElement (string path, long offset, long length);
     parameters:
     - id: path
       type: System.String
-      description: "The fully qualified path for the file."
+      description: "A fájl teljes elérési útját."
     - id: offset
       type: System.Int64
-      description: "The position in the file where the string starts."
+      description: "Ha a karakterlánc indítja el a fájl pozíciója."
     - id: length
       type: System.Int64
-      description: "The length of the data, starting at the offset that represents the output-cache data in the file defined by `path`."
+      description: "Az adatok hosszának határozzák meg, hogy a fájl a kimeneti gyorsítótár adatainak jelöli az eltolástól kezdve `path`."
   overload: System.Web.Caching.FileResponseElement.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>path</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>path</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>length</code> is less than zero."
+    description: "<code>length</code>kisebb, mint nulla."
   platform:
   - net462
 - uid: System.Web.Caching.FileResponseElement.Length
@@ -72,13 +72,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the size of the data, starting at the offset that contains the data for a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;></xref> instance."
-  remarks: "If the complete output-cache response is contained in a single file, an output cache provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using a length equal to the size of the whole file. If the complete output cache response is contained in only part of a file, a provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using a length equal to the size of the output-cache response that is stored in that file."
+  summary: "Az adatok, az adatokat tartalmazó az eltolástól kezdve mérete a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;> </xref> példány."
+  remarks: "Ha egy fájl a teljes kimeneti gyorsítótár válasz tartalmazza, inicializálja a kimeneti gyorsítótár-szolgáltató a <xref:System.Web.Caching.FileResponseElement>osztály egy hosszának egyenlőnek a teljes fájl használatával.</xref:System.Web.Caching.FileResponseElement> A teljes kimeneti gyorsítótár válasz tartalmazza a fájl csak egy részét, ha egy szolgáltató inicializálja a <xref:System.Web.Caching.FileResponseElement>osztály használatával egy hosszának egyenlőnek a kimeneti gyorsítótár válasz, az adott fájlban tárolt.</xref:System.Web.Caching.FileResponseElement>"
   syntax:
     content: public long Length { get; }
     return:
       type: System.Int64
-      description: "The size of the data."
+      description: "Az adatok mérete."
   overload: System.Web.Caching.FileResponseElement.Length*
   exceptions: []
   platform:
@@ -95,13 +95,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the position in the file where the data from a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;></xref> instance starts."
-  remarks: "If the complete output-cache response is contained in a single file, a provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using an offset of zero, If the complete output cache response is contained in only part of a file, a provider initializes the <xref:System.Web.Caching.FileResponseElement> class by using the offset in the file where the output cache response starts."
+  summary: "Lekérdezi a fájl helyének ahol adatait egy <xref href=&quot;System.Web.Caching.FileResponseElement&quot;> </xref> példány indításakor."
+  remarks: "Egyetlen fájl tartalmazza a teljes kimeneti gyorsítótár válasz, ha egy szolgáltató inicializálja a <xref:System.Web.Caching.FileResponseElement>osztály, a nulla eltolás használatával, ha a teljes kimeneti gyorsítótárazza a választ egy fájl csak egy részét tartalmazza, a szolgáltató inicializálja a <xref:System.Web.Caching.FileResponseElement>osztály a fájlban, ha a kimeneti gyorsítótár válasz indítja el az eltolás segítségével.</xref:System.Web.Caching.FileResponseElement> </xref:System.Web.Caching.FileResponseElement>"
   syntax:
     content: public long Offset { get; }
     return:
       type: System.Int64
-      description: "The starting point of the data in the file."
+      description: "A fájl adatainak kiindulópontjaként."
   overload: System.Web.Caching.FileResponseElement.Offset*
   exceptions: []
   platform:
@@ -118,12 +118,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Caching
-  summary: "Gets the location of the file that contains data from a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;></xref> instance."
+  summary: "Lekérdezi a adatait tartalmazó fájl helyét a <xref href=&quot;System.Web.Caching.FileResponseElement&quot;> </xref> példány."
   syntax:
     content: public string Path { get; }
     return:
       type: System.String
-      description: "The fully qualified path of the file."
+      description: "A fájl teljes elérési útja."
   overload: System.Web.Caching.FileResponseElement.Path*
   exceptions: []
   platform:

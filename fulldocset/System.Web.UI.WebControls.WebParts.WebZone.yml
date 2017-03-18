@@ -40,8 +40,8 @@ items:
   nameWithType: WebZone
   fullName: System.Web.UI.WebControls.WebParts.WebZone
   type: Class
-  summary: "Serves as the base class for all controls that act as containers for server controls (including Web Parts <xref href=&quot;System.Web.UI.WebControls.WebParts.Part&quot;></xref> controls, server controls, and user controls) in Web Parts applications."
-  remarks: "A Web Parts zone is a defined region that contains server controls on a Web page, and provides a consistent user interface (UI), layout, and rendering for the contained controls. Zones are rendered in a browser as HTML tables.       The WebZone class is the base class for all Web Parts zones. A zone control is a composite control designed to contain other controls, hence the WebZone class inherits from the <xref:System.Web.UI.WebControls.CompositeControl> class. Together with the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control and <xref:System.Web.UI.WebControls.WebParts.Part> controls (or other user or server controls that can be placed in zones), zone controls derived from the WebZone base class form the essential building blocks of a Web Parts application.       A critical role of Web Parts zones is to enable full Web Parts functionality for the controls they contain. Every Web Parts page contains at least one zone, and a zone can contain zero or more part controls. Zones are required for Web Parts functionality. Without zones, even controls that derive from the <xref:System.Web.UI.WebControls.WebParts.WebPart> class can have very little Web Parts functionality. Conversely, because of the design of the Web Parts control set, you can place ordinary ASP.NET controls, server controls, or user controls into a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone (which derives from WebZone), and by virtue of being in the zone, these ordinary server controls are enable to act as <xref:System.Web.UI.WebControls.WebParts.WebPart> controls at run time. For details, see the documentation for the <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> class.      > [!NOTE] >  It is possible to add <xref:System.Web.UI.WebControls.WebParts.Part> or <xref:System.Web.UI.WebControls.WebParts.WebPart> controls to a page outside of a zone, but in that case they simply function as ordinary server controls.       There are two broad categories of zones in the Web Parts control set, all of which inherit from the base WebZone class.      -   <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zones. These contain <xref:System.Web.UI.WebControls.WebParts.WebPart> (and other server and user) controls, and form the primary UI of Web Parts pages that users interact with most of the time.      -   <xref:System.Web.UI.WebControls.WebParts.ToolZone> zones. These zones provide special views of a Web Parts page that enable users to modify (personalize) the content, layout, appearance, behavior, and properties of controls contained in <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zones on a Web Parts page. For example, a <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> zone is a <xref:System.Web.UI.WebControls.WebParts.ToolZone> that provides a catalog view of a page, enabling users to add and remove server controls. An <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> zone is another type of <xref:System.Web.UI.WebControls.WebParts.ToolZone> that provides an editing view of a page, enabling users to modify and edit the layout of the page, along with the properties, appearance, and behavior of the controls.       Each zone in the Web Parts control set is designed to contain a corresponding type of control derived from the <xref:System.Web.UI.WebControls.WebParts.Part> class, with the part controls serving as the main content and primary UI of the zone. Zone types in the Web Parts control set, along with the corresponding types of part controls they contain, are shown in the following table.      |Part control type|Zone type|   |-----------------------|---------------|   |<xref:System.Web.UI.WebControls.WebParts.WebPart> (and server and user controls, which are wrapped with a <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> at run time)|<xref:System.Web.UI.WebControls.WebParts.WebPartZone> (the base class is <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> )|   |<xref:System.Web.UI.WebControls.WebParts.EditorPart> (several derived controls are provided with the Web Parts control set, and custom <xref:System.Web.UI.WebControls.WebParts.EditorPart> controls can be developed)|<xref:System.Web.UI.WebControls.WebParts.EditorZone> (the base class is <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> )|   |<xref:System.Web.UI.WebControls.WebParts.CatalogPart> (several derived controls are provided with the Web Parts control set, and custom <xref:System.Web.UI.WebControls.WebParts.CatalogPart> controls can be developed)|<xref:System.Web.UI.WebControls.WebParts.CatalogZone> (the base class is <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> )|   |<xref:System.Web.UI.WebControls.WebParts.WebPartConnection> (connection controls are unique in that they are not part controls that inherit from the base class)|<xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> (inherits directly from <xref:System.Web.UI.WebControls.WebParts.ToolZone> )|       All zones in the Web Parts control have basic, common user interface elements that they inherit from the base WebZone class. Not all these elements are visible on every zone, but each zone type is capable of having these common, zone-related UI elements, as described in the following table.      |Zone section|Description|   |------------------|-----------------|   |Header|The top section of a zone. It includes header text, which can include a title for the zone; style attributes (such as a border or background color) that distinguish the header; and zone-level verbs (represented by buttons, hyperlinks, or images) that users can click to perform UI actions that apply to the entire zone, such as closing a zone. Several WebZone properties, such as <xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderText%2A>, relate to the header area of a zone. If there are zone-level verbs in the zone, the <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A> and <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A> properties apply to them. Note that these two verb properties apply to zone-level verbs only, not to verbs in the individual part controls contained in the zone. Headers are not present in every type of zone; typically they appear in <xref:System.Web.UI.WebControls.WebParts.ToolZone> zones where there is a need to have a common header area with text and a verb, such as a close verb.|   |Body|The main contents section of a zone. Every zone that derives from WebZone has a body section. For all types of zones in the Web Parts control set, the body of the zone contains the designated type of <xref:System.Web.UI.WebControls.WebParts.Part> controls (or other server controls) that correspond to a zone type, as indicated in the previous table. Various members of the WebZone class affect the contents of the body section, such as the <xref:System.Web.UI.WebControls.WebParts.WebZone.BackImageUrl%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> properties. If the body section is empty, the <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EmptyZoneText%2A> message can be displayed in certain situations.|   |Chrome|The common UI elements rendered for each part control in a zone. This is distinct from a discussion of style attributes that apply to the zone itself; chrome applies specifically to the contained part controls. Chrome includes verbs, borders, and other style attributes such as background color, or font style of the title text, for a zone&quot;s part controls. A zone determines the chrome details by using a single chrome object appropriate to the type of part controls it contains (e.g., a <xref:System.Web.UI.WebControls.WebParts.CatalogPartChrome> object for a <xref:System.Web.UI.WebControls.WebParts.CatalogZone> that contains <xref:System.Web.UI.WebControls.WebParts.CatalogPart> controls). This single chrome object handles the chrome details and the rendering for all the part controls in the zone. This enables developers to create zones in which they can specify a consistent, common look and feel for all the part controls. Some properties that relate to the chrome for a zone&quot;s part controls include the <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.PartTitleStyle%2A> properties. Note that most chrome-related properties, including a specific property to reference the chrome object for a particular type of zone, are not implemented in the base WebZone class. Instead, most chrome-specific features of zones are implemented on specific zone types as appropriate to the unique needs of their part controls. See the topics for each zone type listed in the previous table of this topic.|   |Part Controls|The controls that reside in the body section of a zone. Every zone that inherits from the WebZone class contains in its body section one or more part controls of a corresponding type, as shown in the previous table in this topic. These part controls form the main UI of Web Parts applications. Most zone types that derive from WebZone have a collection property that enables them to reference all their contained part controls, such as the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebParts%2A> property on the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> class, and the <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EditorParts%2A> property on the <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> class.|   |Footer|The bottom section of a zone. Like the header section, it is not present in every type of zone, but usually occurs in <xref:System.Web.UI.WebControls.WebParts.ToolZone> zones. Typical contents of a footer section are verbs such as an ok verb or an apply verb, which appear in the footer of <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> zones. Some properties that relate to the footer section include the <xref:System.Web.UI.WebControls.WebParts.WebZone.HasFooter%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A> properties.|       Most of the WebZone class&quot;s properties are discussed in the preceding table that describes the common UI elements of zones. The WebZone class also has several methods relating to its role of rendering content. The <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderBody%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderContents%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderHeader%2A> methods can all be overridden to provide programmatic control over the rendering of each specific section of a zone. For example, if you want to customize the rendering of all the footer sections of catalog zones in your application, you could inherit from the <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> class, override the <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A> method inherited from WebZone, and change the rendering of the footer section."
+  summary: "Az alaposztály vezérlőket tárolóként vezérlők funkcionál (beleértve a kijelzők <xref href=&quot;System.Web.UI.WebControls.WebParts.Part&quot;> </xref> vezérlők, a kiszolgáló vezérlők és a felhasználói vezérlők) kijelzők alkalmazásokban."
+  remarks: "A kijelzők zóna egy kiszolgáló vezérlőket a weblap tartalmazza, és egy egységes felhasználói felület (UI), elrendezés és a benne lévő vezérlők megjelenítési meghatározott terület. Zónák jelennek meg a böngészőben, HTML-táblázatok.       A WebZone osztály az alaposztály zónákon kijelzők. Egy zóna vezérlő tartalmazhatnak más vezérlők összetett vezérlőelem, ezért a WebZone osztály örökli a az <xref:System.Web.UI.WebControls.CompositeControl>osztályhoz.</xref:System.Web.UI.WebControls.CompositeControl> Együtt a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő és <xref:System.Web.UI.WebControls.WebParts.Part>vezérlők (vagy más felhasználó vagy a kiszolgáló vezérlők zónákban elhelyezhető), a WebZone alaposztály űrlap az alapvető építőelemeket kijelzők alkalmazás származó vezérlők zónát.</xref:System.Web.UI.WebControls.WebParts.Part> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>       A kijelzők zónák kulcsfontosságú szerepet kijelzők működése a vezérlők tartalmaznak. Minden kijelzők lap tartalmazza-e legalább egy zónát, és a zóna nulla vagy több rész vezérlőket tartalmazhat. Zónák kijelzők funkciók szükségesek. Zónák nélkül is, amelyek a vezérlők a <xref:System.Web.UI.WebControls.WebParts.WebPart>osztály rendelkezhet csekély kijelzők funkció.</xref:System.Web.UI.WebControls.WebParts.WebPart> Ezzel szemben a kijelzők vezérlő set kialakítása miatt elhelyezheti a szokványos ASP.NET vezérlők, vezérlőket vagy a felhasználói vezérlők egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>(amely származik WebZone) zónát, és szabályozza a zónában, a szokásos server tartozóként lehetővé teszik, hogy működjön, és <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlők futási időben.</xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> További részletek a dokumentációban a <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>osztályhoz.</xref:System.Web.UI.WebControls.WebParts.GenericWebPart>      > [!NOTE] > Hozzáadása lehetséges <xref:System.Web.UI.WebControls.WebParts.Part>vagy <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlők weblapra zónán kívül, de ebben az esetben egyszerűen működnek a szokványos server vezérlőelemként.</xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.WebControls.WebParts.Part>       Nincsenek a zónák a kijelzők vezérlő készletben, amelyek öröklik az alaposztály WebZone széles két kategóriába sorolhatók.      - <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónák.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Ezek tartalmazzák <xref:System.Web.UI.WebControls.WebParts.WebPart>(és más kiszolgáló és a felhasználó) vezérli, és a felhasználók használják a legtöbbször ennek elsődleges kijelzők felhasználói felület oldalak alkotnak.</xref:System.Web.UI.WebControls.WebParts.WebPart>      - <xref:System.Web.UI.WebControls.WebParts.ToolZone>zónák.</xref:System.Web.UI.WebControls.WebParts.ToolZone> Ezekben a zónákban, adja meg a kijelzők lap Speciális nézetek, hogy engedélyezése a felhasználók módosításához (személyre) a tartalom, elrendezés, megjelenését, viselkedésének és szereplő vezérlőkben tulajdonságainak <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>kijelzők oldalon zónák.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Például egy <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase>zóna egy <xref:System.Web.UI.WebControls.WebParts.ToolZone>egy oldal, így a felhasználók hozzáadása és eltávolítása a kiszolgálói vezérlő katalógus nézetét jeleníti meg, amely.</xref:System.Web.UI.WebControls.WebParts.ToolZone> </xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> Egy <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>zóna egy másik típusú <xref:System.Web.UI.WebControls.WebParts.ToolZone>, amely egy oldal, így a felhasználók módosításához, és szerkesztheti a lapon, és a Tulajdonságok megjelenését és viselkedését vezérlő elrendezésének szerkesztési áttekintést nyújt a.</xref:System.Web.UI.WebControls.WebParts.ToolZone> </xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>       Minden beállításokat arra tervezték, hogy tartalmazza a megfelelő típusú vezérléssel kijelzőket a zónához származik a <xref:System.Web.UI.WebControls.WebParts.Part>osztály szolgál a fő tartalom és elsődleges felhasználói felületén a zóna rész vezérlőkkel.</xref:System.Web.UI.WebControls.WebParts.Part> A kijelzők vezérlő készletben, a megfelelő típusú rész vezérlők tartalmazzák, valamint zónatípusok az alábbi táblázatban láthatók.      | Vezérlőtípus része |} Zónatípus |}   |-----------------------|---------------|   | <xref:System.Web.UI.WebControls.WebParts.WebPart>(és a kiszolgáló és a felhasználói vezérlőket, amelyek egy <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>futási időben vannak követően) |}<xref:System.Web.UI.WebControls.WebParts.WebPartZone> (a alaposztályának értéke <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>) |}   | <xref:System.Web.UI.WebControls.WebParts.EditorPart>(több származtatott szabályozza a kijelzők vezérlő set kapnak, és egyéni <xref:System.Web.UI.WebControls.WebParts.EditorPart>vezérlők fejleszthetők) |}<xref:System.Web.UI.WebControls.WebParts.EditorZone> (a alaposztályának értéke <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>) |}   | <xref:System.Web.UI.WebControls.WebParts.CatalogPart>(több származtatott szabályozza a kijelzők vezérlő set kapnak, és egyéni <xref:System.Web.UI.WebControls.WebParts.CatalogPart>vezérlők fejleszthetők) |}<xref:System.Web.UI.WebControls.WebParts.CatalogZone> (a alaposztályának értéke <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase>) |}   | (a kapcsolat vezérlők egyediek-e, hogy nem része vezérlők az alaposztály öröklő) <xref:System.Web.UI.WebControls.WebParts.WebPartConnection>|} <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone>(örököl közvetlenül <xref:System.Web.UI.WebControls.WebParts.ToolZone>) |}       A kijelzők vezérlőelemben található összes zóna rendelkezik alapvető, általános felhasználói felületi elemeire a az alap WebZone osztályból öröklő</xref:System.Web.UI.WebControls.WebParts.ToolZone> </xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> </xref:System.Web.UI.WebControls.WebParts.WebPartConnection> </xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> </xref:System.Web.UI.WebControls.WebParts.CatalogZone> </xref:System.Web.UI.WebControls.WebParts.CatalogPart> </xref:System.Web.UI.WebControls.WebParts.CatalogPart> </xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> </xref:System.Web.UI.WebControls.WebParts.EditorZone> </xref:System.Web.UI.WebControls.WebParts.EditorPart> </xref:System.Web.UI.WebControls.WebParts.EditorPart> </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> </xref:System.Web.UI.WebControls.WebParts.WebPartZone> </xref:System.Web.UI.WebControls.WebParts.GenericWebPart> </xref:System.Web.UI.WebControls.WebParts.WebPart> Nem minden ezen elemek is láthatóak lesznek minden zónára, de minden zóna típusa, hogy ezek közös, a zóna kapcsolatos felhasználói felületi elemei, az alábbi táblázatban leírt módon képes.      | Zóna szakasz |} Leírás |}   |------------------|-----------------|   | Fejléc |} A zóna felső részén. Ez magában foglalja a fejléc szövegét, ami magában foglalhatja a zóna; címét stílus attribútumok (például a háttér vagy a szegély színét) különbözteti meg a fejléc; és zónaszintű művelettől (gombok, a hivatkozások és a képek képviseli), hogy a felhasználók rákattinthatnak műveleteket felhasználói felület, amelyek érvényesek a teljes zónát, például a zóna bezárása. Több WebZone tulajdonságai, például a <xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderText%2A>, a zóna fejlécének területe kapcsolódnak.</xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderText%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A> Ha a zóna zónaszintű műveletek szerepelnek a <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A>és <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A>Tulajdonságok vonatkoznak rájuk.</xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A> Vegye figyelembe, hogy a két művelet tulajdonságok alkalmazása zónaszintű műveletekre csak, nem a zónában lévő egyes része vezérlők-műveleteket. Fejlécek nem szerepelnek a zóna; minden típusa általában <xref:System.Web.UI.WebControls.WebParts.ToolZone>zónák szerepelnek, ha szeretné, hogy a szöveg és egy igét, például egy Bezárás művelet egy közös fejléc területen szükség van. |}   | Törzs |} Az elsődleges zóna szakasz tartalmát.</xref:System.Web.UI.WebControls.WebParts.ToolZone> Minden zóna abból származó WebZone testület szakasza. Zónákat a kijelzők az összes típusú ellenőrzés beállítása, a zóna törzsében a kijelölt típusú <xref:System.Web.UI.WebControls.WebParts.Part>vezérlők (vagy egyéb kiszolgálói vezérlő), amely megfelel a zóna típusa, az előző táblázatban.</xref:System.Web.UI.WebControls.WebParts.Part> A WebZone osztály tagjai különféle hatással vannak a szakasz tartalma, amely a szervezet, például a <xref:System.Web.UI.WebControls.WebParts.WebZone.BackImageUrl%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>Tulajdonságok.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.BackImageUrl%2A> Ha a szervezet szakasz üres, a <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EmptyZoneText%2A>üzenet olvasható bizonyos helyzetekben. |}   | Chrome |} Minden egyes részben vezérlő zónában megjelenített közös felhasználói felületi elemeket.</xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EmptyZoneText%2A> Ez nem azonos azzal egy leírását az attribútumokat, amelyek érvényesek a zóna Chrome vonatkozik, különösen a benne lévő része. Chrome műveletek szegélyek és egyéb például háttérszínét, vagy a cím szövegének egy zónához tartozik vezérlők betűstílus attribútumokat tartalmaz. A zóna meghatározza, hogy a chrome részletek része vezérlőelemeket típusának megfelelő egyetlen chrome-objektum használatával (például egy <xref:System.Web.UI.WebControls.WebParts.CatalogPartChrome>objektum egy <xref:System.Web.UI.WebControls.WebParts.CatalogZone>tartalmazó <xref:System.Web.UI.WebControls.WebParts.CatalogPart>vezérlők).</xref:System.Web.UI.WebControls.WebParts.CatalogPart> </xref:System.Web.UI.WebControls.WebParts.CatalogZone> </xref:System.Web.UI.WebControls.WebParts.CatalogPartChrome> Ez az egyetlen chrome objektum a Látványelem adatait és a zóna a rész vezérlők megjelenítési kezeli. Ez lehetővé teszi a fejlesztők számára, amelyben megadhatja egy egységes, közös megjelenését és működését a rész vezérlők zónák létrehozásához. Néhány tulajdonság, amely kapcsolódik a chrome egy zónához tartozik vezérlők használhatók a a <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.PartTitleStyle%2A>Tulajdonságok.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartTitleStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle%2A> Vegye figyelembe, hogy a chrome-kapcsolódó tulajdonságait, beleértve egy adott tulajdonságra kell hivatkoznia, a zóna, egy adott típusának a chrome objektum nincs megvalósítva az alaposztályban WebZone. Ehelyett a zónák a legtöbb chrome-specifikus szolgáltatások a megadott zónában típusok saját tartozik vezérlők egyedi igényeinek megfelelő valósíthatók meg. Tekintse át az egyes zóna témakörök a jelen témakör az előző táblázatban felsorolt. |}   | Vezérlők része |} A vezérlők, amelyek a zóna a szervezet szakaszban találhatók. Minden, amely a WebZone osztály örökli a zónába írjon be egy vagy több rész gyermekvezérlőit módosíthatja a hozzá tartozó, törzs szakaszban található ebben a témakörben az előző táblázatban látható módon. Ezen része vezérlők űrlapon a fő kijelzők felhasználói felület alkalmazások. A legtöbb zónatípusok, amelyek a WebZone rendelkezik egy gyűjtemény tulajdonság, amely lehetővé teszi minden a benne lévő része intézkedések, például a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>osztály a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebParts%2A>tulajdonsága hivatkozást, és a <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EditorParts%2A>tulajdonság a <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>osztály. |}   | Élőláb |} A zóna alsó részén.</xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> </xref:System.Web.UI.WebControls.WebParts.EditorZoneBase.EditorParts%2A>  </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebParts%2A></xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Például a fejlécszakasza nincs jelen a zóna bármilyen típusú, de általában akkor fordul elő a <xref:System.Web.UI.WebControls.WebParts.ToolZone>zónák.</xref:System.Web.UI.WebControls.WebParts.ToolZone> Tipikus élőláb szakasz tartalma műveletek, például egy ok művelet vagy egy alkalmazás műveletet, láblécében megjelenő <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>zónák.</xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> Láblécében kapcsolódó bizonyos tulajdonságok közé tartoznak a <xref:System.Web.UI.WebControls.WebParts.WebZone.HasFooter%2A> <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A>tulajdonságait. |}       A WebZone osztálytulajdonságokat többsége az előző táblázatban, amely leírja a zónák általános felhasználói felületi elemeket ismerteti.</xref:System.Web.UI.WebControls.WebParts.WebZone.VerbStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HasFooter%2A> A WebZone osztály rendelkezik vonatkozó megjelenítési tartalom a szerepkör több módszert is. A <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderBody%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderContents%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderHeader%2A>módszerek összes felülbírálható lesz arra, hogy a zóna egyes konkrét szakaszra megjelenítésének programozott szabályozhatják.</xref:System.Web.UI.WebControls.WebParts.WebZone.RenderHeader%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.RenderContents%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.RenderBody%2A> Például ha szeretné testre szabni a katalógus zónák az alkalmazás minden élőláb szakasz megjelenítésének, akkor sikerült öröklik a <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase>osztály, bírálja felül a <xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A>metódus öröklődik WebZone és láblécében megjelenítésének módosítása.</xref:System.Web.UI.WebControls.WebParts.WebZone.RenderFooter%2A> </xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase>"
   example:
   - "The following code example demonstrates the use of the WebZone class.  \n  \n The first part of the code example shows two custom controls that derive from the <xref:System.Web.UI.WebControls.WebParts.WebPart> class. For the code example to run, you must compile this source code. You can compile it explicitly and put the resulting assembly in your Web site's Bin folder or the global assembly cache. Alternatively, you can put the source code in your site's App_Code folder, where it will be dynamically compiled at run time. For a walkthrough that demonstrates both methods of compiling, see [Walkthrough: Developing and Using a Custom Web Server Control](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_Zone_Overview#2](~/add/codesnippet/csharp/t-system.web.ui.webcontr_200_1.cs)]\n [!code-vb[WebParts_Zone_Overview#2](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_200_1.vb)]  \n  \n The second part of the code example shows a Web page that hosts the <xref:System.Web.UI.WebControls.WebParts.WebPart> controls. Notice that the declarative markup contains two <xref:System.Web.UI.WebControls.WebParts.WebPartZone> controls, a <xref:System.Web.UI.WebControls.WebParts.CatalogZone> control and an <xref:System.Web.UI.WebControls.WebParts.EditorZone> control.  \n  \n [!code-vb[WebParts_Zone_Overview#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_200_2.aspx)]\n [!code-cs[WebParts_Zone_Overview#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_200_2.aspx)]  \n  \n You can load the page in a browser and switch among the various page display modes to see how the different zones behave. For more information on display modes and enabling users to switch among them, see [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md)."
   syntax:
@@ -208,15 +208,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the URL to a background image for a zone."
-  remarks: "The background image for a zone is visible in all display modes in which a zone&quot;s contents are visible. If a zone contains part controls, the image appears behind the controls. If a zone contains no controls, its contents are not rendered in browse mode, so the image is not displayed.       If the supplied image is smaller than the body of a zone, it is tiled to cover the full body area."
+  summary: "Lekérdezi vagy beállítja az URL-címet a zóna háttérképként."
+  remarks: "A háttérkép, a zóna látható, amelyben a zóna tartalma látható minden megjelenítési módban. Ha a zóna tartalmaz rész vezérlők, a vezérlők mögött a kép jelenik meg. Ha a zóna nem szabályozza, annak tartalmát nem Megjelenítés Tallózás módban, a lemezkép nem jelenik meg.       Ha a megadott kép kisebb, mint a szervezet a zóna, a rendszer mozaikszerűen teljes törzse területre."
   example:
   - "The following code example demonstrates the use of the BackImageUrl property. Note that there are two zones in the declarative markup, and the second `<asp:webpartzone>` element is empty.  \n  \n [!code-cs[WebParts_Zone_BackImageUrl#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_167_1.aspx)]\n [!code-vb[WebParts_Zone_BackImageUrl#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_167_1.aspx)]  \n  \n In a browser, you can switch to design mode to see the image in the empty zone. Note that an actual URL for the BackImageUrl property is not provided in this example. For details on how to change page display modes, see [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual string BackImageUrl { get; set; }
     return:
       type: System.String
-      description: "A string that represents the URL to an image used as a background image for the zone. The default value is an empty string (&quot;&quot;)."
+      description: "Egy karakterlánc, amely képviseli a zóna háttérképként használt kép URL-CÍMÉT. Az alapértelmezett érték: üres karakterlánc (&quot;&quot;)."
   overload: System.Web.UI.WebControls.WebParts.WebZone.BackImageUrl*
   exceptions: []
   platform:
@@ -233,15 +233,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a message that appears when a zone contains no controls."
-  remarks: "The text in the EmptyZoneText property appears when there are no controls in a zone, and the zone is in one of the personalization modes, such as edit, design, or catalog mode.      > [!NOTE] >  When a zone enters one of the personalization modes that would allow personalization changes to be made to the zone&quot;s contents, the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control sets the <xref:System.Web.UI.WebControls.WebParts.WebPartDisplayMode.AllowPageDesign%2A?displayProperty=fullName> property value to `true` on the display mode object referenced in its <xref:System.Web.UI.WebControls.WebParts.WebPartManager.DisplayMode%2A?displayProperty=fullName> property."
+  summary: "Lekérdezi vagy beállítja, egy üzenet, amely akkor jelenik meg, ha a zóna nincs vezérlőt tartalmaz."
+  remarks: "Az EmptyZoneText tulajdonságon tulajdonságban szöveg jelenik meg, ha nincsenek nem szabályozza a zónában, és a zóna a testreszabási módban, például a Szerkesztés, a kialakítási vagy a katalógus módban.      > [!NOTE] > Ha egy zónát a megszemélyesítési módban, amely lehetővé tenné a zóna tartalmát, a személyre szabási módosítását a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>beállítása szabályozza a <xref:System.Web.UI.WebControls.WebParts.WebPartDisplayMode.AllowPageDesign%2A?displayProperty=fullName>tulajdonság értékeként `true` a megjelenítési mód objektumra hivatkozik az <xref:System.Web.UI.WebControls.WebParts.WebPartManager.DisplayMode%2A?displayProperty=fullName>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartManager.DisplayMode%2A?displayProperty=fullName> </xref:System.Web.UI.WebControls.WebParts.WebPartDisplayMode.AllowPageDesign%2A?displayProperty=fullName> </xref:System.Web.UI.WebControls.WebParts.WebPartManager>"
   example:
   - "The following code example demonstrates the use of the EmptyZoneText property. Note that there are two zones in the declarative markup, and the second `<asp:webpartzone>` element is empty.  \n  \n [!code-cs[WebParts_Zone_EmptyZoneText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_679_1.aspx)]\n [!code-vb[WebParts_Zone_EmptyZoneText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_679_1.aspx)]  \n  \n In a browser, you can switch to design mode to see the text supplied for the EmptyZoneText property displayed in the empty zone. For details on how to change page display modes, see [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual string EmptyZoneText { get; set; }
     return:
       type: System.String
-      description: "A string containing the message that appears in an empty zone. A default culture-specific string is supplied by the .NET Framework."
+      description: "Az üzenet, hogy megjelenik egy üres zóna tartalmazó karakterlánc. A .NET-keretrendszer által biztosított alapértelmezett kulturális környezet-specifikus karakterlánc."
   overload: System.Web.UI.WebControls.WebParts.WebZone.EmptyZoneText*
   exceptions: []
   platform:
@@ -258,13 +258,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the style attributes for the placeholder text in an empty zone."
-  remarks: "The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekéri a attribútumokat a helyőrző szöveget egy üres zónában."
+  remarks: "Ez a tulajdonság értékének érték beállítása esetén mentését automatikusan erőforrásfájl Tervező eszköz használatával. További információkért lásd: <xref:System.ComponentModel.LocalizableAttribute>és [globalizációs és honosítási](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   syntax:
     content: public System.Web.UI.WebControls.Style EmptyZoneTextStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that contains style attributes for the text assigned to a zone&quot;s <xref:System.Web.UI.WebControls.WebParts.WebZone.EmptyZoneText*> property."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> , amely tartalmazza a szöveg a zónájához rendelt attribútumokat <xref:System.Web.UI.WebControls.WebParts.WebZone.EmptyZoneText*>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebZone.EmptyZoneText*>"
   overload: System.Web.UI.WebControls.WebParts.WebZone.EmptyZoneTextStyle*
   exceptions: []
   platform:
@@ -281,13 +281,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the style attributes for rendering the error message that is displayed if a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control cannot be loaded or created."
-  remarks: "At run time, if the .NET Framework is unable to load or create an instance of a <xref:System.Web.UI.WebControls.WebParts.WebPart> control, an instance of the <xref:System.Web.UI.WebControls.WebParts.ErrorWebPart> class is created and displayed in its place. This object contains an error message, and the style attributes from the ErrorStyle property are applied to the error message."
+  summary: "Lekérdezi az attribútumokat, ha megjelenik a hibaüzenet megjelenítése, amely egy <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> vezérlő nem tölthető be vagy létrehozni."
+  remarks: "At futási időt, ha a .NET-keretrendszer nem sikerült betölteni vagy létrehozni egy <xref:System.Web.UI.WebControls.WebParts.WebPart>szabályozásához egy példányát a <xref:System.Web.UI.WebControls.WebParts.ErrorWebPart>osztály létrehozása és a helyére jelenik meg.</xref:System.Web.UI.WebControls.WebParts.ErrorWebPart> </xref:System.Web.UI.WebControls.WebParts.WebPart> Ez az objektum tartalmaz egy hibaüzenet, és a hibaüzenet a attribútumokat a ErrorStyle tulajdonságból vonatkoznak."
   syntax:
     content: public System.Web.UI.WebControls.Style ErrorStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that contains style attributes for the error message."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> , amely tartalmazza a hibaüzenet attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.ErrorStyle*
   exceptions: []
   platform:
@@ -304,12 +304,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the style attributes for the contents of a zone&quot;s footer area."
+  summary: "Lekéri a attribútumokat a zóna láblécének terület tartalmát."
   syntax:
     content: public System.Web.UI.WebControls.WebParts.TitleStyle FooterStyle { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.TitleStyle
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;></xref> that contains style attributes for the contents of a zone&quot;s footer area."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;> </xref> , amely tartalmazza a zóna láblécének terület tartalmának attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.FooterStyle*
   exceptions: []
   platform:
@@ -326,21 +326,21 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Returns the actual or effective current <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;></xref> value of a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control, given the <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType*> property of the zone and the current display mode of the Web Parts page."
+  summary: "Adja vissza a tényleges vagy hatékony jelenlegi <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;> </xref> értékének egy <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> vezérlő kap a <xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType*>tulajdonság a zóna és a kijelzők lap az aktuális megjelenítési mód.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartChromeType*>"
   syntax:
     content: public virtual System.Web.UI.WebControls.WebParts.PartChromeType GetEffectiveChromeType (System.Web.UI.WebControls.WebParts.Part part);
     parameters:
     - id: part
       type: System.Web.UI.WebControls.WebParts.Part
-      description: "A part control within the current zone."
+      description: "A kijelző vezérlő aktuális a zónán belül."
     return:
       type: System.Web.UI.WebControls.WebParts.PartChromeType
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;></xref> value that contains the kind of border that currently frames Web Parts controls contained by a zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;> </xref> jelenleg milyen típusú szegély tartalmazó keretek zóna által tartalmazott kijelzők vezérlők."
   overload: System.Web.UI.WebControls.WebParts.WebZone.GetEffectiveChromeType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>part</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>part</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.HasFooter
@@ -355,13 +355,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value indicating whether a zone has a footer area."
-  remarks: "The HasFooter property is primarily used by control developers who are creating custom zones. It exists as a flag so that the Web Parts control set renders a footer only when appropriate for a zone. For example, the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasFooter%2A> property overrides this property and returns `false`, so that a footer is not rendered for a <xref:System.Web.UI.WebControls.WebParts.WebPartZone> control.       Tool zones (zones that derive indirectly from the <xref:System.Web.UI.WebControls.WebParts.WebZone> class by means of the <xref:System.Web.UI.WebControls.WebParts.ToolZone> class, such as <xref:System.Web.UI.WebControls.WebParts.EditorZone> and <xref:System.Web.UI.WebControls.WebParts.CatalogZone>) must have footers so that, for example, they can render common user interface (UI) verbs with buttons such as **OK**, **Apply**, and **Cancel** at the bottom of the zone. Because the HasFooter property is `true` by default, tool zones do not need to override the property."
+  summary: "Hogy a zóna rendelkezik-e a lábléc terület jelző érték beolvasása."
+  remarks: "A HasFooter tulajdonság elsősorban vezérlő fejlesztőknek egyéni zónák létrehozása. Mivel a jelzőt, hogy a kijelzők szabályozása set Ez a beállítás csak akkor, ha egy zónát a megfelelő élőláb létezik. Például a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasFooter%2A>tulajdonság felülbírálja ezt a tulajdonságot, és visszaadja `false`, hogy a lábléc nem megjelenítése a egy <xref:System.Web.UI.WebControls.WebParts.WebPartZone>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartZone> </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasFooter%2A>       Zónák eszköz (, amelyek közvetve a zónák a <xref:System.Web.UI.WebControls.WebParts.WebZone>révén osztály a <xref:System.Web.UI.WebControls.WebParts.ToolZone>osztály, például a <xref:System.Web.UI.WebControls.WebParts.EditorZone>és <xref:System.Web.UI.WebControls.WebParts.CatalogZone>) láblécek kell rendelkeznie, így például azok meg tudja jeleníteni gombok közös felhasználói felület (UI) műveleteket, mint **OK**, **alkalmaz**, és **Mégse** alján található a zónához.</xref:System.Web.UI.WebControls.WebParts.CatalogZone> </xref:System.Web.UI.WebControls.WebParts.EditorZone> </xref:System.Web.UI.WebControls.WebParts.ToolZone> </xref:System.Web.UI.WebControls.WebParts.WebZone> Mivel a HasFooter tulajdonság `true` alapértelmezés szerint eszköz zónák nem kell bírálja felül a tulajdonságot."
   syntax:
     content: protected virtual bool HasFooter { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the zone has a footer area; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a zóna láblécének területet; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebZone.HasFooter*
   exceptions: []
   platform:
@@ -378,13 +378,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value indicating whether a zone has a header area."
-  remarks: "The HasHeader property is primarily used by control developers who are creating custom zones. It exists as a flag so that the Web Parts control set renders a header only when appropriate for a zone. For example, the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasHeader%2A> property overrides this property and returns `false` unless the page is in one of the modes that allow personalization. In this case, a header is not rendered for a <xref:System.Web.UI.WebControls.WebParts.WebPartZone> control in browse mode, while in most other modes a header is rendered. For more information on display modes and enabling users to switch among them, see [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md).       Tool zones (zones that derive indirectly from the <xref:System.Web.UI.WebControls.WebParts.WebZone> class by means of the <xref:System.Web.UI.WebControls.WebParts.ToolZone> class, such as <xref:System.Web.UI.WebControls.WebParts.EditorZone> and <xref:System.Web.UI.WebControls.WebParts.CatalogZone>) must have headers that appear only when the page is in the appropriate display mode. Because the HasHeader property is `true` by default, they do not need to override the property."
+  summary: "Egy érték, amely jelzi, hogy a zóna rendelkezik-e a fejléc terület lekérdezi."
+  remarks: "A HasHeader tulajdonság elsősorban vezérlő fejlesztőknek egyéni zónák létrehozása. Mivel a jelzőt, hogy a kijelzők szabályozása set Ez a beállítás csak akkor, ha egy zónát a megfelelő fejléc létezik. Például a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasHeader%2A>tulajdonság felülbírálja ezt a tulajdonságot, és visszaadja `false` kivéve, ha a lap a, amelyek lehetővé teszik a testreszabási módban van.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.HasHeader%2A> Ebben az esetben a fejléc nem megjelenítése a egy <xref:System.Web.UI.WebControls.WebParts.WebPartZone>vezérlő tallózási módban, míg más legtöbbször a fejléc megjelenítése.</xref:System.Web.UI.WebControls.WebParts.WebPartZone> A megjelenítési mód és a lehet váltani közöttük engedélyezése felhasználók további információkért lásd: [forgatókönyv: megjelenítése üzemmód módosítása egy lap](~/add/includes/ajax-current-ext-md.md).       Zónák eszköze (zónákhoz közvetve származik a <xref:System.Web.UI.WebControls.WebParts.WebZone>révén osztály a <xref:System.Web.UI.WebControls.WebParts.ToolZone>osztály, például a <xref:System.Web.UI.WebControls.WebParts.EditorZone>és <xref:System.Web.UI.WebControls.WebParts.CatalogZone>) kell rendelkeznie a fejlécek, csak ha az oldal megjelenítési módban van a megfelelő megjelenő.</xref:System.Web.UI.WebControls.WebParts.CatalogZone> </xref:System.Web.UI.WebControls.WebParts.EditorZone> </xref:System.Web.UI.WebControls.WebParts.ToolZone> </xref:System.Web.UI.WebControls.WebParts.WebZone> Mivel a HasHeader tulajdonság `true` alapértelmezés szerint nincs szükségük a bírálja felül a tulajdonságot."
   syntax:
     content: protected virtual bool HasHeader { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the zone has a header area; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a zóna fejlécének területet; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebZone.HasHeader*
   exceptions: []
   platform:
@@ -401,12 +401,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the style attributes for the contents of a zone&quot;s header area."
+  summary: "Lekéri a attribútumokat a zóna fejlécének terület tartalmát."
   syntax:
     content: public System.Web.UI.WebControls.WebParts.TitleStyle HeaderStyle { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.TitleStyle
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;></xref> that contains style attributes for the contents of a zone&quot;s header area."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;> </xref> , amely tartalmazza a zóna fejlécének terület tartalmának attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle*
   exceptions: []
   platform:
@@ -423,15 +423,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the text for the header area of a zone."
-  remarks: "The contents of a zone&quot;s HeaderText property are displayed when a Web page enters certain display modes. For example, on a page that has a <xref:System.Web.UI.WebControls.WebParts.WebPartZone> control, the text assigned to the HeaderText property becomes visible when the page enters edit, catalog, or design mode.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi vagy beállítja a szöveg, a zóna fejlécének területre."
+  remarks: "Amikor egy weblap lép bizonyos megjelenítési módok a zóna HeaderText tulajdonság tartalmát jelennek meg. Például egy oldalon, amely rendelkezik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZone>vezérlő, a HeaderText tulajdonság hozzárendelt szöveget láthatóvá válik a amikor az oldal szerkesztése, a katalógus vagy a Tervező módban.</xref:System.Web.UI.WebControls.WebParts.WebPartZone>       Ez a tulajdonság értékének érték beállítása esetén mentését automatikusan erőforrásfájl Tervező eszköz használatával. További információkért lásd: <xref:System.ComponentModel.LocalizableAttribute>és [globalizációs és honosítási](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates the use of the HeaderText property. Note that there are two zones in the declarative markup, and the second `<asp:webpartzone>` element is empty.  \n  \n [!code-cs[WebParts_Zone_HeaderText#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_500_1.aspx)]\n [!code-vb[WebParts_Zone_HeaderText#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_500_1.aspx)]  \n  \n In a browser, you can switch the page to design mode to see the text supplied for the HeaderText property displayed in the header area of the zone. For details on how to change page display modes, see [Walkthrough: Changing Display Modes on a Web Parts Page](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual string HeaderText { get; set; }
     return:
       type: System.String
-      description: "A string that contains the header text for the zone. The default is an empty string (&quot;&quot;)."
+      description: "A fejléc szövegét, a zóna tartalmazó karakterlánc. Az alapértelmezett érték egy üres karakterlánc (&quot;&quot;)."
   overload: System.Web.UI.WebControls.WebParts.WebZone.HeaderText*
   exceptions: []
   platform:
@@ -448,19 +448,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Loads previously saved state information for a zone."
-  remarks: "This method is used primarily by the .NET Framework infrastructure and is not intended to be used directly from your code. However, control developers can override this method to specify how a custom server control restores its view state. For more information, see [ASP.NET State Management Overview](~/add/includes/ajax-current-ext-md.md).       The LoadViewState method loads previously saved state information for a zone. It overrides the base <xref:System.Web.UI.Control.LoadViewState%2A> method to also load state information for the various style properties of a zone, such as <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>."
+  summary: "Betölti a korábban mentett zóna állapotadatait."
+  remarks: "Ez a módszer elsősorban a .NET-keretrendszer-infrastruktúrát használják, és nem javasolt közvetlenül a kódból használni. Azonban a vezérlő fejlesztők felülírhatja ezt a metódust adja meg, hogyan egy egyéni vezérlőjét visszaállítja-e a nézetállapotát. További információkért lásd: [ASP.NET állapot Management áttekintése](~/add/includes/ajax-current-ext-md.md).       A LoadViewState módszer a korábban mentett állapotra információt zóna tölt be. Felülírja a következő <xref:System.Web.UI.Control.LoadViewState%2A>metódust is, mint az állapotadatokat a különböző style tulajdonságának értéke egy zóna betöltése <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A> </xref:System.Web.UI.Control.LoadViewState%2A>"
   syntax:
     content: protected override void LoadViewState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "The previously saved state."
+      description: "A korábban mentett állapotra."
   overload: System.Web.UI.WebControls.WebParts.WebZone.LoadViewState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The size of the <code>savedState</code> object does not equal the size of the current view-state object."
+    description: "A mérete a <code> savedState </code> objektum nem egyezik az aktuális állapotának megtekintése objektum mérete."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.OnInit(System.EventArgs)
@@ -475,19 +475,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.Init&quot;></xref> event."
-  remarks: "The OnInit method overrides the base <xref:System.Web.UI.Control.OnInit%2A> method to register a zone with the <xref:System.Web.UI.WebControls.WebParts.WebPartManager> control."
+  summary: "Vet fel a <xref href=&quot;System.Web.UI.Control.Init&quot;> </xref> esemény."
+  remarks: "A OnInit metódus felülbírálja a kiinduló <xref:System.Web.UI.Control.OnInit%2A>metódus regisztrálni egy zónát a <xref:System.Web.UI.WebControls.WebParts.WebPartManager>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.Control.OnInit%2A>"
   syntax:
     content: protected override void OnInit (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.WebParts.WebZone.OnInit*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The zone control was added at too late of a stage in the page life cycle, or the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "A zóna vezérlő került túl későn egy szakaszban, a lap életciklusának, vagy a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> van <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.OnPreRender(System.EventArgs)
@@ -502,19 +502,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Raises the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event."
-  remarks: "The OnPreRender method overrides the base <xref:System.Web.UI.Control.OnPreRender%2A> method in order to prevent a zone from rendering if its parent control is another zone or a part control."
+  summary: "Vet fel a <xref href=&quot;System.Web.UI.Control.PreRender&quot;> </xref> esemény."
+  remarks: "A OnPreRender metódus felülbírálja a kiinduló <xref:System.Web.UI.Control.OnPreRender%2A>leállítja, nehogy a zóna leképezésekor, ha a szülő vezérlő egy másik zónában vagy egy kijelző vezérlő metódus.</xref:System.Web.UI.Control.OnPreRender%2A>"
   syntax:
     content: protected override void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Web.UI.WebControls.WebParts.WebZone.OnPreRender*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebZone&quot;></xref> control is nested within another zone or within a <xref href=&quot;System.Web.UI.WebControls.WebParts.Part&quot;></xref> control."
+    description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebZone&quot;> </xref> vezérlő van beágyazva, egy másik zónán belül vagy belül egy <xref href=&quot;System.Web.UI.WebControls.WebParts.Part&quot;> </xref> vezérlő."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.Padding
@@ -529,17 +529,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the cell padding attributes on the table that contains the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> controls in a zone."
+  summary: "Lekérdezi vagy beállítja a cella kitöltési attribútumait a táblázat, amely tartalmazza a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> a zónában."
   syntax:
     content: public virtual int Padding { get; set; }
     return:
       type: System.Int32
-      description: "The number of pixels for the padding between items and their cell boundaries in the table rendered for a zone. The default is 2."
+      description: "A cikkek és a cella határain a tábla a zónában megjelenített közötti térközt képpontok száma. Az alapértelmezett érték a 2."
   overload: System.Web.UI.WebControls.WebParts.WebZone.Padding*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The property is set to a value less than -1."
+    description: "A tulajdonság értéke -1-nél kisebb értékre."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.PartChromePadding
@@ -554,18 +554,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the distance between the contents of a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;></xref> control and the border of the control."
-  remarks: "Use this property to define a standard padding amount between the content of each control and its border for all controls contained in a zone."
+  summary: "Lekérdezi vagy beállítja a tartalma közötti távolságot a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPart&quot;> </xref> vezérlő és a vezérlő szegélyének."
+  remarks: "Ez a tulajdonság segítségével határozza meg a standard kitöltési méretű minden tartalmat és a zónában lévő összes vezérlők szegélyének között."
   syntax:
     content: public System.Web.UI.WebControls.Unit PartChromePadding { get; set; }
     return:
       type: System.Web.UI.WebControls.Unit
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Unit&quot;></xref> object that indicates the type of measurement and the amount of padding. The default padding for a zone is 5 pixels."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Unit&quot;> </xref> objektum, amely jelzi a mértékegység típusát és szövegtávolság mértéke. A zóna kitöltési alapértelmezés szerint 5 képpont."
   overload: System.Web.UI.WebControls.WebParts.WebZone.PartChromePadding*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value assigned to the property is a negative number."
+    description: "A tulajdonsághoz hozzárendelt érték egy negatív szám."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle
@@ -580,15 +580,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets style characteristics that apply to the borders of Web Parts controls contained by a zone."
-  remarks: "A Web Parts control can have its own border, defined in the <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> property. The zone that contains the control can add an additional outer border around the control. The outer border that a zone can place around each of its Web Parts controls is determined by the PartChromeStyle property. This property does not cancel out the property attributes contained in the <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> object; it is merged with or added to them. It enables a zone to provide a common and consistent border for each of the Web Parts controls it contains.      > [!IMPORTANT] >  Although the PartChromeStyle style settings apply primarily to the outer border that a zone can set around the controls it contains, if you set additional properties on the <xref:System.Web.UI.WebControls.Style> object referenced by the property, such as <xref:System.Web.UI.MobileControls.Style.BackColor%2A>, the browser interprets those style attributes as applying to all the sub-elements of the table used to render a zone. Hence, setting the <xref:System.Web.UI.MobileControls.Style.BackColor%2A> property for the style object referenced by the PartChromeStyle property has the same effect on a <xref:System.Web.UI.WebControls.WebParts.WebPart> control as setting the <xref:System.Web.UI.MobileControls.Style.BackColor%2A> property on the object referenced by the <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> property."
+  summary: "Lekérdezi, amelyek érvényesek a zóna által tartalmazott kijelzők vezérlők szegélyének stílusa jellemzőit."
+  remarks: "A kijelzők vezérlő rendelkezhet saját szegélyének meghatározott a <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> A zóna a vezérlőt tartalmazó vezérlő további külső szegélyének adhat hozzá. A zóna egyes a kijelzők vezérlők körüli elhelyezheti külső szegélyt a PartChromeStyle tulajdonság határozza meg. Ez a tulajdonság nem található tulajdonság attribútumok megszakíthatja a <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>objektum; egyesítve lesznek, és hozzáadja őket.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> Ez lehetővé teszi egy zónát, hogy adjon meg egy általános és következetes szegély a kijelzők vezérlőelemeket.      > [!IMPORTANT] > PartChromeStyle style beállítások érvényesek elsősorban egy zónát állíthat be a vezérlőelem külső szegélyt de tartalmazza, ha további tulajdonságokat a a <xref:System.Web.UI.WebControls.Style>, mint a tulajdonság által hivatkozott objektumhoz <xref:System.Web.UI.MobileControls.Style.BackColor%2A>, a böngésző értelmezi azokat, hogy az összes alárendelt elem a zóna megjelenítéséhez használt tábla attribútumokat.</xref:System.Web.UI.MobileControls.Style.BackColor%2A> </xref:System.Web.UI.WebControls.Style> Emiatt beállítása a <xref:System.Web.UI.MobileControls.Style.BackColor%2A>a style objektum PartChromeStyle tulajdonság által hivatkozott tulajdonsága esetében ugyanaz az eredmény egy <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlőelemet jelöli meg a beállítás a <xref:System.Web.UI.MobileControls.Style.BackColor%2A>tulajdonság által hivatkozott objektumnál a <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.MobileControls.Style.BackColor%2A> </xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.MobileControls.Style.BackColor%2A>"
   example:
   - "The following code example demonstrates the use of the PartChromeStyle property to set style attributes for the outer borders of Web Parts controls contained in a zone.  \n  \n [!code-cs[WebParts_Zone_PartChromeStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1354_1.aspx)]\n [!code-vb[WebParts_Zone_PartChromeStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1354_1.aspx)]  \n  \n Note that when you first load the page in a browser, the upper control has its own green border with a width of 2 pixels, as set in the declarative markup for the page. After a user clicks the calendar, the page programmatically changes the borders of both controls in the zone to red, and sets their border width to 4 pixels, yet the upper control retains its original green inner border."
   syntax:
     content: public System.Web.UI.WebControls.Style PartChromeStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that contains style attributes for the borders that surround Web Parts controls contained by a zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> , amely tartalmazza a zóna kijelzők vezérlőkben körülvevő szegély stílusát attribútumait."
   overload: System.Web.UI.WebControls.WebParts.WebZone.PartChromeStyle*
   exceptions: []
   platform:
@@ -605,18 +605,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the type of border that frames Web Parts controls contained by a zone."
-  remarks: "The PartChromeType property acts like a default property for the Web Parts controls in a zone. If a Web Parts control has its <xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A> property set, that property overrides the effect of the PartChromeType property at run time. If the control&quot;s <xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A> property is not set, or is set to <xref:System.Web.UI.WebControls.WebParts.PartChromeType>, the value of the PartChromeType property determines what kind of border the control has."
+  summary: "Lekérdezi vagy beállítja a lévő keretek kijelzők vezérlők szegélyének típusát egy zóna."
+  remarks: "A PartChromeType tulajdonság úgy viselkedik, mint a kijelzők vezérlők zónában alapértelmezett tulajdonság. Ha a kijelzők vezérlőnek a <xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A>tulajdonság beállításához, hogy a tulajdonság felülírja a PartChromeType tulajdonság hatása futási időben.</xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A> Ha a vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A>tulajdonság nincs beállítva, vagy értékre van állítva <xref:System.Web.UI.WebControls.WebParts.PartChromeType>, a PartChromeType tulajdonság értéke határozza meg, milyen típusú szegély a vezérlőn van.</xref:System.Web.UI.WebControls.WebParts.PartChromeType> </xref:System.Web.UI.WebControls.WebParts.WebPart.ChromeType%2A>"
   syntax:
     content: public virtual System.Web.UI.WebControls.WebParts.PartChromeType PartChromeType { get; set; }
     return:
       type: System.Web.UI.WebControls.WebParts.PartChromeType
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;></xref> that determines the type of border that frames Web Parts controls contained by a zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;> </xref> , amely azt határozza meg, amely a zóna által tartalmazott kijelzők vezérlők szegélyének típusát."
   overload: System.Web.UI.WebControls.WebParts.WebZone.PartChromeType*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is not one of the <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;></xref> values."
+    description: "Az érték nem szerepel a <xref href=&quot;System.Web.UI.WebControls.WebParts.PartChromeType&quot;> </xref> értékeket."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.PartStyle
@@ -631,15 +631,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets style characteristics that apply to the border and contents of each Web Parts control contained by a zone."
-  remarks: "The style attributes apply to the border and contents of every Web Parts control in a zone. This property is read-only; however, you can set the properties of the <xref:System.Web.UI.WebControls.TableStyle> object it returns. This property enables you to provide a consistent style for the contents of all the controls a zone contains."
+  summary: "Stílus jellemzőit, amelyek érvényesek a szegély és a zóna által tartalmazott kijelzők tartalmuknak lekérdezi."
+  remarks: "A style attribútum szegélye és tartalma minden kijelzők vezérlő zónában vonatkozik. Ez a tulajdonság csak olvasható; azonban tulajdonságainak beállítása a <xref:System.Web.UI.WebControls.TableStyle>objektumot ad vissza.</xref:System.Web.UI.WebControls.TableStyle> Ez a tulajdonság lehetővé teszi a zóna tartalmazza az összes vezérlő tartalmának adjon meg konzisztens stílust."
   example:
   - "The following code example demonstrates the use of the PartStyle property. Note that in the zone referenced in the declarative markup, there is an `<asp:calendar>` element and an `<asp:literal>` element, with both controls acting as Web Parts controls at run time because they are in a zone. After the user clicks a date on the calendar control, the page programmatically uses the PartStyle property to change the background color of all part controls in the zone to red.  \n  \n [!code-vb[WebParts_Zone_PartStyle#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1338_1.aspx)]\n [!code-cs[WebParts_Zone_PartStyle#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1338_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TableStyle PartStyle { get; }
     return:
       type: System.Web.UI.WebControls.TableStyle
-      description: "A <xref href=&quot;System.Web.UI.WebControls.TableStyle&quot;></xref> that contains style attributes for the Web Parts controls in the zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.TableStyle&quot;> </xref> , amely tartalmazza a zónában a kijelzők vezérlők attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.PartStyle*
   exceptions: []
   platform:
@@ -656,12 +656,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets style attributes for the title bar content for each Web Parts control contained by a zone."
+  summary: "Lekéri a cím sáv tartalma egy zóna által tartalmazott kijelzők vezérlők attribútumokat."
   syntax:
     content: public System.Web.UI.WebControls.WebParts.TitleStyle PartTitleStyle { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.TitleStyle
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;></xref> that contains style attributes for the title bar content for each Web Parts control in the zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.TitleStyle&quot;> </xref> , amely tartalmazza a cím sáv tartalma a zónában kijelzők vezérlők az attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.PartTitleStyle*
   exceptions: []
   platform:
@@ -678,14 +678,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Renders the opening HTML tag of the zone control to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The RenderBeginTag method is used primarily by control developers. For a <xref:System.Web.UI.WebControls.WebParts.WebZone> control, the method sets style attributes for the HTML table that is rendered for the zone. The style attributes help render the HTML table properly in supported browsers."
+  summary: "Ez a beállítás a nyitó HTML-címke a zóna vezérlő a megadott <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> objektum."
+  remarks: "A RenderBeginTag metódus elsősorban vezérlő fejlesztők használják. Az egy <xref:System.Web.UI.WebControls.WebParts.WebZone>vezérlő, a metódus állítja be a HTML-tábla számára a zónában megjelenített attribútumokat.</xref:System.Web.UI.WebControls.WebParts.WebZone> A style attribútum segítségével leképezési megfelelően támogatott böngészők HTML táblázat."
   syntax:
     content: public override void RenderBeginTag (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "Egy <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> , amely jelöli, hogy a kimeneti adatfolyamba megjelenítéséhez HTML tartalom az ügyfélen."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderBeginTag*
   exceptions: []
   platform:
@@ -702,14 +702,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Overrides rendering for the body of a zone control."
-  remarks: "The body of a zone control is the portion between its header and footer areas."
+  summary: "A felülbírálások a törzs zóna vezérlő leképezésekor."
+  remarks: "A zóna vezérlő törzse között a területet az a része."
   syntax:
     content: protected virtual void RenderBody (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "A <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "A <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> , amely jelöli, hogy a kimeneti adatfolyamba megjelenítéséhez HTML tartalom az ügyfélen."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderBody*
   exceptions: []
   platform:
@@ -726,12 +726,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether to render client script on a Web Parts page."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy a kijelzők oldalon ügyféloldali parancsprogram megjelenítéséhez."
   syntax:
     content: protected bool RenderClientScript { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the zone renders client script when the page is in a given display mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a zóna ügyféloldali parancsprogram képezi le, ha a lapon megadott megjelenítési mód; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderClientScript*
   exceptions: []
   platform:
@@ -748,14 +748,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Renders the entire contents of a zone control between the beginning and ending tags to the specified <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> object."
-  remarks: "The RenderContents method is used primarily by control developers. This method overrides the base <xref:System.Web.UI.WebControls.WebControl.RenderContents%2A> method to render a zone when the zone&quot;s <xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A> property is set to `true`."
+  summary: "Ez a beállítás a kezdő és záró a megadott címkék között zóna vezérlő teljes tartalmát <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> objektum."
+  remarks: "A RenderContents metódus elsősorban vezérlő fejlesztők használják. Ezt a módszert felülbírálja a kiinduló <xref:System.Web.UI.WebControls.WebControl.RenderContents%2A>metódus leképezése egy zóna Ha a zóna <xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A>tulajdonsága `true`.</xref:System.Web.UI.WebControls.WebParts.WebZone.HasHeader%2A> </xref:System.Web.UI.WebControls.WebControl.RenderContents%2A>"
   syntax:
     content: protected override void RenderContents (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "Egy <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> , amely jelöli, hogy a kimeneti adatfolyamba megjelenítéséhez HTML tartalom az ügyfélen."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderContents*
   exceptions: []
   platform:
@@ -772,13 +772,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Overrides rendering for the footer of a zone control."
+  summary: "A felülbírálások vezérlő zóna láblécének megjelenítése."
   syntax:
     content: protected virtual void RenderFooter (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "Egy <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> , amely jelöli, hogy a kimeneti adatfolyamba megjelenítéséhez HTML tartalom az ügyfélen."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderFooter*
   exceptions: []
   platform:
@@ -795,13 +795,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Overrides rendering for the header of a zone control."
+  summary: "A felülbírálások a fejléc zóna vezérlő leképezésekor."
   syntax:
     content: protected virtual void RenderHeader (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "An <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream to render HTML content on the client."
+      description: "Egy <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> , amely jelöli, hogy a kimeneti adatfolyamba megjelenítéséhez HTML tartalom az ügyfélen."
   overload: System.Web.UI.WebControls.WebParts.WebZone.RenderHeader*
   exceptions: []
   platform:
@@ -818,14 +818,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves any view-state changes that have occurred after a page was posted back to the server."
-  remarks: "The SaveViewState method overrides the base <xref:System.Web.UI.Control.SaveViewState%2A> method to save view-state changes to the various style properties of a zone, such as <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>."
+  summary: "Miután egy lapon megtalálható a kiszolgálón történt nézetállapot módosítások mentése."
+  remarks: "A SaveViewState metódus felülbírálja a kiinduló <xref:System.Web.UI.Control.SaveViewState%2A>metódus-állapot mentése például vált egy zónát, különböző stílust tulajdonságait <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A> </xref:System.Web.UI.Control.SaveViewState%2A>"
   syntax:
     content: protected override object SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "Returns the zone control&quot;s current view state. If no view state is associated with the zone, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A zóna vezérlő aktuális nézetállapot adja vissza. Ha nem a rendszer a zónához társított, ez a metódus visszaadja <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebZone.SaveViewState*
   exceptions: []
   platform:
@@ -842,12 +842,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;></xref> value that corresponds to this Web server control. This property is used primarily by control developers."
+  summary: "Lekérdezi a <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;> </xref> érték, amely megfelel a Web server vezérlő. Ez a tulajdonság elsősorban vezérlő fejlesztők használják."
   syntax:
     content: protected override System.Web.UI.HtmlTextWriterTag TagKey { get; }
     return:
       type: System.Web.UI.HtmlTextWriterTag
-      description: "One of the <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;></xref> enumeration values."
+      description: "Egy a <xref href=&quot;System.Web.UI.HtmlTextWriterTag&quot;> </xref> számbavételi értékek."
   overload: System.Web.UI.WebControls.WebParts.WebZone.TagKey*
   exceptions: []
   platform:
@@ -864,8 +864,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Tracks changes to a zone control&quot;s view state."
-  remarks: "The TrackViewState method overrides the base <xref:System.Web.UI.Control.TrackViewState%2A> method to track view-state changes to the various style properties of a zone, such as <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, and <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>."
+  summary: "Egy zóna vezérlő nézetállapotát módosításait követi nyomon."
+  remarks: "A TrackViewState metódus felülbírálja a kiinduló <xref:System.Web.UI.Control.TrackViewState%2A>módszer a nézet-állapotok nyomon követésére, mint vált egy zónát, különböző stílust tulajdonságait <xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A>, <xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A>, és <xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A>.</xref:System.Web.UI.WebControls.WebParts.WebZone.PartStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.FooterStyle%2A> </xref:System.Web.UI.WebControls.WebParts.WebZone.HeaderStyle%2A> </xref:System.Web.UI.Control.TrackViewState%2A>"
   syntax:
     content: protected override void TrackViewState ();
     parameters: []
@@ -885,18 +885,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets what kind of button is used to represent verbs in a zone."
-  remarks: "The VerbButtonType property can be used to determine how the verbs will appear in the verbs menu of a zone. Verbs can appear as a button, a hyperlink, or a clickable image."
+  summary: "Lekérdezi vagy beállítja a gomb milyen műveletek zónában megjelenítésére szolgál."
+  remarks: "A VerbButtonType tulajdonság segítségével határozza meg, hogyan fog megjelenni a HTTP-parancsokat a Műveletek menüjében a zóna. Műveletek gomb, hivatkozás vagy egy interaktív kép jelenhet meg."
   syntax:
     content: public virtual System.Web.UI.WebControls.ButtonType VerbButtonType { get; set; }
     return:
       type: System.Web.UI.WebControls.ButtonType
-      description: "A <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref> that indicates what kind of button will be visible to represent verbs in the user interface (UI). The default is <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;> </xref> azt jelzi, hogy milyen gomb láthatják majd a műveletek a felhasználói felületen (UI) képviseli. Az alapértelmezett érték <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebZone.VerbButtonType*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The property is not set to a <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;></xref> value."
+    description: "A tulajdonság értéke nem egy <xref href=&quot;System.Web.UI.WebControls.ButtonType&quot;> </xref> érték."
   platform:
   - net462
 - uid: System.Web.UI.WebControls.WebParts.WebZone.VerbStyle
@@ -911,12 +911,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the style attributes for the user interface (UI) verbs associated with Web Parts controls in a zone."
+  summary: "A felhasználói felület (UI) HTTP-parancsokat a zónában kijelzők vezérlőkkel kapcsolatos lekéri az attribútumokat."
   syntax:
     content: public System.Web.UI.WebControls.Style VerbStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> that contains style attributes for the verbs associated with Web Parts controls contained by a zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> , amely tartalmazza a zóna által tartalmazott kijelzők vezérlőkkel kapcsolatos műveletekhez attribútumokat."
   overload: System.Web.UI.WebControls.WebParts.WebZone.VerbStyle*
   exceptions: []
   platform:
@@ -933,12 +933,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a reference to the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control associated with a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebZone&quot;></xref> control instance on a Web Parts page."
+  summary: "Lekér egy hivatkozást a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> társított vezérlő egy <xref href=&quot;System.Web.UI.WebControls.WebParts.WebZone&quot;> </xref> vezérlő példány kijelzők oldalon."
   syntax:
     content: protected System.Web.UI.WebControls.WebParts.WebPartManager WebPartManager { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartManager
-      description: "The <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;></xref> control that is associated with a zone."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartManager&quot;> </xref> a zónához társított vezérlő."
   overload: System.Web.UI.WebControls.WebParts.WebZone.WebPartManager*
   exceptions: []
   platform:
