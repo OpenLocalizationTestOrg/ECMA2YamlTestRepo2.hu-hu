@@ -52,8 +52,8 @@ items:
   nameWithType: HttpCachePolicy
   fullName: System.Web.HttpCachePolicy
   type: Class
-  summary: "Contains methods for setting cache-specific HTTP headers and for controlling the ASP.NET page output cache."
-  remarks: 'For background information about HTTP headers and controlling caching, see RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1, available on the [World Wide Web Consortium (W3C) Web site](http://go.microsoft.com/fwlink/?linkid=37125).'
+  summary: "Gyorsítótár-specifikus HTTP-fejlécek beállításához és az ASP.NET lap kimeneti gyorsítótár szabályozásának metódust tartalmaz."
+  remarks: 'Háttér HTTP-fejlécek és szabályozására gyorsítótárazás kapcsolatos információkért lásd: RFC 2616: http protokoll – HTTP/1.1, elérhető a [webes Consortium (W3C) webhelyen](http://go.microsoft.com/fwlink/?linkid=37125).'
   syntax:
     content: public sealed class HttpCachePolicy
   inheritance:
@@ -74,8 +74,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Registers a validation callback for the current response."
-  remarks: "TheAddValidationCallback method provides a mechanism to check the response programmatically in the cache before the response is returned to the client by the output cache.       Before the response is served from the Web server cache, all registered handlers are queried to ensure resource validity. If any handler sets a flag indicating that the cached response is not valid, the entry is marked as not valid and expelled from the cache. In this case, as well as when any handler indicates that the cached response should be ignored for this request, the request is then handled as if it were a cache miss.       AddValidationCallback is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Regisztrálja az aktuális válasz érvényesítése a visszahívását."
+  remarks: "TheAddValidationCallback módszer lehetővé teszi a programozott módon a gyorsítótár válasz kereséséhez, mielőtt a választ küld vissza az ügyfélnek a kimeneti gyorsítótár által.       A válasz a Web server gyorsítótárból kiszolgált, mielőtt, a rendszer megkérdezi a minden regisztrált kezelők erőforrás érvényességének biztosításához. Bármely kezelő beállítja azt a jelzőt, ezzel jelezve, hogy a gyorsítótárazott válasz nem érvényes, ha a bejegyzés nem érvényes és kizárt van megjelölve a gyorsítótárból. Ebben az esetben, csakúgy, mint amikor bármely kezelő azt jelzi, hogy a gyorsítótárazott válasz figyelmen kívül hagyja a kérelem a kérelem, majd kezelve, mintha egy gyorsítótár-tévesztései.       AddValidationCallback megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to add a delegate to validate a request based on query string values.  \n  \n [!code-cs[Cache Validation Callback#1](~/add/codesnippet/csharp/4d4b984f-e7c2-4d53-acbf-_1.aspx)]\n [!code-vb[Cache Validation Callback#1](~/add/codesnippet/visualbasic/4d4b984f-e7c2-4d53-acbf-_1.aspx)]"
   syntax:
@@ -83,10 +83,10 @@ items:
     parameters:
     - id: handler
       type: System.Web.HttpCacheValidateHandler
-      description: "The <xref href=&quot;System.Web.HttpCacheValidateHandler&quot;></xref> value."
+      description: "A <xref href=&quot;System.Web.HttpCacheValidateHandler&quot;> </xref> érték."
     - id: data
       type: System.Object
-      description: "The arbitrary user-supplied data that is passed back to the AddValidationCallback delegate."
+      description: "Tetszőleges felhasználó által megadott adatokat küld vissza a AddValidationCallback delegálni."
   overload: System.Web.HttpCachePolicy.AddValidationCallback*
   exceptions:
   - type: System.ArgumentNullException
@@ -106,8 +106,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Appends the specified text to the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> HTTP header."
-  remarks: "If the browser does not recognize cache control directives or extensions, the browser must ignore the unrecognized terms. For more information, see RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1, available on the [World Wide Web Consortium (W3C) Web site](http://go.microsoft.com/fwlink/?linkid=37125).       AppendCacheExtension is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "A megadott szöveg hozzáfűzi a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> HTTP-fejléc."
+  remarks: "Ha a böngésző nem ismeri fel a cache-control direktívák vagy bővítményeknek, a böngésző kell figyelmen kívül hagyja az ismeretlen feltételeket. További információk: RFC 2616: http protokoll – HTTP/1.1, elérhető a [webes Consortium (W3C) webhelyen](http://go.microsoft.com/fwlink/?linkid=37125).       AppendCacheExtension megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of a cache-control extension supported by Internet Explorer. The server is indicating to the browser that the content will not change for one hour (`pre-check=3600`) and instructs it to retrieve the content directly from the local cache. However, if the content is modified by the server and the page is requested by the user within a fifteen-minute (`post-check= 900`) to one-hour period, the browser displays the information found in the local cache but also performs a background check and optional fetch of the new content on the server.  \n  \n [!code-cs[Classic HttpCachePolicy.AppendCacheExtension Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_3_1.cs)]\n [!code-vb[Classic HttpCachePolicy.AppendCacheExtension Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_3_1.vb)]"
   syntax:
@@ -115,12 +115,12 @@ items:
     parameters:
     - id: extension
       type: System.String
-      description: "The text to append to the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> header."
+      description: "A Szöveg hozzáfűzése a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> fejléc."
   overload: System.Web.HttpCachePolicy.AppendCacheExtension*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>extension</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>extension</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.GetCacheability
@@ -135,13 +135,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the cache-control directive."
+  summary: "Lekérdezi a cache-control direktíva."
   syntax:
     content: public System.Web.HttpCacheability GetCacheability ();
     parameters: []
     return:
       type: System.Web.HttpCacheability
-      description: "The cache-control directive."
+      description: "A cache-control direktíva."
   overload: System.Web.HttpCachePolicy.GetCacheability*
   exceptions: []
   platform:
@@ -158,13 +158,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the cache extensions."
+  summary: "Lekérdezi a gyorsítótár-bővítmények."
   syntax:
     content: public string GetCacheExtensions ();
     parameters: []
     return:
       type: System.String
-      description: "The cache extensions."
+      description: "A gyorsítótár-bővítmények."
   overload: System.Web.HttpCachePolicy.GetCacheExtensions*
   exceptions: []
   platform:
@@ -181,13 +181,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the ETag."
+  summary: "Lekérdezi az ETag."
   syntax:
     content: public string GetETag ();
     parameters: []
     return:
       type: System.String
-      description: "The ETag."
+      description: "Az ETag."
   overload: System.Web.HttpCachePolicy.GetETag*
   exceptions: []
   platform:
@@ -204,13 +204,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status indicating whether the <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> header has been set  based on the timestamps of the file   dependencies of the handler."
+  summary: "Lekérdezi az állapotot, amely jelzi, hogy a <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> fejléc nincs beállítva alapján a fájl függőségi a kezelőhöz időbélyegzőket."
   syntax:
     content: public bool GetETagFromFileDependencies ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> header has been set  based on the timestamps of the file   dependencies of the handler; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> fejléc van beállítva, a fájl függőségi a kezelőhöz időbélyegeket alapján, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetETagFromFileDependencies*
   exceptions: []
   platform:
@@ -227,13 +227,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the expire header."
+  summary: "Lekérdezi a lejárati fejléc."
   syntax:
     content: public DateTime GetExpires ();
     parameters: []
     return:
       type: System.DateTime
-      description: "The expire header."
+      description: "Az elévülési fejléc."
   overload: System.Web.HttpCachePolicy.GetExpires*
   exceptions: []
   platform:
@@ -250,13 +250,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of ignore range requests."
+  summary: "Lekérdezi a figyelmen kívül hagyása tartomány kérelmének állapotát."
   syntax:
     content: public bool GetIgnoreRangeRequests ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if range requests are ignored; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tartomány kérelmek figyelmen kívül lesznek hagyva; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetIgnoreRangeRequests*
   exceptions: []
   platform:
@@ -273,13 +273,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of the Last-Modified headerset to base on the timestamps of the   file dependencies of the handler."
+  summary: "A fájl függőségi a kezelőhöz időbélyegeket alapjául Last-Modified headerset állapotát olvassa be."
   syntax:
     content: public bool GetLastModifiedFromFileDependencies ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the Last-Modified header  is set to base on the timestamps of the   file dependencies of the handler; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kezelő; fájl függőség időbélyegeket alapjául a Last-Modified fejléc értéke Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetLastModifiedFromFileDependencies*
   exceptions: []
   platform:
@@ -296,13 +296,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the cache-control max age."
+  summary: "Lekérdezi a cache-control maximális életkora."
   syntax:
     content: public TimeSpan GetMaxAge ();
     parameters: []
     return:
       type: System.TimeSpan
-      description: "The cache-control max age."
+      description: "A cache-control maximális életkora."
   overload: System.Web.HttpCachePolicy.GetMaxAge*
   exceptions: []
   platform:
@@ -319,13 +319,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of server caching for the current response."
+  summary: "A jelenlegi válasz gyorsítótár kiszolgáló állapotát olvassa be."
   syntax:
     content: public bool GetNoServerCaching ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if server caching is stopped for the current response; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kiszolgáló-gyorsítótárazás le van állítva, a jelenlegi válasz; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetNoServerCaching*
   exceptions: []
   platform:
@@ -342,13 +342,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of the store."
+  summary: "A tároló állapotát olvassa be."
   syntax:
     content: public bool GetNoStore ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if no store is set; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha tár be van állítva; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetNoStore*
   exceptions: []
   platform:
@@ -365,14 +365,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of the HTTP No-Transform Directive."
-  remarks: "Enables the sending of the Cache-Control HTTP header."
+  summary: "A HTTP nem-átalakítási irányelv állapotát olvassa be."
+  remarks: "Lehetővé teszi, hogy a küldő a Cache-Control HTTP-fejléc."
   syntax:
     content: public bool GetNoTransforms ();
     parameters: []
     return:
       type: System.Boolean
-      description: "true<xref uid=&quot;langword_csharp_&quot; name=&quot;&quot; href=&quot;&quot;></xref>if the HTTP No-Transform Directive is set; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Igaz<xref uid=&quot;langword_csharp_&quot; name=&quot;&quot; href=&quot;&quot;></xref>a HTTP nem-átalakítási irányelv esetén állítsa be, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetNoTransforms*
   exceptions: []
   platform:
@@ -389,13 +389,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the status of the <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;></xref> header."
+  summary: "Állapotát olvassa be a <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;> </xref> fejléc."
   syntax:
     content: public int GetOmitVaryStar ();
     parameters: []
     return:
       type: System.Int32
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;></xref> header is omitted; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;> </xref> fejléc értéke nincs megadva, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.GetOmitVaryStar*
   exceptions: []
   platform:
@@ -412,13 +412,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Gets the HTTP Cache-Control: Proxy Max Age.'
+  summary: 'Lekérdezi a HTTP a Cache-Control: Proxy maximális életkora.'
   syntax:
     content: public TimeSpan GetProxyMaxAge ();
     parameters: []
     return:
       type: System.TimeSpan
-      description: 'The HTTP Cache-Control: Proxy Max Age.'
+      description: 'A HTTP a Cache-Control: Proxy maximális életkora.'
   overload: System.Web.HttpCachePolicy.GetProxyMaxAge*
   exceptions: []
   platform:
@@ -435,14 +435,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Gets the Cache-Control: header to reflect either the must-revalidate or   proxy-revalidate directives.'
-  remarks: "The default is to not send either of these directives unless explicitly enabled using this method."
+  summary: 'Lekérdezi a Cache-Control: fejlécet a must-revalidate érték vagy a proxy-revalidate irányelveknek megfelelően.'
+  remarks: "Alapértelmezés szerint a rendszer nem küld vagy ezen irányelvek kivéve, ha explicit módon engedélyezve az ezzel a módszerrel."
   syntax:
     content: public System.Web.HttpCacheRevalidation GetRevalidation ();
     parameters: []
     return:
       type: System.Web.HttpCacheRevalidation
-      description: 'The Cache-Control: header to reflect either the must-revalidate or   proxy-revalidate directives.'
+      description: 'A Cache-Control: fejlécet a must-revalidate érték vagy a proxy-revalidate irányelveknek megfelelően.'
   overload: System.Web.HttpCachePolicy.GetRevalidation*
   exceptions: []
   platform:
@@ -459,13 +459,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the value of the <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;></xref> HTTP header in Coordinated Universal Time (UTC)."
+  summary: "Értékét a <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;> </xref> HTTP-fejléc az egyezményes világidő (UTC)."
   syntax:
     content: public DateTime GetUtcLastModified ();
     parameters: []
     return:
       type: System.DateTime
-      description: "The value of the <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;></xref> HTTP header."
+      description: "Értékét a <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;> </xref> HTTP-fejléc."
   overload: System.Web.HttpCachePolicy.GetUtcLastModified*
   exceptions: []
   platform:
@@ -482,13 +482,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the custom string that is used to vary the HTTP caching."
+  summary: "Lekérdezi az egyéni karakterlánc, amely eltérő a HTTP-gyorsítótárazás szolgál."
   syntax:
     content: public string GetVaryByCustom ();
     parameters: []
     return:
       type: System.String
-      description: "The custom string for varying the HTTP caching."
+      description: "A változó a HTTP-gyorsítótárazás egyéni karakterláncot."
   overload: System.Web.HttpCachePolicy.GetVaryByCustom*
   exceptions: []
   platform:
@@ -505,13 +505,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value which specifies whether the cache has a sliding expiration policy."
+  summary: "Adja meg, hogy rendelkezik-e a gyorsítótár egy mozgó elévülési szabályzatának érték beolvasása."
   syntax:
     content: public bool HasSlidingExpiration ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the the cache has a sliding expiration policy; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a a gyorsítótár tartalmaz egy mozgó elévülési szabályzatának; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.HasSlidingExpiration*
   exceptions: []
   platform:
@@ -528,13 +528,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value which specifies whether the HTTP cache has been modified."
+  summary: "Egy értéket, amely megadja, hogy módosult-e a HTTP-gyorsítótár lekérdezi."
   syntax:
     content: public bool IsModified ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the the cache has been modified; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az módosult a gyorsítótár; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.IsModified*
   exceptions: []
   platform:
@@ -551,13 +551,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value which specifies whether the ASP.NET cache should ignore HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> headers sent by the client that invalidate the cache."
+  summary: "Lekérdezi egy értéket, amely megadja, hogy az ASP.NET gyorsítótára figyelmen kívül a HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> érvénytelenné válnak a gyorsítótár az ügyfél által küldött fejléceket."
   syntax:
     content: public bool IsValidUntilExpires ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the the ASP.NET cache should ignore HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> headers sent by the client; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a az ASP.NET gyorsítótára figyelmen kívül hagyja a HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> ; az ügyfél által küldött fejlécek ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.IsValidUntilExpires*
   exceptions: []
   platform:
@@ -574,8 +574,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Makes the response is available in the client browser History cache, regardless of the <xref href=&quot;System.Web.HttpCacheability&quot;></xref> setting made on the server, when the <code>allow</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
-  remarks: "When <xref:System.Web.HttpCacheability> is set to <xref:System.Web.HttpCacheability> or <xref:System.Web.HttpCacheability> the `Expires` HTTP header is by default set to -1; this tells the client not to cache responses in the History folder, so that when you use the back/forward buttons the client requests a new version of the response each time. You can override this behavior by calling the SetAllowResponseInBrowserHistory method with the `allow` parameter set to `true`.       If <xref:System.Web.HttpCacheability> is set to values other than <xref:System.Web.HttpCacheability> or <xref:System.Web.HttpCacheability>, calling the SetAllowResponseInBrowserHistory method with either value for `allow` has no effect.       SetAllowResponseInBrowserHistory is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Elérhetővé válnak a válasz érhető el az ügyfél böngészője előzmények gyorsítótárában, függetlenül a <xref href=&quot;System.Web.HttpCacheability&quot;> </xref> a kiszolgálón végzett beállítás során a <code> allow </code> paraméter <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
+  remarks: "Ha <xref:System.Web.HttpCacheability>értéke <xref:System.Web.HttpCacheability>vagy <xref:System.Web.HttpCacheability>a `Expires` értéke -1 alapértelmezés szerint HTTP-fejléc; ez alapján nem az ügyfél gyorsítótár válaszok az Előzmények mappában, hogy a biztonsági/előre gomb használatakor az ügyfél kéri a válasz egy új verziója minden alkalommal, amikor.</xref:System.Web.HttpCacheability> </xref:System.Web.HttpCacheability> </xref:System.Web.HttpCacheability> Ezt a viselkedést felülírhatja a SetAllowResponseInBrowserHistory metódust hívja a `allow` paraméter `true`.       Ha <xref:System.Web.HttpCacheability>beállítása értékek eltérő <xref:System.Web.HttpCacheability>vagy <xref:System.Web.HttpCacheability>, a SetAllowResponseInBrowserHistory metódust vagy értékkel `allow` nincs hatása.</xref:System.Web.HttpCacheability> </xref:System.Web.HttpCacheability> </xref:System.Web.HttpCacheability>       SetAllowResponseInBrowserHistory megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to override the SetAllowResponseInBrowserHistory method to direct the client to store the responses in its history in a custom <xref:System.Web.HttpCachePolicy>.  \n  \n [!code-cs[HttpCachePolicySetAllowResponseInBrowserHistory#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_10_1.aspx)]\n [!code-vb[HttpCachePolicySetAllowResponseInBrowserHistory#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_10_1.aspx)]"
   syntax:
@@ -583,7 +583,7 @@ items:
     parameters:
     - id: allow
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to direct the client browser to store responses in the History folder; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az ügyfél böngészőt válaszok tárolása az Előzmények mappában; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.SetAllowResponseInBrowserHistory*
   exceptions: []
   platform:
@@ -600,8 +600,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> header to one of the values of <xref href=&quot;System.Web.HttpCacheability&quot;></xref>."
-  remarks: "SetCacheability is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> fejléc értékének egy <xref href=&quot;System.Web.HttpCacheability&quot;> </xref>."
+  remarks: "SetCacheability megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `Cache-Control` header to the enumerated value for `no-cache`.  \n  \n [!code-vb[Classic HttpCachePolicy.SetCacheability Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_8_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetCacheability Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_8_1.cs)]"
   syntax:
@@ -609,12 +609,12 @@ items:
     parameters:
     - id: cacheability
       type: System.Web.HttpCacheability
-      description: "An <xref href=&quot;System.Web.HttpCacheability&quot;></xref> enumeration value."
+      description: "Egy <xref href=&quot;System.Web.HttpCacheability&quot;> </xref> számbavételi érték."
   overload: System.Web.HttpCachePolicy.SetCacheability*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>cacheability</code> is not one of the enumeration values."
+    description: "<code>cacheability</code>nincs a számbavételi értékek egyike."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetCacheability(System.Web.HttpCacheability,System.String)
@@ -629,8 +629,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> header to one of the values of <xref href=&quot;System.Web.HttpCacheability&quot;></xref> and appends an extension to the directive."
-  remarks: "The field name extension is valid only when used with the `private` or `no-cache` directives. For more information, see RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1, available on the [World Wide Web Consortium (W3C) Web site](http://go.microsoft.com/fwlink/?linkid=37125).       This method will throw an invalid argument exception if incompatible directives and extensions are combined.       SetCacheability is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> fejléc értékének egy <xref href=&quot;System.Web.HttpCacheability&quot;> </xref> és egy bővítmény hozzáfűzi a direktíva."
+  remarks: "A mező kiterjesztése érvénytelen használata esetén csak a `private` vagy `no-cache` irányelvek. További információk: RFC 2616: http protokoll – HTTP/1.1, elérhető a [webes Consortium (W3C) webhelyen](http://go.microsoft.com/fwlink/?linkid=37125).       Ezt a módszert fog kivételt érvénytelen argumentum jelez, ha a nem kompatibilis irányelvek és bővítmények együttes.       SetCacheability megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how the `Cache-Control` header is set to the enumeration value `private` and adds a cache-control extension. The modified directive means that in addition to any non-shared cache, any cache shared only by members of the community named \"DEV\" may cache the response.  \n  \n [!code-vb[Classic HttpCachePolicy.SetCacheability1 Example#1](~/add/codesnippet/visualbasic/16566bce-c066-4578-8ca0-_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetCacheability1 Example#1](~/add/codesnippet/csharp/16566bce-c066-4578-8ca0-_1.cs)]"
   syntax:
@@ -638,18 +638,18 @@ items:
     parameters:
     - id: cacheability
       type: System.Web.HttpCacheability
-      description: "The <xref href=&quot;System.Web.HttpCacheability&quot;></xref> enumeration value to set the header to."
+      description: "A <xref href=&quot;System.Web.HttpCacheability&quot;> </xref> számbavételi értéket a fejléc értéke."
     - id: field
       type: System.String
-      description: "The cache control extension to add to the header."
+      description: "A gyorsítótár vezérlő bővítmény a fejléc hozzáadása."
   overload: System.Web.HttpCachePolicy.SetCacheability*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>field</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>field</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>cacheability</code> is not <xref href=&quot;System.Web.HttpCacheability&quot;></xref> or <xref href=&quot;System.Web.HttpCacheability&quot;></xref>."
+    description: "<code>cacheability</code>is not <xref href=&quot;System.Web.HttpCacheability&quot;></xref> or <xref href=&quot;System.Web.HttpCacheability&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetETag(System.String)
@@ -664,8 +664,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> HTTP header to the specified string."
-  remarks: "The `ETag` header is a unique identifier for a specific version of a document. It is used by clients to validate client-cached content to avoid requesting it again. Once an `ETag` header is set, subsequent attempts to set it fail and an exception is thrown.       SetETag is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> HTTP-fejléc, hogy a megadott karakterlánc."
+  remarks: "A `ETag` fejléc egy adott verziójához a dokumentumok egyedi azonosítóját. Segítségével az ügyfelek által elkerülése érdekében újból a kért ügyfél gyorsítótárazott tartalom érvényesítése. Egyszer egy `ETag` fejléc beállítva, az ezt követő kísérletek sikertelenek állítsa be, és a rendszer kivételt hoz létre.       SetETag megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `ETag` header to a custom value.  \n  \n [!code-cs[Classic HttpCachePolicy.SetETag Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_1_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetETag Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_1_1.vb)]"
   syntax:
@@ -673,12 +673,12 @@ items:
     parameters:
     - id: etag
       type: System.String
-      description: "The text to use for the <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> header."
+      description: "A használandó szöveget a <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> fejléc."
   overload: System.Web.HttpCachePolicy.SetETag*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>etag</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>etag</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
     description: "The <xref uid=\"langword_csharp_ETag\" name=\"ETag\" href=\"\"></xref> header has already been set.  \n  \n \\- or -  \n  \n The <xref:System.Web.HttpCachePolicy.SetETagFromFileDependencies*> has already been called."
@@ -696,8 +696,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> HTTP header based on the time stamps of the handler&quot;s file dependencies."
-  remarks: "TheSetETagFromFileDependencies method sets the `ETag` header by retrieving the last modified time stamps of all files on which the handler is dependent, combining all file names and time stamps into a single string, then hashing that string into a single digest that is used as the `ETag`.       SetETagFromFileDependencies is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> HTTP-fejléc alapján, a kezelő a függőségek az időbélyegek."
+  remarks: "TheSetETagFromFileDependencies módszer beállítása az `ETag` beolvasása az összes fájl, amelyre a kezelő függő az utolsó módosítás időpontja bélyegzők, kombinálásával az összes fájl nevét és időbélyegeket egyetlen karakterlánccá egyesít, akkor egy egyetlen digest, amely az adott karakterlánc-kivonatolás fejlécet a `ETag`.       SetETagFromFileDependencies megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `ETag` header.  \n  \n [!code-vb[Classic HttpCachePolicy.SetETagFromFileDependencies Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_12_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetETagFromFileDependencies Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_12_1.cs)]"
   syntax:
@@ -707,7 +707,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;></xref> header has already been set."
+    description: "A <xref uid=&quot;langword_csharp_ETag&quot; name=&quot;ETag&quot; href=&quot;&quot;> </xref> fejléc már be van állítva."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetExpires(System.DateTime)
@@ -722,8 +722,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Expires&quot; name=&quot;Expires&quot; href=&quot;&quot;></xref> HTTP header to an absolute date and time."
-  remarks: "This method will fail if the expiration date violates the principle of restrictiveness."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Expires&quot; name=&quot;Expires&quot; href=&quot;&quot;> </xref> HTTP-fejléc egy abszolút dátumát és idejét."
+  remarks: "Ez a metódus sikertelen lesz, ha a lejárati dátum sérti restrictiveness elvét."
   example:
   - "The following code example demonstrates how to set the expiration time to 6:00 P.M. local time on the current expiration day.  \n  \n [!code-vb[Classic HttpCachePolicy.SetExpires Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_11_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetExpires Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_11_1.cs)]"
   syntax:
@@ -731,7 +731,7 @@ items:
     parameters:
     - id: date
       type: System.DateTime
-      description: "The absolute <xref:System.DateTime> value to set the <xref uid=&quot;langword_csharp_Expires&quot; name=&quot;Expires&quot; href=&quot;&quot;></xref> header to."
+      description: "Az abszolút <xref:System.DateTime>érték beállítása a <xref uid=&quot;langword_csharp_Expires&quot; name=&quot;Expires&quot; href=&quot;&quot;> </xref> fejlécének.</xref:System.DateTime>"
   overload: System.Web.HttpCachePolicy.SetExpires*
   exceptions: []
   platform:
@@ -748,8 +748,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;></xref> HTTP header to the <xref:System.DateTime> value supplied."
-  remarks: "The `Last-Modified` HTTP header time stamps the document with the `DateTime` value indicating when the document was last modified.       This method will fail if the caching restrictiveness hierarchy is violated.       SetLastModified is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;> </xref> a HTTP-fejléc a <xref:System.DateTime>értéket kapott.</xref:System.DateTime>"
+  remarks: "A `Last-Modified` HTTP fejléc időbélyegzői a dokumentum a `DateTime` a dokumentum utolsó módosításának jelző érték.       Ez a metódus sikertelen lesz, ha a gyorsítótárazási restrictiveness hierarchia sérül.       SetLastModified megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `Last-Modified` header to a new date.  \n  \n [!code-cs[Classic HttpCachePolicy.SetLastModified Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_4_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetLastModified Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_4_1.vb)]"
   syntax:
@@ -757,12 +757,12 @@ items:
     parameters:
     - id: date
       type: System.DateTime
-      description: "The new <xref:System.DateTime> value for the <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;></xref> header."
+      description: "Az új <xref:System.DateTime>értékét a <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;> </xref> fejléc.</xref:System.DateTime>"
   overload: System.Web.HttpCachePolicy.SetLastModified*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>date</code> is later than the current <xref uid=&quot;langword_csharp_DateTime&quot; name=&quot;DateTime&quot; href=&quot;&quot;></xref>."
+    description: "<code>date</code>későbbi, mint a jelenlegi <xref uid=&quot;langword_csharp_DateTime&quot; name=&quot;DateTime&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetLastModifiedFromFileDependencies
@@ -777,8 +777,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;></xref> HTTP header based on the time stamps of the handler&quot;s file dependencies."
-  remarks: "SetLastModifiedFromFileDependencies is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Last-Modified&quot; name=&quot;Last-Modified&quot; href=&quot;&quot;> </xref> HTTP-fejléc alapján, a kezelő a függőségek az időbélyegek."
+  remarks: "SetLastModifiedFromFileDependencies megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `Last-Modified` header using the SetLastModifiedFromFileDependencies method.  \n  \n [!code-cs[Classic HttpCachePolicy.SetLastModifiedFromFileDependencies Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_2_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetLastModifiedFromFileDependencies Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_2_1.vb)]"
   syntax:
@@ -800,8 +800,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Sets the <xref uid=&quot;langword_csharp_Cache-Control: max-age&quot; name=&quot;Cache-Control: max-age&quot; href=&quot;&quot;></xref> HTTP header based on the specified time span.'
-  remarks: "`Max-age` is the maximum absolute time a document is allowed to exist before being considered stale.       The SetMaxAge method does not use sliding expiration and will fail if the expiration date violates the principle of restrictiveness.       SetMaxAge is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  If the SetMaxAge method is called repeatedly, on the second and subsequent calls, the value of the maximum age can only be decreased."
+  summary: 'Beállítja a <xref uid=&quot;langword_csharp_Cache-Control: max-age&quot; name=&quot;Cache-Control: max-age&quot; href=&quot;&quot;> </xref> HTTP-fejléc a megadott időtartam alapján.'
+  remarks: "`Max-age`az dokumentum előtt szabálysértésnek minősülő elavult számára engedélyezett maximális abszolút idő.       A SetMaxAge metódus nem használ mozgó lejárati, és sikertelen lesz, ha a lejárati dátum sérti restrictiveness elvét.       SetMaxAge megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > SetMaxAge metódus hívása többször, a második és az azt követő hívások maximális élettartamát értékének méretét csak csökkenteni lehet."
   example:
   - "The following code example demonstrates how to set the `Cache-Control: max-age` header to 0 hours, 30 minutes, and 0 seconds.  \n  \n [!code-cs[Classic HttpCachePolicy.SetMaxAge Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_9_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetMaxAge Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_9_1.vb)]"
   syntax:
@@ -809,12 +809,12 @@ items:
     parameters:
     - id: delta
       type: System.TimeSpan
-      description: 'The time span used to set the <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;></xref> - <xref uid=&quot;langword_csharp_Control: max-age&quot; name=&quot;Control: max-age&quot; href=&quot;&quot;></xref> header.'
+      description: 'A használt időtartama a <xref uid=&quot;langword_csharp_Cache&quot; name=&quot;Cache&quot; href=&quot;&quot;> </xref>  -  <xref uid=&quot;langword_csharp_Control: max-age&quot; name=&quot;Control: max-age&quot; href=&quot;&quot;> </xref> fejléc.'
   overload: System.Web.HttpCachePolicy.SetMaxAge*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>delta</code> is less than 0 or greater than one year."
+    description: "<code>delta</code>kisebb, mint 0 vagy nagyobb, mint egy év."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetNoServerCaching
@@ -829,8 +829,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Stops all origin-server caching for the current response."
-  remarks: "Explicitly denies caching of the document on the origin-server. Once set, all requests for the document are fully processed. When this method is invoked, caching cannot be re-enabled for the current response.       SetNoServerCaching is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Leállítja a jelenlegi válasz gyorsítótár eredeti kiszolgálóra."
+  remarks: "A dokumentum a forrás kiszolgálón gyorsítótárazás kifejezetten megtagadja. Beállítása után, a dokumentum az összes kérelem teljes feldolgozása. Ez a metódus meghívásakor gyorsítótárazás nem lehet újra engedélyezni a jelenlegi válasz.       SetNoServerCaching megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to disable output caching for the remainder of the response.  \n  \n [!code-vb[Classic HttpCachePolicy.SetNoServerCaching Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_7_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetNoServerCaching Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_7_1.cs)]"
   syntax:
@@ -852,7 +852,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Sets the <xref uid=&quot;langword_csharp_Cache-Control: no-store&quot; name=&quot;Cache-Control: no-store&quot; href=&quot;&quot;></xref> HTTP header.'
+  summary: 'Beállítja a <xref uid=&quot;langword_csharp_Cache-Control: no-store&quot; name=&quot;Cache-Control: no-store&quot; href=&quot;&quot;> </xref> HTTP-fejléc.'
   remarks: ''
   example:
   - "The following code example demonstrates how to use the SetNoStore method of the <xref:System.Web.HttpCachePolicy> class to direct the client not to store the responses in its history.  \n  \n [!code-cs[HttpCachePolicySetNoStore#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_14_1.aspx)]\n [!code-vb[HttpCachePolicySetNoStore#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_14_1.aspx)]"
@@ -875,8 +875,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Sets the <xref uid=&quot;langword_csharp_Cache-Control: no-transform&quot; name=&quot;Cache-Control: no-transform&quot; href=&quot;&quot;></xref> HTTP header.'
-  remarks: "The `Cache-Control: no-transform` HTTP header instructs network caching applications not to modify the document.       The `Cache-Control: no-transform` HTTP header prevents downstream proxy servers from changing any header values specified by the `Content-Encoding`, `Content-Range`, or `Content-Type` headers (this includes the entity body). For example, it prevents proxies from converting GIF images to PNG.       As with other restrictions on caching, once SetNoTransforms is called, the `Cache-Control: no-transform` HTTP header cannot be disabled through the <xref:System.Web.HttpCachePolicy> interface.       SetNoTransforms is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: 'Beállítja a <xref uid=&quot;langword_csharp_Cache-Control: no-transform&quot; name=&quot;Cache-Control: no-transform&quot; href=&quot;&quot;> </xref> HTTP-fejléc.'
+  remarks: "A `Cache-Control: no-transform` HTTP-fejléc arra utasítja a hálózati alkalmazások nem módosíthatja a dokumentum gyorsítótárazás.       A `Cache-Control: no-transform` HTTP-fejléc megakadályozza, hogy a proxy alsóbb rétegbeli kiszolgálók által megadott fejlécet értékeket módosítása a `Content-Encoding`, `Content-Range`, vagy `Content-Type` fejlécek (Ebbe beletartoznak a entitástörzsében). Például megakadályozza, hogy proxyk GIF-lemezképek átalakítása PNG.       Csakúgy, mint a más korlátozások gyorsítótárazást, ha SetNoTransforms nevezik, a `Cache-Control: no-transform` HTTP-fejléc nem lehet letiltani keresztül a <xref:System.Web.HttpCachePolicy>felületet.</xref:System.Web.HttpCachePolicy>       SetNoTransforms megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to send the `Cache-Control: no-transform` directive with the current response.  \n  \n [!code-vb[Classic HttpCachePolicy.SetNoTransforms Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_6_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetNoTransforms Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_6_1.cs)]"
   syntax:
@@ -898,14 +898,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Specifies whether the response should contain the <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;></xref> header when varying by parameters."
-  remarks: "This method allows you to prevent the output ached from adding a `vary:*` header to the outgoing response when the cached response varies by parameter. This is useful for clients varying caching by query string because most clients will automatically vary by query string without requiring the `vary:*` header.      > [!NOTE] >  The use of the `vary:*` header can disable all client caching.       This is a convenience method to affect the <xref:System.Web.HttpCachePolicy.VaryByHeaders%2A> property. Passing `true` to the method directs the <xref:System.Web.HttpCachePolicy> to ignore the * value for the <xref:System.Web.HttpCachePolicy.VaryByHeaders%2A> property.       SetOmitVaryStar is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Megadja, hogy a válasz tartalmaznia kell a <xref uid=&quot;langword_csharp_vary:*&quot; name=&quot;vary:*&quot; href=&quot;&quot;> </xref> fejléc, ha különböző paraméterek."
+  remarks: "Ez a módszer lehetővé teszi, hogy megakadályozhatja, hogy a kimeneti ached adjanak hozzá a `vary:*` fejléc a kimenő válasz, ha a gyorsítótárazott válasz függ a paraméter számára. Ez akkor hasznos, ha az ügyfelek változó gyorsítótárazásához azáltal, hogy lekérdezési karakterlánc, mert a legtöbb ügyfél automatikusan változhat a lekérdezési karakterlánc anélkül, hogy a `vary:*` fejléc.      > [!NOTE] > Használatát a `vary:*` fejléc letilthatja az összes ügyfél a gyorsítótárazást.       Ez a kényelem módszer befolyásolják a <xref:System.Web.HttpCachePolicy.VaryByHeaders%2A>tulajdonság.</xref:System.Web.HttpCachePolicy.VaryByHeaders%2A> Sikeres `true` a metódus irányítja a <xref:System.Web.HttpCachePolicy>figyelmen kívül hagyja a * érték, a <xref:System.Web.HttpCachePolicy.VaryByHeaders%2A>tulajdonság.</xref:System.Web.HttpCachePolicy.VaryByHeaders%2A> </xref:System.Web.HttpCachePolicy>       SetOmitVaryStar megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public void SetOmitVaryStar (bool omit);
     parameters:
     - id: omit
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to direct the <xref href=&quot;System.Web.HttpCachePolicy&quot;></xref> to not use the * value for its <xref:System.Web.HttpCachePolicy.VaryByHeaders*> property; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>át tudja irányítani a <xref href=&quot;System.Web.HttpCachePolicy&quot;> </xref> nem használandó az * értékét a <> </> *> tulajdonság; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.SetOmitVaryStar*
   exceptions: []
   platform:
@@ -922,8 +922,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: 'Sets the <xref uid=&quot;langword_csharp_Cache-Control: s-maxage&quot; name=&quot;Cache-Control: s-maxage&quot; href=&quot;&quot;></xref> HTTP header based on the specified time span.'
-  remarks: "The SetProxyMaxAge method does not use sliding expiration and will fail if the expiration date violates the principle of restrictiveness.       SetProxyMaxAge is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: 'Beállítja a <xref uid=&quot;langword_csharp_Cache-Control: s-maxage&quot; name=&quot;Cache-Control: s-maxage&quot; href=&quot;&quot;> </xref> HTTP-fejléc a megadott időtartam alapján.'
+  remarks: "A SetProxyMaxAge metódus nem használ mozgó lejárati, és sikertelen lesz, ha a lejárati dátum sérti restrictiveness elvét.       SetProxyMaxAge megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the `Cache-Control: s-maxage` header to 0 hours, 30 minutes, and 0 seconds.  \n  \n [!code-cs[Classic HttpCachePolicy.SetProxyMaxAge Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_13_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetProxyMaxAge Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_13_1.vb)]"
   syntax:
@@ -931,12 +931,12 @@ items:
     parameters:
     - id: delta
       type: System.TimeSpan
-      description: 'The time span used to set the <xref uid=&quot;langword_csharp_Cache-Control: s-maxage&quot; name=&quot;Cache-Control: s-maxage&quot; href=&quot;&quot;></xref> header.'
+      description: 'A használt időtartama a <xref uid=&quot;langword_csharp_Cache-Control: s-maxage&quot; name=&quot;Cache-Control: s-maxage&quot; href=&quot;&quot;> </xref> fejléc.'
   overload: System.Web.HttpCachePolicy.SetProxyMaxAge*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>delta</code> is less than 0."
+    description: "<code>delta</code>értéke 0-nál kisebb."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetRevalidation(System.Web.HttpCacheRevalidation)
@@ -951,8 +951,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> HTTP header to either the <xref uid=&quot;langword_csharp_must-revalidate&quot; name=&quot;must-revalidate&quot; href=&quot;&quot;></xref> or the <xref uid=&quot;langword_csharp_proxy-revalidate&quot; name=&quot;proxy-revalidate&quot; href=&quot;&quot;></xref> directives based on the supplied enumeration value."
-  remarks: "The default, which is equivalent to <xref:System.Web.HttpCacheRevalidation>, is to send neither directive in a header unless explicitly specified by this method.       SetRevalidation is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> HTTP-fejléc vagy a <xref uid=&quot;langword_csharp_must-revalidate&quot; name=&quot;must-revalidate&quot; href=&quot;&quot;> </xref> vagy a <xref uid=&quot;langword_csharp_proxy-revalidate&quot; name=&quot;proxy-revalidate&quot; href=&quot;&quot;> </xref> irányelvek a megadott enumerálási érték alapján."
+  remarks: "Az alapértelmezett, amely egyenértékű <xref:System.Web.HttpCacheRevalidation>, sem irányelv küldi a fejlécet, kivéve, ha ez a metódus explicit módon megadott.</xref:System.Web.HttpCacheRevalidation>       SetRevalidation megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set cache revalidation to <xref:System.Web.HttpCacheRevalidation>.  \n  \n [!code-vb[Classic HttpCachePolicy.SetRevalidation Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_16_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetRevalidation Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_16_1.cs)]"
   syntax:
@@ -960,12 +960,12 @@ items:
     parameters:
     - id: revalidation
       type: System.Web.HttpCacheRevalidation
-      description: "The <xref href=&quot;System.Web.HttpCacheRevalidation&quot;></xref> enumeration value to set the <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> header to."
+      description: "A <xref href=&quot;System.Web.HttpCacheRevalidation&quot;> </xref> számbavételi érték beállítása a <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> fejlécben."
   overload: System.Web.HttpCachePolicy.SetRevalidation*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>revalidation</code> is not one of the enumeration values."
+    description: "<code>revalidation</code>nincs a számbavételi értékek egyike."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.SetSlidingExpiration(System.Boolean)
@@ -980,8 +980,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Sets cache expiration to from absolute to sliding."
-  remarks: "When cache expiration is set to sliding, the `Cache-Control` HTTP header will be renewed with each response. This expiration mode is identical to the IIS configuration option to add an expiration header to all output set relative to the current time.       If you explicitly set sliding expiration to off (`false`), that setting will be preserved and any attempts to enable sliding expiration will silently fail. This method does not directly map to an HTTP header. It is used by subsequent modules or worker requests to set origin-server cache policy.       SetSlidingExpiration is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítása az abszolút a késleltetett elévülése gyorsítótárazza."
+  remarks: "Ha a gyorsítótár lejárati értéke késleltetett, hogy a `Cache-Control` minden válasz legyen megújítva HTTP-fejléc. A lejárati mód megegyezik az IIS-konfigurációs beállítást egy lejárati fejléc hozzáadását az összes kimeneti viszonyítva az aktuális idő beállítása.       Ha a késleltetett lejárat kikapcsolva (`false`), a beállítás megőrzi, és Lejárat késleltetésének engedélyezése tett bármilyen kísérlet csendes sikertelen lesz. Ez a metódus közvetlenül nem felel meg a HTTP-fejléc. További modulok vagy munkavégző használja eredetű-kiszolgáló beállítása kérések gyorsítótárazása házirend.       SetSlidingExpiration megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set sliding expiration to `true`.  \n  \n [!code-cs[Classic HttpCachePolicy.SetSlidingExpiration Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_0_1.cs)]\n [!code-vb[Classic HttpCachePolicy.SetSlidingExpiration Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_0_1.vb)]"
   syntax:
@@ -989,7 +989,7 @@ items:
     parameters:
     - id: slide
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Web.HttpCachePolicy.SetSlidingExpiration*
   exceptions: []
   platform:
@@ -1006,8 +1006,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Specifies whether the ASP.NET cache should ignore HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> headers sent by the client that invalidate the cache."
-  remarks: "The SetValidUntilExpires method is set to `true` automatically when the high-level `<%@ OutputCache … %>` page directive is used.       This method is provided because some browsers, when refreshing a page view, send HTTP cache invalidation headers to the Web server and evict the page from the cache. When the `validUntilExpires` parameter is `true`, ASP.NET ignores cache invalidation headers and the page remains in the cache until it expires.       SetValidUntilExpires is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Megadja, hogy az ASP.NET gyorsítótára figyelmen kívül a HTTP <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> érvénytelenné válnak a gyorsítótár az ügyfél által küldött fejléceket."
+  remarks: "A SetValidUntilExpires módszer `true` automatikusan, ha a magas szintű `<%@ OutputCache … %>` lap direktívájában szolgál.       Ez a módszer áll rendelkezésre, mert egyes böngészők, egy lap nézetben frissítésekor a webkiszolgálóhoz érvénytelenítési fejlécek küldését a HTTP-gyorsítótár és a lap a gyorsítótárból kizárása. Ha a `validUntilExpires` paraméter `true`, ASP.NET figyelmen kívül hagyja a gyorsítótár érvénytelenítési fejlécek, és a lap a gyorsítótárban marad, amíg le nem jár.       SetValidUntilExpires megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to use the SetValidUntilExpires method to instruct that any cache invalidation headers sent by the client are ignored.  \n  \n [!code-cs[HttpCachePolicy_SetValidUntilExpires#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_5_1.aspx)]\n [!code-vb[HttpCachePolicy_SetValidUntilExpires#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_5_1.aspx)]"
   syntax:
@@ -1015,7 +1015,7 @@ items:
     parameters:
     - id: validUntilExpires
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cache ignores <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;></xref> invalidation headers; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a gyorsítótár figyelmen kívül hagyja <xref uid=&quot;langword_csharp_Cache-Control&quot; name=&quot;Cache-Control&quot; href=&quot;&quot;> </xref> érvénytelenítési fejlécek; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpCachePolicy.SetValidUntilExpires*
   exceptions: []
   platform:
@@ -1032,8 +1032,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Specifies a custom text string to vary cached output responses by."
-  remarks: "SetVaryByCustom is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Meghatározza az eltérő gyorsítótárazott kimeneti válaszokat által egyéni szöveges karakterláncot."
+  remarks: "SetVaryByCustom megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to set the custom vary string to \"Accept-Charset\", which causes the origin-server's cache to choose one of several cached responses depending on the browser's `Accept-Charset` header.  \n  \n [!code-vb[Classic HttpCachePolicy.SetVaryByCustom Example#1](~/add/codesnippet/visualbasic/m-system.web.httpcachepo_15_1.vb)]\n [!code-cs[Classic HttpCachePolicy.SetVaryByCustom Example#1](~/add/codesnippet/csharp/m-system.web.httpcachepo_15_1.cs)]"
   syntax:
@@ -1041,15 +1041,15 @@ items:
     parameters:
     - id: custom
       type: System.String
-      description: "The text string to vary cached output by."
+      description: "Az eltérő gyorsítótárazott kimenete szöveges karakterlánc."
   overload: System.Web.HttpCachePolicy.SetVaryByCustom*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>custom</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>custom</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The SetVaryByCustom method has already been called."
+    description: "A SetVaryByCustom metódust már meghívták."
   platform:
   - net462
 - uid: System.Web.HttpCachePolicy.UtcTimestampCreated
@@ -1064,12 +1064,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the timestamp in Coordinated Universal Iime (UTC) for the <xref href=&quot;System.Web.HttpCachePolicy&quot;></xref>."
+  summary: "Lekérdezi vagy beállítja a timestamp a koordinált univerzális Iime idő szerint (UTC) esetében a <xref href=&quot;System.Web.HttpCachePolicy&quot;> </xref>."
   syntax:
     content: public DateTime UtcTimestampCreated { get; set; }
     return:
       type: System.DateTime
-      description: "The <xref:System.DateTime> for the <xref href=&quot;System.Web.HttpCachePolicy&quot;></xref>."
+      description: "The <xref:System.DateTime> for the <xref href=&quot;System.Web.HttpCachePolicy&quot;></xref>.</xref:System.DateTime>"
   overload: System.Web.HttpCachePolicy.UtcTimestampCreated*
   exceptions: []
   platform:
@@ -1086,15 +1086,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the list of <xref uid=&quot;langword_csharp_Content-Encoding&quot; name=&quot;Content-Encoding&quot; href=&quot;&quot;></xref> headers that will be used to vary the output cache."
-  remarks: "The VaryByContentEncodings property returns a list of Content-Encoding headers that represent compression schemes to vary the output cache by. Caching dynamically compressed responses means that the cost of compression is incurred only one time, during the first request for the resource.       The VaryByContentEncodings property is used with the `Accept-Encoding` header of a request to determine how to serve cached responses for different content encodings that are dynamically compressed. The Accept-Encoding header lists the encodings that the client can decompress.       When you set the cache to vary by content encoding, it lets the response vary indirectly by the value in the `Accept-Encoding` header. When a request is processed, the `Accept-Encoding` header is checked and the first acceptable encoding is identified and used to take one of the following actions:      -   If a matching encoding is found in the VaryByContentEncodings list and a cached response exists, the cached response is sent.      -   If a matching encoding is found in the VaryByContentEncodings list but a cached response does not exist, a response is generated and inserted into the cache.      -   If a matching encoding is not found in the VaryByContentEncodings list, the cache is searched for a non-encoded response, also referred to as the identity response. If the non-encoded response is found, it is sent. Otherwise, a new non-encoded response is generated, sent, and stored in the cache.       For more information about the VaryByContentEncodings property, see &quot;RFC 2616: Hypertext Transfer Protocol -- HTTP/1.1,&quot; which is available on the [World Wide Web Consortium (W3C) Web site](http://go.microsoft.com/fwlink/?linkid=37125). Information about content encodings is in section 14, &quot;Header Field Definitions.&quot;       You can set the VaryByContentEncodings property by using the `VaryByContentEncodings` attribute of the  directive. You can also add a cache profile to the  element in the Web.config file.       VaryByContentEncodings is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beolvassa a listáját <xref uid=&quot;langword_csharp_Content-Encoding&quot; name=&quot;Content-Encoding&quot; href=&quot;&quot;> </xref> fejlécek használandó a kimeneti gyorsítótár eltérő."
+  remarks: "A VaryByContentEncodings tulajdonság, amelyek megfelelnek a tömörítési séma a kimeneti gyorsítótár által eltérő Content-Encoding fejlécek listáját adja vissza. Dinamikusan tömörített válaszok gyorsítótárazásának azt jelenti, hogy a tömörítési költségét során csak egyszer, az első kérésre az erőforrás van szükség.       A VaryByContentEncodings tulajdonság használatos a `Accept-Encoding` gyorsítótárazott választ adjon az különböző tartalom kódolások dinamikusan tömörített kiszolgálására, hogyan lehet a kérelem fejlécében. Az elfogadás-Encoding fejlécnek sorolja fel, hogy az ügyfél tud kibontani a kódolást.       Lehetővé teszi, ha a gyorsítótár tartalmának kódolását változhat, a válasz közvetve változó értéke a `Accept-Encoding` fejléc. A kérelem feldolgozása után a `Accept-Encoding` fejlécében jelölőnégyzet be van jelölve, és az első elfogadható kódolás azonosítható, és használja az alábbi műveletek egyikét:-Ha a megfelelő kódolási megtalálható a VaryByContentEncodings listán, és a gyorsítótárazott válasz létezik, a gyorsítótárazott választ küldött.      -Ha a megfelelő kódolási megtalálható a VaryByContentEncodings listán, de a gyorsítótárazott válasz nem létezik, a válasz létrehozza és szúrja be a gyorsítótárba.      -Ha a megfelelő kódolási VaryByContentEncodings listájában nem található, a gyorsítótár-kódolású választ, más néven a válasz keres. Ha a nem kódolt választ, továbbítás. Ellenkező esetben új-kódolású választ jön létre, küldött, és a gyorsítótárba.       A VaryByContentEncodings tulajdonságra vonatkozó további információkért lásd: &quot;RFC 2616: Hypertext Transfer Protocol--HTTP/1.1,&quot; elérhető a [webes Consortium (W3C) webhelyen](http://go.microsoft.com/fwlink/?linkid=37125). Tartalom kódolások adatai szakaszban 14-es, &quot;Fejléc mező definíciókat.&quot;       Beállíthatja a VaryByContentEncodings tulajdonság használatával a `VaryByContentEncodings` az irányelv attribútum. Azt is megteheti egy gyorsítótárprofil a Web.config fájlban a következő elemre.       VaryByContentEncodings megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to enable a dynamically compressed response for a page to be served from the output cache. The encoding that is acceptable is \"gzip\" and is set by using the `VaryByContentEncodings` attribute of the  directive. If the Web server that is hosting the page does not have dynamic compression enabled, the output cache will not have a cached response that is based on the specified content encoding.  \n  \n [!code-vb[System.Web.HttpCachePolicy.VaryByContentEncodings#1](~/add/codesnippet/visualbasic/p-system.web.httpcachepo_1.aspx)]\n [!code-cs[System.Web.HttpCachePolicy.VaryByContentEncodings#1](~/add/codesnippet/csharp/p-system.web.httpcachepo_1.aspx)]"
   syntax:
     content: public System.Web.HttpCacheVaryByContentEncodings VaryByContentEncodings { get; }
     return:
       type: System.Web.HttpCacheVaryByContentEncodings
-      description: "An object that specifies which <xref uid=&quot;langword_csharp_Content-Encoding&quot; name=&quot;Content-Encoding&quot; href=&quot;&quot;></xref> headers are used to select the cached response."
+      description: "Olyan objektum, amely megadja, hogy <xref uid=&quot;langword_csharp_Content-Encoding&quot; name=&quot;Content-Encoding&quot; href=&quot;&quot;> </xref> fejlécek segítségével válassza ki a gyorsítótárazott választ."
   overload: System.Web.HttpCachePolicy.VaryByContentEncodings*
   exceptions: []
   platform:
@@ -1111,13 +1111,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the list of all HTTP headers that will be used to vary cache output."
-  remarks: "When a cached item has several vary headers, a separate version of the requested document is available from the cache for each HTTP header type.       VaryByHeaders is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Kimeneti gyorsítótár eltérő használható HTTP-fejlécek listájának lekérése."
+  remarks: "Ha egy gyorsítótárazott elem több eltérők lehetnek a fejlécek, a kért dokumentum külön verziója érhető el az egyes HTTP fejlécet a gyorsítótárból.       VaryByHeaders megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public System.Web.HttpCacheVaryByHeaders VaryByHeaders { get; }
     return:
       type: System.Web.HttpCacheVaryByHeaders
-      description: "An <xref href=&quot;System.Web.HttpCacheVaryByHeaders&quot;></xref> that specifies which HTTP headers are used to select the cached response."
+      description: "Egy <xref href=&quot;System.Web.HttpCacheVaryByHeaders&quot;> </xref> , amely megadja, hogy mely HTTP-fejlécek segítségével válassza ki a gyorsítótárazott választ."
   overload: System.Web.HttpCachePolicy.VaryByHeaders*
   exceptions: []
   platform:
@@ -1134,13 +1134,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the list of parameters received by an HTTP <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;></xref> or HTTP <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;></xref> that affect caching."
-  remarks: "A separate version of the requested document is available from the cache for each named parameter in the VaryByParams collection.       VaryByParams is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beolvassa a HTTP által fogadott paraméterek listáját <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;> </xref> vagy http- <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;> </xref> befolyásoló gyorsítótárazását."
+  remarks: "A kért dokumentum külön verzióját a gyorsítótárból minden elnevezett paraméter VaryByParams gyűjtemény érhető el.       VaryByParams megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public System.Web.HttpCacheVaryByParams VaryByParams { get; }
     return:
       type: System.Web.HttpCacheVaryByParams
-      description: "An <xref href=&quot;System.Web.HttpCacheVaryByParams&quot;></xref> that specifies which cache-control headers are used to select the cached response."
+      description: "Egy <xref href=&quot;System.Web.HttpCacheVaryByParams&quot;> </xref> , amely meghatározza, mely a cache-control fejlécek segítségével válassza ki a gyorsítótárazott választ."
   overload: System.Web.HttpCachePolicy.VaryByParams*
   exceptions: []
   platform:

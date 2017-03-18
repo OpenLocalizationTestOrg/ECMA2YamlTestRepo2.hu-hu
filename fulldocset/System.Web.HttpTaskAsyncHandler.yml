@@ -15,8 +15,8 @@ items:
   nameWithType: HttpTaskAsyncHandler
   fullName: System.Web.HttpTaskAsyncHandler
   type: Class
-  summary: "Provides methods that a derived task handler class can implement in order to process an asynchronous task."
-  remarks: "TheHttpTaskAsyncHandler class provides a simplified way to handle asynchronous tasks without having to implement the <xref:System.Web.IHttpAsyncHandler.BeginProcessRequest%2A> and <xref:System.Web.IHttpAsyncHandler.EndProcessRequest%2A> methods.  To create a handler for an asynchronous task, you can override the <xref:System.Web.HttpTaskAsyncHandler.ProcessRequestAsync%2A> method and implement custom task handling code."
+  summary: "A származtatott feladat kezelő osztály is sablonokat a feldolgozáshoz aszinkron feladat megvalósító metódusokat biztosít."
+  remarks: "TheHttpTaskAsyncHandler osztály aszinkron feladatok kezelésére anélkül, hogy megvalósításához egyszerűsített lehetőséget biztosít a <xref:System.Web.IHttpAsyncHandler.BeginProcessRequest%2A>és <xref:System.Web.IHttpAsyncHandler.EndProcessRequest%2A>módszerek.</xref:System.Web.IHttpAsyncHandler.EndProcessRequest%2A> </xref:System.Web.IHttpAsyncHandler.BeginProcessRequest%2A>  Hozzon létre egy aszinkron feladat kezelője, felülbírálhatja a <xref:System.Web.HttpTaskAsyncHandler.ProcessRequestAsync%2A>metódus, és alkalmazzon egy egyéni feladat kód kezelése.</xref:System.Web.HttpTaskAsyncHandler.ProcessRequestAsync%2A>"
   syntax:
     content: 'public abstract class HttpTaskAsyncHandler : System.Web.IHttpAsyncHandler'
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Called from constructors in derived classes to initialize the <xref href=&quot;System.Web.HttpTaskAsyncHandler&quot;></xref> class."
+  summary: "Származtatott osztályok inicializálása konstruktorok hívása a <xref href=&quot;System.Web.HttpTaskAsyncHandler&quot;> </xref> osztály."
   syntax:
     content: protected HttpTaskAsyncHandler ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, gets a value that indicates whether the task handler class instance can be reused for another asynchronous task."
+  summary: "Felülbírálja a származtatott osztály, kap egy érték, amely azt jelzi, hogy a feladatütemezés-kezelő osztály példányának felhasználhatók egy másik aszinkron feladat."
   syntax:
     content: public virtual bool IsReusable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the handler can be reused; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>.  The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kezelő felhasználhatók; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.  Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.HttpTaskAsyncHandler.IsReusable*
   exceptions: []
   platform:
@@ -80,18 +80,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, provides code that handles a synchronous task."
+  summary: "Ha felül van bírálva a származtatott osztály, biztosít a szinkron feladat kezelő kódot."
   syntax:
     content: public virtual void ProcessRequest (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The HTTP context."
+      description: "A HTTP-környezetben."
   overload: System.Web.HttpTaskAsyncHandler.ProcessRequest*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The method is implemented but does not provide any default handling for synchronous tasks."
+    description: "A metódus van megvalósítva, de nem biztosít bármely alapértelmezett aszinkron feladatok kezelését."
   platform:
   - net462
 - uid: System.Web.HttpTaskAsyncHandler.ProcessRequestAsync(System.Web.HttpContext)
@@ -106,17 +106,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, provides code that handles an asynchronous task."
-  remarks: "To create a custom handler for an asynchronous task, override the ProcessRequestAsync method."
+  summary: "Ha felül van bírálva a származtatott osztály, biztosít az aszinkron feladat kezelő kódot."
+  remarks: "Egy egyéni kezelőt aszinkron feladat létrehozásához írja felül az ProcessRequestAsync metódust."
   syntax:
     content: public abstract System.Threading.Tasks.Task ProcessRequestAsync (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The HTTP context."
+      description: "A HTTP-környezetben."
     return:
       type: System.Threading.Tasks.Task
-      description: "The asynchronous task."
+      description: "Az aszinkron feladat."
   overload: System.Web.HttpTaskAsyncHandler.ProcessRequestAsync*
   exceptions: []
   platform:
@@ -134,23 +134,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initiates asynchronous processing of a task in an HTTP task handler."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.HttpTaskAsyncHandler> instance is cast to an <xref:System.Web.IHttpAsyncHandler> interface."
+  summary: "Kezdeményezi a feladatok egy HTTP feldolgozása aszinkron feladat kezelő."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.HttpTaskAsyncHandler>példány típusúvá egy <xref:System.Web.IHttpAsyncHandler>felületet.</xref:System.Web.IHttpAsyncHandler> </xref:System.Web.HttpTaskAsyncHandler>"
   syntax:
     content: IAsyncResult IHttpAsyncHandler.BeginProcessRequest (System.Web.HttpContext context, AsyncCallback cb, object extraData);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The HTTP context."
+      description: "A HTTP-környezetben."
     - id: cb
       type: System.AsyncCallback
-      description: "The callback method to invoke when the method returns."
+      description: "Amikor a metódus visszaadja a meghívni kívánt visszahívási metódus."
     - id: extraData
       type: System.Object
-      description: "Additional data for processing the task."
+      description: "További adatok a feladat feldolgozásához."
     return:
       type: System.IAsyncResult
-      description: "An object that contains status data about the asynchronous operation."
+      description: "Az aszinkron művelet kapcsolatos adatokat tartalmazó objektum."
   overload: System.Web.HttpTaskAsyncHandler.System#Web#IHttpAsyncHandler#BeginProcessRequest*
   exceptions: []
   platform:
@@ -168,14 +168,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Ends asynchronous processing of a task in an HTTP task handler."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.HttpTaskAsyncHandler> instance is cast to an <xref:System.Web.IHttpAsyncHandler> interface."
+  summary: "A feladatütemezés kezelő aszinkron feldolgozása: HTTP a feladat befejeződik."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.HttpTaskAsyncHandler>példány típusúvá egy <xref:System.Web.IHttpAsyncHandler>felületet.</xref:System.Web.IHttpAsyncHandler> </xref:System.Web.HttpTaskAsyncHandler>"
   syntax:
     content: void IHttpAsyncHandler.EndProcessRequest (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The status of the asynchronous operation."
+      description: "Az aszinkron művelet állapotát."
   overload: System.Web.HttpTaskAsyncHandler.System#Web#IHttpAsyncHandler#EndProcessRequest*
   exceptions: []
   platform:

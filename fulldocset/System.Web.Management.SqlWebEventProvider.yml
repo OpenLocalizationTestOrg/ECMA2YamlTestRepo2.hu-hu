@@ -15,8 +15,8 @@ items:
   nameWithType: SqlWebEventProvider
   fullName: System.Web.Management.SqlWebEventProvider
   type: Class
-  summary: "Implements an event provider that saves event notifications to an SQL database."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management?displayProperty=fullName> namespace contains the health event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       This provider has a comprehensive set of configuration attributes that you can use to customize its behavior.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `<healthMonitoring>` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom provider, see [How to: Implement the Health Monitoring Custom Provider Example](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy esemény szolgáltatót, amelyet a rendszeresemény-értesítéseket ment egy SQL-adatbázis valósítja meg."
+  remarks: "ASP.NET állapotfigyelés lehetővé teszi, hogy az üzemi és műveletek személyzet telepített webalkalmazások kezelésére. A <xref:System.Web.Management?displayProperty=fullName>névtér tartalmazza a rendszerállapot eseménytípusok felelős csomagolási alkalmazásadatok állapot és az adatok feldolgozása felelős modulszolgáltató-típust.</xref:System.Web.Management?displayProperty=fullName> Is tartalmaz, amelyek segítenek a állapotával kapcsolatos események felügyelete során támogató típusok.       Ez a szolgáltató tartozik egy átfogó konfigurációs attribútumok, amelyek segítségével testre szabhatja a viselkedését.      > [!NOTE] > A legtöbb esetben lesz ahhoz, hogy az ASP.NET-állapotfigyelés típusok használható megvalósítva, és szabályozza, a rendszerállapot-figyelő rendszer szereplő értékek megadásával a `<healthMonitoring>` konfigurációs szakasz. Az állapotfigyelés típusok létrehozása a saját egyéni események és szolgáltatók is származik. Egy egyéni szolgáltató létrehozására láthat példát, lásd: [hogyan: valósítja meg a rendszerállapot figyelése egyéni szolgáltató például](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example is a configuration file excerpt that shows how to specify a provider of type SqlWebEventProvider in the `<healthMonitoring>` section. The `<add>` element in the `<rules>` section specifies that the provider will handle audit events.  \n  \n```  \n<healthMonitoring  \n  enabled=\"true\"  \n  heartBeatInterval=\"0\">  \n  <bufferModes>  \n    <add name=\"Analysis\"  \n    maxBufferSize=\"1000\"  \n    maxFlushSize=\"100\"  \n    urgentFlushThreshold=\"100\"  \n    regularFlushInterval=\"00:05:00\"  \n    urgentFlushInterval=\"00:01:00\"  \n    maxBufferThreads=\"1\"  \n    />  \n  </bufferModes>  \n  <providers>  \n    <add name=\"SqlWebEventProvider\"  \n    type=\"System.Web.Management.SqlWebEventProvider,System.Web\"  \n    connectionStringName=\"LocalSqlServer\"  \n    maxEventDetailsLength=\"1073741823\"  \n    buffer=\"true\"  \n    bufferMode=\"Analysis\"  \n    />  \n  </providers>  \n  <eventMappings>  \n    <add name=\"All Audits\"  \n    type=\"System.Web.Management.WebAuditEvent, System.Web\"   \n    />  \n  </eventMappings>  \n  <profiles>  \n    <add name=\"Default\"  \n    minInstances=\"1\"  \n    maxLimit=\"Infinite\"  \n    minInterval=\"00:10:00\"  \n    />  \n  </profiles>  \n  <rules>  \n    <add name=\"All Audits Default\"  \n    eventName=\"All Audits\"  \n    provider=\"SqlWebEventProvider\"  \n    profile=\"Default\"  \n    minInterval=\"00:00:30\"   \n    />  \n  </rules>  \n</healthMonitoring>   \n```"
   syntax:
@@ -47,8 +47,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.SqlWebEventProvider&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to create an instance of the <xref:System.Web.Management.SqlWebEventProvider> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.Management.SqlWebEventProvider&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor az ASP.NET-állapotfigyelés rendszer belsőleg használja. Soha nem használandó az <xref:System.Web.Management.SqlWebEventProvider>osztály</xref:System.Web.Management.SqlWebEventProvider> egy példányának létrehozása"
   syntax:
     content: protected SqlWebEventProvider ();
     parameters: []
@@ -68,14 +68,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Called when event processing is complete."
-  remarks: "This method is not intended to be used directly from your code. It is called by the ASP.NET health-monitoring system."
+  summary: "Hívható meg, ha az esemény feldolgozása befejeződött."
+  remarks: "Ez a módszer nem célja, hogy közvetlenül a kódból használni. Az ASP.NET-állapotfigyelés rendszer nevezik."
   syntax:
     content: protected virtual void EventProcessingComplete (System.Web.Management.WebBaseEventCollection raisedEvents);
     parameters:
     - id: raisedEvents
       type: System.Web.Management.WebBaseEventCollection
-      description: "A <xref href=&quot;System.Web.Management.WebBaseEventCollection&quot;></xref> object of events raised."
+      description: "A <xref href=&quot;System.Web.Management.WebBaseEventCollection&quot;> </xref> objektum kiváltott esemény."
   overload: System.Web.Management.SqlWebEventProvider.EventProcessingComplete*
   exceptions: []
   platform:
@@ -92,17 +92,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Sets the initial values for this object."
-  remarks: "ASP.NET calls the Initialize method to initialize the <xref:System.Web.Management.SqlWebEventProvider> class with the configuration settings and name as specified in the configuration file."
+  summary: "Beállítja a kezdeti értékekre ehhez az objektumhoz."
+  remarks: "ASP.NET inicializálási metódusa inicializálása meghívja a <xref:System.Web.Management.SqlWebEventProvider>osztály a konfigurációs beállítások és a konfigurációs fájlban megadott név.</xref:System.Web.Management.SqlWebEventProvider>"
   syntax:
     content: public override void Initialize (string name, System.Collections.Specialized.NameValueCollection config);
     parameters:
     - id: name
       type: System.String
-      description: "The name used in the configuration file to identify this provider."
+      description: "A konfigurációs fájl alapján határozza meg a szolgáltató nevét."
     - id: config
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> object that specifies the attributes assigned for this provider in the configuration file."
+      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> objektum, amely meghatározza az attribútumok hozzárendelve ehhez a szolgáltatóhoz, a konfigurációs fájlban."
   overload: System.Web.Management.SqlWebEventProvider.Initialize*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
@@ -122,14 +122,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Processes the event passed to the provider."
-  remarks: "This method is not intended to be used directly from your code. It is called by the ASP.NET health-monitoring system to start the processing of the event."
+  summary: "Az esemény a profilszolgáltatóhoz továbbított dolgozza fel."
+  remarks: "Ez a módszer nem célja, hogy közvetlenül a kódból használni. Az ASP.NET-állapotfigyelés rendszer indításához az esemény feldolgozása nevezik."
   syntax:
     content: public override void ProcessEvent (System.Web.Management.WebBaseEvent eventRaised);
     parameters:
     - id: eventRaised
       type: System.Web.Management.WebBaseEvent
-      description: "The <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> object to process."
+      description: "A <xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref> folyamat objektum."
   overload: System.Web.Management.SqlWebEventProvider.ProcessEvent*
   exceptions: []
   platform:
@@ -146,14 +146,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes all events from the provider&quot;s buffer."
-  remarks: "This method is not intended to be used directly from your code. It is called by the ASP.NET health-monitoring system."
+  summary: "Összes esemény eltávolítása a szolgáltató puffer."
+  remarks: "Ez a módszer nem célja, hogy közvetlenül a kódból használni. Az ASP.NET-állapotfigyelés rendszer nevezik."
   syntax:
     content: public override void ProcessEventFlush (System.Web.Management.WebEventBufferFlushInfo flushInfo);
     parameters:
     - id: flushInfo
       type: System.Web.Management.WebEventBufferFlushInfo
-      description: "The <xref href=&quot;System.Web.Management.WebEventBufferFlushInfo&quot;></xref> object that contains the buffer information to be flushed."
+      description: "A <xref href=&quot;System.Web.Management.WebEventBufferFlushInfo&quot;> </xref> objektum, amely tartalmazza a puffer információkat kiürítése."
   overload: System.Web.Management.SqlWebEventProvider.ProcessEventFlush*
   exceptions: []
   platform:
@@ -170,8 +170,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Performs tasks associated with shutting down the provider."
-  remarks: "ASP.NET calls the Shutdown method when the application domain that hosts the Web application terminates. The method is called to perform tasks that allow the application to end gracefully.&quot;"
+  summary: "A szolgáltató leállítása társított feladatokat hajtja végre."
+  remarks: "ASP.NET meghívja a leállítási metódust, ha az alkalmazástartomány, amelyen a webalkalmazás leállítása. A metódus lehívásra kerül, amelyek lehetővé teszik az alkalmazás szabályosan befejezéséhez feladatok elvégzéséhez.&quot;"
   syntax:
     content: public override void Shutdown ();
     parameters: []
