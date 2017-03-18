@@ -77,8 +77,8 @@ items:
   nameWithType: SqlDataReader
   fullName: System.Data.SqlClient.SqlDataReader
   type: Class
-  summary: "Provides a way of reading a forward-only stream of rows from a SQL Server database. This class cannot be inherited."
-  remarks: "To create a SqlDataReader, you must call the <xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A> method of the <xref:System.Data.SqlClient.SqlCommand> object, instead of directly using a constructor.       While the SqlDataReader is being used, the associated <xref:System.Data.SqlClient.SqlConnection> is busy serving the SqlDataReader, and no other operations can be performed on the <xref:System.Data.SqlClient.SqlConnection> other than closing it. This is the case until the <xref:System.Data.SqlClient.SqlDataReader.Close%2A> method of the SqlDataReader is called. For example, you cannot retrieve output parameters until after you call <xref:System.Data.SqlClient.SqlDataReader.Close%2A>.       Changes made to a result set by another process or thread while data is being read may be visible to the user of the `SqlDataReader`. However, the precise behavior is timing dependent.       <xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A> and <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A> are the only properties that you can call after the SqlDataReader is closed. Although the <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A> property may be accessed while the SqlDataReader exists, always call <xref:System.Data.SqlClient.SqlDataReader.Close%2A> before returning the value of <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A> to guarantee an accurate return value.       When using sequential access (<xref:System.Data.CommandBehavior?displayProperty=fullName>), an <xref:System.InvalidOperationException> will be raised if the SqlDataReader position is advanced and another read operation is attempted on the previous column.      > [!NOTE] >  For optimal performance, SqlDataReader avoids creating unnecessary objects or making unnecessary copies of data. Therefore, multiple calls to methods such as <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A> return a reference to the same object. Use caution if you are modifying the underlying value of the objects returned by methods such as <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>."
+  summary: "Biztosítja az SQL Server-adatbázis a sorok csak adatfolyam olvasásakor. Ez az osztály nem örökölhető."
+  remarks: "Egy SqlDataReader létrehozásához meg kell hívnia a <xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A>metódusában a <xref:System.Data.SqlClient.SqlCommand>objektum, egy konstruktor közvetlen használata helyett.</xref:System.Data.SqlClient.SqlCommand> </xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A>       A SqlDataReader használatban van, amíg a vonatkozó <xref:System.Data.SqlClient.SqlConnection>foglalt szolgál a SqlDataReader, és nincsenek egyéb műveletek végrehajtható <xref:System.Data.SqlClient.SqlConnection>eltérő bezárja azt.</xref:System.Data.SqlClient.SqlConnection> </xref:System.Data.SqlClient.SqlConnection> Ez a helyzet, amíg a <xref:System.Data.SqlClient.SqlDataReader.Close%2A>a SqlDataReader módja az ún.</xref:System.Data.SqlClient.SqlDataReader.Close%2A> Például nem lehet lekérdezni a kimeneti paraméterek csak a <xref:System.Data.SqlClient.SqlDataReader.Close%2A>.</xref:System.Data.SqlClient.SqlDataReader.Close%2A> hívása után       Lehet, hogy a felhasználó számára látható egy eredményhalmazban, hogy egy másik folyamat vagy szál adatok olvasása során végrehajtott módosítások a `SqlDataReader`. A pontos viselkedés azonban függő van időzítése.       <xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A>és <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A>hívása csak tulajdonságok vannak a SqlDataReader bezárása után.</xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A></xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A> Bár a <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A>tulajdonság lehet érhető el, amíg a SqlDataReader létezik, mindig hívja <xref:System.Data.SqlClient.SqlDataReader.Close%2A>értékének visszatérése előtt <xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A>pontos visszatérési érték garantálja.</xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A> </xref:System.Data.SqlClient.SqlDataReader.Close%2A> </xref:System.Data.SqlClient.SqlDataReader.RecordsAffected%2A>       Soros hozzáférés használatakor (<xref:System.Data.CommandBehavior?displayProperty=fullName>), egy <xref:System.InvalidOperationException>generál, amennyiben a SqlDataReader pozíciója a kiemelt és egy másik olvasási művelet kísérletet az előző oszlop.</xref:System.InvalidOperationException> </xref:System.Data.CommandBehavior?displayProperty=fullName>      > [!NOTE] > Az optimális teljesítmény érdekében SqlDataReader elkerülhető a felesleges objektumok létrehozása vagy adatok szükségtelen másolja. Ezért több hívások módszerek például <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>vissza ugyanarra az objektumra hivatkozik.</xref:System.Data.SqlClient.SqlDataReader.GetValue%2A> Körültekintően járjon el, ha az alapul szolgáló módszerek, például <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>.</xref:System.Data.SqlClient.SqlDataReader.GetValue%2A> által visszaadott objektumokhoz értékének módosítása"
   example:
   - "The following example creates a <xref:System.Data.SqlClient.SqlConnection>, a <xref:System.Data.SqlClient.SqlCommand>, and a SqlDataReader. The example reads through the data, writing it out to the console window. The code then closes the SqlDataReader. The <xref:System.Data.SqlClient.SqlConnection> is closed automatically at the end of the `using` code block.  \n  \n [!code-cs[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/csharp/t-system.data.sqlclient._3_1.cs)]\n [!code-vb[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/visualbasic/t-system.data.sqlclient._3_1.vb)]"
   syntax:
@@ -116,8 +116,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Closes the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> object."
-  remarks: "You must explicitly call the Close method when you are through using the <xref:System.Data.SqlClient.SqlDataReader> to use the associated <xref:System.Data.SqlClient.SqlConnection> for any other purpose.       The `Close` method fills in the values for output parameters, return values and `RecordsAffected`, increasing the time that it takes to close a `SqlDataReader` that was used to process a large or complex query. When the return values and the number of records affected by a query are not significant, the time that it takes to close the `SqlDataReader` can be reduced by calling the <xref:System.Data.SqlClient.SqlCommand.Cancel%2A> method of the associated <xref:System.Data.SqlClient.SqlCommand> object before calling the `Close` method.      > [!CAUTION] >  Do not call `Close` or `Dispose` on a Connection, a DataReader, or any other managed object in the `Finalize` method of your class. In a finalizer, you should only release unmanaged resources that your class owns directly. If your class does not own any unmanaged resources, do not include a `Finalize` method in your class definition. For more information, see [Garbage Collection](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Bezárja a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> objektum."
+  remarks: "Explicit módon meg kell hívnia a Close metódus, amikor keresztül használja a <xref:System.Data.SqlClient.SqlDataReader>használata a társított <xref:System.Data.SqlClient.SqlConnection>semmilyen más célra.</xref:System.Data.SqlClient.SqlConnection> </xref:System.Data.SqlClient.SqlDataReader>       A `Close` metódus kitölti a kimeneti paraméterek, visszatérési értékek értékeit és `RecordsAffected`, növekvő bezárásához a idejét egy `SqlDataReader` nagy vagy összetett lekérdezés feldolgozásához használt. Ha egy lekérdezés által érintett rekordok száma és a visszatérési értékek nincsenek jelentős, bezárásához a idejét a `SqlDataReader` meghívásával csökkenteni lehet a <xref:System.Data.SqlClient.SqlCommand.Cancel%2A>a társított metódusában <xref:System.Data.SqlClient.SqlCommand>objektum hívása előtt a `Close` metódus.</xref:System.Data.SqlClient.SqlCommand> </xref:System.Data.SqlClient.SqlCommand.Cancel%2A>      > [!CAUTION] > Ne hívja meg `Close` vagy `Dispose` a kapcsolatot, a DataReader vagy más felügyelt objektum az az `Finalize` az osztály. A véglegesítőt, a kiadás csak nem felügyelt erőforrást, amely a osztály birtokolja közvetlenül. Ha az osztály nem rendelkezik a nem felügyelt erőforrás nem tartalmaznak egy `Finalize` az osztálydefiníció metódust. További információkért lásd: [szemétgyűjtés](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example creates a <xref:System.Data.SqlClient.SqlConnection>, a `SqlCommand`, and a <xref:System.Data.SqlClient.SqlDataReader>. The example reads through the data, writing it out to the console window. The code then closes the <xref:System.Data.SqlClient.SqlDataReader>. The <xref:System.Data.SqlClient.SqlConnection> is closed automatically at the end of the `using` code block.  \n  \n [!code-vb[Classic WebData SqlDataReader.Close Example#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._11_1.vb)]\n [!code-cs[Classic WebData SqlDataReader.Close Example#1](~/add/codesnippet/csharp/m-system.data.sqlclient._11_1.cs)]"
   syntax:
@@ -139,12 +139,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;></xref> associated with the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
+  summary: "Lekérdezi a <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;> </xref> társított a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref>."
   syntax:
     content: protected System.Data.SqlClient.SqlConnection Connection { get; }
     return:
       type: System.Data.SqlClient.SqlConnection
-      description: "The <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;></xref> associated with the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
+      description: "A <xref href=&quot;System.Data.SqlClient.SqlConnection&quot;> </xref> társított a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.Connection*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets a value that indicates the depth of nesting for the current row."
-  remarks: "The outermost table has a depth of zero. The .NET Framework Data Provider for SQL Server does not support nesting and always returns zero."
+  summary: "A mélységű beágyazást hozhat létre az aktuális sor jelző érték beolvasása."
+  remarks: "A legkülső táblának a mélység értéke nulla. A .NET Framework Data Provider az SQL Server nem támogatja a beágyazási, és mindig adja meg nulla."
   syntax:
     content: public override int Depth { get; }
     return:
       type: System.Int32
-      description: "The depth of nesting for the current row."
+      description: "A mélységű beágyazást hozhat létre az aktuális sor."
   overload: System.Data.SqlClient.SqlDataReader.Depth*
   exceptions: []
   platform:
@@ -184,18 +184,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the number of columns in the current row."
-  remarks: "Executing a query that, by its nature, does not return rows (such as a DELETE query), sets FieldCount to 0. However. this should not be confused with a query that returns 0 rows (such as SELECT \\* FROM *table* WHERE 1 = 2) in which case FieldCount returns the number of columns in the table, including hidden fields. Use <xref:System.Data.SqlClient.SqlDataReader.VisibleFieldCount%2A> to exclude hidden fields."
+  summary: "Lekérdezi az oszlopok számát az aktuális sor."
+  remarks: "0 FieldCount végrehajtása olyan lekérdezést, amely jellegénél fogva nem ad vissza (például a törlés lekérdezés) sorok, értékre állítja. Azonban. Ez nem tévesztendők össze a egy lekérdezést, amely sorát adja vissza 0 (például VÁLASSZA \\* FROM *tábla* ahol 1 = 2) ebben az esetben FieldCount visszaadja a táblázatban, beleértve a rejtett mezők az oszlopok számát. Használjon <xref:System.Data.SqlClient.SqlDataReader.VisibleFieldCount%2A>Rejtett mezők kizárásához.</xref:System.Data.SqlClient.SqlDataReader.VisibleFieldCount%2A>"
   syntax:
     content: public override int FieldCount { get; }
     return:
       type: System.Int32
-      description: "When not positioned in a valid recordset, 0; otherwise the number of columns in the current row. The default is -1."
+      description: "Ha nem található érvényes rekordhalmazban 0; Ellenkező esetben az aktuális sor oszlopainak száma. Az alapértelmezett érték a -1."
   overload: System.Data.SqlClient.SqlDataReader.FieldCount*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "There is no current connection to an instance of SQL Server."
+    description: "Nincs SQL Server-példányra aktuális kapcsolat."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetBoolean(System.Int32)
@@ -210,22 +210,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a Boolean."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a Boolean, or an exception is generated.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékét a logikai értékként."
+  remarks: "Nincs átalakításra történik; ezért beolvasott adat már olyan logikai érték, vagy kivétel jön létre.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override bool GetBoolean (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Boolean
-      description: "The value of the column."
+      description: "Az oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetBoolean*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetByte(System.Int32)
@@ -240,22 +240,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a byte."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a byte.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékét a bájtban."
+  remarks: "Nincs átalakítás esetén történik; ezért beolvasott adat már kell lennie egy olyan bájtot.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override byte GetByte (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Byte
-      description: "The value of the specified column as a byte."
+      description: "A bájtban megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetByte*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetBytes(System.Int32,System.Int64,System.Byte[],System.Int32,System.Int32)
@@ -270,29 +270,29 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Reads a stream of bytes from the specified column offset into the buffer an array starting at the given buffer offset."
-  remarks: "GetBytes returns the number of available bytes in the field. Most of the time this is the exact length of the field. However, the number returned may be less than the true length of the field if `GetBytes` has already been used to obtain bytes from the field. This may be the case, for example, if the <xref:System.Data.SqlClient.SqlDataReader> is reading a large data structure into a buffer. For more information, see the `SequentialAccess` setting for <xref:System.Data.CommandBehavior>.       If you pass a buffer that is `null`, GetBytes returns the length of the entire field in bytes, not the remaining size based on the buffer offset parameter.       No conversions are performed; therefore, the data retrieved must already be a byte array."
+  summary: "A megadott oszlop eltolásánál bájtos adatfolyam beolvassa a puffer az adott puffer eltolástól egy tömb kezdve."
+  remarks: "GetBytes mező a rendelkezésre álló bájtok számát adja vissza. A legtöbbször ennek a mezőnek a pontos hossza. Előfordulhat azonban, a visszaadott száma kisebb, mint a mező értéke igaz hossza Ha `GetBytes` bájt beszerezni a mező már felhasználták. Ennek az lehet az eset például, ha a <xref:System.Data.SqlClient.SqlDataReader>nagy adatszerkezet éppen olvas be egy pufferbe.</xref:System.Data.SqlClient.SqlDataReader> További információkért lásd: a `SequentialAccess` <xref:System.Data.CommandBehavior>.</xref:System.Data.CommandBehavior> beállítása       Ha a puffer `null`, GetBytes adja vissza a teljes mező hossza nem a puffer eltolásának paraméter alapján fennmaradó mérete bájtban.       Nincs átalakításra történik; Emiatt a beolvasott adat már kell lennie egy bájttömböt."
   syntax:
     content: public override long GetBytes (int i, long dataIndex, byte[] buffer, int bufferIndex, int length);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     - id: dataIndex
       type: System.Int64
-      description: "The index within the field from which to begin the read operation."
+      description: "Az olvasási művelet kezdőpontjaként a mezőn belüli index."
     - id: buffer
       type: System.Byte[]
-      description: "The buffer into which to read the stream of bytes."
+      description: "A puffer, amelybe bájtos adatfolyam olvasására."
     - id: bufferIndex
       type: System.Int32
-      description: "The index within the `buffer` where the write operation is to start."
+      description: "Az index belül a `buffer` elindítani az írási művelet esetén."
     - id: length
       type: System.Int32
-      description: "The maximum length to copy into the buffer."
+      description: "Másolja a puffer maximális hosszát."
     return:
       type: System.Int64
-      description: "The actual number of bytes read."
+      description: "A tényleges, beolvasott bájtok száma."
   overload: System.Data.SqlClient.SqlDataReader.GetBytes*
   exceptions: []
   platform:
@@ -309,22 +309,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a single character."
-  remarks: "Not supported for <xref:System.Data.SqlClient>."
+  summary: "Lekérdezi a megadott oszlop értéke egyetlen karakter."
+  remarks: "Nem támogatott a <xref:System.Data.SqlClient>.</xref:System.Data.SqlClient>"
   syntax:
     content: public override char GetChar (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Char
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetChar*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetChars(System.Int32,System.Int64,System.Char[],System.Int32,System.Int32)
@@ -339,29 +339,29 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Reads a stream of characters from the specified column offset into the buffer as an array starting at the given buffer offset."
-  remarks: "GetChars returns the number of available characters in the field. Frequently this is the exact length of the field. However, the number returned may be less than the true length of the field if `GetChars` has already been used to obtain characters from the field. This may be the case, for example, if the <xref:System.Data.SqlClient.SqlDataReader> is reading a large data structure into a buffer. For more information, see the `SequentialAccess` setting for <xref:System.Data.CommandBehavior>.       The actual number of characters read can be less than the requested length, if the end of the field is reached. If you pass a buffer that is `null`, GetChars returns the length of the entire field in characters, not the remaining size based on the buffer offset parameter.       No conversions are performed; therefore. the data retrieved must already be a character array.      > [!NOTE] >  The GetChars method returns 0 when `dataIndex` is negative."
+  summary: "Beolvassa adatfolyam karaktereket a megadott oszlop eltolásánál kezdődő, a puffer tömbként az adott puffer eltolástól kezdve."
+  remarks: "GetChars mező a rendelkezésre álló karakterek számát adja vissza. Ez gyakran az a mező pontos hossza. Előfordulhat azonban, a visszaadott száma kisebb, mint a mező értéke igaz hossza Ha `GetChars` karakterek beszerezni a mező már felhasználták. Ennek az lehet az eset például, ha a <xref:System.Data.SqlClient.SqlDataReader>nagy adatszerkezet éppen olvas be egy pufferbe.</xref:System.Data.SqlClient.SqlDataReader> További információkért lásd: a `SequentialAccess` <xref:System.Data.CommandBehavior>.</xref:System.Data.CommandBehavior> beállítása       A tényleges karakterszámot, olvassa el lehet kisebb, mint a kért hosszát, a mező végének elérésekor. Ha a puffer `null`, GetChars karakterből állhat, nem a puffer eltolásának paraméter alapján fennmaradó méretét adja vissza a teljes mező hossza.       Nincs átalakításra történik; ezért. a beolvasott adat már csak karakter tömb lehet.      > [!NOTE] > A GetChars metódus adja vissza 0 amikor `dataIndex` negatív."
   syntax:
     content: public override long GetChars (int i, long dataIndex, char[] buffer, int bufferIndex, int length);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     - id: dataIndex
       type: System.Int64
-      description: "The index within the field from which to begin the read operation."
+      description: "Az olvasási művelet kezdőpontjaként a mezőn belüli index."
     - id: buffer
       type: System.Char[]
-      description: "The buffer into which to read the stream of bytes."
+      description: "A puffer, amelybe bájtos adatfolyam olvasására."
     - id: bufferIndex
       type: System.Int32
-      description: "The index within the `buffer` where the write operation is to start."
+      description: "Az index belül a `buffer` elindítani az írási művelet esetén."
     - id: length
       type: System.Int32
-      description: "The maximum length to copy into the buffer."
+      description: "Másolja a puffer maximális hosszát."
     return:
       type: System.Int64
-      description: "The actual number of characters read."
+      description: "Olvassa el a tényleges karakterszámot."
   overload: System.Data.SqlClient.SqlDataReader.GetChars*
   exceptions: []
   platform:
@@ -378,17 +378,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets a string representing the data type of the specified column."
-  remarks: "Returns the name of the back-end data type.       `numeric` is a synonym in SQL Server for the `decimal` data type. `GetDataTypeName` will return &quot;decimal&quot; for a column defined as either decimal or numeric."
+  summary: "Lekérdezi a megadott oszlop adattípusa képviselő karakterláncot."
+  remarks: "A háttér-adattípus nevét adja vissza.       `numeric`az SQL Server egy szinonima van a `decimal` adattípus. `GetDataTypeName`&quot;decimális&quot; decimális vagy numerikus értékként definiált oszlop ad vissza."
   syntax:
     content: public override string GetDataTypeName (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based ordinal position of the column to find."
+      description: "A nulla alapú helyen található oszlop."
     return:
       type: System.String
-      description: "The string representing the data type of the specified column."
+      description: "A karakterlánc, amely a megadott oszlop adattípusát."
   overload: System.Data.SqlClient.SqlDataReader.GetDataTypeName*
   exceptions: []
   platform:
@@ -405,22 +405,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref:System.DateTime> object."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a <xref:System.DateTime> object.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref:System.DateTime>objektum.</xref:System.DateTime>"
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy <xref:System.DateTime>objektum.</xref:System.DateTime>       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override DateTime GetDateTime (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.DateTime
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetDateTime*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetDateTimeOffset(System.Int32)
@@ -435,22 +435,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves the value of the specified column as a <xref:System.DateTimeOffset> object."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a <xref:System.DateTimeOffset> object.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Olvassa be az értéket a megadott oszlop, mint egy <xref:System.DateTimeOffset>objektum.</xref:System.DateTimeOffset>"
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy <xref:System.DateTimeOffset>objektum.</xref:System.DateTimeOffset>       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public virtual DateTimeOffset GetDateTimeOffset (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.DateTimeOffset
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetDateTimeOffset*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetDecimal(System.Int32)
@@ -465,22 +465,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref:System.Decimal> object."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a <xref:System.Decimal> object.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref:System.Decimal>objektum.</xref:System.Decimal>"
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy <xref:System.Decimal>objektum.</xref:System.Decimal>       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override decimal GetDecimal (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Decimal
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetDecimal*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetDouble(System.Int32)
@@ -495,22 +495,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a double-precision floating point number."
-  remarks: "No conversions are performed. Therefore, the data retrieved must already be a double-precision floating point number.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értéke, egy kétszeres pontosságú lebegőpontos számot."
+  remarks: "Nincs átalakítást hajt végre. Ezért a beolvasott adat már kell lennie egy kétszeres pontosságú lebegőpontos számot.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override double GetDouble (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Double
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetDouble*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetEnumerator
@@ -525,14 +525,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Returns an <xref:System.Collections.IEnumerator> that iterates through the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
-  remarks: "Although you can use this method to retrieve an explicit enumerator, in languages that support a `foreach` construct, it is simpler to use the looping construct directly in order to iterate through the rows in the data reader."
+  summary: "Értéket ad vissza egy <xref:System.Collections.IEnumerator>keresztül, amely megismétli a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref>.</xref:System.Collections.IEnumerator>"
+  remarks: "Bár ez a metódus explicit módon számbevevőre beolvasni, a nyelveket, amelyek támogatják a `foreach` szerkezet egyszerűbb közvetlenül ahhoz, hogy a sorokat az Adatolvasó iterációt az ismétlési szerkezet használni."
   syntax:
     content: public override System.Collections.IEnumerator GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An <xref:System.Collections.IEnumerator> for the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
+      description: "An <xref:System.Collections.IEnumerator> for the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>.</xref:System.Collections.IEnumerator>"
   overload: System.Data.SqlClient.SqlDataReader.GetEnumerator*
   exceptions: []
   platform:
@@ -549,16 +549,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the <xref:System.Type> that is the data type of the object."
+  summary: "Lekérdezi a <xref:System.Type>, amely az objektum adattípusa.</xref:System.Type>"
   syntax:
     content: public override Type GetFieldType (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Type
-      description: "The <xref:System.Type> that is the data type of the object. If the type does not exist on the client, in the case of a User-Defined Type (UDT) returned from the database, **GetFieldType** returns null."
+      description: "A <xref:System.Type>, amely az objektum adattípusa.</xref:System.Type> Ha a típus nem létezik az ügyfélen, esetén a felhasználói típus (UDT) az adatbázis által visszaadott **GetFieldType** null értéket ad vissza."
   overload: System.Data.SqlClient.SqlDataReader.GetFieldType*
   exceptions: []
   platform:
@@ -580,10 +580,10 @@ items:
     parameters:
     - id: i
       type: System.Int32
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: T
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Data.SqlClient.SqlDataReader.GetFieldValue<T>*
   exceptions: []
   platform:
@@ -605,13 +605,13 @@ items:
     parameters:
     - id: i
       type: System.Int32
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.Threading.Tasks.Task{T}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Data.SqlClient.SqlDataReader.GetFieldValueAsync<T>*
   exceptions: []
   platform:
@@ -628,22 +628,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a single-precision floating point number."
-  remarks: "No conversions are performed. Therefore, the data retrieved must already be a single-precision floating point number.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értéke, egy egyszeres pontosságú lebegőpontos számot."
+  remarks: "Nincs átalakítást hajt végre. Ezért a beolvasott adat már kell lennie egy egyszeres pontosságú lebegőpontos számot.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override float GetFloat (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Single
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetFloat*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetGuid(System.Int32)
@@ -658,22 +658,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a globally unique identifier (GUID)."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a GUID.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értéke, egy globálisan egyedi azonosítóját (GUID)."
+  remarks: "Nincs átalakítás esetén történik; ezért a beolvasott adat már GUID kell lennie.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override Guid GetGuid (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Guid
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetGuid*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetInt16(System.Int32)
@@ -688,22 +688,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a 16-bit signed integer."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a 16-bit signed integer.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékének aláírt 16 bites egész számként."
+  remarks: "Nincs átalakítás esetén történik; ezért beolvasott adat már kell lennie a 16 bites előjeles egész számokat.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override short GetInt16 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Int16
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetInt16*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetInt32(System.Int32)
@@ -718,22 +718,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a 32-bit signed integer."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a 32-bit signed integer.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékének aláírt 32 bites egész számként."
+  remarks: "Nincs átalakításra történik; Emiatt a beolvasott adat már kell lennie egy 32 bites előjeles egész számokat.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override int GetInt32 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Int32
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetInt32*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetInt64(System.Int32)
@@ -748,22 +748,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a 64-bit signed integer."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a 64-bit signed integer.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékének egy 64 bites előjeles egész számként."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy 64 bites előjeles egész számokat.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override long GetInt64 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Int64
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetInt64*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetName(System.Int32)
@@ -778,16 +778,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the name of the specified column."
+  summary: "Lekérdezi a megadott oszlop neve."
   syntax:
     content: public override string GetName (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.String
-      description: "The name of the specified column."
+      description: "A megadott oszlop neve."
   overload: System.Data.SqlClient.SqlDataReader.GetName*
   exceptions: []
   platform:
@@ -804,8 +804,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the column ordinal, given the name of the column."
-  remarks: "`GetOrdinal` performs a case-sensitive lookup first. If it fails, a second, case-insensitive search occurs (a case-insensitive comparison is done using the database collation). Unexpected results can occur when comparisons are affected by culture-specific casing rules. For example, in Turkish, the following example yields the wrong results because the file system in Turkish does not use linguistic casing rules for the letter &quot;i&quot; in &quot;file&quot;. The method throws an `IndexOutOfRange` exception if the zero-based column ordinal is not found.       `GetOrdinal` is kana-width insensitive.       Because ordinal-based lookups are more efficient than named lookups, it is inefficient to call `GetOrdinal` within a loop. Save time by calling `GetOrdinal` once and assigning the results to an integer variable for use within the loop."
+  summary: "Lekérdezi a oszlop sorszáma, az oszlop neve a."
+  remarks: "`GetOrdinal`kis-és nagybetűket keresést hajt végre. Ha ez nem sikerül, egy második, azonban nem keresési történik (nem betűérzékeny összehasonlító történik az adatbázis-rendezést használja). Váratlan eredményekhez akkor fordulhat elő, ha az összehasonlítást kulturális környezet vonatkozó kis-és szabályok által érintett. Például a török, a következő példa alapján a megfelelő eredmények mert török fájlrendszert használ a levél &quot;i&quot; nyelvi kis-és szabályok a &quot;file&quot;. A metódus jelez egy `IndexOutOfRange` kivétel, ha a nulláról indulva számított oszlop sorszáma nem található.       `GetOrdinal`van kana szélességű kis-és nagybetűket.       Mivel sorszámát-alapú keresését hatékonyabb, mint elnevezett keresések, nem hatékony hívására `GetOrdinal` a hurkon belül. Időt takaríthat meg hívása `GetOrdinal` egyszer, és az eredmények hozzárendelése egy egész változót a hurkon belül használható."
   example:
   - "The following example demonstrates how to use the GetOrdinal method.  \n  \n [!code-cs[Classic WebData SqlDataReader.GetOrdinal#1](~/add/codesnippet/csharp/m-system.data.sqlclient._27_1.cs)]\n [!code-vb[Classic WebData SqlDataReader.GetOrdinal#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._27_1.vb)]"
   syntax:
@@ -813,15 +813,15 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the column."
+      description: "Az oszlop neve."
     return:
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
   overload: System.Data.SqlClient.SqlDataReader.GetOrdinal*
   exceptions:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "The name specified is not a valid column name."
+    description: "A megadott értéke nem érvényes oszlopnevet."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetProviderSpecificFieldType(System.Int32)
@@ -836,16 +836,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets an <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;></xref> that is a representation of the underlying provider-specific field type."
+  summary: "Lekérdezi egy <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;> </xref> az alapul szolgáló szolgáltatói Kapcsolatmező-típus, amely egy ábrázolása."
   syntax:
     content: public override Type GetProviderSpecificFieldType (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "An <xref:System.Int32> representing the column ordinal."
+      description: "Egy <xref:System.Int32>képviselő a oszlopból.</xref:System.Int32>"
     return:
       type: System.Type
-      description: "Gets an <xref:System.Object> that is a representation of the underlying provider-specific field type."
+      description: "Lekérdezi egy <xref:System.Object>az alapul szolgáló szolgáltatói Kapcsolatmező-típus, amely egy ábrázolása.</xref:System.Object>"
   overload: System.Data.SqlClient.SqlDataReader.GetProviderSpecificFieldType*
   exceptions: []
   platform:
@@ -862,16 +862,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets an <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;></xref> that is a representation of the underlying provider specific value."
+  summary: "Lekérdezi egy <xref uid=&quot;langword_csharp_Object&quot; name=&quot;Object&quot; href=&quot;&quot;> </xref> az alapul szolgáló szolgáltató egyedi érték, amely egy ábrázolása."
   syntax:
     content: public override object GetProviderSpecificValue (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "An <xref:System.Int32> representing the column ordinal."
+      description: "Egy <xref:System.Int32>képviselő a oszlopból.</xref:System.Int32>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that is a representation of the underlying provider specific value."
+      description: "Egy <xref:System.Object>az alapul szolgáló szolgáltató egyedi érték, amely egy ábrázolása.</xref:System.Object>"
   overload: System.Data.SqlClient.SqlDataReader.GetProviderSpecificValue*
   exceptions: []
   platform:
@@ -888,16 +888,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets an array of objects that are a representation of the underlying provider specific values."
+  summary: "Lekérdezi az alapul szolgáló szolgáltató adott értékekre ábrázolása-objektumok tömbjét."
   syntax:
     content: public override int GetProviderSpecificValues (object[] values);
     parameters:
     - id: values
       type: System.Object[]
-      description: "An array of <xref:System.Object> into which to copy the column values."
+      description: "A tömb <xref:System.Object>amelybe oszlop értékeinek másolására.</xref:System.Object>"
     return:
       type: System.Int32
-      description: "The array of objects that are a representation of the underlying provider specific values."
+      description: "Az alapul szolgáló szolgáltató adott értékekre ábrázolása-objektumok tömbje."
   overload: System.Data.SqlClient.SqlDataReader.GetProviderSpecificValues*
   exceptions: []
   platform:
@@ -914,19 +914,19 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Returns a <xref href=&quot;System.Data.DataTable&quot;></xref> that describes the column metadata of the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
-  remarks: "For the GetSchemaTable method returns metadata about each column in the following order:      |DataReader column|Description|   |-----------------------|-----------------|   |AllowDBNull|Set if the consumer can set the column to a null value or if the provider cannot determine whether the consumer can set the column to a null value. Otherwise, not set. A column may contain null values, even if it cannot be set to a null value.|   |BaseCatalogName|The name of the catalog in the data store that contains the column. NULL if the base catalog name cannot be determined. The default of this column is a null value.|   |BaseColumnName|The name of the column in the data store. This might be different than the column name returned in the ColumnName column if an alias was used. A null value if the base column name cannot be determined or if the rowset column is derived, but not identical to, a column in the data store. The default of this column is a null value.|   |BaseSchemaName|The name of the schema in the data store that contains the column. A null value if the base schema name cannot be determined. The default of this column is a null value.|   |BaseServerName|The name of the instance of Microsoft SQL Server used by the <xref:System.Data.SqlClient.SqlDataReader>.|   |BaseTableName|The name of the table or view in the data store that contains the column. A null value if the base table name cannot be determined. The default of this column is a null value.|   |ColumnName|The name of the column; this might not be unique. If this cannot be determined, a null value is returned. This name always reflects the most recent renaming of the column in the current view or command text.|   |ColumnOrdinal|The zero-based ordinal of the column. This column cannot contain a null value.|   |ColumnSize|The maximum possible length of a value in the column. For columns that use a fixed-length data type, this is the size of the data type. For `nvarchar(MAX)`, `varchar(MAX)`, and `varbinary(MAX)` columns stored in a SQL Server database, the maximum size is 2GB. If these columns are stored and accessed as files, the limit on maximum size is imposed by the file system. This value changes when using the `Type System Version` keyword in the connection string.  For new types they are represented as downlevel types. The MAX data types return the normal 4k for `nvarchar` and 8000 for `varchar`. For more information, see the Transact-SQL reference in SQL Server Books Online.|   |DataTypeName|Returns a string representing the data type of the specified column.|   |IsAliased|`true`: The column name is an alias.<br /><br /> `false`: The column name is not an alias.|   |IsAutoIncrement|`true`: The column assigns values to new rows in fixed increments.<br /><br /> `false`: The column does not assign values to new rows in fixed increments. The default of this column is `false`.|   |IsColumnSet|`true`: The column is a sparse column that is a member of a column set.|   |IsExpression|`true`: The column is an expression.<br /><br /> `false`: The column is not an expression.|   |IsHidden|`true`: The column is hidden.<br /><br /> `false`: The column is not hidden.|   |IsIdentity|`true`: The column is an identity column.<br /><br /> `false`: The column is not an identity column.|   |IsKey|`true`: The column is one of a set of columns in the rowset that, taken together, uniquely identify the row. The set of columns with `IsKey` set to `true` must uniquely identify a row in the rowset. There is no requirement that this set of columns is a minimal set of columns. This set of columns may be generated from a base table primary key, a unique constraint or a unique index.<br /><br /> `false`: The column is not required to uniquely identify the row.|   |IsLong|`true`: The column contains a Binary Long Object (BLOB) that contains very long data. The definition of very long data is provider-specific.<br /><br /> `false`: The column does not contain a Binary Long Object (BLOB) that contains very long data.|   |IsReadOnly|`true`: The column cannot be modified.<br /><br /> `false`: The column can be modified.|   |IsRowVersion|`true`: The column contains a persistent row identifier that cannot be written to, and has no meaningful value except to identity the row.<br /><br /> `false`: The column does not contain a persistent row identifier that cannot be written to, and has no meaningful value except to identity the row.|   |IsUnique|`true`: Column is of type `timestamp`.<br /><br /> `false`: Column is not of type `timestamp`.|   |NonVersionedProviderType|The type of the column irrespective of the current `Type System Version` specified in the connection string. The returned value is from the <xref:System.Data.SqlDbType> enumeration.|   |NumericPrecision|If `ProviderType` is a numeric data type, this is the maximum precision of the column. The precision depends on the definition of the column. If `ProviderType` is not a numeric data type, this is 255.|   |NumericScale|If `ProviderType` is DBTYPE_DECIMAL or DBTYPE_NUMERIC, the number of digits to the right of the decimal point. Otherwise, this is 255.|   |ProviderSpecificDataType|Returns the provider-specific data type of the column based on the `Type System Version` keyword in the connection string.|   |ProviderType|The indicator of the column&quot;s data type. If the data type of the column varies from row to row, this must be Object. This column cannot contain a null value.|   |UdtAssemblyQualifiedName|If the column is a user-defined type (UDT), this is the qualified name of the UDT&quot;s assembly as per <xref:System.Type.AssemblyQualifiedName%2A>. If the column is not a UDT, this is null.|   |XmlSchemaCollectionDatabase|The name of the database where the schema collection for this XML instance is located, if the row contains information about an XML column. This value is `null` (`Nothing` in Visual Basic) if the collection is defined within the current database. It is also null if there is no schema collection, in which case the `XmlSchemaCollectionName` and `XmlSchemaCollectionOwningSchema` columns are also null.|   |XmlSchemaCollectionName|The name of the schema collection for this XML instance, if the row contains information about an XML column. This value is `null` (`Nothing` in Visual Basic) if there is no associated schema collection. If the value is null, the `XmlSchemaCollectionDatabase` and `XmlSchemaCollectionOwningSchema` columns are also null.|   |XmlSchemaCollectionOwningSchema|The owning relational schema where the schema collection for this XML instance is located, if the row contains information about an XML column. This value is `null` (`Nothing` in Visual Basic) if the collection is defined within the current database. It is also null if there is no schema collection, in which case the `XmlSchemaCollectionDatabase` and `XmlSchemaCollectionName` columns are also null.|      > [!NOTE] >  To make sure that metadata columns return the correct information, you must call <xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A> with the `behavior` parameter set to `KeyInfo`. Otherwise, some of the columns in the schema table may return default, null, or incorrect data."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Data.DataTable&quot;> </xref> , amely leírja, hogy az oszlop metaadatai a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref>."
+  remarks: "Az a GetSchemaTable metódus metaadatokat adja vissza kapcsolatos minden oszlop a következő sorrendben: |} DataReader oszlop |} Leírás |}   |-----------------------|-----------------|   | AllowDBNull |} Állítsa be, ha a fogyasztó állíthat be az oszlop null értékű, vagy ha a szolgáltató nem tudja meghatározni a felhasználó beállíthat-e az oszlop null értékűre. Ellenkező esetben nincs beállítva. Egy oszlop tartalmazhat null értékeket, akkor is, ha nem állítható be null értékűre. |}   | BaseCatalogName |} A katalógus szerepel az adattárban, amely tartalmazza az oszlop neve. NULL, ha az alap katalógus neve nem határozható meg. Az oszlop alapértelmezett értéke null. |}   | BaseColumnName |} Az adattár oszlop neve. Ez akkor lehet más, mint az oszlop nevét adja vissza a ColumnName oszlop Ha alias lett megadva. Egy null értéket, ha az alap oszlop neve nem határozható meg, vagy származtatott, de nem azonos a sorkészlet-oszlophoz esetén egy oszlopot az adatok tárolásához. Az oszlop alapértelmezett értéke null. |}   | BaseSchemaName |} A séma a tárolóban, amely tartalmazza az oszlop neve. Egy null értéket, ha az alap séma neve nem határozható meg. Az oszlop alapértelmezett értéke null. |}   | BaseServerName |} A <xref:System.Data.SqlClient.SqlDataReader>által használt Microsoft SQL Server-példány nevét. |}   | BaseTableName |} A tábla vagy nézet a tárolóban, amely tartalmazza az oszlop neve.</xref:System.Data.SqlClient.SqlDataReader> Egy null értéket, ha az alaptábla neve nem határozható meg. Az oszlop alapértelmezett értéke null. |}   | Oszlopnév |} Az oszlop; neve Ez nem lehet egyedi. Ha ez nem lehet megállapítani, null értéket ad vissza. Ez a név mindig tükrözi az aktuális nézet vagy parancs szöveges oszlop legutóbbi átnevezését. |}   | ColumnOrdinal |} Az oszlop nulla alapú sorszámát. Ez az oszlop nem tartalmazhat null értékű. |}   | ColumnSize |} A lehetséges legfeljebb egy értéket a oszlopban. Olyan oszlopok esetében, a rögzített hosszúságú adattípus Ez az adattípus mérete. A `nvarchar(MAX)`, `varchar(MAX)`, és `varbinary(MAX)` oszlopok egy SQL Server adatbázisban tárolni, a maximális méret pedig 2 GB. Ha ezekben az oszlopokban tárolja, és fájlok formájában érhető el, az a maximális méret korlátot a fájlrendszerben. Ez az érték használata esetén módosítja a `Type System Version` kulcsszó a kapcsolati karakterláncban.  Új típusok ezeket jelöli alacsonyabb szintű típusként. A maximális adattípusok, térjen vissza a normál 4k az `nvarchar` és 8000 a `varchar`. További információkért lásd: a az SQL Server Online könyvek Transact-SQL referencia. |}   | DataTypeName |} A megadott oszlop adattípusa képviselő karakterláncot ad vissza. |}   | IsAliased |} `true`: Az oszlop név.<br /><br /> `false`: Az oszlop neve nincs alias. |}   | IsAutoIncrement |} `true`: Az oszlop értékeket rendel az új sorok rögzített lépésekben.<br /><br /> `false`: Az oszlop nem új sorok rögzített lépésekben értéket hozzárendelni. Az oszlop az alapértelmezett érték `false`. |}   | IsColumnSet |} `true`: Az oszlop, amely tagja egy oszlopkészlet ritka oszlopot. |}   | IsExpression |} `true`: Az oszlop értéke egy kifejezés.<br /><br /> `false`: Az oszlop nincs kifejezés. |}   | IsHidden |} `true`: Az oszlop el van rejtve.<br /><br /> `false`: Az oszlop nem rejtett. |}   | IsIdentity |} `true`: Az oszlop identitásoszlopa.<br /><br /> `false`: Az oszlop nincs identitásoszlopa. |}   | IsKey |} `true`: Az oszlop a sorhalmazban oszlopkészleteket egyike, amelyek együttesen, egyedi módon azonosítja az sor. Az oszlopok csoportja `IsKey` beállítása `true` egyedi módon kell azonosítania a sorhalmaz egyik sorában. Esetében nem követelmény, hogy az oszlopok csoportja-e a minimális számú oszlopot. Az oszlopok csoportja az alaptábla elsődleges kulcs, egyedi megkötésen vagy egyedi index eredményezhet.<br /><br /> `false`: Az oszlop nem szükséges a sor egyedi azonosításához. |}   | IsLong |} `true`: Az oszlop bináris hosszú objektum (BLOB), amely tartalmazza a nagyon hosszú adatokat tartalmaz. Nagyon sok adat definíciójánál szolgáltatói.<br /><br /> `false`: Az oszlop nem tartalmaz egy bináris hosszú objektum (BLOB), amely nagyon hosszú adatokat tartalmaz. |}   | IsReadOnly |} `true`: Az oszlop nem módosítható.<br /><br /> `false`: Az oszlop lehet módosítani. |}   | IsRowVersion |} `true`: Az oszlop tartalmaz egy állandó sorazonosítóként, amely nem lehet írni, és értéke nem értelmezhető kivéve hozzá a sor.<br /><br /> `false`: Az oszlop nem tartalmaz egy állandó sorazonosítóként, amely nem lehet írni, és értéke nem értelmezhető kivéve hozzá a sor. |}   | IsUnique |} `true`: Oszlop típusa nem `timestamp`.<br /><br /> `false`: Az oszlop nincs típusú `timestamp`. |}   | NonVersionedProviderType |} Az aktuális függetlenül oszlop típusának `Type System Version` megadva a kapcsolati karakterláncban. A visszaadott érték a <xref:System.Data.SqlDbType>felsorolásból. |}   | NumericPrecision |} Ha `ProviderType` egy numerikus adattípusú, ez az oszlop maximális pontosság.</xref:System.Data.SqlDbType> A pontosság attól függ, hogy az oszlop definíciója. Ha `ProviderType` nincs egy numerikus adattípusú, ami 255. |}   | NumericScale |} Ha `ProviderType` DBTYPE_DECIMAL vagy DBTYPE_NUMERIC, a tizedesvesszőtől jobbra számjegyek száma. Ellenkező esetben ez az 255. |}   | ProviderSpecificDataType |} Az oszlop alapján szolgáltatói adattípust ad eredményként a `Type System Version` kulcsszó a kapcsolati karakterláncban. |}   | Szolgáltatótípus |} Az jelzi, hogy az oszlop adattípusát. Ha az oszlop adattípusának sor sor változik, ez csak objektum lehet. Ez az oszlop nem tartalmazhat null értékű. |}   | UdtAssemblyQualifiedName |} Ha az oszlop egy felhasználó által definiált típus (UDT), ez az adott <xref:System.Type.AssemblyQualifiedName%2A>.</xref:System.Type.AssemblyQualifiedName%2A> az UDT szerelvény minősített neve Ha az oszlop nem egy UDT, ennek értéke null. |}   | XmlSchemaCollectionDatabase |} Az adatbázis, ahol az XML-példány sémagyűjteménye, ha a sor tartalmaz egy XML típusú oszlopra információkat neve. Ez az érték `null` (`Nothing` a Visual Basic nyelvben) Ha a gyűjtemény az aktuális adatbázisban van meghatározva. Célszerű is null ebben az esetben nem schema collection utasítás végrehajtása, ha a `XmlSchemaCollectionName` és `XmlSchemaCollectionOwningSchema` oszlopok is nullértékűek. |}   | XmlSchemaCollectionName |} Az XML-példány, ha a sor tartalmaz egy XML típusú oszlopra információkat sémagyűjteménye neve. Ez az érték `null` (`Nothing` a Visual Basic nyelvben) nincs hozzá tartozó sémát gyűjtemény esetén. Ha az értéke null, a `XmlSchemaCollectionDatabase` és `XmlSchemaCollectionOwningSchema` oszlopok is nullértékűek. |}   | XmlSchemaCollectionOwningSchema |} A tulajdonos kapcsolati sémáig, ahol az XML-példány sémagyűjteménye, ha a sor tartalmaz egy XML típusú oszlopra vonatkozó információ. Ez az érték `null` (`Nothing` a Visual Basic nyelvben) Ha a gyűjtemény az aktuális adatbázisban van meghatározva. Célszerű is null ebben az esetben nem schema collection utasítás végrehajtása, ha a `XmlSchemaCollectionDatabase` és `XmlSchemaCollectionName` oszlopok is nullértékűek. |}      > [!NOTE] > Győződjön meg arról, hogy metaadatok a megfelelő adatokat ad vissza, meg kell hívnia <xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A>rendelkező a `behavior` paraméter `KeyInfo`.</xref:System.Data.SqlClient.SqlCommand.ExecuteReader%2A> Ellenkező esetben a séma tábla oszlopai némelyike térhetnek vissza alapértelmezett, null, vagy helytelen az adatok."
   syntax:
     content: public override System.Data.DataTable GetSchemaTable ();
     parameters: []
     return:
       type: System.Data.DataTable
-      description: "A <xref href=&quot;System.Data.DataTable&quot;></xref> that describes the column metadata."
+      description: "A <xref href=&quot;System.Data.DataTable&quot;> </xref> , amely leírja, hogy az oszlop metaadatai."
   overload: System.Data.SqlClient.SqlDataReader.GetSchemaTable*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> is closed."
+    description: "A <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> le van zárva."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetSqlBinary(System.Int32)
@@ -941,17 +941,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlBinary&quot;></xref>."
-  remarks: "No conversions are performed; therefore the data retrieved must already be a binary structure or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlBinary&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már egy bináris struktúra kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlBinary GetSqlBinary (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlBinary
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlBinary&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlBinary&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlBinary*
   exceptions: []
   platform:
@@ -968,17 +968,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlBoolean&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a Boolean or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlBoolean&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie az olyan logikai érték, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlBoolean GetSqlBoolean (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlBoolean
-      description: "The value of the column."
+      description: "Az oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlBoolean*
   exceptions: []
   platform:
@@ -995,17 +995,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlByte&quot;></xref>."
-  remarks: "No conversions are performed; therefore the data retrieved must already be a byte, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlByte&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy olyan bájtot, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlByte GetSqlByte (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlByte
-      description: "The value of the column expressed as a  <xref href=&quot;System.Data.SqlTypes.SqlByte&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlByte&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlByte*
   exceptions: []
   platform:
@@ -1022,16 +1022,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as <xref href=&quot;System.Data.SqlTypes.SqlBytes&quot;></xref>."
+  summary: "A megadott oszlop, mint értékét <xref href=&quot;System.Data.SqlTypes.SqlBytes&quot;> </xref>."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlBytes GetSqlBytes (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlBytes
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlBytes&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlBytes&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlBytes*
   exceptions: []
   platform:
@@ -1048,16 +1048,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as <xref href=&quot;System.Data.SqlTypes.SqlChars&quot;></xref>."
+  summary: "A megadott oszlop, mint értékét <xref href=&quot;System.Data.SqlTypes.SqlChars&quot;> </xref>."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlChars GetSqlChars (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlChars
-      description: "The value of the column expressed as a  <xref href=&quot;System.Data.SqlTypes.SqlChars&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlChars&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlChars*
   exceptions: []
   platform:
@@ -1074,17 +1074,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlDateTime&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a date/time value, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlDateTime&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már dátum/idő értéknek kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlDateTime GetSqlDateTime (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlDateTime
-      description: "The value of the column expressed as a  <xref href=&quot;System.Data.SqlTypes.SqlDateTime&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlDateTime&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlDateTime*
   exceptions: []
   platform:
@@ -1101,17 +1101,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlDecimal&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a decimal value, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlDecimal&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már decimális számnak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlDecimal GetSqlDecimal (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlDecimal
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlDecimal&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlDecimal&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlDecimal*
   exceptions: []
   platform:
@@ -1128,17 +1128,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlDouble&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a double-precision floating-point number, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlDouble&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért lekért adatok már kétszeres pontosságú lebegőpontos számnak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlDouble GetSqlDouble (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlDouble
-      description: "The value of the column expressed as a  <xref href=&quot;System.Data.SqlTypes.SqlDouble&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlDouble&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlDouble*
   exceptions: []
   platform:
@@ -1155,17 +1155,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlGuid&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a GUID, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlGuid&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már GUID azonosítónak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlGuid GetSqlGuid (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlGuid
-      description: "The value of the column expressed as a  <xref href=&quot;System.Data.SqlTypes.SqlGuid&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlGuid&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlGuid*
   exceptions: []
   platform:
@@ -1182,17 +1182,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlInt16&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a 16-bit signed integer, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlInt16&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért beolvasott adat már 16 bites előjeles egész számnak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlInt16 GetSqlInt16 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlInt16
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlInt16&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlInt16&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlInt16*
   exceptions: []
   platform:
@@ -1209,17 +1209,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlInt32&quot;></xref>."
-  remarks: "No conversions are performed; therefore the data retrieved must already be a 32-bit signed integer, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlInt32&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már egy 32 bites előjeles egész számokat, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlInt32 GetSqlInt32 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlInt32
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlInt32&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlInt32&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlInt32*
   exceptions: []
   platform:
@@ -1236,17 +1236,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlInt64&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a 64-bit signed integer, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlInt64&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már egy 64 bites előjeles egész számokat kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlInt64 GetSqlInt64 (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlInt64
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlInt64&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlInt64&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlInt64*
   exceptions: []
   platform:
@@ -1263,17 +1263,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlMoney&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a decimal value, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlMoney&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már decimális számnak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlMoney GetSqlMoney (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlMoney
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlMoney&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlMoney&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlMoney*
   exceptions: []
   platform:
@@ -1290,17 +1290,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlSingle&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a single precision floating point number, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlSingle&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért beolvasott adat már egy egyszeres pontosságú lebegőpontos számot kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlSingle GetSqlSingle (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlSingle
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlSingle&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlSingle&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlSingle*
   exceptions: []
   platform:
@@ -1317,17 +1317,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a <xref href=&quot;System.Data.SqlTypes.SqlString&quot;></xref>."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a string, or an exception is generated."
+  summary: "Lekérdezi a megadott oszlop, mint az érték egy <xref href=&quot;System.Data.SqlTypes.SqlString&quot;> </xref>."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már karakterláncnak kell lennie, vagy kivétel jön létre."
   syntax:
     content: public virtual System.Data.SqlTypes.SqlString GetSqlString (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlString
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlTypes.SqlString&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlTypes.SqlString&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlString*
   exceptions: []
   platform:
@@ -1344,17 +1344,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Returns the data value in the specified column as a SQL Server type."
-  remarks: "GetSqlValue returns data using the native SQL Server types. To retrieve data using the .NET Framework types, see <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>."
+  summary: "A adja vissza a megadott oszlopban lévő SQL Server típusként."
+  remarks: "GetSqlValue a natív SQL Server-típus használatával adatait jeleníti meg. A .NET-keretrendszer típusú adatok lekéréséhez lásd: <xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>.</xref:System.Data.SqlClient.SqlDataReader.GetValue%2A>"
   syntax:
     content: public virtual object GetSqlValue (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Object
-      description: "The value of the column expressed as a <xref href=&quot;System.Data.SqlDbType&quot;></xref>."
+      description: "Az értékben oszlop értékének egy <xref href=&quot;System.Data.SqlDbType&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlValue*
   exceptions: []
   platform:
@@ -1371,22 +1371,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Fills an array of <xref:System.Object> that contains the values for all the columns in the record, expressed as SQL Server types."
-  remarks: "Returns the values for all the columns in the record in a single call, using the SQL type system instead of the CLR type system. The length of the <xref:System.Object> array does not need to match the number of columns in the record. You can pass an <xref:System.Object> array that contains fewer than the number of columns contained in the record. Only the amount of data the <xref:System.Object> array holds is copied to the array, starting at the column with ordinal 0. You can also pass an <xref:System.Object> array whose length is more than the number of columns contained in the resulting row. Any remaining columns are untouched."
+  summary: "Beírja egy tömbjét <xref:System.Object>a rekordban levő összes oszlop értékeit tartalmazza, amely az SQL Server típusként kifejezett.</xref:System.Object>"
+  remarks: "Egyetlen hívásban, az SQL type rendszer helyett a CLR-típus rendszer rekord adja vissza az összes oszlop értékeit. A hosszát a <xref:System.Object>tömb nem kell egyeznie a rekordban levő oszlopok számával.</xref:System.Object> Megadhat egy <xref:System.Object>tartalmazó bejegyzésben található oszlopok száma nem lépi-e tömb.</xref:System.Object> Csak a adatok mennyisége az <xref:System.Object>tömb tárolja a rendszer átmásolja a tömb, az oszlop sorszám 0-val kezdődő.</xref:System.Object> Is átadhatja az <xref:System.Object>tömb, amelynek hossza nagyobb, mint az eredményül kapott sor szereplő oszlopok száma.</xref:System.Object> Az összes többi oszlop hagyása."
   syntax:
     content: public virtual int GetSqlValues (object[] values);
     parameters:
     - id: values
       type: System.Object[]
-      description: "An array of <xref:System.Object> into which to copy the values. The column values are expressed as SQL Server types."
+      description: "A tömb <xref:System.Object>amelybe értékeinek másolására.</xref:System.Object> Az oszlop értékei szerint van megadva, az SQL Server típusként."
     return:
       type: System.Int32
-      description: "An integer indicating the number of columns copied."
+      description: "A másolt oszlopok számát jelző egész számot."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlValues*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>values</code> is null."
+    description: "<code>values</code>értéke null."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetSqlXml(System.Int32)
@@ -1401,28 +1401,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as an XML value."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be an XML value.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értéke, egy XML-érték."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy XML-érték.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public virtual System.Data.SqlTypes.SqlXml GetSqlXml (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Data.SqlTypes.SqlXml
-      description: "A <xref href=&quot;System.Data.SqlTypes.SqlXml&quot;></xref> value that contains the XML stored within the corresponding field."
+      description: "A <xref href=&quot;System.Data.SqlTypes.SqlXml&quot;> </xref> érték, amely tartalmazza az XML-fájl tárolja el a megfelelő mezőbe."
   overload: System.Data.SqlClient.SqlDataReader.GetSqlXml*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The index passed was outside the range of 0 to <xref:System.Data.DataTableReader.FieldCount*> - 1"
+    description: "Az átadott index kívül esett a tartományon a 0- <xref:System.Data.DataTableReader.FieldCount*>1</xref:System.Data.DataTableReader.FieldCount*>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to read or access columns in a closed <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref>."
+    description: "Olvassa el, vagy lezárt oszlopai hozzáférési kísérlet történt <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref>."
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The retrieved data is not compatible with the <xref href=&quot;System.Data.SqlTypes.SqlXml&quot;></xref> type."
+    description: "A beolvasott adatok eredménytípusa nem kompatibilis a <xref href=&quot;System.Data.SqlTypes.SqlXml&quot;> </xref> típusa."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetStream(System.Int32)
@@ -1437,28 +1437,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves binary, image, varbinary, UDT, and variant data types as a <xref:System.IO.Stream>."
-  remarks: "<xref:System.IO.Stream.ReadTimeout%2A> defaults to the value of <xref:System.Data.SqlClient.SqlCommand.CommandTimeout%2A>; but you can modify <xref:System.IO.Stream.ReadTimeout%2A> via GetStream.       Null values will be returned as an empty (zero bytes) <xref:System.IO.Stream>.       <xref:System.Data.SqlClient.SqlDataReader.GetBytes%2A> will raise an <xref:System.InvalidOperationException> exception when used on an object returned by GetStream when <xref:System.Data.CommandBehavior> is in effect.       <xref:System.Data.SqlClient.SqlException> exceptions raised from <xref:System.IO.Stream> are thrown as <xref:System.IO.IOException> exceptions; check the inner exception for the <xref:System.Data.SqlClient.SqlException>.       The following <xref:System.IO.Stream> members are not available for objects returned by GetStream:      -   BeginWrite      -   EndWrite      -   Length      -   Position      -   Seek      -   SetLength      -   Write      -   WriteByte      -   WriteTimeout       When the connection property `ContextConnection=true`, GetStream only supports synchronous data retrieval for both sequential (<xref:System.Data.CommandBehavior>) and non-sequential (<xref:System.Data.CommandBehavior>) access.       For more information, see [SqlClient Streaming Support](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekéri a bináris, kép, varbinary, UDT és variant adattípus <xref:System.IO.Stream>.</xref:System.IO.Stream>"
+  remarks: "<xref:System.IO.Stream.ReadTimeout%2A>az alapértelmezett érték a értékének <xref:System.Data.SqlClient.SqlCommand.CommandTimeout%2A>; azonban módosítható <xref:System.IO.Stream.ReadTimeout%2A>keresztül GetStream.</xref:System.IO.Stream.ReadTimeout%2A> </xref:System.Data.SqlClient.SqlCommand.CommandTimeout%2A></xref:System.IO.Stream.ReadTimeout%2A>       Egy üres (nulla bájt) változatlanul adódik vissza null értéket <xref:System.IO.Stream>.</xref:System.IO.Stream>       <xref:System.Data.SqlClient.SqlDataReader.GetBytes%2A>emeli az <xref:System.InvalidOperationException>kivétel használatakor a GetStream által visszaadott objektum amikor <xref:System.Data.CommandBehavior>érvényben van.</xref:System.Data.CommandBehavior> </xref:System.InvalidOperationException></xref:System.Data.SqlClient.SqlDataReader.GetBytes%2A>       <xref:System.Data.SqlClient.SqlException>a <xref:System.IO.Stream>kivételeket <xref:System.IO.IOException>; Ellenőrizze a belső kivétel leírásában a <xref:System.Data.SqlClient.SqlException>.</xref:System.Data.SqlClient.SqlException> </xref:System.IO.IOException> okozott</xref:System.IO.Stream> kiváltott kivételek</xref:System.Data.SqlClient.SqlException>       A következő <xref:System.IO.Stream>tagok nem érhetők el a GetStream által visszaadott objektumokhoz: - BeginWrite - EndWrite - hossz - pozíció - keresés - setlength elemet - írási - WriteByte - WriteTimeout When a connection tulajdonság `ContextConnection=true`, GetStream csak támogatja mind a szekvenciális szinkron adatok beolvasása (<xref:System.Data.CommandBehavior>) és a nem szekvenciális (<xref:System.Data.CommandBehavior>) hozzáférési.</xref:System.Data.CommandBehavior> </xref:System.Data.CommandBehavior> </xref:System.IO.Stream>       További információkért lásd: [SqlClient Streaming támogatási](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.IO.Stream GetStream (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.IO.Stream
-      description: "A stream object."
+      description: "Adatfolyam-objektummá."
   overload: System.Data.SqlClient.SqlDataReader.GetStream*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection drops or is closed during the data retrieval.       The <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> is closed during the data retrieval.       There is no data ready to be read (for example, the first <xref:System.Data.SqlClient.SqlDataReader.Read*> hasn&quot;t been called, or returned false).       Tried to read a previously-read column in sequential mode.       There was an asynchronous operation in progress. This applies to all Get* methods when running in sequential mode, as they could be called while reading a stream."
+    description: "A kapcsolat esik, vagy van zárva az adatok beolvasása során.       A <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> le van zárva az adatok beolvasása során.       Nincs kész olvasható adat (például az első <> </> *> még nem lett neve, vagy hamis értéket adott vissza).       A rendszer megpróbálta kiolvasni a soros módban korábban olvasható oszlop.       Hiba történt egy aszinkron művelet folyamatban van. Ez vonatkozik az összes Get* módszerek módban történő futtatásakor egymást követő, mivel volt hívható adatfolyam olvasása közben."
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "Trying to read a column that does not exist."
+    description: "A rendszer megpróbálta beolvasni a egy oszlopot, amely nem létezik."
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The returned type was not one of the types below:      -   binary      -   image      -   varbinary      -   udt"
+    description: "A visszaadott típus nem volt a következő típusok egyikét: - - bináris - varbinary - udt"
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetString(System.Int32)
@@ -1473,22 +1473,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column as a string."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a string.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Lekérdezi a megadott oszlop értékének karakterláncként."
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már karakterláncnak kell lennie.       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public override string GetString (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.String
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetString*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetTextReader(System.Int32)
@@ -1503,28 +1503,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves Char, NChar, NText, NVarChar, text, varChar, and Variant data types as a <xref:System.IO.TextReader>."
-  remarks: "<xref:System.Data.SqlClient.SqlException> exceptions raised from <xref:System.IO.TextReader> are thrown as <xref:System.IO.IOException> exceptions; check the inner exception for the <xref:System.Data.SqlClient.SqlException>.       Null values will be returned as an empty (zero bytes) <xref:System.IO.TextReader>.       <xref:System.Data.SqlClient.SqlDataReader.GetChars%2A> will raise an <xref:System.InvalidOperationException> exception when used on an object returned by GetTextReader when <xref:System.Data.CommandBehavior> is in effect.       When the connection property `ContextConnection=true`, GetTextReader only supports synchronous data retrieval for both sequential (<xref:System.Data.CommandBehavior>) and non-sequential (<xref:System.Data.CommandBehavior>) access.       For more information, see [SqlClient Streaming Support](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekéri a Char, NChar, NText, NVarChar, szöveg, varChar és Variant adattípus <xref:System.IO.TextReader>.</xref:System.IO.TextReader>"
+  remarks: "<xref:System.Data.SqlClient.SqlException>a <xref:System.IO.TextReader>kivételeket <xref:System.IO.IOException>; Ellenőrizze a belső kivétel leírásában a <xref:System.Data.SqlClient.SqlException>.</xref:System.Data.SqlClient.SqlException> </xref:System.IO.IOException> okozott</xref:System.IO.TextReader> kiváltott kivételek</xref:System.Data.SqlClient.SqlException>       Egy üres (nulla bájt) változatlanul adódik vissza null értéket <xref:System.IO.TextReader>.</xref:System.IO.TextReader>       <xref:System.Data.SqlClient.SqlDataReader.GetChars%2A>emeli egy <xref:System.InvalidOperationException>kivétel használatakor a GetTextReader által visszaadott objektum amikor <xref:System.Data.CommandBehavior>érvényben van.</xref:System.Data.CommandBehavior> </xref:System.InvalidOperationException></xref:System.Data.SqlClient.SqlDataReader.GetChars%2A>       Ha a connection tulajdonság `ContextConnection=true`, GetTextReader csak támogatja mind a szekvenciális szinkron adatok beolvasása (<xref:System.Data.CommandBehavior>) és a nem szekvenciális (<xref:System.Data.CommandBehavior>) hozzáférési.</xref:System.Data.CommandBehavior> </xref:System.Data.CommandBehavior>       További információkért lásd: [SqlClient Streaming támogatási](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.IO.TextReader GetTextReader (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The column to be retrieved."
+      description: "Az oszlop kérhető."
     return:
       type: System.IO.TextReader
-      description: "The returned object."
+      description: "A visszaadott objektumot."
   overload: System.Data.SqlClient.SqlDataReader.GetTextReader*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection drops or is closed during the data retrieval.       The <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> is closed during the data retrieval.       There is no data ready to be read (for example, the first <xref:System.Data.SqlClient.SqlDataReader.Read*> hasn&quot;t been called, or returned false).       Tried to read a previously-read column in sequential mode.       There was an asynchronous operation in progress. This applies to all Get* methods when running in sequential mode, as they could be called while reading a stream."
+    description: "A kapcsolat esik, vagy van zárva az adatok beolvasása során.       A <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> le van zárva az adatok beolvasása során.       Nincs kész olvasható adat (például az első <> </> *> még nem lett neve, vagy hamis értéket adott vissza).       A rendszer megpróbálta kiolvasni a soros módban korábban olvasható oszlop.       Hiba történt egy aszinkron művelet folyamatban van. Ez vonatkozik az összes Get* módszerek módban történő futtatásakor egymást követő, mivel volt hívható adatfolyam olvasása közben."
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "Trying to read a column that does not exist."
+    description: "A rendszer megpróbálta beolvasni a egy oszlopot, amely nem létezik."
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The returned type was not one of the types below:      -   char      -   nchar      -   ntext      -   nvarchar      -   text      -   varchar"
+    description: "A visszaadott típus nem volt a következő típusok egyikét: - char - nchar - ntext - nvarchar - szöveg - varchar"
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetTimeSpan(System.Int32)
@@ -1539,22 +1539,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves the value of the specified column as a <xref:System.TimeSpan> object."
-  remarks: "No conversions are performed; therefore, the data retrieved must already be a <xref:System.TimeSpan> object.       Call <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A> to check for null values before calling this method."
+  summary: "Olvassa be az értéket a megadott oszlop, mint egy <xref:System.TimeSpan>objektum.</xref:System.TimeSpan>"
+  remarks: "Nincs átalakításra történik; ezért a beolvasott adat már kell lennie egy <xref:System.TimeSpan>objektum.</xref:System.TimeSpan>       Hívás <xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>a metódus hívása előtt null értékeket kereső.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull%2A>"
   syntax:
     content: public virtual TimeSpan GetTimeSpan (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.TimeSpan
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
   overload: System.Data.SqlClient.SqlDataReader.GetTimeSpan*
   exceptions:
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The specified cast is not valid."
+    description: "A megadott típuskonverzió érvénytelen."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.GetValue(System.Int32)
@@ -1569,17 +1569,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column in its native format."
-  remarks: "GetValue returns data using the .NET Framework types."
+  summary: "Lekérdezi a megadott oszlop értékének natív formátumában."
+  remarks: "A GetValue használata a .NET-keretrendszer típusok adatait jeleníti meg."
   syntax:
     content: public override object GetValue (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Object
-      description: "This method returns <xref href=&quot;System.DBNull&quot;></xref> for null database columns."
+      description: "Ez a metódus visszaadja <xref href=&quot;System.DBNull&quot;> </xref> adatbázis oszlopokhoz."
   overload: System.Data.SqlClient.SqlDataReader.GetValue*
   exceptions: []
   platform:
@@ -1596,8 +1596,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Populates an array of objects with the column values of the current row."
-  remarks: "For most applications, this method provides an efficient means for retrieving all columns, instead of retrieving each column individually.       You can pass an <xref:System.Object> array that contains fewer than the number of columns contained in the resulting row. Only the amount of data the <xref:System.Object> array holds is copied to the array. You can also pass an <xref:System.Object> array whose length is more than the number of columns contained in the resulting row.       This method returns <xref:System.DBNull> for null database columns."
+  summary: "Feltölti az oszlop értékekkel, az aktuális sor egy objektumokból álló tömb."
+  remarks: "A legtöbb alkalmazás esetén ez a módszer hatékony biztosít az összes oszlop, minden oszlop külön-külön beolvasása helyett.       Megadhat egy <xref:System.Object>tömb, amely tartalmazza az eredményül kapott sor szereplő oszlopok száma nem lépi.</xref:System.Object> Csak a adatok mennyisége az <xref:System.Object>tömb, amely tárolja a tömb másolandó.</xref:System.Object> Is átadhatja az <xref:System.Object>tömb, amelynek hossza nagyobb, mint az eredményül kapott sor szereplő oszlopok száma.</xref:System.Object>       Ez a metódus visszaadja <xref:System.DBNull>adatbázis oszlopokhoz.</xref:System.DBNull>"
   example:
   - "The following example demonstrates using a correctly sized  array  to read all values from the current row in the supplied <xref:System.Data.SqlClient.SqlDataReader>. In addition, the sample demonstrates using a fixed-sized array that could be either smaller or larger than the number of available columns.  \n  \n [!code-cs[DataWorks DataTableReader.GetValueObject#2](~/add/codesnippet/csharp/m-system.data.sqlclient._28_1.cs)]\n [!code-vb[DataWorks DataTableReader.GetValueObject#2](~/add/codesnippet/visualbasic/m-system.data.sqlclient._28_1.vb)]"
   syntax:
@@ -1605,10 +1605,10 @@ items:
     parameters:
     - id: values
       type: System.Object[]
-      description: "An array of <xref:System.Object> into which to copy the attribute columns."
+      description: "A tömb <xref:System.Object>amelybe az attribútumoszlopoknak másolásához.</xref:System.Object>"
     return:
       type: System.Int32
-      description: "The number of instances of <xref:System.Object> in the array."
+      description: "A több példányban <xref:System.Object>a tömbben.</xref:System.Object>"
   overload: System.Data.SqlClient.SqlDataReader.GetValues*
   exceptions: []
   platform:
@@ -1625,28 +1625,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves data of type XML as an <xref:System.Xml.XmlReader>."
-  remarks: "The <xref:System.Xml.XmlReader> object returned by GetXmlReader does not support asynchronous operations. If you require asynchronous operations on an <xref:System.Xml.XmlReader>, cast the XML column to an NVARCHAR(MAX) on the server and use <xref:System.Data.SqlClient.SqlDataReader.GetTextReader%2A> with <xref:System.Xml.XmlReader.Create%2A>.       <xref:System.Data.SqlClient.SqlException> exceptions raised from <xref:System.Xml.XmlReader> are thrown as <xref:System.Xml.XmlException> exceptions; check the inner exception for the <xref:System.Data.SqlClient.SqlException>.       <xref:System.Data.SqlClient.SqlDataReader.GetChars%2A> will raise an <xref:System.InvalidOperationException> exception when used on an object returned by GetXmlReader when <xref:System.Data.CommandBehavior> is in effect.       For more information, see [SqlClient Streaming Support](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekéri az adatokat XML típusú <xref:System.Xml.XmlReader>.</xref:System.Xml.XmlReader>"
+  remarks: "A <xref:System.Xml.XmlReader>GetXmlReader által visszaadott objektum nem támogatja az aszinkron műveletek.</xref:System.Xml.XmlReader> Ha szüksége van egy <xref:System.Xml.XmlReader>az NVARCHAR(MAX), a kiszolgálón, és használja <xref:System.Data.SqlClient.SqlDataReader.GetTextReader%2A>a <xref:System.Xml.XmlReader.Create%2A>.</xref:System.Xml.XmlReader.Create%2A> </xref:System.Data.SqlClient.SqlDataReader.GetTextReader%2A> XML oszlop konvertálni</xref:System.Xml.XmlReader> az aszinkron műveletek       <xref:System.Data.SqlClient.SqlException>a <xref:System.Xml.XmlReader>kivételeket <xref:System.Xml.XmlException>; Ellenőrizze a belső kivétel leírásában a <xref:System.Data.SqlClient.SqlException>.</xref:System.Data.SqlClient.SqlException> </xref:System.Xml.XmlException> okozott</xref:System.Xml.XmlReader> kiváltott kivételek</xref:System.Data.SqlClient.SqlException>       <xref:System.Data.SqlClient.SqlDataReader.GetChars%2A>emeli az <xref:System.InvalidOperationException>kivétel használatakor a GetXmlReader által visszaadott objektum amikor <xref:System.Data.CommandBehavior>érvényben van.</xref:System.Data.CommandBehavior> </xref:System.InvalidOperationException></xref:System.Data.SqlClient.SqlDataReader.GetChars%2A>       További információkért lásd: [SqlClient Streaming támogatási](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual System.Xml.XmlReader GetXmlReader (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The value of the specified column."
+      description: "A megadott oszlop értéke."
     return:
       type: System.Xml.XmlReader
-      description: "The returned object."
+      description: "A visszaadott objektumot."
   overload: System.Data.SqlClient.SqlDataReader.GetXmlReader*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection drops or is closed during the data retrieval.       The <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> is closed during the data retrieval.       There is no data ready to be read (for example, the first <xref:System.Data.SqlClient.SqlDataReader.Read*> hasn&quot;t been called, or returned false).       Trying to read a previously read column in sequential mode.       There was an asynchronous operation in progress. This applies to all Get* methods when running in sequential mode, as they could be called while reading a stream."
+    description: "A kapcsolat esik, vagy van zárva az adatok beolvasása során.       A <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> le van zárva az adatok beolvasása során.       Nincs kész olvasható adat (például az első <> </> *> még nem lett neve, vagy hamis értéket adott vissza).       A rendszer megpróbálta beolvasni a korábban olvasható oszlop soros módban.       Hiba történt egy aszinkron művelet folyamatban van. Ez vonatkozik az összes Get* módszerek módban történő futtatásakor egymást követő, mivel volt hívható adatfolyam olvasása közben."
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "Trying to read a column that does not exist."
+    description: "A rendszer megpróbálta beolvasni a egy oszlopot, amely nem létezik."
   - type: System.InvalidCastException
     commentId: T:System.InvalidCastException
-    description: "The returned type was not xml."
+    description: "A visszaadott típus nem XML formátumú."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.HasRows
@@ -1661,12 +1661,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets a value that indicates whether the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> contains one or more rows."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> egy vagy több sort tartalmaz."
   syntax:
     content: public override bool HasRows { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> contains one or more rows; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> tartalmaz egy vagy több sor; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.HasRows*
   exceptions: []
   platform:
@@ -1683,13 +1683,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Retrieves a Boolean value that indicates whether the specified <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> instance has been closed."
-  remarks: "It is not possible to read from a <xref:System.Data.SqlClient.SqlDataReader> instance that is closed."
+  summary: "Beolvas egy logikai értéket, amely jelzi, hogy a megadott <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> példány be lett zárva."
+  remarks: "Nincs lehetőség olvasni egy <xref:System.Data.SqlClient.SqlDataReader>-példányt, be van zárva.</xref:System.Data.SqlClient.SqlDataReader>"
   syntax:
     content: public override bool IsClosed { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> instance is closed; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> példány lezárt; egyéb <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.IsClosed*
   exceptions: []
   platform:
@@ -1706,17 +1706,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Determines whether the specified <xref href=&quot;System.Data.CommandBehavior&quot;></xref> matches that of the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> ."
-  remarks: "This member supports the .NET Framework infrastructure and is not intended to be used directly from your code."
+  summary: "Meghatározza, hogy a megadott <xref href=&quot;System.Data.CommandBehavior&quot;> </xref> megegyezik a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> ."
+  remarks: "Ez a tag támogatja a .NET-keretrendszer infrastruktúráját, és nem javasolt közvetlenül a kódból használni."
   syntax:
     content: protected bool IsCommandBehavior (System.Data.CommandBehavior condition);
     parameters:
     - id: condition
       type: System.Data.CommandBehavior
-      description: "A <xref href=&quot;System.Data.CommandBehavior&quot;></xref> enumeration."
+      description: "A <xref href=&quot;System.Data.CommandBehavior&quot;> </xref> enumerálása."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified <xref href=&quot;System.Data.CommandBehavior&quot;></xref> is true, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott <xref href=&quot;System.Data.CommandBehavior&quot;> </xref> értéke igaz, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> más módon."
   overload: System.Data.SqlClient.SqlDataReader.IsCommandBehavior*
   exceptions: []
   platform:
@@ -1733,17 +1733,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets a value that indicates whether the column contains non-existent or missing values."
-  remarks: "Call this method to check for null column values before calling the typed get methods (for example, <xref:System.Data.SqlClient.SqlDataReader.GetByte%2A>, <xref:System.Data.SqlClient.SqlDataReader.GetChar%2A>, and so on) to avoid raising an error.       [!code-vb[SqlDataReader_IsDbNull#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._29_1.vb)]  [!code-cs[SqlDataReader_IsDbNull#1](~/add/codesnippet/csharp/m-system.data.sqlclient._29_1.cs)]"
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy az oszlop nem létező vagy a hiányzó értékeket tartalmaz."
+  remarks: "Ez a metódushívás ellenőrizze a beírt hívása előtt null értékek beolvasása módszerek (például <xref:System.Data.SqlClient.SqlDataReader.GetByte%2A>, <xref:System.Data.SqlClient.SqlDataReader.GetChar%2A>, és így tovább) kiadását okozó hiba elkerülése érdekében.</xref:System.Data.SqlClient.SqlDataReader.GetChar%2A> </xref:System.Data.SqlClient.SqlDataReader.GetByte%2A>       [!code-vb[#1 SqlDataReader_IsDbNull](~/add/codesnippet/visualbasic/m-system.data.sqlclient._29_1.vb)][!code-cs[SqlDataReader_IsDbNull&#1;  ](~/add/codesnippet/csharp/m-system.data.sqlclient._29_1.cs)]"
   syntax:
     content: public override bool IsDBNull (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified column value is equivalent to <xref href=&quot;System.DBNull&quot;></xref>; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott oszlop érték egyenértékű <xref href=&quot;System.DBNull&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.IsDBNull*
   exceptions: []
   platform:
@@ -1760,28 +1760,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "An asynchronous version of <xref:System.Data.SqlClient.SqlDataReader.IsDBNull*>, which gets a value that indicates whether the column contains non-existent or missing values.       The cancellation token can be used to request that the operation be abandoned before the command timeout elapses. Exceptions will be reported via the returned Task object."
-  remarks: "For more information, see [SqlClient Streaming Support](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy aszinkron verzióját <xref:System.Data.SqlClient.SqlDataReader.IsDBNull*>, amely, amely lekérdezi egy értéket jelzi, hogy az oszlop tartalmaz-e a nem létező vagy a hiányzó értékeket.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull*>       A megszakítási jogkivonatot kérni, hogy a művelet elhagyásra kerül, az időkorlát lejárta előtt használható. A visszaadott feladatobjektum keresztül kivételek lesz jelentve."
+  remarks: "További információkért lásd: [SqlClient Streaming támogatási](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.Threading.Tasks.Task<bool> IsDBNullAsync (int i, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column to be retrieved."
+      description: "A nulláról indulva számított oszlop kérhető."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The cancellation instruction, which propagates a notification that operations should be canceled. This does not guarantee the cancellation. A setting of <xref uid=&quot;langword_csharp_CancellationToken.None&quot; name=&quot;CancellationToken.None&quot; href=&quot;&quot;></xref> makes this method equivalent to <xref:System.Data.SqlClient.SqlDataReader.IsDBNull*>. The returned task must be marked as cancelled."
+      description: "A megszakítási utasítás, amely tölti ki, hogy meg kell szakítani a műveletek értesítést. Ez garantálja megszakítását. A beállításnak <xref uid=&quot;langword_csharp_CancellationToken.None&quot; name=&quot;CancellationToken.None&quot; href=&quot;&quot;> </xref> <xref:System.Data.SqlClient.SqlDataReader.IsDBNull*>.</xref:System.Data.SqlClient.SqlDataReader.IsDBNull*> egyenértékű teszi ezt a módszert A visszaadott feladatot kell jelölést megszakítva."
     return:
       type: System.Threading.Tasks.Task{System.Boolean}
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified column value is equivalent to <xref uid=&quot;langword_csharp_DBNull&quot; name=&quot;DBNull&quot; href=&quot;&quot;></xref> otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott oszlop érték egyenértékű <xref uid=&quot;langword_csharp_DBNull&quot; name=&quot;DBNull&quot; href=&quot;&quot;> </xref> egyéb <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.IsDBNullAsync*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The connection drops or is closed during the data retrieval.       The <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> is closed during the data retrieval.       There is no data ready to be read (for example, the first <xref:System.Data.SqlClient.SqlDataReader.Read*> hasn&quot;t been called, or returned false).       Trying to read a previously read column in sequential mode.       There was an asynchronous operation in progress. This applies to all Get* methods when running in sequential mode, as they could be called while reading a stream.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref> is specified in the connection string."
+    description: "A kapcsolat esik, vagy van zárva az adatok beolvasása során.       A <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> le van zárva az adatok beolvasása során.       Nincs kész olvasható adat (például az első <> </> *> még nem lett neve, vagy hamis értéket adott vissza).       A rendszer megpróbálta beolvasni a korábban olvasható oszlop soros módban.       Hiba történt egy aszinkron művelet folyamatban van. Ez vonatkozik az összes Get* módszerek módban történő futtatásakor egymást követő, mivel volt hívható adatfolyam olvasása közben.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref>van megadva a kapcsolati karakterláncban."
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "Trying to read a column that does not exist."
+    description: "A rendszer megpróbálta beolvasni a egy oszlopot, amely nem létezik."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.Item(System.Int32)
@@ -1796,21 +1796,21 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column in its native format given the column ordinal."
+  summary: "Lekérdezi a megadott oszlop értékét az adott a oszlopból natív formátumában."
   syntax:
     content: public override object this[int i] { get; }
     parameters:
     - id: i
       type: System.Int32
-      description: "The zero-based column ordinal."
+      description: "A nulla alapú oszlopból."
     return:
       type: System.Object
-      description: "The value of the specified column in its native format."
+      description: "A megadott oszlop natív formátumában értéke."
   overload: System.Data.SqlClient.SqlDataReader.Item*
   exceptions:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "The index passed was outside the range of 0 through <xref:System.Data.IDataRecord.FieldCount*>."
+    description: "Az átadott index kívül esik a tartományon keresztül <xref:System.Data.IDataRecord.FieldCount*>.</xref:System.Data.IDataRecord.FieldCount*> 0 volt"
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.Item(System.String)
@@ -1825,22 +1825,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the value of the specified column in its native format given the column name."
-  remarks: "A case-sensitive lookup is performed first. If it fails, a second case-insensitive search is made (a case-insensitive comparison is done using the database collation). Unexpected results can occur when comparisons are affected by culture-specific casing rules. For example, in Turkish, the following example yields the wrong results because the file system in Turkish does not use linguistic casing rules for the letter &quot;i&quot; in &quot;file&quot;.       This method is kana-width insensitive."
+  summary: "Lekérdezi a megadott oszlop értékét az oszlop neve a natív formátumában."
+  remarks: "A kis-és nagybetűket keres a először történik. Ha nem sikerül, a második azonban nem keresési történik (nem betűérzékeny összehasonlító történik az adatbázis-rendezést használja). Váratlan eredményekhez akkor fordulhat elő, ha az összehasonlítást kulturális környezet vonatkozó kis-és szabályok által érintett. Például a török, a következő példa alapján a megfelelő eredmények mert török fájlrendszert használ a levél &quot;i&quot; nyelvi kis-és szabályok a &quot;file&quot;.       Ez a metódus kana-szélesség-és nagybetűk megkülönböztetése nélkül."
   syntax:
     content: public override object this[string name] { get; }
     parameters:
     - id: name
       type: System.String
-      description: "The column name."
+      description: "Az oszlop nevét."
     return:
       type: System.Object
-      description: "The value of the specified column in its native format."
+      description: "A megadott oszlop natív formátumában értéke."
   overload: System.Data.SqlClient.SqlDataReader.Item*
   exceptions:
   - type: System.IndexOutOfRangeException
     commentId: T:System.IndexOutOfRangeException
-    description: "No column with the specified name was found."
+    description: "Egyetlen oszlop sincs a megadott néven nem található."
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.NextResult
@@ -1855,14 +1855,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Advances the data reader to the next result, when reading the results of batch Transact-SQL statements."
-  remarks: "Used to process multiple results, which can be generated by executing batch Transact-SQL statements.       By default, the data reader is positioned on the first result."
+  summary: "Kötegelt Transact-SQL utasítás eredményét olvasásakor, kiadásokban Adatolvasó a következő találatra."
+  remarks: "Több eredmény elérése érdekében a következő kötegelt Transact-SQL utasítás futtatásával létrehozó feldolgozásához használatos.       Alapértelmezés szerint az Adatolvasó pozicionálva a első találatra."
   syntax:
     content: public override bool NextResult ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there are more result sets; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha több eredményhalmazt; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.NextResult*
   exceptions: []
   platform:
@@ -1879,25 +1879,25 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "An asynchronous version of <xref:System.Data.SqlClient.SqlDataReader.NextResult*>, which advances the data reader to the next result, when reading the results of batch [!INCLUDE[tsql](~/add/includes/tsql-md.md)] statements.       The cancellation token can be used to request that the operation be abandoned before the command timeout elapses.  Exceptions will be reported via the returned Task object."
-  remarks: "For more information about asynchronous programming in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] Data Provider for [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], see [Asynchronous Programming](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy aszinkron verzióját <xref:System.Data.SqlClient.SqlDataReader.NextResult*>, amely kiadásokban Adatolvasó a következő eredménye kötegelt eredményeit olvasásakor [!INCLUDE[tsql](~/add/includes/tsql-md.md)] utasítások.</xref:System.Data.SqlClient.SqlDataReader.NextResult*>       A megszakítási jogkivonatot kérni, hogy a művelet elhagyásra kerül, az időkorlát lejárta előtt használható.  A visszaadott feladatobjektum keresztül kivételek lesz jelentve."
+  remarks: "Aszinkron programozásba a további információt a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] adatszolgáltatója [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], lásd: [aszinkron programozás](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.Threading.Tasks.Task<bool> NextResultAsync (System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The cancellation instruction."
+      description: "A megszakítási utasítás."
     return:
       type: System.Threading.Tasks.Task{System.Boolean}
-      description: "A task representing the asynchronous operation."
+      description: "Az aszinkron művelet képviselő feladat."
   overload: System.Data.SqlClient.SqlDataReader.NextResultAsync*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Calling NextResultAsync more than once for the same instance before task completion.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref> is specified in the connection string."
+    description: "NextResultAsync egynél többször hívja meg ugyanazon a feladat befejezése előtt.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref>van megadva a kapcsolati karakterláncban."
   - type: System.Data.SqlClient.SqlException
     commentId: T:System.Data.SqlClient.SqlException
-    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] returned an error while executing the command text.'
+    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]a parancs szövege végrehajtása közben hibát adott vissza.'
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.Read
@@ -1912,8 +1912,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Advances the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> to the next record."
-  remarks: "The default position of the <xref:System.Data.SqlClient.SqlDataReader> is before the first record. Therefore, you must call Read to begin accessing any data.       Only one `SqlDataReader` per associated <xref:System.Data.SqlClient.SqlConnection> may be open at a time, and any attempt to open another will fail until the first one is closed. Similarly, while the `SqlDataReader` is being used, the associated `SqlConnection` is busy serving it until you call <xref:System.Data.SqlClient.SqlDataReader.Close%2A>."
+  summary: "Kiadásokban a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> a következő bejegyzéshez."
+  remarks: "Az alapértelmezett pozíciója a <xref:System.Data.SqlClient.SqlDataReader>előtt az első rekordra.</xref:System.Data.SqlClient.SqlDataReader> Ezért meg kell hívnia olvasható adatok elérése megkezdéséhez.       Csak egy `SqlDataReader` / kapcsolódó <xref:System.Data.SqlClient.SqlConnection>lehet nyissa meg a egyszerre, és bármely más megnyitására tett kísérlet sikertelen lesz, amíg az le van zárva.</xref:System.Data.SqlClient.SqlConnection> Hasonlóképpen, miközben a `SqlDataReader` használatban van, a társított `SqlConnection` elfoglalt szolgál, amíg ki nem <xref:System.Data.SqlClient.SqlDataReader.Close%2A>.</xref:System.Data.SqlClient.SqlDataReader.Close%2A> hívás"
   example:
   - "The following example creates a <xref:System.Data.SqlClient.SqlConnection>, a <xref:System.Data.SqlClient.SqlCommand>, and a <xref:System.Data.SqlClient.SqlDataReader>. The example reads through the data, writing it out to the console window. The code then closes the <xref:System.Data.SqlClient.SqlDataReader>. The <xref:System.Data.SqlClient.SqlConnection> is closed automatically at the end of the `using` code block.  \n  \n [!code-cs[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/csharp/m-system.data.sqlclient._26_1.cs)]\n [!code-vb[Classic WebData SqlDataReader.Read Example#1](~/add/codesnippet/visualbasic/m-system.data.sqlclient._26_1.vb)]"
   syntax:
@@ -1921,12 +1921,12 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there are more rows; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha további sorokat; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.SqlClient.SqlDataReader.Read*
   exceptions:
   - type: System.Data.SqlClient.SqlException
     commentId: T:System.Data.SqlClient.SqlException
-    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] returned an error while executing the command text.'
+    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]a parancs szövege végrehajtása közben hibát adott vissza.'
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.ReadAsync(System.Threading.CancellationToken)
@@ -1941,25 +1941,25 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "An asynchronous version of <xref:System.Data.SqlClient.SqlDataReader.Read*>, which advances the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> to the next record.       The cancellation token can be used to request that the operation be abandoned before the command timeout elapses. Exceptions will be reported via the returned Task object."
-  remarks: "If the `behavior` parameter of <xref:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync%2A> is set to `Default`, ReadAsync reads the entire row before returning the Task.       For more information, including code samples, about asynchronous programming in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] Data Provider for [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], see [Asynchronous Programming](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy aszinkron verzióját <xref:System.Data.SqlClient.SqlDataReader.Read*>, mely fejlődésének a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> a következő rekordra.</xref:System.Data.SqlClient.SqlDataReader.Read*>       A megszakítási jogkivonatot kérni, hogy a művelet elhagyásra kerül, az időkorlát lejárta előtt használható. A visszaadott feladatobjektum keresztül kivételek lesz jelentve."
+  remarks: "Ha a `behavior` paramétere <xref:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync%2A>értéke `Default`, ReadAsync beolvassa a teljes sor a feladat visszatérése előtt.</xref:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync%2A>       További információt, többek között a mintakódok aszinkron programozásba a kapcsolatos a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] adatszolgáltatója [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], lásd: [aszinkron programozás](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.Threading.Tasks.Task<bool> ReadAsync (System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The cancellation instruction."
+      description: "A megszakítási utasítás."
     return:
       type: System.Threading.Tasks.Task{System.Boolean}
-      description: "A task representing the asynchronous operation."
+      description: "Az aszinkron művelet képviselő feladat."
   overload: System.Data.SqlClient.SqlDataReader.ReadAsync*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Calling ReadAsync more than once for the same instance before task completion.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref> is specified in the connection string."
+    description: "ReadAsync egynél többször hívja meg ugyanazon a feladat befejezése előtt.       <xref uid=&quot;langword_csharp_Context Connection=true&quot; name=&quot;Context Connection=true&quot; href=&quot;&quot;></xref>van megadva a kapcsolati karakterláncban."
   - type: System.Data.SqlClient.SqlException
     commentId: T:System.Data.SqlClient.SqlException
-    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)] returned an error while executing the command text.'
+    description: '[!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)]a parancs szövege végrehajtása közben hibát adott vissza.'
   platform:
   - net462
 - uid: System.Data.SqlClient.SqlDataReader.RecordsAffected
@@ -1974,13 +1974,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the number of rows changed, inserted, or deleted by execution of the Transact-SQL statement."
-  remarks: "The RecordsAffected property is not set until all rows are read and you close the <xref:System.Data.SqlClient.SqlDataReader>.       The value of this property is cumulative. For example, if two records are inserted in batch mode, the value of `RecordsAffected` will be two.       <xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A> and RecordsAffected are the only properties that you can call after the <xref:System.Data.SqlClient.SqlDataReader> is closed."
+  summary: "Lekérdezi a sorszámnak megváltozott, beszúrni vagy törölte a Transact-SQL-utasítás végrehajtása."
+  remarks: "A RecordsAffected tulajdonság nincs beállítva mindaddig, amíg az összes sor olvasása, és bezárja a <xref:System.Data.SqlClient.SqlDataReader>.</xref:System.Data.SqlClient.SqlDataReader>       Ez a tulajdonság értéke összegző. Ha például két rekordok kötegelt módban értékének szúrja be `RecordsAffected` két lesz.       <xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A>és RecordsAffected hívása után csak tulajdonságok a <xref:System.Data.SqlClient.SqlDataReader>le van zárva.</xref:System.Data.SqlClient.SqlDataReader></xref:System.Data.SqlClient.SqlDataReader.IsClosed%2A>"
   syntax:
     content: public override int RecordsAffected { get; }
     return:
       type: System.Int32
-      description: "The number of rows changed, inserted, or deleted; 0 if no rows were affected or the statement failed; and -1 for SELECT statements."
+      description: "A sorok száma megváltozott, beszúrt vagy törölt; 0, ha az érintett sorok vagy az utasítás sikertelen; és -1 kiválasztott utasítást."
   overload: System.Data.SqlClient.SqlDataReader.RecordsAffected*
   exceptions: []
   platform:
@@ -1998,17 +1998,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Returns an <xref href=&quot;System.Data.IDataReader&quot;></xref> for the specified column ordinal."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.SqlClient.SqlDataReader> instance is cast to an <xref:System.IDataRecord> interface."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Data.IDataReader&quot;> </xref> sorszáma a megadott oszlop."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Data.SqlClient.SqlDataReader>példány típusúvá egy <xref:System.IDataRecord>felületet.</xref:System.IDataRecord> </xref:System.Data.SqlClient.SqlDataReader>"
   syntax:
     content: System.Data.IDataReader IDataRecord.GetData (int i);
     parameters:
     - id: i
       type: System.Int32
-      description: "A column ordinal."
+      description: "Egy oszlopból."
     return:
       type: System.Data.IDataReader
-      description: "The <xref href=&quot;System.Data.IDataReader&quot;></xref> instance for the specified column ordinal."
+      description: "A <xref href=&quot;System.Data.IDataReader&quot;> </xref> példány a megadott oszlop sorszáma."
   overload: System.Data.SqlClient.SqlDataReader.System#Data#IDataRecord#GetData*
   exceptions: []
   platform:
@@ -2025,13 +2025,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.SqlClient
-  summary: "Gets the number of fields in the <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;></xref> that are not hidden."
-  remarks: "This value is used to determine how many fields in the <xref:System.Data.SqlClient.SqlDataReader> are visible. For example, a SELECT on a partial primary key returns the remaining parts of the key as hidden fields. The hidden fields are always appended behind the visible fields."
+  summary: "Lekérdezi a mezők számát a <xref href=&quot;System.Data.SqlClient.SqlDataReader&quot;> </xref> , amely nem rejtett."
+  remarks: "Ez az érték azt határozza meg, hogy hány mezőiben a <xref:System.Data.SqlClient.SqlDataReader>láthatók.</xref:System.Data.SqlClient.SqlDataReader> Például egy jelöljön ki egy részleges elsődleges kulcshoz értéket ad vissza a kulcsot fennmaradó részei rejtett mezők. A rejtett mezők mindig mögött látható lesz hozzáfűzve."
   syntax:
     content: public override int VisibleFieldCount { get; }
     return:
       type: System.Int32
-      description: "The number of fields that are not hidden."
+      description: "A nem rejtett mezők számát."
   overload: System.Data.SqlClient.SqlDataReader.VisibleFieldCount*
   exceptions: []
   platform:

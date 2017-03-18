@@ -16,8 +16,8 @@ items:
   nameWithType: ProjectItemDefinition
   fullName: Microsoft.Build.Evaluation.ProjectItemDefinition
   type: Class
-  summary: "Represents an evaluated item definition for a particular item-type."
-  remarks: "Item definitions are not the same as items. Like items, item definitions can have metadata. Like properties, new metadata can override old metadata with the same name.       During evaluation, all the item definitions for an item type are collected together (assuming their conditions are true) to create one ProjectItemDefinition for each type. For this reason, a project item definition can refer to more than one project item definition element. The metadata within a project item definition, however, refers to a single project metadata element, which can be added, removed, and modified."
+  summary: "Egy adott elemtípus kiértékelt elem definíciója jelöli."
+  remarks: "Elem definíciók megegyeznek nem elemeket. Hasonló elemek a cikk definíciók metaadatok is rendelkezhetnek. Tulajdonságok, például új metaadatokkal régi metaadatok ugyanazzal a névvel lehet felülbírálni.       Kiértékelésével, olyan során elem típusú elem definíciók gyűjtött együtt (feltéve, hogy azok a feltételek igazak) az egyes egy ProjectItemDefinition létrehozásához. Emiatt a projekt elem definíciója jelentésdefiníciós elem több projekt elem hivatkozhat. A metaadatok a projekt elem definíciója belül azonban hivatkozik egy projekt metaadatelem, amely felvehető, eltávolítva, és módosítani."
   syntax:
     content: >-
       [System.Diagnostics.DebuggerDisplay("{itemType} #Metadata={MetadataCount}")]
@@ -41,16 +41,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Get any metadata in the item definition with the given name."
+  summary: "Bármely metaadatot beszerezni a megadott nevű elem definíciójában."
   syntax:
     content: public Microsoft.Build.Evaluation.ProjectMetadata GetMetadata (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata to retrieve."
+      description: "A metaadatok beolvasása neve."
     return:
       type: Microsoft.Build.Evaluation.ProjectMetadata
-      description: "Get any metadata in the item definition with the given name. Returns null if no metadata exists with that name."
+      description: "Bármely metaadatot beszerezni a megadott nevű elem definíciójában. Ha nincsenek metaadatok már létezik ilyen nevű null értéket ad vissza."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.GetMetadata*
   exceptions: []
   platform:
@@ -67,16 +67,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Get the value of any metadata in the item that has the specified name."
+  summary: "Minden metaadatot értékének beolvasása a elemben, amely a megadott névvel rendelkezik."
   syntax:
     content: public string GetMetadataValue (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the item whose metadata value is to be retrieved."
+      description: "A metaadat értéke lehet beolvasni az elem neve."
     return:
       type: System.String
-      description: "Returns the value of any metadata in the item that has the specified name; otherwise returns null."
+      description: "Minden metaadatot értékét adja vissza, amely rendelkezik a megadott név; elem Ellenkező esetben null értéket ad vissza."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.GetMetadataValue*
   exceptions: []
   platform:
@@ -93,12 +93,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the item type of this item definition."
+  summary: "Lekérdezi a konfigurációelem definícióját elemtípus."
   syntax:
     content: public string ItemType { get; }
     return:
       type: System.String
-      description: "Returns the item type of this item definition."
+      description: "A konfigurációelem definícióját elem típusát adja vissza."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.ItemType*
   exceptions: []
   platform:
@@ -115,13 +115,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets an enumerator over all metadata for the item definition."
-  remarks: "This is a read-only collection."
+  summary: "Lekérdezi számbavevő keresztül minden, a cikk definíciójához."
+  remarks: "Ez a gyűjtemény csak olvasható."
   syntax:
     content: public System.Collections.Generic.IEnumerable<Microsoft.Build.Evaluation.ProjectMetadata> Metadata { get; }
     return:
       type: System.Collections.Generic.IEnumerable{Microsoft.Build.Evaluation.ProjectMetadata}
-      description: "Returns an enumerator over all metadata for the item definition."
+      description: "A cikk definíciójához minden metaadat keresztül adja vissza számbevevőre."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.Metadata*
   exceptions: []
   platform:
@@ -138,12 +138,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the count of the metadata on the item definition."
+  summary: "A metaadatok száma lekérdezi a cikk definíciójában."
   syntax:
     content: public int MetadataCount { get; }
     return:
       type: System.Int32
-      description: "Returns the count of the metadata on the item definition."
+      description: "A cikk definíciójában a metaadatok számát küldi vissza."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.MetadataCount*
   exceptions: []
   platform:
@@ -160,12 +160,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the project that contains this item definition."
+  summary: "Lekérdezi a projekt, amely a konfigurációelem definícióját tartalmazza."
   syntax:
     content: public Microsoft.Build.Evaluation.Project Project { get; }
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "Returns the project that contains this item definition, which is never null."
+      description: "A projekt, amely tartalmazza az elem definíciója, amely soha nem null visszaadása."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.Project*
   exceptions: []
   platform:
@@ -182,20 +182,20 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Sets the value of the given metadata in the item definition."
-  remarks: "The unevaluated value is assumed to contain character escape sequences as needed."
+  summary: "A megadott metaadatok értékre állítja a konfigurációelem definícióját."
+  remarks: "A unevaluated érték feltételezett, hogy karakter escape-karaktersorozatokat tartalmaz, igény szerint."
   syntax:
     content: public Microsoft.Build.Evaluation.ProjectMetadata SetMetadataValue (string name, string unevaluatedValue);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the metadata to set."
+      description: "A metaadatok beállításához neve."
     - id: unevaluatedValue
       type: System.String
-      description: "The new unevaluated value of the metadata."
+      description: "A metaadatok új unevaluated értéke."
     return:
       type: Microsoft.Build.Evaluation.ProjectMetadata
-      description: "Returns the metadata with the given name."
+      description: "A megadott nevű a metaadatokat adja vissza."
   overload: Microsoft.Build.Evaluation.ProjectItemDefinition.SetMetadataValue*
   exceptions: []
   platform:

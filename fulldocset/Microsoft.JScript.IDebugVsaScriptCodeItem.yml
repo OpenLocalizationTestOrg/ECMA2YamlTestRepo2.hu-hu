@@ -11,7 +11,7 @@ items:
   nameWithType: IDebugVsaScriptCodeItem
   fullName: Microsoft.JScript.IDebugVsaScriptCodeItem
   type: Interface
-  summary: "Defines methods that evaluate expressions and parse strings. This interface is typically implemented by an object that represents a code block, and it is typically called by a debugger. This interface provides extra functionality that is needed by an IActiveScript host."
+  summary: "Határozza meg, amely a kifejezések kiértékelése, illetve elemezhetik a karakterláncok módszerek. Ez az interfész általában megvalósítja a kódblokk képviselő objektumot, és általában mobilalkalmazásából hibakereső. Ez a felület további funkciókat biztosít, amelyek egy IActiveScript gazdagépre van szükség."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,14 +34,14 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, evaluates the block, expression, or statement represented by the code item and returns the value. It is typically called by a debugger that needs to evaluate an expression (in a Watch window, for example). For expressions, the value is the result of the expression. For blocks and statements, the resulting expression is the last expression calculated by the block or statement."
-  remarks: "Note that the Evaluate method is functionally identical to the <xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A> method. Only the marshaling attributes differ. This version of the interface allows an unmanaged debugger to obtain the return value as an `IUnknown` pointer rather than a `VARIANT`."
+  summary: "Az osztály megadásuk kiértékeli a blokkot, kifejezés vagy utasítás a code elemet jelképezi, és értékét adja vissza. Általában nevezik, amelyet a sikerült kiértékelni a kifejezést (például egy figyelési időablak) hibakereső által. Kifejezések, az érték a kifejezés eredménye. Blokkok és utasítások eredményeként létrejött kifejezés esetén a letiltás vagy utasítás által utolsó kifejezés."
+  remarks: "Vegye figyelembe, hogy a kiértékelés metódus funkcionálisan megegyezik a <xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A>metódus.</xref:Microsoft.JScript.IVsaScriptCodeItem.Execute%2A> Csak az átadás-előkészítési attribútumok térnek el egymástól. Jelen verziójában a felület lehetővé teszi, hogy az beszerzése a visszatérési érték, egy nem felügyelt hibakereső egy `IUnknown` mutató helyett egy `VARIANT`."
   syntax:
     content: public object Evaluate ();
     parameters: []
     return:
       type: System.Object
-      description: "Returns a value that represents the evaluation of the statement, expression, or block."
+      description: "Az utasítást, kifejezés vagy blokk értéket adja vissza."
   overload: Microsoft.JScript.IDebugVsaScriptCodeItem.Evaluate*
   exceptions: []
   platform:
@@ -58,31 +58,31 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: 'When implemented in a class, parses strings and returns the parsed-out information. This method is typically called by a debugger that needs to parse information about a breakpoint that is represented as a <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref>. The debugger might have a breakpoint typed in by the user in the form *functionname-arguments-ILoffset*. A named breakpoint string can have a complex format, for example, `F.B(C.D[], int, arg : double ) : C.Abc + 123.` The parameter list is optional, as is the IL offset.'
+  summary: 'Megadásuk egy osztály, karakterláncok elemzi, és elemezni a kibővített olyan információkat ad vissza. Ez a metódus neve, amelyet a töréspont, amely egy jelenik meg információ elemzése hibakereső által általában egy <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref>. Előfordulhat, hogy a hibakereső a képernyőn a felhasználó által megadott töréspont *függvénynév-argumentumok-ILoffset*. Egy nevesített töréspont karakterlánc lehet egy összetett formátumban, például `F.B(C.D[], int, arg : double ) : C.Abc + 123.` lista paraméter nem kötelező, mivel az IL-eltolást.'
   syntax:
     content: public bool ParseNamedBreakPoint (string input, out string functionName, out int nargs, out string arguments, out string returnType, out ulong offset);
     parameters:
     - id: input
       type: System.String
-      description: "A well-formed named breakpoint string giving a function, optional argument list, and optional IL offset."
+      description: "Egy megfelelően formázott nevű jogosultságot ad a függvény az argumentumlista nem kötelező és választható az IL-eltolást töréspont karakterlánc."
     - id: functionName
       type: System.String
-      description: "Out parameter returning the name of the function parsed out of the input string, or the empty string if the input string is not well formed."
+      description: "Kimeneti paraméter ad vissza a függvény neve elemezni a bemeneti karakterlánc, vagy üres karakterlánc, ha a bemeneti karakterlánc formátuma nem megfelelő."
     - id: nargs
       type: System.Int32
-      description: "Out parameter returning the number of arguments in the optional argument list. Returns zero if there is no arguments list or if the string is not well formed."
+      description: "Kimeneti paraméter visszaadni az argumentumok száma a választható argumentumlista. Értéket ad vissza, ha nincs argumentumok lista, vagy ha a karakterlánc formátuma nem megfelelő nulla."
     - id: arguments
       type: System.String
-      description: "Out parameter returning a space-separated list of the names of the types of all the arguments in the arguments list, or an empty string if the arguments list was missing or the input string was not well formed."
+      description: "Kimeneti paraméter visszaadni az argumentumok típusú nevei szóközökkel elválasztott listáját az argumentumok, vagy üres karakterlánc, ha az argumentum lista hiányzott, vagy a bemeneti karakterlánc formátuma nem megfelelő."
     - id: returnType
       type: System.String
-      description: "Out parameter returning a string containing the return type of the function named in the input, or the empty string if the return type was missing or the input string was not well formed."
+      description: "Kimeneti paraméter ad vissza a bemeneti adatok, a függvény visszatérési típusát tartalmazó karakterláncot vagy az üres karakterlánc, ha hiányzott a visszatérési típus vagy a bemeneti karakterlánc formátuma nem megfelelő."
     - id: offset
       type: System.UInt64
-      description: "Unsigned long integer giving the IL offset from the input string, or zero if there was no IL offset or the string was not well formed."
+      description: "Aláíratlan hosszú egész jogosultságot ad az IL-eltolást a bemeneti karakterlánc vagy nulla, ha hiba történt az IL eltolás vagy a karakterlánc formátuma nem megfelelő."
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the named breakpoint is successfully parsed, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> otherwise."
+      description: "Beolvasása <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> az elnevezett töréspont sikeresen elemezni, ha <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> más módon."
   overload: Microsoft.JScript.IDebugVsaScriptCodeItem.ParseNamedBreakPoint*
   exceptions: []
   platform:

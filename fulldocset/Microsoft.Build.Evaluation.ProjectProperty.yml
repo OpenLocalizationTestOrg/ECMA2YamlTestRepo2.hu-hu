@@ -20,7 +20,7 @@ items:
   nameWithType: ProjectProperty
   fullName: Microsoft.Build.Evaluation.ProjectProperty
   type: Class
-  summary: "Represents an evaluated design-time property."
+  summary: "Az értékelés tervezési idejű tulajdonság jelöli."
   syntax:
     content: >-
       [System.Diagnostics.DebuggerDisplay("{Name}={EvaluatedValue} [{UnevaluatedValue}]")]
@@ -45,13 +45,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the evaluated property value."
-  remarks: "Cannot be set directly; only the unevaluated value can be set. The evaluated value contains no character escape sequences."
+  summary: "Lekérdezi a kiértékelt tulajdonság értéke."
+  remarks: "Nem állítható be közvetlenül; csak a unevaluated értéket állíthat be. A kiértékelt értéke egyetlen karakter escape-karaktersorozatokat tartalmaz."
   syntax:
     content: public string EvaluatedValue { get; }
     return:
       type: System.String
-      description: "Returns the evaluated property value, which is never null."
+      description: "Visszaadja a kiértékelt tulajdonság értéke, amely soha nem null értékű."
   overload: Microsoft.Build.Evaluation.ProjectProperty.EvaluatedValue*
   exceptions: []
   platform:
@@ -68,12 +68,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Determines whether the property originated from the environment variables."
+  summary: "Meghatározza, hogy a tulajdonság származik-e a környezeti változók."
   syntax:
     content: public abstract bool IsEnvironmentProperty { get; }
     return:
       type: System.Boolean
-      description: "True if the property originated from an environment variable; false otherwise."
+      description: "Értéke TRUE, ha a tulajdonság egy környezeti változó; származik. hamis más módon."
   overload: Microsoft.Build.Evaluation.ProjectProperty.IsEnvironmentProperty*
   exceptions: []
   platform:
@@ -90,12 +90,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Determines whether the property is a global property."
+  summary: "Meghatározza, hogy a tulajdonság egy globális tulajdonság."
   syntax:
     content: public abstract bool IsGlobalProperty { get; }
     return:
       type: System.Boolean
-      description: "True if the property is a global property; false otherwise."
+      description: "Értéke TRUE, ha a tulajdonság egy globális tulajdonság; hamis más módon."
   overload: Microsoft.Build.Evaluation.ProjectProperty.IsGlobalProperty*
   exceptions: []
   platform:
@@ -112,12 +112,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Determines whether the property originates from an imported file."
+  summary: "Meghatározza, hogy a tulajdonság egy importált fájlból származik."
   syntax:
     content: public abstract bool IsImported { get; }
     return:
       type: System.Boolean
-      description: "Returns true if the property originates from an imported file and not from an environment variable, a global property, or a reserved property. Returns false otherwise."
+      description: "Igaz értéket ad eredményül, ha a tulajdonság egy importált fájlból és nem egy környezeti változó, egy globális tulajdonság, vagy egy fenntartott tulajdonság származik. Egyébként hamis értéket."
   overload: Microsoft.Build.Evaluation.ProjectProperty.IsImported*
   exceptions: []
   platform:
@@ -134,12 +134,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Determines whether the property is a reserved property, for example &quot;MSBuildProjectFile&quot;."
+  summary: "Meghatározza, hogy a tulajdonság foglalt tulajdonságot, például &quot;MSBuildProjectFile&quot;."
   syntax:
     content: public abstract bool IsReservedProperty { get; }
     return:
       type: System.Boolean
-      description: "Returns true if the property is a reserved property; false otherwise."
+      description: "Igaz értéket ad eredményül, ha a tulajdonság egy fenntartott tulajdonság; hamis más módon."
   overload: Microsoft.Build.Evaluation.ProjectProperty.IsReservedProperty*
   exceptions: []
   platform:
@@ -156,12 +156,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the name of the property."
+  summary: "Lekérdezi a tulajdonságnevet kell megadni."
   syntax:
     content: public abstract string Name { get; }
     return:
       type: System.String
-      description: "Returns the name of the property."
+      description: "A tulajdonság nevét adja vissza."
   overload: Microsoft.Build.Evaluation.ProjectProperty.Name*
   exceptions: []
   platform:
@@ -178,13 +178,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the last property that was overridden by this property during evaluation."
-  remarks: "This method searches for all properties with the same name that lie above in the logical project file, and whose conditions evaluate to true.       If the project has not been reevaluated since the last modification, this value may be incorrect."
+  summary: "Lekérdezi az utolsó tulajdonság, amely módosította a tulajdonság által a kiértékelés során."
+  remarks: "Ez a módszer keres összes tulajdonságának azonos nevű logikai projektfájl felett, hogy vannak, és IGAZ értéket visszaadó feltételei.       Ha a projekt nem lett reevaluated óta az utolsó módosítás, ez az érték nem megfelelőek."
   syntax:
     content: public abstract Microsoft.Build.Evaluation.ProjectProperty Predecessor { get; }
     return:
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "Returns the last property whose value was overridden by this property during evaluation. Returns null if the property has not been overridden."
+      description: "A utolsó tulajdonság, amelynek az értéke ehhez a tulajdonsághoz felülbírálta kiértékelése közben adja vissza. Ha a tulajdonság felül nem bírált null értéket ad vissza."
   overload: Microsoft.Build.Evaluation.ProjectProperty.Predecessor*
   exceptions: []
   platform:
@@ -201,12 +201,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the project that contains this property."
+  summary: "Lekérdezi a projekt, amely tartalmazza ezt a tulajdonságot."
   syntax:
     content: public Microsoft.Build.Evaluation.Project Project { get; }
     return:
       type: Microsoft.Build.Evaluation.Project
-      description: "Returns the project that contains this property, which is never null."
+      description: "A projekt, amely tartalmazza ezt a tulajdonságot, amely soha nem null visszaadása."
   overload: Microsoft.Build.Evaluation.ProjectProperty.Project*
   exceptions: []
   platform:
@@ -229,10 +229,10 @@ items:
     parameters:
     - id: other
       type: Microsoft.Build.Evaluation.ProjectProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: Microsoft.Build.Evaluation.ProjectProperty.System#IEquatable<Microsoft#Build#Evaluation#ProjectProperty>#Equals*
   exceptions: []
   platform:
@@ -249,13 +249,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets or sets the unevaluated property value."
-  remarks: "The setter method updates both the unevaluated value and the evaluated value, but does not affect anything else in the project until reevaluation.       The containing project is marked as modified. Unevaluated values are assumed to contain escaped character sequences as needed."
+  summary: "Lekérdezi vagy beállítja a unevaluated tulajdonság értéke."
+  remarks: "A beállító metódus a unevaluated és kiértékelt értéke is frissíti, de nincs hatással bármi más, a projekt amíg újrakiértékelési.       Módosította a tartalmazó projekt van megjelölve. Az alapértelmezett unevaluated paraméterértékek tartalmazó escape-karaktersorozatot karaktersorozatok igény szerint."
   syntax:
     content: public abstract string UnevaluatedValue { get; set; }
     return:
       type: System.String
-      description: "Returns the unevaluated property value."
+      description: "A unevaluated tulajdonság értékét adja vissza."
   overload: Microsoft.Build.Evaluation.ProjectProperty.UnevaluatedValue*
   exceptions: []
   platform:
@@ -272,12 +272,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Evaluation
-  summary: "Gets the associated property element. Backing XML property. Null only if this is a global, environment, or built-in property."
+  summary: "A társított tulajdonság elem beolvasása. Biztonsági XML-tulajdonság. Csak akkor, ha ez a globális NULL, a környezet vagy a beépített tulajdonság."
   syntax:
     content: public abstract Microsoft.Build.Construction.ProjectPropertyElement Xml { get; }
     return:
       type: Microsoft.Build.Construction.ProjectPropertyElement
-      description: "Returns the associated property element. Return null if this is a global or reserved property, or originates from an environment variable."
+      description: "A társított tulajdonság elem beolvasása. A visszatérési értéke null, ha ez egy globális vagy fenntartott tulajdonság, vagy egy környezeti változó származik."
   overload: Microsoft.Build.Evaluation.ProjectProperty.Xml*
   exceptions: []
   platform:

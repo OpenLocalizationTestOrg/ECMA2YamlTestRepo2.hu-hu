@@ -19,8 +19,8 @@ items:
   nameWithType: ISymbolDocument
   fullName: System.Diagnostics.SymbolStore.ISymbolDocument
   type: Interface
-  summary: "Represents a document referenced by a symbol store."
-  remarks: "A document is defined by a URL and a document type GUID. Using the document type GUID and the URL, you can locate the document. You can optionally store document source in the symbol store.       This interface also provides access to that source, if present.      > [!NOTE] >  This interface is the managed counterpart of the `ISymUnmanagedDocument` interface, one of the unmanaged symbol store interfaces that provide an alternative way to read and write debug symbol information."
+  summary: "A szimbólum tároló által hivatkozott dokumentum jelöli."
+  remarks: "A dokumentum egy URL-címet és egy GUID típus határozzák meg. A dokumentumok írja be a GUID Azonosítót és az URL-címet is keresse meg a dokumentumot. A szimbólum tároló tárolhatja forrása nem kötelező.       Ez az interfész is, hogy az adatforrás hozzáférést biztosít, ha van ilyen.      > [!NOTE] > Ez az interfész felügyelt megfelelője a rendszer a `ISymUnmanagedDocument` csatoló, olvasási és írási hibakeresési szimbóluminformáció alternatív megoldást biztosítson a nem felügyelt szimbólum tároló csatolók közül."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,12 +41,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the checksum algorithm identifier."
+  summary: "Lekérdezi a ellenőrzőösszegének algoritmus azonosítója."
   syntax:
     content: public Guid CheckSumAlgorithmId { get; }
     return:
       type: System.Guid
-      description: "A GUID identifying the checksum algorithm. The value is all zeros, if there is no checksum."
+      description: "A GUID azonosító az ellenőrzőösszeg-algoritmus. Az érték nullákból, ha nincs ellenőrzőösszeg."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.CheckSumAlgorithmId*
   exceptions: []
   platform:
@@ -63,12 +63,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the type of the current document."
+  summary: "Lekérdezi az aktuális dokumentum típusú."
   syntax:
     content: public Guid DocumentType { get; }
     return:
       type: System.Guid
-      description: "The type of the current document."
+      description: "Az aktuális dokumentum típusa."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.DocumentType*
   exceptions: []
   platform:
@@ -85,16 +85,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Returns the closest line that is a sequence point, given a line in the current document that might or might not be a sequence point."
+  summary: "Az aktuális dokumentum, amely nem feltétlenül egy sorozatpont, vagy egy sor adott ad vissza, amely egy sorozatpont a legközelebbi sor."
   syntax:
     content: public int FindClosestLine (int line);
     parameters:
     - id: line
       type: System.Int32
-      description: "The specified line in the document."
+      description: "A megadott sor a dokumentumban."
     return:
       type: System.Int32
-      description: "The closest line that is a sequence point."
+      description: "A legközelebbi sor feladatütemezési pontként."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.FindClosestLine*
   exceptions: []
   platform:
@@ -111,13 +111,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the checksum."
+  summary: "Lekérdezi a ellenőrzőösszeg."
   syntax:
     content: public byte[] GetCheckSum ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "The checksum."
+      description: "Az ellenőrzőösszeg."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.GetCheckSum*
   exceptions: []
   platform:
@@ -134,25 +134,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the embedded document source for the specified range."
+  summary: "A beágyazott forrása lekérdezi a megadott tartományhoz."
   syntax:
     content: public byte[] GetSourceRange (int startLine, int startColumn, int endLine, int endColumn);
     parameters:
     - id: startLine
       type: System.Int32
-      description: "The starting line in the current document."
+      description: "A Kezdő sor az aktuális dokumentum."
     - id: startColumn
       type: System.Int32
-      description: "The starting column in the current document."
+      description: "Az aktuális dokumentumon belüli kezdő oszlop."
     - id: endLine
       type: System.Int32
-      description: "The ending line in the current document."
+      description: "A befejező sora az aktuális dokumentum."
     - id: endColumn
       type: System.Int32
-      description: "The ending column in the current document."
+      description: "Az aktuális dokumentumon belüli befejezési oszlop."
     return:
       type: System.Byte[]
-      description: "The document source for the specified range."
+      description: "A megadott tartománya forrása."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.GetSourceRange*
   exceptions: []
   platform:
@@ -169,12 +169,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Checks whether the current document is stored in the symbol store."
+  summary: "Ellenőrzi, hogy az aktuális dokumentumon tárolása a szimbólum."
   syntax:
     content: public bool HasEmbeddedSource { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current document is stored in the symbol store; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális dokumentumon tárolása a szimbólum; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.HasEmbeddedSource*
   exceptions: []
   platform:
@@ -191,12 +191,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the language of the current document."
+  summary: "Lekérdezi az aktuális dokumentumon nyelvét."
   syntax:
     content: public Guid Language { get; }
     return:
       type: System.Guid
-      description: "The language of the current document."
+      description: "Az aktuális dokumentumon nyelvét."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.Language*
   exceptions: []
   platform:
@@ -213,12 +213,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the language vendor of the current document."
+  summary: "Lekérdezi az aktuális dokumentumon nyelvi gyártójához."
   syntax:
     content: public Guid LanguageVendor { get; }
     return:
       type: System.Guid
-      description: "The language vendor of the current document."
+      description: "Az aktuális dokumentumon nyelvi gyártójához."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.LanguageVendor*
   exceptions: []
   platform:
@@ -235,12 +235,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the length, in bytes, of the embedded source."
+  summary: "Lekérdezi a hossza (bájt) a beágyazott forrás."
   syntax:
     content: public int SourceLength { get; }
     return:
       type: System.Int32
-      description: "The source length of the current document."
+      description: "Az aktuális dokumentumon forrás hossza."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.SourceLength*
   exceptions: []
   platform:
@@ -257,12 +257,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the URL of the current document."
+  summary: "Lekérdezi az aktuális dokumentumon URL-CÍMÉT."
   syntax:
     content: public string URL { get; }
     return:
       type: System.String
-      description: "The URL of the current document."
+      description: "Az aktuális dokumentumon URL-CÍMÉT."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.URL*
   exceptions: []
   platform:
