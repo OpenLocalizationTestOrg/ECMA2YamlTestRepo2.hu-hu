@@ -19,7 +19,7 @@ items:
   nameWithType: AspNetWebSocket
   fullName: System.Web.WebSockets.AspNetWebSocket
   type: Class
-  summary: "Represents a real-time full-duplex connection between a web server and a client in an ASP.NET application."
+  summary: "A webkiszolgáló és ASP.NET-alkalmazások az ügyfél között valós idejű teljes kétirányú kapcsolatot jelöl."
   syntax:
     content: 'public sealed class AspNetWebSocket : System.Net.WebSockets.WebSocket'
   inheritance:
@@ -49,8 +49,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Cancels any pending I/O operations on the <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object and sets the state of the object so that it cannot be used to start additional I/O operations."
-  remarks: "After the Abort method has been called, you can still access properties and methods that do not involve I/O operations."
+  summary: "Minden függőben lévő i/o-műveletek a visszavonja a <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektumra, és az objektumot állapotának beállítása, hogy nem használható további i/o-műveletek elindításához."
+  remarks: "Az Abort metódus meghívása után továbbra is elérheti tulajdonságai és metódusai, amelyek nem i/o-műveletek."
   syntax:
     content: public override void Abort ();
     parameters: []
@@ -58,7 +58,7 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)
@@ -73,31 +73,31 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Sends an asynchronous message to a client to close the connection. If the server initiates the request to close the connection, the method waits for the client to acknowledge the request before it returns."
-  remarks: "You can use the CloseAsync and <xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A> methods for both client-initiated and server-initiated requests to close an <xref:System.Web.WebSockets.AspNetWebSocket> connection. The two methods handle client-initiated requests in the same way: After the client sends a message to the server to close the connection, the server calls one of these methods and sends an acknowledgment to the client, and then the method returns.       For server-initiated requests, the two methods work differently. The CloseAsync method sends a message to the client to close the connection, waits for a response, and then returns. The server does not wait for any additional data sent by the client. In contrast, the <xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A> method sends a message to the client to close the connection and returns without waiting for a response. After the method returns, you can call the <xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A> method and handle either additional data or the acknowledgment that the client sends."
+  summary: "Egy aszinkron üzenetet küld a kapcsolat egy ügyfél. Ha a kiszolgáló a kérelmet bontja a kapcsolatot kezdeményez, a módszer a múlva nyugtázza a kérést, mielőtt adja vissza, az ügyfél vár."
+  remarks: "Használhatja a CloseAsync és <xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A>módszerek zárja be az ügyfél által kezdeményezett mind a kiszolgáló által kezdeményezett irányuló kérelmek esetén egy <xref:System.Web.WebSockets.AspNetWebSocket>kapcsolat.</xref:System.Web.WebSockets.AspNetWebSocket> </xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A> A két módszer tanúsítványigénylések ügyfél által kezdeményezett ugyanúgy: Miután az ügyfél üzenetet küld a kiszolgáló bontja a kapcsolatot, a kiszolgáló meghívja az ezen módszerek egyikét, és egy visszaigazoló elküldi az ügyfélnek, és majd a metódus visszaadja.       A kiszolgáló által kezdeményezett kéréseket a két módszer eltérően működik. A CloseAsync metódus küld egy üzenetet, amely az ügyfél a kapcsolat válaszra, és adja vissza. A kiszolgáló nem várja meg az ügyfél által küldött adatok. Ezzel szemben a <xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A>metódus üzenetet küld az ügyfélnek meg a kapcsolatot, és a válaszra való várakozás nélkül adja vissza.</xref:System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync%2A> Hívása után a metódus visszaadja, a <xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A>metódust, és további adatokat vagy a visszaigazoló, az ügyfél által küldött tud kezelni.</xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A>"
   syntax:
     content: public override System.Threading.Tasks.Task CloseAsync (System.Net.WebSockets.WebSocketCloseStatus closeStatus, string statusDescription, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: closeStatus
       type: System.Net.WebSockets.WebSocketCloseStatus
-      description: "The status code of the close operation."
+      description: "A bezárási művelet állapotkód."
     - id: statusDescription
       type: System.String
-      description: "The status message of the close operation."
+      description: "A bezárási művelet állapotüzenetet."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The object that cancels a pending operation."
+      description: "Az objektum, amely megszakítja a függőben lévő műveletet."
     return:
       type: System.Threading.Tasks.Task
-      description: "A reference to the operation."
+      description: "A művelet mutató hivatkozás."
   overload: System.Web.WebSockets.AspNetWebSocket.CloseAsync*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object was previously disposed."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum korábban elvetése megtörtént."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object is in an aborted state.       -or-       Sending operations are unavailable.       -or-       Receiving operations are unavailable."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum megszakított állapotban van.       – vagy – küldő műveletek nem érhetők el.       - vagy - fogadásakor műveletek nem érhetők el."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)
@@ -112,31 +112,31 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Sends an asynchronous message to a client to close the connection. If the server initiates the request to close the connection, the method returns without waiting for a response."
-  remarks: "You can use the <xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A> and CloseOutputAsync methods for both client-initiated and server-initiated requests to close an <xref:System.Web.WebSockets.AspNetWebSocket> connection. The two methods handle client-initiated requests in the same way: After the client sends a message to the server to close the connection, the server calls one of these methods and sends an acknowledgment to the client, and then the method returns.       For server-initiated requests, the two methods work differently. The <xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A> method sends a message to the client to close the connection, waits for a response, and then returns. The server does not wait for any additional data sent by the client. In contrast, the CloseOutputAsync method sends a message to the client to close the connection and returns without waiting for a response. After the method returns, you can call the <xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A> method and handle either additional data or the acknowledgment that the client sends."
+  summary: "Egy aszinkron üzenetet küld a kapcsolat egy ügyfél. Ha a kiszolgáló a kérelmet bontja a kapcsolatot kezdeményez, a módszer a válaszra való várakozás nélkül adja vissza."
+  remarks: "Használhatja a <xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A>CloseOutputAsync a és zárja be az ügyfél által kezdeményezett mind a kiszolgáló által kezdeményezett kérelmek egy <xref:System.Web.WebSockets.AspNetWebSocket>kapcsolat.</xref:System.Web.WebSockets.AspNetWebSocket> </xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A> A két módszer tanúsítványigénylések ügyfél által kezdeményezett ugyanúgy: Miután az ügyfél üzenetet küld a kiszolgáló bontja a kapcsolatot, a kiszolgáló meghívja az ezen módszerek egyikét, és egy visszaigazoló elküldi az ügyfélnek, és majd a metódus visszaadja.       A kiszolgáló által kezdeményezett kéréseket a két módszer eltérően működik. A <xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A>módszer egy üzenetet küld az ügyfélnek a kapcsolat, megvárja-e a választ, és adja vissza.</xref:System.Web.WebSockets.AspNetWebSocket.CloseAsync%2A> A kiszolgáló nem várja meg az ügyfél által küldött adatok. Ezzel szemben a CloseOutputAsync metódus üzenetet küld az ügyfélnek meg a kapcsolatot, és a válaszra való várakozás nélkül adja vissza. Hívása után a metódus visszaadja, a <xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A>metódust, és további adatokat vagy a visszaigazoló, az ügyfél által küldött tud kezelni.</xref:System.Web.WebSockets.AspNetWebSocket.ReceiveAsync%2A>"
   syntax:
     content: public override System.Threading.Tasks.Task CloseOutputAsync (System.Net.WebSockets.WebSocketCloseStatus closeStatus, string statusDescription, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: closeStatus
       type: System.Net.WebSockets.WebSocketCloseStatus
-      description: "The status code of the close operation."
+      description: "A bezárási művelet állapotkód."
     - id: statusDescription
       type: System.String
-      description: "The status message of the close operation."
+      description: "A bezárási művelet állapotüzenetet."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The object that cancels a pending operation."
+      description: "Az objektum, amely megszakítja a függőben lévő műveletet."
     return:
       type: System.Threading.Tasks.Task
-      description: "A reference to the operation."
+      description: "A művelet mutató hivatkozás."
   overload: System.Web.WebSockets.AspNetWebSocket.CloseOutputAsync*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object is in an aborted state.       -or-       Sending operations are unavailable."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum megszakított állapotban van.       – vagy – küldő műveletek nem érhetők el."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.CloseStatus
@@ -151,17 +151,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Gets a status code that indicates why an <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object was closed."
+  summary: "Egy állapot kódot, amely azt jelzi, hogy miért lekérdezi egy <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum be lett zárva."
   syntax:
     content: public override Nullable<System.Net.WebSockets.WebSocketCloseStatus> CloseStatus { get; }
     return:
       type: System.Nullable{System.Net.WebSockets.WebSocketCloseStatus}
-      description: "The status code."
+      description: "Az állapotkódot."
   overload: System.Web.WebSockets.AspNetWebSocket.CloseStatus*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.CloseStatusDescription
@@ -176,17 +176,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Gets a status message that explains why an <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object was closed."
+  summary: "Egy állapotüzenetet, amely azt ismerteti, hogy miért lekérdezi egy <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum be lett zárva."
   syntax:
     content: public override string CloseStatusDescription { get; }
     return:
       type: System.String
-      description: "The status message."
+      description: "Az állapotüzenet tartalmazza."
   overload: System.Web.WebSockets.AspNetWebSocket.CloseStatusDescription*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.Dispose
@@ -201,8 +201,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Releases all resources used by an <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object."
-  remarks: "ASP.NET automatically calls the Dispose method on a <xref:System.Web.WebSockets.AspNetWebSocket> object to release any resources that remain after your code has finished executing."
+  summary: "Feloldja a által használt erőforrások egy <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum."
+  remarks: "Az ASP.NET automatikusan meghívja a Dispose metódus egy <xref:System.Web.WebSockets.AspNetWebSocket>objektum megmarad a a kód után végrehajtó erőforrásokat felszabadítása.</xref:System.Web.WebSockets.AspNetWebSocket>"
   syntax:
     content: public override void Dispose ();
     parameters: []
@@ -222,27 +222,27 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Receives a single message fragment from a remote client."
+  summary: "Egyetlen üzenet töredékkel kap egy távoli ügyfélhez."
   syntax:
     content: public override System.Threading.Tasks.Task<System.Net.WebSockets.WebSocketReceiveResult> ReceiveAsync (ArraySegment<byte> buffer, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: buffer
       type: System.ArraySegment{System.Byte}
-      description: "The array that contains the message data."
+      description: "Az állapotüzenet-adatokat tartalmazó tömb."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The object that cancels a pending operation."
+      description: "Az objektum, amely megszakítja a függőben lévő műveletet."
     return:
       type: System.Threading.Tasks.Task{System.Net.WebSockets.WebSocketReceiveResult}
-      description: "A reference to the task of receiving a message."
+      description: "A feladat, egy üzenet fogadását mutató hivatkozás."
   overload: System.Web.WebSockets.AspNetWebSocket.ReceiveAsync*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object was previously disposed."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum korábban elvetése megtörtént."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object is in an aborted state.       -or-       Receiving operations are unavailable."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum megszakított állapotban van.       - vagy - fogadásakor műveletek nem érhetők el."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.SendAsync(System.ArraySegment{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)
@@ -257,33 +257,33 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Sends a single message fragment to a remote client."
+  summary: "Egyetlen üzenet töredékkel küld egy távoli ügyfélhez."
   syntax:
     content: public override System.Threading.Tasks.Task SendAsync (ArraySegment<byte> buffer, System.Net.WebSockets.WebSocketMessageType messageType, bool endOfMessage, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: buffer
       type: System.ArraySegment{System.Byte}
-      description: "The array that contains the message data."
+      description: "Az állapotüzenet-adatokat tartalmazó tömb."
     - id: messageType
       type: System.Net.WebSockets.WebSocketMessageType
-      description: "The message type."
+      description: "Az üzenet típusa."
     - id: endOfMessage
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that a fragment is the end of a complete message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>azt jelzi, hogy egy kódrészletet a teljes üzenet; vége Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The object that cancels a pending operation."
+      description: "Az objektum, amely megszakítja a függőben lévő műveletet."
     return:
       type: System.Threading.Tasks.Task
-      description: "A reference to the task of sending a message."
+      description: "Az üzenet küldése tevékenység hivatkozik."
   overload: System.Web.WebSockets.AspNetWebSocket.SendAsync*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object is disposed."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> elemet eldobták."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object is in an aborted state.       -or-       Sending operations are unavailable."
+    description: "A <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum megszakított állapotban van.       – vagy – küldő műveletek nem érhetők el."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.State
@@ -298,17 +298,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Gets a value that indicates the open or closed state of an <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> object."
+  summary: "Egy érték, amely jelzi a megnyitott vagy lezárt állapotát lekérdezi egy <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> objektum."
   syntax:
     content: public override System.Net.WebSockets.WebSocketState State { get; }
     return:
       type: System.Net.WebSockets.WebSocketState
-      description: "The current state."
+      description: "A jelenlegi állapotában."
   overload: System.Web.WebSockets.AspNetWebSocket.State*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   platform:
   - net462
 - uid: System.Web.WebSockets.AspNetWebSocket.SubProtocol
@@ -323,17 +323,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.WebSockets
-  summary: "Gets the name of an application-specific protocol that a remote client and a server can use to exchange data over an <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;></xref> connection."
+  summary: "Egy alkalmazás-specifikus protokoll, amellyel a távoli ügyfél és kiszolgáló adatcserében működik közre keresztül neve lekérdezi egy <xref href=&quot;System.Web.WebSockets.AspNetWebSocket&quot;> </xref> kapcsolat."
   syntax:
     content: public override string SubProtocol { get; }
     return:
       type: System.String
-      description: "The name of the protocol."
+      description: "A protokoll neve."
   overload: System.Web.WebSockets.AspNetWebSocket.SubProtocol*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The object was previously disposed."
+    description: "Az objektum korábban elvetése megtörtént."
   platform:
   - net462
 references:

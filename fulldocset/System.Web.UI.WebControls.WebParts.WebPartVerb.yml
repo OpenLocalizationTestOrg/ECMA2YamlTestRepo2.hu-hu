@@ -30,8 +30,8 @@ items:
   nameWithType: WebPartVerb
   fullName: System.Web.UI.WebControls.WebParts.WebPartVerb
   type: Class
-  summary: "Provides an interactive user interface (UI) element that enables users to perform actions on a Web Parts page."
-  remarks: "Web Parts verbs are interactive UI elements, typically represented by buttons or hyperlinks, that appear in pages that use Web Parts controls. Users click verbs to carry out common UI actions for Web Parts controls, such as closing a <xref:System.Web.UI.WebControls.WebParts.WebPart> control or closing the edit display mode (a special page view associated with the <xref:System.Web.UI.WebControls.WebParts.EditorZone> control). All standard verbs provided with the Web Parts control set are associated with either a Web Parts zone (<xref:System.Web.UI.WebControls.WebParts.WebPartZone>, <xref:System.Web.UI.WebControls.WebParts.EditorZone>, <xref:System.Web.UI.WebControls.WebParts.CatalogZone>, or <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone>) or a Web Parts <xref:System.Web.UI.WebControls.WebParts.Part> control (<xref:System.Web.UI.WebControls.WebParts.WebPart>, <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>, <xref:System.Web.UI.WebControls.WebParts.EditorPart>, or <xref:System.Web.UI.WebControls.WebParts.CatalogPart>).       When the standard verbs are associated with a zone, their actions apply at the zone level, and the verbs usually appear in the zone&quot;s header or footer area. The following table lists the common zone-level verbs and describes their actions.      |Zone-level verb|Action|   |----------------------|------------|   |Close verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.ToolZone> class. Hides the UI for a zone and typically returns the page to its normal browse mode view.|   |Apply verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> class. Applies changes that a user has made.|   |OK verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> class. Has the combined effect of the apply and close verbs; it applies changes and hides the zone&quot;s UI.|   |Cancel verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.ToolZone> class. Cancels any pending changes a user has made.|   |Add verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> class. Adds a control that a user has selected from a catalog of controls to a specified <xref:System.Web.UI.WebControls.WebParts.WebPartZone> zone.|   |Configure verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> class. Opens a view to enable users to configure existing connections.|   |Disconnect verb|Used with zones that inherit from the <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> class. Terminates an existing connection between two controls.|       As for the standard verbs that are associated with <xref:System.Web.UI.WebControls.WebParts.Part> controls, their actions apply to the control itself (or to its child controls). The part control acts as a container for the verb and manages the rendering of the verb. Most standard verbs associated with part controls appear either directly in the title bar or in a drop-down verbs menu within the title bar. Whether these verbs appear directly in the header or in a verbs menu is determined by the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebPartVerbRenderMode%2A> property; by default, the verbs appear in a verbs menu. The following table lists common verbs associated with the various <xref:System.Web.UI.WebControls.WebParts.Part> controls and describes their actions.      |Part control verb|Action|   |-----------------------|------------|   |Minimize verb|Appears in the verbs menu of each server control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone. Reduces the control to a minimal representation, hiding everything in its UI except the restore verb.|   |Restore verb|Appears in the verbs menu of each server control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone. Returns a minimized control to its normal size and view.|   |Close verb|Appears in the verbs menu of each server control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone. Closes a control and adds it to the page catalog, which means the control is removed from the page but, if there is a properly designed catalog, users can reopen the closed control and return it to the page.|   |Connect verb|Appears in the verbs menu of a control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, if the page is in connect display mode and if the control can form connections. Opens a connection UI so that users can create a connection between controls.|   |Delete verb|Appears in the verbs menu of a control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, if the control was added to the page programmatically (rather than being declared in persistence format). Permanently deletes the control instance and any associated personalization data so that, unlike a closed control, the deleted instance can never be restored to the page.|   |Edit verb|Appears in the verbs menu of a control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, if the page is designed to permit editing of controls and if the page is in edit display mode. Selects the control for editing and opens the editing UI.|   |Export verb|Appears in the verbs menu of a control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, if the control and application are enabled for export. Opens a dialog box that enables users to export a description file that contains the serialized state of the control. For details, see the <xref:System.Web.UI.WebControls.WebParts.WebPart.ExportMode%2A> property.|   |Help verb|Appears in the verbs menu of a control contained in a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, if the control is designed to provide a Help file. Launches a page that provides help for the control.|       Along with the standard verbs that are provided with the Web Parts control set, you can also create custom verbs. A common scenario for creating custom verbs is to create verbs associated with <xref:System.Web.UI.WebControls.WebParts.Part> controls. When you create these verbs, by default they will appear on the verbs menu along with the standard verbs. The basic approach for creating such verbs is to inherit from the WebPartVerb class to create one or more custom verbs. Then create a control that inherits from the <xref:System.Web.UI.WebControls.WebParts.WebPart> base class and add the custom WebPartVerb objects to a <xref:System.Web.UI.WebControls.WebParts.WebPartVerbCollection> collection. This collection can then be added to the <xref:System.Web.UI.WebControls.WebParts.WebPart.Verbs%2A> collection of the control, which will cause the custom verbs to appear automatically on the control&quot;s verbs menu at run time. As with the standard verbs, you can access the custom verbs programmatically on a <xref:System.Web.UI.WebControls.WebParts.WebPart> control.       Web Parts applications can use server controls that do not inherit from the <xref:System.Web.UI.WebControls.WebParts.WebPart> class, such as custom controls, user controls, or ASP.NET controls. These server controls, if added to a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone, are dynamically wrapped with a <xref:System.Web.UI.WebControls.WebParts.GenericWebPart> object at run time, which enables them to function as run-time <xref:System.Web.UI.WebControls.WebParts.WebPart> controls. To add custom verbs to a server control that does not inherit from the <xref:System.Web.UI.WebControls.WebParts.WebPart> class, the server control must implement the <xref:System.Web.UI.WebControls.WebParts.IWebActionable> interface and override its <xref:System.Web.UI.WebControls.WebParts.IWebActionable.Verbs%2A> property.       When you create a verb, you can create two types of associated event handlers that will run when a user clicks the verb: a server-side event handler (code that runs on the server), and a client-side event handler (code that runs in the client browser). Also, you can define custom states for verbs, which is a useful way to provide visual cues to users. For example, you could create a state indicating that a verb has been selected, and then provide appropriate changes in the UI to notify the user that the verb is already selected. Another useful behavior is the ability to disable verbs; by doing this, you can prevent users from clicking verbs if doing so would be harmful or ineffective based on the state of the application.       The WebPartVerb class does not expose any unique methods; its exposed methods are all overrides of base methods. It does however contain a number of properties for developers to be aware of. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Checked%2A> property indicates whether a verb is currently selected. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ClientClickHandler%2A> and <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ServerClickHandler%2A> properties refer to the respective handlers within the class (if any exist) for client and server click events. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Description%2A> property contains text that describes the purpose of a verb in a ToolTip when users position a mouse pointer over the verb in the UI. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Enabled%2A> property indicates the current status of a verb, which determines whether a user can click the verb and execute its action. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ID%2A> property provides a unique ID for the verb object. The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A> property contains a URL to an image that can be used to represent a verb in the UI in place of the default rendering (typically a button or a hyperlink). The <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Text%2A> property contains the label text that appears directly on the verb in the UI. The overridden <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A> property determines whether a verb is currently displayed in the UI. Verbs are often hidden or disabled at different times in a Web Parts application; for example, specialty verbs (such as the edit verb and the connect verb) are displayed only when the appropriate controls, settings, and display modes exist on the page to enable those verbs to take meaningful action.       Other key members for working with verbs include the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A?displayProperty=fullName> method, which is an event handler that can be overridden for custom handling of the verb creation process, and the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CreateVerbs?displayProperty=fullName> event."
+  summary: "Itt egy interaktív felhasználói felület (UI) elem, amely lehetővé teszi a felhasználók egy kijelzők oldalon műveletek elvégzéséhez."
+  remarks: "Webes kijelzők műveletek a következők: interaktív felhasználói felületi elemei, általában gombokat vagy hivatkozásokat, kijelzők vezérlőket használó lapokon megjelenő képviseli. Felhasználók kattintson a műveletek kijelzők vezérlők, például a záró közös felhasználói felület műveleteket hajt végre egy <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlő vagy bezárja a Szerkesztés megjelenítési mód (egy különös lapmegtekintés társított a <xref:System.Web.UI.WebControls.WebParts.EditorZone>vezérlő).</xref:System.Web.UI.WebControls.WebParts.EditorZone> </xref:System.Web.UI.WebControls.WebParts.WebPart> A kijelzők zónával társított megadott kijelzők vezérlő beállított összes szabványos műveletekhez (<xref:System.Web.UI.WebControls.WebParts.WebPartZone>, <xref:System.Web.UI.WebControls.WebParts.EditorZone>, <xref:System.Web.UI.WebControls.WebParts.CatalogZone>, vagy <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone>) vagy a kijelzők <xref:System.Web.UI.WebControls.WebParts.Part>vezérlő (<xref:System.Web.UI.WebControls.WebParts.WebPart>, <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>, <xref:System.Web.UI.WebControls.WebParts.EditorPart>, vagy <xref:System.Web.UI.WebControls.WebParts.CatalogPart>).</xref:System.Web.UI.WebControls.WebParts.CatalogPart> </xref:System.Web.UI.WebControls.WebParts.EditorPart> </xref:System.Web.UI.WebControls.WebParts.GenericWebPart> </xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.WebControls.WebParts.Part> </xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> </xref:System.Web.UI.WebControls.WebParts.CatalogZone> </xref:System.Web.UI.WebControls.WebParts.EditorZone> </xref:System.Web.UI.WebControls.WebParts.WebPartZone>       Amikor a szabványos HTTP-parancsokat is zónához társított, a zóna szinten alkalmazza azok a műveletek, és a műveletek általában a zóna fejlécében és láblécében területen jelennek meg. A következő táblázat azokat a közös zónaszintű parancsokat listázza, és ismerteti azok a műveletek.      | Zónaszintű művelet |} A művelet |}   |----------------------|------------|   | Bezárás művelet |} A <xref:System.Web.UI.WebControls.WebParts.ToolZone>osztálytól</xref:System.Web.UI.WebControls.WebParts.ToolZone> örökölhet zónákhoz együtt Elrejti a felhasználói felület zóna, és általában adja vissza a lap a normál Tallózás módban nézetre. |}   | Művelet alkalmazása |} A <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>osztálytól</xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> örökölhet zónákhoz együtt A felhasználó által végrehajtott módosításokat. |}   | OK művelet |} A <xref:System.Web.UI.WebControls.WebParts.EditorZoneBase>osztálytól</xref:System.Web.UI.WebControls.WebParts.EditorZoneBase> örökölhet zónákhoz együtt A kombinált hatása, az alkalmazás és Bezárás műveletek; módosítások vonatkozik, és a zóna UI elrejti. |}   | Szakítsa meg a műveletet |} A <xref:System.Web.UI.WebControls.WebParts.ToolZone>osztálytól</xref:System.Web.UI.WebControls.WebParts.ToolZone> örökölhet zónákhoz együtt Minden függőben lévő a felhasználó által végrehajtott módosítások visszavonása. |}   | Adja hozzá a művelet |} A <xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase>osztálytól</xref:System.Web.UI.WebControls.WebParts.CatalogZoneBase> örökölhet zónákhoz együtt Hozzáadja a felhasználó választott szabályozza a katalógusból megadott <xref:System.Web.UI.WebControls.WebParts.WebPartZone>zónához tartozó vezérlőelem. |}   | Művelet konfigurálása |} A <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone>osztálytól</xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> örökölhet zónákhoz használt</xref:System.Web.UI.WebControls.WebParts.WebPartZone> Megnyitja a nézet engedélyezése a felhasználók számára a meglévő kapcsolatok konfigurálása. |}   | Válassza le a művelet |} A <xref:System.Web.UI.WebControls.WebParts.ConnectionsZone>osztálytól</xref:System.Web.UI.WebControls.WebParts.ConnectionsZone> örökölhet zónákhoz együtt Egy létező kapcsolatot, két vezérlőelemek között leáll. |}       A szabványos HTTP-parancsokat társított mint <xref:System.Web.UI.WebControls.WebParts.Part>vezérlők, a lépések vonatkozik magába a vezérlőbe ágyazni (vagy a gyermekvezérlők).</xref:System.Web.UI.WebControls.WebParts.Part> A kijelző vezérlő művelet tárolója funkcionál, és kezeli a leképezési művelet. Legtöbb szabványos rész vezérlőkkel kapcsolatos műveletek jelennek meg, vagy közvetlenül a címsorában található, vagy a műveletek legördülő menüben belül. Határozza meg hogy ezek a műveletek jelennek meg, közvetlenül a fejléc vagy a Műveletek menüjében a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebPartVerbRenderMode%2A>tulajdonságnál, alapértelmezés szerint a HTTP-parancsokat megjelennek a Műveletek menüjében.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.WebPartVerbRenderMode%2A> A következő táblázat felsorolja a különböző társított közös műveletek <xref:System.Web.UI.WebControls.WebParts.Part>vezérli, és ismerteti azok a műveletek.</xref:System.Web.UI.WebControls.WebParts.Part>      | Rész vezérlő művelet |} A művelet |}   |-----------------------|------------|   | Művelet minimalizálása |} A Műveletek menüjében szereplő kiszolgáló tartalmuknak megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zóna.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Csökkenti a vezérlő minimális megjelenítésre, a felhasználói felületen, kivéve a visszaállítási művelet minden elrejtése. |}   | A RESTORE utasítás |} A Műveletek menüjében szereplő kiszolgáló tartalmuknak megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zóna.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Visszaadja egy kis méretű a normál méretének és nézetet. |}   | Bezárás művelet |} A Műveletek menüjében szereplő kiszolgáló tartalmuknak megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zóna.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> A vezérlő bezárja, és hozzáadja azt a lap katalógus, amely azt jelenti, hogy a vezérlő el lesz távolítva az oldalról, de nincs megfelelően katalógusban, ha a felhasználók nyissa meg a lezárt vezérlőt, és az laphoz való visszatéréshez. |}   | Csatlakozás művelet |} A Műveletek menüjében szereplő vezérlő megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónára, ha a lap a csatlakozás a megjelenítési mód, és ha a vezérlő kapcsolatok is alkotnak.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Megnyitja a felhasználói felület kapcsolatot, hogy a felhasználók létrehozhatják vezérlők közötti kapcsolat. |}   | Törlés művelet |} A Műveletek menüjében szereplő vezérlő megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónát, ha a vezérlő lett adva a laphoz programozott (ahelyett, hogy éppen megadott adatmegőrzési formátumban).</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Véglegesen törli a vezérlő példány és a társított megszemélyesítési adatok, hogy egy lezárt vezérlő eltérően a törölt példány soha nem állíthatók vissza az oldalra. |}   | Művelet szerkesztése |} A Műveletek menüjében szereplő vezérlő megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónát, ha a lap célja, hogy engedélyezett a vezérlők szerkesztése, és ha az oldal megjelenítési mód szerkesztése.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> A vezérlő szerkesztésre kiválasztása, és a szerkesztő felhasználói felület megnyitása. |}   | Exportálja a művelet |} A Műveletek menüjében szereplő vezérlő megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónát, ha a vezérlő és az alkalmazás engedélyezve vannak az exportált.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Megnyílik egy párbeszédpanel, amely lehetővé teszi a felhasználók számára, amely tartalmazza a vezérlő szerializált állapot leírása fájl exportálása. További információkért lásd: a <xref:System.Web.UI.WebControls.WebParts.WebPart.ExportMode%2A>tulajdonság. |}   | Súgó művelet |} A Műveletek menüjében szereplő vezérlő megjelenik egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónát, ha a vezérlő arra tervezték, hogy adja meg a súgófájlt.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> </xref:System.Web.UI.WebControls.WebParts.WebPart.ExportMode%2A> Egy oldal, amely segítséget nyújt a vezérlő indít. |}       A szabványos HTTP-parancsokat a kijelzők által biztosított együtt set kontrolljához is létrehozhat egyéni műveletek. Egy általános forgatókönyv egyéni műveletek létrehozására, ha a társított műveletek <xref:System.Web.UI.WebControls.WebParts.Part>vezérlők.</xref:System.Web.UI.WebControls.WebParts.Part> Ezek a műveletek létrehozásakor alapértelmezés szerint megjelennek azok a Műveletek menü mellett a szabványos HTTP-parancsokat. Az alapvető megoldás ilyen műveletek létrehozásához, egy vagy több egyéni műveletek létrehozása a WebPartVerb osztály örökli. Ezután hozzon létre egy vezérlő, amely örökli a <xref:System.Web.UI.WebControls.WebParts.WebPart>alaposztály és az egyéni WebPartVerb objektumok hozzáadása egy <xref:System.Web.UI.WebControls.WebParts.WebPartVerbCollection>gyűjtemény.</xref:System.Web.UI.WebControls.WebParts.WebPartVerbCollection> </xref:System.Web.UI.WebControls.WebParts.WebPart> Ez a gyűjtemény majd adhatók hozzá a <xref:System.Web.UI.WebControls.WebParts.WebPart.Verbs%2A>gyűjtemény a vezérlő, aminek következtében az egyéni műveletek jelenik meg automatikusan a vezérlő műveletek menüjében a futási időben.</xref:System.Web.UI.WebControls.WebParts.WebPart.Verbs%2A> Mivel a szabványos műveletekhez végezheti el az egyéni műveletek programozott módon be egy <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlő.</xref:System.Web.UI.WebControls.WebParts.WebPart>       Webes kijelzők alkalmazások használhatják, amely nem örököl a vezérlőket a <xref:System.Web.UI.WebControls.WebParts.WebPart>osztály, például az egyéni vezérlők, a felhasználói vezérlők és az ASP.NET-vezérlők.</xref:System.Web.UI.WebControls.WebParts.WebPart> A vezérlőket, ha az adott egy <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase>zónára, dinamikusan követően egy <xref:System.Web.UI.WebControls.WebParts.GenericWebPart>futás közben, amely lehetővé teszi őket futásidejű működhet objektum <xref:System.Web.UI.WebControls.WebParts.WebPart>vezérlők.</xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.UI.WebControls.WebParts.GenericWebPart> </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> Egyéni műveletek hozzáadása, amely nem örököl a kiszolgálói vezérlőnek az <xref:System.Web.UI.WebControls.WebParts.WebPart>osztály, a kiszolgálói vezérlőnek meg kell valósítania az <xref:System.Web.UI.WebControls.WebParts.IWebActionable>felületet, és felülírja a <xref:System.Web.UI.WebControls.WebParts.IWebActionable.Verbs%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.IWebActionable.Verbs%2A> </xref:System.Web.UI.WebControls.WebParts.IWebActionable> </xref:System.Web.UI.WebControls.WebParts.WebPart>       Amikor egy műveletet hoz létre, hozhat létre, amely akkor fut, ha a felhasználó kattint a művelethez társított eseménykezelők kétféle: kiszolgálóoldali eseménykezelő (a kiszolgálón futó kódok), és egy ügyféloldali eseménykezelő (az ügyfél böngészőjében futó kód). Is definiálhat egyéni állapotokhoz műveleteknél, ez egy hasznos módja a vizuális jelek adhat a felhasználóknak. Például akkor sikerült hozzon létre egy állapot, amely jelzi, hogy egy művelet van jelölve, és adja meg a szükséges módosításokat a felhasználói felületén, hogy értesítse a felhasználót, hogy a művelet már be van jelölve. Egy másik hasznos működése a távkezelés letiltását műveletek; Ezzel a felhasználók megakadályozása kattintson a műveletek, ha ez így lenne káros, vagy az alkalmazás állapota hatástalan alapján.       A WebPartVerb osztály nem biztosít semmilyen egyedi metódus; az elérhetőségi módszereket alap módszerek vonatkozó összes felülbírálás. A fejlesztők számára vegye figyelembe a tulajdonság azonban tartalmazza. A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Checked%2A>a tulajdonság azt jelzi, hogy a művelet jelenleg kiválasztott.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Checked%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ClientClickHandler%2A>és <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ServerClickHandler%2A>Tulajdonságok tekintse át a megfelelő kezelők az osztályon belül (ha van) tartozó ügyfél- és kattintson az események.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ServerClickHandler%2A> </xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ClientClickHandler%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Description%2A>tulajdonsága tartalmazza egy elemleírásban művelet céljának leírását, amikor a felhasználók elhelyezése az egérmutató a művelet a felhasználói felületen keresztül.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Description%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Enabled%2A>tulajdonság egy igét, amely megadja, hogy a felhasználók kattintson a művelet, és a művelet hajtható végre: az aktuális állapotát jelzi.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Enabled%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ID%2A>tulajdonság egyedi Azonosítót biztosít a művelet objektum.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ID%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A>tulajdonsága tartalmazza, amelyek olyan műveleteket a felhasználói felület helyett az alapértelmezett leképezésre (általában egy gombra való kattintást vagy egy hivatkozás) képviselő használható kép URL-CÍMÉT.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A> A <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Text%2A>tulajdonsága tartalmazza a címke szövegét, közvetlenül a művelet a felhasználói felületen megjelenő.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Text%2A> A felülbírált <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A>tulajdonság határozza meg, hogy a művelet jelenleg megjelenik-e a felhasználói felület.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A> Műveletek gyakran rejtett, vagy le van tiltva a kijelzők alkalmazásban; különböző időpontokban Speciális műveletek (például a Szerkesztés művelet és a connect-műveletet) megjelennek például csak akkor, ha a megfelelő vezérlők, a beállításokat, és a megjelenítési mód létezik az oldalon ahhoz, hogy ezeket a műveleteket használva jelentéssel bíró művelet végrehajtása.       Más műveletek való munkához kulcstagok közé tartozik a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A?displayProperty=fullName>metódus, amely egyéni kezelésére vonatkozó a művelet létrehozási folyamata felülbírálható eseménykezelőt, és a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CreateVerbs?displayProperty=fullName>esemény.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CreateVerbs?displayProperty=fullName> </xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A?displayProperty=fullName>"
   example:
   - "The following code example shows how to create a custom WebPartVerb object, and a custom zone that uses the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A> method to add the verb to the verbs menu of each <xref:System.Web.UI.WebControls.WebParts.WebPart> control contained in the zone. There are four parts to the code example:  \n  \n-   A source file that contains a simple custom <xref:System.Web.UI.WebControls.WebParts.WebPart> control that displays some text.  \n  \n-   A source file that contains a custom WebPartVerb object, and a simple custom <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase> zone that overrides the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A> method to add the custom verb to <xref:System.Web.UI.WebControls.WebParts.WebPart> controls in the zone.  \n  \n-   A Web page that contains the custom zone and the custom <xref:System.Web.UI.WebControls.WebParts.WebPart> control.  \n  \n-   An explanation of how the example works.  \n  \n The first part of the code example contains source code that creates a simple <xref:System.Web.UI.WebControls.WebParts.WebPart> control that displays some text. For the code example to run, you must compile this source code. You can compile it explicitly and put the resulting assembly in your Web site's Bin folder or the global assembly cache. Alternatively, you can put the source code in your site's App_Code folder, where it will be dynamically compiled at run time. This code example uses the dynamic compilation approach. For a walkthrough that demonstrates how to compile, see [Walkthrough: Developing and Using a Custom Web Server Control](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[WebParts_WebPartVerb2#2](~/add/codesnippet/csharp/t-system.web.ui.webcontr_163_1.cs)]\n [!code-vb[WebParts_WebPartVerb2#2](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_163_1.vb)]  \n  \n The second part of the example contains source code to create the custom zone and the custom WebPartVerb object. Note that the zone overrides the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.OnCreateVerbs%2A> method to add the custom verb to any <xref:System.Web.UI.WebControls.WebParts.WebPart> controls in the zone. The verb is added by default to the verbs menu of the controls. Note that, in the code for the custom verb, the constructor for the verb uses a server click handler, and that the method called creates a complete copy of any control that inherits directly from the <xref:System.Web.UI.WebControls.WebParts.WebPart> class, adding the newly created copy to the same zone. Like the first part of the code example, this source code must be compiled, and in this example the source file was placed in an App_Code subfolder to be dynamically compiled.  \n  \n [!code-cs[WebParts_WebPartVerb2#3](~/add/codesnippet/csharp/t-system.web.ui.webcontr_163_2.cs)]\n [!code-vb[WebParts_WebPartVerb2#3](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_163_2.vb)]  \n  \n The third part of the code example is the Web page that hosts the controls. Note that there is a `Register` directive near the top of the page to declare the namespace of the custom controls. No assembly is declared because this example uses dynamic compilation. The custom <xref:System.Web.UI.WebControls.WebParts.WebPart> control is declared within the custom zone. You could also declare other <xref:System.Web.UI.WebControls.WebParts.WebPart> controls in this zone, and the custom verb would be added to their verbs menus as well.  \n  \n [!code-cs[WebParts_WebPartVerb2#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_163_3.aspx)]\n [!code-vb[WebParts_WebPartVerb2#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_163_3.aspx)]  \n  \n Load the page in a browser, and click the verbs menu on the custom <xref:System.Web.UI.WebControls.WebParts.WebPart> control. The **Copy Web Part** verb should be visible. Click the verb, and note that a copy of the control is added to the zone."
   syntax:
@@ -58,17 +58,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class and associates a client-side click event handler with the instance."
-  remarks: "This class constructor refers to a client-side event handler to call when the user clicks a verb in the user interface (UI)."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztályhoz, és kattintson az ügyféloldali eseménykezelő társítja a példányt."
+  remarks: "Ez az osztály a konstruktor hivatkozik egy ügyféloldali eseménykezelő a felhasználó kattint a felhasználói felületen (UI) egy művelet hívására."
   syntax:
     content: public WebPartVerb (string id, string clientClickHandler);
     parameters:
     - id: id
       type: System.String
-      description: "A <xref:System.String> that is the unique identifier for a verb."
+      description: "A <xref:System.String>olyan műveleteket, amely az egyedi azonosítója.</xref:System.String>"
     - id: clientClickHandler
       type: System.String
-      description: "A <xref:System.String> that refers to the client-side handler for click events."
+      description: "A <xref:System.String>az ügyféloldali eseménykezelő hivatkozik, amely további események.</xref:System.String>"
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -88,17 +88,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class and associates a server-side click event handler with the instance."
-  remarks: "This class constructor refers to a server-side click event handler to call when the user clicks a verb in the user interface (UI)."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály és egy kiszolgálóoldali kattintson eseménykezelő társítja a példányt."
+  remarks: "Ez az osztály a konstruktor hivatkozik egy kiszolgálóoldali kattintson eseménykezelő, amikor a felhasználó a felhasználói felületen (UI) egy művelet hívására."
   syntax:
     content: public WebPartVerb (string id, System.Web.UI.WebControls.WebParts.WebPartEventHandler serverClickHandler);
     parameters:
     - id: id
       type: System.String
-      description: "A <xref:System.String> that is the unique identifier for a verb."
+      description: "A <xref:System.String>olyan műveleteket, amely az egyedi azonosítója.</xref:System.String>"
     - id: serverClickHandler
       type: System.Web.UI.WebControls.WebParts.WebPartEventHandler
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;></xref> that handles click events on the server."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;> </xref> leírók kattintson az események a kiszolgálón."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -118,20 +118,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class and associates both client and server-side click event handlers with the instance."
-  remarks: "This class constructor refers to both client-side and server-side click event handlers to call when the user clicks a verb in the user interface (UI)."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály és társult ügyfél- és kiszolgálóoldali kattintson eseménykezelők példányhoz."
+  remarks: "Ez az osztály a konstruktor mindkét ügyféloldali és kiszolgálóoldali kattintson eseménykezelők, amikor a felhasználó a felhasználói felületen (UI) egy művelet hívására hivatkozik."
   syntax:
     content: public WebPartVerb (string id, System.Web.UI.WebControls.WebParts.WebPartEventHandler serverClickHandler, string clientClickHandler);
     parameters:
     - id: id
       type: System.String
-      description: "A <xref:System.String> that is the unique identifier for a verb."
+      description: "A <xref:System.String>olyan műveleteket, amely az egyedi azonosítója.</xref:System.String>"
     - id: serverClickHandler
       type: System.Web.UI.WebControls.WebParts.WebPartEventHandler
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;></xref> that handles click events on the server."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;> </xref> leírók kattintson az események a kiszolgálón."
     - id: clientClickHandler
       type: System.String
-      description: "A <xref:System.String> that refers to the client-side handler for click events."
+      description: "A <xref:System.String>az ügyféloldali eseménykezelő hivatkozik, amely további események.</xref:System.String>"
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -151,13 +151,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value indicating that some state associated with a custom verb is currently active or selected."
-  remarks: "This property is not used with any of the standard verbs provided with the Web Parts control set. When it is used with custom verbs, and the property value is set to `true`, a selected check box appears next to the verb to indicate the active status of the verb.       The purpose of this property is to give developers a way of indicating that some custom state associated with a verb is currently active. For example, suppose a developer creates a custom verb that enlarges the text size (for accessibility purposes) of the body text on all <xref:System.Web.UI.WebControls.WebParts.WebPart> controls in a zone. If a user clicks the verb, this property value could be set to `true`, which would cause a selected check box to appear next to the **Increase Text Size** verb in the verbs menu, indicating to users that the state associated with the verb (enlarged text) is active.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi vagy beállítja azt jelzi, hogy egy egyéni művelet kapcsolódó állapot jelenleg aktív vagy kijelölt értéket."
+  remarks: "Ez a tulajdonság nem használható a szabványos HTTP-parancsokat a kijelzők vezérlő készlettel megadott egyik. Ha egyéni műveletek a használható, és a tulajdonság értéke `true`, jelölőnégyzet be van jelölve jelenik meg a művelet művelet aktív állapotának mellett.       Ez a tulajdonság az a célja, hogy a fejlesztők a jelző úgy, hogy egy művelet kapcsolódó egyéni állapot jelenleg aktív. Tegyük fel például, hogy a fejlesztő létrehoz egy egyéni művelet, amely az összes szöveg (kisegítő lehetőségek célokra) szövegméret nagyítása <xref:System.Web.UI.WebControls.WebParts.WebPart>a zónában.</xref:System.Web.UI.WebControls.WebParts.WebPart> Ha a felhasználó kattint, a művelet, ez a tulajdonság értéke beállítható `true`, jelölőnégyzet be van jelölve melletti megjelenését, amely miatt a **szöveg méretének növelése** a Műveletek menüjében, azt jelzi, hogy a felhasználók számára, hogy a művelet (kibővített szöveg) társított állapota aktív igei részéhez.       Ez a tulajdonság nem állítható be témák vagy stílus lap témák. További információkért lásd: <xref:System.Web.UI.ThemeableAttribute>és [ASP.NET témák és felszíne](~/add/includes/ajax-current-ext-md.md).</xref:System.Web.UI.ThemeableAttribute>"
   syntax:
     content: public virtual bool Checked { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a state associated with a custom verb is currently active; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy állapot társított egyéni művelet nem jelenleg aktív. Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.Checked*
   exceptions: []
   platform:
@@ -174,13 +174,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the string containing the method name of the client-side event handler defined in the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> constructor."
-  remarks: "Use this property to retrieve the name of the method that handles click events for the verb on the client."
+  summary: "A metódus nevét, az ügyféloldali eseménykezelő definiált tartalmazó karakterlánc lekérdezi a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> konstruktor."
+  remarks: "Ez a tulajdonság segítségével kezeli kattintson az események a művelethez az ügyfélen a metódus neve."
   syntax:
     content: public string ClientClickHandler { get; }
     return:
       type: System.String
-      description: "A string that contains the name of the method that handles client-side click events. The default is an empty string (&quot;&quot;)."
+      description: "Az ügyféloldali kezelő metódus nevét tartalmazó karakterlánc kattintson az események. Az alapértelmezett érték egy üres karakterlánc (&quot;&quot;)."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.ClientClickHandler*
   exceptions: []
   platform:
@@ -197,15 +197,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a short description of the verb."
-  remarks: "Use this property to get or set a description of a verb that appears as a ToolTip when a user positions a mouse pointer over the verb."
+  summary: "Lekérdezi vagy beállítja a művelet rövid leírása."
+  remarks: "Ez a tulajdonság használatával beolvasni vagy megadni olyan műveleteket, amelyek elemleírásként akkor jelenik meg, amikor egy felhasználó egérmutató pozíciók keresztül a művelet leírását."
   example:
   - "The following code example shows how to override the Description property in a derived class inheriting from <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>. This source code shows only the portion of the code for the custom zone and the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class that overrides the property. The rest of the code required to run the example can be found in the Example section of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class overview.  \n  \n [!code-cs[WebParts_WebPartVerb2#3](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1245_1.cs)]\n [!code-vb[WebParts_WebPartVerb2#3](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1245_1.vb)]"
   syntax:
     content: public virtual string Description { get; set; }
     return:
       type: System.String
-      description: "A string containing a description of the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref>."
+      description: "Leírását tartalmazó karakterláncot a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.Description*
   exceptions: []
   platform:
@@ -222,15 +222,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value that indicates whether a verb is enabled."
-  remarks: "Use this property to get or set a value indicating whether the verb is enabled. It is useful to be able to enable or disable verbs at given points in the page and control life cycle. For example, if a developer wants to prevent users from being able to close the <xref:System.Web.UI.WebControls.WebParts.WebPart> controls in a zone for any reason, the developer can set the Enabled property value on the <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CloseVerb%2A> verb to `false`, and then users will be prevented from closing any controls within that zone. By default, disabled verbs are rendered in verbs menus with a visual cue such as a lighter text color.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy engedélyezve van-e a műveletet."
+  remarks: "Ez a tulajdonság használatával beolvasni vagy megadni egy érték, amely jelzi, hogy engedélyezve van-e a műveletet. Hasznos lehet engedélyezni vagy letiltani a műveleteket tudják pontok adott a lap és vezérlés életciklusának. Például, ha egy fejlesztő azt szeretné, hogy a felhasználók nem tudnak zárja be a <xref:System.Web.UI.WebControls.WebParts.WebPart>egy zónában bármilyen okból a fejlesztői beállíthatja az engedélyezve tulajdonság értéke a <xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CloseVerb%2A>használt művelet `false`, és ezután felhasználók nem fognak működni, hogy a zónán belül vezérlőket bezárása.</xref:System.Web.UI.WebControls.WebParts.WebPartZoneBase.CloseVerb%2A> </xref:System.Web.UI.WebControls.WebParts.WebPart> Alapértelmezés szerint letiltott műveletek megjelennek-e a Műveletek menüjében visual köteg például a világosabb szöveg színét.       Ez a tulajdonság nem állítható be témák vagy stílus lap témák. További információkért lásd: <xref:System.Web.UI.ThemeableAttribute>és [ASP.NET témák és felszíne](~/add/includes/ajax-current-ext-md.md).</xref:System.Web.UI.ThemeableAttribute>"
   example:
   - "The following code example shows how to override the Enabled property in a derived class inheriting from <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>. This source code shows only the portion of the code for the custom zone and the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class that overrides the property. The rest of the code required to run the example can be found in the Example section of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class overview.  \n  \n [!code-cs[WebParts_WebPartVerb2#3](~/add/codesnippet/csharp/p-system.web.ui.webcontr_306_1.cs)]\n [!code-vb[WebParts_WebPartVerb2#3](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_306_1.vb)]"
   syntax:
     content: public virtual bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the verb is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha engedélyezve van a művelet; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.Enabled*
   exceptions: []
   platform:
@@ -247,13 +247,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a string containing a unique ID for a verb."
-  remarks: "The value of the ID property must be specified as a parameter when calling any of the overloads of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.%23ctor%2A> constructor for the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class."
+  summary: "Lekérdezi a parancs egyedi Azonosítóját tartalmazó karakterláncot."
+  remarks: "Az ID tulajdonság értékét meg kell adni paraméterként az <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.%23ctor%2A> <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>osztály</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> konstruktorában</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.%23ctor%2A> túlterhelések bármelyikét hívásakor"
   syntax:
     content: public string ID { get; }
     return:
       type: System.String
-      description: "A string containing the ID for a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref>."
+      description: "A Azonosítóját tartalmazó karakterláncot egy <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.ID*
   exceptions: []
   platform:
@@ -270,15 +270,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a string containing a URL to an image that represents a verb in the user interface (UI)."
-  remarks: "The ImageUrl property provides a way to use a customized visual representation for verbs as an alternative to the default rendering, which is typically a button or a hyperlink. If you assign a URL to the property, the image appears in verbs menus (next to the verb) or directly in forms (in place of a button or hyperlink that represents the verb)."
+  summary: "Lekérdezi vagy beállítja a felhasználói felületen (UI) egy művelet jelképező kép URL-CÍMÉT tartalmazó karakterláncot."
+  remarks: "A ImageUrl tulajdonságához műveletek ahelyett, hogy az alapértelmezett leképezésre, amely általában egy gombra való kattintást vagy egy hivatkozás egy testreszabott vizuális ábrázolását használata lehetőséget biztosít. Egy URL-címet rendel a tulajdonságot, ha a kép jelenik meg, műveletek menük (mellett, a teendőket) vagy közvetlenül a űrlapok (helyett egy gombra való kattintást vagy hivatkozás, amely a művelet jelöli)."
   example:
   - "The following code example shows how to override the ImageUrl property in a derived class inheriting from <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>. This source code shows only the portion of the code for the custom zone and the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class that overrides the property. The rest of the code required to run the example can be found in the Example section of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class overview. Note that the sample code assigns a fictitious icon to the ImageUrl property; if you assign a real image or icon, it will appear next to the verb in the verbs menu.  \n  \n [!code-cs[WebParts_WebPartVerb2#3](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1051_1.cs)]\n [!code-vb[WebParts_WebPartVerb2#3](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1051_1.vb)]"
   syntax:
     content: public virtual string ImageUrl { get; set; }
     return:
       type: System.String
-      description: "A string that contains the URL to an image. The default is an empty string (&quot;&quot;)."
+      description: "Egy képre mutató URL-CÍMÉT tartalmazó karakterlánc. Az alapértelmezett érték egy üres karakterlánc (&quot;&quot;)."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl*
   exceptions: []
   platform:
@@ -295,12 +295,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a value that indicates whether view state is currently being tracked for a verb."
+  summary: "Egy érték, amely azt jelzi, hogy nézetállapot jelenleg változáskövetésre van egy művelet lekérdezi."
   syntax:
     content: protected virtual bool IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if view state is being tracked; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a nézetállapot követett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState*
   exceptions: []
   platform:
@@ -317,14 +317,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Restores view-state information from a previous page request that was saved by the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*> method."
-  remarks: "This method is used primarily by the .NET Framework infrastructure and is not intended to be used directly from your code. However, control developers can override this method to specify how a custom server control restores its view state. For more information, see [ASP.NET State Management Overview](~/add/includes/ajax-current-ext-md.md).       This method determines whether there is any existing `savedState` from a previous page request, and if so, restores it. Included in the process of restoring view state is the verb&quot;s visibility, which is determined by the value of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A> property."
+  summary: "Egy korábbi lapkérelem által mentett-állapot információt visszaállítja a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*>"
+  remarks: "Ez a módszer elsősorban a .NET-keretrendszer-infrastruktúrát használják, és nem javasolt közvetlenül a kódból használni. Azonban a vezérlő fejlesztők felülírhatja ezt a metódust adja meg, hogyan egy egyéni vezérlőjét visszaállítja-e a nézetállapotát. További információkért lásd: [ASP.NET állapot Management áttekintése](~/add/includes/ajax-current-ext-md.md).       Ez a módszer határozza meg, hogy van-e egy meglévő `savedState` az előző lap kérelmet, és ha igen, állítja. Visszaállítását végzi állapota értéke határozza meg a műveletet láthatóság nézet tartalmazza a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.Visible%2A>"
   syntax:
     content: protected virtual void LoadViewState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An <xref:System.Object> that contains the view state to be restored."
+      description: "Egy <xref:System.Object>, amely tartalmazza a nézetállapotot a visszaállításhoz.</xref:System.Object>"
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState*
   exceptions: []
   platform:
@@ -341,14 +341,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Saves a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> object&quot;s view-state changes that occurred since the page was last posted back to the server."
-  remarks: "If there is any view-state data, this method calls the base method and saves the data."
+  summary: "Menti egy <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> visszaállítása a kiszolgálóra küldött objektum állapotának megtekintése a lap utolsó óta történt módosításokat."
+  remarks: "Ha bármely nézetállapot adatok, ez a metódus meghívja az alapmetódust, és menti az adatokat."
   syntax:
     content: protected virtual object SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that contains the state data to be saved."
+      description: "Egy <xref:System.Object>, amely tartalmazza az állapotadatok menteni.</xref:System.Object>"
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*
   exceptions: []
   platform:
@@ -365,13 +365,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a reference to the method that handles server-side click events for the verb."
-  remarks: "Use this property to get a reference to the method that handles the server-side click events for a verb."
+  summary: "Lekérdezi a hivatkozás a metódus, amely kezeli a kiszolgálóoldali kattintson az események a művelethez."
+  remarks: "Ez a tulajdonság segítségével, hogy kezeli a kiszolgálóoldali kattintson egy művelet eseményeket metódus mutató hivatkozás beszerzése."
   syntax:
     content: public System.Web.UI.WebControls.WebParts.WebPartEventHandler ServerClickHandler { get; }
     return:
       type: System.Web.UI.WebControls.WebParts.WebPartEventHandler
-      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;></xref> that handles server-side click events."
+      description: "A <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartEventHandler&quot;> </xref> , amely kezeli a kiszolgálóoldali kattintson az események."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.ServerClickHandler*
   exceptions: []
   platform:
@@ -389,13 +389,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Implements the &lt;xref:System.Web.UI.IStateManager.IsTrackingViewState%2A?displayProperty=fullName&gt; property by calling the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class&quot;s own <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState*> property."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> instance is cast to an <xref:System.Web.UI.IStateManager> interface. The method simply calls the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState%2A> property on the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class."
+  summary: "Megvalósítja a &lt;xref:System.Web.UI.IStateManager.IsTrackingViewState%2A?displayProperty=fullName&gt; meghívásával tulajdonság a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály saját <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState*>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState*>"
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>példány típusúvá egy <xref:System.Web.UI.IStateManager>felületet.</xref:System.Web.UI.IStateManager> </xref:System.Web.UI.WebControls.WebParts.WebPartVerb> A metódus egyszerűen meghívja a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState%2A>tulajdonság a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>osztályba tartozik</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> .</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.IsTrackingViewState%2A>"
   syntax:
     content: bool System.Web.UI.IStateManager.IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if view state is being tracked for a verb; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a nézetállapot változáskövetésre van egy művelet; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.System#Web#UI#IStateManager#IsTrackingViewState*
   exceptions: []
   platform:
@@ -413,14 +413,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Implements the &lt;xref:System.Web.UI.IStateManager.LoadViewState%2A?displayProperty=fullName&gt; method of the <xref href=&quot;System.Web.UI.IStateManager&quot;></xref> interface by calling the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class&quot;s own <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState*> method."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> instance is cast to an <xref:System.Web.UI.IStateManager> interface. The method simply calls the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState%2A> method on the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class."
+  summary: "Megvalósítja a &lt;xref:System.Web.UI.IStateManager.LoadViewState%2A?displayProperty=fullName&gt; metódusában a <xref href=&quot;System.Web.UI.IStateManager&quot;> </xref> meghívásával felületet a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály saját <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState*>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState*>"
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>példány típusúvá egy <xref:System.Web.UI.IStateManager>felületet.</xref:System.Web.UI.IStateManager> </xref:System.Web.UI.WebControls.WebParts.WebPartVerb> A metódus egyszerűen meghívja a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState%2A>módszer a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>osztályból</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> .</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.LoadViewState%2A>"
   syntax:
     content: void IStateManager.LoadViewState (object savedState);
     parameters:
     - id: savedState
       type: System.Object
-      description: "An <xref:System.Object> that contains the view state to be restored."
+      description: "Egy <xref:System.Object>, amely tartalmazza a nézetállapotot a visszaállításhoz.</xref:System.Object>"
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.System#Web#UI#IStateManager#LoadViewState*
   exceptions: []
   platform:
@@ -438,14 +438,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Implements the &lt;xref:System.Web.UI.IStateManager.SaveViewState%2A?displayProperty=fullName&gt; method by calling the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class&quot;s own <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*> method."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> instance is cast to an <xref:System.Web.UI.IStateManager> interface. The method simply calls the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState%2A> method on the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class."
+  summary: "Megvalósítja a &lt;xref:System.Web.UI.IStateManager.SaveViewState%2A?displayProperty=fullName&gt; metódus meghívásával a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály saját <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState*>"
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>példány típusúvá egy <xref:System.Web.UI.IStateManager>felületet.</xref:System.Web.UI.IStateManager> </xref:System.Web.UI.WebControls.WebParts.WebPartVerb> A metódus egyszerűen meghívja a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState%2A>módszer a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>osztályból</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> .</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.SaveViewState%2A>"
   syntax:
     content: object IStateManager.SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "Returns an <xref:System.Object> containing the control&quot;s current view state. If no view state is associated with the control, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Értéket ad vissza egy <xref:System.Object>a vezérlő aktuális nézetállapot tartalmazó.</xref:System.Object> Ha nem a rendszer a vezérlőhöz társított, ez a metódus visszaadja <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.System#Web#UI#IStateManager#SaveViewState*
   exceptions: []
   platform:
@@ -463,8 +463,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Implements the &lt;xref:System.Web.UI.IStateManager.TrackViewState%2A?displayProperty=fullName&gt; method by calling the <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;></xref> class&quot;s own <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState*> method."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> instance is cast to an <xref:System.Web.UI.IStateManager> interface. The method simply calls the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState%2A> method on the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class."
+  summary: "Megvalósítja a &lt;xref:System.Web.UI.IStateManager.TrackViewState%2A?displayProperty=fullName&gt; metódus meghívásával a <xref href=&quot;System.Web.UI.WebControls.WebParts.WebPartVerb&quot;> </xref> osztály saját <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState*>metódus.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState*>"
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>példány típusúvá egy <xref:System.Web.UI.IStateManager>felületet.</xref:System.Web.UI.IStateManager> </xref:System.Web.UI.WebControls.WebParts.WebPartVerb> A metódus egyszerűen meghívja a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState%2A>módszer a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>osztályból</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> .</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.TrackViewState%2A>"
   syntax:
     content: void IStateManager.TrackViewState ();
     parameters: []
@@ -484,15 +484,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets the text label for a verb that is displayed in the user interface (UI)."
-  remarks: "This property sets the text of the label for a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> object; it is what represents the verb to users in the UI.       If developers (optionally) assign a value to the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A> property, an image or icon represents the verb in the UI, and in certain cases (such as when the verb is normally rendered by a button or hyperlink) the image appears instead of the text label."
+  summary: "Lekérdezi vagy beállítja a felirat az olyan műveleteket, amelyek a felhasználói felület (UI) jelenik meg."
+  remarks: "Ez a tulajdonság határozza meg a címke szövegét egy <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>objektum; mi jelenti. a művelet a felhasználók számára a felhasználói felület.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb>       Ha a fejlesztők (opcionális) egy értéket rendelni a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A>tulajdonság, kép vagy ikon jelöli a művelet a felhasználói felületen, és bizonyos esetekben (például ha a művelet általában megjelenítése gomb vagy hivatkozás) a kép helyett a felirat jelenik meg.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb.ImageUrl%2A>"
   example:
   - "The following code example shows how to override the Text property in a derived class inheriting from <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>. This source code shows only the portion of the code for the custom zone and the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class that overrides the property. The rest of the code required to run the example can be found in the Example section of the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> class overview.  \n  \n After you load the page in a browser, note that the value assigned to the Text property in the source code appears in the verbs menu of the <xref:System.Web.UI.WebControls.WebParts.WebPart> control.  \n  \n [!code-cs[WebParts_WebPartVerb2#3](~/add/codesnippet/csharp/p-system.web.ui.webcontr_576_1.cs)]\n [!code-vb[WebParts_WebPartVerb2#3](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_576_1.vb)]"
   syntax:
     content: public virtual string Text { get; set; }
     return:
       type: System.String
-      description: "A string containing the text label for a verb. The default is an empty string (&quot;&quot;)."
+      description: "A művelet feliratát tartalmazó karakterlánc. Az alapértelmezett érték egy üres karakterlánc (&quot;&quot;)."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.Text*
   exceptions: []
   platform:
@@ -509,8 +509,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Tracks view-state changes to a verb so the changes can be stored in the verb&quot;s <xref href=&quot;System.Web.UI.StateBag&quot;></xref> object."
-  remarks: "This method enables view state to be tracked for a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>."
+  summary: "Nyomon követi a nézetállapot módosítások, a teendőket, a művelet a változtatások tárolhatja <xref href=&quot;System.Web.UI.StateBag&quot;> </xref> objektum."
+  remarks: "Ez a módszer lehetővé teszi, hogy nyomon kell követni a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb> állapotának megtekintése"
   syntax:
     content: protected virtual void TrackViewState ();
     parameters: []
@@ -530,13 +530,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets a dictionary of state information that allows you to save and restore the view state of a server control across multiple requests for the same page."
-  remarks: "Because the <xref:System.Web.UI.WebControls.WebParts.WebPartVerb> object does not inherit from any class that tracks view state, and yet it has a number of properties that require view state to be tracked across multiple requests for the page, it implements its own property to maintain view state."
+  summary: "Lekérdezi az állapotadatokat, amely lehetővé teszi mentése és visszaállítása a nézetállapotot a kiszolgálói vezérlőnek több kérést ugyanazon az oldalon keresztül dictionary."
+  remarks: "Mivel a <xref:System.Web.UI.WebControls.WebParts.WebPartVerb>objektum nem örökölhet egyetlen osztálytól, nyomon követi a állapotának megtekintése, és még nézetállapot címzett több kérés lap során egyszerre nyomon követendő igénylő tulajdonság van, a saját tulajdonság nézet-állapot karbantartásához valósítja meg.</xref:System.Web.UI.WebControls.WebParts.WebPartVerb>"
   syntax:
     content: protected System.Web.UI.StateBag ViewState { get; }
     return:
       type: System.Web.UI.StateBag
-      description: "An instance of <xref href=&quot;System.Web.UI.StateBag&quot;></xref> that contains the server control&quot;s view-state information."
+      description: "Példányának <xref href=&quot;System.Web.UI.StateBag&quot;> </xref> , amely ismerteti a kiszolgálói vezérlőnek állapotának megtekintése."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.ViewState*
   exceptions: []
   platform:
@@ -553,13 +553,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets or sets a value that indicates whether a verb is visible to users."
-  remarks: "Verbs often need to be hidden or displayed depending on the content of a Web Parts application. For example, the minimize verb is hidden when a control is already minimized, and conversely, the restore verb is hidden when the control is in its normal, non-minimized state.       A verb whose Visible property is set to `false` is hidden from users, but is still rendered on a page, can still be accessed programmatically, and still fully participates in page and control life cycle events.       This property cannot be set by themes or style sheet themes. For more information, see <xref:System.Web.UI.ThemeableAttribute> and [ASP.NET Themes and Skins](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy egy művelet látható a felhasználók számára."
+  remarks: "Műveletek gyakran kell-e rejtve vagy jelenik meg, attól függően, hogy a kijelzők alkalmazás tartalmát. Kis méret művelet rejtett például amikor a vezérlő már másodpercekre csökken, és a visszaállítási művelet rejtett ezzel szemben, amikor a vezérlő a normál, nem kisméretű állapotban van.       Egy művelet, amelynek látható tulajdonsága `false` a felhasználók számára, rejtett, de továbbra is megjelenítése egy oldalon, továbbra is elérhető programozott módon, és továbbra is teljes mértékben vesz részt a lap és vezérlés életciklus események.       Ez a tulajdonság nem állítható be témák vagy stílus lap témák. További információkért lásd: <xref:System.Web.UI.ThemeableAttribute>és [ASP.NET témák és felszíne](~/add/includes/ajax-current-ext-md.md).</xref:System.Web.UI.ThemeableAttribute>"
   syntax:
     content: public virtual bool Visible { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the verb is visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a művelet látható; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.WebPartVerb.Visible*
   exceptions: []
   platform:

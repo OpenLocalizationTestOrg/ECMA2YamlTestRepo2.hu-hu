@@ -31,7 +31,7 @@ items:
   nameWithType: PageParserFilter
   fullName: System.Web.UI.PageParserFilter
   type: Class
-  summary: "Provides an abstract base class for a page parser filter that is used by the ASP.NET parser to determine whether an item is allowed in the page at parse time."
+  summary: "Egy absztrakt alaposztály biztosít, amellyel az ASP.NET elemző által határozza meg, hogy egy elem engedélyezett a lapon elemzési során lap elemző szűrőt."
   remarks: ''
   example:
   - "The following example demonstrates how you can create a class that derives from the PageParserFilter class to govern the behavior of the ASP.NET page parser. The `CustomPageParserFilter` is a parser filter that explicitly rejects code in the page. It does this by overriding the <xref:System.Web.UI.PageParserFilter.AllowCode%2A> property.  \n  \n [!code-vb[System.Web.UI.PageParserFilter#2](~/add/codesnippet/visualbasic/t-system.web.ui.pagepars_1.vb)]\n [!code-cs[System.Web.UI.PageParserFilter#2](~/add/codesnippet/csharp/t-system.web.ui.pagepars_1.cs)]  \n  \n To use the `CustomPageParserFilter` sample, place the class in your App_Code directory. You must configure the ASP.NET parsers to use the filter in the `pages` section of your site's Web.config configuration file. The following example configuration file shows the configuration for `CustomPageParserFilter`. When configured to use a parser filter, the ASP.NET parser throws an exception during the build if it encounters code in a page.  \n  \n `<?xml version=\"1.0\" ?>`  \n  \n `<configuration xmlns=\"http://schemas.microsoft.com/.NetConfiguration/v2.0\">`  \n  \n `<system.web>`  \n  \n `<pages`  \n  \n `pageParserFilterType=\"Samples.AspNet.CS.CustomPageParserFilter\">`  \n  \n `</pages>`  \n  \n `</system.web>`  \n  \n `</configuration>`"
@@ -55,7 +55,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.PageParserFilter&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.UI.PageParserFilter&quot;> </xref> osztály."
   syntax:
     content: protected PageParserFilter ();
     parameters: []
@@ -75,17 +75,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Adds a <xref href=&quot;System.Web.UI.ControlBuilder&quot;></xref> object in the page control tree at the current page parser position."
-  remarks: "AddControl is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Hozzáad egy <xref href=&quot;System.Web.UI.ControlBuilder&quot;> </xref> a lap vezérlőfáján, az aktuális lap elemző pozícióban objektumban."
+  remarks: "AddControl megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: protected void AddControl (Type type, System.Collections.IDictionary attributes);
     parameters:
     - id: type
       type: System.Type
-      description: "The control type that the <xref href=&quot;System.Web.UI.ControlBuilder&quot;></xref> represents."
+      description: "A vezérlő írja be, amely a <xref href=&quot;System.Web.UI.ControlBuilder&quot;> </xref> jelöli."
     - id: attributes
       type: System.Collections.IDictionary
-      description: "The <xref:System.Collections.IDictionary> object that holds all the specified tag attributes."
+      description: "A <xref:System.Collections.IDictionary>objektum, amely tartalmazza a megadott kód attribútumok.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.PageParserFilter.AddControl*
   exceptions: []
   platform:
@@ -102,17 +102,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Determines whether the page can be derived from the specified <xref:System.Type>."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class determines whether a base type is permitted."
+  summary: "Meghatározza, hogy a lap a megadott <xref:System.Type>.</xref:System.Type> származtatható"
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály meghatározza, hogy engedélyezve van-e a alaptípusa.</xref:System.Web.UI.TemplateParser>"
   syntax:
     content: public virtual bool AllowBaseType (Type baseType);
     parameters:
     - id: baseType
       type: System.Type
-      description: "A <xref:System.Type> that represents the potential base class of the current page."
+      description: "A <xref:System.Type>, amely jelöli az aktuális lap lehetséges alaposztály.</xref:System.Type>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the page can inherit from the specified type; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a lap örökölhet a megadott típus; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.AllowBaseType*
   exceptions: []
   platform:
@@ -129,13 +129,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets a value indicating whether an ASP.NET parser filter permits code on the page."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class checks any associated <xref:System.Web.UI.PageParserFilter> instance to determine whether a page can contain code that can be compiled."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy engedélyezi-e egy ASP.NET elemzési szűrő kódot az oldalon."
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály ellenőrzi a hozzá tartozó <xref:System.Web.UI.PageParserFilter>példány annak meghatározásához, hogy a lap tartalmazhat kódot, amely összeállítható.</xref:System.Web.UI.PageParserFilter> </xref:System.Web.UI.TemplateParser>"
   syntax:
     content: public virtual bool AllowCode { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a parser filter permits code; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy elemző szűrő lehetővé teszi a kód; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.AllowCode*
   exceptions: []
   platform:
@@ -152,20 +152,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets a value indicating whether the specified control type is allowed for this page."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class checks to see whether controls are permitted in a page at parse time. Override the AllowControl method to reject or permit specific controls in your pages."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy a megadott vezérlő típusú érték adható meg ezen a lapon."
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály ellenőrzi, hogy szabályozza a megengedett lapon elemzési során.</xref:System.Web.UI.TemplateParser> Írja felül az adott vezérlők engedélyezése a lapok és elvetése AllowControl metódust."
   syntax:
     content: public virtual bool AllowControl (Type controlType, System.Web.UI.ControlBuilder builder);
     parameters:
     - id: controlType
       type: System.Type
-      description: "A <xref:System.Type> that represents the type of control to add."
+      description: "Egy <xref:System.Type>másik vezérlő típusát jelöli, amelyek</xref:System.Type>"
     - id: builder
       type: System.Web.UI.ControlBuilder
-      description: "A <xref href=&quot;System.Web.UI.ControlBuilder&quot;></xref> used to build the specified type of control."
+      description: "A <xref href=&quot;System.Web.UI.ControlBuilder&quot;> </xref> segítségével hozhatók létre a megadott típusú vezérlőelem."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control can be used with the current page; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a vezérlő használható az aktuális oldalon; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.AllowControl*
   exceptions: []
   platform:
@@ -182,17 +182,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Determines whether a parser permits a specific server-side include on a page."
-  remarks: "Override the AllowServerSideInclude method to reject all or specific server-side includes. For more information about server-side include syntax, see [Server-Side Include Directive Syntax](http://msdn.microsoft.com/en-us/42a6925a-f68c-4690-a9c4-d710358886a9)."
+  summary: "Meghatározza, hogy egy elemző engedélyezi egy adott kiszolgáló-oldali lapon tartalmazzák-e."
+  remarks: "Írja felül az összes visszautasítása AllowServerSideInclude metódust, vagy adott kiszolgálóoldali beágyazások. További információ a kiszolgálóoldali szintaxist tartalmaz, a következő témakörben: [kiszolgálóoldali tartalmaznak irányelv szintaxis](http://msdn.microsoft.com/en-us/42a6925a-f68c-4690-a9c4-d710358886a9)."
   syntax:
     content: public virtual bool AllowServerSideInclude (string includeVirtualPath);
     parameters:
     - id: includeVirtualPath
       type: System.String
-      description: "The virtual path to the included file."
+      description: "A beágyazott fájl virtuális elérési útja."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a parser permits the specific server-side include; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy elemző az egyes lehetővé teszi a kiszolgálóoldali beágyazási; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.AllowServerSideInclude*
   exceptions: []
   platform:
@@ -209,20 +209,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Determines whether a parser permits a virtual reference to a specific type of resource on a page."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class determines whether a particular type of resource can be referenced from a page."
+  summary: "Meghatározza, hogy ha egy elemző egy adott típusú erőforrás virtuális hivatkozás lehetővé teszi a lapon."
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály határozza meg, hogy egy adott típusú erőforrás a lapon lehet hivatkozni.</xref:System.Web.UI.TemplateParser>"
   syntax:
     content: public virtual bool AllowVirtualReference (string referenceVirtualPath, System.Web.UI.VirtualReferenceType referenceType);
     parameters:
     - id: referenceVirtualPath
       type: System.String
-      description: "The virtual path to a resource, such as a master page file, ASP.NET page, or user control."
+      description: "A virtuális elérési útja egy erőforrást, például a mesterlap fájlt, az ASP.NET-lapokat vagy a felhasználói vezérlő."
     - id: referenceType
       type: System.Web.UI.VirtualReferenceType
-      description: "A <xref href=&quot;System.Web.UI.VirtualReferenceType&quot;></xref> value that identifies the type of resource."
+      description: "A <xref href=&quot;System.Web.UI.VirtualReferenceType&quot;> </xref> érték, amely azonosítja az erőforrás típusát."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the parser permits a virtual reference to a specific type of resource; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az elemző lehetővé teszi adott típusú erőforrás; virtuális hivatkozás Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.AllowVirtualReference*
   exceptions: []
   platform:
@@ -239,13 +239,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets a value that indicates whether the parser filter was called from the page."
-  remarks: "This property is set to `true` when an implementation of the <xref:System.Web.UI.PageParserFilter> class is invoked by calling the `ParseControl`method of the <xref:System.Web.UI.Page> class or by calling the `ParseControl` method of the `TemplateControl` reference of the <xref:System.Web.UI.Page> class."
+  summary: "Egy érték, amely azt jelzi, hogy az elemző szűrő hívták meg a lap lekérése."
+  remarks: "Ez a tulajdonság értéke `true` amikor megvalósítása a <xref:System.Web.UI.PageParserFilter>osztály meghívásával meghívták a `ParseControl`metódusában a <xref:System.Web.UI.Page>osztály vagy a hívja a `ParseControl` metódusában a `TemplateControl` <xref:System.Web.UI.Page>osztály</xref:System.Web.UI.Page> hivatkozását</xref:System.Web.UI.Page> </xref:System.Web.UI.PageParserFilter>"
   syntax:
     content: protected bool CalledFromParseControl { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a parser filter was called from the page; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy elemző szűrő lett meghívva a laphoz. Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.CalledFromParseControl*
   exceptions: []
   platform:
@@ -262,17 +262,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Retrieves the current compilation mode for the page."
-  remarks: "The <xref:System.Web.UI.TemplateControlParser> class checks any associated <xref:System.Web.UI.PageParserFilter> instance to apply a compilation mode to the currently processed page. The default implementation of the GetCompilationMode method simply returns the <xref:System.Web.UI.CompilationMode> value that is passed in the current parameter. Override the GetCompilationMode method to use a specific or different <xref:System.Web.UI.CompilationMode> value."
+  summary: "Lekérdezi az aktuális lefordítására a lap."
+  remarks: "A <xref:System.Web.UI.TemplateControlParser>osztály ellenőrzi a hozzá tartozó <xref:System.Web.UI.PageParserFilter>példány egy fordítási mód jelenleg feldolgozott lapra alkalmazandó.</xref:System.Web.UI.PageParserFilter> </xref:System.Web.UI.TemplateControlParser> Az alapértelmezett GetCompilationMode metódus megvalósítása egyszerűen adja vissza a <xref:System.Web.UI.CompilationMode>érték, amely az aktuális paraméternek átadott.</xref:System.Web.UI.CompilationMode> Bírálja felül a GetCompilationMode módszer egy adott vagy különböző <xref:System.Web.UI.CompilationMode>érték.</xref:System.Web.UI.CompilationMode>"
   syntax:
     content: public virtual System.Web.UI.CompilationMode GetCompilationMode (System.Web.UI.CompilationMode current);
     parameters:
     - id: current
       type: System.Web.UI.CompilationMode
-      description: "The current compilation mode for the page."
+      description: "A jelenlegi fordítás módja lap."
     return:
       type: System.Web.UI.CompilationMode
-      description: "One of the <xref href=&quot;System.Web.UI.CompilationMode&quot;></xref> values."
+      description: "Egy a <xref href=&quot;System.Web.UI.CompilationMode&quot;> </xref> értékeket."
   overload: System.Web.UI.PageParserFilter.GetCompilationMode*
   exceptions: []
   platform:
@@ -289,14 +289,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Returns a <xref:System.Type> that should be used for pages or controls that are not dynamically compiled."
-  remarks: "You can override the GetNoCompileUserControlType method to specify the return type of pages or controls that are treated as if they are not dynamically compiled. The default is `null`.       GetNoCompileUserControlType is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Értéket ad vissza egy <xref:System.Type>, amely használható lapok vagy a vezérlő nincs lefordítva.</xref:System.Type>"
+  remarks: "Felülírhatja a GetNoCompileUserControlType metódus oldal vagy vezérlőelemek kell kezelni, mintha fordítása nem dinamikusan, a visszatérési típus megadásához. Az alapértelmezett érték `null`.       GetNoCompileUserControlType megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual Type GetNoCompileUserControlType ();
     parameters: []
     return:
       type: System.Type
-      description: "The return <xref:System.Type> that should be used for pages or controls that are not dynamically compiled. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A visszatérési <xref:System.Type>, amely használható lapok vagy a vezérlő nincs lefordítva.</xref:System.Type> Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.GetNoCompileUserControlType*
   exceptions: []
   platform:
@@ -313,8 +313,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Initializes a filter used for a page."
-  remarks: "Because the <xref:System.Web.UI.PageParserFilter> class does not expose well-defined public constructors, it is initialized by the page parsers that use the Initialize method. Override the Initialize method to add your own custom initialization steps when an instance of <xref:System.Web.UI.PageParserFilter> is created and used by ASP.NET. The `virtualPath` parameter passed to the Initialize method sets the <xref:System.Web.UI.PageParserFilter.VirtualPath%2A> property, and cannot be `null`."
+  summary: "Inicializál egy lap használt szűrőt."
+  remarks: "Mivel a <xref:System.Web.UI.PageParserFilter>osztály nem fed fel nyilvános konstruktor jól meghatározott, az inicializálási metódusa használó lap elemzők által inicializált.</xref:System.Web.UI.PageParserFilter> Írja felül az Initialize metódust adja hozzá a saját egyéni inicializálási lépések során egy példánya <xref:System.Web.UI.PageParserFilter>létrehozott és az ASP.NET által használt.</xref:System.Web.UI.PageParserFilter> A `virtualPath` paramétert az Initialize metódus beállítása a <xref:System.Web.UI.PageParserFilter.VirtualPath%2A>tulajdonság, és nem lehet `null`.</xref:System.Web.UI.PageParserFilter.VirtualPath%2A>"
   syntax:
     content: protected virtual void Initialize ();
     parameters: []
@@ -334,13 +334,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets the line number that is currently being parsed in the file."
-  remarks: "In a custom <xref:System.Web.UI.PageParserFilter> implementation, use the Line property to report where errors occur during parsing.       Line is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "A sor számát, a fájl jelenleg elemzett lekérdezi."
+  remarks: "Az egyéni <xref:System.Web.UI.PageParserFilter>végrehajtására, használja a jelentés a sort tulajdonság hibák előfordulhatnak elemzése során.</xref:System.Web.UI.PageParserFilter>       Sor kerül bevezetésre a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: protected int Line { get; }
     return:
       type: System.Int32
-      description: "The integer value representing the line in the file that the parser filter is currently processing."
+      description: "Az a sort a fájl, amely jelenleg dolgoz fel az elemzési szűrő a jelző egész értéket."
   overload: System.Web.UI.PageParserFilter.Line*
   exceptions: []
   platform:
@@ -357,13 +357,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets the maximum number of controls that a parser filter can parse for a single page."
-  remarks: "The ASP.NET page parser keeps track of the controls it parses, and if the number exceeds the limit set by a <xref:System.Web.UI.PageParserFilter> instance, it throws an <xref:System.Web.HttpException> exception."
+  summary: "Egyetlen lap lekéri vezérlőket, elemzési szűrő tudja értelmezni a maximális számát."
+  remarks: "Az ASP.NET lap elemző nyomon követi, hogy a vezérlők elemez, és ha száma meghaladja a korlátot, állítja be a <xref:System.Web.UI.PageParserFilter>példányt, akkor jelez egy <xref:System.Web.HttpException>kivétel.</xref:System.Web.HttpException> </xref:System.Web.UI.PageParserFilter>"
   syntax:
     content: public virtual int NumberOfControlsAllowed { get; }
     return:
       type: System.Int32
-      description: "The maximum number of controls a parser filter can parse for a page. The default value is 0, which indicates that no controls are parsed."
+      description: "A vezérlők elemzési szűrő tudja értelmezni a lapra vonatkozó maximális száma. Az alapértelmezett értéke 0, amely azt jelzi, hogy nincs vezérlők elemzésének."
   overload: System.Web.UI.PageParserFilter.NumberOfControlsAllowed*
   exceptions: []
   platform:
@@ -380,13 +380,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets the maximum number of direct file dependencies that the page parser permits for a single page."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class keeps track of the number of direct and indirect file dependencies it parses, and if the number exceeds the limit set by a <xref:System.Web.UI.PageParserFilter> instance, it throws an exception."
+  summary: "Egyetlen lap lekéri az oldal elemző engedélyezheti, hogy a közvetlen fájlfüggőségek maximális számát."
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály nyomon követi, hogy hány közvetlen és közvetett fájlfüggőségek elemez, és ha száma meghaladja a korlátot szerint egy <xref:System.Web.UI.PageParserFilter>példányt, akkor kivételt jelez.</xref:System.Web.UI.PageParserFilter> </xref:System.Web.UI.TemplateParser>"
   syntax:
     content: public virtual int NumberOfDirectDependenciesAllowed { get; }
     return:
       type: System.Int32
-      description: "The maximum number of direct file dependencies the page parser can parse for a page. The default is 0, which that indicates no dependencies are allowed."
+      description: "Az oldal elemző egy lap tudja értelmezni a közvetlen függőségek maximális számát. Az alapértelmezett érték 0, amely azt jelzi, hogy nem rendelkezik függőségekkel engedélyezettek."
   overload: System.Web.UI.PageParserFilter.NumberOfDirectDependenciesAllowed*
   exceptions: []
   platform:
@@ -403,13 +403,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Called by an ASP.NET page parser to notify a filter when the parsing of a page is complete."
+  summary: "Hívja meg az ASP.NET lap elemző szűrő értesítése, ha egy lap elemzése befejeződött."
   syntax:
     content: public virtual void ParseComplete (System.Web.UI.ControlBuilder rootBuilder);
     parameters:
     - id: rootBuilder
       type: System.Web.UI.ControlBuilder
-      description: "The <xref href=&quot;System.Web.UI.ControlBuilder&quot;></xref> associated with the page parsing."
+      description: "A <xref href=&quot;System.Web.UI.ControlBuilder&quot;> </xref> társított lap elemzése."
   overload: System.Web.UI.PageParserFilter.ParseComplete*
   exceptions: []
   platform:
@@ -426,17 +426,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Allows the page parser filter to preprocess page directives."
-  remarks: "The page parser calls the PreprocessDirective method for each directive encountered during parsing."
+  summary: "Lehetővé teszi, hogy a lap irányelvek előfeldolgozása lap elemző szűrőt."
+  remarks: "Az oldal elemző PreprocessDirective metódus meghívja a minden irányelv elemzése közben."
   syntax:
     content: public virtual void PreprocessDirective (string directiveName, System.Collections.IDictionary attributes);
     parameters:
     - id: directiveName
       type: System.String
-      description: "The page directive."
+      description: "A lap direktívájában."
     - id: attributes
       type: System.Collections.IDictionary
-      description: "A collection of attributes and values parsed from the page."
+      description: "A lap vizsgálata attribútumok és értékek gyűjteménye."
   overload: System.Web.UI.PageParserFilter.PreprocessDirective*
   exceptions: []
   platform:
@@ -453,20 +453,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Returns a value that indicates whether a code block should be processed by subsequent parser filters."
-  remarks: "You can override the ProcessCodeConstruct method to parse code contained in code constructs when implementing a custom <xref:System.Web.UI.PageParserFilter>. After processing the code, this method returns `true` if the parser should process the code further; otherwise, it returns `false`.       The type of allowed code constructs are the <xref:System.Web.UI.CodeConstructType> enumeration values.       ProcessCodeConstruct is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Visszaad egy értéket, amely jelzi, hogy egy kódblokk későbbi elemző szűrőkkel fel kell dolgozni."
+  remarks: "Felülírhatja a ProcessCodeConstruct metódus szabályzat kód szerkezetek <xref:System.Web.UI.PageParserFilter>.</xref:System.Web.UI.PageParserFilter> egyéni végrehajtásakor elemzése A feldolgozás után a kódot, ez a metódus visszaadja `true` az elemző a kódot kell feldolgozni a további; ellenkező esetben, ha `false`.       Engedélyezett kód szerkezetek típusa a <xref:System.Web.UI.CodeConstructType>számbavételi értékek.</xref:System.Web.UI.CodeConstructType>       ProcessCodeConstruct megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual bool ProcessCodeConstruct (System.Web.UI.CodeConstructType codeType, string code);
     parameters:
     - id: codeType
       type: System.Web.UI.CodeConstructType
-      description: "One of the <xref href=&quot;System.Web.UI.CodeConstructType&quot;></xref> enumeration values that identifies the type of the code construct."
+      description: "Egy a <xref href=&quot;System.Web.UI.CodeConstructType&quot;> </xref> számbavételi érték, amely azonosítja a kód szerkezet típusú."
     - id: code
       type: System.String
-      description: "The string literal that contains the code inside the code construct."
+      description: "A karakterláncot, amely a kódot a kód szerkezetet tartalmaz."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the parser should process a code construct further; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az elemző dolgozza fel a kód szerkezet további; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.ProcessCodeConstruct*
   exceptions: []
   platform:
@@ -483,23 +483,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Returns a value that indicates whether the parser filter processes a data binding expression in an attribute."
-  remarks: "You can override the ProcessDataBindingAttribute method to allow the parser filter to process data binding expressions when implementing a custom <xref:System.Web.UI.PageParserFilter> class. An example of a data binding expression used with an attribute is `<%# expression %>`.       ProcessDataBindingAttribute is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy érték, amely azt jelzi, hogy az elemző szűrő dolgozza fel a attribútumban adatkötési kifejezést ad vissza."
+  remarks: "Felülbírálhatja az ProcessDataBindingAttribute metódust az elemző szűrő adatok kötési kifejezésekben akkor dolgozza fel, ha egy egyéni <xref:System.Web.UI.PageParserFilter>osztály</xref:System.Web.UI.PageParserFilter> végrehajtási engedélyezése Példa egy attribútummal rendelkező használt adatkötési kifejezést `<%# expression %>`.       ProcessDataBindingAttribute megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual bool ProcessDataBindingAttribute (string controlId, string name, string value);
     parameters:
     - id: controlId
       type: System.String
-      description: "The ID of the control that contains the data binding attribute."
+      description: "Az adatok kötésének attribútumot tartalmazó vezérlő azonosítója."
     - id: name
       type: System.String
-      description: "The name of the attribute with the data binding expression."
+      description: "Az adatkötési kifejezést attribútum neve."
     - id: value
       type: System.String
-      description: "The data binding expression."
+      description: "Az adatkötési kifejezést."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the parser filter processes data binding attributes; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az elemző szűrési folyamatok adatkötéskor attribútumok; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.ProcessDataBindingAttribute*
   exceptions: []
   platform:
@@ -516,23 +516,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Returns a value that indicates whether event handlers should be processed further by the parser filter."
-  remarks: "You can override the ProcessEventHookup method to allow the parser to process event hookups when implementing a custom <xref:System.Web.UI.PageParserFilter> class. An example of an event handler is providing a handler for the <xref:System.Web.UI.WebControls.Button.Click> event of the <xref:System.Web.UI.WebControls.Button> control.       ProcessEventHookup is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy érték, amely azt jelzi, hogy fel kell dolgozni a Eseményleírók adja vissza az elemző szűrő további."
+  remarks: "Felülbírálhatja az ProcessEventHookup metódust az elemző esemény hookups akkor dolgozza fel, ha egy egyéni <xref:System.Web.UI.PageParserFilter>osztály</xref:System.Web.UI.PageParserFilter> végrehajtási engedélyezése Eseménykezelő példát biztosít egy hibakezelőt a <xref:System.Web.UI.WebControls.Button.Click>az esemény a <xref:System.Web.UI.WebControls.Button>vezérlő.</xref:System.Web.UI.WebControls.Button> </xref:System.Web.UI.WebControls.Button.Click>       ProcessEventHookup megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual bool ProcessEventHookup (string controlId, string eventName, string handlerName);
     parameters:
     - id: controlId
       type: System.String
-      description: "The ID of the control whose event has the event handler to process."
+      description: "A vezérlő, amelynek eseményhez tartozik feldolgozni az eseménykezelő azonosítója."
     - id: eventName
       type: System.String
-      description: "The event name of the `controlID` to filter on."
+      description: "Az esemény nevét a `controlID` szűréshez."
     - id: handlerName
       type: System.String
-      description: "The handler of the `eventName` name to filter on."
+      description: "A leíró a `eventName` szűréshez nevét."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the parser processes event handlers; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az elemző feldolgozza az eseménykezelők; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.PageParserFilter.ProcessEventHookup*
   exceptions: []
   platform:
@@ -549,20 +549,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Sets a property on a control derived from the <xref href=&quot;System.Web.UI.TemplateControl&quot;></xref> class, which includes the <xref href=&quot;System.Web.UI.Page&quot;></xref>, <xref href=&quot;System.Web.UI.UserControl&quot;></xref>, and <xref href=&quot;System.Web.UI.MasterPage&quot;></xref> controls."
-  remarks: "SetPageProperty is introduced in the .NET Framework version 3.5.  For more information, see [Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Beállítja egy vezérlő származik a <xref href=&quot;System.Web.UI.TemplateControl&quot;> </xref> osztály, amely tartalmazza a <xref href=&quot;System.Web.UI.Page&quot;> </xref>, <xref href=&quot;System.Web.UI.UserControl&quot;> </xref>, és <xref href=&quot;System.Web.UI.MasterPage&quot;> </xref> szabályozza."
+  remarks: "SetPageProperty megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [verziója és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: protected void SetPageProperty (string filter, string name, string value);
     parameters:
     - id: filter
       type: System.String
-      description: "A string containing the value of the filter on an expression. For an example, see <xref href=&quot;System.Web.UI.PropertyEntry&quot;></xref>."
+      description: "A szűrő kifejezés értékét tartalmazó karakterlánc. Egy vonatkozó példáért lásd: <xref href=&quot;System.Web.UI.PropertyEntry&quot;> </xref>."
     - id: name
       type: System.String
-      description: "The name of the property to set a value for."
+      description: "A tulajdonság értékének beállítása neve."
     - id: value
       type: System.String
-      description: "The value of the property to set."
+      description: "A beállítandó tulajdonság értéke."
   overload: System.Web.UI.PageParserFilter.SetPageProperty*
   exceptions: []
   platform:
@@ -579,13 +579,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets the maximum number of direct and indirect file dependencies that the page parser permits for a single page."
-  remarks: "The <xref:System.Web.UI.TemplateParser> class keeps track of the number of direct and indirect file dependencies it parses, and if the number exceeds the limit set by a <xref:System.Web.UI.PageParserFilter> instance, it throws an exception."
+  summary: "Egyetlen lapnak közvetlen és közvetett fájlfüggőségek, amely lehetővé teszi, az oldal elemző maximális számának beolvasása."
+  remarks: "A <xref:System.Web.UI.TemplateParser>osztály nyomon követi, hogy hány közvetlen és közvetett fájlfüggőségek elemez, és ha száma meghaladja a korlátot szerint egy <xref:System.Web.UI.PageParserFilter>példányt, akkor kivételt jelez.</xref:System.Web.UI.PageParserFilter> </xref:System.Web.UI.TemplateParser>"
   syntax:
     content: public virtual int TotalNumberOfDependenciesAllowed { get; }
     return:
       type: System.Int32
-      description: "The maximum number of direct and indirect file dependencies the page parser can parse for a page. The default is 0, which indicates that no dependencies are allowed."
+      description: "A fájl az oldal elemző tudja értelmezni a lapra vonatkozó függőségek közvetlen és közvetett maximális számát. Az alapértelmezett érték 0, amely azt jelzi, hogy engedélyezve legyenek-e a függőségek."
   overload: System.Web.UI.PageParserFilter.TotalNumberOfDependenciesAllowed*
   exceptions: []
   platform:
@@ -602,13 +602,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets the virtual path to the page currently being parsed."
-  remarks: "The VirtualPath property is never `null`."
+  summary: "A lap jelenleg elemezni a virtuális elérési lekérdezi."
+  remarks: "A VirtualPath tulajdonság értéke nem `null`."
   syntax:
     content: protected string VirtualPath { get; }
     return:
       type: System.String
-      description: "A virtual path to an ASP.NET page."
+      description: "Egy virtuális elérési útja egy ASP.NET-lap."
   overload: System.Web.UI.PageParserFilter.VirtualPath*
   exceptions: []
   platform:

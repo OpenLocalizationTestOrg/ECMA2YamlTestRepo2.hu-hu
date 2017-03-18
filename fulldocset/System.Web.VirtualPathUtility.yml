@@ -22,7 +22,7 @@ items:
   nameWithType: VirtualPathUtility
   fullName: System.Web.VirtualPathUtility
   type: Class
-  summary: "Provides utility methods for common virtual path operations."
+  summary: "A közös virtuális elérési út műveletek segédprogram-metódusokat biztosít."
   remarks: "The VirtualPathUtility class provides utility methods for common operations involving virtual paths. For ASP.NET server controls and server code, virtual paths using the Web application root operator, the tilde (~), commonly are used instead of relative and absolute paths. For more information, see [ASP.NET Web Project Paths](~/add/includes/ajax-current-ext-md.md).  \n  \n Use the VirtualPathUtility class when you need to convert application-relative paths to absolute virtual paths, as might be the case in developing a custom Web service handler.  \n  \n An absolute virtual path starts with the literal slash mark (/). A relative virtual path is relative to the application root directory, if it is just a tilde (~) or starts with the tilde and a double backslash (~\\\\\\\\) or the tilde and a slash mark (~/). Making a virtual path relative makes the path independent of the application.  \n  \n The virtual directory for the application can be obtained from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> and <xref:System.Web.HttpRequest.ApplicationPath%2A> properties.  \n  \n> [!NOTE]\n>  The VirtualPathUtility class is not intended for security or canonicalization purposes. For more information about Web application security, see [Overview of Web Application Security Threats](~/add/includes/ajax-current-ext-md.md). For generic URL processing functionality, see <xref:System.Uri>."
   example:
   - "The following code example demonstrates how to use the VirtualPathUtility class and some of its methods. First, the <xref:System.Web.HttpRequest.FilePath%2A> property generates the virtual path to the Web page. The <xref:System.Web.VirtualPathUtility.GetFileName%2A>, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods return information about the virtual path. Next, the <xref:System.Web.HttpRequest.CurrentExecutionFilePath%2A> property generates a virtual path of the current request, which might be different from the <xref:System.Web.HttpRequest.FilePath%2A> property, if a <xref:System.Web.HttpResponse.Redirect%2A> method was called. The <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods return information about the virtual path.  \n  \n [!code-vb[System.Web.VirtualPathUtility#1](~/add/codesnippet/visualbasic/t-system.web.virtualpath_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#1](~/add/codesnippet/csharp/t-system.web.virtualpath_1.aspx)]"
@@ -46,17 +46,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Appends the literal slash mark (/) to the end of the virtual path, if one does not already exist."
-  remarks: "If the literal slash mark (/) exists at the end of the virtual path, the virtual path is not modified."
+  summary: "Ha egy nem létezik a virtuális elérési út végén hozzáfűzi a literális perjel (/)."
+  remarks: "Ha a literális perjel (/) a virtuális elérési út végén, a virtuális elérési út nem módosul."
   syntax:
     content: public static string AppendTrailingSlash (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to append the slash mark to."
+      description: "A virtuális elérési útja hozzáfűzése a perjel."
     return:
       type: System.String
-      description: "The modified virtual path."
+      description: "A módosított virtuális elérési út."
   overload: System.Web.VirtualPathUtility.AppendTrailingSlash*
   exceptions: []
   platform:
@@ -73,17 +73,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Combines a base path and a relative path."
-  remarks: "TheCombine method returns the value of the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property if the relative path is exactly a tilde (~).       The Combine method uses the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property value rather than the base path, if the relative path starts with a tilde and a slash mark (~/); otherwise, the Combine method uses the base path."
+  summary: "Egyesíti a alap elérési útja és a relatív elérési út."
+  remarks: "TheCombine metódus értékét adja vissza a <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>tulajdonság, ha a relatív elérési út pontosan egy hullámos vonallal (~).</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>       A csoportosítás metódusnak a <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>tulajdonság ahelyett, hogy az alap elérési útja, értéket, ha a relatív elérési út kezdődik-e egy hullámos vonallal és perjel (~ /); ellenkező esetben a csoportosítás metódusnak az alap elérési útja.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>"
   syntax:
     content: public static string Combine (string basePath, string relativePath);
     parameters:
     - id: basePath
       type: System.String
-      description: "The base path."
+      description: "Az alap elérési útja."
     - id: relativePath
       type: System.String
-      description: "The relative path."
+      description: "A relatív elérési útja."
     return:
       type: System.String
       description: "The combined <code>basePath</code> and <code>relativePath</code>."
@@ -91,10 +91,10 @@ items:
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "<code>relativePath</code> is a physical path.       -or-       <code>relativePath</code> includes one or more colons."
+    description: "<code>relativePath</code>a fizikai elérési út van.       – vagy – <code>relativePath</code> egy vagy több kettőspontot tartalmaz."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>relativePath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string.       -or-       <code>basePath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+    description: "<code>relativePath</code>van <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc.       – vagy – <code>basePath</code> van <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.GetDirectory(System.String)
@@ -109,8 +109,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns the directory portion of a virtual path."
-  remarks: "If `virtualPath` is not rooted; that is, it does not equal the root operator (the tilde [~]), does not start with a tilde (~), such as a tilde and a slash mark (~/) or a tilde and a double backslash (~//), or does not start with a slash mark (/), an <xref:System.ArgumentException> exception is thrown.       If the virtual path that is passed into the GetDirectory method is `&quot;/images/image1.gif&quot;`, the returned directory is `&quot;/images&quot;`."
+  summary: "A könyvtár virtuális elérési út részét adja vissza."
+  remarks: "Ha `virtualPath` nincs rootolva van, amely azt jelenti, hogy azt nem egyenlő a legfelső szintű operátor (a hullámos vonallal [~]), nem kezdődik egy hullámos vonallal (~), például egy hullámos vonallal és perjel (~ /) vagy egy hullámos vonallal és a dupla perjellel (~ / /), vagy nem indul el egy perjel (/), egy <xref:System.ArgumentException>kivétel történt.</xref:System.ArgumentException>       Ha a virtuális a GetDirectory metódusnak átadott elérési út `&quot;/images/image1.gif&quot;`, a visszaadott könyvtár `&quot;/images&quot;`."
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.GetFileName%2A>, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and GetDirectory methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_3_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_3_1.aspx)]"
   syntax:
@@ -118,10 +118,10 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "A virtuális elérési út."
     return:
       type: System.String
-      description: "The directory referenced in the virtual path."
+      description: "A könyvtár virtuális elérési út hivatkozik."
   overload: System.Web.VirtualPathUtility.GetDirectory*
   exceptions:
   - type: System.ArgumentException
@@ -141,8 +141,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves the extension of the file that is referenced in the virtual path."
-  remarks: "If the virtual path that is passed into the GetExtension method is `&quot;/images/image1.gif&quot;`, the returned extension is `&quot;.gif&quot;`."
+  summary: "Lekéri a fájl a következő virtuális elérési úttal hivatkozott kiterjesztését."
+  remarks: "Ha a virtuális a GetExtension metódusnak átadott elérési út `&quot;/images/image1.gif&quot;`, a visszaadott kiterjesztése `&quot;.gif&quot;`."
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.GetFileName%2A>, GetExtension, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_0_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_0_1.aspx)]"
   syntax:
@@ -150,15 +150,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "A virtuális elérési út."
     return:
       type: System.String
-      description: "The file name extension string literal, including the period (.), <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, or an empty string (&quot;&quot;)."
+      description: "A fájl neve bővítmény literál karakterlánc, beleértve a pont (.), <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, vagy üres karakterlánc (&quot;&quot;)."
   overload: System.Web.VirtualPathUtility.GetExtension*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>virtualPath</code>egy vagy több karaktereket tartalmaz nem érvényes, a <xref:System.IO.Path.InvalidPathChars>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.GetFileName(System.String)
@@ -173,8 +173,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves the file name of the file that is referenced in the virtual path."
-  remarks: "If the virtual path that is passed into the GetFileName method is `&quot;/images/image1.gif&quot;`, the returned file name is `&quot;image1.gif&quot;`."
+  summary: "A fájl nevét a következő virtuális elérési úttal hivatkozott fájl olvassa be."
+  remarks: "Ha a virtuális a GetFileName metódusnak átadott elérési út `&quot;/images/image1.gif&quot;`, a visszaadott Fájlnév `&quot;image1.gif&quot;`."
   example:
   - "The following code example demonstrates how to use the GetFileName, <xref:System.Web.VirtualPathUtility.GetExtension%2A>, and <xref:System.Web.VirtualPathUtility.GetDirectory%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#2](~/add/codesnippet/visualbasic/m-system.web.virtualpath_5_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#2](~/add/codesnippet/csharp/m-system.web.virtualpath_5_1.aspx)]"
   syntax:
@@ -182,15 +182,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "A virtuális elérési út."
     return:
       type: System.String
-      description: "The file name literal after the last directory character in <code>virtualPath</code>; otherwise, the last directory name if the last character of <code>virtualPath</code> is a directory or volume separator character."
+      description: "A fájl neve után utolsó directory karaktere literal <code> virtualPath </code>; ellenkező esetben az utolsó könyvtár nevét, ha az utolsó karakterének <code> virtualPath </code> directory vagy a kötet elválasztó karakter."
   overload: System.Web.VirtualPathUtility.GetFileName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> contains one or more characters that are not valid, as defined in <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>virtualPath</code>egy vagy több karaktereket tartalmaz nem érvényes, a <xref:System.IO.Path.InvalidPathChars>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.IsAbsolute(System.String)
@@ -205,8 +205,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns a Boolean value indicating whether the specified virtual path is absolute; that is, it starts with a literal slash mark (/)."
-  remarks: "A virtual path is absolute if it begins with a literal slash mark (/). For example, the <xref:System.Web.HttpRequest.Path%2A> property returns an absolute virtual path."
+  summary: "Visszaad egy logikai értéket, amely azt jelzi, hogy a megadott virtuális elérési út abszolút; Ez azt jelenti, hogy literális perjel (/) kezdődnek."
+  remarks: "Egy virtuális elérési út abszolút, ha egy literális perjel (/) kezdődik. Például a <xref:System.Web.HttpRequest.Path%2A>tulajdonság adja vissza egy abszolút virtuális elérési út.</xref:System.Web.HttpRequest.Path%2A>"
   example:
   - "The following code example demonstrates how to use the IsAbsolute, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_2_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_2_1.aspx)]"
   syntax:
@@ -214,15 +214,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to check."
+      description: "Ellenőrizze a virtuális elérési útja"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>virtualPath</code> is an absolute path and is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string (&quot;&quot;); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> virtualPath </code> abszolút elérési út, és nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc (&quot;&quot;); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
   overload: System.Web.VirtualPathUtility.IsAbsolute*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.IsAppRelative(System.String)
@@ -237,8 +237,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns a Boolean value indicating whether the specified virtual path is relative to the application."
-  remarks: "The virtual path can be just the root operator (the tilde [~]), or it can begin with the root operator. If `virtualPath` is `null`, an <xref:System.ArgumentNullException> exception is raised. If `virtualPath` is an empty string (&quot;&quot;), the IsAppRelative method returns `false`.      > [!NOTE] >  `&quot;~` `filename` `&quot;` is not a valid virtual path and returns `false` for the IsAppRelative method."
+  summary: "Jelzi, hogy a megadott virtuális elérési utat az alkalmazáshoz képest van-e egy logikai értéket ad vissza."
+  remarks: "A virtuális elérési út csak a legfelső szintű operátor (a hullámos vonallal [~]), vagy a legfelső szintű operátor kezdődhet. Ha `virtualPath` van `null`, egy <xref:System.ArgumentNullException>kivétel következik be.</xref:System.ArgumentNullException> Ha `virtualPath` egy üres karakterlánc (&quot;&quot;), a IsAppRelative metódus visszaadja `false`.      > [!NOTE]  >   `&quot;~` `filename` `&quot;` virtuális elérési út érvényes, és visszaadja `false` IsAppRelative módban."
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, IsAppRelative, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_4_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_4_1.aspx)]"
   syntax:
@@ -246,15 +246,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to check."
+      description: "Ellenőrizze a virtuális elérési útja"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>virtualPath</code> is relative to the application; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> virtualPath </code> relatív az alkalmazás; egyéb, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.VirtualPathUtility.IsAppRelative*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.MakeRelative(System.String,System.String)
@@ -269,20 +269,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Returns the relative virtual path from one virtual path containing the root operator (the tilde [~]) to another."
-  remarks: "If the `fromPath` and `toPath` parameters are not rooted; that is, they do not equal the root operator (the tilde [~]), do not start with a tilde (~), such as a tilde and a slash mark (~/) or a tilde and a double backslash (~//), or do not start with a slash mark (/), an <xref:System.ArgumentException> exception is thrown.       Query string parameters and HTML anchors that are used in the URI are not used in determining the relative path.       If `fromPath` is `&quot;/directory1/file1.aspx&quot;` and `toPath` is `&quot;/directory2/file2.aspx&quot;`, the MakeRelative method returns `&quot;../directory2/file2.aspx&quot;`."
+  summary: "A relatív virtuális elérési út egy virtuális elérési utat a legfelső szintű operátort (a hullámos vonallal [~]) tartalmazó másik adja vissza."
+  remarks: "Ha a `fromPath` és `toPath` paraméterek nem tartalmazza a gyökeret; Ez azt jelenti, hogy azok a legfelső szintű operátor (a hullámos vonallal [~]) nem egyezik, nem kezdődhet egy hullámos vonallal (~), például egy hullámos vonallal és perjel (~ /) vagy egy hullámos vonallal és a dupla perjellel (~ / /), nem kezdődhet egy perjel (/), és egy <xref:System.ArgumentException>kivétel történt.</xref:System.ArgumentException>       Lekérdezési karakterlánc paraméterek és az URI használt HTML horgonyok nem használt meghatározni, hogy a relatív elérési útja.       Ha `fromPath` van `&quot;/directory1/file1.aspx&quot;` és `toPath` van `&quot;/directory2/file2.aspx&quot;`, a MakeRelative metódus visszaadja `&quot;../directory2/file2.aspx&quot;`."
   syntax:
     content: public static string MakeRelative (string fromPath, string toPath);
     parameters:
     - id: fromPath
       type: System.String
-      description: "The starting virtual path to return the relative virtual path from."
+      description: "A kiindulási virtuális elérési útja relatív virtuális elérési útja adja vissza."
     - id: toPath
       type: System.String
-      description: "The ending virtual path to return the relative virtual path to."
+      description: "A befejezési virtuális elérési útja relatív virtuális elérési útját adja vissza."
     return:
       type: System.String
-      description: "The relative virtual path from <code>fromPath</code> to <code>toPath</code>."
+      description: "A relatív virtuális elérési útja <code> fromPath </code> való <code> toPath </code>."
   overload: System.Web.VirtualPathUtility.MakeRelative*
   exceptions:
   - type: System.ArgumentException
@@ -302,17 +302,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Removes a trailing slash mark (/) from a virtual path."
-  remarks: "The RemoveTrailingSlash method removes a slash mark (/) from the end of the virtual path. If the virtual path is already the root directory (`&quot;/&quot;`), no action is taken. If the virtual path is `null` or an empty string (&quot;&quot;), the RemoveTrailingSlash method returns `null`."
+  summary: "A záró perjel (/) eltávolítása a virtuális elérési utat."
+  remarks: "A RemoveTrailingSlash metódus egy perjel (/) eltávolítása a virtuális elérési út végén. Ha a virtuális elérési út már a gyökérkönyvtár (`&quot;/&quot;`), semmilyen művelet nem lesz végrehajtva. Ha a virtuális elérési út `null` vagy üres karakterlánc (&quot;&quot;), a RemoveTrailingSlash metódus visszaadja `null`."
   syntax:
     content: public static string RemoveTrailingSlash (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to remove any trailing slash mark from."
+      description: "Távolítsa el az összes záró perjel virtuális elérési útja"
     return:
       type: System.String
-      description: "A virtual path without a trailing slash mark, if the virtual path is not already the root directory (&quot;/&quot;); otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Egy virtuális elérési út nem végződhet perjel, ha a virtuális elérési út már nem a gyökérkönyvtár (&quot;/&quot;); Ellenkező esetben <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.VirtualPathUtility.RemoveTrailingSlash*
   exceptions: []
   platform:
@@ -329,25 +329,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application absolute path."
-  remarks: "An application absolute path is one where the application path is used instead of the root operator (the tilde [~]).       If `virtualPath` is:      -   Absolute, the ToAbsolute method returns the virtual path unchanged.      -   Application relative, the ToAbsolute method appends the current application virtual directory path to the beginning of the `virtualPath`. For example, the current application virtual directory path can be accessed from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property.      -   Not rooted, the ToAbsolute method raises an <xref:System.ArgumentOutOfRangeException> exception."
+  summary: "Alakítja át a virtuális elérési utat alkalmazás abszolút elérési utat."
+  remarks: "Az alkalmazás abszolút elérési út egy ahol az alkalmazás elérési útja helyett a legfelső szintű operátor (a hullámos vonallal [~]) használatos.       Ha `virtualPath` van: - abszolút, a ToAbsolute metódus visszaadja a virtuális elérési út nem változik.      -Alkalmazás relatív ToAbsolute metódus fűzi hozzá az aktuális alkalmazás a virtuális könyvtár elérési útja elejéhez a `virtualPath`. Például az aktuális alkalmazás a virtuális könyvtár elérési útja érhetők el a <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>tulajdonság.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>      -A ToAbsolute metódus kivált nincs rootolva, egy <xref:System.ArgumentOutOfRangeException>kivétel.</xref:System.ArgumentOutOfRangeException>"
   syntax:
     content: public static string ToAbsolute (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "Egy alkalmazás relatív elérési út átalakítása virtuális elérési útja"
     return:
       type: System.String
-      description: "The absolute path representation of the specified virtual path."
+      description: "A megadott virtuális elérési út abszolút elérési útnak ábrázolása."
   overload: System.Web.VirtualPathUtility.ToAbsolute*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>virtualPath</code> is not rooted."
+    description: "<code>virtualPath</code>Nincs rootolva van."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A leading double period (..) is used to exit above the top directory."
+    description: "Kettős ponttal (.) a legfelső könyvtárból való kilépésre szolgál."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAbsolute(System.String,System.String)
@@ -362,28 +362,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application absolute path using the specified application path."
-  remarks: "The ToAbsolute overload of the <xref:System.Web.VirtualPathUtility.ToAbsolute%2A> method uses the supplied application path rather than the current application path.       If `virtualPath` is:      -   Absolute, the ToAbsolute method returns the virtual path with no changes.      -   Application relative, the ToAbsolute method adds `applicationPath` to the beginning of the virtual path.      -   Not rooted, the ToAbsolute method raises an <xref:System.ArgumentOutOfRangeException> exception."
+  summary: "A megadott elérési úton alkalmazás abszolút elérési útnak egy virtuális útvonalra alakítja."
+  remarks: "A ToAbsolute túlterhelése <xref:System.Web.VirtualPathUtility.ToAbsolute%2A>metódus használja, a megadott elérési útja helyett az aktuális alkalmazás elérési útja.</xref:System.Web.VirtualPathUtility.ToAbsolute%2A>       Ha `virtualPath` van: - abszolút, a ToAbsolute metódus visszaadja a virtuális elérési út nem módosult.      -Alkalmazás relatív, a ToAbsolute metódus ad `applicationPath` virtuális elérési út elejére.      -A ToAbsolute metódus kivált nincs rootolva, egy <xref:System.ArgumentOutOfRangeException>kivétel.</xref:System.ArgumentOutOfRangeException>"
   syntax:
     content: public static string ToAbsolute (string virtualPath, string applicationPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "Egy alkalmazás relatív elérési út átalakítása virtuális elérési útja"
     - id: applicationPath
       type: System.String
-      description: "The application path to use to convert `virtualPath` to a relative path."
+      description: "Az alkalmazás elérési útja konvertálhatja `virtualPath` relatív elérési útra."
     return:
       type: System.String
-      description: "The absolute virtual path representation of <code>virtualPath</code>."
+      description: "Az abszolút virtuális elérési út ábrázolását <code> virtualPath </code>."
   overload: System.Web.VirtualPathUtility.ToAbsolute*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>applicationPath</code> is not rooted."
+    description: "<code>applicationPath</code>Nincs rootolva van."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "A leading double period (..) is used in the application path to exit above the top directory."
+    description: "Kettős ponttal (.) szolgál a az alkalmazás elérési útját a legfelső könyvtárból való kilépésre."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAppRelative(System.String)
@@ -398,8 +398,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application-relative path using the application virtual path that is in the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*> property."
-  remarks: "If the virtual path for the application is `&quot;myapp&quot;` and the virtual path `&quot;/myApp/sub/default.asp&quot;` is passed into the ToAppRelative method, the resulting application-relative path is `&quot;~/sub/default.aspx&quot;`.       If `virtualPath` does not start with the current application path, the ToAppRelative method returns the virtual path unchanged.       If `virtualPath` is the same as the application path, the root operator (the tilde [~]), is returned. For example, the current application virtual directory path can be accessed from the <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A> property."
+  summary: "Virtuális elérési út konvertál egy alkalmazás relatív elérési útja az alkalmazás virtuális elérési útja, amely használatával a <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*>tulajdonság.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath*>"
+  remarks: "Ha az alkalmazás virtuális elérési út `&quot;myapp&quot;` és a virtuális elérési út `&quot;/myApp/sub/default.asp&quot;` átadása az ToAppRelative metódusnak az eredményül kapott alkalmazás relatív elérési út `&quot;~/sub/default.aspx&quot;`.       Ha `virtualPath` nem kezdődik meg az aktuális alkalmazás elérési útja, a ToAppRelative metódus visszaadja a virtuális elérési út nem változik.       Ha `virtualPath` megegyezik az alkalmazás elérési útja, a legfelső szintű operátor (a hullámos vonallal [~]), adja vissza. Például az aktuális alkalmazás a virtuális könyvtár elérési útja érhetők el a <xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>tulajdonság.</xref:System.Web.HttpRuntime.AppDomainAppVirtualPath%2A>"
   example:
   - "The following code example demonstrates how to use the <xref:System.Web.VirtualPathUtility.IsAbsolute%2A>, <xref:System.Web.VirtualPathUtility.IsAppRelative%2A>, and <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> methods.  \n  \n [!code-vb[System.Web.VirtualPathUtility#3](~/add/codesnippet/visualbasic/m-system.web.virtualpath_1_1.aspx)]\n [!code-cs[System.Web.VirtualPathUtility#3](~/add/codesnippet/csharp/m-system.web.virtualpath_1_1.aspx)]"
   syntax:
@@ -407,15 +407,15 @@ items:
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "Egy alkalmazás relatív elérési út átalakítása virtuális elérési útja"
     return:
       type: System.String
-      description: "The application-relative path representation of <code>virtualPath</code>."
+      description: "Az alkalmazás relatív elérési út ábrázolását <code> virtualPath </code>."
   overload: System.Web.VirtualPathUtility.ToAppRelative*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.VirtualPathUtility.ToAppRelative(System.String,System.String)
@@ -430,20 +430,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Converts a virtual path to an application-relative path using a specified application path."
-  remarks: "The ToAppRelative overload of the <xref:System.Web.VirtualPathUtility.ToAppRelative%2A> method uses `applicationPath` rather than the current application path. If `virtualPath` does not start with `applicationPath`, the ToAppRelative method returns the virtual path unchanged."
+  summary: "Virtuális elérési út konvertál egy alkalmazás relatív elérési út megadott elérési út használatával."
+  remarks: "A ToAppRelative túlterhelése a <xref:System.Web.VirtualPathUtility.ToAppRelative%2A>metódus által használt `applicationPath` ahelyett, hogy az aktuális alkalmazáselérési útvonal.</xref:System.Web.VirtualPathUtility.ToAppRelative%2A> Ha `virtualPath` nem kezdődik `applicationPath`, a ToAppRelative metódus visszaadja a virtuális elérési út nem változik."
   syntax:
     content: public static string ToAppRelative (string virtualPath, string applicationPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to convert to an application-relative path."
+      description: "Egy alkalmazás relatív elérési út átalakítása virtuális elérési útja"
     - id: applicationPath
       type: System.String
-      description: "The application path to use to convert `virtualPath` to a relative path."
+      description: "Az alkalmazás elérési útja konvertálhatja `virtualPath` relatív elérési útra."
     return:
       type: System.String
-      description: "The application-relative path representation of <code>virtualPath</code>."
+      description: "Az alkalmazás relatív elérési út ábrázolását <code> virtualPath </code>."
   overload: System.Web.VirtualPathUtility.ToAppRelative*
   exceptions: []
   platform:

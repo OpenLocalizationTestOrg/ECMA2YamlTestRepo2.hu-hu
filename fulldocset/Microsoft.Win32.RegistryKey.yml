@@ -52,7 +52,7 @@ items:
   nameWithType: RegistryKey
   fullName: Microsoft.Win32.RegistryKey
   type: Class
-  summary: "Represents a key-level node in the Windows registry. This class is a registry encapsulation."
+  summary: "A Windows beállításjegyzékében kulcs szintű csomópont jelöli. Ez az osztály egy beállításjegyzék-beágyazás."
   remarks: "To get an instance of RegistryKey, use one of the static members of the <xref:Microsoft.Win32.Registry> class.  \n  \n The registry acts as a central repository of information for the operating system and the applications on a computer. The registry is organized in a hierarchical format, based on a logical ordering of the elements stored within it (please see <xref:Microsoft.Win32.Registry> for the base-level items in this hierarchy). When storing information in the registry, select the appropriate location based on the type of information being stored. Be sure to avoid destroying information created by other applications, because this can cause those applications to exhibit unexpected behavior, and can also have an adverse effect upon your own application.  \n  \n> [!IMPORTANT]\n>  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic.  \n  \n Registry keys are the base unit of organization in the registry, and can be compared to folders in File Explorer. A particular key can have subkeys, just as a folder can have subfolders. Each key can be deleted, as long as the user has the appropriate permissions to do so, and the key is not a base key or at the level directly under the base keys. Each key can also have multiple values associated with it (a value can be compared to a file), which are used to store the information — for example, information about an application installed on the computer. Each value holds one particular piece of information, which can be retrieved or updated when required. For instance, you can create a RegistryKey for your company, under the key HKEY_LOCAL_MACHINE\\Software, and then a subkey for each application that your company creates. Each subkey holds the information specific to that application, such as color settings, screen location and size, or recognized file extensions.  \n  \n Note that information stored in the registry is available to other applications and users, and therefore should not be used to store security data or critical application information.  \n  \n> [!CAUTION]\n>  Do not expose RegistryKey objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.  \n  \n Starting in the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], the length of a registry key is no longer limited to 255 characters."
   example:
   - "The following code example shows how to create a subkey under HKEY_CURRENT_USER, manipulate its contents, and then delete the subkey.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/cpp/t-microsoft.win32.regist_2_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/csharp/t-microsoft.win32.regist_2_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/visualbasic/t-microsoft.win32.regist_2_1.vb)]"
@@ -85,8 +85,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Closes the key and flushes it to disk if its contents have been modified."
-  remarks: "Calling this method on system keys will have no effect, because system keys are never closed.       This method does nothing if you call it on an instance of `RegistryKey` that is already closed."
+  summary: "A kulcs bezárja, és kiürítéseinek száma a lemezre, ha módosítva lett, annak tartalmát."
+  remarks: "Ez a metódus hívása a rendszer kulcsokat hatástalan lesz, mert rendszer kulcsok soha nem be van zárva.       Ez a metódus nincs semmi hatása. Ha egy példányára hívás `RegistryKey` , amely már le van zárva."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/cpp/m-microsoft.win32.regist_4_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/csharp/m-microsoft.win32.regist_4_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_4_1.vb)]"
   syntax:
@@ -108,8 +108,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a new subkey or opens an existing subkey for write access."
-  remarks: "In order to perform this action, the user must have permission at this level and below in the registry hierarchy.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values."
+  summary: "Létrehoz egy új kulcsot, vagy egy meglévő alkulcs való írási hozzáférés megnyitása."
+  remarks: "Ez a művelet végrehajtásához a felhasználó engedéllyel kell rendelkeznie ezen a szinten és az alatt a beállításjegyzék-hierarchiában.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek."
   example:
   - "The following code example shows how to create a subkey under HKEY_CURRENT_USER, manipulate its contents, and then delete the subkey.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_15_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_15_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_15_1.vb)]"
   syntax:
@@ -117,27 +117,27 @@ items:
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open. This string is not case-sensitive."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni. Ez a karakterlánc nincs kis-és nagybetűket."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed. If a zero-length string is specified for <code>subkey</code>, the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is returned."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt. Egy nulla hosszúságú karakterlánc az <code> subkey </code>, az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektumot ad vissza."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> on which this method is being invoked is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> amely meghívott van ez a módszer az le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> cannot be written to; for example, it was not opened as a writable key , or the user does not have the necessary access rights."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> nem lehet írni a, például nem írható kulcsként lett megnyitva, vagy a felhasználó nem rendelkezik a szükséges hozzáférési jogok."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key, or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs, vagy a kulcs létrehozására tett kísérlet törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck)
@@ -152,40 +152,40 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a new subkey or opens an existing subkey for write access, using the specified permission check option."
-  remarks: "In order to perform this action, the user must have permission at this level and below in the registry hierarchy.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.       In order to use the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Létrehoz egy új kulcsot, vagy egy meglévő alkulcs való írási hozzáférés, a megadott engedély ellenőrzése beállítással megnyitása."
+  remarks: "Ez a művelet végrehajtásához a felhasználó engedéllyel kell rendelkeznie ezen a szinten és az alatt a beállításjegyzék-hierarchiában.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.       Ahhoz, hogy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, rendelkeznie kell az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> példánya</xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open. This string is not case-sensitive."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed. If a zero-length string is specified for <code>subkey</code>, the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is returned."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt. Egy nulla hosszúságú karakterlánc az <code> subkey </code>, az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektumot ad vissza."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>permissionCheck</code> contains an invalid value."
+    description: "<code>permissionCheck</code>Érvénytelen értéket tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> on which this method is being invoked is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> amely meghívott van ez a módszer az le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> cannot be written to; for example, it was not opened as a writable key, or the user does not have the necessary access rights."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> nem lehet írni a, például nem írható kulcsként lett megnyitva, vagy a felhasználó nem rendelkezik a szükséges hozzáférési jogok."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key, or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs, vagy a kulcs létrehozására tett kísérlet törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,System.Boolean)
@@ -200,34 +200,34 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a new subkey or opens an existing subkey with the specified access.       Available starting in [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]"
-  remarks: "In order to perform this action, the user must have permission at this level and below in the registry hierarchy.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.       In order to use the CreateSubKey method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Létrehoz egy új kulcsot, vagy egy meglévő alkulcs nyílik meg a megadott hozzáférési.       Rendelkezésre álló kezdődően[!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]"
+  remarks: "Ez a művelet végrehajtásához a felhasználó engedéllyel kell rendelkeznie ezen a szinten és az alatt a beállításjegyzék-hierarchiában.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.       A CreateSubKey módszer használatához az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> egy példányának kell lennie <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, bool writable);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open. This string is not case-sensitive."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: writable
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate the new subkey is writable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi az új kulcs írhatónak kell lennie; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed. If a zero-length string is specified for <code>subkey</code>, the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is returned."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt. Egy nulla hosszúságú karakterlánc az <code> subkey </code>, az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektumot ad vissza."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> cannot be written to; for example, it was not opened as a writable key, or the user does not have the necessary access rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> nem lehet írni a, például nem írható kulcsként lett megnyitva, vagy a felhasználó nem rendelkezik a szükséges hozzáférési jogok."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key, or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs, vagy a kulcs létrehozására tett kísérlet törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck,Microsoft.Win32.RegistryOptions)
@@ -242,23 +242,23 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a subkey or opens a subkey for write access, using the specified permission check and registry options."
-  remarks: "To obtain the current <xref:Microsoft.Win32.RegistryKey> object, specify an empty string (&quot;&quot;) for `subkey`."
+  summary: "Alkulcsot hoz létre, és megnyílik egy alkulcsot való írási hozzáférés, a megadott engedély ellenőrzése és a beállításjegyzék-beállítások használatával."
+  remarks: "Az aktuális beszerzése <xref:Microsoft.Win32.RegistryKey>objektumazonosító, adjon meg egy üres karakterlánc (&quot;&quot;) a `subkey`.</xref:Microsoft.Win32.RegistryKey>"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, Microsoft.Win32.RegistryOptions options);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     - id: options
       type: Microsoft.Win32.RegistryOptions
-      description: "The registry option to use; for example, that creates a volatile key."
+      description: "A beállításjegyzék-beállítást kell használni, például, hogy létrehoz egy &quot;volatile&quot; kulcsot."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
@@ -266,16 +266,16 @@ items:
     description: "<code>subkey </code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is closed (closed keys cannot be accessed)."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object cannot be written to; for example, it was not opened as a writable key, or the user does not have the required access rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum nem lehet írni; például nem írható kulcsként lett megnyitva, vagy a felhasználónak nincs megfelelő jogosultsága."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs létrehozására tett kísérlet vagy a kulcs törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck,System.Security.AccessControl.RegistrySecurity)
@@ -290,43 +290,43 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a new subkey or opens an existing subkey for write access, using the specified permission check option and registry security."
-  remarks: "The CreateSubKey method creates a registry key that has the access control specified by the `registrySecurity` parameter. The <xref:Microsoft.Win32.RegistryKey> object that is returned represents the registry key, but that object is not restricted by the access control specified in the `registrySecurity` parameter.       If `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for read/write access. If `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for read access.       For backward compatibility, the key is opened for reading and writing if `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> and the parent key also has <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>. If the parent key has any other setting, read/write status is controlled by the parent key&quot;s setting.       In order to perform this action, the user must have permissions at this level and below in the registry hierarchy.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.       In order to use the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Létrehoz egy új kulcsot, vagy egy meglévő alkulcs való írási hozzáférés, használja a megadott engedély ellenőrzése a beállítást, és a beállításjegyzék biztonsági megnyitása."
+  remarks: "A CreateSubKey hoz létre egy beállításkulcsot, amely rendelkezik a megadott hozzáférés-vezérlés a `registrySecurity` paraméter. A <xref:Microsoft.Win32.RegistryKey>visszaadott objektum jelöli a beállításkulcsot, de nem korlátozza, hogy az objektum a megadott hozzáférés-vezérlés a `registrySecurity` paraméter.</xref:Microsoft.Win32.RegistryKey>       Ha `permissionCheck` van <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcs olvasási/írási hozzáférésre van megnyitva.</xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> Ha `permissionCheck` van <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcs olvasási hozzáférésre van megnyitva.</xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>       A visszamenőleges kompatibilitás érdekében a kulcs van megnyitva olvasását és írását, ha `permissionCheck` és <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>a szülő kulccsal is rendelkezik a <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>.</xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> Ha a szülő kulcsnak bármely más beállítás, a szülő kulcs beállítása olvasási/írási állapotát vezérli.       Ez a művelet végrehajtásához a felhasználónak engedélyekkel kell rendelkeznie ezen a szinten és az alatt a beállításjegyzék-hierarchiában.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.       Ahhoz, hogy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, rendelkeznie kell az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> példánya</xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, System.Security.AccessControl.RegistrySecurity registrySecurity);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open. This string is not case-sensitive."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     - id: registrySecurity
       type: System.Security.AccessControl.RegistrySecurity
-      description: "The access control security for the new key."
+      description: "A hozzáférés-vezérléssel az új kulcs."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed. If a zero-length string is specified for <code>subkey</code>, the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is returned."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt. Egy nulla hosszúságú karakterlánc az <code> subkey </code>, az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektumot ad vissza."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>permissionCheck</code> contains an invalid value."
+    description: "<code>permissionCheck</code>Érvénytelen értéket tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> on which this method is being invoked is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> amely meghívott van ez a módszer az le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> cannot be written to; for example, it was not opened as a writable key, or the user does not have the necessary access rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> nem lehet írni a, például nem írható kulcsként lett megnyitva, vagy a felhasználó nem rendelkezik a szükséges hozzáférési jogok."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key, or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs, vagy a kulcs létrehozására tett kísérlet törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,System.Boolean,Microsoft.Win32.RegistryOptions)
@@ -341,40 +341,40 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a new subkey or opens an existing subkey with the specified access.       Available starting in [!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]"
-  remarks: "In order to perform this action, the user must have permission at this level and below in the registry hierarchy.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.       In order to use the CreateSubKey method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Létrehoz egy új kulcsot, vagy egy meglévő alkulcs nyílik meg a megadott hozzáférési.       Rendelkezésre álló kezdődően[!INCLUDE[net_v46](~/add/includes/net-v46-md.md)]"
+  remarks: "Ez a művelet végrehajtásához a felhasználó engedéllyel kell rendelkeznie ezen a szinten és az alatt a beállításjegyzék-hierarchiában.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.       A CreateSubKey módszer használatához az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> egy példányának kell lennie <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, bool writable, Microsoft.Win32.RegistryOptions options);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open. This string is not case-sensitive."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: writable
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate the new subkey is writable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi az új kulcs írhatónak kell lennie; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: options
       type: Microsoft.Win32.RegistryOptions
-      description: "The registry option to use."
+      description: "A beállításjegyzék lehetőséget."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed. If a zero-length string is specified for <code>subkey</code>, the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is returned."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt. Egy nulla hosszúságú karakterlánc az <code> subkey </code>, az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektumot ad vissza."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>options</code> does not specify a valid Option"
+    description: "<code>options</code>Adjon meg egy érvényes beállítás"
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> cannot be written to; for example, it was not opened as a writable key, or the user does not have the necessary access rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> nem lehet írni a, például nem írható kulcsként lett megnyitva, vagy a felhasználó nem rendelkezik a szükséges hozzáférési jogok."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key, or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs, vagy a kulcs létrehozására tett kísérlet törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.CreateSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck,Microsoft.Win32.RegistryOptions,System.Security.AccessControl.RegistrySecurity)
@@ -389,26 +389,26 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a subkey or opens a subkey for write access, using the specified permission check option, registry option, and registry security."
-  remarks: "To obtain the current <xref:Microsoft.Win32.RegistryKey> object, specify an empty string (&quot;&quot;) for `subkey`."
+  summary: "Alkulcsot hoz létre, vagy egy alkulcsot való írási hozzáférés, a megadott engedély ellenőrzése a beállítást, a beállításjegyzék-beállítást és a beállításjegyzék biztonsági megnyitása."
+  remarks: "Az aktuális beszerzése <xref:Microsoft.Win32.RegistryKey>objektumazonosító, adjon meg egy üres karakterlánc (&quot;&quot;) a `subkey`.</xref:Microsoft.Win32.RegistryKey>"
   syntax:
     content: public Microsoft.Win32.RegistryKey CreateSubKey (string subkey, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, Microsoft.Win32.RegistryOptions registryOptions, System.Security.AccessControl.RegistrySecurity registrySecurity);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name or path of the subkey to create or open."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     - id: registryOptions
       type: Microsoft.Win32.RegistryOptions
-      description: "The registry option to use."
+      description: "A beállításjegyzék lehetőséget."
     - id: registrySecurity
       type: System.Security.AccessControl.RegistrySecurity
-      description: "The access control security for the new subkey."
+      description: "A hozzáférés-vezérléssel az új kulcs."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The newly created subkey, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "Az újonnan létrehozott kulcsot vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.CreateSubKey*
   exceptions:
   - type: System.ArgumentNullException
@@ -416,16 +416,16 @@ items:
     description: "<code>subkey </code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object is closed. Closed keys cannot be accessed."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum be van zárva. Lezárt kulcsok nem érhetők el."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object cannot be written to; for example, it was not opened as a writable key, or the user does not have the required access rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum nem lehet írni; például nem írható kulcsként lett megnyitva, vagy a felhasználónak nincs megfelelő jogosultsága."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The nesting level exceeds 510.       -or-       A system error occurred, such as deletion of the key or an attempt to create a key in the <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;></xref> root."
+    description: "A beágyazási szint meghaladja az 510-et.       – vagy – rendszerhiba történt, például a kulcs létrehozására tett kísérlet vagy a kulcs törlése a <xref href=&quot;Microsoft.Win32.Registry.LocalMachine&quot;> </xref> legfelső szintű."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or open the registry key."
+    description: "A felhasználó nem rendelkezik létrehozni vagy megnyitni a beállításkulcs szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteSubKey(System.String)
@@ -440,8 +440,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes the specified subkey."
-  remarks: "To delete child subkeys, use <xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>.       Use caution when deleting registry keys."
+  summary: "A megadott kulcs törlése."
+  remarks: "Gyermekalkulcsokkal törléséhez használja a <xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>.</xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>       Legyen körültekintő beállításkulcsok törlésekor."
   example:
   - "The following example demonstrates how to use DeleteSubKey.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#5](~/add/codesnippet/cpp/m-microsoft.win32.regist_5_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#5](~/add/codesnippet/csharp/m-microsoft.win32.regist_5_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#5](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_5_1.vb)]"
   syntax:
@@ -449,27 +449,27 @@ items:
     parameters:
     - id: subkey
       type: System.String
-      description: "The name of the subkey to delete. This string is not case-sensitive."
+      description: "Törli a kulcs neve. Ez a karakterlánc nincs kis-és nagybetűket."
   overload: Microsoft.Win32.RegistryKey.DeleteSubKey*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <code>subkey</code> has child subkeys"
+    description: "A <code> subkey </code> gyermekalkulcsokkal rendelkezik"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>subkey</code> parameter does not specify a valid registry key"
+    description: "A <code> subkey </code> paraméter adja meg egy érvényes beállításkulcsot."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
+    description: "<code>subkey</code>van<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the key."
+    description: "A felhasználó nem rendelkezik a kulcs törléséhez szükséges engedéllyel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteSubKey(System.String,System.Boolean)
@@ -484,37 +484,37 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes the specified subkey, and specifies whether an exception is raised if the subkey is not found."
-  remarks: "To delete child subkeys, use <xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>.       Use caution when deleting registry keys."
+  summary: "A megadott kulcs törlése, és határozza meg, hogy kivételt jelenik meg, ha a kulcs nem található."
+  remarks: "Gyermekalkulcsokkal törléséhez használja a <xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>.</xref:Microsoft.Win32.RegistryKey.DeleteSubKeyTree%2A>       Legyen körültekintő beállításkulcsok törlésekor."
   syntax:
     content: public void DeleteSubKey (string subkey, bool throwOnMissingSubKey);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name of the subkey to delete. This string is not case-sensitive."
+      description: "Törli a kulcs neve. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: throwOnMissingSubKey
       type: System.Boolean
-      description: "Indicates whether an exception should be raised if the specified subkey cannot be found. If this argument is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and the specified subkey does not exist, an exception is raised. If this argument is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> and the specified subkey does not exist, no action is taken."
+      description: "Azt jelzi, hogy kivételt kell generál, ha a megadott kulcs nem található. Ha az argumentum <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> és a megadott kulcs nem létezik, egy kivétel következik be. Ha az argumentum <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> és a megadott kulcs nem létezik, semmilyen művelet nem lesz végrehajtva."
   overload: Microsoft.Win32.RegistryKey.DeleteSubKey*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>subkey</code> has child subkeys."
+    description: "<code>subkey</code>gyermekalkulcsokkal rendelkezik."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>subkey</code> does not specify a valid registry key, and <code>throwOnMissingSubKey</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>Adjon meg egy érvényes beállításkulcsot, és <code>throwOnMissingSubKey</code> van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the key."
+    description: "A felhasználó nem rendelkezik a kulcs törléséhez szükséges engedéllyel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String)
@@ -529,8 +529,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes a subkey and any child subkeys recursively."
-  remarks: "You must have appropriate permissions to delete the subkey and its tree.      > [!CAUTION] >  Deleting a particular key will remove all entries below the key in the tree. No warning will be provided. If you want to delete a subkey only when it has no child subkeys, use the <xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A> method."
+  summary: "Törli a alkulcs és bármely gyermek alkulcsok rekurzív."
+  remarks: "Törli a kulcs és a fa megfelelő engedélyekkel kell rendelkeznie.      > [!CAUTION] > Egy adott kulcs törlésével az összes bejegyzést a kulcs alatt a fában. Figyelmeztetés nélkül adja meg. Ha törli egy alkulcsot, csak amikor nincs gyermekalkulcsokkal, használja a <xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>metódus.</xref:Microsoft.Win32.RegistryKey.DeleteSubKey%2A>"
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/cpp/m-microsoft.win32.regist_12_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/csharp/m-microsoft.win32.regist_12_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_12_1.vb)]"
   syntax:
@@ -538,27 +538,27 @@ items:
     parameters:
     - id: subkey
       type: System.String
-      description: "The subkey to delete. This string is not case-sensitive."
+      description: "A kulcs törlése. Ez a karakterlánc nincs kis-és nagybetűket."
   overload: Microsoft.Win32.RegistryKey.DeleteSubKeyTree*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Deletion of a root hive is attempted.       -or-       <code>subkey</code> does not specify a valid registry subkey."
+    description: "Egy gyökérstruktúrát kísérlet történik.       – vagy – <code> subkey </code> nem határoz meg érvényes beállításjegyzékbeli alkulcsot."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error has occurred."
+    description: "I/o-hiba történt."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the key."
+    description: "A felhasználó nem rendelkezik a kulcs törléséhez szükséges engedéllyel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteSubKeyTree(System.String,System.Boolean)
@@ -573,33 +573,33 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes the specified subkey and any child subkeys recursively, and specifies whether an exception is raised if the subkey is not found."
+  summary: "Törli a megadott alkulcs és bármely gyermek alkulcsok rekurzív, és határozza meg, hogy kivételt jelenik meg, ha a kulcs nem található."
   syntax:
     content: public void DeleteSubKeyTree (string subkey, bool throwOnMissingSubKey);
     parameters:
     - id: subkey
       type: System.String
-      description: "The name of the subkey to delete. This string is not case-sensitive."
+      description: "Törli a kulcs neve. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: throwOnMissingSubKey
       type: System.Boolean
-      description: "Indicates whether an exception should be raised if the specified subkey cannot be found. If this argument is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and the specified subkey does not exist, an exception is raised. If this argument is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> and the specified subkey does not exist, no action is taken."
+      description: "Azt jelzi, hogy kivételt kell generál, ha a megadott kulcs nem található. Ha az argumentum <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> és a megadott kulcs nem létezik, egy kivétel következik be. Ha az argumentum <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> és a megadott kulcs nem létezik, semmilyen művelet nem lesz végrehajtva."
   overload: Microsoft.Win32.RegistryKey.DeleteSubKeyTree*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An attempt was made to delete the root hive of the tree.       -or-       <code>subkey</code> does not specify a valid registry subkey, and <code>throwOnMissingSubKey</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+    description: "Kísérlet történt a fa gyökérstruktúrát törlése.       – vagy – <code> subkey </code> nem határoz meg érvényes beállításjegyzékbeli alkulcsot, és <code> throwOnMissingSubKey </code> van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>subkey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>subkey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the key."
+    description: "A felhasználó nem rendelkezik a kulcs törléséhez szükséges engedéllyel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteValue(System.String)
@@ -614,8 +614,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes the specified value from this key."
-  remarks: "On Windows 95, Windows 98, Windows 98 Second Edition, and Windows Millennium Edition, specifying an empty string for the `name` parameter does not delete the default value."
+  summary: "A megadott érték törli ezt a kulcsot."
+  remarks: "A Windows 95/Windows 98, Windows 98 második kiadás és Windows Me, adja meg egy üres karakterlánccal a `name` paraméter nem törli az alapértelmezett érték."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#3](~/add/codesnippet/cpp/m-microsoft.win32.regist_13_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#3](~/add/codesnippet/csharp/m-microsoft.win32.regist_13_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#3](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_13_1.vb)]"
   syntax:
@@ -623,21 +623,21 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to delete."
+      description: "Az érték törlése neve."
   overload: Microsoft.Win32.RegistryKey.DeleteValue*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is not a valid reference to a value."
+    description: "<code>name</code>nincs érvényes hivatkozás egy értéket."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the value."
+    description: "A felhasználó nem rendelkezik a érték törlése szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is read-only."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> alatt választéka csak olvasható."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.DeleteValue(System.String,System.Boolean)
@@ -652,31 +652,31 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Deletes the specified value from this key, and specifies whether an exception is raised if the value is not found."
-  remarks: "If `throwOnMissingValue` is `false`, there is no way to tell if the deletion was successful, without subsequently trying to access the value just deleted. Therefore, use caution when deleting values from the registry in this manner.       On Windows 95, Windows 98, Windows 98 Second Edition, and Windows Millennium Edition, specifying an empty string for the `name` parameter does not delete the default value."
+  summary: "A megadott érték törli ezt a kulcsot, és határozza meg, hogy kivételt jelenik meg, ha az érték nem található."
+  remarks: "Ha `throwOnMissingValue` van `false`, semmilyen módon nem állapítható meg, ha a törlése sikeres volt, ezt követően megpróbált hozzáférni az éppen törölt érték nélkül. Ezért legyen óvatos, értékek ezen a módon kikapcsolja beállításjegyzékből való törlésekor.       A Windows 95/Windows 98, Windows 98 második kiadás és Windows Me, adja meg egy üres karakterlánccal a `name` paraméter nem törli az alapértelmezett érték."
   syntax:
     content: public void DeleteValue (string name, bool throwOnMissingValue);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to delete."
+      description: "Az érték törlése neve."
     - id: throwOnMissingValue
       type: System.Boolean
-      description: "Indicates whether an exception should be raised if the specified value cannot be found. If this argument is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> and the specified value does not exist, an exception is raised. If this argument is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> and the specified value does not exist, no action is taken."
+      description: "Azt jelzi, hogy kivételt kell generál, ha a megadott érték nem található. Ha az argumentum <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> és a megadott érték nem létezik, egy kivétel következik be. Ha az argumentum <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> és a megadott érték nem létezik, semmilyen művelet nem lesz végrehajtva."
   overload: Microsoft.Win32.RegistryKey.DeleteValue*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>name</code> is not a valid reference to a value and <code>throwOnMissingValue</code> is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>nem érvényes hivatkozás egy értéke van, és <code>throwOnMissingValue</code> van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to delete the value."
+    description: "A felhasználó nem rendelkezik a érték törlése szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is read-only."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> alatt választéka csak olvasható."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.Dispose
@@ -691,8 +691,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Releases all resources used by the current instance of the <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> class."
-  remarks: "Call `Dispose` when you are finished using the <xref:Microsoft.Win32.RegistryKey>. The `Dispose` method leaves the <xref:Microsoft.Win32.RegistryKey> in an unusable state. After calling `Dispose`, you must release all references to the <xref:Microsoft.Win32.RegistryKey> so the garbage collector can reclaim the memory that the <xref:Microsoft.Win32.RegistryKey> was occupying.       For more information, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md) and [Implementing a Dispose Method](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  Always call `Dispose` before you release your last reference to the <xref:Microsoft.Win32.RegistryKey>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:Microsoft.Win32.RegistryKey> object&quot;s `Finalize` method."
+  summary: "Feloldja a jelenlegi példány által használt erőforrások a <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> osztály."
+  remarks: "Hívás `Dispose` amikor elkészült, a <xref:Microsoft.Win32.RegistryKey>.</xref:Microsoft.Win32.RegistryKey> használatával A `Dispose` metódus leaves a <xref:Microsoft.Win32.RegistryKey>használhatatlan állapotban.</xref:Microsoft.Win32.RegistryKey> Hívása után `Dispose`, fel kell szabadítania mutató összes hivatkozást az <xref:Microsoft.Win32.RegistryKey>, a szemétgyűjtő is visszaszerezni a memória, amely a <xref:Microsoft.Win32.RegistryKey>lett elfoglaló.</xref:Microsoft.Win32.RegistryKey> </xref:Microsoft.Win32.RegistryKey>       További információkért lásd: [nem felügyelt erőforrások tisztítás](~/add/includes/ajax-current-ext-md.md) és [eldobásakor metódusának](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Mindig hívás `Dispose` az <xref:Microsoft.Win32.RegistryKey>.</xref:Microsoft.Win32.RegistryKey> utolsó referenciaként a engedélyezés előtt Ellenkező esetben az erőforrásoknak nem szabadul szemétgyűjtő hívást csak a <xref:Microsoft.Win32.RegistryKey>objektum `Finalize` metódus.</xref:Microsoft.Win32.RegistryKey>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -712,8 +712,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Writes all the attributes of the specified open registry key into the registry."
-  remarks: "It is not necessary to call `Flush` to write out changes to a key. Registry changes are flushed to disk when the registry uses its lazy flusher. Lazy flushing occurs automatically and regularly after a system-specified time interval. Registry changes are also flushed to disk at system shutdown.       Unlike <xref:Microsoft.Win32.RegistryKey.Close%2A>, the `Flush` function returns only when all the data has been written to the registry.       The `Flush` function might also write out parts of or all of the other keys. Calling this function excessively can have a negative effect on an application&quot;s performance.       An application should only call `Flush` if it must be absolute certain that registry changes are recorded to disk. In general, `Flush` rarely, if ever, need be used."
+  summary: "A megadott nyitott beállításkulcsot összes attribútuma ír a beállításjegyzékbe."
+  remarks: "Nincs szükség a hívás `Flush` írja ki a kulcs módosításait. Beállításjegyzék változásainak a lemezre kiürített vannak a beállításjegyzékben a Lusta ürítőt használja. Lusta kiürítése után kerül sor automatikusan és rendszeresen egy adott rendszer által megadott időintervallumban. Beállításjegyzék változásainak is ki van ürítve, rendszerleállítás lemezre.       Eltérően <xref:Microsoft.Win32.RegistryKey.Close%2A>, a `Flush` függvény által visszaadott csak akkor, ha az adatok van írva a beállításjegyzékben.</xref:Microsoft.Win32.RegistryKey.Close%2A>       A `Flush` függvény előfordulhat, hogy is kiírni a része, vagy az összes többi kulcsának. Ez a függvény hívása túl is negatív hatással az alkalmazás teljesítményére.       Az alkalmazás csak meg kell hívnia `Flush` Ha abszolútnak kell lennie bizonyos beállításjegyzék változásainak tárolja, hogy a lemez. Általában `Flush` ritkán, ha egyáltalán kell használni."
   syntax:
     content: public void Flush ();
     parameters: []
@@ -733,27 +733,27 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a registry key from a specified handle."
+  summary: "Létrehoz egy beállításkulcsot a megadott leíróval."
   syntax:
     content: public static Microsoft.Win32.RegistryKey FromHandle (Microsoft.Win32.SafeHandles.SafeRegistryHandle handle);
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeRegistryHandle
-      description: "The handle to the registry key."
+      description: "A leíró a beállításkulcsot."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "A registry key."
+      description: "Egy beállításkulcs megadásával."
   overload: Microsoft.Win32.RegistryKey.FromHandle*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>handle</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>handle</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to perform this action."
+    description: "A felhasználó nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.FromHandle(Microsoft.Win32.SafeHandles.SafeRegistryHandle,Microsoft.Win32.RegistryView)
@@ -768,34 +768,34 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Creates a registry key from a specified handle and registry view setting."
-  remarks: "The `view` parameter for this method is used in subsequent operations, such as opening subkeys.       If `view` is <xref:Microsoft.Win32.RegistryView> but the machine is running a 32-bit operating system, the returned key will use the <xref:Microsoft.Win32.RegistryView> view."
+  summary: "Létrehoz egy beállításkulcsot a megadott leíró és a beállításjegyzék nézet beállításait."
+  remarks: "A `view` ehhez a metódushoz paraméter van megadva a későbbi műveletek, például a alkulcsok megnyitása.       Ha `view` van <xref:Microsoft.Win32.RegistryView>, de a gép 32 bites operációs rendszert futtat, akkor használja, a visszaadott kulcs a <xref:Microsoft.Win32.RegistryView>nézet.</xref:Microsoft.Win32.RegistryView> </xref:Microsoft.Win32.RegistryView>"
   syntax:
     content: public static Microsoft.Win32.RegistryKey FromHandle (Microsoft.Win32.SafeHandles.SafeRegistryHandle handle, Microsoft.Win32.RegistryView view);
     parameters:
     - id: handle
       type: Microsoft.Win32.SafeHandles.SafeRegistryHandle
-      description: "The handle to the registry key."
+      description: "A leíró a beállításkulcsot."
     - id: view
       type: Microsoft.Win32.RegistryView
-      description: "The registry view to use."
+      description: "A beállításjegyzék nézetet."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "A registry key."
+      description: "Egy beállításkulcs megadásával."
   overload: Microsoft.Win32.RegistryKey.FromHandle*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>view</code> is invalid."
+    description: "<code>view</code>érvénytelen."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>handle</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>handle</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to perform this action."
+    description: "A felhasználó nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetAccessControl
@@ -810,25 +810,25 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Returns the access control security for the current registry key."
-  remarks: "This method overload is equivalent to calling the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%28System.Security.AccessControl.AccessControlSections%29> method overload with the bitwise combination of the following flags: <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, and <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>. You can use that overload to search for other permissions.       The user must have <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> rights to call this method."
+  summary: "A hozzáférés-vezérléssel az aktuális beállításkulcs adja vissza."
+  remarks: "Ez megegyezik hívása a <xref:Microsoft.Win32.RegistryKey.GetAccessControl%28System.Security.AccessControl.AccessControlSections%29>metódus túlterhelés a következő jelzőket bitenkénti kombinációjával: <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, és <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>.</xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> </xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> </xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.GetAccessControl%28System.Security.AccessControl.AccessControlSections%29> Adott túlterhelését használhatja más engedélyek kereséséhez.       A felhasználónak rendelkeznie kell <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>jogosultsága ahhoz, hogy ez a metódus meghívható.</xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>"
   syntax:
     content: public System.Security.AccessControl.RegistrySecurity GetAccessControl ();
     parameters: []
     return:
       type: System.Security.AccessControl.RegistrySecurity
-      description: "An object that describes the access control permissions on the registry key represented by the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref>."
+      description: "A beállításkulcs, az aktuális által képviselt a hozzáférési engedélyek leíró objektum <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref>."
   overload: Microsoft.Win32.RegistryKey.GetAccessControl*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the necessary permissions."
+    description: "A felhasználó nem rendelkezik a szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current key has been deleted."
+    description: "A kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetAccessControl(System.Security.AccessControl.AccessControlSections)
@@ -843,28 +843,28 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Returns the specified sections of the access control security for the current registry key."
-  remarks: "To request the access permissions currently granted to users, specify the bitwise combination of the following flags: <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, and <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>. Alternatively, you can use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl> method overload, which specifies exactly that combination of values.       The user must have <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> rights to call this method."
+  summary: "A hozzáférés-vezérléssel az aktuális beállításkulcs megadott részeit adja vissza."
+  remarks: "Jelenleg a felhasználók számára megadott hozzáférési engedélyeket kér, adja meg a következő jelzőket a tagértékeinek: <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>, és <xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName>.</xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> </xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> </xref:System.Security.AccessControl.AccessControlSections?displayProperty=fullName> Másik lehetőségként használhatja a <xref:Microsoft.Win32.RegistryKey.GetAccessControl>metódus túlterhelési, amely azt adja meg pontosan a értékkombináció-készletét.</xref:Microsoft.Win32.RegistryKey.GetAccessControl>       A felhasználónak rendelkeznie kell <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>jogosultsága ahhoz, hogy ez a metódus meghívható.</xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>"
   syntax:
     content: public System.Security.AccessControl.RegistrySecurity GetAccessControl (System.Security.AccessControl.AccessControlSections includeSections);
     parameters:
     - id: includeSections
       type: System.Security.AccessControl.AccessControlSections
-      description: "A bitwise combination of enumeration values that specifies the type of security information to get."
+      description: "Tagértékeinek számbavételi érték, amely meghatározza, milyen típusú biztonsági információk eléréséhez."
     return:
       type: System.Security.AccessControl.RegistrySecurity
-      description: "An object that describes the access control permissions on the registry key represented by the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref>."
+      description: "A beállításkulcs, az aktuális által képviselt a hozzáférési engedélyek leíró objektum <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref>."
   overload: Microsoft.Win32.RegistryKey.GetAccessControl*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the necessary permissions."
+    description: "A felhasználó nem rendelkezik a szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The current key has been deleted."
+    description: "A kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetSubKeyNames
@@ -879,8 +879,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves an array of strings that contains all the subkey names."
-  remarks: "This method does not recursively find names. It returns the names on the base level from which it was called."
+  summary: "Lekéri a karakterlánctömbnek, amely tartalmazza az összes alkulcs nevét."
+  remarks: "Ez a módszer nem rekurzív módon karakterlánccal végzi. Hívása történt talál szint nevét adja vissza."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/cpp/m-microsoft.win32.regist_7_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/csharp/m-microsoft.win32.regist_7_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_7_1.vb)]"
   syntax:
@@ -888,21 +888,21 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "An array of strings that contains the names of the subkeys for the current key."
+      description: "Az aktuális kulcs az alkulcsok nevét tartalmazó karakterláncokból álló tömb."
   overload: Microsoft.Win32.RegistryKey.GetSubKeyNames*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the key."
+    description: "A felhasználó nem rendelkezik a kulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A system error occurred, for example the current key has been deleted."
+    description: "Rendszerhiba történt, például a kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetValue(System.String)
@@ -917,8 +917,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the value associated with the specified name. Returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the name/value pair does not exist in the registry."
-  remarks: "> [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To retrieve this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.       When the GetValue method retrieves expandable string values (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), it expands environment strings using data from the local environment. To retrieve expandable string values from the registry on a remote computer, use the <xref:Microsoft.Win32.RegistryKey.GetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueOptions%29> method overload to specify that you do not want environment strings expanded.      > [!NOTE] >  If a value containing expandable references to environment variables has been stored as a string (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), rather than as an expandable string (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), GetValue does not expand it. You can expand such a string after it has been retrieved by calling the <xref:System.Environment.ExpandEnvironmentVariables%2A> method.      > [!NOTE] >  The recommended way to retrieve data from the <xref:Microsoft.Win32.Registry.PerformanceData> key is to use the <xref:System.Diagnostics.PerformanceCounter> class rather than the <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName> method.   >    >  GetValue does not support reading values of type REG_NONE or REG_LINK.  In both cases, the default value (`null`) is returned instead of the actual value."
+  summary: "A megadott névhez társított értékét kérdezi le. Beolvasása <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a név-érték pár nem létezik a beállításjegyzékben."
+  remarks: "> [!NOTE]> Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. Ez a név nélküli érték beolvasása, adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.       Ha a GetValue metódus lekéri bővíthető karakterlánc-értékek (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), a helyi környezet adatait használó környezetben karakterláncok bővíti.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> A beállításkulcs egy távoli számítógépen bővíthető karakterlánc-értékek lekéréséhez használja a <xref:Microsoft.Win32.RegistryKey.GetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueOptions%29>metódus túlterhelési azt nem szeretné, hogy környezeti karakterláncok kibontva.</xref:Microsoft.Win32.RegistryKey.GetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueOptions%29>      > [!NOTE] > Ha környezeti változók bővíthető hivatkozásokat tartalmazó érték tárolt karakterláncként (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), nem pedig egy bővíthető karakterlánccal (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), GetValue nem bővíti ki azt.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> Miután lekérte meghívásával ilyen karakterlánc bővítheti a <xref:System.Environment.ExpandEnvironmentVariables%2A>metódus.</xref:System.Environment.ExpandEnvironmentVariables%2A>      > [!NOTE] > Az ajánlott módszer az adatok beolvasása a <xref:Microsoft.Win32.Registry.PerformanceData>Fontos, hogy használja a <xref:System.Diagnostics.PerformanceCounter>osztály helyett a <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName>metódus.</xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName> </xref:System.Diagnostics.PerformanceCounter> </xref:Microsoft.Win32.Registry.PerformanceData>   >> GetValue nem támogatja az olvasást a következő típus értékeit REG_NONE vagy REG_LINK.  Mindkét esetben az alapértelmezett érték (`null`) helyett a tényleges értéket ad vissza."
   example:
   - "The following code example creates a test key and adds values of different data types to the key. The example then reads the name/value pairs and displays them to the console, using the <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A> method to retrieve the corresponding registry data types.  \n  \n [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_3_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_3_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_3_1.vb)]"
   syntax:
@@ -926,24 +926,24 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to retrieve. This string is not case-sensitive."
+      description: "A beolvasandó értékének nevét. Ez a karakterlánc nincs kis-és nagybetűket."
     return:
       type: System.Object
-      description: "The value associated with <code>name</code>, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if <code>name</code> is not found."
+      description: "A társított érték <code> name </code>, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha <code> name </code> nem található."
   overload: Microsoft.Win32.RegistryKey.GetValue*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value has been marked for deletion."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték van jelölve törlésre."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetValue(System.String,System.Object)
@@ -958,8 +958,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the value associated with the specified name. If the name is not found, returns the default value that you provide."
-  remarks: "Use this overload of <xref:Microsoft.Win32.RegistryKey.GetValue%2A> to handle the case where a name does not exist yet — for example, the first time your application is run. Whenever you call this overload, use the `defaultValue` parameter to specify the value to return if `name` does not exist.      > [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To retrieve this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.       When the <xref:Microsoft.Win32.RegistryKey.GetValue%2A> method retrieves expandable string values (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), it expands environment strings using data from the local environment. To retrieve expandable string values from the registry on a remote computer, use the <xref:Microsoft.Win32.RegistryKey.GetValue%2A> overload to specify that you do not want environment strings expanded.      > [!NOTE] >  If a value containing expandable references to environment variables has been stored as a string (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), rather than as an expandable string (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), the <xref:Microsoft.Win32.RegistryKey.GetValue%2A> method does not expand it. You can expand such a string after it has been retrieved by calling the <xref:System.Environment.ExpandEnvironmentVariables%2A> method.      > [!NOTE] >  The recommended way to retrieve data from the <xref:Microsoft.Win32.Registry.PerformanceData> key is to use the <xref:System.Diagnostics.PerformanceCounter> class rather than the <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName> method.   >    >  GetValue does not support reading values of type REG_NONE or REG_LINK.  In both cases, the default value (`null`) is returned instead of the actual value."
+  summary: "A megadott névhez társított értékét kérdezi le. Ha a név nem található, Ön által biztosított alapértelmezett értékét adja vissza."
+  remarks: "Használja a túlterhelése <xref:Microsoft.Win32.RegistryKey.GetValue%2A>az esetet, ahol a név nem létezik még kezelésére – például az első futtatásakor az alkalmazás.</xref:Microsoft.Win32.RegistryKey.GetValue%2A> Ha felhívja a túlterhelési, használja a `defaultValue` paraméterrel adhatja meg a visszatérési érték, ha `name` nem létezik.      > [!NOTE] > Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. Ez a név nélküli érték beolvasása, adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.       Ha a <xref:Microsoft.Win32.RegistryKey.GetValue%2A>metódus lekéri bővíthető karakterlánc-értékek (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), a helyi környezet adatait használó környezetben karakterláncok bővíti.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.GetValue%2A> A beállításkulcs egy távoli számítógépen bővíthető karakterlánc-értékek lekéréséhez használja a <xref:Microsoft.Win32.RegistryKey.GetValue%2A>túlterhelési azt nem szeretné, hogy környezeti karakterláncok kibontva.</xref:Microsoft.Win32.RegistryKey.GetValue%2A>      > [!NOTE] > Ha környezeti változók bővíthető hivatkozásokat tartalmazó érték tárolt karakterláncként (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), nem pedig egy bővíthető karakterlánccal (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), a <xref:Microsoft.Win32.RegistryKey.GetValue%2A>metódus nem bővíti ki azt.</xref:Microsoft.Win32.RegistryKey.GetValue%2A> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> Miután lekérte meghívásával ilyen karakterlánc bővítheti a <xref:System.Environment.ExpandEnvironmentVariables%2A>metódus.</xref:System.Environment.ExpandEnvironmentVariables%2A>      > [!NOTE] > Az ajánlott módszer az adatok beolvasása a <xref:Microsoft.Win32.Registry.PerformanceData>Fontos, hogy használja a <xref:System.Diagnostics.PerformanceCounter>osztály helyett a <xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName>metódus.</xref:Microsoft.Win32.RegistryKey.GetValue%2A?displayProperty=fullName> </xref:System.Diagnostics.PerformanceCounter> </xref:Microsoft.Win32.Registry.PerformanceData>   >> GetValue nem támogatja az olvasást a következő típus értékeit REG_NONE vagy REG_LINK.  Mindkét esetben az alapértelmezett érték (`null`) helyett a tényleges értéket ad vissza."
   example:
   - "The following code example creates a test key with a value and retrieves that value. The example then attempts to retrieve a nonexistent value from the key; in this case the GetValue method returns the specified default value.  \n  \n [!code-cs[Classic RegistryKey.GetValue Example#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_6_1.cs)]\n [!code-cpp[Classic RegistryKey.GetValue Example#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_6_1.cpp)]\n [!code-vb[Classic RegistryKey.GetValue Example#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_6_1.vb)]"
   syntax:
@@ -967,27 +967,27 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to retrieve. This string is not case-sensitive."
+      description: "A beolvasandó értékének nevét. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: defaultValue
       type: System.Object
-      description: "The value to return if `name` does not exist."
+      description: "A visszatérési érték, ha `name` nem létezik."
     return:
       type: System.Object
-      description: "The value associated with <code>name</code>, with any embedded environment variables left unexpanded, or <code>defaultValue</code> if <code>name</code> is not found."
+      description: "A társított érték <code> name </code>, az összes beágyazott a környezeti változók balra alakban, vagy <code> defaultValue </code> Ha <code> name </code> nem található."
   overload: Microsoft.Win32.RegistryKey.GetValue*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value has been marked for deletion."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték van jelölve törlésre."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetValue(System.String,System.Object,Microsoft.Win32.RegistryValueOptions)
@@ -1002,8 +1002,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the value associated with the specified name and retrieval options. If the name is not found, returns the default value that you provide."
-  remarks: "Use this overload to specify special processing of the retrieved value. For example, you can specify <xref:Microsoft.Win32.RegistryValueOptions?displayProperty=fullName> when retrieving a registry value of type <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> to retrieve the string without expanding embedded environment variables.       Use the `defaultValue` parameter to specify the value to return if `name` does not exist.      > [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To retrieve this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.   >    >  GetValue does not support reading values of type REG_NONE or REG_LINK.  In both cases, the default value (`null`) is returned instead of the actual value."
+  summary: "A megadott név és lekérése beállítások társított értékét kérdezi le. Ha a név nem található, Ön által biztosított alapértelmezett értékét adja vissza."
+  remarks: "Ez túlterhelés használatával adja meg az érték különleges feldolgozása. Például megadhatja <xref:Microsoft.Win32.RegistryValueOptions?displayProperty=fullName>típusú beállításazonosítót beolvasásakor <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>kiterjesztése nélkül a karakterlánc lekéréséhez a környezeti változók beágyazott.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryValueOptions?displayProperty=fullName>       Használja a `defaultValue` paraméterrel adhatja meg a visszatérési érték, ha `name` nem létezik.      > [!NOTE] > Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. Ez a név nélküli érték beolvasása, adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.   >> GetValue nem támogatja az olvasást a következő típus értékeit REG_NONE vagy REG_LINK.  Mindkét esetben az alapértelmezett érték (`null`) helyett a tényleges értéket ad vissza."
   example:
   - "The following code sample creates a test key, adds a value with an embedded environment variable, and retrieves the value in both expanded and unexpanded forms.  \n  \n [!code-cs[RegistryValueOptions#1](~/add/codesnippet/csharp/0ecb41d1-0eb1-4d34-96b2-_1.cs)]\n [!code-cpp[RegistryValueOptions#1](~/add/codesnippet/cpp/0ecb41d1-0eb1-4d34-96b2-_1.cpp)]\n [!code-vb[RegistryValueOptions#1](~/add/codesnippet/visualbasic/0ecb41d1-0eb1-4d34-96b2-_1.vb)]"
   syntax:
@@ -1011,33 +1011,33 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to retrieve. This string is not case-sensitive."
+      description: "A beolvasandó értékének nevét. Ez a karakterlánc nincs kis-és nagybetűket."
     - id: defaultValue
       type: System.Object
-      description: "The value to return if `name` does not exist."
+      description: "A visszatérési érték, ha `name` nem létezik."
     - id: options
       type: Microsoft.Win32.RegistryValueOptions
-      description: "One of the enumeration values that specifies optional processing of the retrieved value."
+      description: "Az egyik a számbavételi érték, amely meghatározza a érték választható feldolgozását."
     return:
       type: System.Object
-      description: "The value associated with <code>name</code>, processed according to the specified <code>options</code>, or <code>defaultValue</code> if <code>name</code> is not found."
+      description: "A társított érték <code> name </code>, a megadott megfelelően feldolgozott <code> options </code>, vagy <code> defaultValue </code> Ha <code> name </code> nem található."
   overload: Microsoft.Win32.RegistryKey.GetValue*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value has been marked for deletion."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték van jelölve törlésre."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>options</code> is not a valid <xref href=&quot;Microsoft.Win32.RegistryValueOptions&quot;></xref> value; for example, an invalid value is cast to <xref href=&quot;Microsoft.Win32.RegistryValueOptions&quot;></xref>."
+    description: "<code>options</code>Érvénytelen <xref href=&quot;Microsoft.Win32.RegistryValueOptions&quot;> </xref> például érvénytelen érték típusúvá; értékének <xref href=&quot;Microsoft.Win32.RegistryValueOptions&quot;> </xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetValueKind(System.String)
@@ -1052,8 +1052,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the registry data type of the value associated with the specified name."
-  remarks: "> [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To retrieve the registry data type of this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.       For a description of supported registry data types, please see the <xref:Microsoft.Win32.RegistryValueKind> enumeration."
+  summary: "Lekérdezi a megadott nevű tartozó értéknek beállításjegyzék-adatok típusa."
+  remarks: "> [!NOTE]> Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. A beállításjegyzék adattípusát Ez névtelen érték beolvasása, adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.       A beállításjegyzék támogatott leírását lásd: a <xref:Microsoft.Win32.RegistryValueKind>számbavételi.</xref:Microsoft.Win32.RegistryValueKind>"
   example:
   - "The following code example creates a test key and adds values of different data types to the key. The example then reads the name/value pairs and displays them to the console, using the GetValueKind method to retrieve the corresponding registry data types.  \n  \n [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_0_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_0_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_0_1.vb)]"
   syntax:
@@ -1061,24 +1061,24 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value whose registry data type is to be retrieved. This string is not case-sensitive."
+      description: "A beállításjegyzék adatainak típusú értékek kérhető neve. Ez a karakterlánc nincs kis-és nagybetűket."
     return:
       type: Microsoft.Win32.RegistryValueKind
-      description: "The registry data type of the value associated with <code>name</code>."
+      description: "A beállításjegyzék adattípusa társított értéket <code> name </code>."
   overload: Microsoft.Win32.RegistryKey.GetValueKind*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The subkey that contains the specified value does not exist.       -or-       The name/value pair specified by <code>name</code> does not exist.       This exception is not thrown on Windows 95, Windows 98, or Windows Millennium Edition."
+    description: "A kulcs, amely tartalmazza a megadott érték nem létezik.       – vagy – a megadott név-érték pár <code> name </code> nem létezik.       Ez a kivétel a Windows 95, a Windows 98 vagy a Windows Me nem vált ki."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.GetValueNames
@@ -1093,8 +1093,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves an array of strings that contains all the value names associated with this key."
-  remarks: "If no value names for the key are found, an empty array is returned.       A registry key can have a default value — that is, a name/value pair in which the name is the empty string (&quot;&quot;). If a default value has been set for a registry key, the array returned by the GetValueNames method includes the empty string."
+  summary: "Lekéri a karakterláncok tömbje, amely a kulcshoz tartozó értékneveket tartalmaz."
+  remarks: "Ha nincs érték neve: a találhatók, üres tömböt ad vissza.       A beállításkulcs alapértelmezett értéke lehet – ez azt jelenti, hogy egy név-érték pár, amelyben a értéke üres karakterlánc (&quot;&quot;). Ha egy beállításkulcs alapértelmezett értéke van beállítva, a GetValueNames metódus által visszaadott tömb tartalmazza az üres karakterlánc."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/cpp/m-microsoft.win32.regist_2_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/csharp/m-microsoft.win32.regist_2_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_2_1.vb)]"
   syntax:
@@ -1102,21 +1102,21 @@ items:
     parameters: []
     return:
       type: System.String[]
-      description: "An array of strings that contains the value names for the current key."
+      description: "A következő kulcs értékeinek neve az aktuális tartalmazó karakterláncokból álló tömb."
   overload: Microsoft.Win32.RegistryKey.GetValueNames*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read from the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A system error occurred; for example, the current key has been deleted."
+    description: "Rendszerhiba történt; például a kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.Handle
@@ -1131,26 +1131,26 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Gets a <xref href=&quot;Microsoft.Win32.SafeHandles.SafeRegistryHandle&quot;></xref> object that represents the registry key that the current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object encapsulates."
+  summary: "Lekérdezi a <xref href=&quot;Microsoft.Win32.SafeHandles.SafeRegistryHandle&quot;> </xref> a beállításjegyzék képviselő objektum kulcs, amely az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum magában foglalja."
   syntax:
     content: public Microsoft.Win32.SafeHandles.SafeRegistryHandle Handle { get; }
     return:
       type: Microsoft.Win32.SafeHandles.SafeRegistryHandle
-      description: "The handle to the registry key."
+      description: "A leíró a beállításkulcsot."
   overload: Microsoft.Win32.RegistryKey.Handle*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The registry key is closed. Closed keys cannot be accessed."
+    description: "A beállításkulcs le van zárva. Lezárt kulcsok nem érhetők el."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A system error occurred, such as deletion of the current key."
+    description: "Rendszerhiba történt, például az aktuális kulcs törlése."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read the key."
+    description: "A felhasználó nem rendelkezik a kulcs olvasásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.Name
@@ -1165,20 +1165,20 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the name of the key."
-  remarks: "The name of the key includes the absolute path of this key in the registry, always starting at a base key, for example, HKEY_LOCAL_MACHINE."
+  summary: "Lekéri a kulcs neve."
+  remarks: "A kulcs nevét a beállításjegyzékben, mindig kezdve egy alap kulcs, például HKEY_LOCAL_MACHINE ennek a kulcsnak az abszolút elérési út tartalmazza."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/cpp/p-microsoft.win32.regist_0_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/csharp/p-microsoft.win32.regist_0_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/visualbasic/p-microsoft.win32.regist_0_1.vb)]"
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The absolute (qualified) name of the key."
+      description: "A kulcs abszolút (minősített) nevét."
   overload: Microsoft.Win32.RegistryKey.Name*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive,Microsoft.Win32.RegistryView)
@@ -1193,30 +1193,30 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Opens a new <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that represents the requested key on the local machine with the specified view."
+  summary: "Megnyílik egy új <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely jelzi, hogy a megadott nézet a helyi gépen kért kulcs."
   syntax:
     content: public static Microsoft.Win32.RegistryKey OpenBaseKey (Microsoft.Win32.RegistryHive hKey, Microsoft.Win32.RegistryView view);
     parameters:
     - id: hKey
       type: Microsoft.Win32.RegistryHive
-      description: "The HKEY to open."
+      description: "A HKEY megnyitásához."
     - id: view
       type: Microsoft.Win32.RegistryView
-      description: "The registry view to use."
+      description: "A beállításjegyzék nézetet."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The requested registry key."
+      description: "A kért beállításkulcsot."
   overload: Microsoft.Win32.RegistryKey.OpenBaseKey*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>hKey</code> or <code>view</code> is invalid."
+    description: "<code>hKey</code>vagy <code>view</code> érvénytelen."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to perform this action."
+    description: "A felhasználó nem rendelkezik a művelet végrehajtásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenRemoteBaseKey(Microsoft.Win32.RegistryHive,System.String)
@@ -1231,8 +1231,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Opens a new <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that represents the requested key on a remote machine."
-  remarks: "The local machine registry is opened if `machineName` is <xref:System.String?displayProperty=fullName>. The requested key must be a root key on the remote machine, and is identified by the appropriate <xref:Microsoft.Win32.RegistryHive> value.       In order for a key to be opened remotely, both the server and client machines must be running the remote registry service, and have remote administration enabled."
+  summary: "Megnyílik egy új <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely jelzi, hogy a kért kulcs egy távoli számítógépen."
+  remarks: "A helyi gép beállításjegyzékéből meg van nyitva, ha `machineName` <xref:System.String?displayProperty=fullName>.</xref:System.String?displayProperty=fullName> A kért kulcs egy legfelső szintű kulcsot a távoli számítógépen kell lennie, és a megfelelő azonosíthatók <xref:Microsoft.Win32.RegistryHive>érték.</xref:Microsoft.Win32.RegistryHive>       Ahhoz, hogy távolról kell megnyitni a kulcsot a kiszolgáló és az ügyfél gépek kell a távoli beállításjegyzék szolgáltatás fut, és a távoli felügyelet engedélyezve van."
   example:
   - "The following code example shows how to open a registry key on a remote computer and enumerate the values of the key. The remote computer must be running the remote registry service. Specify the name of the remote computer as a command-line argument when invoking the program.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey.OpenRemoteBaseKey#1](~/add/codesnippet/cpp/e08e963c-edd7-45e7-b967-_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey.OpenRemoteBaseKey#1](~/add/codesnippet/csharp/e08e963c-edd7-45e7-b967-_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey.OpenRemoteBaseKey#1](~/add/codesnippet/visualbasic/e08e963c-edd7-45e7-b967-_1.vb)]"
   syntax:
@@ -1240,30 +1240,30 @@ items:
     parameters:
     - id: hKey
       type: Microsoft.Win32.RegistryHive
-      description: "The HKEY to open, from the <xref href=&quot;Microsoft.Win32.RegistryHive&quot;></xref> enumeration."
+      description: "A HKEY megnyitásához a a <xref href=&quot;Microsoft.Win32.RegistryHive&quot;> </xref> enumerálása."
     - id: machineName
       type: System.String
-      description: "The remote machine."
+      description: "A távoli számítógépen."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The requested registry key."
+      description: "A kért beállításkulcsot."
   overload: Microsoft.Win32.RegistryKey.OpenRemoteBaseKey*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>hKey</code> is invalid."
+    description: "<code>hKey</code>érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "<code>machineName</code> is not found."
+    description: "<code>machineName</code>nem található."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>machineName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>machineName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the proper permissions to perform this operation."
+    description: "A felhasználó nem rendelkezik a megfelelő engedélyekkel e művelet elvégzéséhez."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenRemoteBaseKey(Microsoft.Win32.RegistryHive,System.String,Microsoft.Win32.RegistryView)
@@ -1278,40 +1278,40 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Opens a new registry key that represents the requested key on a remote machine with the specified view."
-  remarks: "The local machine registry is opened if `machineName` is <xref:System.String?displayProperty=fullName>. The requested key must be a root key on the remote machine, and is identified by the appropriate <xref:Microsoft.Win32.RegistryHive> value.       In order for a key to be opened remotely, both the server and client machines must be running the remote registry service, and have remote administration enabled.       On the 64-bit versions of Windows, portions of the registry are stored separately for 32-bit and 64-bit applications. There is a 32-bit view for 32-bit applications and a 64-bit view for 64-bit applications. If `view` is <xref:Microsoft.Win32.RegistryView> but the remote machine is running a 32-bit operating system, the returned key will use the <xref:Microsoft.Win32.RegistryView> view."
+  summary: "Megnyílik egy új beállításkulcs, amely a megadott nézet egy távoli számítógéphez a kért kulcsot jelöl."
+  remarks: "A helyi gép beállításjegyzékéből meg van nyitva, ha `machineName` <xref:System.String?displayProperty=fullName>.</xref:System.String?displayProperty=fullName> A kért kulcs egy legfelső szintű kulcsot a távoli számítógépen kell lennie, és a megfelelő azonosíthatók <xref:Microsoft.Win32.RegistryHive>érték.</xref:Microsoft.Win32.RegistryHive>       Ahhoz, hogy távolról kell megnyitni a kulcsot a kiszolgáló és az ügyfél gépek kell a távoli beállításjegyzék szolgáltatás fut, és a távoli felügyelet engedélyezve van.       A Windows 64 bites verzióján a beállításjegyzék részeit tárolódnak a 32 bites és 64 bites alkalmazások. Egy 32 bites 32 bites alkalmazások és a 64 bites nézetben 64 bites alkalmazáshoz van. Ha `view` van <xref:Microsoft.Win32.RegistryView>, de a távoli gép 32 bites operációs rendszert futtat, akkor használja, a visszaadott kulcs a <xref:Microsoft.Win32.RegistryView>nézet.</xref:Microsoft.Win32.RegistryView> </xref:Microsoft.Win32.RegistryView>"
   syntax:
     content: public static Microsoft.Win32.RegistryKey OpenRemoteBaseKey (Microsoft.Win32.RegistryHive hKey, string machineName, Microsoft.Win32.RegistryView view);
     parameters:
     - id: hKey
       type: Microsoft.Win32.RegistryHive
-      description: "The HKEY to open from the <xref href=&quot;Microsoft.Win32.RegistryHive&quot;></xref> enumeration.."
+      description: "A HKEY megnyitása a <xref href=&quot;Microsoft.Win32.RegistryHive&quot;> </xref> számbavételi..."
     - id: machineName
       type: System.String
-      description: "The remote machine."
+      description: "A távoli számítógépen."
     - id: view
       type: Microsoft.Win32.RegistryView
-      description: "The registry view to use."
+      description: "A beállításjegyzék nézetet."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The requested registry key."
+      description: "A kért beállításkulcsot."
   overload: Microsoft.Win32.RegistryKey.OpenRemoteBaseKey*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>hKey</code> or <code>view</code> is invalid."
+    description: "<code>hKey</code>vagy <code>view</code> érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "<code>machineName</code> is not found."
+    description: "<code>machineName</code>nem található."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>machineName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>machineName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the required permissions to perform this operation."
+    description: "A felhasználó rendelkezik a művelet végrehajtásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String)
@@ -1326,8 +1326,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves a subkey as read-only."
-  remarks: "You must open a key before it can be manipulated with other methods and properties. To modify a key, you must open it with an overload of the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method that allows you to specify write access, such as the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CMicrosoft.Win32.RegistryKeyPermissionCheck%29> overload or the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CSystem.Boolean%29> overload.       If the specified subkey cannot be found, then `null` is returned.       In order to use the OpenSubKey method, you must have an instance of <xref:Microsoft.Win32.RegistryKey>. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use the one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Lekéri a kulcsot csak olvasásra."
+  remarks: "Meg kell nyitnia egy kulcs, előtt az egyéb módszerek és a Tulajdonságok kezelhetők. A kulcs módosításához nyissa meg a egy túlterheléssel a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, amely lehetővé teszi, hogy adja meg az írási hozzáférés, például a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CMicrosoft.Win32.RegistryKeyPermissionCheck%29>túlterhelés vagy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CSystem.Boolean%29>túlterhelés.</xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CSystem.Boolean%29> </xref:Microsoft.Win32.RegistryKey.OpenSubKey%28System.String%2CMicrosoft.Win32.RegistryKeyPermissionCheck%29> </xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>       Ha a megadott kulcs nem található, majd `null` adja vissza.       A OpenSubKey módszert használja, <xref:Microsoft.Win32.RegistryKey>.</xref:Microsoft.Win32.RegistryKey> példányának kell lennie A beolvasandó <xref:Microsoft.Win32.RegistryKey>, használja a statikus tagja az <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> </xref:Microsoft.Win32.RegistryKey> példánya"
   example:
   - "The following code example creates a test key and uses the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method to open it, demonstrating both overloads of the method.  \n  \n [!code-cs[RegistryKey.OpenSubKey#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_11_1.cs)]\n [!code-vb[RegistryKey.OpenSubKey#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_11_1.vb)]\n [!code-cpp[RegistryKey.OpenSubKey#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_11_1.cpp)]"
   syntax:
@@ -1335,21 +1335,21 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name or path of the subkey to open as read-only."
+      description: "A neve vagy elérési útja csak olvasásra megnyitni a kulcsot."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The subkey requested, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "A kért, alkulcs vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.OpenSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
+    description: "<code>name</code>van<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck)
@@ -1364,8 +1364,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the specified subkey for read or read/write access."
-  remarks: "Rather than throwing an exception, this method returns `null` if the requested key does not exist.       If `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for reading and writing; if `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> or <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for reading unless the parent key was opened with <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>.       In order to use the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Lekéri a megadott alkulcs olvasási vagy olvasási/írási hozzáférést."
+  remarks: "Ahelyett, hogy egy kivétel kiváltása, ez a metódus visszaadja `null` Ha a kért kulcs nem létezik.       Ha `permissionCheck` van <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcsát megnyitni olvasásra és írásra; Ha `permissionCheck` vagy <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcs olvasásra van megnyitva, kivéve, ha a szülő kulcs lett megnyitva <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>.</xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>       Ahhoz, hogy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, rendelkeznie kell az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> példánya</xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   example:
   - "The following code example creates a subkey containing 100 key/value pairs and closes it. The example opens the subkey with <xref:Microsoft.Win32.RegistryKeyPermissionCheck>, records the time it takes to read all the values, and closes the subkey. The example opens the subkey with <xref:Microsoft.Win32.RegistryKeyPermissionCheck> and records the time it takes to read all the values. Finally, the example computes and displays the percentage improvement.  \n  \n [!code-cs[RegistryKey.OpenSubKey_PermCheck#1](~/add/codesnippet/csharp/1404fbf5-0fde-46f3-9877-_1.cs)]\n [!code-vb[RegistryKey.OpenSubKey_PermCheck#1](~/add/codesnippet/visualbasic/1404fbf5-0fde-46f3-9877-_1.vb)]"
   syntax:
@@ -1373,27 +1373,27 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name or path of the subkey to create or open."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The subkey requested, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "A kért, alkulcs vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.OpenSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
+    description: "<code>name</code>van<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>permissionCheck</code> contains an invalid value."
+    description: "<code>permissionCheck</code>Érvénytelen értéket tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to read the registry key."
+    description: "A felhasználó nem rendelkezik a beállításkulcs olvasásához szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Boolean)
@@ -1408,8 +1408,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves a specified subkey, and specifies whether write access is to be applied to the key."
-  remarks: "If the requested key does not exist, this method returns `null` instead of throwing an exception.       If `writable` is `true`, the key will be opened for reading and writing, otherwise, the key will be opened as read-only.       In order to use the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> method. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Lekéri egy adott alkulcs, és megadja, hogy van-e írási hozzáférést a kulcs alkalmazandó."
+  remarks: "Ha a kért kulcs nem létezik, ez a metódus visszaadja `null` helyett egy kivétel kiváltása.       Ha `writable` van `true`, a kulcs fogja megnyitni olvasásra és írásra, ellenkező esetben a kulcsot fogja megnyitni csak olvasható.       Ahhoz, hogy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, rendelkeznie kell egy példányát a <xref:Microsoft.Win32.RegistryKey>metódus.</xref:Microsoft.Win32.RegistryKey> </xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   example:
   - "The following code example creates a test key and uses the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method to open it, demonstrating both overloads of the method.  \n  \n [!code-cs[RegistryKey.OpenSubKey#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_1_1.cs)]\n [!code-vb[RegistryKey.OpenSubKey#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_1_1.vb)]\n [!code-cpp[RegistryKey.OpenSubKey#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_1_1.cpp)]"
   syntax:
@@ -1417,24 +1417,24 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "Name or path of the subkey to open."
+      description: "Neve vagy elérési útja az alkulcs megnyitásához."
     - id: writable
       type: System.Boolean
-      description: "Set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if you need write access to the key."
+      description: "Beállítása <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> Ha írási hozzáférést a kulcs van szüksége."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The subkey requested, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "A kért, alkulcs vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.OpenSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to access the registry key in the specified mode."
+    description: "A felhasználó nem rendelkezik a beállításkulcs a megadott módban eléréséhez szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String,System.Security.AccessControl.RegistryRights)
@@ -1449,31 +1449,31 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves a subkey with the specified name and .       Available starting in [!INCLUDE[net_2015](~/add/includes/net-2015-md.md)]"
-  remarks: "You must open a key before it can be manipulated with other methods and properties. To modify a key, you must open it with an overload of the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method that allows you to specify write access."
+  summary: "Lekéri a megadott nevű alkulcs és.       Rendelkezésre álló kezdődően[!INCLUDE[net_2015](~/add/includes/net-2015-md.md)]"
+  remarks: "Meg kell nyitnia egy kulcs, előtt az egyéb módszerek és a Tulajdonságok kezelhetők. A kulcs módosításához nyissa meg a egy túlterheléssel a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>módszer, amelynek megadhatja az írási hozzáférést.</xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>"
   syntax:
     content: public Microsoft.Win32.RegistryKey OpenSubKey (string name, System.Security.AccessControl.RegistryRights rights);
     parameters:
     - id: name
       type: System.String
-      description: "The name or path of the subkey to create or open."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni."
     - id: rights
       type: System.Security.AccessControl.RegistryRights
-      description: "The rights for the registry key."
+      description: "A beállításkulcs vonatkozó jogosultságokat."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The subkey requested, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "A kért, alkulcs vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.OpenSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to access the registry key in the specified mode."
+    description: "A felhasználó nem rendelkezik a beállításkulcs a megadott módban eléréséhez szükséges engedélyekkel."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.OpenSubKey(System.String,Microsoft.Win32.RegistryKeyPermissionCheck,System.Security.AccessControl.RegistryRights)
@@ -1488,37 +1488,37 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the specified subkey for read or read/write access, requesting the specified access rights."
-  remarks: "Rather than throwing an exception, this method returns `null` if the requested key does not exist.       If `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for reading and writing; if `permissionCheck` is <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> or <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, the key is opened for reading unless the parent key was opened with <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>.       The access specified for `permissionCheck` takes precedence over the access specified for `rights`. For example, if you specify <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> for `permissionCheck` and <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> for `rights`, an attempt to write to the subkey throws an exception.       In order to use the <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> method, you must have an instance of the <xref:Microsoft.Win32.RegistryKey> class. To get an instance of <xref:Microsoft.Win32.RegistryKey>, use one of the static members of the <xref:Microsoft.Win32.Registry> class."
+  summary: "Lekéri a megadott alkulcs olvasási vagy olvasási/írási hozzáférés, a megadott hozzáférési jogosultsága a kért."
+  remarks: "Ahelyett, hogy egy kivétel kiváltása, ez a metódus visszaadja `null` Ha a kért kulcs nem létezik.       Ha `permissionCheck` van <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcsát megnyitni olvasásra és írásra; Ha `permissionCheck` vagy <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>, a kulcs olvasásra van megnyitva, kivéve, ha a szülő kulcs lett megnyitva <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>.</xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>       A megadott hozzáférési `permissionCheck` elsőbbséget élvez a számára megadott hozzáférési `rights`. Például, ha a megadott <xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>a `permissionCheck` és <xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName>a `rights`, a kulcsot tett kísérlet kivételt jelez.</xref:System.Security.AccessControl.RegistryRights?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKeyPermissionCheck?displayProperty=fullName>       Ahhoz, hogy a <xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A>metódus, rendelkeznie kell az <xref:Microsoft.Win32.RegistryKey>osztály</xref:Microsoft.Win32.RegistryKey> példánya</xref:Microsoft.Win32.RegistryKey.OpenSubKey%2A> <xref:Microsoft.Win32.RegistryKey>Egy <xref:Microsoft.Win32.Registry>osztály</xref:Microsoft.Win32.Registry> statikus tagja használja</xref:Microsoft.Win32.RegistryKey> példányának eléréséhez"
   syntax:
     content: public Microsoft.Win32.RegistryKey OpenSubKey (string name, Microsoft.Win32.RegistryKeyPermissionCheck permissionCheck, System.Security.AccessControl.RegistryRights rights);
     parameters:
     - id: name
       type: System.String
-      description: "The name or path of the subkey to create or open."
+      description: "A neve vagy elérési útja az alkulcs létrehozni vagy megnyitni."
     - id: permissionCheck
       type: Microsoft.Win32.RegistryKeyPermissionCheck
-      description: "One of the enumeration values that specifies whether the key is opened for read or read/write access."
+      description: "Számbavételi érték, amely meghatározza, hogy a kulcs olvasásra való megnyitásakor vagy olvasási/írási hozzáférést."
     - id: rights
       type: System.Security.AccessControl.RegistryRights
-      description: "A bitwise combination of enumeration values that specifies the desired security access."
+      description: "Tagértékeinek számbavételi érték, amely meghatározza a kívánt biztonsági hozzáférést."
     return:
       type: Microsoft.Win32.RegistryKey
-      description: "The subkey requested, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the operation failed."
+      description: "A kért, alkulcs vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a művelet sikertelen volt."
   overload: Microsoft.Win32.RegistryKey.OpenSubKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
+    description: "<code>name</code>van<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>permissionCheck</code> contains an invalid value."
+    description: "<code>permissionCheck</code>Érvénytelen értéket tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "<code>rights</code> includes invalid registry rights values.       -or-       The user does not have the requested permissions."
+    description: "<code>rights</code>Érvénytelen beállításazonosító jogok értékeket tartalmaz.       – vagy – a felhasználó nem jogosult a kért."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.SetAccessControl(System.Security.AccessControl.RegistrySecurity)
@@ -1533,8 +1533,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Applies Windows access control security to an existing registry key."
-  remarks: "To modify permissions for a registry key, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A> method to obtain a <xref:System.Security.AccessControl.RegistrySecurity> object representing the existing Windows access control security, modify that <xref:System.Security.AccessControl.RegistrySecurity> object, and then use the SetAccessControl method to update security for the key.      > [!CAUTION] >  The <xref:System.Security.AccessControl.RegistrySecurity> object specified for `registrySecurity` replaces the existing security for the registry key. To add permissions for a new user, use the <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A> method to obtain the existing access control security, and then modify it."
+  summary: "A meglévő rendszerleíró kulcsot a Windows hozzáférés-vezérléssel vonatkozik."
+  remarks: "A beállításkulcs engedélyeinek módosításához használja a <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>beszerzéséhez egy <xref:System.Security.AccessControl.RegistrySecurity>a meglévő Windows hozzáférés-vezérléssel képviselő objektum, előbb módosítsa, amely <xref:System.Security.AccessControl.RegistrySecurity>objektumot, és a kulcs biztonsági frissítésére használhat a SetAccessControl metódus.</xref:System.Security.AccessControl.RegistrySecurity> </xref:System.Security.AccessControl.RegistrySecurity> </xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>      > [!CAUTION] > A <xref:System.Security.AccessControl.RegistrySecurity>megadott objektum `registrySecurity` lecseréli a meglévő biztonsági a beállításkulcs.</xref:System.Security.AccessControl.RegistrySecurity> Engedélyek egy új felhasználó hozzáadásához használja a <xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>módszert, szerezze be a meglévő hozzáférés-vezérléssel, és módosítsa azt.</xref:Microsoft.Win32.RegistryKey.GetAccessControl%2A>"
   example:
   - "The following code example creates a test key. The current user is allowed <xref:System.Security.AccessControl.RegistryRights> and <xref:System.Security.AccessControl.RegistryRights> rights but denied <xref:System.Security.AccessControl.RegistryRights> and <xref:System.Security.AccessControl.RegistryRights> rights. Subsequent attempts to manipulate the key succeed or fail depending on these permissions.  \n  \n Before the key is deleted, the code pauses. You can switch to the registry editor and verify that the same access rights apply when the key is accessed using the registry editor. (This works best if you use **RunAs** from the command line to run the registry editor and the sample code as a local user without administrator rights. The registry editor always allows an administrator to change permissions, even if the particular administrator has been denied those rights. If you have defined a local user named TestUser, the command `runas /user:TestUser cmd` opens a command window from which you can run the registry editor and then the sample code.)  \n  \n [!code-cpp[RegistrySecurity101#1](~/add/codesnippet/cpp/463455ee-8295-4a1a-9af9-_1.cpp)]\n [!code-cs[RegistrySecurity101#1](~/add/codesnippet/csharp/463455ee-8295-4a1a-9af9-_1.cs)]\n [!code-vb[RegistrySecurity101#1](~/add/codesnippet/visualbasic/463455ee-8295-4a1a-9af9-_1.vb)]"
   syntax:
@@ -1542,18 +1542,18 @@ items:
     parameters:
     - id: registrySecurity
       type: System.Security.AccessControl.RegistrySecurity
-      description: "The access control security to apply to the current subkey."
+      description: "A hozzáférés-vezérléssel az aktuális kulcsot alkalmazni."
   overload: Microsoft.Win32.RegistryKey.SetAccessControl*
   exceptions:
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The current <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object represents a key with access control security, and the caller does not have <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;></xref> rights."
+    description: "Az aktuális <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum által jelképezett egy kulcsot a hozzáférés-vezérléssel, és a hívó nem rendelkezik <xref href=&quot;System.Security.AccessControl.RegistryRights&quot;> </xref> jogok."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>registrySecurity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>registrySecurity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.SetValue(System.String,System.Object)
@@ -1568,8 +1568,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Sets the specified name/value pair."
-  remarks: "Because many values can be stored in each key in the registry, you must use the `name` parameter to specify the particular value you want to set.      > [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To set this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.       In order to set values in a key, you must open the key with write access. After you have opened a key with write access, you can change any of the name/value pairs in that key.       If the specified `name` does not exist in the key, it is created and the associated value is set to `value`.       This overload of <xref:Microsoft.Win32.RegistryKey.SetValue%2A> stores 64-bit integers as strings (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>). To store 64-bit numbers as <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> values, use the <xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29> overload that specifies <xref:Microsoft.Win32.RegistryValueKind>.       This overload of <xref:Microsoft.Win32.RegistryKey.SetValue%2A> stores all string values as <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, even if they contain expandable references to environment variables. To save string values as expandable strings (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), use the <xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29> overload that specifies <xref:Microsoft.Win32.RegistryValueKind>.       Numeric types other than 32-bit integers are stored as strings by this method overload. Enumeration elements are stored as strings containing the element names.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.      > [!NOTE] >  On Windows 98 and Windows Millennium Edition the registry is not Unicode, and not all Unicode characters are valid for all code pages. A Unicode character that is invalid for the current code page is replaced by the best available match. No exception is thrown."
+  summary: "Beállítja a megadott név-érték pár."
+  remarks: "Mivel sok érték is tárolható minden egyes rendszerleíró kulcsot, a kell használni a `name` paraméterrel adhatja meg az adott értékekhez be szeretné állítani.      > [!NOTE] > Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. Ez a név nélküli érték beállításához adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.       A kulcs értékek beállításához meg kell nyitnia a kulcs írási hozzáféréssel. A kulcs írási hozzáféréssel nyitotta meg, miután a név/érték párok, a kulcs módosíthatja.       Ha a megadott `name` nem létezik, a kulcs akkor jön létre, és a kapcsolódó értéke `value`.       Ez túlterhelése <xref:Microsoft.Win32.RegistryKey.SetValue%2A>tárolja a 64 bites egész számok karakterláncként (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>).</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.SetValue%2A> 64 bites számok tárolására értékként <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, a <xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>túlterhelési, amely megadja, hogy <xref:Microsoft.Win32.RegistryValueKind>.</xref:Microsoft.Win32.RegistryValueKind> </xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29> használata</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>       Ez túlterhelése <xref:Microsoft.Win32.RegistryKey.SetValue%2A>tárolja, az összes karakterlánc-értékek <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, még akkor is, ha a környezeti változók bővíthető hivatkozásokat tartalmaznak.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryKey.SetValue%2A> Menti a karakterlánc-értékek szerint kibontható karakterláncokat (<xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>), használja a <xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29>túlterhelési, amely megadja, hogy <xref:Microsoft.Win32.RegistryValueKind>.</xref:Microsoft.Win32.RegistryValueKind> </xref:Microsoft.Win32.RegistryKey.SetValue%28System.String%2CSystem.Object%2CMicrosoft.Win32.RegistryValueKind%29> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>       32 bites egész számok numerikus típusú ez karakterláncként tárolja. Az elemek nevét tartalmazó karakterláncok számbavételi elemek tárolódnak.      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.      > [!NOTE] > Windows 98 és a Windows Me a beállításjegyzék nem Unicode, és nem minden Unicode-karakterek érvényesek-e minden kódlapok. A legjobb egyezést cseréli le a jelenlegi kódlap érvénytelen Unicode karaktert. Nincs kivétel történt."
   example:
   - "The following code example shows how the SetValue method determines the registry data type when it sets values. The example creates a test key and adds values of different data types to the key. The example then reads the name/value pairs and displays them to the console, using the <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A> method to display the corresponding registry data types.  \n  \n [!code-vb[Microsoft.Win32.RegistryKey.SetValue1#1](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_10_1.vb)]\n [!code-cs[Microsoft.Win32.RegistryKey.SetValue1#1](~/add/codesnippet/csharp/m-microsoft.win32.regist_10_1.cs)]\n [!code-cpp[Microsoft.Win32.RegistryKey.SetValue1#1](~/add/codesnippet/cpp/m-microsoft.win32.regist_10_1.cpp)]"
   syntax:
@@ -1577,30 +1577,30 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to store."
+      description: "Az érték tárolására neve."
     - id: value
       type: System.Object
-      description: "The data to be stored."
+      description: "Az adatok tárolását."
   overload: Microsoft.Win32.RegistryKey.SetValue*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>value</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>value</code> is an unsupported data type."
+    description: "<code>value</code>nem támogatott adattípusú van."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is read-only, and cannot be written to; for example, the key has not been opened with write access.       -or-       The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object represents a root-level node, and the operating system is Windows Millennium Edition or Windows 98."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> csak olvasható, és nem lehet írni a, például a kulcs nem írási hozzáféréssel lett megnyitva.       – vagy – a <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum által jelképezett gyökér szintű csomópont, és az operációs rendszer Windows Me vagy Windows 98."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or modify registry keys."
+    description: "A felhasználó nem rendelkezik a beállításkulcsok módosításához szükséges engedéllyel."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object represents a root-level node, and the operating system is Windows 2000, Windows XP, or Windows Server 2003."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum által jelképezett gyökér szintű csomópont, és az operációs rendszer Windows 2000, Windows XP vagy Windows Server 2003."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.SetValue(System.String,System.Object,Microsoft.Win32.RegistryValueKind)
@@ -1615,8 +1615,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Sets the value of a name/value pair in the registry key, using the specified registry data type."
-  remarks: "Because many values can be stored in each key in the registry, you must use the `name` parameter to specify the particular value you want to set.      > [!NOTE] >  A registry key can have one value that is not associated with any name. When this unnamed value is displayed in the registry editor, the string &quot;(Default)&quot; appears instead of a name. To set this unnamed value, specify either `null` or the empty string (&quot;&quot;) for `name`.       In order to set values in a key, you must open the key with write access. After you have opened a key with write access, you can change any of the name/value pairs in that key.       If the specified `name` does not exist in the key, it is created, and the associated value is set to `value`.      > [!NOTE] >  Specifying the registry data type <xref:Microsoft.Win32.RegistryValueKind> is the same as using the <xref:Microsoft.Win32.RegistryKey.SetValue%2A> overload.       If the type of the specified `value` does not match the specified `valueKind`, and the data cannot be converted, <xref:System.ArgumentException> is thrown. For example, you can store a <xref:System.Int64?displayProperty=fullName> as a <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, but only if its value is less than the maximum value of a <xref:System.Int32?displayProperty=fullName>. You cannot store a single string value as a <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>.      > [!NOTE] >  If boxed values are passed for <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> or <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, the conversion is done using the invariant culture.      > [!CAUTION] >  Do not expose <xref:Microsoft.Win32.RegistryKey> objects in such a way that a malicious program could create thousands of meaningless subkeys or key/value pairs. For example, do not allow callers to enter arbitrary keys or values.      > [!NOTE] >  On Windows 98 and Windows Millennium Edition the registry is not Unicode, and not all Unicode characters are valid for all code pages. A Unicode character that is invalid for the current code page is replaced by the best available match. No exception is thrown."
+  summary: "A beállításkulcs a beállításjegyzék megadott adattípust használó név-érték pár értékre állítja."
+  remarks: "Mivel sok érték is tárolható minden egyes rendszerleíró kulcsot, a kell használni a `name` paraméterrel adhatja meg az adott értékekhez be szeretné állítani.      > [!NOTE] > Egy beállításkulcs megadásával rendelkezhet egy érték, amely nincs társítva egyetlen nevét. Ha ez a név nélküli érték jelenik meg a Beállításszerkesztőt, a neve helyett a &quot;(alapértelmezett)&quot; karakterlánc jelenik meg. Ez a név nélküli érték beállításához adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.       A kulcs értékek beállításához meg kell nyitnia a kulcs írási hozzáféréssel. A kulcs írási hozzáféréssel nyitotta meg, miután a név/érték párok, a kulcs módosíthatja.       Ha a megadott `name` nem létezik, a kulcs akkor jön létre, és a kapcsolódó értéke `value`.      > [!NOTE] > Megadásával a beállításjegyzék-adatok típusa <xref:Microsoft.Win32.RegistryValueKind>megegyezik a használatával a <xref:Microsoft.Win32.RegistryKey.SetValue%2A>túlterhelés.</xref:Microsoft.Win32.RegistryKey.SetValue%2A> </xref:Microsoft.Win32.RegistryValueKind>       Ha a megadott típusú `value` nem egyezik a megadott `valueKind`, és az adatokat nem lehet konvertálni, <xref:System.ArgumentException>vált ki.</xref:System.ArgumentException> Tárolhatja például a <xref:System.Int64?displayProperty=fullName>, egy <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, de csak akkor, ha az érték kisebb, mint a maximális érték <xref:System.Int32?displayProperty=fullName>.</xref:System.Int32?displayProperty=fullName> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:System.Int64?displayProperty=fullName> Egyetlen karakterlánc értéket <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> nem tárolható      > [!NOTE] > Ha keretezett érték lett átadva <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>vagy <xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>, az átalakítás történik a semleges kulturális környezet használatával.</xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName> </xref:Microsoft.Win32.RegistryValueKind?displayProperty=fullName>      > [!CAUTION] > Nem teszik ki <xref:Microsoft.Win32.RegistryKey>objektumok oly módon, hogy egy rosszindulatú program nem értelmetlen alkulcsok ezer létrehozása vagy kulcs/érték párok.</xref:Microsoft.Win32.RegistryKey> Például nem hívók meg kell adniuk tetszőleges kulcsok és értékek.      > [!NOTE] > Windows 98 és a Windows Me a beállításjegyzék nem Unicode, és nem minden Unicode-karakterek érvényesek-e minden kódlapok. A legjobb egyezést cseréli le a jelenlegi kódlap érvénytelen Unicode karaktert. Nincs kivétel történt."
   example:
   - "The following code example creates a test key and uses the <xref:Microsoft.Win32.RegistryKey.SetValue%2A> method to store several values, specifying the registry data type for each value. The example then reads the name/value pairs and displays them to the console, using the <xref:Microsoft.Win32.RegistryKey.GetValueKind%2A> method to display the corresponding registry data types.  \n  \n [!code-cpp[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/cpp/4d7d6152-5710-4faa-8e5f-_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/csharp/4d7d6152-5710-4faa-8e5f-_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryValueKind#1](~/add/codesnippet/visualbasic/4d7d6152-5710-4faa-8e5f-_1.vb)]"
   syntax:
@@ -1624,33 +1624,33 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the value to be stored."
+      description: "A rendszer ne tárolja az érték neve."
     - id: value
       type: System.Object
-      description: "The data to be stored."
+      description: "Az adatok tárolását."
     - id: valueKind
       type: Microsoft.Win32.RegistryValueKind
-      description: "The registry data type to use when storing the data."
+      description: "A beállításjegyzék-adatok írja be az adatok tárolására."
   overload: Microsoft.Win32.RegistryKey.SetValue*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>value</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type of <code>value</code> did not match the registry data type specified by <code>valueKind</code>, therefore the data could not be converted properly."
+    description: "Milyen típusú <code> value </code> nem egyezik a beállításjegyzék által megadott adattípus <code> valueKind </code>, ezért az adatok nem konvertálható megfelelően."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> that contains the specified value is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> , amely tartalmazza a megadott érték le van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> is read-only, and cannot be written to; for example, the key has not been opened with write access.       -or-       The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object represents a root-level node, and the operating system is Windows Millennium Edition or Windows 98."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> csak olvasható, és nem lehet írni a, például a kulcs nem írási hozzáféréssel lett megnyitva.       – vagy – a <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum által jelképezett gyökér szintű csomópont, és az operációs rendszer Windows Me vagy Windows 98."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have the permissions required to create or modify registry keys."
+    description: "A felhasználó nem rendelkezik a beállításkulcsok módosításához szükséges engedéllyel."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> object represents a root-level node, and the operating system is Windows 2000, Windows XP, or Windows Server 2003."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> objektum által jelképezett gyökér szintű csomópont, és az operációs rendszer Windows 2000, Windows XP vagy Windows Server 2003."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.SubKeyCount
@@ -1665,29 +1665,29 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the count of subkeys of the current key."
-  remarks: "This property does not recursively count names. It only returns the count of names on the base level from which it was called."
+  summary: "Lekérdezi az aktuális kulcs alkulcsok száma."
+  remarks: "Ez a tulajdonság nem rekurzív módon száma neve végzi. Csak adja vissza, nevek száma a kiinduló szintjén hívása történt."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/cpp/p-microsoft.win32.regist_1_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/csharp/p-microsoft.win32.regist_1_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/visualbasic/p-microsoft.win32.regist_1_1.vb)]"
   syntax:
     content: public int SubKeyCount { get; }
     return:
       type: System.Int32
-      description: "The number of subkeys of the current key."
+      description: "Az aktuális kulcs alkulcsok száma."
   overload: Microsoft.Win32.RegistryKey.SubKeyCount*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have read permission for the key."
+    description: "A felhasználónak nincs olvasási engedélye a kulcs."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A system error occurred, for example the current key has been deleted."
+    description: "Rendszerhiba történt, például a kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.ToString
@@ -1702,8 +1702,8 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves a string representation of this key."
-  remarks: "The return value includes the registry path of the specified key and the hexadecimal value for the key. The registry path includes the absolute root of the specified key, always starts at one of the base keys for the registry, for example, HKEY_LOCAL_MACHINE."
+  summary: "Lekéri a kulcs karakterlánc-ábrázolása."
+  remarks: "Az eredményül kapott értéket a megadott kulcs és a kulcs hexadecimális értékét a beállításjegyzékbeli elérési utat tartalmaz. A beállításjegyzékbeli elérési út tartalmazza a megadott kulcs abszolút gyökérkönyvtárában, mindig kezdődik, az alap kulcsokat a beállításjegyzék egyik például HKEY_LOCAL_MACHINE."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/cpp/m-microsoft.win32.regist_9_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/csharp/m-microsoft.win32.regist_9_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#4](~/add/codesnippet/visualbasic/m-microsoft.win32.regist_9_1.vb)]"
   syntax:
@@ -1711,12 +1711,12 @@ items:
     parameters: []
     return:
       type: System.String
-      description: "A string representing the key. If the specified key is invalid (cannot be found) then <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned."
+      description: "Egy karakterlánc, amely a kulcsot. Ha a megadott kulcs érvénytelen (nem található) majd <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> adja vissza."
   overload: Microsoft.Win32.RegistryKey.ToString*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being accessed is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> férnek hozzá a jelölőnégyzet be van zárva (lezárt kulcsok nem érhetők el)."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.ValueCount
@@ -1731,29 +1731,29 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Retrieves the count of values in the key."
-  remarks: "Each registry key has a default value that is not associated with any name. This unnamed value can be set by using the <xref:Microsoft.Win32.RegistryKey.SetValue%2A> method and specifying either `null` or the empty string (&quot;&quot;) for `name`. If the default value has never been set, it does not contribute to the total count returned by the ValueCount property; once it has been set, however, it is always counted."
+  summary: "Lekéri a kulcsban található értékek száma."
+  remarks: "Minden egyes beállításkulcs alapértelmezett értéke nincs társítva egyetlen nevét. Ez a név nélküli érték használatával állítható be a <xref:Microsoft.Win32.RegistryKey.SetValue%2A>metódus, és adja meg vagy `null` vagy üres karakterlánc (&quot;&quot;) a `name`.</xref:Microsoft.Win32.RegistryKey.SetValue%2A> Ha az alapértelmezett érték soha ne állítson be, akkor nem számít bele a számuk; ValueCount tulajdonság által visszaadott Ha van beállítva, azonban mindig leltározás áll."
   example:
   - "This code example is part of a larger example provided for the <xref:Microsoft.Win32.RegistryKey> class.  \n  \n [!code-cpp[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/cpp/p-microsoft.win32.regist_2_1.cpp)]\n [!code-cs[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/csharp/p-microsoft.win32.regist_2_1.cs)]\n [!code-vb[Microsoft.Win32.RegistryKey2#2](~/add/codesnippet/visualbasic/p-microsoft.win32.regist_2_1.vb)]"
   syntax:
     content: public int ValueCount { get; }
     return:
       type: System.Int32
-      description: "The number of name/value pairs in the key."
+      description: "A kulcs név/érték párok száma."
   overload: Microsoft.Win32.RegistryKey.ValueCount*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The user does not have read permission for the key."
+    description: "A felhasználónak nincs olvasási engedélye a kulcs."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;Microsoft.Win32.RegistryKey&quot;></xref> being manipulated is closed (closed keys cannot be accessed)."
+    description: "A <xref href=&quot;Microsoft.Win32.RegistryKey&quot;> </xref> választéka éppen be van zárva (lezárt kulcsok nem érhetők el)."
   - type: System.UnauthorizedAccessException
     commentId: T:System.UnauthorizedAccessException
-    description: "The user does not have the necessary registry rights."
+    description: "A felhasználó nem rendelkezik a szükséges jogosultságokkal."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "A system error occurred, for example the current key has been deleted."
+    description: "Rendszerhiba történt, például a kulcs törölve lett."
   platform:
   - net462
 - uid: Microsoft.Win32.RegistryKey.View
@@ -1768,13 +1768,13 @@ items:
   assemblies:
   - mscorlib
   namespace: Microsoft.Win32
-  summary: "Gets the view that was used to create the registry key."
-  remarks: "On the 64-bit versions of Windows, portions of the registry are stored separately for 32-bit and 64-bit applications. There is a 32-bit view for 32-bit applications and a 64-bit view for 64-bit applications.       Do not assume that the view always corresponds to the actual view of the <xref:Microsoft.Win32.RegistryKey>."
+  summary: "Lekérdezi a beállításjegyzék-kulcs létrehozásához használt nézetet."
+  remarks: "A Windows 64 bites verzióján a beállításjegyzék részeit tárolódnak a 32 bites és 64 bites alkalmazások. Egy 32 bites 32 bites alkalmazások és a 64 bites nézetben 64 bites alkalmazáshoz van.       Nem feltételezi, hogy a nézet mindig megfelel a <xref:Microsoft.Win32.RegistryKey>.</xref:Microsoft.Win32.RegistryKey> tényleges ábrázolása"
   syntax:
     content: public Microsoft.Win32.RegistryView View { get; }
     return:
       type: Microsoft.Win32.RegistryView
-      description: "The view that was used to create the registry key.       -or-       <xref href=&quot;Microsoft.Win32.RegistryView&quot;></xref>, if no view was used."
+      description: "A beállításjegyzék-kulcs létrehozásához használt nézetet.       – vagy – <xref href=&quot;Microsoft.Win32.RegistryView&quot;> </xref>, ha nincs nézet lett megadva."
   overload: Microsoft.Win32.RegistryKey.View*
   exceptions: []
   platform:

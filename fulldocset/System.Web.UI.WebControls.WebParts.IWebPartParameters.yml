@@ -12,8 +12,8 @@ items:
   nameWithType: IWebPartParameters
   fullName: System.Web.UI.WebControls.WebParts.IWebPartParameters
   type: Interface
-  summary: "Defines the contract a Web Parts control implements to pass a parameter value in a Web Parts connection."
-  remarks: "Data is usually sent from a provider to a consumer in a Web Parts connection. However, in some cases, a provider needs a parameter from the consumer to determine which values it should send back. The IWebPartParameters interface defines members to implement that facilitate the passing of a parameter from a consumer to a provider.       The <xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer> class implements the IWebPartParameters interface. Transformers are used to translate data between two Web Parts controls with incompatible connection points. A <xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer> object transforms data from a provider implementing the <xref:System.Web.UI.WebControls.WebParts.IWebPartRow> interface when the provider needs a parameter from the consumer.       The <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData%2A> method retrieves the data from the provider and provides a callback method to process the data for the consumer. The callback method can be a customized method within the consumer that sets the return values accordingly."
+  summary: "Határozza meg a szerződés egy kijelzők vezérlő olyan felelt meg a paraméter értékét a kijelzők kapcsolaton keresztül."
+  remarks: "Általában küld adatokat a szolgáltató által a kijelzők kapcsolaton keresztül ügyféllel. Egyes esetekben azonban a szolgáltató kell egy paraméter mely vissza küldjön értékek meghatározásáról az ügyféltől. A IWebPartParameters paramétereket illesztőfelület megvalósításához tagok, amelyek egyszerűbbé teszik a biztosítja a paraméter egy ügyféltől egy szolgáltató határozza meg.       A <xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer>osztály megvalósítja az IWebPartParameters paramétereket felületet.</xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer> Transzformátorok lefordítani az adatok között nem kompatibilis csatlakozási pontok két kijelzők vezérlők használhatók. A <xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer>objektum végrehajtási szolgáltató adatait átalakítja a <xref:System.Web.UI.WebControls.WebParts.IWebPartRow>felület, amikor a szolgáltató kell egy paramétert az ügyféltől.</xref:System.Web.UI.WebControls.WebParts.IWebPartRow> </xref:System.Web.UI.WebControls.WebParts.RowToParametersTransformer>       A <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData%2A>metódus lekéri az adatokat a szolgáltató által és az adatok feldolgozása a fogyasztó számára visszahívási módszert biztosít.</xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData%2A> A visszahívási metódus belül a fogyasztó ennek megfelelően a visszatérési értéket megadó testreszabott metódus lehet."
   syntax:
     content: public interface IWebPartParameters
   implements: []
@@ -31,14 +31,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the value of the data from the connection provider."
-  remarks: "The GetParametersData method is used to retrieve the values from the provider based on a parameter. The method represented by the `callback` parameter processes the data for use by the consumer."
+  summary: "Az érték az adatok lekérése a kapcsolat szolgáltató."
+  remarks: "A GetParametersData módszert az értékek lekérése a szolgáltató egy paraméter alapján. A metódus által képviselt a `callback` paraméter dolgozza fel az adatokat a fogyasztói általi használatra."
   syntax:
     content: public void GetParametersData (System.Web.UI.WebControls.WebParts.ParametersCallback callback);
     parameters:
     - id: callback
       type: System.Web.UI.WebControls.WebParts.ParametersCallback
-      description: "The method to call to process the data from the provider."
+      description: "Feldolgozni az adatokat a szolgáltató által meghívandó metódust."
   overload: System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData*
   exceptions: []
   platform:
@@ -55,13 +55,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Gets the property descriptors for the data to be received by the consumer."
-  remarks: "The Schema property provides property information for the data passed by the interface. Transformer and consumer controls can query this property to get information about the type, contents, and other details of the field contained in the <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters> interface instance."
+  summary: "Lekérdezi a fogyasztó által kapott adatokat a tulajdonság leíróit."
+  remarks: "A séma a tulajdonság a csatoló által átadott adatok tulajdonság információkat nyújt. Átalakító és a felhasználói vezérlők lekérdezheti a tulajdonság lekérése a típus tartalmát, és egyéb részleteket a mező szerepel a <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters>illesztőfelület példánya.</xref:System.Web.UI.WebControls.WebParts.IWebPartParameters>"
   syntax:
     content: public System.ComponentModel.PropertyDescriptorCollection Schema { get; }
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> describing the data."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> leíró adatok."
   overload: System.Web.UI.WebControls.WebParts.IWebPartParameters.Schema*
   exceptions: []
   platform:
@@ -78,13 +78,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Sets the property descriptors for the properties that the consumer receives when calling the <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData*> method."
+  summary: "A tulajdonságokat, amelyeket a fogyasztó meghívásakor a tulajdonság leíróit beállítja a <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData*>metódus.</xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.GetParametersData*>"
   syntax:
     content: public void SetConsumerSchema (System.ComponentModel.PropertyDescriptorCollection schema);
     parameters:
     - id: schema
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "The <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> returned by <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.Schema*>."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> <xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.Schema*>.</xref:System.Web.UI.WebControls.WebParts.IWebPartParameters.Schema*> által visszaadott"
   overload: System.Web.UI.WebControls.WebParts.IWebPartParameters.SetConsumerSchema*
   exceptions: []
   platform:

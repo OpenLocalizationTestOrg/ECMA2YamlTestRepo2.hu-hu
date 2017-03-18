@@ -21,8 +21,8 @@ items:
   nameWithType: IsolatedStorageContainment
   fullName: System.Security.Permissions.IsolatedStorageContainment
   type: Enum
-  summary: "Specifies the permitted use of isolated storage."
-  remarks: "Isolated storage uses evidence to determine a unique storage area for use by an application or component. The identity of an assembly uniquely determines the root of a virtual file system for use by that assembly. Thus, rather than many applications and components sharing a common resource such as the file system or registry, each has its own file area inherently assigned to it.       Four basic isolation scopes are used when assigning isolated storage:      -   `User` - Code is always scoped according to the current user. The same assembly will receive different stores when being run by different users.      -   `Machine` - Code is always scoped according to the machine. The same assembly will receive the same stores when being run by different users on the same machine.      -   `Assembly` - Code is identified cryptographically by strong name (for example, Microsoft.Office.* or Microsoft.Office.Word), by publisher (based on public key), by URL (for example, http://www.fourthcoffee.com/process/grind.htm), by site, or by zone.      -   `Domain` - Code is identified based on evidence associated with the application domain. Web application identity is derived from the site&quot;s URL, or by the Web page&quot;s URL, site, or zone. Local code identity is based on the application directory path.       For definitions of URL, site, and zone, see <xref:System.Security.Permissions.UrlIdentityPermission>, <xref:System.Security.Permissions.SiteIdentityPermission>, and <xref:System.Security.Permissions.ZoneIdentityPermission>.       These identities are grouped together, in which case the identities are applied one after another until the desired isolated storage is created. The valid groupings are User+Assembly and User+Assembly+Domain. This grouping of identities is useful in many different applications.       If data is stored by domain, user, and assembly, the data is private in that only code in that assembly can access the data. The data store is also isolated by the application in which it runs, so that the assembly does not represent a potential leak by exposing data to other applications.       Isolation by assembly and user could be used for user data that applies across multiple applications; for example, license information, or a user&quot;s personal information (name, authentication credentials, and so on) that is independent of an application.       IsolatedStorageContainment exposes flags that determine whether an application is allowed to use isolated storage and, if so, which identity combinations are allowed to use it. It also determines whether an application is allowed to store information in a location that can roam with a user (Windows Roaming User Profiles or Folder Redirection must be configured)."
+  summary: "Engedélyezett való használatát határozza meg az elszigetelt tárolók."
+  remarks: "Elszigetelt tárolók bizonyító adatok alapján határozza meg egy egyedi tárterületet használja egy alkalmazás vagy összetevő szerint. Egy szerelvény identitása egyedileg határozza meg, a legfelső szintű használja ezt a szerelvényt a virtuális fájlrendszer. Így ahelyett, hogy sok alkalmazások és összetevők, például a fájl vagy a beállításazonosítót közös erőforrás megosztásának, mindegyik rendelkezik-e a saját fájl terület eleve rendelve.       Négy alapvető elkülönítési hatókörök használt hozzárendelése elszigetelt tárolók:- `User` -kód alapján a jelenlegi felhasználó mindig hatókörébe tartozik. Ugyanaz a szerelvény különböző tárolók kap, ha a különböző felhasználók által futtatott.      - `Machine` -Kód alapján a gép mindig hatókörébe tartozik. Ugyanaz a szerelvény azonos tárolókat kap, ha a különböző felhasználók által futtatott, ugyanazon a számítógépen.      - `Assembly` -Kód azonosíthatók kriptográfiai erős neve (például Microsoft.Office.* vagy Microsoft.Office.Word), a közzétevő (a nyilvános kulcs), által URL-CÍMÉT (például http://www.fourthcoffee.com/process/grind.htm), hely, illetve zóna.      - `Domain` -Kódot, amelynél az alkalmazástartomány társított bizonyító adatok alapján. Webes alkalmazás azonosítóját a webhely URL-CÍMÉT, vagy a weblap URL-címet, a hely vagy a zóna származik. Helyi kódok identitás alapul a könyvtár elérési útja.       Az URL-címet, a hely és az időzóna-definíciók, lásd: <xref:System.Security.Permissions.UrlIdentityPermission>, <xref:System.Security.Permissions.SiteIdentityPermission>, és <xref:System.Security.Permissions.ZoneIdentityPermission>.</xref:System.Security.Permissions.ZoneIdentityPermission> </xref:System.Security.Permissions.SiteIdentityPermission> </xref:System.Security.Permissions.UrlIdentityPermission>       Ezeket az identitásokat vannak csoportosítva, ebben az esetben az identitások érvényesek egymás után addig, amíg a kívánt elszigetelt tárolók létrejön. Az érvényes csoportosítások: felhasználót + szerelvény és a + szerelvény + tartományát. Identitások a csoportosítás akkor hasznos, a különböző alkalmazások.       Tartomány, a felhasználó és a szerelvény adatait tárolja, ha az adatok abban, hogy csak kódban titkos, hogy a szerelvény férhet hozzá az adatokhoz. Az adattár is elkülönül, amelyben fut, az alkalmazás által, hogy a szerelvény nem felel meg a lehetséges memóriavesztés adatok más alkalmazások által.       Szerelvény és a felhasználó elkülönítési lehet használni a felhasználói adatok, amelyek több alkalmazásra vonatkozik például licenc információkat vagy a felhasználó személyes adataira (név, hitelesítő adatok, és így tovább), amely független az alkalmazás.       IsolatedStorageContainment mutatja meg, amelyek meghatározzák, hogy az alkalmazás az elszigetelt tárolók használatára jogosult jelzők, és ha igen, mely identitás kombinációk rá engedélyezettek. Azt is meghatározza, hogy egy alkalmazás engedélyezett információk (a Windows központi felhasználói profilokat vagy a mappa átirányítása be kell állítani) felhasználók választhatnak a helyen tárolja."
   example:
   - "This example shows how to tell the CLR that code in this assembly requires the <xref:System.Security.Permissions.IsolatedStoragePermission> and also demonstrates how to write and read from isolated storage.  \n  \n [!code-cs[IsolatedStoragePermissionAttribute#1](~/add/codesnippet/csharp/t-system.security.permis_13_1.cs)]\n [!code-vb[IsolatedStoragePermissionAttribute#1](~/add/codesnippet/visualbasic/t-system.security.permis_13_1.vb)]\n [!code-cpp[IsolatedStoragePermissionAttribute#1](~/add/codesnippet/cpp/t-system.security.permis_13_1.cpp)]"
   syntax:
@@ -46,12 +46,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Unlimited administration ability for the user store. Allows browsing and deletion of the entire user store, but not read access other than the user&quot;s own domain/assembly identity."
+  summary: "Korlátlan felügyeleti mostantól a felhasználókhoz tartozó tárolóban. Lehetővé teszi, hogy keresse meg és a teljes felhasználókhoz tartozó tárolóban, de nem olvasási hozzáférés a felhasználó saját tartomány/szerelvény identitása nem törlését."
   syntax:
     content: AdministerIsolatedStorageByUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -67,12 +67,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by computer and then by application. This provides a data store for the application that is accessible in any domain context. The per-application data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először által a számítógép és alkalmazás. Az alkalmazás által elérhető minden tartományi környezetben biztosít a tárolóban. Az alkalmazás adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adott webhelyeken alkalmazások adatok elkülönítését alkalmazások között."
   syntax:
     content: ApplicationIsolationByMachine
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -88,12 +88,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by application evidence. Storage will roam if Windows user data roaming is enabled. This provides a data store for the application that is accessible in any domain context. The per-application data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először a felhasználó által, majd alkalmazás bizonyító adatai. Tárolási barangolás lesz, ha engedélyezve van a Windows felhasználói alkalmazásadat-barangolás. Az alkalmazás által elérhető minden tartományi környezetben biztosít a tárolóban. Az alkalmazás adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adott webhelyeken alkalmazások adatok elkülönítését alkalmazások között."
   syntax:
     content: ApplicationIsolationByRoamingUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -109,12 +109,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by application. Storage is also isolated by computer. This provides a data store for the application that is accessible in any domain context. The per-application data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először a felhasználó által és alkalmazás. Tároló számítógép is elkülönül. Az alkalmazás által elérhető minden tartományi környezetben biztosít a tárolóban. Az alkalmazás adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adott webhelyeken alkalmazások adatok elkülönítését alkalmazások között."
   syntax:
     content: ApplicationIsolationByUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -130,12 +130,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by computer and then by code assembly. This provides a data store for the assembly that is accessible in any domain context. The per-assembly data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először a számítógép által, majd kódszerelvényből. A szerelvény, amely bármilyen tartományi környezetben elérhető biztosít a tárolóban. A szerelvény adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adatok elkülönítési az alkalmazások adott webhelyeken az alkalmazások között."
   syntax:
     content: AssemblyIsolationByMachine
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -151,12 +151,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by assembly evidence. Storage will roam if Windows user data roaming is enabled. This provides a data store for the assembly that is accessible in any domain context. The per-assembly data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először a felhasználó által, majd szerelvényre vonatkozó tanúsító adatokat. Tárolási barangolás lesz, ha engedélyezve van a Windows felhasználói alkalmazásadat-barangolás. A szerelvény, amely bármilyen tartományi környezetben elérhető biztosít a tárolóban. A szerelvény adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adatok elkülönítési az alkalmazások adott webhelyeken az alkalmazások között."
   syntax:
     content: AssemblyIsolationByRoamingUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -172,12 +172,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by code assembly. Storage is also isolated by computer. This provides a data store for the assembly that is accessible in any domain context. The per-assembly data compartment requires additional trust because it potentially provides a &quot;tunnel&quot; between applications that could compromise the data isolation of applications in particular Web sites."
+  summary: "Tárolási el különítve, először a felhasználó által, majd kódszerelvényből. Tároló számítógép is elkülönül. A szerelvény, amely bármilyen tartományi környezetben elérhető biztosít a tárolóban. A szerelvény adatok adatrekeszben további megbízható kapcsolatot igényel, mivel potenciálisan &quot;tunnel&quot;, amelyek veszélyeztethetik a adatok elkülönítési az alkalmazások adott webhelyeken az alkalmazások között."
   syntax:
     content: AssemblyIsolationByUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -193,12 +193,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by computer and then by domain and assembly. Data can only be accessed within the context of the same application and only when run on the same computer. This is helpful when a third-party assembly wants to keep a private data store."
+  summary: "Tárolási el különítve, először a számítógép által, majd tartomány- és szerelvényfájlokat. Adatok csak ugyanazzal az alkalmazással, és csak akkor, ha ugyanazon a számítógépen futtatja érhető el. Ez akkor hasznos, ha egy külső szerelvény szeretné tartani a személyes adattár."
   syntax:
     content: DomainIsolationByMachine
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -214,12 +214,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by domain and assembly. Storage will roam if Windows user data roaming is enabled. Data can only be accessed within the context of the same application and only when run by the same user. This is helpful when a third-party assembly wants to keep a private data store."
+  summary: "Tárolási el különítve, először a felhasználó által, majd tartomány- és szerelvényfájlokat. Tárolási barangolás lesz, ha engedélyezve van a Windows felhasználói alkalmazásadat-barangolás. Adatok csak az ugyanahhoz az alkalmazáshoz, és csak akkor, ha ugyanaz a felhasználó által futtatott belül érhető el. Ez akkor hasznos, ha egy külső szerelvény szeretné tartani a személyes adattár."
   syntax:
     content: DomainIsolationByRoamingUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -235,12 +235,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Storage is isolated first by user and then by domain and assembly. Storage is also isolated by computer. Data can only be accessed within the context of the same application and only when run by the same user. This is helpful when a third-party assembly wants to keep a private data store."
+  summary: "Tárolási el különítve, először a felhasználó által, majd tartomány- és szerelvényfájlokat. Tároló számítógép is elkülönül. Adatok csak az ugyanahhoz az alkalmazáshoz, és csak akkor, ha ugyanaz a felhasználó által futtatott belül érhető el. Ez akkor hasznos, ha egy külső szerelvény szeretné tartani a személyes adattár."
   syntax:
     content: DomainIsolationByUser
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -256,12 +256,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Use of isolated storage is not allowed."
+  summary: "Az elszigetelt tárolók használata nem engedélyezett."
   syntax:
     content: None
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -277,12 +277,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Use of isolated storage is allowed without restriction. Code has full access to any part of the user store, regardless of the identity of the domain or assembly. This use of isolated storage includes the ability to enumerate the contents of the isolated storage data store."
+  summary: "Az elszigetelt tárolók használata engedélyezett korlátozás nélkül. Kód valamely része szerint a felhasználókhoz tartozó tárolóban, függetlenül a tartomány vagy a szerelvény identitásának teljes hozzáféréssel rendelkezik. Az elszigetelt tárolók használata lehetővé teszi a felsorolni az elszigetelt tárolók adattár tartalmát."
   syntax:
     content: UnrestrictedIsolatedStorage
     return:
       type: System.Security.Permissions.IsolatedStorageContainment
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

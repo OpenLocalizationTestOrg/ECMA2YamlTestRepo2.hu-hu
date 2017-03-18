@@ -14,8 +14,8 @@ items:
   nameWithType: ITrackingPersonalizable
   fullName: System.Web.UI.WebControls.WebParts.ITrackingPersonalizable
   type: Interface
-  summary: "Allows Web Parts controls to track the specific phases of the personalization load and save process."
-  remarks: "This interface allows control developers to track different phases of the personalization life cycle, including the loading and saving of personalization data. In most cases, to use this interface you would create a custom <xref:System.Web.UI.WebControls.WebParts.WebPart> or <xref:System.Web.UI.WebControls.WebParts.WebPartManager> and implement this interface. Additionally, controls that need to manage their own change (&quot;dirty&quot;) tracking should implement this interface. Controls that manage their own change tracking should return `true` from the <xref:System.Web.UI.WebControls.WebParts.ITrackingPersonalizable.TracksChanges%2A> property.       If `false` is returned, then ASP.NET is responsible for determining changes by comparing the property information loaded with the property information that was saved."
+  summary: "Lehetővé teszi, hogy a kijelzők vezérlők nyomon követi a személyre szabási terhelés adott fázisai és menti a folyamat."
+  remarks: "Ez az interfész lehetővé teszi, hogy a vezérlő fejlesztők nyomon követéséhez a személyre szabási életciklusának, beleértve a betöltése, és a megszemélyesítési adatok mentése különböző fázisait. A legtöbb esetben ez az interfész használatára akkor létrehoznia egy egyéni <xref:System.Web.UI.WebControls.WebParts.WebPart>vagy <xref:System.Web.UI.WebControls.WebParts.WebPartManager>és valósíthatnak meg ez az interfész.</xref:System.Web.UI.WebControls.WebParts.WebPartManager> </xref:System.Web.UI.WebControls.WebParts.WebPart> Emellett vezérlőelemek kell kezelni a saját változáskövetés (&quot;hibás&quot;), meg kell valósítania az illesztő. A saját változáskövetés kezelő vezérlők kell visszaadnia `true` a a <xref:System.Web.UI.WebControls.WebParts.ITrackingPersonalizable.TracksChanges%2A>tulajdonság.</xref:System.Web.UI.WebControls.WebParts.ITrackingPersonalizable.TracksChanges%2A>       Ha `false` lett visszaadva, akkor a tulajdonság adatait összehasonlításával változásokat meghatározó betölteni a mentett adatokkal tulajdonság felelős az ASP.NET."
   example:
   - "The following code example demonstrates using ITrackingPersonalizable methods and properties to track the loading and saving of personalization information. The example consists of two parts, an .aspx page and a file that should be placed in an App_Code subdirectory.  \n  \n The following code example creates a Web Parts control that allows a user to enter URL information and saves this information for the user.  \n  \n [!code-vb[WebParts_IPersonalizable#9](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_24_1.vb)]\n [!code-cs[WebParts_IPersonalizable#9](~/add/codesnippet/csharp/t-system.web.ui.webcontr_24_1.cs)]  \n  \n The following .aspx page creates a Web Parts zone and adds the control to the zone. The page also references a login control that you should use to log on individual users so that personalization can be applied.  \n  \n [!code-cs[WebParts_IPersonalizable#10](~/add/codesnippet/csharp/t-system.web.ui.webcontr_24_2.aspx)]\n [!code-vb[WebParts_IPersonalizable#10](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_24_2.aspx)]"
   syntax:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the beginning of the load phase for personalization information."
-  remarks: "The Web Parts control set calls this method prior to applying personalization data. A control that tracks its own change state should use this method to set an internal flag indicating that properties should not call <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>. This is because property-setting methods can be called during the application of personalization data, subsequent to the call to BeginLoad. In most scenarios, a control should not be considered changed (&quot;dirty&quot;) just because its personalizable properties have been set based on data loaded from the underlying data store.      > [!NOTE] >  This method is also called when personalization data is applied after importing a Web Parts control."
+  summary: "A személyre szabási adatainak betöltése szakasz elején jelöli."
+  remarks: "A kijelzők vezérlő set meghívja ezt a módszert a megszemélyesítési adatok alkalmazása előtt. A vezérlő, amely nyomon követi a saját állapotváltoztatási kell ezt a módszert egy belső jelzőt, amely megadja, hogy tulajdonságok nem teheti <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>.</xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A> beállítása Ennek az az oka tulajdonsága metódusok hívása BeginLoad hívása után a megszemélyesítési adatok alkalmazása során. A legtöbb esetben a vezérlő nem tekinthető megváltozott (hibás&quot;) csak, mert a personalizable tulajdonságait úgy állították be alapján az alapul szolgáló adattárból betöltött adatokról.      > [!NOTE] > Ez a módszer néven is ismert a megszemélyesítési adatok alkalmazása kijelzők vezérlő importálása után."
   example:
   - "The following code example demonstrates using the BeginLoad method. For a complete, working code example that consists of a control and an .aspx page, see the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable> class overview topic.  \n  \n [!code-vb[WebParts_IPersonalizable#4](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_102_1.vb)]\n [!code-cs[WebParts_IPersonalizable#4](~/add/codesnippet/csharp/m-system.web.ui.webcontr_102_1.cs)]"
   syntax:
@@ -58,8 +58,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the phase prior to extracting personalization data from a control."
-  remarks: "The Web Parts control set calls this method prior to extracting personalization data from the control."
+  summary: "A fázis előtt a személyre szabási adatok beolvasása a vezérlőt jelöli."
+  remarks: "A kijelzők vezérlő set meghívja ezt a módszert a személyre szabási adatok a vezérlőről való kibontása előtt."
   example:
   - "The following code example demonstrates using the BeginSave method. For a complete, working code example that consists of a control and an .aspx page, see the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable> class overview topic.  \n  \n [!code-vb[WebParts_IPersonalizable#5](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_129_1.vb)]\n [!code-cs[WebParts_IPersonalizable#5](~/add/codesnippet/csharp/m-system.web.ui.webcontr_129_1.cs)]"
   syntax:
@@ -81,8 +81,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the phase after personalization data has been applied to a control."
-  remarks: "The Web Parts control set calls this method after personalization data has been applied to the control. A control that tracks its change state should use this method to reset its internal state to indicate that subsequent property-setting methods should call <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>. By the time the EndLoad method is called, the Web Parts control set has completed any application of personalization data to the control. As a result, subsequent changes to the control&quot;s state should be considered valid indicators that the control has changed (is &quot;dirty&quot;).      > [!NOTE] >  This method is also called when personalization data is applied after importing a Web Parts control."
+  summary: "A megszemélyesítési adatok alkalmazása vezérlőhöz utáni fázis jelöli."
+  remarks: "A kijelzők vezérlő állítja ezt a módszert a személyre szabási adatok után telepítve van a vezérlő hívások. A vezérlő, amely nyomon követi az állapotváltoztatási kell ezt a módszert az annak jelzésére, hogy további tulajdonság-beállítás módszerek <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>.</xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A> kell hívnia a belső állapot visszaállítására. A kijelzők vezérlő beállítása az idő a EndLoad metódus lehívásra kerül, a vezérlő megszemélyesítési adatok bármilyen alkalmazás befejeződött. Ennek eredményeképpen a vezérlőhivatkozás bekövetkező változások érdemes figyelembe venni, hogy a vezérlő megváltozott érvényes mutatók (az &quot;hibás&quot;).      > [!NOTE] > Ez a módszer néven is ismert a megszemélyesítési adatok alkalmazása kijelzők vezérlő importálása után."
   example:
   - "The following code example demonstrates using the EndLoad method. For a complete, working code example that consists of a control and an .aspx page, see the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable> class overview topic.  \n  \n [!code-vb[WebParts_IPersonalizable#6](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_42_1.vb)]\n [!code-cs[WebParts_IPersonalizable#6](~/add/codesnippet/csharp/m-system.web.ui.webcontr_42_1.cs)]"
   syntax:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Represents the phase after personalization data has been extracted from a control."
-  remarks: "The Web Parts control set calls this method after personalization data has been extracted from the control."
+  summary: "A fázis után a személyre szabási adatok kinyerésének vezérlőt jelöli."
+  remarks: "A kijelzők vezérlő állítja ezt a módszert a személyre szabási adatok után a vezérlő kivont hívások."
   example:
   - "The following code example demonstrates using the EndSave method. For a complete, working code example that consists of a control and an .aspx page, see the <xref:System.Web.UI.WebControls.WebParts.IPersonalizable> class overview topic.  \n  \n [!code-vb[WebParts_IPersonalizable#7](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_10_1.vb)]\n [!code-cs[WebParts_IPersonalizable#7](~/add/codesnippet/csharp/m-system.web.ui.webcontr_10_1.cs)]"
   syntax:
@@ -127,15 +127,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls.WebParts
-  summary: "Indicates whether the control tracks the status of its changes."
-  remarks: "If a control returns `true` from this property, then it is the Web Parts control&quot;s responsibility to determine when it considers itself &quot;dirty.&quot; If a control determines that it has changed (is &quot;dirty&quot;), that control must call <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A> on itself."
+  summary: "Azt jelzi, hogy a vezérlő nyomon követi a módosítások állapota."
+  remarks: "Ha egy vezérlő függvény `true` az ezt a tulajdonságot, majd feladata a kijelzők vezérlő határozza meg, amikor tartja magát &quot;hibás.&quot; Ha egy vezérlő határozza meg, hogy megváltozott (az &quot;hibás&quot;), hívja meg, hogy vezérlő <xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>a saját magát.</xref:System.Web.UI.WebControls.WebParts.WebPart.SetPersonalizationDirty%2A>"
   example:
   - "The following code example demonstrates setting the TracksChanges property. For a complete, working code example that consists of a control and an .aspx page, see the <xref:System.Web.UI.WebControls.WebParts.ITrackingPersonalizable> class overview topic.  \n  \n [!code-vb[WebParts_IPersonalizable#8](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_924_1.vb)]\n [!code-cs[WebParts_IPersonalizable#8](~/add/codesnippet/csharp/p-system.web.ui.webcontr_924_1.cs)]"
   syntax:
     content: public bool TracksChanges { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the Web Parts control is responsible for determining when the control is considered changed (&quot;dirty&quot;); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kijelző vezérlő felel annak meghatározásáért, amikor a vezérlő tekinthető megváltozott (&quot;Szabálytalan&quot;); Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.WebParts.ITrackingPersonalizable.TracksChanges*
   exceptions: []
   platform:
