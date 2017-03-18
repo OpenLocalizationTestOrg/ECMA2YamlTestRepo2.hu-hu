@@ -17,7 +17,7 @@ items:
   nameWithType: SqlFunctionAttribute
   fullName: Microsoft.SqlServer.Server.SqlFunctionAttribute
   type: Class
-  summary: "Used to mark a method definition of a user-defined aggregate as a function in SQL Server. The properties on the attribute reflect the physical characteristics used when the type is registered with SQL Server."
+  summary: "Használja az SQL Server függvényében a felhasználó által definiált összesítő metódus definíciójának megjelölni. Az attribútum tulajdonságainak megfelelően használható, ha a típus regisztrálva van az SQL Server fizikai tulajdonságait."
   remarks: ''
   example:
   - "The following example shows an aggregate function that returns a list of files in the specified directory path.  \n  \n [!code-cs[DataWorks SqlFunctionAttribute Sample#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_0_1.cs)]\n [!code-vb[DataWorks SqlFunctionAttribute Sample#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_0_1.vb)]"
@@ -44,7 +44,7 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "An optional attribute on a user-defined aggregate, used to indicate that the method should be registered in SQL Server as a function. Also used to set the <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.Name*>, <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess*>, and <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*> properties of the function attribute."
+  summary: "Egy nem kötelező attribútum a felhasználó által definiált összesítő azt jelzi, hogy a metódus regisztrálni kell az SQL Server függvényében. Is használt a <> </> *>, <> </> *>, <> </> *>, <> </> *>, <> </> *>, <> </> *>, és <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*>Tulajdonságok függvény attribútum.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*>"
   syntax:
     content: public SqlFunctionAttribute ();
     parameters: []
@@ -64,13 +64,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function involves access to user data stored in the local instance of SQL Server."
-  remarks: "The default is <xref:Microsoft.SqlServer.Server.DataAccessKind>.DataAccess is also required when connecting to remote servers if transactions integration is required (the default).       If a Transact-SQL query is executed from inside a table-valued function (TVF), the <xref:Microsoft.SqlServer.Server.DataAccessKind>.`Read` property should be set."
+  summary: "Azt jelzi, hogy a függvény magában foglalja az SQL Server helyi példányát tárolt felhasználói adatok eléréséhez."
+  remarks: "Az alapértelmezett érték <xref:Microsoft.SqlServer.Server.DataAccessKind>. Az adatelérési is szükség a távoli való csatlakozás, ha tranzakciók integrációra van szükség (alapértelmezett).</xref:Microsoft.SqlServer.Server.DataAccessKind>       Ha a Transact-SQL lekérdezés végrehajtása a táblaértékű függvényt (TVF) belül a <xref:Microsoft.SqlServer.Server.DataAccessKind>.`Read` </xref:Microsoft.SqlServer.Server.DataAccessKind> tulajdonságot kell beállítani."
   syntax:
     content: public Microsoft.SqlServer.Server.DataAccessKind DataAccess { get; set; }
     return:
       type: Microsoft.SqlServer.Server.DataAccessKind
-      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;></xref>: Does not access data. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>: Only reads user data.'
+      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;> </xref>: Adatok nem érhető el. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>: Csak a felhasználói adatokat olvas.'
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name of a method in the same class as the table-valued function (TVF) that is used by the TVF contract."
-  remarks: "For more information, see [CLR Triggers](http://go.microsoft.com/fwlink/?LinkId=128026)."
+  summary: "Az ugyanahhoz az osztályhoz tartozik, mint a táblaértékű függvényt (TVF) a TVF szerződés által használt metódus neve."
+  remarks: "További információkért lásd: [CLR-eseményindítók](http://go.microsoft.com/fwlink/?LinkId=128026)."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#10](~/add/codesnippet/csharp/CS/Function1.cs#10)]
@@ -97,7 +97,7 @@ items:
     content: public string FillRowMethodName { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name of a method used by the TVF contract."
+      description: "A <xref:System.String>érték a TVF szerződés által használt metódus a neve.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.FillRowMethodName*
   exceptions: []
   platform:
@@ -114,13 +114,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the user-defined function is deterministic."
-  remarks: "A user-defined function is said to be deterministic if it always produces the same output values given the same input values and the same database state.       The IsDeterministic property is also useful for indexing the result of the function in the form of indexed computed columns and indexed views. If this property is not specified, the function is assumed to be non-deterministic.       Functions that access local data can be deterministic. The data access characteristic is captured separately by the <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A> and <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A> properties.       Note that data access to remote servers (for example, using a <xref:System.Data.SqlClient.SqlConnection> to connect to another SQL Server instance) is available in user-defined functions. However, you must still honor the IsDeterministic declaration. If the common language runtime (CLR) function is marked as deterministic, it should not cause side-effects in the remote server. While side-effects against the context connection are restricted, SQL Server will not enforce the restriction for side-effects over remote connections.       The default value of this attribute is `false`.       Do not mark a function as deterministic if the function does not always produce the same output values, given the same input values and the same database state. Marking a function as deterministic when the function is not truly deterministic can result in corrupted indexed views and computed columns."
+  summary: "Azt jelzi, hogy a felhasználó által definiált függvény determinisztikus."
+  remarks: "A felhasználó által definiált függvény különállónak determinisztikus, ha nem mindig azonos kimeneti értékekből az ugyanazon bemeneti értékek és az ugyanazon adatbázis állapotát.       Az IsDeterministic tulajdonság esetén is hasznos indexelő indexelt számított oszlopok és indexelt nézetek formájában függvény eredménye. Ha ez a tulajdonság nincs megadva, a függvény nem determinisztikus érték.       Lehet, hogy determinisztikus függvények, amelyek a helyi adatok eléréséhez. Az adatok hozzáférési jellemző külön-külön, rögzített a <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>és <xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A>Tulajdonságok.</xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess%2A> </xref:Microsoft.SqlServer.Server.SqlFunctionAttribute.DataAccess%2A>       Vegye figyelembe, hogy adatokat távoli kiszolgálókhoz való hozzáférésének (például egy <xref:System.Data.SqlClient.SqlConnection>csatlakozni egy másik SQL Server-példány) érhető el a felhasználó által definiált függvények.</xref:System.Data.SqlClient.SqlConnection> Azonban továbbra is figyelembe kell veszi az IsDeterministic deklarációjában. Ha a közös nyelvi futtatókörnyezet (CLR) függvény a meghatározott van megjelölve, akkor nem okozhat mellékhatásokkal a távoli kiszolgálón. A környezeti kapcsolat elleni mellékhatásai korlátozva, amíg az SQL Server nem kényszeríti a korlátozás hatásai távoli kapcsolatokon keresztül.       Ennek az attribútumnak az alapértelmezett érték `false`.       Nem jelöli be a függvényt, determinisztikus, ha a függvény nem eredményez mindig azonos kimeneti értékeket, az ugyanazon bemeneti értékek és az ugyanazon adatbázis állapotát. Jelölés egy függvényt determinisztikus, ha a függvény nem determinisztikus valóban eredményezhet sérült indexelt nézetek és a számított oszlopok."
   syntax:
     content: public bool IsDeterministic { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the function is deterministic; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a függvény nem determinisztikus; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.IsDeterministic*
   exceptions: []
   platform:
@@ -137,13 +137,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function involves imprecise computations, such as floating point operations."
-  remarks: "Precision of a function is one of the properties used to determine if computed columns that use this function can be indexed.       The default value of this attribute is `false`."
+  summary: "Azt jelzi, hogy a függvény magában foglalja a pontos számítások, például a lebegőpontos művelet."
+  remarks: "Egy függvény pontosságát határozza meg, ha a számított oszlopok esetében ezzel a funkcióval indexelhetők tulajdonságok egyike.       Ennek az attribútumnak az alapértelmezett érték `false`."
   syntax:
     content: public bool IsPrecise { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the function involves precise computations; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a függvény szerint pontos számítások; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.IsPrecise*
   exceptions: []
   platform:
@@ -160,8 +160,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name under which the function should be registered in SQL Server."
-  remarks: "This attribute is used only by Microsoft Visual Studio to automatically register the specified method as a user-defined function. It is not used by SQL Server.       Thee following example specifies that the user-defined function is referenced using the name `sp_scalarFunc`."
+  summary: "A neve, amely alatt a függvény az SQL Server kell regisztrálni."
+  remarks: "Ez az attribútum segítségével csak a Microsoft Visual Studio automatikus regisztrációt, a felhasználó által definiált függvény a megadott metódust. SQL Server nem használják.       Ezekkel a következő példa meghatározza, hogy a felhasználó által definiált függvény hivatkozott az alábbi néven `sp_scalarFunc`."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#10](~/add/codesnippet/csharp/CS/Function1.cs#10)]
@@ -170,7 +170,7 @@ items:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the name under which the function should be registered."
+      description: "A <xref:System.String>érték a nevét, amely alatt a függvény kell regisztrálni.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.Name*
   exceptions: []
   platform:
@@ -187,13 +187,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the function requires access to data stored in the system catalogs or virtual system tables of SQL Server."
-  remarks: "The default is <xref:Microsoft.SqlServer.Server.SystemDataAccessKind>."
+  summary: "Jelzi, hogy a függvény igényli-e a rendszerkatalógusok vagy az SQL Server virtuális rendszertáblák tárolt adatok elérésére."
+  remarks: "Az alapértelmezett érték <xref:Microsoft.SqlServer.Server.SystemDataAccessKind>.</xref:Microsoft.SqlServer.Server.SystemDataAccessKind>"
   syntax:
     content: public Microsoft.SqlServer.Server.SystemDataAccessKind SystemDataAccess { get; set; }
     return:
       type: Microsoft.SqlServer.Server.SystemDataAccessKind
-      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;></xref>: Does not access system data. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>.<xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;></xref>: Only reads system data.'
+      description: '<xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;> </xref>: Rendszeradatok nem érhető el. <xref href=&quot;Microsoft.SqlServer.Server.DataAccessKind&quot;></xref>. <xref uid=&quot;langword_csharp_Read&quot; name=&quot;Read&quot; href=&quot;&quot;> </xref>: Csak a rendszer adatokat olvas.'
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.SystemDataAccess*
   exceptions: []
   platform:
@@ -210,8 +210,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "A string that represents the table definition of the results, if the method is used as a table-valued function (TVF)."
-  remarks: "This attribute is used only by Microsoft Visual Studio to automatically register the specified method as a TVF. It is not used by SQL Server.       The following example specifies that the user-defined function is referenced using the name `sp_tableFunc`. The `TableDefinition` property has the value `letter nchar(1)`."
+  summary: "A tábla definícióját, az eredményeket, ha a módszert használ, mint a táblaértékű függvényt (TVF) jelölő karakterlánccá."
+  remarks: "Ez az attribútum segítségével csak a Microsoft Visual Studio automatikusan egy TVF regisztrálható a megadott metódust. SQL Server nem használják.       Az alábbi példa meghatározza, hogy a felhasználó által definiált függvény hivatkozott az alábbi néven `sp_tableFunc`. A `TableDefinition` a tulajdonság értéke `letter nchar(1)`."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#11](~/add/codesnippet/csharp/CS/Function1.cs#11)]
@@ -220,7 +220,7 @@ items:
     content: public string TableDefinition { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the table definition of the results."
+      description: "A <xref:System.String>érték az eredményeket a tábladefiníciót.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlFunctionAttribute.TableDefinition*
   exceptions: []
   platform:

@@ -18,8 +18,8 @@ items:
   nameWithType: PublisherIdentityPermission
   fullName: System.Security.Permissions.PublisherIdentityPermission
   type: Class
-  summary: "Represents the identity of a software publisher. This class cannot be inherited."
-  remarks: "> [!IMPORTANT] >  Starting with the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], identity permissions are not used.   >    >  In the .NET Framework versions 1.0 and 1.1, identity permissions cannot have an <xref:System.Security.Permissions.PermissionState> permission state value. Starting with the .NET Framework version 2.0, identity permissions can have any permission state value. This means that in 2.0 and later versions, identity permissions have the same behavior as permissions that implement the <xref:System.Security.Permissions.IUnrestrictedPermission> interface. That is, a demand for an identity always succeeds, regardless of the identity of the assembly, if the assembly has been granted full trust.   >    >  In the .NET Framework versions 1.0 and 1.1, demands on the identity permissions are effective, even when the calling assembly is fully trusted. That is, although the calling assembly has full trust, a demand for an identity permission fails if the assembly does not meet the demanded criteria. Starting with the .NET Framework version 2.0, demands for identity permissions are ineffective if the calling assembly has full trust. This assures consistency for all permissions, eliminating the treatment of identity permissions as a special case.      > [!NOTE] >  By default, code access security does not check for <xref:System.Security.Policy.Publisher> evidence. Unless your computer has a custom code group based on the <xref:System.Security.Policy.PublisherMembershipCondition> class, you can improve performance by bypassing Authenticode signature verification. This is accomplished by configuring the runtime to not provide <xref:System.Security.Policy.Publisher> evidence for code access security. For more information about how to configure this option and which applications can use it, see the  element."
+  summary: "Egy szoftverközzétevő identitásának jelöli. Ez az osztály nem örökölhető."
+  remarks: "> [!IMPORTANT]> Kezdve a [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], az azonosító engedélyek nem használhatók.   >> Verzióban a .NET-keretrendszer 1.0 és 1.1, az azonosító engedélyek nem lehet egy <xref:System.Security.Permissions.PermissionState>engedély állapotérték.</xref:System.Security.Permissions.PermissionState> Kezdve a .NET-keretrendszer 2.0-s verzióját, az azonosító engedélyek bármilyen engedéllyel állapot értéke lehet. Ez azt jelenti, hogy a 2.0-s és újabb verziókban az azonosító engedélyek, amelyek megvalósítják az engedélyek megegyező viselkedést a <xref:System.Security.Permissions.IUnrestrictedPermission>felületet.</xref:System.Security.Permissions.IUnrestrictedPermission> Ez azt jelenti, hogy mindig identitást kér sikeres, függetlenül a szerelvény identitása, ha a szerelvény rendelkezik teljes megbízhatóság.   >> Verzióban a .NET-keretrendszer 1.0 és 1.1 az azonosító engedélyek iránti igény hatékonyak, ha a hívó szerelvény teljesen megbízható. Ez azt jelenti, hogy bár a hívó szerelvény teljes megbízhatósági kapcsolattal rendelkezik, az identitás engedélyt kér sikertelen lesz, ha a szerelvény nem felel meg az igényelt feltételeknek. A .NET-keretrendszer 2.0-s verziójának verziótól kezdődően az azonosító engedélyek terhelése hatástalan, ha a hívó szerelvény teljes megbízhatósági kapcsolattal rendelkezik. Ez biztosítja, hogy az összes engedélyt, így kiküszöböli az azonosító engedélyek kezelésére, egy különleges esetben konzisztencia.      > [!NOTE] > Alapértelmezés szerint kódelérés-biztonsági nem ellenőrzi az <xref:System.Security.Policy.Publisher>tanúsítás.</xref:System.Security.Policy.Publisher> Kivéve, ha a számítógépen van egy egyéni kód csoportot alapján a <xref:System.Security.Policy.PublisherMembershipCondition>osztály, akkor a jobb teljesítmény érdekében az Authenticode aláírás ellenőrzésének mellőzése.</xref:System.Security.Policy.PublisherMembershipCondition> Ez úgy konfigurálja a futtatókörnyezetet nem érhető el <xref:System.Security.Policy.Publisher>a kódelérés-biztonsági bizonyító adatok.</xref:System.Security.Policy.Publisher> Ezt a beállítást, és amelyek konfigurálásával kapcsolatos további információk az alkalmazások használják, tekintse meg az elem."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -55,14 +55,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.PublisherIdentityPermission&quot;></xref> class with the specified Authenticode X.509v3 certificate."
-  remarks: "The X.509 certificate defines the identity of the specified software publisher, as established by Authenticode code signing."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.PublisherIdentityPermission&quot;> </xref> osztály a megadott Authenticode X.509v3 tanúsítványt."
+  remarks: "Az X.509 tanúsítvány identitását a megadott software publisher használatát, határozza meg, által Authenticode kód aláírása."
   syntax:
     content: public PublisherIdentityPermission (System.Security.Cryptography.X509Certificates.X509Certificate certificate);
     parameters:
     - id: certificate
       type: System.Security.Cryptography.X509Certificates.X509Certificate
-      description: "An X.509 certificate representing the software publisher&quot;s identity."
+      description: "Egy X.509 tanúsítvány, a szoftvergyártó identitás jelző."
   overload: System.Security.Permissions.PublisherIdentityPermission.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -70,7 +70,7 @@ items:
     description: "The <code>certificate</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>certificate</code> parameter is not a valid certificate."
+    description: "A <code> certificate </code> paraméter nem egy érvényes tanúsítványt."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.#ctor(System.Security.Permissions.PermissionState)
@@ -85,8 +85,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.PublisherIdentityPermission&quot;></xref> class with the specified <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref>."
-  remarks: "Creates either a fully restricted (`None`) or `Unrestricted` permission.      > [!NOTE] >  In the .NET Framework versions 1.0 and 1.1, identity permissions cannot have an <xref:System.Security.Permissions.PermissionState> permission state value. Starting with the .NET Framework version 2.0, identity permissions can have any permission state value. This means that in 2.0 and later versions, identity permissions have the same behavior as permissions that implement the <xref:System.Security.Permissions.IUnrestrictedPermission> interface. That is, a demand for an identity always succeeds, regardless of the identity of the assembly, if the assembly has been granted full trust.       In the .NET Framework versions 1.0 and 1.1, demands on the identity permissions are effective, even when the calling assembly is fully trusted. That is, although the calling assembly has full trust, a demand for an identity permission fails if the assembly does not meet the demanded criteria. Starting with the .NET Framework version 2.0, demands for identity permissions are ineffective if the calling assembly has full trust. This assures consistency for all permissions, eliminating the treatment of identity permissions as a special case."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.PublisherIdentityPermission&quot;> </xref> és a megadott osztály <xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref>."
+  remarks: "Létrehozza vagy egy teljes mértékben korlátozott (`None`) vagy `Unrestricted` engedéllyel.      > [!NOTE] > A .NET Framework 1.0 és 1.1-es verzió, az azonosító engedélyek nem lehet egy <xref:System.Security.Permissions.PermissionState>engedély állapotérték.</xref:System.Security.Permissions.PermissionState> Kezdve a .NET-keretrendszer 2.0-s verzióját, az azonosító engedélyek bármilyen engedéllyel állapot értéke lehet. Ez azt jelenti, hogy a 2.0-s és újabb verziókban az azonosító engedélyek, amelyek megvalósítják az engedélyek megegyező viselkedést a <xref:System.Security.Permissions.IUnrestrictedPermission>felületet.</xref:System.Security.Permissions.IUnrestrictedPermission> Ez azt jelenti, hogy mindig identitást kér sikeres, függetlenül a szerelvény identitása, ha a szerelvény rendelkezik teljes megbízhatóság.       A .NET-keretrendszer verzióiban 1.0 és 1.1 az azonosító engedélyek iránti igény érvényben, akkor is, ha a hívó szerelvény teljesen megbízható. Ez azt jelenti, hogy bár a hívó szerelvény teljes megbízhatósági kapcsolattal rendelkezik, az identitás engedélyt kér sikertelen lesz, ha a szerelvény nem felel meg az igényelt feltételeknek. A .NET-keretrendszer 2.0-s verziójának verziótól kezdődően az azonosító engedélyek terhelése hatástalan, ha a hívó szerelvény teljes megbízhatósági kapcsolattal rendelkezik. Ez biztosítja, hogy az összes engedélyt, így kiküszöböli az azonosító engedélyek kezelésére, egy különleges esetben konzisztencia."
   example:
   - "The following example shows how to use the PublisherIdentityPermission constructor.  \n  \n [!code-cs[System.Security.Permissions.PublisherIdentityPermission#7](~/add/codesnippet/csharp/1a39ce0c-6535-46dd-bd5f-_1.cs)]\n [!code-vb[System.Security.Permissions.PublisherIdentityPermission#7](~/add/codesnippet/visualbasic/1a39ce0c-6535-46dd-bd5f-_1.vb)]\n [!code-cpp[System.Security.Permissions.PublisherIdentityPermission#7](~/add/codesnippet/cpp/1a39ce0c-6535-46dd-bd5f-_1.cpp)]"
   syntax:
@@ -94,12 +94,12 @@ items:
     parameters:
     - id: state
       type: System.Security.Permissions.PermissionState
-      description: "One of the <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref> values."
+      description: "Egy a <xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref> értékeket."
   overload: System.Security.Permissions.PublisherIdentityPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>state</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref>."
+    description: "A <code> state </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.Certificate
@@ -114,23 +114,23 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets or sets an Authenticode X.509v3 certificate that represents the identity of the software publisher."
+  summary: "Lekérdezi vagy beállítja egy Authenticode X.509v3 tanúsítványt, hogy a software publisher identitásának jelöli."
   syntax:
     content: public System.Security.Cryptography.X509Certificates.X509Certificate Certificate { get; set; }
     return:
       type: System.Security.Cryptography.X509Certificates.X509Certificate
-      description: "An X.509 certificate representing the identity of the software publisher."
+      description: "Egy X.509 tanúsítvány a software publisher identitásának jelző."
   overload: System.Security.Permissions.PublisherIdentityPermission.Certificate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The Certificate is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "A tanúsítvány <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The Certificate is not a valid certificate."
+    description: "A tanúsítvány nincs érvényes tanúsítvány."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The property cannot be set because the identity is ambiguous."
+    description: "A tulajdonság nem állítható be, mert az identitás nem egyértelmű."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.Copy
@@ -145,14 +145,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns an identical copy of the current permission."
-  remarks: "A copy of a permission represents the same access to resources as the original permission."
+  summary: "Hoz létre, és egy az aktuális engedély azonos másolatát adja vissza."
+  remarks: "Az engedély másolatot ugyanazokkal a hozzáférési erőforrások eredeti engedélyt jelöli."
   syntax:
     content: public override System.Security.IPermission Copy ();
     parameters: []
     return:
       type: System.Security.IPermission
-      description: "A copy of the current permission."
+      description: "Az aktuális engedély másolatát."
   overload: System.Security.Permissions.PublisherIdentityPermission.Copy*
   exceptions: []
   platform:
@@ -169,13 +169,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Reconstructs a permission with a specified state from an XML encoding."
+  summary: "Az XML-kódolás a megadott állapotú engedély Rekonstruálja."
   syntax:
     content: public override void FromXml (System.Security.SecurityElement esd);
     parameters:
     - id: esd
       type: System.Security.SecurityElement
-      description: "The XML encoding to use to reconstruct the permission."
+      description: "Az XML-hozza létre újból az engedély használandó kódolás."
   overload: System.Security.Permissions.PublisherIdentityPermission.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -183,7 +183,7 @@ items:
     description: "The <code>esd</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>esd</code> parameter is not a valid permission element.       -or-       The <code>esd</code> parameter&quot;s version number is not valid."
+    description: "A <code> esd </code> paraméter nem érvényes engedélyelem.       – vagy – a <code> esd </code> paraméter verziószáma érvénytelen."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.Intersect(System.Security.IPermission)
@@ -198,22 +198,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns a permission that is the intersection of the current permission and the specified permission."
-  remarks: "The intersection of two permissions is a permission that describes the set of operations they both describe in common. Only a demand that passes both original permissions will pass the intersection.       <xref:System.Security.Permissions.PublisherIdentityPermission> only supports set operations (<xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A>, Intersect, and <xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A>) when the current permission is equal to the specified permission."
+  summary: "Hoz létre, és adja vissza, amely az aktuális engedély és a megadott engedéllyel engedély."
+  remarks: "Két engedélyek metszetét, amely ismerteti a műveletek mindkét leírják közös engedély. Csak egy igény szerinti mindkét eredeti engedélyt kapott metszetének sikeres lesz.       <xref:System.Security.Permissions.PublisherIdentityPermission>támogat beállítása műveletek (<xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A>, Intersect, és <xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A>) Ha az aktuális engedély megegyezik a megadott engedélyt.</xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A> </xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A></xref:System.Security.Permissions.PublisherIdentityPermission>"
   syntax:
     content: public override System.Security.IPermission Intersect (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission to intersect with the current permission. It must be of the same type as the current permission."
+      description: "Az aktuális engedéllyel rendelkező intersect engedély. Az aktuális engedélyt a azonos típusúnak kell lennie."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the intersection is empty."
+      description: "Új engedéllyel, amely jelöli az aktuális engedély és a megadott engedélyt. Ez az új engedély <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha metszetének üres."
   overload: System.Security.Permissions.PublisherIdentityPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "A <code> target </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf(System.Security.IPermission)
@@ -228,22 +228,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Determines whether the current permission is a subset of the specified permission."
-  remarks: "The current permission is a subset of the specified permission if the two permissions are equal. If this method returns `true`, the current permission represents the same access to the protected resource as the specified permission.       <xref:System.Security.Permissions.PublisherIdentityPermission> supports set operations (IsSubsetOf, <xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A>, and <xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A>) only when the current permission is equal to the specified permission."
+  summary: "Meghatározza, hogy az aktuális engedély a megadott engedéllyel egy részét."
+  remarks: "Az aktuális engedély alkészlete a megadott engedély, ha a két engedélyek egyenlő. Ez a metódus visszatérési értéke `true`, az aktuális engedély ugyanazokkal a hozzáférési jelenti. a védett erőforráshoz megadott engedélyt.       <xref:System.Security.Permissions.PublisherIdentityPermission>által támogatott műveleteket beállítása (IsSubsetOf, <xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A>, és <xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A>) csak ha az aktuális engedély megegyezik a megadott engedélyt.</xref:System.Security.Permissions.PublisherIdentityPermission.Union%2A> </xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A></xref:System.Security.Permissions.PublisherIdentityPermission>"
   syntax:
     content: public override bool IsSubsetOf (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission that is to be tested for the subset relationship. This permission must be of the same type as the current permission."
+      description: "Egy engedély, amely a részhalmaza kapcsolat tesztelése. Ezt az engedélyt az aktuális engedélyt a azonos típusúnak kell lennie."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális engedély alkészlete a megadott engedéllyel; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "A <code> target </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély."
   platform:
   - net462
 - uid: System.Security.Permissions.PublisherIdentityPermission.ToXml
@@ -258,13 +258,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates an XML encoding of the permission and its current state."
+  summary: "Létrehoz egy XML-kódolás engedély és a jelenlegi állapotában."
   syntax:
     content: public override System.Security.SecurityElement ToXml ();
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the permission, including any state information."
+      description: "Az XML-kódolás az engedély, beleértve a semmilyen állapotra vonatkozó információt."
   overload: System.Security.Permissions.PublisherIdentityPermission.ToXml*
   exceptions: []
   platform:
@@ -281,22 +281,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates a permission that is the union of the current permission and the specified permission."
-  remarks: "The result of a call to the Union method is a permission that represents all the operations represented by both the current permission and the specified permission. Any demand that passes either permission passes their union.       The <xref:System.Security.Permissions.PublisherIdentityPermission> class only supports set operations (<xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A>, <xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A>, and Union) when the current permission is equal to the specified permission."
+  summary: "Hoz létre, amely az aktuális engedély és a megadott engedéllyel az Unió engedély."
+  remarks: "A &quot;union&quot; metódus eredménye jelölt összes műveletet képviselő egy engedély az aktuális engedély és a megadott engedéllyel is. Bármely igény szerint vagy engedélyt kapott az Unió továbbítja.       A <xref:System.Security.Permissions.PublisherIdentityPermission>osztály csak támogatja a set-műveleteket (<xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A>, <xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A>, és a &quot;union&quot;) Ha az aktuális engedély megegyezik a megadott engedélyt.</xref:System.Security.Permissions.PublisherIdentityPermission.Intersect%2A> </xref:System.Security.Permissions.PublisherIdentityPermission.IsSubsetOf%2A> </xref:System.Security.Permissions.PublisherIdentityPermission>"
   syntax:
     content: public override System.Security.IPermission Union (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission to combine with the current permission. It must be of the same type as the current permission."
+      description: "Az aktuális engedély egyesítenie engedély. Az aktuális engedélyt a azonos típusúnak kell lennie."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the union of the current permission and the specified permission."
+      description: "Az aktuális engedély és a megadott engedéllyel az Unió jelölő új engedély."
   overload: System.Security.Permissions.PublisherIdentityPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission.       -or-       The two permissions are not equal."
+    description: "A <code> target </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély.       – vagy – a két engedélyek nem is egyenlő."
   platform:
   - net462
 references:

@@ -17,8 +17,8 @@ items:
   nameWithType: User
   fullName: Microsoft.VisualBasic.ApplicationServices.User
   type: Class
-  summary: "Provides access to the information about the current user."
-  remarks: "The properties and methods exposed by the `My.User` object provide access to the information about the current user. The meaning of &quot;current user&quot; differs slightly between Windows and Web applications. In a Windows application, the current user is the user who runs the application. In a Web application, the current user is the user who accesses the application.       The `My.User` property also provides access to the <xref:System.Security.Principal.IPrincipal> for the current user. A principal object represents the user&quot;s security context, including that user&quot;s identity and any roles to which the user belongs.       For Windows applications, this property provides the same functionality as the <xref:System.Threading.Thread.CurrentPrincipal%2A> property. For Web applications, this property provides the same functionality as the <xref:System.Web.HttpContext.User%2A> property of the object returned by the <xref:System.Web.HttpContext.Current%2A> property.      > [!NOTE] >  For Windows applications, only projects built on the **Windows Application** template initialize the `My.User` object by default. In all other Windows project types, you must initialize the `My.User` object by calling the <xref:Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser%2A> method explicitly or by assigning a value to <xref:System.Threading.Thread.CurrentPrincipal%2A>.      > [!NOTE] >  The `My.User` object cannot report information about the current Windows user when run under Windows 95 and Windows 98 because those operating systems do not support the concept of a logged-on user. You must implement custom authentication to use the `My.User` object on those operating systems."
+  summary: "Hozzáférést biztosít azokhoz a jelenlegi felhasználó adatait."
+  remarks: "A tulajdonságok és módszerek által elérhetővé tett a `My.User` objektum eléréséhez a jelenlegi felhasználó adatait. A &quot;current user&quot; szerinti módja kissé eltér a Windows és a webes alkalmazások között. Windows alkalmazások az aktuális felhasználónak a felhasználó, aki futtatja az alkalmazást. A webalkalmazás az aktuális felhasználónak a felhasználó, aki hozzáfér az alkalmazás.       A `My.User` tulajdonság is hozzáférést biztosít a <xref:System.Security.Principal.IPrincipal>az aktuális felhasználó.</xref:System.Security.Principal.IPrincipal> Egy egyszerű objektum által jelképezett a felhasználó biztonsági környezetében, beleértve, a felhasználó identitása és a szerepköröket, amelyhez a felhasználó tartozik.       A Windows-alkalmazások ennek a tulajdonságnak azonos funkciókat biztosítják a <xref:System.Threading.Thread.CurrentPrincipal%2A>tulajdonság.</xref:System.Threading.Thread.CurrentPrincipal%2A> Webes alkalmazásokhoz, ennek a tulajdonságnak azonos funkciókat biztosítják a <xref:System.Web.HttpContext.User%2A>tulajdonság által visszaadott objektum a <xref:System.Web.HttpContext.Current%2A>tulajdonság.</xref:System.Web.HttpContext.Current%2A> </xref:System.Web.HttpContext.User%2A>      > [!NOTE] > A Windows-alkalmazások, csak a épülő projektek a **Windows-alkalmazás** sablon inicializálása a `My.User` objektum alapértelmezés szerint. Inicializálnia kell az összes többi Windows projekttípus, a `My.User` meghívásával objektum a <xref:Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser%2A>metódus explicit módon, vagy egy érték <xref:System.Threading.Thread.CurrentPrincipal%2A>.</xref:System.Threading.Thread.CurrentPrincipal%2A> hozzárendelésével</xref:Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser%2A>      > [!NOTE] > A `My.User` objektum nem tud jelenteni az aktuális Windows-felhasználó, amikor a Windows 95 és Windows 98 futtatható, mert az operációs rendszereket támogatja a bejelentkezett felhasználó fogalmát kapcsolatos információkat. Egyéni hitelesítési használatához meg kell valósítani a `My.User` objektum ezen operációs rendszereken."
   example:
   - "This example checks if the application is using Windows or custom authentication, and uses that information to parse the `My.User.Name` property.  \n  \n [!code-vb[VbVbalrMyUser#3](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#3)]"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.VisualBasic.ApplicationServices.User&quot;></xref> class."
-  remarks: "The properties and methods exposed by the `My.User` object provide access to information about the current user."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;Microsoft.VisualBasic.ApplicationServices.User&quot;> </xref> osztály."
+  remarks: "A tulajdonságok és módszerek által elérhetővé tett a `My.User` objektum eléréséhez a jelenlegi felhasználó adatait."
   syntax:
     content: public User ();
     parameters: []
@@ -62,20 +62,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Gets or sets the current principal (for role-based security)."
-  remarks: "You can set the `My.User.CurrentPrincipal` property to an object that implements the <xref:System.Security.Principal.IPrincipal> interface to enable custom authentication.       In most project types, this property gets and sets the thread&quot;s current principal. In an ASP.NET application, this property gets and sets the security information for the current HTTP request&quot;s user identity.       This is an advanced member; it does not show in IntelliSense unless you click the **All** tab.      ## Availability by Project Type      |||   |-|-|   |Project type|Available|   |Windows Application|**Yes**|   |Class Library|**Yes**|   |Console Application|**Yes**|   |Windows Control Library|**Yes**|   |Web Control Library|**Yes**|   |Windows Service|**Yes**|   |Web Site|**Yes**|"
+  summary: "Lekérdezi vagy beállítja a jelenlegi claimsprincipal (a szerepalapú biztonság)."
+  remarks: "Beállíthatja a `My.User.CurrentPrincipal` tulajdonsága olyan objektumra, amely megvalósítja a <xref:System.Security.Principal.IPrincipal>egyéni hitelesítési engedélyezéséhez interface.</xref:System.Security.Principal.IPrincipal>       A legtöbb projekttípusok Ez a tulajdonság lekérdezi és beállítja a szál aktuális rendszerbiztonsági tag. Az ASP.NET-alkalmazások Ez a tulajdonság és beállítása a jelenlegi HTTP-kérelem felhasználói identitás tartozó biztonsági információkat.       Ez az egy speciális; azt nem jeleníti meg a IntelliSense kivéve, ha megadja a **összes** fülre.      ## Projekttípus rendelkezésre állása |||   |-|-|   | Projekttípus |} Rendelkezésre álló |}   | Windows-alkalmazás |} **Yes**|   | Szalagtár osztály |} **Yes**|   | Konzolalkalmazás |} **Yes**|   | Windows könyvtár szabályozása |} **Yes**|   | Webalkalmazás-vezérlő könyvtár |} **Yes**|   | Windows-szolgáltatás |} **Yes**|   | Webhely |} **Yes**|"
   example:
   - "This example checks if the application is using Windows or custom authentication, and uses that information to parse `My.User.Name` property.  \n  \n [!code-vb[VbVbalrMyUser#3](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#3)]"
   syntax:
     content: public System.Security.Principal.IPrincipal CurrentPrincipal { get; set; }
     return:
       type: System.Security.Principal.IPrincipal
-      description: "A <xref:System.Security.Principal.IPrincipal> value representing the security context."
+      description: "A <xref:System.Security.Principal.IPrincipal>érték a biztonsági környezet.</xref:System.Security.Principal.IPrincipal>"
   overload: Microsoft.VisualBasic.ApplicationServices.User.CurrentPrincipal*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have the permission required to set the principal."
+    description: "A hívónak nincs engedélye a kell beállítania a rendszerbiztonsági tag."
   platform:
   - net462
 - uid: Microsoft.VisualBasic.ApplicationServices.User.InitializeWithWindowsUser
@@ -90,8 +90,8 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Sets the thread&quot;s current principal to the Windows user that started the application."
-  remarks: "You can use the `My.User.InitializeWithWindowsUser` method to set the thread&quot;s current principal to the Windows user that started the application. The Visual Basic Application Model in a Windows application calls this method at startup by default. In other project types, you must set the thread&quot;s current principal by calling this method explicitly or by assigning a value to <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>.       In Windows projects, the `My.User` object is based on the thread&quot;s current principal; therefore, this method can change the information `My.User` returns. In an ASP.NET application, the `My.User` object is based on the current HTTP request&quot;s user identity, and is unaffected by this method.      > [!NOTE] >  The exact behavior of the `My.User` object depends on the type of application and on the operating system on which the application runs. For more information, see the <xref:Microsoft.VisualBasic.ApplicationServices.User> class overview.       This is an advanced member; it does not show in IntelliSense unless you click the **All** tab.      ## Availability by Project Type      |||   |-|-|   |Project type|Available|   |Windows Application|**Yes**|   |Class Library|**Yes**|   |Console Application|**Yes**|   |Windows Control Library|**Yes**|   |Web Control Library|**Yes**|   |Windows Service|**Yes**|   |Web Site|**Yes**|"
+  summary: "A szál aktuális rendszerbiztonsági tag beállítása a Windows-felhasználót, hogy az alkalmazást."
+  remarks: "Használhatja a `My.User.InitializeWithWindowsUser` metódus a szál aktuális rendszerbiztonsági tag beállítása a Windows-felhasználót, hogy az alkalmazást. A Visual Basic alkalmazásmodell Windows alkalmazások alapértelmezés szerint ez a metódus meghívja indításkor. A más típusú projekt meg kell adni a szál aktuális rendszerbiztonsági tag a metódus explicit hívása, vagy egy értéket a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>.</xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>       A Windows-projektek egyikére a `My.User` objektum alapul a szál aktuális rendszerbiztonsági tag; ezért ezt a módszert módosíthatja az adatokat `My.User` adja vissza. Az ASP.NET-alkalmazások a `My.User` objektum van az aktuális HTTP-kérelem felhasználó identitása alapján, és nincsenek hatással a metódus.      > [!NOTE] > Pontos viselkedését a `My.User` objektum alkalmazás és az alkalmazás futó operációs rendszer függ. További információkért lásd: a <xref:Microsoft.VisualBasic.ApplicationServices.User>osztály áttekintése.</xref:Microsoft.VisualBasic.ApplicationServices.User>       Ez az egy speciális; azt nem jeleníti meg a IntelliSense kivéve, ha megadja a **összes** fülre.      ## Projekttípus rendelkezésre állása |||   |-|-|   | Projekttípus |} Rendelkezésre álló |}   | Windows-alkalmazás |} **Yes**|   | Szalagtár osztály |} **Yes**|   | Konzolalkalmazás |} **Yes**|   | Windows könyvtár szabályozása |} **Yes**|   | Webalkalmazás-vezérlő könyvtár |} **Yes**|   | Windows-szolgáltatás |} **Yes**|   | Webhely |} **Yes**|"
   syntax:
     content: public void InitializeWithWindowsUser ();
     parameters: []
@@ -111,13 +111,13 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Gets or sets the principal object representing the current user."
-  remarks: "In the <xref:Microsoft.VisualBasic.ApplicationServices.User> object, this property wraps the <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> property. Override this method in a derived class to provide different behavior. For example, the <xref:Microsoft.VisualBasic.ApplicationServices.WebUser.InternalPrincipal%2A?displayProperty=fullName> property overrides this property."
+  summary: "Lekérdezi vagy beállítja az elsődleges objektumot képviselő az aktuális felhasználó."
+  remarks: "Az a <xref:Microsoft.VisualBasic.ApplicationServices.User>objektum, ez a tulajdonság becsomagolja a <xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName>tulajdonság.</xref:System.Threading.Thread.CurrentPrincipal%2A?displayProperty=fullName> </xref:Microsoft.VisualBasic.ApplicationServices.User> Bírálja felül ezt a módszert arra, hogy másképp viselkednek származtatott osztályban. Például a <xref:Microsoft.VisualBasic.ApplicationServices.WebUser.InternalPrincipal%2A?displayProperty=fullName>tulajdonság felülbírálja ezt a tulajdonságot.</xref:Microsoft.VisualBasic.ApplicationServices.WebUser.InternalPrincipal%2A?displayProperty=fullName>"
   syntax:
     content: protected virtual System.Security.Principal.IPrincipal InternalPrincipal { get; set; }
     return:
       type: System.Security.Principal.IPrincipal
-      description: "An <xref:System.Security.Principal.IPrincipal> object representing the current user."
+      description: "Egy <xref:System.Security.Principal.IPrincipal>az aktuális felhasználó képviselő objektum.</xref:System.Security.Principal.IPrincipal>"
   overload: Microsoft.VisualBasic.ApplicationServices.User.InternalPrincipal*
   exceptions: []
   platform:
@@ -134,15 +134,15 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Gets a value that indicates whether the user has been authenticated."
-  remarks: "The `My.User.IsAuthenticated` property allows your code to determine if the current user has been authenticated.      > [!NOTE] >  The exact behavior of `My.User` object depends on the type of the application and on the operating system on which the application runs. For more information, see the <xref:Microsoft.VisualBasic.ApplicationServices.User> class overview.      ## Availability by Project Type      |||   |-|-|   |Project type|Available|   |Windows Application|**Yes**|   |Class Library|**Yes**|   |Console Application|**Yes**|   |Windows Control Library|**Yes**|   |Web Control Library|**Yes**|   |Windows Service|**Yes**|   |Web Site|**Yes**|"
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy a felhasználó hitelesítése."
+  remarks: "A `My.User.IsAuthenticated` tulajdonság lehetővé teszi, hogy a határozza meg, ha az aktuális felhasználó hitelesítése.      > [!NOTE] > Pontos viselkedését `My.User` objektum az az alkalmazás és az alkalmazás futó operációs rendszer függ. További információkért lásd: a <xref:Microsoft.VisualBasic.ApplicationServices.User>osztály áttekintése.</xref:Microsoft.VisualBasic.ApplicationServices.User>      ## Projekttípus rendelkezésre állása |||   |-|-|   | Projekttípus |} Rendelkezésre álló |}   | Windows-alkalmazás |} **Yes**|   | Szalagtár osztály |} **Yes**|   | Konzolalkalmazás |} **Yes**|   | Windows könyvtár szabályozása |} **Yes**|   | Webalkalmazás-vezérlő könyvtár |} **Yes**|   | Windows-szolgáltatás |} **Yes**|   | Webhely |} **Yes**|"
   example:
   - "This example verifies that the user has been authenticated before accessing a resource.  \n  \n [!code-vb[VbVbalrMyUser#2](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#2)]"
   syntax:
     content: public bool IsAuthenticated { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the user was authenticated; otherwise, <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha a felhasználó hitelesítési; Ellenkező esetben <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.VisualBasic.ApplicationServices.User.IsAuthenticated*
   exceptions: []
   platform:
@@ -159,8 +159,8 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Determines whether the current user belongs to the specified role."
-  remarks: "The `My.User.IsInRole` method allows your code to determine if the current user is a member of the specified role.       The overload of the `My.User.IsInRole` method that takes a string provides easy access to the <xref:System.Security.Principal.IPrincipal.IsInRole%2A> method of the current principal.       The overload of the `My.User.IsInRole` method that takes a `BuiltInRole` enumeration behaves differently, depending on the current principal. If it is a Windows user principal (<xref:System.Security.Principal.WindowsPrincipal>), this function converts `role` to the equivalent <xref:System.Security.Principal.WindowsBuiltInRole> enumeration and returns the result of calling <xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>. If the current principal is any other principal, this function passes the name of the enumeration value in `role` to the principal&quot;s <xref:System.Security.Principal.IPrincipal.IsInRole%2A> method.      > [!NOTE] >  The exact behavior of the `My.User` object depends on the type of the application and on the operating system on which the application runs. For more information, see the <xref:Microsoft.VisualBasic.ApplicationServices.User> class overview.      ## Availability by Project Type      |||   |-|-|   |Project type|Available|   |Windows Application|**Yes**|   |Class Library|**Yes**|   |Console Application|**Yes**|   |Windows Control Library|**Yes**|   |Web Control Library|**Yes**|   |Windows Service|**Yes**|   |Web Site|**Yes**|"
+  summary: "Meghatározza, hogy az aktuális felhasználói szerepkörnek is tagja a megadott."
+  remarks: "A `My.User.IsInRole` módszer lehetővé teszi, hogy a megállapítja, hogy az aktuális felhasználónak-e a megadott szerepkör tagja.       A paraméterekkel nem rendelkező a `My.User.IsInRole` metódus azon definícióváltozatát karakterlánc egyszerű hozzáférést biztosít a <xref:System.Security.Principal.IPrincipal.IsInRole%2A>módszer az aktuális rendszerbiztonsági tag.</xref:System.Security.Principal.IPrincipal.IsInRole%2A>       A paraméterekkel nem rendelkező a `My.User.IsInRole` metódus azon definícióváltozatát, egy `BuiltInRole` számbavételi eltérően, attól függően, hogy a jelenlegi claimsprincipal viselkedik. Ha egy Windows egyszerű (<xref:System.Security.Principal.WindowsPrincipal>), a függvény `role` egyenértékű a <xref:System.Security.Principal.WindowsBuiltInRole>számbavételi és <xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>.</xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A> hívása eredményét adja vissza</xref:System.Security.Principal.WindowsBuiltInRole> </xref:System.Security.Principal.WindowsPrincipal> Ha az aktuális rendszerbiztonsági tag egy másik tagot, ez a függvény nevét adja meg a számbavételi érték `role` az elsődleges <xref:System.Security.Principal.IPrincipal.IsInRole%2A>metódus.</xref:System.Security.Principal.IPrincipal.IsInRole%2A>      > [!NOTE] > Pontos viselkedését a `My.User` objektum az az alkalmazás és az alkalmazás futó operációs rendszer függ. További információkért lásd: a <xref:Microsoft.VisualBasic.ApplicationServices.User>osztály áttekintése.</xref:Microsoft.VisualBasic.ApplicationServices.User>      ## Projekttípus rendelkezésre állása |||   |-|-|   | Projekttípus |} Rendelkezésre álló |}   | Windows-alkalmazás |} **Yes**|   | Szalagtár osztály |} **Yes**|   | Konzolalkalmazás |} **Yes**|   | Windows könyvtár szabályozása |} **Yes**|   | Webalkalmazás-vezérlő könyvtár |} **Yes**|   | Windows-szolgáltatás |} **Yes**|   | Webhely |} **Yes**|"
   example:
   - "This example checks if the user is an administrator before accessing a resource.  \n  \n [!code-vb[VbVbalrMyUser#1](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#1)]"
   syntax:
@@ -168,10 +168,10 @@ items:
     parameters:
     - id: role
       type: Microsoft.VisualBasic.ApplicationServices.BuiltInRole
-      description: "The built-in Windows role for which to check membership."
+      description: "A beépített Windows-szerepkör, amelyek esetében szeretne ellenőrizze tagságát."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the current user is a member of the specified role; otherwise, <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha az aktuális felhasználó tagja a megadott szerepkör; Ellenkező esetben <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.VisualBasic.ApplicationServices.User.IsInRole*
   exceptions: []
   platform:
@@ -188,8 +188,8 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Determines whether the current user belongs to the specified role."
-  remarks: "The `My.User.IsInRole` method allows your code to determine if the current user is a member of the specified role.       The overload of the `My.User.IsInRole` method that takes a string provides easy access to the <xref:System.Security.Principal.IPrincipal.IsInRole%2A> method of the current principal.       The overload of the `My.User.IsInRole` method that takes a `BuiltInRole` enumeration behaves differently, depending on the current principal. If it is a Windows user principal (<xref:System.Security.Principal.WindowsPrincipal>), this function converts `role` to the equivalent <xref:System.Security.Principal.WindowsBuiltInRole> enumeration and returns the result of calling <xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>. If the current principal is any other principal, this function passes the name of the enumeration value in `role` to the principal&quot;s <xref:System.Security.Principal.IPrincipal.IsInRole%2A> method.      > [!NOTE] >  The exact behavior of the `My.User` object depends on the type of the application and on the operating system on which the application runs. For more information, see the <xref:Microsoft.VisualBasic.ApplicationServices.User> class overview.      ## Availability by Project Type      |||   |-|-|   |Project type|Available|   |Windows Application|**Yes**|   |Class Library|**Yes**|   |Console Application|**Yes**|   |Windows Control Library|**Yes**|   |Web Control Library|**Yes**|   |Windows Service|**Yes**|   |Web Site|**Yes**|"
+  summary: "Meghatározza, hogy az aktuális felhasználói szerepkörnek is tagja a megadott."
+  remarks: "A `My.User.IsInRole` módszer lehetővé teszi, hogy a megállapítja, hogy az aktuális felhasználónak-e a megadott szerepkör tagja.       A paraméterekkel nem rendelkező a `My.User.IsInRole` metódus azon definícióváltozatát karakterlánc egyszerű hozzáférést biztosít a <xref:System.Security.Principal.IPrincipal.IsInRole%2A>módszer az aktuális rendszerbiztonsági tag.</xref:System.Security.Principal.IPrincipal.IsInRole%2A>       A paraméterekkel nem rendelkező a `My.User.IsInRole` metódus azon definícióváltozatát, egy `BuiltInRole` számbavételi eltérően, attól függően, hogy a jelenlegi claimsprincipal viselkedik. Ha egy Windows egyszerű (<xref:System.Security.Principal.WindowsPrincipal>), a függvény `role` egyenértékű a <xref:System.Security.Principal.WindowsBuiltInRole>számbavételi és <xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A>.</xref:System.Security.Principal.WindowsPrincipal.IsInRole%2A> hívása eredményét adja vissza</xref:System.Security.Principal.WindowsBuiltInRole> </xref:System.Security.Principal.WindowsPrincipal> Ha az aktuális rendszerbiztonsági tag egy másik tagot, ez a függvény nevét adja meg a számbavételi érték `role` az elsődleges <xref:System.Security.Principal.IPrincipal.IsInRole%2A>metódus.</xref:System.Security.Principal.IPrincipal.IsInRole%2A>      > [!NOTE] > Pontos viselkedését a `My.User` objektum az az alkalmazás és az alkalmazás futó operációs rendszer függ. További információkért lásd: a <xref:Microsoft.VisualBasic.ApplicationServices.User>osztály áttekintése.</xref:Microsoft.VisualBasic.ApplicationServices.User>      ## Projekttípus rendelkezésre állása |||   |-|-|   | Projekttípus |} Rendelkezésre álló |}   | Windows-alkalmazás |} **Yes**|   | Szalagtár osztály |} **Yes**|   | Konzolalkalmazás |} **Yes**|   | Windows könyvtár szabályozása |} **Yes**|   | Webalkalmazás-vezérlő könyvtár |} **Yes**|   | Windows-szolgáltatás |} **Yes**|   | Webhely |} **Yes**|"
   example:
   - "This example checks if the user is an administrator before accessing a resource.  \n  \n [!code-vb[VbVbalrMyUser#1](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#1)]"
   syntax:
@@ -197,10 +197,10 @@ items:
     parameters:
     - id: role
       type: System.String
-      description: "The name of the role for which to check membership."
+      description: "A szerepkör, amelyek esetében szeretne ellenőrizze tagságát neve."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the current user is a member of the specified role; otherwise, <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha az aktuális felhasználó tagja a megadott szerepkör; Ellenkező esetben <xref uid=&quot;langword_csharp_False&quot; name=&quot;False&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.VisualBasic.ApplicationServices.User.IsInRole*
   exceptions: []
   platform:
@@ -217,7 +217,7 @@ items:
   assemblies:
   - Microsoft.VisualBasic
   namespace: Microsoft.VisualBasic.ApplicationServices
-  summary: "Gets the name of the current user."
+  summary: "Lekérdezi az aktuális felhasználónak a nevét."
   remarks: "You can use the `My.User` object to get information about the current user.  \n  \n The principal that authenticates the user also controls the format of the user name. By default, an application uses Windows authentication, and the user name has the format DOMAIN\\USERNAME. A custom implementation of the principal does not necessarily use the same format.  \n  \n> [!NOTE]\n>  The `My.User.Name` property returns an empty string when run under Windows 95 and Windows 98 because those operating systems do not recognize user names.  \n  \n> [!NOTE]\n>  The exact behavior of the `My.User` object depends on the type of the application and on the operating system on which the application runs. For more information, see the <xref:Microsoft.VisualBasic.ApplicationServices.User> class overview.  \n  \n## Availability by Project Type  \n  \n|||  \n|-|-|  \n|Project type|Available|  \n|Windows Application|**Yes**|  \n|Class Library|**Yes**|  \n|Console Application|**Yes**|  \n|Windows Control Library|**Yes**|  \n|Web Control Library|**Yes**|  \n|Windows Service|**Yes**|  \n|Web Site|**Yes**|"
   example:
   - "This example checks if the application is using Windows or custom authentication, and uses that information to parse the `My.User.Name` property.  \n  \n [!code-vb[VbVbalrMyUser#3](~/add/codesnippet/visualbasic/VbVbalrMyUser/Class1.vb#3)]"
@@ -225,7 +225,7 @@ items:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "<xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>. The name of the current user."
+      description: "<xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref>. Az aktuális felhasználó neve."
   overload: Microsoft.VisualBasic.ApplicationServices.User.Name*
   exceptions: []
   platform:

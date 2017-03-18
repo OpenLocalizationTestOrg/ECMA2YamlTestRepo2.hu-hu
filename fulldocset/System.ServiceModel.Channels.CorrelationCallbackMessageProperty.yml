@@ -24,8 +24,8 @@ items:
   nameWithType: CorrelationCallbackMessageProperty
   fullName: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
   type: Class
-  summary: "Provides an abstract base class for deferring correlation key calculation until all of the correlation data is available."
-  remarks: "This is typically used to allow other channels to provide correlation data before a message is sent on the wire."
+  summary: "Egy absztrakt alaposztály biztosít késleltető kulcs korrelációját, amíg a korrelációs adatok nem érhető el."
+  remarks: "Ez általában szolgál engedélyezése az egyéb csatornákon adnia korrelációs adatokat, mielőtt egy üzenetet küld a keresztülhaladnak a hálózaton."
   syntax:
     content: 'public abstract class CorrelationCallbackMessageProperty : System.ServiceModel.Channels.IMessageProperty'
   inheritance:
@@ -47,13 +47,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the specified collection of correlation data that is required to calculate the correlation."
+  summary: "Hívja meg származtatott osztályokat a megadott gyűjtemény a korreláció kiszámításához szükséges korrelációs adatok használata a származtatott osztály új példányának inicializálása."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.Collections.Generic.ICollection<string> neededData);
     parameters:
     - id: neededData
       type: System.Collections.Generic.ICollection{System.String}
-      description: "The correlation data required to calculate the correlation."
+      description: "A korreláció kiszámításához szükséges a megfelelési adatok."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -70,13 +70,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the required correlation data from another <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance."
+  summary: "A származtatott osztály a szükséges megfelelési adatait egy másik használó új példányának inicializálása származtatott osztályok által meghívott <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> származtatott osztály példányt."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.ServiceModel.Channels.CorrelationCallbackMessageProperty callback);
     parameters:
     - id: callback
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "The <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance to copy."
+      description: "A <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> származtatott osztály példányának másolásához."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Adds required correlation data to the property."
-  remarks: "When required correlation data is added, it is removed from the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list. When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> returns `true`."
+  summary: "A tulajdonság szükséges korrelációs adatok hozzáadása."
+  remarks: "Amikor szükséges korrelációs adatokat ad hozzá, a rendszer eltávolítja a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>lista.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> Ha az összes szükséges adatok hozzá lett adva, a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>üres és <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A>adja vissza `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public void AddData (string name, Func<string> value);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the correlation data value."
+      description: "A megfelelési adatok érték neve."
     - id: value
       type: System.Func{System.String}
-      description: "Provides the value of the correlation data."
+      description: "A megfelelési adatok értéket ad."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.AddData*
   exceptions: []
   platform:
@@ -120,26 +120,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to asynchronously construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, which asynchronously performs the correlation calculation of the specified message.       To be notified when the asynchronous operation is complete, call <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> from the `callback` method. If <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation does not complete within the specified time-out interval a <xref:System.TimeoutException> is thrown.       This method is an asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "A korrelációs protokoll hívja meg a megfelelési információk elérhető aszinkron módon összeállítani a korrelációs esetén."
+  remarks: "Ez a metódus meghívja <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>a korrelációs összeállításához.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> Alkalmazások kell helyezni megvalósítást a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, ami aszinkron módon végrehajtja a megadott üzenet korrelációs kiszámítása.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>       Ha értesítést szeretne kapni az aszinkron művelet befejeződik, hívja <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>a a `callback` metódus.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> Ha <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>van nevű az aszinkron művelet befejezése előtt, blokkol, amíg a művelet befejezését.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> Ha sikertelen a művelet a megadott időtúllépés belül egy <xref:System.TimeoutException>vált ki.</xref:System.TimeoutException>       Ez a módszer egy aszinkron verzióját <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>használatával a <xref:System.IAsyncResult>aszinkron a kialakításban.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Aszinkron programozás áttekintése](http://go.microsoft.com/fwlink/?LinkId=141764)."
   syntax:
     content: public IAsyncResult BeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Az üzenet használható."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which correlation must be finalized or else a <xref:System.TimeoutException> is thrown."
+      description: "Az időköz, amelyben korrelációs kell lennie, ellenkező véglegesített egy <xref:System.TimeoutException>vált ki.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation is completed."
+      description: "A korrelációját befejezésekor hívandó metódust."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "Nem kötelező alkalmazás-specifikus objektum, amely leírja az aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "Hivatkozás az aktuális aszinkron művelet."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, initializes and returns a copy of the derived message property instance."
+  summary: "Ha felül van bírálva a származtatott osztály, inicializálja, és a származtatott üzenet tulajdonság példány olyan másolatát adja vissza."
   syntax:
     content: public abstract System.ServiceModel.Channels.IMessageProperty CreateCopy ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.IMessageProperty
-      description: "A copy of the derived message property instance."
+      description: "A származtatott üzenet tulajdonság példány másolata."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.CreateCopy*
   exceptions: []
   platform:
@@ -179,17 +179,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Returns the message that was prepared asynchronously for correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> to retrieve the message. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, which returns the message that was prepared for correlation.       If EndFinalizeCorrelation is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation did not complete within the time-out interval specified in the call to <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A> a <xref:System.TimeoutException> is thrown when this method is called.       This method completes the asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "Az üzenet, amely aszinkron módon lett előkészítve a korrelációs adja vissza."
+  remarks: "Ez a metódus meghívja <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>letölteni az üzenetet.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> Alkalmazások kell helyezni megvalósítást a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, amely visszaadja az üzenet korrelációs az előkészített.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>       Ha EndFinalizeCorrelation nevezik, mielőtt az aszinkron művelet befejeződése után blokkol, amíg a művelet befejeződik. Ha a művelet nem fejeződött be a hívásban megadott időtúllépés <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>egy <xref:System.TimeoutException>vált ki, ez a metódus meghívásakor.</xref:System.TimeoutException> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>       Ez a módszer befejeződik az aszinkron verzióját <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>használatával a <xref:System.IAsyncResult>aszinkron a kialakításban.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Aszinkron programozás áttekintése](http://go.microsoft.com/fwlink/?LinkId=141764)."
   syntax:
     content: public System.ServiceModel.Channels.Message EndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "A <xref:System.IAsyncResult>, amely hivatkozik a aszinkron <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>művelet.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The message that was prepared for correlation."
+      description: "Az üzenet korrelációs az előkészített."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -206,20 +206,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, which performs the correlation calculation of the specified message."
+  summary: "A korrelációs protokoll hívja meg a megfelelési információk elérhető, a korrelációs összeállításához esetén."
+  remarks: "Ez a metódus meghívja <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>a korrelációs összeállításához.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> Alkalmazások kell helyezni megvalósítást a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, amely végrehajtja a megadott üzenet korrelációs kiszámítása.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>"
   syntax:
     content: public System.ServiceModel.Channels.Message FinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Az üzenet használható."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Az időköz, amelyben a korrelációját kell lennie, ellenkező befejezett egy <xref:System.TimeoutException>vált ki.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "A korrelált üzenet."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation*
   exceptions: []
   platform:
@@ -236,13 +236,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Determines whether the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> has all of the required correlation data."
-  remarks: "When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and IsFullyDefined returns `true`."
+  summary: "Meghatározza, hogy a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> rendelkezik az összes szükséges megfelelési adatok."
+  remarks: "Ha az összes szükséges adatok hozzá lett adva, a <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>lista üres, és IsFullyDefined adja vissza `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public bool IsFullyDefined { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all of the required correlation data is present; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az összes szükséges korrelációs adat van elérhető; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined*
   exceptions: []
   platform:
@@ -259,12 +259,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: 'Gets the name of this message property: “CorrelationCallbackMessageProperty”.'
+  summary: 'Lekérdezi a üzenet tulajdonság neve: &quot;CorrelationCallbackMessageProperty&quot;.'
   syntax:
     content: public static string Name { get; }
     return:
       type: System.String
-      description: "The string value “CorrelationCallbackMessageProperty”."
+      description: "A karakterlánc-érték &quot;CorrelationCallbackMessageProperty&quot;."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.Name*
   exceptions: []
   platform:
@@ -281,12 +281,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a list of correlation data that is required before correlation can be applied."
+  summary: "Korrelációs szükséges adatok előtt korrelációs alkalmazható listájának lekérése."
   syntax:
     content: public System.Collections.Generic.IEnumerable<string> NeededData { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "A list of required correlation data."
+      description: "Szükséges korrelációs adatok listáját."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData*
   exceptions: []
   platform:
@@ -303,26 +303,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, asynchronously performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>."
+  summary: "Amikor felül van bírálva a származtatott osztály, aszinkron módon végzi a korrelációját a megadott üzenet."
+  remarks: "Ezt a módszert nevezik <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract IAsyncResult OnBeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Az üzenet használható."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Az időköz, amelyben a korrelációját kell lennie, ellenkező befejezett egy <xref:System.TimeoutException>vált ki.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation has been completed."
+      description: "A korrelációját befejezése után hívandó metódust."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "Nem kötelező alkalmazás-specifikus objektum, amely leírja az aszinkron művelet."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "Hivatkozás az aktuális aszinkron művelet."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -339,17 +339,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, returns the message that was prepared asynchronously for correlation."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>."
+  summary: "Amikor felül van bírálva a származtatott osztály, adja meg az üzenetet, amely aszinkron módon lett előkészítve a korrelációs."
+  remarks: "Ezt a módszert nevezik <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnEndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "A <xref:System.IAsyncResult>, amely hivatkozik a aszinkron <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>művelet.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "A korrelált üzenet."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -366,20 +366,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>."
+  summary: "Ha felül van bírálva a származtatott osztály, elvégzi a korrelációját a megadott üzenet."
+  remarks: "Ezt a módszert nevezik <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Az üzenet használható."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Az időköz, amelyben a korrelációját kell lennie, ellenkező befejezett egy <xref:System.TimeoutException>vált ki.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "A korrelált üzenet."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation*
   exceptions: []
   platform:
@@ -396,19 +396,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>."
+  summary: "Megkísérli lekérni egy <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> a megadott üzenet <xref:System.ServiceModel.Channels.Message.Properties*>.</xref:System.ServiceModel.Channels.Message.Properties*> a"
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message that contains the <xref:System.ServiceModel.Channels.Message.Properties*> to inspect."
+      description: "Az üzenet, amely tartalmazza a <xref:System.ServiceModel.Channels.Message.Properties*>vizsgálata.</xref:System.ServiceModel.Channels.Message.Properties*>"
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> található a megadott üzenet <xref:System.ServiceModel.Channels.Message.Properties*>; ellenkező esetben <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*> Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message’s <xref:System.ServiceModel.Channels.Message.Properties*> contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az üzenet <xref:System.ServiceModel.Channels.Message.Properties*>tartalmaz egy <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*>"
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:
@@ -425,19 +425,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message properties."
+  summary: "Megkísérli lekérni egy <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> a megadott üzenet tulajdonságai közül."
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: properties
       type: System.ServiceModel.Channels.MessageProperties
-      description: "The message properties to inspect."
+      description: "Az üzenet tulajdonságai vizsgálata."
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message properties; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> a megadott üzenet tulajdonságai tartalmazott; ellenkező esetben <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message properties contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az üzenet tulajdonságai nem tartalmaz egy <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:
