@@ -30,7 +30,7 @@ items:
   nameWithType: FileIOPermission
   fullName: System.Security.Permissions.FileIOPermission
   type: Class
-  summary: "Controls the ability to access files and folders. This class cannot be inherited."
+  summary: "Meghatározza, hozzáférhet a fájlokhoz és mappákhoz. Ez az osztály nem örökölhető."
   remarks: "This permission distinguishes between the following four types of file IO access provided by <xref:System.Security.Permissions.FileIOPermissionAccess>:  \n  \n-   `Read`: Read access to the contents of the file or access to information about the file, such as its length or last modification time.  \n  \n-   `Write`: Write access to the contents of the file or access to change information about the file, such as its name. Also allows for deletion and overwriting.  \n  \n-   `Append`: Ability to write to the end of a file only. No ability to read.  \n  \n-   `PathDiscovery`: Access to the information in the path itself. This helps protect sensitive information in the path, such as user names, as well as information about the directory structure that is revealed in the path. This value does not grant access to files or folders represented by the path.  \n  \n> [!NOTE]\n>  Giving <xref:System.Security.Permissions.FileIOPermissionAccess> access to an assembly is similar to granting it full trust. If an application should not write to the file system, it should not have <xref:System.Security.Permissions.FileIOPermissionAccess> access.  \n  \n All these permissions are independent, meaning that rights to one do not imply rights to another. For example, `Write` permission does not imply permission to `Read` or `Append`. If more than one permission is desired, they can be combined using a bitwise OR as shown in the code example that follows. File permission is defined in terms of canonical absolute paths; calls should always be made with canonical file paths.  \n  \n FileIOPermission describes protected operations on files and folders. The <xref:System.IO.File> class helps provide secure access to files and folders. The security access check is performed when the handle to the file is created. By doing the check at creation time, the performance impact of the security check is minimized. Opening a file happens once, while reading and writing can happen multiple times. Once the file is opened, no further checks are done. If the object is passed to an untrusted caller, it can be misused. For example, file handles should not be stored in public global statics where code with less permission can access them.  \n  \n <xref:System.Security.Permissions.FileIOPermissionAccess> specifies actions that can be performed on the file or folder. In addition, these actions can be combined using a bitwise OR to form complex instances.  \n  \n Access to a folder implies access to all the files it contains, as well as access to all the files and folders in its subfolders. For example, `Read` access to C:\\folder1\\ implies `Read` access to C:\\folder1\\file1.txt, C:\\folder1\\folder2\\\\, C:\\folder1\\folder2\\file2.txt, and so on.  \n  \n> [!NOTE]\n>  In versions of the .NET Framework before the [!INCLUDE[net_v40_long](~/add/includes/net-v40-long-md.md)], you could use the <xref:System.Security.CodeAccessPermission.Deny%2A?displayProperty=fullName> method to prevent inadvertent access to system resources by trusted code. <xref:System.Security.CodeAccessPermission.Deny%2A> is now obsolete, and access to resources is now determined solely by the granted permission set for an assembly. To limit access to files, you must run partially trusted code in a sandbox and assign it permissions only to resources that the code is allowed to access. For information about running an application in a sandbox, see [How to: Run Partially Trusted Code in a Sandbox](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following examples illustrate code that uses FileIOPermission. After the following two lines of code, the object `f` represents permission to read all files on the client computer's local disks. The code example then demands the permission to determine whether the application has permission to read the files.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/t-system.security.permis_23_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/t-system.security.permis_23_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/t-system.security.permis_23_1.cpp)]  \n  \n After the following two lines of code, the object `f2` represents permissions to read C:\\test_r and read and write to C:\\example\\out.txt. `Read` and `Write` represent the file/folder permissions as previously described. After creating the permission, the code demands the permission to determine whether the application has the right to read and write to the file.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/t-system.security.permis_23_2.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/t-system.security.permis_23_2.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/t-system.security.permis_23_2.cpp)]"
@@ -68,8 +68,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with fully restricted or unrestricted permission as specified."
-  remarks: "Creates either fully restricted (`None`) or `Unrestricted` access to files and directories."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> megadott teljes korlátozott vagy nem korlátozott engedéllyel rendelkező osztály."
+  remarks: "Létrehozza vagy teljesen korlátozott (`None`) vagy `Unrestricted` fájlok és könyvtárak elérésére."
   example:
   - "The following code example creates a new instance of the <xref:System.Security.Permissions.FileIOPermission> class with fully restricted read access.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/77d769e4-2464-4991-ba06-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/77d769e4-2464-4991-ba06-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/77d769e4-2464-4991-ba06-_1.cpp)]"
   syntax:
@@ -77,12 +77,12 @@ items:
     parameters:
     - id: state
       type: System.Security.Permissions.PermissionState
-      description: "One of the <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref> enumeration values."
+      description: "Egy a <xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref> számbavételi értékek."
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>state</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.PermissionState&quot;></xref>."
+    description: "A <code> state </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.PermissionState&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.String)
@@ -97,8 +97,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated file or directory."
-  remarks: "This constructor allows only one of the <xref:System.Security.Permissions.FileIOPermissionAccess> values to be specified for the specified file or directory. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> a kijelölt fájl vagy könyvtár a megadott hozzáféréssel rendelkező osztály."
+  remarks: "Ez a konstruktor lehetővé teszi, hogy csak az egyik a <xref:System.Security.Permissions.FileIOPermissionAccess>értéket kell adni a megadott fájl vagy könyvtár.</xref:System.Security.Permissions.FileIOPermissionAccess> Használja a <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>metódus összetett engedélyek meghatározásához.</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>"
   example:
   - "The following code example shows the use of the FileIOPermission constructor to create a new instance of the <xref:System.Security.Permissions.FileIOPermission> class, which provides complete access to the C:\\test_r file.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/51a3f39e-30ae-4011-8c38-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/51a3f39e-30ae-4011-8c38-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/51a3f39e-30ae-4011-8c38-_1.cpp)]"
   syntax:
@@ -106,15 +106,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> számbavételi értékek."
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "A fájl vagy könyvtár abszolút elérési utat."
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter does not specify the absolute path to the file or directory."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a <code> path </code> paraméter nem egy érvényes karakterláncot.       – vagy – a <code> path </code> paraméter adja meg a fájl vagy könyvtár abszolút elérési útja."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -129,22 +129,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated files and directories."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified files and directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> a kijelölt fájlok és könyvtárak a megadott hozzáféréssel rendelkező osztály."
+  remarks: "Ez a konstruktor lehetővé teszi, hogy csak az egyik <xref:System.Security.Permissions.FileIOPermissionAccess>értéket kell adni a megadott fájlok és könyvtárak.</xref:System.Security.Permissions.FileIOPermissionAccess> Használja a <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>metódus összetett engedélyek meghatározásához.</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>"
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> számbavételi értékek."
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "A fájlok és könyvtárak abszolút elérési útját tartalmazó tömb."
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not a valid string."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a bejegyzés a <code> pathList </code> tömbjének értéke nem egy érvényes karakterláncot."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.Security.AccessControl.AccessControlActions,System.String)
@@ -159,25 +159,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated file or directory and the specified access rights to file control information."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified file or directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions.       The `control` parameter specifies whether the access control list (ACL) for the file or directory specified by `path` can be changed, viewed, or cannot be accessed.      > [!IMPORTANT] >  An access control list (ACL) describes individuals or groups who have, or do not have, rights to specific actions on the given file and its properties.  The ability to change or view an ACL is an important permission and should be granted with caution."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> osztályt a kijelölt fájl vagy könyvtár a megadott hozzáférési és fájl kapcsolatos információ a megadott hozzáférési jogosultságokat."
+  remarks: "Ez a konstruktor lehetővé teszi, hogy csak az egyik <xref:System.Security.Permissions.FileIOPermissionAccess>értéket kell megadni a megadott fájl vagy könyvtár.</xref:System.Security.Permissions.FileIOPermissionAccess> Használja a <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>metódus összetett engedélyek meghatározásához.</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>       A `control` paraméter határozza meg, hogy a hozzáférés-vezérlés: lista (ACL) a fájl vagy könyvtár által megadott `path` megváltoztatására, tekinthetők, vagy nem érhető el.      > [!IMPORTANT] > Hozzáférés-vezérlési listaként (ACL) személyeknek vagy csoportot, akik rendelkeznek, vagy nincs jogosultsága, egy adott művelethez a megadott fájl és a tulajdonságait ismerteti.  Módosítása vagy megtekintése a hozzáférés-vezérlési Listában képes fontos engedélyt, és körültekintően kell biztosítani."
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string path);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> számbavételi értékek."
     - id: control
       type: System.Security.AccessControl.AccessControlActions
-      description: "A bitwise combination of the <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;> </xref> számbavételi értékek."
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "A fájl vagy könyvtár abszolút elérési utat."
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter does not specify the absolute path to the file or directory."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a <code> path </code> paraméter nem egy érvényes karakterláncot.       – vagy – a <code> path </code> paraméter adja meg a fájl vagy könyvtár abszolút elérési útja."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.#ctor(System.Security.Permissions.FileIOPermissionAccess,System.Security.AccessControl.AccessControlActions,System.String[])
@@ -192,25 +192,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> class with the specified access to the designated files and directories and the specified access rights to file control information."
-  remarks: "This constructor allows only one <xref:System.Security.Permissions.FileIOPermissionAccess> value to be specified for the specified files and directories. Use the <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A> method to define complex permissions.       The `control` parameter specifies whether the access control list (ACL) for the file or directory specified by `path` can be changed, viewed, or cannot be accessed.      > [!IMPORTANT] >  An access control list (ACL) describes individuals or groups who have, or do not have, rights to specific actions on the given file and its properties.  The ability to change or view an ACL is an important permission and should be granted with caution."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> a kijelölt fájlok és könyvtárak a megadott hozzáférési és a megadott hozzáférési jogosultságok fájl kapcsolatos információ osztályt."
+  remarks: "Ez a konstruktor lehetővé teszi, hogy csak az egyik <xref:System.Security.Permissions.FileIOPermissionAccess>értéket kell adni a megadott fájlok és könyvtárak.</xref:System.Security.Permissions.FileIOPermissionAccess> Használja a <xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>metódus összetett engedélyek meghatározásához.</xref:System.Security.Permissions.FileIOPermission.AddPathList%2A>       A `control` paraméter határozza meg, hogy a hozzáférés-vezérlés: lista (ACL) a fájl vagy könyvtár által megadott `path` megváltoztatására, tekinthetők, vagy nem érhető el.      > [!IMPORTANT] > Hozzáférés-vezérlési listaként (ACL) személyeknek vagy csoportot, akik rendelkeznek, vagy nincs jogosultsága, egy adott művelethez a megadott fájl és a tulajdonságait ismerteti.  Módosítása vagy megtekintése a hozzáférés-vezérlési Listában képes fontos engedélyt, és körültekintően kell biztosítani."
   syntax:
     content: public FileIOPermission (System.Security.Permissions.FileIOPermissionAccess access, System.Security.AccessControl.AccessControlActions control, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> számbavételi értékek."
     - id: control
       type: System.Security.AccessControl.AccessControlActions
-      description: "A bitwise combination of the <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;></xref> enumeration values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.AccessControl.AccessControlActions&quot;> </xref> számbavételi értékek."
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "A fájlok és könyvtárak abszolút elérési útját tartalmazó tömb."
   overload: System.Security.Permissions.FileIOPermission.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not a valid string."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a bejegyzés a <code> pathList </code> tömbjének értéke nem egy érvényes karakterláncot."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.AddPathList(System.Security.Permissions.FileIOPermissionAccess,System.String)
@@ -225,8 +225,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Adds access for the specified file or directory to the existing state of the permission."
-  remarks: "Use this method to modify file and directory access by adding to the state of the current permission."
+  summary: "A megadott fájl vagy könyvtár hozzáférés hozzáadása a meglévő állapota, az engedély."
+  remarks: "Ez a módszer használatával módosíthatja a fájl- és hozzáférés az aktuális engedély szerinti hozzáadásával."
   example:
   - "The following code example shows the use of the AddPathList method.  \n  \n [!code-cs[Classic FileIOPermission Example#2](~/add/codesnippet/csharp/179395dd-6ede-43e0-bf6e-_1.cs)]\n [!code-vb[Classic FileIOPermission Example#2](~/add/codesnippet/visualbasic/179395dd-6ede-43e0-bf6e-_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#2](~/add/codesnippet/cpp/179395dd-6ede-43e0-bf6e-_1.cpp)]"
   syntax:
@@ -234,21 +234,21 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> értékeket."
     - id: path
       type: System.String
-      description: "The absolute path of a file or directory."
+      description: "Egy fájl vagy könyvtár abszolút elérési utat."
   overload: System.Security.Permissions.FileIOPermission.AddPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter did not specify the absolute path to the file or directory."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a <code> path </code> paraméter nem egy érvényes karakterláncot.       – vagy – a <code> path </code> paraméter nem adta meg a fájl vagy könyvtár abszolút elérési útja."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>path</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <code>path</code> parameter has an invalid format."
+    description: "A <code> path </code> paraméter formátuma érvénytelen."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.AddPathList(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -263,25 +263,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Adds access for the specified files and directories to the existing state of the permission."
-  remarks: "Use this method to modify file and directory access by adding to the state of the current permission."
+  summary: "A megadott fájlok és könyvtárak hozzáférés hozzáadása a meglévő állapota, az engedély."
+  remarks: "Ez a módszer használatával módosíthatja a fájl- és hozzáférés az aktuális engedély szerinti hozzáadásával."
   syntax:
     content: public void AddPathList (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> értékeket."
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "A fájlok és könyvtárak abszolút elérési útját tartalmazó tömb."
   overload: System.Security.Permissions.FileIOPermission.AddPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> array is not valid."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a bejegyzés a <code> pathList </code> érvénytelen tömb."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "An entry in the <code>pathList</code> array has an invalid format."
+    description: "A bejegyzés a <code> pathList </code> tömb formátuma érvénytelen."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>pathList</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -299,15 +299,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets or sets the permitted access to all files."
-  remarks: "This property gets or sets the permitted access to all files on the local computer and network drives.       An individual <xref:System.Security.Permissions.FileIOPermissionAccess> value can be checked for using a bitwise AND operation."
+  summary: "Lekérdezi vagy beállítja a hozzáférés az összes fájlt."
+  remarks: "Ez a tulajdonság beolvasása, vagy a hozzáférés beállítása a helyi számítógép- és hálózati meghajtókon lévő összes fájl.       Egy adott <xref:System.Security.Permissions.FileIOPermissionAccess>érték bitenkénti és műveletet segítségével ellenőrizhetők.</xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the AllFiles property.  \n  \n [!code-cs[Classic FileIOPermission Example#3](~/add/codesnippet/csharp/p-system.security.permis_9_1.cs)]\n [!code-vb[Classic FileIOPermission Example#3](~/add/codesnippet/visualbasic/p-system.security.permis_9_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#3](~/add/codesnippet/cpp/p-system.security.permis_9_1.cpp)]"
   syntax:
     content: public System.Security.Permissions.FileIOPermissionAccess AllFiles { get; set; }
     return:
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "The set of file I/O flags for all files."
+      description: "A fájl i/o készlete tartalomként jelöli meg az összes fájl."
   overload: System.Security.Permissions.FileIOPermission.AllFiles*
   exceptions: []
   platform:
@@ -324,15 +324,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets or sets the permitted access to all local files."
-  remarks: "Local files are files contained on the local computer. Any files not accessed through a network drive are local files.       An individual <xref:System.Security.Permissions.FileIOPermissionAccess> value can be checked for using a bitwise AND operation."
+  summary: "Lekérdezi vagy beállítja a hozzáférés az összes helyi fájlt."
+  remarks: "Helyi fájlok a helyi számítógépen található fájlokat. Minden hálózati meghajtón keresztül nem elérhető fájlok helyi fájlok.       Egy adott <xref:System.Security.Permissions.FileIOPermissionAccess>érték bitenkénti és műveletet segítségével ellenőrizhetők.</xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the AllLocalFiles property.  \n  \n [!code-cs[Classic FileIOPermission Example#1](~/add/codesnippet/csharp/p-system.security.permis_10_1.cs)]\n [!code-vb[Classic FileIOPermission Example#1](~/add/codesnippet/visualbasic/p-system.security.permis_10_1.vb)]\n [!code-cpp[Classic FileIOPermission Example#1](~/add/codesnippet/cpp/p-system.security.permis_10_1.cpp)]"
   syntax:
     content: public System.Security.Permissions.FileIOPermissionAccess AllLocalFiles { get; set; }
     return:
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "The set of file I/O flags for all local files."
+      description: "A fájl i/o készlete tartalomként jelöli meg az összes helyi fájl."
   overload: System.Security.Permissions.FileIOPermission.AllLocalFiles*
   exceptions: []
   platform:
@@ -349,14 +349,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns an identical copy of the current permission."
-  remarks: "A copy of the permission represents the same access to resources as the original permission."
+  summary: "Hoz létre, és egy az aktuális engedély azonos másolatát adja vissza."
+  remarks: "Az engedély másolatát ugyanazokkal a hozzáférési erőforrások eredeti engedélyt jelöli."
   syntax:
     content: public override System.Security.IPermission Copy ();
     parameters: []
     return:
       type: System.Security.IPermission
-      description: "A copy of the current permission."
+      description: "Az aktuális engedély másolatát."
   overload: System.Security.Permissions.FileIOPermission.Copy*
   exceptions: []
   platform:
@@ -373,17 +373,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Determines whether the specified <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object is equal to the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>."
-  remarks: "For more information, see <xref:System.Object.Equals%2A>."
+  summary: "Meghatározza, hogy a megadott <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> objektum megegyezik a jelenlegi <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref>."
+  remarks: "További információkért lásd: <xref:System.Object.Equals%2A>.</xref:System.Object.Equals%2A>"
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object to compare with the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref>."
+      description: "A <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> való összehasonlításra az aktuális objektum <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> is equal to the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megadott <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> megegyezik a jelenlegi <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> objektum; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Permissions.FileIOPermission.Equals*
   exceptions: []
   platform:
@@ -400,13 +400,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Reconstructs a permission with a specified state from an XML encoding."
+  summary: "Az XML-kódolás a megadott állapotú engedély Rekonstruálja."
   syntax:
     content: public override void FromXml (System.Security.SecurityElement esd);
     parameters:
     - id: esd
       type: System.Security.SecurityElement
-      description: "The XML encoding used to reconstruct the permission."
+      description: "Az XML-kódolás használatával hozza létre újból az engedély."
   overload: System.Security.Permissions.FileIOPermission.FromXml*
   exceptions:
   - type: System.ArgumentNullException
@@ -414,7 +414,7 @@ items:
     description: "The <code>esd</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>esd</code> parameter is not a valid permission element.       -or-       The <code>esd</code> parameter&quot;s version number is not compatible."
+    description: "A <code> esd </code> paraméter nem érvényes engedélyelem.       – vagy – a <code> esd </code> paraméter verziószáma nem kompatibilis."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.GetHashCode
@@ -429,14 +429,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets a hash code for the <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object that is suitable for use in hashing algorithms and data structures such as a hash table."
-  remarks: "The hash code for two instances of the same permission might be different, hence a hash code should not be used to compare two <xref:System.Security.Permissions.FileIOPermission> objects."
+  summary: "Egy kivonatoló kódot lekérdezi a <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> objektum, amely lehetővé teszi a kivonatoló algoritmusok és adatok struktúrák, például egy kivonattáblát a használatra."
+  remarks: "A kivonatkód ugyanazt az engedélyt két példánya esetén eltérők lehetnek, ezért egy kivonatkód nem használható két összehasonlítandó <xref:System.Security.Permissions.FileIOPermission>objektumok.</xref:System.Security.Permissions.FileIOPermission>"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;></xref> object."
+      description: "Az aktuális kivonatoló kódot <xref href=&quot;System.Security.Permissions.FileIOPermission&quot;> </xref> objektum."
   overload: System.Security.Permissions.FileIOPermission.GetHashCode*
   exceptions: []
   platform:
@@ -453,8 +453,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Gets all files and directories with the specified <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>."
-  remarks: "Use this method to get the state of the current permission. To get the state of both `Read` and `Write` access, two calls to this method are required.      > [!NOTE] >  The `access` parameter is limited to the values of <xref:System.Security.Permissions.FileIOPermissionAccess>, which represent single types of file access. Those values are <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, and <xref:System.Security.Permissions.FileIOPermissionAccess>. The values acceptable to `access` do not include <xref:System.Security.Permissions.FileIOPermissionAccess> and <xref:System.Security.Permissions.FileIOPermissionAccess>, which do not represent single types of file access."
+  summary: "Lekérdezi a fájlok és könyvtárak a megadott <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>."
+  remarks: "Ez a módszer segítségével az aktuális engedély állapotának beolvasására. Mindkét állapotának eléréséhez `Read` és `Write` hozzáférés, ez a módszer két hívások szükségesek.      > [!NOTE] > A `access` paraméter értékének korlátozódik <xref:System.Security.Permissions.FileIOPermissionAccess>, amely egyetlen típusú fájl hozzáférést jelöl.</xref:System.Security.Permissions.FileIOPermissionAccess> Ezeket az értékeket <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, <xref:System.Security.Permissions.FileIOPermissionAccess>, és <xref:System.Security.Permissions.FileIOPermissionAccess>.</xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess> Elfogadható értékek `access` nem tartalmaznak <xref:System.Security.Permissions.FileIOPermissionAccess>és <xref:System.Security.Permissions.FileIOPermissionAccess>, amelyek nem felelnek meg a fájl eléréséhez egyetlen típusú.</xref:System.Security.Permissions.FileIOPermissionAccess> </xref:System.Security.Permissions.FileIOPermissionAccess>"
   example:
   - "The following code example shows the use of the GetPathList method. This example is part of a larger example provided for the <xref:System.Security.Permissions.FileIOPermission> class.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/cpp/996247c6-c512-46ad-9cab-_1.cpp)]\n [!code-cs[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/csharp/996247c6-c512-46ad-9cab-_1.cs)]\n [!code-vb[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/visualbasic/996247c6-c512-46ad-9cab-_1.vb)]"
   syntax:
@@ -462,15 +462,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "One of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values that represents a single type of file access."
+      description: "Egy a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> értékek, amelyek egy adott típusú fájl hozzáférés jelöli."
     return:
       type: System.String[]
-      description: "An array containing the paths of the files and directories to which access specified by the <code>access</code> parameter is granted."
+      description: "A fájlok és könyvtárak melyik által megadott hozzáférési görbéjét tartalmazó tömb a <code> access </code> paraméter engedélyezett."
   overload: System.Security.Permissions.FileIOPermission.GetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>access</code> is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       <code>access</code> is <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>, which represents more than one type of file access, or <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>, which does not represent any type of file access."
+    description: "<code>access</code>az érvényes érték <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – <code>access</code> van <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>, amely jelenti, hogy a fájl elérése egynél több típusú vagy <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>, amely nem felel meg a fájl eléréséhez bármilyen típusú."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.Intersect(System.Security.IPermission)
@@ -485,22 +485,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates and returns a permission that is the intersection of the current permission and the specified permission."
-  remarks: "The intersection of two permissions is a permission that describes the set of operations they both describe in common. Only a demand that passes both original permissions will pass the intersection."
+  summary: "Hoz létre, és adja vissza, amely az aktuális engedély és a megadott engedéllyel engedély."
+  remarks: "Két engedélyek metszetét, amely ismerteti a műveletek mindkét leírják közös engedély. Csak egy igény szerinti mindkét eredeti engedélyt kapott metszetének sikeres lesz."
   syntax:
     content: public override System.Security.IPermission Intersect (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission to intersect with the current permission. It must be the same type as the current permission."
+      description: "Az aktuális engedéllyel rendelkező intersect engedély. Ugyanolyan típusú, mint az aktuális engedély kell lennie."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the intersection of the current permission and the specified permission. This new permission is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the intersection is empty."
+      description: "Új engedéllyel, amely jelöli az aktuális engedély és a megadott engedélyt. Ez az új engedély <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha metszetének üres."
   overload: System.Security.Permissions.FileIOPermission.Intersect*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "A <code> target </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.IsSubsetOf(System.Security.IPermission)
@@ -515,22 +515,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Determines whether the current permission is a subset of the specified permission."
-  remarks: "The current permission is a subset of the specified permission if the current permission specifies a set of operations that is contained by the specified permission. For example, a permission that represents read access to C:\\example.txt is a subset of a permission that represents read access to C:\\\\. If this method returns `true`, the current permission represents no more access to the protected resource than does the specified permission."
+  summary: "Meghatározza, hogy az aktuális engedély a megadott engedéllyel egy részét."
+  remarks: "Az aktuális engedély alkészlete a megadott engedély, ha az aktuális engedély egy kumulatív műveletek a megadott engedély által tartalmazott. Például egy engedély olvasási hozzáférést C:\\example.txt jelképező alkészlete az engedély olvasási hozzáférést jelölő c:\\\\. Ez a metódus visszatérési értéke `true`, az aktuális engedély nem további lehet hozzáférni a védett erőforrásokhoz, mint a megadott engedéllyel jelöli."
   syntax:
     content: public override bool IsSubsetOf (System.Security.IPermission target);
     parameters:
     - id: target
       type: System.Security.IPermission
-      description: "A permission that is to be tested for the subset relationship. This permission must be the same type as the current permission."
+      description: "Egy engedély, amely a részhalmaza kapcsolat tesztelése. Ezt az engedélyt az aktuális engedélyt az azonos típusúnak kell lennie."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is a subset of the specified permission; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális engedély alkészlete a megadott engedéllyel; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Permissions.FileIOPermission.IsSubsetOf*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>target</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "A <code> target </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.IsUnrestricted
@@ -545,14 +545,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Returns a value indicating whether the current permission is unrestricted."
-  remarks: "An unrestricted permission represents access to all resources protected by the permission."
+  summary: "Az aktuális engedély korlátlan voltát jelző érték beolvasása."
+  remarks: "Egy korlátlan engedély összes engedély által védett erőforrásokhoz való hozzáférést jelöli."
   syntax:
     content: public bool IsUnrestricted ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current permission is unrestricted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális engedély korlátlan; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Permissions.FileIOPermission.IsUnrestricted*
   exceptions: []
   platform:
@@ -569,7 +569,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Sets the specified access to the specified file or directory, replacing the existing state of the permission."
+  summary: "A megadott fájl vagy könyvtár, az engedély meglévő állapotának cseréje a megadott hozzáférési állítja be."
   remarks: "The previous state of the current permission for the specified access type is overwritten. The following code sets the access for C:\\temp to <xref:System.Security.Permissions.FileIOPermissionAccess>.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_1.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_1.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#12](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_1.cs)]  \n  \n This access will not be overwritten by the following code because the access types are not the same.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_2.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_2.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#13](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_2.cs)]"
   example:
   - "The following code example shows the use of the SetPathList method.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/cpp/21456ab4-f876-4c97-b331-_3.cpp)]\n [!code-cs[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/csharp/21456ab4-f876-4c97-b331-_3.cs)]\n [!code-vb[System.Security.Permissions.FileIOPermission#7](~/add/codesnippet/visualbasic/21456ab4-f876-4c97-b331-_3.vb)]"
@@ -578,15 +578,15 @@ items:
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> értékeket."
     - id: path
       type: System.String
-      description: "The absolute path of the file or directory."
+      description: "A fájl vagy könyvtár abszolút elérési utat."
   overload: System.Security.Permissions.FileIOPermission.SetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       The <code>path</code> parameter is not a valid string.       -or-       The <code>path</code> parameter did not specify the absolute path to the file or directory."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a <code> path </code> paraméter nem egy érvényes karakterláncot.       – vagy – a <code> path </code> paraméter nem adta meg a fájl vagy könyvtár abszolút elérési útja."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.SetPathList(System.Security.Permissions.FileIOPermissionAccess,System.String[])
@@ -601,22 +601,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Sets the specified access to the specified files and directories, replacing the current state for the specified access with the new set of paths."
+  summary: "A megadott fájlok és könyvtárak, az újonnan létrehozott elérési utak közül a jelenlegi állapotában a megadott hozzáférési cseréje a megadott hozzáférési állítja be."
   remarks: "The previous state of the current permission for the specified access type is overwritten. The following code sets the access for C:\\temp to <xref:System.Security.Permissions.FileIOPermissionAccess>.  \n  \n This access will not be overwritten by the following code because the access types are not the same.  \n  \n [!code-cpp[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/cpp/653665a4-6451-42cc-8bd1-_1.cpp)]\n [!code-vb[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/visualbasic/653665a4-6451-42cc-8bd1-_1.vb)]\n [!code-cs[System.Security.Permissions.FileIOPermission#15](~/add/codesnippet/csharp/653665a4-6451-42cc-8bd1-_1.cs)]"
   syntax:
     content: public void SetPathList (System.Security.Permissions.FileIOPermissionAccess access, string[] pathList);
     parameters:
     - id: access
       type: System.Security.Permissions.FileIOPermissionAccess
-      description: "A bitwise combination of the <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref> values."
+      description: "Tagértékeinek a <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref> értékeket."
     - id: pathList
       type: System.String[]
-      description: "An array containing the absolute paths of the files and directories."
+      description: "A fájlok és könyvtárak abszolút elérési útját tartalmazó tömb."
   overload: System.Security.Permissions.FileIOPermission.SetPathList*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>access</code> parameter is not a valid value of <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;></xref>.       -or-       An entry in the <code>pathList</code> parameter is not a valid string."
+    description: "A <code> access </code> paraméter értéke nem érvényes <xref href=&quot;System.Security.Permissions.FileIOPermissionAccess&quot;> </xref>.       – vagy – a bejegyzés a <code> pathList </code> paraméter nem egy érvényes karakterláncot."
   platform:
   - net462
 - uid: System.Security.Permissions.FileIOPermission.ToXml
@@ -631,13 +631,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates an XML encoding of the permission and its current state."
+  summary: "Létrehoz egy XML-kódolás engedély és a jelenlegi állapotában."
   syntax:
     content: public override System.Security.SecurityElement ToXml ();
     parameters: []
     return:
       type: System.Security.SecurityElement
-      description: "An XML encoding of the permission, including any state information."
+      description: "Az XML-kódolás az engedély, beleértve a semmilyen állapotra vonatkozó információt."
   overload: System.Security.Permissions.FileIOPermission.ToXml*
   exceptions: []
   platform:
@@ -654,22 +654,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Permissions
-  summary: "Creates a permission that is the union of the current permission and the specified permission."
-  remarks: "The result of a call to Union is a permission that represents all the operations represented by both the current permission and the specified permission. Any demand that passes either permission passes their union."
+  summary: "Hoz létre, amely az aktuális engedély és a megadott engedéllyel az Unió engedély."
+  remarks: "A Union hívása eredménye jelölt összes műveletet képviselő egy engedély az aktuális engedély és a megadott engedéllyel is. Bármely igény szerint vagy engedélyt kapott az Unió továbbítja."
   syntax:
     content: public override System.Security.IPermission Union (System.Security.IPermission other);
     parameters:
     - id: other
       type: System.Security.IPermission
-      description: "A permission to combine with the current permission. It must be the same type as the current permission."
+      description: "Az aktuális engedély egyesítenie engedély. Ugyanolyan típusú, mint az aktuális engedély kell lennie."
     return:
       type: System.Security.IPermission
-      description: "A new permission that represents the union of the current permission and the specified permission."
+      description: "Az aktuális engedély és a megadott engedéllyel az Unió jelölő új engedély."
   overload: System.Security.Permissions.FileIOPermission.Union*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>other</code> parameter is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> and is not of the same type as the current permission."
+    description: "A <code> other </code> paraméter nem <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , és nem ugyanabba a típusba tartozik, mint az aktuális engedély."
   platform:
   - net462
 references:

@@ -26,8 +26,8 @@ items:
   nameWithType: ReliableSessionBindingElement
   fullName: System.ServiceModel.Channels.ReliableSessionBindingElement
   type: Class
-  summary: "Represents the binding element that can produce the sending and receiving channels required for a reliable session between endpoints."
-  remarks: "Provides sessions and optionally provides ordered message delivery. This implemented session can cross SOAP and transport intermediaries.       Each binding element represents a processing step when sending or receiving messages. At runtime, binding elements create the channel factories and listeners that are necessary to build outgoing and incoming channel stacks required to send and receive messages. The ReliableSessionBindingElement provides an optional layer in the stack that can establish a reliable session between endpoints and configure the behavior of this session.       The ReliableSessionBindingElement is provided on the standard bindings in the following table.      |Binding|Default|   |-------------|-------------|   |<xref:System.ServiceModel.NetTcpBinding>|Off|   |<xref:System.ServiceModel.WSHttpBinding>|Off|   |<xref:System.ServiceModel.WSDualHttpBinding>|On (required)|"
+  summary: "A kötéselem eredményezhetnek a küldése és fogadása szükséges a megbízható munkamenet végpontok közötti csatornák jelöli."
+  remarks: "-Munkameneteket biztosít, és opcionálisan biztosítja a rendezett üzenetkézbesítését. A megvalósított munkamenet áthaladhat SOAP és átviteli közvetítők.       Minden egyes kötéselem jelenti. a folyamat valamelyik lépése során üzenetek küldésekor vagy fogadásakor. Alkalmazása futásidőben kötőelemekké hozza létre a csatornagyár és figyelők üzenetek küldése és fogadása szükséges a kimenő és bejövő csatorna verem létrehozásához szükséges. A ReliableSessionBindingElement a verem végpontok közötti megbízható munkamenet létrehozására és a munkamenet viselkedésének konfigurálása nem kötelező réteget biztosít.       A szabványos kötéseket a következő táblázat a ReliableSessionBindingElement valósul meg.      | Kötelező |} Alapértelmezett |}   |-------------|-------------|   | <xref:System.ServiceModel.NetTcpBinding>| Ki |}   | <xref:System.ServiceModel.WSHttpBinding>| Ki |}   | <xref:System.ServiceModel.WSDualHttpBinding>| A (kötelező) |}</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding> </xref:System.ServiceModel.NetTcpBinding>"
   example:
   - "The ReliableSessionBindingElement can be added to any custom binding. This is done using the following configuration elements.  \n  \n```  \n<bindings>  \n    <customBinding>  \n        <binding configurationName=”ReliabilityHTTP”>  \n            <reliableSession/>  \n        </binding>  \n    </customBinding>  \n</bindings>  \n```  \n  \n The following sample code demonstrates how to use ReliableSessionBindingElement in code.  \n  \n [!code-vb[S_Imperative#1](~/add/codesnippet/visualbasic/t-system.servicemodel.ch_0_1.vb)]\n [!code-cs[S_Imperative#1](~/add/codesnippet/csharp/t-system.servicemodel.ch_0_1.cs)]"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> osztály."
   syntax:
     content: public ReliableSessionBindingElement ();
     parameters: []
@@ -71,13 +71,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class that specifies whether message delivery must preserve the order in which messages are sent."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> osztály, amely megadja, hogy üzenetkézbesítést meg kell őriznie a sorrendet, amelyben üzenetek küldése történik."
   syntax:
     content: public ReliableSessionBindingElement (bool ordered);
     parameters:
     - id: ordered
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha üzenetet kézbesíteni a sorrendben, amelyben elküldi őket; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.#ctor*
   exceptions: []
   platform:
@@ -94,18 +94,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the interval of time that a destination waits before sending an acknowledgment to the message source on reliable channels that are created by the factory."
-  remarks: "The destination that receives messages on a reliable channel groups the acknowledgments for these messages together into a single message to reduce network traffic and to increase information density on messages. Grouping scales better as traffic increases. It does not attempt to send an acknowledgment for every message it receives as soon as possible, but rather waits for an interval of time, groups together the acknowledgments that have arrived during that interval, and then sends them all together. The first message that is received is the exception; it is acknowledged as soon as it is delivered. Also, if reliable sessions are used with single HTTP connections, as is the case for example with the <xref:System.ServiceModel.WSHttpBinding> but not <xref:System.ServiceModel.WSDualHttpBinding>, then this setting is not used.       The value that is set with the AcknowledgementInterval property is a recommendation to the infrastructure and not a hard limit."
+  summary: "Lekérdezi vagy beállítja az időtartam, amely a célként megadott vár, mielőtt egy visszaigazoló küld a forrásfájl, a létrehozott megbízható csatornákon gyár által."
+  remarks: "A cél, amely egy megbízható csatorna üzeneteket fogad a nyugtázások ezeket az üzeneteket együtt csoportosítja a hálózati forgalom csökkentése érdekében, és információt sűrűség üzenetek növelése egyetlen üzenetben. Csoportosítás méretezi a forgalom növekedése jobb. Próbálja meg elküldeni a nyugtázás esetében minden üzenetet kap a lehető leghamarabb, de időköz, megvárja, ahelyett, hogy összevonja, amelyek adott időszakban érkezett a visszaigazolások, és ezután elküldi az összes együtt. Az első üzenet kapott; kivételt képez ez alól elfogadott, amint biztosítását. Megbízható munkamenetek egyetlen HTTP-kapcsolatok használata esetén, is esetében például a <xref:System.ServiceModel.WSHttpBinding>, de nem <xref:System.ServiceModel.WSDualHttpBinding>, majd ezt a beállítást nem használja.</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding>       AcknowledgementInterval tulajdonság beállított értéke egy javaslatot, az infrastruktúra és a nem rögzített korlátját."
   syntax:
     content: public TimeSpan AcknowledgementInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds."
+      description: "A <xref:System.TimeSpan>, amely megadja, hogy az időtartam, amely egy szolgáltatás megvárja visszajelzést küld a forrásfájl.</xref:System.TimeSpan> Az alapértelmezett érték 2 másodperc."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.AcknowledgementInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "A beállított érték értéke kisebb vagy egyenlő, mint nulla."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
@@ -125,10 +125,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.ServiceModel.Channels.IChannelFactory{TChannel}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -150,10 +150,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.ServiceModel.Channels.IChannelListener`1
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -220,13 +220,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Creates a copy of the current reliable session binding element."
+  summary: "A jelenlegi megbízható munkamenet kötéselem másolatát hozza létre."
   syntax:
     content: public override System.ServiceModel.Channels.BindingElement Clone ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "A <xref:System.ServiceModel.Channels.BindingElement> that is a clone of the current binding element."
+      description: "A <xref:System.ServiceModel.Channels.BindingElement>, amely az aktuális kötéselem klónja.</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Clone*
   exceptions: []
   platform:
@@ -243,13 +243,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether the reliable session has flow control enabled."
-  remarks: "Flow control is a mechanism that reliable sessions implement to ensure that senders do not send more messages than a receiver can handle. Receivers have a buffer of messages that is used to accommodate message bursts and out-of-order messages. Receivers advertise to senders the amount of space that remains in this buffer in each of their acknowledgements. Senders can use this information to stop sending new messages whenever the receiver has no buffer space left."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy a megbízható munkamenet adatfolyam vezérlés engedélyezve van-e."
+  remarks: "Folyamatvezérlés egy olyan mechanizmus, amely megbízható munkamenetek annak érdekében, hogy feladók üzenetküldést több, mint a fogadó kezelni tud valósítja meg. Fogadó puffer az üzenet felszakadásáig alkalmazásához használt üzenetek és soron üzenetek rendelkezik. Fogadók feladók hirdet a a puffer az egyes a nyugtázás a fennmaradó terület mennyiségét. Feladók ezen információk használatával állítsa le az új üzenetek küldése, ha a fogadó rendelkezik a pufferterület balra."
   syntax:
     content: public bool FlowControlEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reliable session has flow control enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a megbízható munkamenet engedélyezve; adatfolyam vezérlés Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.FlowControlEnabled*
   exceptions: []
   platform:
@@ -271,10 +271,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: T
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.GetProperty<T>*
   exceptions: []
   platform:
@@ -291,18 +291,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets an interval of time that a service remains inactive before closing."
-  remarks: "Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout parameter controls the maximum amount of time to keep an inactive session alive. If more than InactivityTimeout time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher can independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages are received or if there is a failure on the sender."
+  summary: "Lekérdezi vagy beállítja, hogy a szolgáltatás inaktív Bezárás előtt időköz."
+  remarks: "Tevékenység csatornán történt egy alkalmazás vagy infrastruktúra-üzenet fogadásakor típusúként van definiálva. A tétlen időtúllépés paraméter határozza meg a maximális időt egy inaktív munkamenet életben tartása. Ha több mint alatt az időtartam alatt továbbítja InactivityTimeout tevékenység nélküli, a munkamenet megszakadt az infrastruktúra és a csatorna hibák. A megbízható munkamenet egyoldalúan van bontva.       Ha a küldő alkalmazás rendelkezik majd a megbízható munkamenet küldendő üzenetek általában nem jelzett inaktivitási; Ehelyett egy életben tartási mechanizmus tartja a munkamenet aktív határozatlan ideig. Vegye figyelembe, hogy a kézbesítő egymástól függetlenül lehet megszakítása a megbízható munkamenet, ha nincs alkalmazás üzenetek küldött és fogadott. Ebből kifolyólag inaktivitási időkorlátját hálózati körülmények esetén úgy, hogy nincs üzenetek fogadása, vagy ha nincs hiba a küldő általában lejár."
   syntax:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "A <xref:System.TimeSpan>, amely megadja, hogy a szolgáltatás inaktív Bezárás előtt időintervallum.</xref:System.TimeSpan> Az alapértelmezett érték 10 perc."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than either <xref:System.Int32.MaxValue> or <xref:System.TimeSpan.MaxValue>."
+    description: "A beállított érték kisebb vagy egyenlő, mint nulla vagy nagyobb, mint bármelyik <xref:System.Int32.MaxValue>vagy <xref:System.TimeSpan.MaxValue>.</xref:System.TimeSpan.MaxValue> </xref:System.Int32.MaxValue>"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels
@@ -317,18 +317,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of channels that can be pending during the reliable session."
-  remarks: "Channels are pending when they are waiting to be accepted. Once that limit is reached, no channels are created and put in pending mode until this number goes down (by accepting pending channels). This is a limit for each listener.       When the threshold is reached and a remote application tries to establish a new reliable session, the request is denied and the open operation that prompted this faults."
+  summary: "Lekérdezi vagy beállítja a függőben lévő használható csatornák legnagyobb száma a megbízható munkamenet során."
+  remarks: "Ha várnak el kell fogadni csatornák várnak. Ez a korlát elérését követően nincs csatorna létrehozása és tegye függőben lévő mód csak a szám álljon (fogadása váró csatornák). Ez az egyes figyelő a határértéket.       Ha a küszöb elérése és egy távoli alkalmazás megpróbál egy új megbízható munkamenet létrehozására, a kérelmet a rendszer megtagadja, és a megnyitási művelet, amely felszólítja a hibák."
   syntax:
     content: public int MaxPendingChannels { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of channels that can be pending. The default value is 4."
+      description: "Függőben lévő lehet csatornák legnagyobb száma. Az alapértelmezett értéke 4."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than 16384."
+    description: "A beállított érték kisebb vagy egyenlő nulla vagy nagyobb, mint 16384."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount
@@ -343,18 +343,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the maximum number of times that a message attempts to be transferred during the reliable session."
-  remarks: "A message is considered to be transferred if its delivery at the recipient has been acknowledged by the recipient.       If an acknowledgment has not been received within a certain amount of time for a message that has been transmitted, the infrastructure automatically retransmits the message. The infrastructure tries to send the message for, at most, a MaxRetryCount number of times. Not receiving an acknowledgment before this limit is reached is considered a fatal communication failure and causes the channel faulted event to be raised.       The infrastructure uses an exponential back-off algorithm to determine when to retransmit, based on a computed average round-trip time. The initial retry time is computed based on the measured roundtrip time of establishing the session. The retransmission algorithm doubles the delay with every attempt, which results in approximately 8.5 minutes passing between the first transmission attempt and the last retransmission attempt. The time for the first retransmission attempt is adjusted according to the calculated round-trip time and the resulting stretch of time that those attempts take varies accordingly. This allows the retransmission time to dynamically adapt to varying network conditions."
+  summary: "Lekérdezi vagy beállítja a maximálisan megengedett számú üzenetet próbálja átvinni a megbízható munkamenet során."
+  remarks: "Egy üzenet akkor továbbítható, ha a címzett a kézbesítési nyugtázta a címzett tekinthető.       Ha egy visszaigazolás nem egy bizonyos időn belüli elküldött üzenet érkezett, az infrastruktúra automatikusan újraküldi az üzenetet. Az infrastruktúra megpróbálja elküldeni az üzenetet a tartalom legfeljebb egy MaxRetryCount száma. Egy visszaigazolás nem fogad, a korlát elérése előtt tekinthető végzetes kommunikációs hiba, és leállítja a csatorna hibát jelzett eseményre.       Az infrastruktúra exponenciális vissza az indító algoritmust használ, hogy újból elküldenek, egy számított körbejárási átlagos ideje alapján. A kezdeti újrapróbálkozási idő kiszámítása a mért idejéről a munkamenet megadása alapján történik. Az üzenetek újraküldését algoritmus megduplázódik a késlekedés minden tett kísérlet, amely átadja az első átvitel kísérlet és a legutóbbi újraküldési kísérlet között körülbelül 8.5 percet eredményez. Az első újraküldési kísérlet ideje alapján számított üzenetváltások idejének módosul, és az eredményül kapott nyújtása próbálkozások idő ennek megfelelően változik. Ez lehetővé teszi a újraküldési idő dinamikusan változó hálózati körülmények között való alkalmazkodásra."
   syntax:
     content: public int MaxRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of times that a message attempts to be re-sent. The minimum value is 1; the maximum is <xref:System.Int32>; and the default value is 8."
+      description: "A maximális száma, amely egy üzenetet megpróbálja újra kell küldeni. A minimális értéke 1. a maximális hossz <xref:System.Int32>; az alapértelmezett érték pedig a 8.</xref:System.Int32>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "A beállított érték értéke kisebb vagy egyenlő, mint nulla."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize
@@ -369,18 +369,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of messages that can exist in either the send buffer or the receive buffer."
-  remarks: "The value of the MaxTransferWindowSize property can be set on both the sender and the receiver. This value is included in the binding policy of the WSDL, so if you use the [ServiceModel Metadata Utility Tool (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) to construct your client, it has the same value. Otherwise this value is whatever you set it to be on the client.       When this limit is reached on the sender, additional calls to send are blocked. When this limit is reached on the receiver, new messages that arrive on the underlying channel are not accepted.       A reliable session uses a windowing protocol to help improve network utilization. The amount of buffering required is directly derived from the size of the transmission window. When tuning this value, note that the optimal transmission window is related to the bandwidth and the latency in a straight-forward way. The ideal maximum window size is the bandwidth times the latency. Anything smaller yields less than 100% network utilization; anything larger is just wasted space."
+  summary: "Lekérdezi vagy beállítja a létezhet üzenetek legnagyobb száma a küldési puffer vagy a fogadási puffert."
+  remarks: "A MaxTransferWindowSize tulajdonság értékének a feladó és a fogadó is beállítható. A kötési házirend a WSDL tartalmazza ezt az értéket, ha a [ServiceModel metaadatok segédprogram eszközt (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) összeállítani az ügyfél, ugyanazzal az értékkel rendelkezik. Ellenkező esetben a értéke függetlenül beállíthatja úgy, hogy az ügyfél lehet.       A küldő a elérésekor ezt a határt, a további hívások küldendő le vannak tiltva. Ha a fogadó a eléri ezt a korlátot, az alapul szolgáló csatornán érkező új üzenetek nem fogad.       A megbízható munkamenet hálózathasználat javítása érdekében Ablakozó protokollt használ. A pufferelés a szükséges mennyiségű közvetlenül az átviteli ablak méretének van származtatva. Amikor hangolása ezt az értéket, vegye figyelembe, hogy az optimális átviteli ablak kapcsolódik a sávszélesség és a késés egyszerű feladat úgy. Épp ezért tökéletes választás maximális ablak mérete a sávszélességet a várakozási időt. Kisebbre adja eredményül, kisebb, mint 100 %-os hálózathasználat; minden nagyobb csak feleslegesen helyet."
   syntax:
     content: public int MaxTransferWindowSize { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of messages that can be buffered. The minimum value is 1; the maximum value is 4096; and the default value is 32."
+      description: "A legnagyobb is pufferbe kerüljön-kezelési üzenetek száma. A minimális értéke 1. a maximális érték 4096; az alapértelmezett értéke pedig 32."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to one or greater than 4096."
+    description: "A beállított érték kisebb vagy egyenlő vagy nagyobb, mint 4096."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered
@@ -395,13 +395,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "To get messages dispatched in order, you also must set the <xref:System.ServiceModel.ConcurrencyMode> to <xref:System.ServiceModel.ConcurrencyMode>."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy üzenetkézbesítést meg kell őriznie a sorrendet, amelyben üzenetek küldése történik."
+  remarks: "Ahhoz, hogy ahhoz küldött üzenetek, is meg kell adni a <xref:System.ServiceModel.ConcurrencyMode> <xref:System.ServiceModel.ConcurrencyMode>.</xref:System.ServiceModel.ConcurrencyMode> </xref:System.ServiceModel.ConcurrencyMode>"
   syntax:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha üzenetet kézbesíteni a sorrendben, amelyben elküldi őket; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered*
   exceptions: []
   platform:
@@ -418,13 +418,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the version of WS-ReliableMessaging specified by the binding element."
-  remarks: 'There are currently two versions of the WS-ReliableMessaging protocol supported by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS-ReliableMessaging1.1 and WS-ReliableMessagingFebruary2005. The default version is WS-ReliableMessagingFebruary2005.'
+  summary: "Lekérdezi vagy beállítja a WS-ReliableMessaging a kötéselem által megadott verziója."
+  remarks: 'Jelenleg két verziója van a WS-ReliableMessaging protokoll használható [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS-ReliableMessaging1.1 és a WS-ReliableMessagingFebruary2005. Az alapértelmezett verziója WS-ReliableMessagingFebruary2005.'
   syntax:
     content: public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { get; set; }
     return:
       type: System.ServiceModel.ReliableMessagingVersion
-      description: "An instance derived from <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;></xref> that represents the version of the WS-ReliableMessaging protocol used by the configuration element."
+      description: "Egy példány származó <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;> </xref> , amely jelzi, hogy a WS-ReliableMessaging protokoll a konfigurációs elem által használt verzióját."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.ReliableMessagingVersion*
   exceptions: []
   platform:
@@ -442,16 +442,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Maps the information contained in the reliable session binding element into the WSDL elements that enable a remote endpoint to access the service with a reliable session."
+  summary: "A Maps a WSDL-elemekbe, amelyek lehetővé teszik a távoli végponton keresztül biztosít hozzáférést a szolgáltatást, amely egy megbízható munkamenet a megbízható munkamenet kötéselem található információkat."
   syntax:
     content: void IPolicyExportExtension.ExportPolicy (System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context);
     parameters:
     - id: exporter
       type: System.ServiceModel.Description.MetadataExporter
-      description: "The <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;></xref> that exports the binding information in the reliable session binding element to the WSDL elements."
+      description: "A <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;> </xref> , exportálja a kötési információ a megbízható munkamenet kötési elem a WSDL-elemeket."
     - id: context
       type: System.ServiceModel.Description.PolicyConversionContext
-      description: "The <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;></xref> that provides the mapping from exported WSDL elements to the endpoint description."
+      description: "A <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;> </xref> , amely biztosítja, hogy a leképezés exportált WSDL elemek végpont leírása."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy*
   exceptions: []
   platform:

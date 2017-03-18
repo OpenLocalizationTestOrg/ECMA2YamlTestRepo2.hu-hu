@@ -34,8 +34,8 @@ items:
   nameWithType: ReceiveContext
   fullName: System.ServiceModel.Channels.ReceiveContext
   type: Class
-  summary: "Derive from this class to implement a custom state machine for receive context functionality."
-  remarks: "Receive context functionality is two-fold. When working with a queued channel, receive context allows you to lock a message prior to processing it. If a failure occurs, the message remains locked so that the service that is processing the message maintains ownership (another service cannot receive and process the same message) and may choose to perform some other action on it. When working with a one-way channel, receive context allows a service to control when it sends an acknowledgement message or it can indicate a problem by sending a negative acknowledgement message. The client can then choose to resend the message if it receives a negative acknowledgement or if it does not receive an acknowledgement within a certain period of time."
+  summary: "Ez az osztály egy egyéni állapotjelző gép végrehajtásához származik a fogadási környezet funkciót."
+  remarks: "Fogadási környezet funkció kettős is. Amikor egy várósorba állított csatornán, azokkal a környezet lehetővé teszi egy üzenet feldolgozása előtt zárolását. Ha hiba történik, az üzenet írásvédett marad-e, hogy a szolgáltatás, amely az üzenet feldolgozása tart fenn a tulajdonjog (egy másik szolgáltatás nem tudja fogadni és feldolgozni ugyanaz az üzenet) és dönthetnek úgy, hogy más műveletet végrehajtani rajta. Munkát egy egyirányú csatornát, amikor a környezetben lehetővé teszi egy szolgáltatás beállítható, mikor visszaigazolást küld, vagy az azt jelzi, hogy egy probléma negatív visszaigazoló üzenetet. Az ügyfél ezután igény szerint elküldeni az üzenetet, ha negatív visszaigazolást kap, vagy ha azt nem kapott nyugtázást egy bizonyos időn belül."
   syntax:
     content: public abstract class ReceiveContext
   inheritance:
@@ -56,7 +56,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReceiveContext&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Channels.ReceiveContext&quot;> </xref> osztály."
   syntax:
     content: protected ReceiveContext ();
     parameters: []
@@ -76,13 +76,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Causes the state machine to transition to the abandoned state with the specified timeout value."
+  summary: "A megadott időtúllépési érték azt eredményezi, az állapotjelző gép való áttéréssel elhagyott állapotát."
   syntax:
     content: public virtual void Abandon (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.Abandon*
   exceptions: []
   platform:
@@ -99,16 +99,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Causes the state machine to transition to the abandoned state with the specified exception and timeout value."
+  summary: "A megadott kivétel és az időtúllépés értéke azt eredményezi, az állapotjelző gép való áttéréssel elhagyott állapotát."
   syntax:
     content: public virtual void Abandon (Exception exception, TimeSpan timeout);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception that causes the abandon operation."
+      description: "A kivétellel, hogy a megszakítási művelet hatására."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.Abandon*
   exceptions: []
   platform:
@@ -125,22 +125,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Begins an asynchronous abandon operation with the specified  timeout, asynchronous callback, and user-defined state data."
+  summary: "A megadott időkorlát, az aszinkron visszahívás és a felhasználói állapotadatok aszinkron megszakítási művelet kezdődik."
   syntax:
     content: public virtual IAsyncResult BeginAbandon (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The user-defined state data."
+      description: "A felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "A <xref:System.IAsyncResult> that references the asynchronous abandon operation."
+      description: "A <xref:System.IAsyncResult>, amely hivatkozik a aszinkron megszakítási műveletet.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.BeginAbandon*
   exceptions: []
   platform:
@@ -157,25 +157,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Begins an asynchronous abandon operation with the specified exception, timeout, asynchronous callback, and user-defined state data."
+  summary: "A megadott kivétel, a időtúllépés, a aszinkron visszahívás és a felhasználói állapotadatok aszinkron megszakítási művelet kezdődik."
   syntax:
     content: public virtual IAsyncResult BeginAbandon (Exception exception, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: exception
       type: System.Exception
-      description: "An exception that contains the reason for the abandon operation."
+      description: "Egy kivételt, amely tartalmazza a megszakítási művelet okát."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "the user-defined state data."
+      description: "a felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that references the asynchronous abandon operation."
+      description: "Egy <xref:System.IAsyncResult>, amely hivatkozik a aszinkron megszakítási műveletet.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.BeginAbandon*
   exceptions: []
   platform:
@@ -192,22 +192,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Begins an asynchronous complete operation with the specified  timeout, asynchronous callback, and user-defined state data."
+  summary: "Egy aszinkron művelet befejezéséhez a megadott időkorlát, aszinkron visszahívás, és a felhasználói állapotadatok kezdődik."
   syntax:
     content: public virtual IAsyncResult BeginComplete (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the complete operation to complete."
+      description: "Az időtúllépés teljes művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The user-defined state data."
+      description: "A felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "A <xref:System.IAsyncResult> that references the asynchronous complete operation."
+      description: "A <xref:System.IAsyncResult>, amely hivatkozik a aszinkron művelet befejezéséhez.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.BeginComplete*
   exceptions: []
   platform:
@@ -224,13 +224,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Causes the state machine to transition to the completed state with the specified timeout value."
+  summary: "A megadott időtúllépési érték azt eredményezi, az állapotjelző gép való áttéréssel a Befejezett állapot."
   syntax:
     content: public virtual void Complete (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the complete operation to complete."
+      description: "Az időtúllépés teljes művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.Complete*
   exceptions: []
   platform:
@@ -247,13 +247,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Completes an asynchronous abandon operation."
+  summary: "Egy aszinkron megszakítási művelet befejeződik."
   syntax:
     content: public virtual void EndAbandon (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to one of the <xref:System.ServiceModel.Activities.WorkflowControlClient.BeginAbandon*> methods."
+      description: "A <xref:System.IAsyncResult>egy hívás által visszaadott a <xref:System.ServiceModel.Activities.WorkflowControlClient.BeginAbandon*>módszerek.</xref:System.ServiceModel.Activities.WorkflowControlClient.BeginAbandon*> </xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.EndAbandon*
   exceptions: []
   platform:
@@ -270,13 +270,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Completes an asynchronous complete operation."
+  summary: "Befejeződött egy aszinkron művelet befejezéséhez."
   syntax:
     content: public virtual void EndComplete (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the <xref:System.ServiceModel.Channels.ReceiveContext.BeginComplete*> method."
+      description: "A <xref:System.IAsyncResult>hívás által visszaadott a <xref:System.ServiceModel.Channels.ReceiveContext.BeginComplete*>metódus.</xref:System.ServiceModel.Channels.ReceiveContext.BeginComplete*> </xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.EndComplete*
   exceptions: []
   platform:
@@ -293,7 +293,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Causes the state machine to transition to the faulted state."
+  summary: "Az állapotjelző gép való áttéréssel a hibás állapotot okoz."
   syntax:
     content: protected virtual void Fault ();
     parameters: []
@@ -313,12 +313,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Defines the event to raised when an exception has occurred during the messaging process."
+  summary: "Határozza meg az esemény jelenik meg, ha az üzenetkezelési során történt."
   syntax:
     content: public event EventHandler Faulted;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -334,12 +334,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "The name of the receive context."
+  summary: "A fogadási környezet neve."
   syntax:
     content: public static readonly string Name;
     return:
       type: System.String
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -355,13 +355,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the abandoned state with the specified timeout value."
+  summary: "Hívható meg, ha az állapotjelző gép a megadott időtúllépési érték elhagyott állapotba tér át."
   syntax:
     content: protected abstract void OnAbandon (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.OnAbandon*
   exceptions: []
   platform:
@@ -378,16 +378,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the abandoned state with the specified exception and timeout value."
+  summary: "Hívható meg, ha az állapotjelző gép a megadott kivétel és az időtúllépés értéke elhagyott állapotba tér át."
   syntax:
     content: protected virtual void OnAbandon (Exception exception, TimeSpan timeout);
     parameters:
     - id: exception
       type: System.Exception
-      description: "An exception that contains the reason for the abandon operation."
+      description: "Egy kivételt, amely tartalmazza a megszakítási művelet okát."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.OnAbandon*
   exceptions: []
   platform:
@@ -404,22 +404,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the abandoned state asynchronously with the specified timeout value, callback, and state data."
+  summary: "Hívható meg, ha az állapotjelző gép aszinkron módon történik a a megadott időtúllépési érték, a visszahívás és az állapotadatok elhagyott állapotba tér át."
   syntax:
     content: protected abstract IAsyncResult OnBeginAbandon (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The user defined state data."
+      description: "A felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "A <xref:System.IAsyncResult> that references the asynchronous operation."
+      description: "A <xref:System.IAsyncResult>az aszinkron művelet hivatkozik, amely.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.OnBeginAbandon*
   exceptions: []
   platform:
@@ -436,25 +436,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the abandoned state asynchronously with the specified exception, timeout value, callback, and state data."
+  summary: "Hívható meg, ha az állapotjelző gép aszinkron módon történik a megadott kivétel, időtúllépési értéket, visszahívási és állapotadatokat a elhagyott állapotba tér át."
   syntax:
     content: protected virtual IAsyncResult OnBeginAbandon (Exception exception, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: exception
       type: System.Exception
-      description: "An exception that contains the reason for the abandon operation."
+      description: "Egy kivételt, amely tartalmazza a megszakítási művelet okát."
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the abandon operation to complete."
+      description: "Az időtúllépés a megszakítási művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The user-defined state data."
+      description: "A felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "A <xref:System.IAsyncResult> that references the asynchronous operation."
+      description: "A <xref:System.IAsyncResult>az aszinkron művelet hivatkozik, amely.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.OnBeginAbandon*
   exceptions: []
   platform:
@@ -471,22 +471,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the completed state asynchronously with the specified timeout, callback, and state data."
+  summary: "Hívható meg, ha az állapotjelző gép aszinkron módon a megadott időkorlát, visszahívási és állapotadatokat a befejezett állapotba tér át."
   syntax:
     content: protected abstract IAsyncResult OnBeginComplete (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the complete operation to complete."
+      description: "Az időtúllépés teljes művelet elvégzéséhez."
     - id: callback
       type: System.AsyncCallback
-      description: "The asynchronous callback delegate that receives the notification of the asynchronous operation completion."
+      description: "Az aszinkron visszahívás delegált, amely az aszinkron művelet befejezéséről értesítést kap."
     - id: state
       type: System.Object
-      description: "The user-defined state data."
+      description: "A felhasználói állapot adatait."
     return:
       type: System.IAsyncResult
-      description: "A <xref:System.IAsyncResult> that references the asynchronous operation."
+      description: "A <xref:System.IAsyncResult>az aszinkron művelet hivatkozik, amely.</xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.OnBeginComplete*
   exceptions: []
   platform:
@@ -503,13 +503,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the completed state with the specified timeout value."
+  summary: "Hívható meg, ha az állapotjelző gép a megadott időtúllépési érték kész állapotba tér át."
   syntax:
     content: protected abstract void OnComplete (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The timeout for the complete operation to complete."
+      description: "Az időtúllépés teljes művelet elvégzéséhez."
   overload: System.ServiceModel.Channels.ReceiveContext.OnComplete*
   exceptions: []
   platform:
@@ -526,13 +526,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the abandoned state asynchronously."
+  summary: "Hívható meg, ha az állapotjelző gép tér át a elhagyott állapotba aszinkron módon történik."
   syntax:
     content: protected abstract void OnEndAbandon (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to one of the <xref:System.ServiceModel.Channels.ReceiveContext.OnBeginAbandon*> methods."
+      description: "A <xref:System.IAsyncResult>egy hívás által visszaadott a <xref:System.ServiceModel.Channels.ReceiveContext.OnBeginAbandon*>módszerek.</xref:System.ServiceModel.Channels.ReceiveContext.OnBeginAbandon*> </xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.OnEndAbandon*
   exceptions: []
   platform:
@@ -549,13 +549,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the completed state asynchronously."
+  summary: "Hívható meg, ha az állapotjelző gép tér át a befejezett állapotba aszinkron módon történik."
   syntax:
     content: protected abstract void OnEndComplete (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> returned by a call to the <xref:System.ServiceModel.Channels.ReceiveContext.OnBeginComplete*>"
+      description: "A <xref:System.IAsyncResult>hívás által visszaadott a <xref:System.ServiceModel.Channels.ReceiveContext.OnBeginComplete*></xref:System.ServiceModel.Channels.ReceiveContext.OnBeginComplete*> </xref:System.IAsyncResult>"
   overload: System.ServiceModel.Channels.ReceiveContext.OnEndComplete*
   exceptions: []
   platform:
@@ -572,7 +572,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called when the state machine is transitioning to the faulted state."
+  summary: "Ha a hibás állapotba tér át az állapotjelző gép neve."
   syntax:
     content: protected virtual void OnFaulted ();
     parameters: []
@@ -592,12 +592,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the state of the state machine."
+  summary: "Lekérdezi vagy beállítja az állapotjelző gép állapotát."
   syntax:
     content: public System.ServiceModel.Channels.ReceiveContextState State { get; protected set; }
     return:
       type: System.ServiceModel.Channels.ReceiveContextState
-      description: "The current receive context state of the state machine."
+      description: "Az aktuális kapják meg az állapotjelző gép állapotát a környezetben."
   overload: System.ServiceModel.Channels.ReceiveContext.State*
   exceptions: []
   platform:
@@ -614,12 +614,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "An object used for locking the <xref href=&quot;System.ServiceModel.Channels.ReceiveContext&quot;></xref> instance."
+  summary: "Egy objektum a-zároláshoz használni a <xref href=&quot;System.ServiceModel.Channels.ReceiveContext&quot;> </xref> példány."
   syntax:
     content: protected object ThisLock { get; }
     return:
       type: System.Object
-      description: "<xref:System.Object>."
+      description: "<xref:System.Object>.</xref:System.Object>"
   overload: System.ServiceModel.Channels.ReceiveContext.ThisLock*
   exceptions: []
   platform:
@@ -636,19 +636,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get the receive context from the specified message."
+  summary: "A fogadási környezet lekérése a megadott üzenet kísérletek."
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.ReceiveContext property);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message."
+      description: "Az üzenet."
     - id: property
       type: System.ServiceModel.Channels.ReceiveContext
-      description: "The receive context."
+      description: "A fogadási környezet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the receive context is retrieved successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a fogadási környezet beolvasott sikeresen; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReceiveContext.TryGet*
   exceptions: []
   platform:
@@ -665,19 +665,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get the receive context from the specified message properties collection."
+  summary: "Megkísérli lekérni a fogadási környezet a megadott üzenet tulajdonságok gyűjteményéből."
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.ReceiveContext property);
     parameters:
     - id: properties
       type: System.ServiceModel.Channels.MessageProperties
-      description: "The message properties collection."
+      description: "Az üzenet tulajdonsággyűjteményében."
     - id: property
       type: System.ServiceModel.Channels.ReceiveContext
-      description: "The receive context."
+      description: "A fogadási környezet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the receive context is retrieved successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a fogadási környezet beolvasott sikeresen; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReceiveContext.TryGet*
   exceptions: []
   platform:
