@@ -13,8 +13,8 @@ items:
   nameWithType: WebBaseErrorEvent
   fullName: System.Web.Management.WebBaseErrorEvent
   type: Class
-  summary: "Serves as the base class for all the health-monitoring error events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebBaseErrorEvent class is the base class for the health-monitoring events that represent error conditions. ASP.NET uses WebBaseErrorEvent and its derived types to indicate error conditions during the lifetime of a Web application.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of deriving from the WebBaseErrorEvent class, see the example provided in this topic."
+  summary: "Az összes az állapotfigyelés hiba esemény az alaposztály funkcionál."
+  remarks: "ASP.NET állapotfigyelés lehetővé teszi, hogy az üzemi és műveletek személyzet telepített webalkalmazások kezelésére. A <xref:System.Web.Management>névtér tartalmazza a rendszerállapot-eseménytípusok felelős csomagolási alkalmazásadatok állapot és az adatok feldolgozása felelős modulszolgáltató-típust.</xref:System.Web.Management> Is tartalmaz, amelyek segítenek a állapotával kapcsolatos események felügyelete során támogató típusok.       A WebBaseErrorEvent osztály alaposztálya a rendszerállapot-figyelési események, amelyek megfelelnek a hibaállapotokat. ASP.NET használja WebBaseErrorEvent és származtatott típusa hibaállapotok webalkalmazás élettartama során.      > [!NOTE] > A legtöbb esetben lesz ahhoz, hogy az ASP.NET-állapotfigyelés típusok használható megvalósítva, és szabályozza, a rendszerállapot-figyelő rendszer szereplő értékek megadásával a `healthMonitoring` konfigurációs szakasz. Az állapotfigyelés típusok létrehozása a saját egyéni események és szolgáltatók is származik. Tekintse meg az itt bemutatott példában a WebBaseErrorEvent osztályból származó példát."
   example:
   - "The following code example has two parts. The first is an excerpt of a configuration file that enables ASP.NET health monitoring to use an event derived from the WebBaseErrorEvent class. The second shows how to derive from the WebBaseErrorEvent class to create the custom event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  \n  <providers>  \n    <!-- Define the custom provider that   \n         processes custom Web request events. -->  \n    <add name=\"SampleWebEventProvider\"   \n      type=\"SamplesAspNet.SampleEventProvider,  \n      webeventprovider,Version=1.0.1573.18094,   \n      Culture=neutral, PublicKeyToken=b5a57a9a9d487cf4,   \n      processorArchitecture=MSIL\"/>  \n  </providers>  \n  \n  <eventMappings>  \n  \n    <!--  Define the event source that issues custom events.   -->  \n    <add  name=\"SampleWebBaseErrorEvent\"      \n      type=\"SamplesAspNet.SampleWebBaseErrorEvent,  \n      webbaseerrorevent,Version=1.0.1573.21549, Culture=neutral,     \n      PublicKeyToken=2a0b23915ac7352b, processorArchitecture=MSIL\"/>  \n  </eventMappings>  \n  \n  <rules>  \n    <!-- Associate custom event with related   \n      custom provider -->  \n    <add   \n       name=\"Custom Web Base Errors\"  \n       eventName=\"SampleWebBaseErrorEvent\"   \n       provider=\"SampleWebEventProvider\"   \n       profile=\"Custom\"/>    \n  </rules>  \n  \n</healthMonitoring>  \n```  \n  \n The following code shows how to derive from the WebBaseErrorEvent class to create a custom event.  \n  \n [!code-cs[System.Web.Management.WebErrorEvent#1](~/add/codesnippet/csharp/t-system.web.management._23_1.cs)]\n [!code-vb[System.Web.Management.WebErrorEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._23_1.vb)]"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You can call this constructor when implementing your own event type that inherits from this class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor az ASP.NET-állapotfigyelés rendszer belsőleg használja. Ez a konstruktor meghívhatja, ez az osztály örökli a saját eseménytípus végrehajtása során."
   example:
   - "The following code example shows how to call this constructor from a constructor for the `SampleWebBaseErrorEvent` class, a class that derives from the <xref:System.Web.Management.WebBaseErrorEvent> class.  \n  \n [!code-cs[System.Web.Management.WebBaseErrorEvent#2](~/add/codesnippet/csharp/490f1ed0-2b88-4f74-b1da-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseErrorEvent#2](~/add/codesnippet/visualbasic/490f1ed0-2b88-4f74-b1da-_1.vb)]"
   syntax:
@@ -64,16 +64,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "Az esemény leírása."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Az objektum, amely az esemény forrását."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "Az eseményhez tartozó kód. Egyéni esemény bevezetésekor a eseménykód nagyobbnak kell lennie <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
     - id: e
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "A <xref:System.Exception>a hiba társított.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.#ctor*
   exceptions: []
   platform:
@@ -90,8 +90,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You can call this constructor when implementing your own event type that inherits from this class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.Management.WebBaseErrorEvent&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor az ASP.NET-állapotfigyelés rendszer belsőleg használja. Ez a konstruktor meghívhatja, ez az osztály örökli a saját eseménytípus végrehajtása során."
   example:
   - "The following code example shows how to call this constructor from a constructor for the `SampleWebBaseErrorEvent` class, a class that derives from the <xref:System.Web.Management.WebBaseErrorEvent> class.  \n  \n [!code-cs[System.Web.Management.WebBaseErrorEvent#3](~/add/codesnippet/csharp/d926271b-b6dc-48d8-931e-_1.cs)]\n [!code-vb[System.Web.Management.WebBaseErrorEvent#3](~/add/codesnippet/visualbasic/d926271b-b6dc-48d8-931e-_1.vb)]"
   syntax:
@@ -99,19 +99,19 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The event description."
+      description: "Az esemény leírása."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Az objektum, amely az esemény forrását."
     - id: eventCode
       type: System.Int32
-      description: "The code associated with the event. When you implement a custom event, the event code must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "Az eseményhez tartozó kód. Egyéni esemény bevezetésekor a eseménykód nagyobbnak kell lennie <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
     - id: eventDetailCode
       type: System.Int32
-      description: "The detailed identifier for the event."
+      description: "Az esemény részletes azonosítója."
     - id: e
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "A <xref:System.Exception>a hiba társított.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.#ctor*
   exceptions: []
   platform:
@@ -128,13 +128,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the <xref:System.Exception> associated with the error."
-  remarks: "If you implement a custom <xref:System.Web.Management.WebBaseErrorEvent>, you must ensure that your custom error event handles this exception."
+  summary: "Lekérdezi a <xref:System.Exception>a hiba társított.</xref:System.Exception>"
+  remarks: "Ha egy egyéni megvalósítása <xref:System.Web.Management.WebBaseErrorEvent>, győződjön meg arról, hogy az egyéni esemény kezeli ezt a kivételt.</xref:System.Web.Management.WebBaseErrorEvent>"
   syntax:
     content: public Exception ErrorException { get; }
     return:
       type: System.Exception
-      description: "The <xref:System.Exception> associated with the error."
+      description: "A <xref:System.Exception>a hiba társított.</xref:System.Exception>"
   overload: System.Web.Management.WebBaseErrorEvent.ErrorException*
   exceptions: []
   platform:
@@ -151,8 +151,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Increments the event-error performance-related counters."
-  remarks: "This method increments the following performance counters:      -   Infrastructure Error Events Raised. This is a global counter that tracks the error events raised.      -   Error Events Raised. This is an application-specific counter that tracks the number of error events raised since the application started.       This method also calls the parent <xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A>, which increments the Events Raised counter. This counter tracks the total number of events raised.       To view these performance counters in System Monitor (PerfMon), in the **Add Counters** window select **ASP.NET** in the **Performance object** drop-down list, select the performance counter you want to view, and click the **Add** button. For more information, see [Using the System Monitor (PerfMon) with ASP.NET Applications](http://go.microsoft.com/fwlink/?linkid=36882&clcid=0x409) in the IIS documentation on MSDN."
+  summary: "-Os esemény-hiba teljesítménnyel kapcsolatos számlálókat."
+  remarks: "Ez a módszer növeli a következő teljesítményszámlálókkal:-infrastruktúra hiba események következik be. Ez a globális számláló, amely nyomon követi a hibaesemények következik be.      -Hiba esemény következik be. Ez az egy alkalmazás-specifikus számláló, amely nyomon követi az alkalmazás elindítása óta kiváltott események száma.       Ez a módszer is meghívja a szülő <xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A>, ami növeli az események kiváltása számláló.</xref:System.Web.Management.WebBaseEvent.IncrementPerfCounters%2A> Ez a számláló azt követi nyomon, kiváltott események teljes száma.       A teljesítményszámlálók a Rendszerfigyelő (PerfMon) megtekintéséhez a **Számláló hozzáadása** ablakban válassza ki **ASP.NET** a a **teljesítményobjektum** legördülő listára, válassza ki a nézetben, és kattintson a kívánt teljesítményszámláló a **hozzáadása** gomb. További információkért lásd: [a Rendszerfigyelő (PerfMon) használata az ASP.NET-alkalmazások](http://go.microsoft.com/fwlink/?linkid=36882&clcid=0x409) az IIS dokumentációjában az MSDN Webhelyén."
   syntax:
     content: protected override void IncrementPerfCounters ();
     parameters: []

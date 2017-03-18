@@ -23,8 +23,8 @@ items:
   nameWithType: SqlServices
   fullName: System.Web.Management.SqlServices
   type: Class
-  summary: "Supports installing and removing the SQL Server database elements of ASP.NET features."
-  remarks: "You can use SQL Server databases to store information for ASP.NET features such as session state, membership, Web parts personalization, and role management. These features require that the SQL Server database to which they are connected be properly configured before use. You can use the ASP.NET Register SQL tool (aspnet_regsql.exe) to do this, or you can call the static methods exposed by the SqlServices class directly from your code.      > [!NOTE] >  Using the aspnet_regsql.exe tool or the SqlServices class to configure the database only sets up the database that the providers will use with the proper tables, triggers, and stored procedures. Configuring the database in this way does not modify configuration files to specify that these features use the SQL Providers for these services."
+  summary: "Telepítése és eltávolítása az SQL Server adatbázis elemek ASP.NET funkcióját támogatja."
+  remarks: "SQL Server-adatbázisok segítségével ASP.NET funkciók, például a munkamenet-állapot, a tagság, a webes kijelzők személyre szabása és a szerepkör-felügyeleti információk tárolására. Ezen funkciók szükségesek, hogy megtörténik a használat előtt kell megfelelően konfigurálva az SQL Server-adatbázis, amelyhez csatlakoznak. Ehhez használhatja az ASP.NET regisztrálni SQL eszköz (aspnet_regsql.exe), vagy közvetlenül a kódból SqlServices osztály által elérhetővé tett a statikus metódusok hívása.      > [!NOTE] > Az aspnet_regsql.exe-eszköz vagy a SqlServices osztály használatával konfigurálja az adatbázis csak beállítja az adatbázis, a szolgáltatók a megfelelő táblák, eseményindítók és tárolt eljárások fogja használni. Az adatbázis konfigurálása ily módon nem módosítja a konfigurációs fájlokat adja meg, hogy ezeket a szolgáltatásokat az SQL-szolgáltatók ezen szolgáltatások."
   example:
   - "The following code example shows how to use the SqlServices class.  \n  \n [!code-cs[System.Web.Management.SqlServices#1](~/add/codesnippet/csharp/t-system.web.management._4_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#1](~/add/codesnippet/visualbasic/t-system.web.management._4_1.vb)]"
   syntax:
@@ -47,22 +47,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Generates the SQL scripts for the selected features. The scripts will reference the database indicated by the database parameter."
+  summary: "Hozza létre az SQL-parancsfájlok a kiválasztott funkciók telepítéséhez. A parancsfájlok hivatkozik az adatbázis az adatbázis paraméter jelzi."
   syntax:
     content: public static string GenerateApplicationServicesScripts (bool install, System.Web.Management.SqlFeatures features, string database);
     parameters:
     - id: install
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to generate a script that installs the specified features; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to generate a script that removes the features."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>egy parancsfájl, amely telepíti az egyes szolgáltatások; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> egy parancsfájl, amely a-szolgáltatásokat távolít el."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the specific features for which to generate scripts."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékek, a szolgáltatások, amelyek esetében szeretne létrehozni a parancsfájlok megadását."
     - id: database
       type: System.String
-      description: "The name of the SQL Server database to use in the generated scripts."
+      description: "A létrehozott parancsfájlokkal használandó SQL Server-adatbázis neve."
     return:
       type: System.String
-      description: "Returns the generated script code."
+      description: "A generált kódot adja vissza."
   overload: System.Web.Management.SqlServices.GenerateApplicationServicesScripts*
   exceptions: []
   platform:
@@ -79,27 +79,27 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Generates the SQL script for installing or removing session state. The script will reference the database indicated by the database parameter."
+  summary: "Az SQL-parancsfájl telepítése vagy eltávolítása a munkamenet-állapot állít elő. A parancsfájl hivatkozik az adatbázis az adatbázis paraméter jelzi."
   syntax:
     content: public static string GenerateSessionStateScripts (bool install, System.Web.Management.SessionStateType type, string customDatabase);
     parameters:
     - id: install
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to generate a script that installs the specified features; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to generate a script that removes the features."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>egy parancsfájl, amely telepíti az egyes szolgáltatások; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> egy parancsfájl, amely a-szolgáltatásokat távolít el."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state for which to generate scripts."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, a munkamenet állapotát, amelynél parancsfájlok létrehozására típusának megadásával."
     - id: customDatabase
       type: System.String
-      description: "The name of the SQL Server database to use in the generated scripts."
+      description: "A létrehozott parancsfájlokkal használandó SQL Server-adatbázis neve."
     return:
       type: System.String
-      description: "Returns the generated script code."
+      description: "A generált kódot adja vissza."
   overload: System.Web.Management.SqlServices.GenerateSessionStateScripts*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Install(System.String,System.String,System.Web.Management.SqlFeatures)
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for selected ASP.NET features on a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database, `aspnetdb`. If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Kijelölt ASP.NET szolgáltatások összetevőket telepít az SQL Server-adatbázis."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices> Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the Install method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#4](~/add/codesnippet/csharp/9e8a53df-8a5d-40f9-aa53-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#4](~/add/codesnippet/visualbasic/9e8a53df-8a5d-40f9-aa53-_1.vb)]"
   syntax:
@@ -123,24 +123,24 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The database server on which to install the features."
+      description: "Az adatbázis-kiszolgáló a szolgáltatások telepítéséhez."
     - id: database
       type: System.String
-      description: "The database on which to install the features."
+      description: "Az adatbázis, a szolgáltatások telepítéséhez."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to install."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékek, adja meg a telepítendő szolgáltatásokat."
   overload: System.Web.Management.SqlServices.Install*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contains one or more invalid flags."
+    description: "A <code> features </code> érték egy vagy több érvénytelen jelzőt tartalmaz."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Install(System.String,System.Web.Management.SqlFeatures,System.String)
@@ -155,8 +155,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for selected ASP.NET services on a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database, `aspnetdb`."
+  summary: "Kijelölt ASP.NET szolgáltatásokat összetevőket telepít az SQL Server-adatbázis."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices>"
   example:
   - "The following code example shows how to use the Install method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#2](~/add/codesnippet/csharp/c361a2bc-6fe1-40c5-ae55-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#2](~/add/codesnippet/visualbasic/c361a2bc-6fe1-40c5-ae55-_1.vb)]"
   syntax:
@@ -164,24 +164,24 @@ items:
     parameters:
     - id: database
       type: System.String
-      description: "The database on which to install the features."
+      description: "Az adatbázis, a szolgáltatások telepítéséhez."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to install."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékek, adja meg a telepítendő szolgáltatásokat."
     - id: connectionString
       type: System.String
-      description: "The connection string to use. The connection string is only used to establish a connection to the database server.  Specifying a database in the connection string has no effect."
+      description: "A kapcsolati karakterlánc használatával. A kapcsolati karakterlánc csak szolgál a kapcsolatot az adatbázis-kiszolgáló.  Adja meg egy adatbázist a kapcsolódási karakterláncban nincs hatása."
   overload: System.Web.Management.SqlServices.Install*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contains one or more invalid flags."
+    description: "A <code> features </code> érték egy vagy több érvénytelen jelzőt tartalmaz."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Install(System.String,System.String,System.String,System.String,System.Web.Management.SqlFeatures)
@@ -196,37 +196,37 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for selected ASP.NET features on a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database, `aspnetdb`. If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Kijelölt ASP.NET szolgáltatások összetevőket telepít az SQL Server-adatbázis."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices> Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   syntax:
     content: public static void Install (string server, string user, string password, string database, System.Web.Management.SqlFeatures features);
     parameters:
     - id: server
       type: System.String
-      description: "The database server on which to install the features."
+      description: "Az adatbázis-kiszolgáló a szolgáltatások telepítéséhez."
     - id: user
       type: System.String
-      description: "The user name to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó felhasználónevet."
     - id: password
       type: System.String
-      description: "The password to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó jelszó."
     - id: database
       type: System.String
-      description: "The database on which to install the features."
+      description: "Az adatbázis, a szolgáltatások telepítéséhez."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to install."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékek, adja meg a telepítendő szolgáltatásokat."
   overload: System.Web.Management.SqlServices.Install*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contains one or more invalid flags."
+    description: "A <code> features </code> érték egy vagy több érvénytelen jelzőt tartalmaz."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.InstallSessionState(System.String,System.String,System.Web.Management.SessionStateType)
@@ -241,8 +241,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for ASP.NET session state on a SQL Server database."
-  remarks: "If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Az ASP.NET munkamenet-állapot összetevőket telepít az SQL Server-adatbázis."
+  remarks: "Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the InstallSessionState method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#10](~/add/codesnippet/csharp/3feec6dd-8156-459b-8838-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#10](~/add/codesnippet/visualbasic/3feec6dd-8156-459b-8838-_1.vb)]"
   syntax:
@@ -250,24 +250,24 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance on which to install the session-state components."
+      description: "A munkamenet-állapot összetevők telepítéséhez SQL Server-példányon."
     - id: customDatabase
       type: System.String
-      description: "The database on which to install the session-state components."
+      description: "Az adatbázis, a munkamenet-állapot összetevők telepítéséhez."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to install."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, a munkamenet-állapot működéséhez a telepítés típusának megadásával."
   overload: System.Web.Management.SqlServices.InstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.InstallSessionState(System.String,System.Web.Management.SessionStateType,System.String)
@@ -282,7 +282,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for ASP.NET session state on a SQL Server database."
+  summary: "Az ASP.NET munkamenet-állapot összetevőket telepít az SQL Server-adatbázis."
   remarks: ''
   example:
   - "The following code example shows how to use the InstallSessionState method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#8](~/add/codesnippet/csharp/5672209d-ed6d-4c88-a7b6-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#8](~/add/codesnippet/visualbasic/5672209d-ed6d-4c88-a7b6-_1.vb)]"
@@ -291,24 +291,24 @@ items:
     parameters:
     - id: customDatabase
       type: System.String
-      description: "The database on which to install the session-state components."
+      description: "Az adatbázis, a munkamenet-állapot összetevők telepítéséhez."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to install."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, a munkamenet-állapot működéséhez a telepítés típusának megadásával."
     - id: connectionString
       type: System.String
-      description: "The connection string to use. The connection string is only used to establish a connection to the database server.  Specifying a database in the connection string has no effect."
+      description: "A kapcsolati karakterlánc használatával. A kapcsolati karakterlánc csak szolgál a kapcsolatot az adatbázis-kiszolgáló.  Adja meg egy adatbázist a kapcsolódási karakterláncban nincs hatása."
   overload: System.Web.Management.SqlServices.InstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.InstallSessionState(System.String,System.String,System.String,System.String,System.Web.Management.SessionStateType)
@@ -323,8 +323,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Installs components for ASP.NET session state on a SQL Server database."
-  remarks: "If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Az ASP.NET munkamenet-állapot összetevőket telepít az SQL Server-adatbázis."
+  remarks: "Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the InstallSessionState method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#12](~/add/codesnippet/csharp/42530263-a691-4ed3-a485-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#12](~/add/codesnippet/visualbasic/42530263-a691-4ed3-a485-_1.vb)]"
   syntax:
@@ -332,30 +332,30 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance on which to install the session-state components."
+      description: "A munkamenet-állapot összetevők telepítéséhez SQL Server-példányon."
     - id: user
       type: System.String
-      description: "The user name to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó felhasználónevet."
     - id: password
       type: System.String
-      description: "The password to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó jelszó."
     - id: customDatabase
       type: System.String
-      description: "The database on which to install the session-state components."
+      description: "Az adatbázis, a munkamenet-állapot összetevők telepítéséhez."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to install."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, a munkamenet-állapot működéséhez a telepítés típusának megadásával."
   overload: System.Web.Management.SqlServices.InstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Uninstall(System.String,System.String,System.Web.Management.SqlFeatures)
@@ -370,8 +370,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for selected ASP.NET features from a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database, `aspnetdb`. If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Kijelölt ASP.NET szolgáltatások összetevőinek eltávolítása egy SQL Server-adatbázist."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices> Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the Uninstall method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#5](~/add/codesnippet/csharp/79a134d3-d513-4d78-bd50-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#5](~/add/codesnippet/visualbasic/79a134d3-d513-4d78-bd50-_1.vb)]"
   syntax:
@@ -379,24 +379,24 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance from which to remove the features."
+      description: "Az SQL Server-példány, amelyből a szolgáltatások eltávolítása."
     - id: database
       type: System.String
-      description: "The database from which to remove the features."
+      description: "Az adatbázis, amelyből a szolgáltatások eltávolítása."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to remove."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékeket, az összetevők megadását."
   overload: System.Web.Management.SqlServices.Uninstall*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contained one or more invalid flags."
+    description: "A <code> features </code> érték található egy vagy több érvénytelen jelzők."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation, an attempt was made to uninstall from a nonexistent database, or one or more tables for the features in the specified database contained data."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása, kísérlet történt egy nem létező adatbázis eltávolítása, vagy a szolgáltatások a megadott adatbázis egy vagy több tábla adatokat tartalmazott."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Uninstall(System.String,System.Web.Management.SqlFeatures,System.String)
@@ -411,8 +411,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for selected ASP.NET features from a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database `aspnetdb`.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Kijelölt ASP.NET szolgáltatások összetevőinek eltávolítása egy SQL Server-adatbázist."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the Uninstall method of the <xref:System.Web.Management.SqlServices> type.  \n  \n [!code-cs[System.Web.Management.SqlServices#3](~/add/codesnippet/csharp/0f83760a-d17d-4395-a05a-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#3](~/add/codesnippet/visualbasic/0f83760a-d17d-4395-a05a-_1.vb)]"
   syntax:
@@ -420,24 +420,24 @@ items:
     parameters:
     - id: database
       type: System.String
-      description: "The database from which to remove the features."
+      description: "Az adatbázis, amelyből a szolgáltatások eltávolítása."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to remove."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékeket, az összetevők megadását."
     - id: connectionString
       type: System.String
-      description: "The connection string to use. The connection string is only used to establish a connection to the database server. Specifying a database in the connection string has no effect."
+      description: "A kapcsolati karakterlánc használatával. A kapcsolati karakterlánc csak szolgál a kapcsolatot az adatbázis-kiszolgáló. Adja meg egy adatbázist a kapcsolódási karakterláncban nincs hatása."
   overload: System.Web.Management.SqlServices.Uninstall*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contained one or more invalid flags."
+    description: "A <code> features </code> érték található egy vagy több érvénytelen jelzők."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation, an attempt was made to uninstall from a nonexistent database, or one or more tables for the features in the specified database contained data."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása, kísérlet történt egy nem létező adatbázis eltávolítása, vagy a szolgáltatások a megadott adatbázis egy vagy több tábla adatokat tartalmazott."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.Uninstall(System.String,System.String,System.String,System.String,System.Web.Management.SqlFeatures)
@@ -452,37 +452,37 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for selected ASP.NET features from a SQL Server database."
-  remarks: "If `database` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default database, `aspnetdb`. If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.      > [!NOTE] >  The connection to the database server is made with a trusted connection."
+  summary: "Kijelölt ASP.NET szolgáltatások összetevőinek eltávolítása egy SQL Server-adatbázist."
+  remarks: "Ha `database` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett adatbázis `aspnetdb`.</xref:System.Web.Management.SqlServices> Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>      > [!NOTE] > Az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   syntax:
     content: public static void Uninstall (string server, string user, string password, string database, System.Web.Management.SqlFeatures features);
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance from which to remove the features."
+      description: "Az SQL Server-példány, amelyből a szolgáltatások eltávolítása."
     - id: user
       type: System.String
-      description: "The user name to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó felhasználónevet."
     - id: password
       type: System.String
-      description: "The password to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó jelszó."
     - id: database
       type: System.String
-      description: "The database from which to remove the features."
+      description: "Az adatbázis, amelyből a szolgáltatások eltávolítása."
     - id: features
       type: System.Web.Management.SqlFeatures
-      description: "A bitwise combination of the <xref href=&quot;System.Web.Management.SqlFeatures&quot;></xref> values, specifying the features to remove."
+      description: "Tagértékeinek a <xref href=&quot;System.Web.Management.SqlFeatures&quot;> </xref> értékeket, az összetevők megadását."
   overload: System.Web.Management.SqlServices.Uninstall*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>features</code> value contained one or more invalid flags."
+    description: "A <code> features </code> érték található egy vagy több érvénytelen jelzők."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation, an attempt was made to uninstall from a nonexistent database, or one or more tables for the features in the specified database contained data."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása, kísérlet történt egy nem létező adatbázis eltávolítása, vagy a szolgáltatások a megadott adatbázis egy vagy több tábla adatokat tartalmazott."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.UninstallSessionState(System.String,System.String,System.Web.Management.SessionStateType)
@@ -497,8 +497,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for ASP.NET session state from a SQL Server database."
-  remarks: "If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.       **Note** The connection to the database server is made with a trusted connection."
+  summary: "Az ASP.NET munkamenet-állapot összetevők eltávolítása egy SQL Server-adatbázist."
+  remarks: "Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>       **Megjegyzés:** az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the UninstallSessionState method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#11](~/add/codesnippet/csharp/be09407a-55e6-4e0a-a2db-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#11](~/add/codesnippet/visualbasic/be09407a-55e6-4e0a-a2db-_1.vb)]"
   syntax:
@@ -506,24 +506,24 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance from which to remove the session-state components."
+      description: "Az SQL Server-példány, amelyből a munkamenet-állapot-összetevő eltávolításához."
     - id: customDatabase
       type: System.String
-      description: "The database from which to remove the session-state components."
+      description: "Az adatbázis, amelyből a munkamenet-állapot-összetevő eltávolításához."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to remove."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, távolítsa el a munkamenet-állapot típusának megadásával."
   overload: System.Web.Management.SqlServices.UninstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.UninstallSessionState(System.String,System.Web.Management.SessionStateType,System.String)
@@ -538,7 +538,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for ASP.NET session state from a SQL Server database."
+  summary: "Az ASP.NET munkamenet-állapot összetevők eltávolítása egy SQL Server-adatbázist."
   remarks: ''
   example:
   - "The following code example shows how to use the <xref:System.Web.Management.SqlServices.UninstallSessionState%28System.String%2CSystem.String%2CSystem.Web.Management.SessionStateType%29> method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#9](~/add/codesnippet/csharp/bff889f5-b3c3-415a-8e47-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#9](~/add/codesnippet/visualbasic/bff889f5-b3c3-415a-8e47-_1.vb)]"
@@ -547,24 +547,24 @@ items:
     parameters:
     - id: customDatabase
       type: System.String
-      description: "The database from which to remove the session-state components."
+      description: "Az adatbázis, amelyből a munkamenet-állapot-összetevő eltávolításához."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to remove."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, távolítsa el a munkamenet-állapot típusának megadásával."
     - id: connectionString
       type: System.String
-      description: "The connection string to use.  The connection string is only used to establish a connection to the database server.  Specifying a database in the connection string has no effect."
+      description: "A kapcsolati karakterlánc használatával.  A kapcsolati karakterlánc csak szolgál a kapcsolatot az adatbázis-kiszolgáló.  Adja meg egy adatbázist a kapcsolódási karakterláncban nincs hatása."
   overload: System.Web.Management.SqlServices.UninstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 - uid: System.Web.Management.SqlServices.UninstallSessionState(System.String,System.String,System.String,System.String,System.Web.Management.SessionStateType)
@@ -579,8 +579,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes components for ASP.NET session state from a SQL Server database."
-  remarks: "If `server` is `null` or not supplied, <xref:System.Web.Management.SqlServices> will use the default SQL Server instance.       **Note** The connection to the database server is made with a trusted connection."
+  summary: "Az ASP.NET munkamenet-állapot összetevők eltávolítása egy SQL Server-adatbázist."
+  remarks: "Ha `server` van `null` vagy nem megadott <xref:System.Web.Management.SqlServices>fogja használni az alapértelmezett SQL Server-példány.</xref:System.Web.Management.SqlServices>       **Megjegyzés:** az adatbázis-kiszolgáló a kapcsolat megbízható kapcsolatot."
   example:
   - "The following code example shows how to use the UninstallSessionState method of the <xref:System.Web.Management.SqlServices> class.  \n  \n [!code-cs[System.Web.Management.SqlServices#13](~/add/codesnippet/csharp/ff68d969-b952-42ee-99b5-_1.cs)]\n [!code-vb[System.Web.Management.SqlServices#13](~/add/codesnippet/visualbasic/ff68d969-b952-42ee-99b5-_1.vb)]"
   syntax:
@@ -588,30 +588,30 @@ items:
     parameters:
     - id: server
       type: System.String
-      description: "The SQL Server instance from which to remove the session-state components."
+      description: "Az SQL Server-példány, amelyből a munkamenet-állapot-összetevő eltávolításához."
     - id: user
       type: System.String
-      description: "The user name to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó felhasználónevet."
     - id: password
       type: System.String
-      description: "The password to use when connecting to the database."
+      description: "Az adatbázishoz való kapcsolódáskor használandó jelszó."
     - id: customDatabase
       type: System.String
-      description: "The database from which to remove the session-state components."
+      description: "Az adatbázis, amelyből a munkamenet-állapot-összetevő eltávolításához."
     - id: type
       type: System.Web.Management.SessionStateType
-      description: "One of the <xref href=&quot;System.Web.Management.SessionStateType&quot;></xref> values, specifying the type of session state to remove."
+      description: "Egy a <xref href=&quot;System.Web.Management.SessionStateType&quot;> </xref> értékek, távolítsa el a munkamenet-állapot típusának megadásával."
   overload: System.Web.Management.SqlServices.UninstallSessionState*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The type is <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not supplied, or the type is either <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;></xref> and the <code>customDatabase</code> value is not null."
+    description: "A típus <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> nem áll rendelkezésre, vagy a típus vagy <xref uid=&quot;langword_csharp_Temporary&quot; name=&quot;Temporary&quot; href=&quot;&quot;> </xref> vagy <xref uid=&quot;langword_csharp_Persisted&quot; name=&quot;Persisted&quot; href=&quot;&quot;> </xref> és a <code> customDatabase </code> értéke nem null értékű."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "Unable to connect to the specified database server."
+    description: "Nem lehet kapcsolódni a megadott adatbázis-kiszolgáló."
   - type: System.Web.Management.SqlExecutionException
     commentId: T:System.Web.Management.SqlExecutionException
-    description: "An exception occurred while processing the SQL statements required for the operation."
+    description: "Kivétel történt a művelethez szükséges az SQL-utasítások feldolgozása során."
   platform:
   - net462
 references:

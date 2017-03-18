@@ -13,8 +13,8 @@ items:
   nameWithType: WebRequestEvent
   fullName: System.Web.Management.WebRequestEvent
   type: Class
-  summary: "Defines the base class for events providing Web-request information."
-  remarks: "The WebRequestEvent is raised at every Web request.       It uses the <xref:System.Web.Management.WebRequestInformation> class to obtain request information.      > [!NOTE] >  In most cases you will use the standard ASP.NET health-monitoring types and control their behavior by setting the `healthMonitoring` configuration section. You can also create custom types, as shown in the next example. If you create your custom event type and you need to add your own information, customize the <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> method. This will avoid overwriting or tampering with sensitive system information."
+  summary: "Határozza meg az alaposztály események webkérelem információkat."
+  remarks: "A WebRequestEvent minden webes kérésére következik be.       Használja a <xref:System.Web.Management.WebRequestInformation>osztály kérelemben tájékoztatást kaphat.</xref:System.Web.Management.WebRequestInformation>      > [!NOTE] > A legtöbb esetben azt használja az ASP.NET-állapotfigyelés alaptípusok, és szabályozhatja azok működését úgy, hogy a `healthMonitoring` konfigurációs szakasz. Egyéni típusok, a következő példában látható módon is létrehozhat. Ha hoz létre az egyéni esemény típusát, és adja hozzá a saját, testre kell a <xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A>metódus.</xref:System.Web.Management.WebBaseEvent.FormatCustomEventDetails%2A> Így elkerülhető, felülírja, vagy bizalmas rendszeradatok illetéktelen módosítását."
   example:
   - "The following code example shows how to derive from the WebRequestEvent class to create a custom event.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/visualbasic/t-system.web.management._5_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#1](~/add/codesnippet/csharp/t-system.web.management._5_1.cs)]  \n  \n The following is an excerpt of the configuration file that enables ASP.NET to use the custom event.  \n  \n```  \n<healthMonitoring   \n  enabled=\"true\" heartBeatInterval=\"0\">  \n  <providers>  \n    <!-- Define the custom provider that   \n         processes custom Web request events. -->  \n    <add name=\"SampleWebEventProvider\"   \ntype=\"SamplesAspNet.SampleEventProvider,webeventprovider,Version=1.0.1573.18094, Culture=neutral, PublicKeyToken=b5a57a9a9d487cf4, processorArchitecture=MSIL\"/>  \n  </providers>  \n  \n  <eventMappings>  \n    <!--  Define the event source that   \n         issues custom events.   -->  \n    <add  name=\"SampleWebRequestEvent\"   \ntype=\"SamplesAspNet.SampleWebRequestEvent,webrequestevent,Version=1.0.1573.23947, Culture=neutral, PublicKeyToken=e717d983a78c8ddb, processorArchitecture=MSIL\"/>  \n    </eventMappings>  \n  \n  <rules>  \n        <!-- Associate custom event with   \n        related custom provider -->  \n    <add   \n      name=\"CustomWebRequestEvent\"  \n      eventName=\"SampleWebRequestEvent\"   \n      provider=\"SampleWebEventProvider\"   \n      profile=\"Critical\"/>  \n  </rules>  \n</healthMonitoring>  \n```"
   syntax:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, and the code or identifier associated with the event."
+  summary: "Inicializálja a <xref href=&quot;System.Web.Management.WebRequestEvent&quot;> </xref> osztály adott esemény paraméterekkel."
+  remarks: "A konstruktor WebRequestEvent lehetővé teszi, hogy az eseményüzenet, a forrás az esemény, és a kód vagy az eseményhez tartozó azonosító megadása."
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/visualbasic/3544ae82-e0d1-4dd2-b070-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#2](~/add/codesnippet/csharp/3544ae82-e0d1-4dd2-b070-_1.cs)]"
   syntax:
@@ -64,13 +64,13 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "Az eseményhez tartozó üzenet."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Az objektum, amely az esemény forrását."
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> az eseményhez tartozó kódot. Nagyobbnak kell lennie <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes the <xref href=&quot;System.Web.Management.WebRequestEvent&quot;></xref> class with specified event parameters."
-  remarks: "The constructor WebRequestEvent allows specifying the event message, the source of the event, the code or identifier associated with the event, and the detailed code."
+  summary: "Inicializálja a <xref href=&quot;System.Web.Management.WebRequestEvent&quot;> </xref> osztály adott esemény paraméterekkel."
+  remarks: "A konstruktor WebRequestEvent lehetővé teszi, hogy az eseménynapló-üzenet, a forrás az esemény, a kódot, vagy az esemény, és a részletes kód társított azonosító megadása."
   example:
   - "The following code example shows how to customize this constructor.  \n  \n> [!NOTE]\n>  The value you use to define your event code or identifier must be greater than <xref:System.Web.Management.WebEventCodes.WebExtendedBase>  \n  \n [!code-vb[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/visualbasic/7570cf44-aeea-49b6-a5bc-_1.vb)]\n [!code-cs[System.Web.Management.WebRequestEvent#3](~/add/codesnippet/csharp/7570cf44-aeea-49b6-a5bc-_1.cs)]"
   syntax:
@@ -96,16 +96,16 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message associated with the event."
+      description: "Az eseményhez tartozó üzenet."
     - id: eventSource
       type: System.Object
-      description: "The object that is the source of the event."
+      description: "Az objektum, amely az esemény forrását."
     - id: eventCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> code associated with the event. It must be greater than <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;></xref>."
+      description: "A <xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> az eseményhez tartozó kódot. Nagyobbnak kell lennie <xref href=&quot;System.Web.Management.WebEventCodes.WebExtendedBase&quot;> </xref>."
     - id: eventDetailCode
       type: System.Int32
-      description: "The <xref href=&quot;System.Web.Management.WebEventCodes&quot;></xref> detail code associated with the event."
+      description: "A <xref href=&quot;System.Web.Management.WebEventCodes&quot;> </xref> adatok találhatók az eseményhez tartozó kódot."
   overload: System.Web.Management.WebRequestEvent.#ctor*
   exceptions: []
   platform:
@@ -122,7 +122,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Used internally to increment the performance counters."
+  summary: "A belső használatú választva növelheti a teljesítményszámlálókat."
   syntax:
     content: protected override void IncrementPerfCounters ();
     parameters: []
@@ -142,15 +142,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the information associated with the Web-application request."
-  remarks: "The standard request information is defined by the <xref:System.Web.Management.WebRequestInformation> class."
+  summary: "Lekérdezi a webalkalmazás kérelemhez társított információkat."
+  remarks: "Az <xref:System.Web.Management.WebRequestInformation>osztály</xref:System.Web.Management.WebRequestInformation> határozzák meg a standard alkalmazáskérelem adatai"
   example:
   - "The following code example shows how to obtain the Web-request information.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public System.Web.Management.WebRequestInformation RequestInformation { get; }
     return:
       type: System.Web.Management.WebRequestInformation
-      description: "The information associated with the Web-application request."
+      description: "A webalkalmazás kérelem társított információkat."
   overload: System.Web.Management.WebRequestEvent.RequestInformation*
   exceptions: []
   platform:

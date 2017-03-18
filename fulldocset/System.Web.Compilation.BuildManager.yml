@@ -30,8 +30,8 @@ items:
   nameWithType: BuildManager
   fullName: System.Web.Compilation.BuildManager
   type: Class
-  summary: "Provides a set of methods to help manage the compilation of an ASP.NET application."
-  remarks: "The BuildManager class manages the process of compiling assemblies and pages for an application. It is a sealed class and cannot be inherited.       BuildManager contains static members that provide information about the compiled assemblies."
+  summary: "Biztosít metódusokat egy ASP.NET-alkalmazás összeállításának kezelésében nyújt segítséget."
+  remarks: "A BuildManager osztály kezeli a szerelvények és lapok az alkalmazás fordítása folyamatban. A lezárt osztályhoz tartozik, ezért nem örökölhető.       A BuildManager statikus tagok, amelyek információval szolgálnak a fordított szerelvény tartalmazza."
   syntax:
     content: public sealed class BuildManager
   inheritance:
@@ -52,22 +52,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Specifies a string that represents a dependency that the build manager uses to help determine if a clean build is required."
-  remarks: "The method must be called during the `Application_PreStartInit` stage of the application."
+  summary: "Meghatározza a build manager által használt annak meghatározásához, hogy szükség-e össze függőség jelölő karakterláncot."
+  remarks: "A metódus hívásához során a `Application_PreStartInit` az alkalmazás szakasza."
   syntax:
     content: public static void AddCompilationDependency (string dependency);
     parameters:
     - id: dependency
       type: System.String
-      description: "A string that represents a dependency."
+      description: "Függőség jelölő karakterlánccá."
   overload: System.Web.Compilation.BuildManager.AddCompilationDependency*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>dependency</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+    description: "A <code> dependency </code> paraméter <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method was called after the <xref uid=&quot;langword_csharp_Application_PreStartInit&quot; name=&quot;Application_PreStartInit&quot; href=&quot;&quot;></xref> stage of the application."
+    description: "A metódus lett meghívva után a <xref uid=&quot;langword_csharp_Application_PreStartInit&quot; name=&quot;Application_PreStartInit&quot; href=&quot;&quot;> </xref> az alkalmazás szakasza."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.AddReferencedAssembly(System.Reflection.Assembly)
@@ -82,22 +82,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Adds an assembly to the application&quot;s set of referenced assemblies."
-  remarks: "Calling this method is equivalent to adding the assembly to the application-level Web.config file. The method must be called during the `Application_PreStartInit` stage of the application.       The <xref:System.Web.Compilation.BuildManager.GetReferencedAssemblies%2A> method will return the set of assemblies that are determined from configuration files and any assemblies that were added by using this method.       If an attempt is made to add an assembly that has already been added, the duplicate entry is ignored.       This method must be called before the `Application_Start` event in the Global.asax file occurs."
+  summary: "Egy szerelvény hozzáadása a hivatkozott szerelvények az alkalmazás készletét."
+  remarks: "A metódus hívása megegyezik a szerelvény ad hozzá az alkalmazás szintű Web.config fájlban. A metódus hívásához során a `Application_PreStartInit` az alkalmazás szakasza.       A <xref:System.Web.Compilation.BuildManager.GetReferencedAssemblies%2A>metódus szerelvényeket a konfigurációs fájlokban határozza meg, és ezzel az eljárással hozzáadott szerelvények fog visszaadni.</xref:System.Web.Compilation.BuildManager.GetReferencedAssemblies%2A>       Ha már hozzá lett adva szerelvény hozzáadása tett kísérlet, a duplikált bejegyzés figyelmen kívül hagyja.       Ez a metódus előtt hívható a `Application_Start` a Global.asax fájlban az esemény akkor következik be."
   syntax:
     content: public static void AddReferencedAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to add."
+      description: "A szerelvény hozzáadása."
   overload: System.Web.Compilation.BuildManager.AddReferencedAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>assembly</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "A <code> assembly </code> paraméter <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method was not called before the <xref uid=&quot;langword_csharp_Application_Start&quot; name=&quot;Application_Start&quot; href=&quot;&quot;></xref> event in the Global.asax file occurred."
+    description: "A metódus nem lett meghívva a előtt a <xref uid=&quot;langword_csharp_Application_Start&quot; name=&quot;Application_Start&quot; href=&quot;&quot;> </xref> a Global.asax fájlban esemény történt."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.BatchCompilationEnabled
@@ -112,18 +112,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets or sets a value that indicates whether batch compilation is enabled."
-  remarks: "This property enables you to turn batch compilation on or off programmatically. It corresponds to the `batch` attribute of the `compilation` element in the Web.config file. For more information, see [compilation Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/7c319582-074a-4d2a-a787-03b9d4541c12).       The property can be set only in the `PreApplicationStart` method. For more information about the `PreApplicationStart` method, see <xref:System.Web.PreApplicationStartMethodAttribute>."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy engedélyezve van-e a kötegelt fordítás."
+  remarks: "Ez a tulajdonság lehetővé teszi a köteg lefordításának kapcsolhatja be és ki programozott módon. Megfelel a `batch` attribútuma a `compilation` a Web.config fájlban. További információkért lásd: [compilation elem (ASP.NET beállítási séma)](http://msdn.microsoft.com/en-us/7c319582-074a-4d2a-a787-03b9d4541c12).       A tulajdonság csak a állítható be a `PreApplicationStart` metódust. További információ a `PreApplicationStart` módszer, <xref:System.Web.PreApplicationStartMethodAttribute>.</xref:System.Web.PreApplicationStartMethodAttribute> lásd:"
   syntax:
     content: public static Nullable<bool> BatchCompilationEnabled { get; set; }
     return:
       type: System.Nullable{System.Boolean}
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if batch compilation is always enabled, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if batch compilation is never enabled, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the compilation setting is determined from the configuration file. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a köteg lefordításának mindig engedélyezve van, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> kötegelt fordítás soha nem engedélyezett, ha vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a fordítás a beállítás határozza meg a konfigurációs fájlból. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Compilation.BuildManager.BatchCompilationEnabled*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The property was not set in the <xref uid=&quot;langword_csharp_PreApplicationStart&quot; name=&quot;PreApplicationStart&quot; href=&quot;&quot;></xref> method."
+    description: "A tulajdonság nem volt beállítva a <xref uid=&quot;langword_csharp_PreApplicationStart&quot; name=&quot;PreApplicationStart&quot; href=&quot;&quot;> </xref> metódust."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.CodeAssemblies
@@ -138,12 +138,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets a list of assemblies built from the App_Code directory."
+  summary: "Az App_Code könyvtár létrehozott szerelvények listájának lekérése."
   syntax:
     content: public static System.Collections.IList CodeAssemblies { get; }
     return:
       type: System.Collections.IList
-      description: "An <xref:System.Collections.IList> collection that contains the assemblies built from the App_Code directory."
+      description: "Egy <xref:System.Collections.IList>gyűjteményt, amely az App_Code könyvtár létrehozott szerelvényeket tartalmazza.</xref:System.Collections.IList>"
   overload: System.Web.Compilation.BuildManager.CodeAssemblies*
   exceptions: []
   platform:
@@ -160,17 +160,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Creates a cached file."
-  remarks: "This method and the <xref:System.Web.Compilation.BuildManager.ReadCachedFile%2A> method enable you to perform caching that persists across application domain restarts in partial-trust environments. It is used by the MVC framework to cache results of the controller lookup.       To cache data, you write to the <xref:System.IO.Stream> object that is returned by this method."
+  summary: "Létrehoz egy gyorsítótárazott fájlt."
+  remarks: "Ez a metódus és a <xref:System.Web.Compilation.BuildManager.ReadCachedFile%2A>módszer lehetővé teszik a gyorsítótár, amely részlegesen megbízható környezetben alkalmazás tartomány újraindításainál végrehajtásához.</xref:System.Web.Compilation.BuildManager.ReadCachedFile%2A> A vezérlő keresési gyorsítótár eredményeit az MVC-keretrendszer használják.       A gyorsítótárazott adatokat hogy írni a <xref:System.IO.Stream>Ez a metódus által visszaadott objektum.</xref:System.IO.Stream>"
   syntax:
     content: public static System.IO.Stream CreateCachedFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to create."
+      description: "A létrehozni kívánt fájl neve."
     return:
       type: System.IO.Stream
-      description: "The <xref:System.IO.Stream> object for the new file."
+      description: "A <xref:System.IO.Stream>objektumot az új fájl.</xref:System.IO.Stream>"
   overload: System.Web.Compilation.BuildManager.CreateCachedFile*
   exceptions: []
   platform:
@@ -187,20 +187,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Processes a file, given its virtual path, and creates an instance of the result."
-  remarks: "The CreateInstanceFromVirtualPath method works for compiled and non-compile pages."
+  summary: "Feldolgozza a fájlt, a virtuális elérési út megadva, és létrehozza az eredmény egy példányát."
+  remarks: "A CreateInstanceFromVirtualPath módszer használható lefordított és a nem fordítási lap."
   syntax:
     content: public static object CreateInstanceFromVirtualPath (string virtualPath, Type requiredBaseType);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path of the file to create an instance of."
+      description: "A virtuális elérési út a fájl egy példányának létrehozásakor."
     - id: requiredBaseType
       type: System.Type
-      description: "The base type that defines the object to be created."
+      description: "Az alaptípus, amely meghatározza az objektum létrejön."
     return:
       type: System.Object
-      description: "The <xref:System.Object> that represents the instance of the processed file."
+      description: "A <xref:System.Object>, amely a feldolgozott fájl példányt jelenti.</xref:System.Object>"
   overload: System.Web.Compilation.BuildManager.CreateInstanceFromVirtualPath*
   exceptions: []
   platform:
@@ -217,19 +217,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a build dependency set for a virtual path if the path is located in the ASP.NET cache."
+  summary: "Egy virtuális elérési állítható be, ha az elérési út található, az ASP.NET gyorsítótára build függőség adja vissza."
   syntax:
     content: public static System.Web.Compilation.BuildDependencySet GetCachedBuildDependencySet (System.Web.HttpContext context, string virtualPath);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The context of the request."
+      description: "A kérés környezetében."
     - id: virtualPath
       type: System.String
-      description: "The virtual path from which to determine the build dependency set."
+      description: "A virtuális elérési útja, amelyből a build függőségi meg."
     return:
       type: System.Web.Compilation.BuildDependencySet
-      description: "A <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;></xref> object that is stored in the cache, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;></xref> object cannot be retrieved from the cache."
+      description: "A <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;> </xref> objektum, amely a gyorsítótárba vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;> </xref> objektum nem kérhető le a gyorsítótárban."
   overload: System.Web.Compilation.BuildManager.GetCachedBuildDependencySet*
   exceptions: []
   platform:
@@ -246,23 +246,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a build dependency set for a virtual path if the path is located in the ASP.NET cache, even if the content is not current."
-  remarks: "If the `ensureIsUpToDate` parameter value is set to `true`, the GetCachedBuildDependencySet method overload behaves like the <xref:System.Web.Compilation.BuildManager.GetCachedBuildDependencySet%2A?displayProperty=fullName> method overload. Both overloads return a current build dependency set if one exists, otherwise they return `null`.       However, the GetCachedBuildDependencySet method overload includes the option to return any build dependency set that is available, even an outdated one. If the `ensureIsUpToDate` parameter value is set to `false`, the method will return any available build dependency set."
+  summary: "Beállítása virtuális elérési út az elérési út található, az ASP.NET gyorsítótára, ha akkor is, ha a tartalom nem aktuális build függőség adja vissza."
+  remarks: "Ha a `ensureIsUpToDate` paraméter értéke `true`, a GetCachedBuildDependencySet metódus túlterhelési viselkedik a <xref:System.Web.Compilation.BuildManager.GetCachedBuildDependencySet%2A?displayProperty=fullName>metódus túlterhelési.</xref:System.Web.Compilation.BuildManager.GetCachedBuildDependencySet%2A?displayProperty=fullName> Mindkét túlterhelések térjen vissza az aktuális build függőség állítja be, ha van ilyen, ellenkező esetben ezek vissza `null`.       A GetCachedBuildDependencySet metódus túlterhelési azonban lehetőség vissza minden build függőségi elérhető, még akkor is elavult egy tartalmaz. Ha a `ensureIsUpToDate` paraméter értéke `false`, a metódus visszaadható bármely elérhető build függőség beállítása."
   syntax:
     content: public static System.Web.Compilation.BuildDependencySet GetCachedBuildDependencySet (System.Web.HttpContext context, string virtualPath, bool ensureIsUpToDate);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The context of the request."
+      description: "A kérés környezetében."
     - id: virtualPath
       type: System.String
-      description: "The virtual path from which to determine the build dependency set."
+      description: "A virtuális elérési útja, amelyből a build függőségi meg."
     - id: ensureIsUpToDate
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to specify that only a current build dependency set should be returned, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to indicate that any available build dependency set should be returned, even if it is not current. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Adja meg, hogy csak a jelenlegi build függőségi állítsa vissza kell, vagy <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> annak jelzésére, hogy elérhető build függőségi meghiúsító vissza kell adni, még akkor is, ha még nincs aktuális. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Web.Compilation.BuildDependencySet
-      description: "A <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;></xref> object that is stored in the cache, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;></xref> object cannot be retrieved from the cache."
+      description: "A <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;> </xref> objektum, amely a gyorsítótárba vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a <xref href=&quot;System.Web.Compilation.BuildDependencySet&quot;> </xref> objektum nem kérhető le a gyorsítótárban."
   overload: System.Web.Compilation.BuildManager.GetCachedBuildDependencySet*
   exceptions: []
   platform:
@@ -279,16 +279,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Compiles a file into an assembly using the specified virtual path."
+  summary: "Lefordítja a fájl egy szerelvényhez a megadott virtuális elérési utat."
   syntax:
     content: public static System.Reflection.Assembly GetCompiledAssembly (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to build into an assembly."
+      description: "A virtuális elérési út egy szerelvény történő létrehozásához."
     return:
       type: System.Reflection.Assembly
-      description: "An <xref:System.Reflection.Assembly> object that is compiled from the specified virtual path, which is cached to either memory or to disk."
+      description: "Egy <xref:System.Reflection.Assembly>objektum, amely a megadott virtuális elérési, amely vagy a memória vagy a lemez gyorsítótárazza lefordított.</xref:System.Reflection.Assembly>"
   overload: System.Web.Compilation.BuildManager.GetCompiledAssembly*
   exceptions: []
   platform:
@@ -305,16 +305,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Compiles a file, given its virtual path, and returns a custom string that the build provider persists in cache."
+  summary: "Lefordítja a fájl, a virtuális elérési út megadva, és a build-szolgáltató továbbra is fennáll, a gyorsítótárban, egyéni karakterláncot ad vissza."
   syntax:
     content: public static string GetCompiledCustomString (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path of the file to build."
+      description: "A virtuális elérési út a fájl létrehozásához."
     return:
       type: System.String
-      description: "A string, as returned by the <xref:System.Web.Compilation.BuildProvider.GetCustomString*> method, that is cached to disk or memory."
+      description: "Egy karakterlánc, amelyet a <xref:System.Web.Compilation.BuildProvider.GetCustomString*>metódus, a lemezterület vagy memória gyorsítótárazott.</xref:System.Web.Compilation.BuildProvider.GetCustomString*>"
   overload: System.Web.Compilation.BuildManager.GetCompiledCustomString*
   exceptions: []
   platform:
@@ -331,24 +331,24 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Compiles a file, given its virtual path, and returns the compiled type."
+  summary: "Lefordítja a fájl, a virtuális elérési út megadva, és a lefordított típust ad vissza."
   syntax:
     content: public static Type GetCompiledType (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to build into a type."
+      description: "A virtuális elérési út a típus létrehozásához."
     return:
       type: System.Type
-      description: "A <xref:System.Type> object that represents the type generated from compiling the virtual path."
+      description: "Egy <xref:System.Type>objektum, amely fordítása a virtuális elérési út. az előállított típusát jelöli</xref:System.Type>"
   overload: System.Web.Compilation.BuildManager.GetCompiledType*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "An error occurred when compiling the virtual path."
+    description: "Hiba történt a virtuális elérési út fordítása során."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.GetGlobalAsaxType
@@ -363,19 +363,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets an object that represents the compiled type for the Global.asax file."
-  remarks: "An exception is thrown if this method is called before the Global.asax file has been compiled."
+  summary: "Lekérdezi a Global.asax fájlhoz a lefordított típus képviselő objektum."
+  remarks: "Kivételt vált ki, ha ezt a módszert nevezik, mielőtt a Global.asax fájl le van fordítva."
   syntax:
     content: public static Type GetGlobalAsaxType ();
     parameters: []
     return:
       type: System.Type
-      description: "An object that represents the compiled type for the Global.asax file."
+      description: "A lefordított típus a Global.asax fájlhoz képviselő objektum."
   overload: System.Web.Compilation.BuildManager.GetGlobalAsaxType*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt was made to call this method before the Global.asax page was compiled."
+    description: "Kísérlet történt a metódus hívása előtt lett lefordítva, a Global.asax lapot."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.GetObjectFactory(System.String,System.Boolean)
@@ -390,25 +390,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets an object factory for the specified virtual path."
-  remarks: "This method returns an object that enables you to generate a type by compiling the virtual path. It returns an object regardless of whether the Web site is precompiled."
+  summary: "Egy objektum gyári lekérdezi a megadott virtuális elérési úthoz."
+  remarks: "Ez a módszer olyan objektum, amely lehetővé teszi a virtuális elérési út összeállításával egy típus létrehozásához adja vissza. Függetlenül attól, hogy a webhely előre le van fordítva objektum adja vissza."
   syntax:
     content: public static System.Web.Util.IWebObjectFactory GetObjectFactory (string virtualPath, bool throwIfNotFound);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path."
+      description: "A virtuális elérési út."
     - id: throwIfNotFound
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw an error if the virtual path does not exist; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. If the virtual path does not exist and `throwIfNotFound` is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>hogy hibaüzenetet küldjön, ha a virtuális elérési út nem létezik; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Ha a virtuális elérési út nem létezik, és `throwIfNotFound` van <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, ez a metódus visszaadja <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Web.Util.IWebObjectFactory
-      description: "The object factory."
+      description: "Az objektum gyári."
   overload: System.Web.Compilation.BuildManager.GetObjectFactory*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The virtual path does not exist.       -or-       A higher-level exception already existed when this method was called.       -or-       This method was called while the compilation process was building top-level files.       -or-       This is a precompiled application and the virtual path was not found in the cache.       -or-       A circular reference was detected."
+    description: "A virtuális elérési út nem létezik.       – vagy – A magasabb szintű kivételt már létezett, akkor ez a metódus lett meghívva.       – vagy – a metódus lett meghívva, amíg az összeállítási folyamat lett felépítése legfelső szintű fájlokat.       – vagy – az előfordított alkalmazás és a virtuális elérési út nem található a gyorsítótárban.       – vagy – A körkörös hivatkozást észlelt."
   platform:
   - net462
 - uid: System.Web.Compilation.BuildManager.GetReferencedAssemblies
@@ -423,14 +423,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a list of assembly references that all page compilations must reference."
-  remarks: "The collection of assemblies that is returned from the GetReferencedAssemblies method includes assemblies specified in the  element of the Web.config file, assemblies built from custom code in the App_Code directory, and assemblies in other top-level folders.       GetReferencedAssemblies is introduced in the .NET Framework version 3.5.  For more information, see [.NET Framework Versions and Dependencies](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Minden lap fordítások kell hivatkoznia, szerelvényhivatkozások listáját adja vissza."
+  remarks: "A szerelvények a GetReferencedAssemblies metódusból eredményül a gyűjteménybe a Web.config fájl, a szerelvények egyéni kód az App_Code könyvtár a létrehozott és az egyéb legfelső szintű mappák szerelvényeket elemben megadott szerelvényeket.       GetReferencedAssemblies megjelent a .NET-keretrendszer 3.5-ös verziója.  További információkért lásd: [.NET-keretrendszer-verziót és a függőségek](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public static System.Collections.ICollection GetReferencedAssemblies ();
     parameters: []
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> collection of assembly references."
+      description: "Egy <xref:System.Collections.ICollection>szerelvényhivatkozások gyűjteménye.</xref:System.Collections.ICollection>"
   overload: System.Web.Compilation.BuildManager.GetReferencedAssemblies*
   exceptions: []
   platform:
@@ -447,20 +447,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Finds a type in the top-level assemblies or in assemblies that are defined in configuration, and optionally throws an exception on failure."
-  remarks: "A top-level assembly refers to the Global.asax file, or to a file that is in the App_GlobalResources, App_WebReferences, App_Code, or App_Browsers directory."
+  summary: "A típus talál, a legfelső szintű szerelvényekben vagy konfigurációs definiált szerelvényekben, és opcionálisan kivételt hiba esetén."
+  remarks: "Egy legfelső szintű szerelvény hivatkozik a Global.asax fájl, vagy egy fájlra az App_GlobalResources, App_WebReferences, App_Code vagy App_Browsers könyvtárban található."
   syntax:
     content: public static Type GetType (string typeName, bool throwOnError);
     parameters:
     - id: typeName
       type: System.String
-      description: "The name of the type."
+      description: "A típus neve."
     - id: throwOnError
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw an exception if a <xref:System.Type> object cannot be generated for the type name; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a kivételt jelez, ha egy <xref:System.Type>objektum nem lehet a neve a generált; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Type>"
     return:
       type: System.Type
-      description: "A <xref:System.Type> object that represents the requested <code>typeName</code> parameter."
+      description: "A <xref:System.Type>képviselő a kért objektum <code> typeName </code> paraméter.</xref:System.Type>"
   overload: System.Web.Compilation.BuildManager.GetType*
   exceptions:
   - type: System.Web.HttpException
@@ -480,23 +480,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Finds a type in the top-level assemblies, or in assemblies that are defined in configuration, by using a case-insensitive search and optionally throwing an exception on failure."
-  remarks: "A top-level assembly refers to the Global.asax file, or to a file that is in the App_GlobalResources, App_WebReferences, App_Code, or App_Browsers directory."
+  summary: "A típus keresi, a legfelső szintű szerelvényekben, vagy a szerelvényeket, amelyeket a konfigurációban nem betűérzékeny keresési, és opcionálisan egy kivétel kiváltása hiba esetén."
+  remarks: "Egy legfelső szintű szerelvény hivatkozik a Global.asax fájl, vagy egy fájlra az App_GlobalResources, App_WebReferences, App_Code vagy App_Browsers könyvtárban található."
   syntax:
     content: public static Type GetType (string typeName, bool throwOnError, bool ignoreCase);
     parameters:
     - id: typeName
       type: System.String
-      description: "The name of the type."
+      description: "A típus neve."
     - id: throwOnError
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to throw an exception if a <xref:System.Type> cannot be generated for the type name; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a kivételt jelez, ha egy <xref:System.Type>létrehozott, a típus neve; ellenkező esetben nem lehet <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Type>"
     - id: ignoreCase
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if `typeName` is case-sensitive; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha `typeName` kis-és nagybetűket; egyéb, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Type
-      description: "A <xref:System.Type> object that represents the requested <code>typeName</code> parameter."
+      description: "A <xref:System.Type>képviselő a kért objektum <code> typeName </code> paraméter.</xref:System.Type>"
   overload: System.Web.Compilation.BuildManager.GetType*
   exceptions:
   - type: System.Web.HttpException
@@ -516,16 +516,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Provides a collection of virtual-path dependencies for a specified virtual path."
+  summary: "A megadott virtuális elérési út egy virtuális elérési útja függőségek gyűjteményét biztosítja."
   syntax:
     content: public static System.Collections.ICollection GetVirtualPathDependencies (string virtualPath);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path used to determine the dependencies."
+      description: "A használt virtuális elérési utat a Függőségek meghatározásához."
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> collection of files represented by virtual paths that are caching dependencies for the virtual path."
+      description: "Egy <xref:System.Collections.ICollection>virtuális elérési utak, amely vannak gyorsítótár függőségeinek a virtuális elérési úthoz. által jelölt fájlok</xref:System.Collections.ICollection>"
   overload: System.Web.Compilation.BuildManager.GetVirtualPathDependencies*
   exceptions: []
   platform:
@@ -542,12 +542,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets a value that specifies whether the application is precompiled."
+  summary: "Lekérdezi egy érték, amely megadja, hogy az alkalmazás előre le van fordítva."
   syntax:
     content: public static bool IsPrecompiledApp { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the application is precompiled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az előfordított; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Compilation.BuildManager.IsPrecompiledApp*
   exceptions: []
   platform:
@@ -564,12 +564,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets a value that specifies whether the application is precompiled as updatable."
+  summary: "Lekérdezi egy érték, amely megadja, hogy az alkalmazás előre le van fordítva, frissíthető."
   syntax:
     content: public static bool IsUpdatablePrecompiledApp { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the application is precompiled as updatable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az előfordított, frissíthető; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Compilation.BuildManager.IsUpdatablePrecompiledApp*
   exceptions: []
   platform:
@@ -586,17 +586,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Reads a cached file."
-  remarks: "This method and the <xref:System.Web.Compilation.BuildManager.CreateCachedFile%2A> method enable you to perform caching that persists across application domain restarts in partial-trust environments. It is used by the MVC framework to cache results of the controller lookup.       To retrieve cached data, you read from the <xref:System.IO.Stream> object that is returned by this method."
+  summary: "Beolvassa a gyorsítótárazott fájlt."
+  remarks: "Ez a metódus és a <xref:System.Web.Compilation.BuildManager.CreateCachedFile%2A>módszer lehetővé teszik a gyorsítótár, amely részlegesen megbízható környezetben alkalmazás tartomány újraindításainál végrehajtásához.</xref:System.Web.Compilation.BuildManager.CreateCachedFile%2A> A vezérlő keresési gyorsítótár eredményeit az MVC-keretrendszer használják.       A gyorsítótárazott adatok lekéréséhez a olvasni a <xref:System.IO.Stream>Ez a metódus által visszaadott objektum.</xref:System.IO.Stream>"
   syntax:
     content: public static System.IO.Stream ReadCachedFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to read."
+      description: "A fájlt, mert a neve."
     return:
       type: System.IO.Stream
-      description: "The <xref:System.IO.Stream> object for the file, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the file does not exist."
+      description: "A <xref:System.IO.Stream>objektum a fájl vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a fájl nem létezik.</xref:System.IO.Stream>"
   overload: System.Web.Compilation.BuildManager.ReadCachedFile*
   exceptions: []
   platform:
@@ -613,13 +613,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets the target version of the .NET Framework for the current Web site."
-  remarks: "This property supports the ASP.NET multi-targeting feature, which enables you to use the latest version of [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] to develop applications that will run with earlier versions of the .NET Framework. A build provider can use this property to make sure that the provider generates code that is appropriate for the targeted version of the .NET Framework. For example, you might want to generate different code depending on whether a Web site targets the [!INCLUDE[net_v35_short](~/add/includes/net-v35-short-md.md)] or the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]. For more information about multi-targeting, see [.NET Framework Multi-Targeting for ASP.NET Web Projects](~/add/includes/ajax-current-ext-md.md).       If the Web site does not have a Web.config file, ASP.NET assumes that the target framework version is the version that is associated with the IIS application pool that the site is running under. For a file-system Web site that is running in Visual Studio, the default framework version is the current version of the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].       If the Web site does have a Web.config file, ASP.NET determines the target framework by examining the Web.config file.      ## Web Sites that Target the .NET Framework 2.0    Web applications that target the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] are compiled as if the target were the [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)]. The build process does not differentiate between the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] and the [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] because the Web.config file does not indicate compiler version or target framework when one of those versions is targeted. (For the [!INCLUDE[net_v35_short](~/add/includes/net-v35-short-md.md)], the Web.config file specifies the compiler version, and for the [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], the Web.config file specifies the target framework.) Therefore, for Web applications that target the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], this property returns a target framework moniker that indicates the [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)].       This normally will not cause any problems. [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] prevents you from creating references to [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] features in a project that is targeted for the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)]. For example, [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] does not provide item templates for WCF services in a project that is targeted for [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], because WCF was introduced with the [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] and is not compatible with the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)].       If you plan to deploy a Web site in a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] run-time environment and you use a tool other than [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] to reference features that are compatible only with [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)], the project might build without generating errors or warnings. However, the application might generate errors when the Web site runs on the [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)]."
+  summary: "A .NET-keretrendszer a célverzió lekéri a webhelyen."
+  remarks: "Ez a tulajdonság támogatja az ASP.NET multi-célcsoport-kezelési funkció, amely lehetővé teszi, hogy a legújabb [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] a .NET-keretrendszer korábbi verzióinak működő alkalmazások fejlesztéséhez. A build szolgáltató a tulajdonság segítségével győződjön meg arról, hogy a szolgáltató állít elő, a .NET-keretrendszer célzott verziójához megfelelő kód. Például előfordulhat, hogy kíván létrehozni attól függően más kódot, hogy egy webhely célok a [!INCLUDE[net_v35_short](~/add/includes/net-v35-short-md.md)] vagy a [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)]. Többszörös célzó kapcsolatos további információkért lásd: [.NET-keretrendszer Multi céljának meghatározása ASP.NET webes projektek](~/add/includes/ajax-current-ext-md.md).       Ha a webhely nem rendelkezik Web.config fájlban, az ASP.NET feltételezi, hogy a cél-keretrendszer verziója a verziója, az IIS-alkalmazáskészletet, hogy a hely fut. társított. A fájlrendszer webhely, amely futtatja a Visual Studio, a alapértelmezett Framework az aktuális verziója a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)].       Ha a webhely Web.config fájlban, az ASP.NET határozza meg a megcélzott keretrendszer vizsgálata folyamatban van a Web.config fájlt.      ## Webhelyek, amelyek a .NET Framework 2.0-s webalkalmazások cél, hogy a célkiszolgáló a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] összeállítása a cél, mintha a [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)]. A létrehozási folyamat nem tesz különbséget a között a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] és a [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] , mert a Web.config fájl nem jelzi azt verziója vagy a cél keretrendszer fordítóprogram, amikor ezekkel a verziókkal egyik vonatkozik. (A a [!INCLUDE[net_v35_short](~/add/includes/net-v35-short-md.md)], a Web.config fájl megadja a fordító verzióját, és a [!INCLUDE[net_v40_short](~/add/includes/net-v40-short-md.md)], a Web.config fájl határozza meg a célkeretrendszer.) Ezért a webes alkalmazások, hogy a célkiszolgáló a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], ez a tulajdonság adja vissza, amely jelzi, cél keretrendszer kézjegyet a [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)].       Ez általában nem okoz semmilyen problémát. [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)]megakadályozza, hogy mutató hivatkozások létrehozása [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] szolgáltatásokat, amely a projektben a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)]. Például [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] nem nyújt, amely a projektben WCF-szolgáltatások elemtulajdonságokat [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)], mert a WCF jelent a [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)] és nem kompatibilis a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)].       Ha azt tervezi, hogy a webhely telepítése egy [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] környezetben, és használja a egy eltérő [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)] kompatibilis csak referencia szolgáltatásainak [!INCLUDE[net_v30_short](~/add/includes/net-v30-short-md.md)], a projekt létrehozhat hibák vagy figyelmeztetések létrehozása nélkül. Azonban az alkalmazás hozhat létre hibák fut a webhely a [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)]."
   syntax:
     content: public static System.Runtime.Versioning.FrameworkName TargetFramework { get; }
     return:
       type: System.Runtime.Versioning.FrameworkName
-      description: "The target version of the .NET Framework for the current Web site."
+      description: "A cél verzióját a .NET-keretrendszer, az adott webhelyen."
   overload: System.Web.Compilation.BuildManager.TargetFramework*
   exceptions: []
   platform:

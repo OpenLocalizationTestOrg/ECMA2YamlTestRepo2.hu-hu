@@ -14,8 +14,8 @@ items:
   nameWithType: WebThreadInformation
   fullName: System.Web.Management.WebThreadInformation
   type: Class
-  summary: "Provides information about the state of a thread in an ASP.NET process."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       Instances of the WebThreadInformation class contain information that is obtained using either the <xref:System.Web.Management.WebErrorEvent> type or the <xref:System.Web.Management.WebRequestErrorEvent> type.       Your application needs the appropriate permissions to access protected information provided by this type.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom event class, see the example provided in this topic."
+  summary: "A szál egy ASP.NET-folyamat állapotával kapcsolatos információkat nyújt."
+  remarks: "ASP.NET állapotfigyelés lehetővé teszi, hogy az üzemi és műveletek személyzet telepített webalkalmazások kezelésére. A <xref:System.Web.Management>névtér tartalmazza a rendszerállapot-eseménytípusok felelős csomagolási alkalmazásadatok állapot és az adatok feldolgozása felelős modulszolgáltató-típust.</xref:System.Web.Management> Is tartalmaz, amelyek segítenek a állapotával kapcsolatos események felügyelete során támogató típusok.       A WebThreadInformation osztály példányai tartalmaznak adatokat, vagy alkalmazásával a <xref:System.Web.Management.WebErrorEvent>típus vagy a <xref:System.Web.Management.WebRequestErrorEvent>típusa.</xref:System.Web.Management.WebRequestErrorEvent> </xref:System.Web.Management.WebErrorEvent>       Az alkalmazás kell ehhez a típushoz védett információ eléréséhez szükséges engedélyekkel.      > [!NOTE] > A legtöbb esetben lesz ahhoz, hogy az ASP.NET-állapotfigyelés típusok használható megvalósítva, és szabályozza, a rendszerállapot-figyelő rendszer szereplő értékek megadásával a `healthMonitoring` konfigurációs szakasz. Az állapotfigyelés típusok létrehozása a saját egyéni események és szolgáltatók is származik. Például egy egyéni esemény osztály létrehozása tekintse meg az itt bemutatott példában."
   example:
   - "The following code example has two parts. The first is an excerpt of a configuration file that enables ASP.NET to use a custom event that uses the WebThreadInformation type. The second shows how to implement the custom event that uses the WebThreadInformation type.  \n  \n Ensure that your custom event is raised at the proper time, that is, when the equivalent system health event it replaces would be raised.  \n  \n```  \n<healthMonitoring  \n    heartBeatInterval=\"0\" enabled=\"true\">  \n  \n  <profiles>  \n    <add name=\"Custom\"   \n      minInstances=\"1\"   \n      maxLimit=\"Infinite\"   \n      minInterval=\"00:00:00\" />  \n  </profiles>  \n  \n  <eventMappings>  \n  \n    <add   \n      name=\"SampleWebThreadInformation\"   \ntype=\"SamplesAspNet.SampleWebThreadInformation,webthreadinformation, Version=1.0.1782.29648, Culture=neutral, PublicKeyToken=b3283a2de7dd3f27, processorArchitecture=MSIL\" />  \n  \n  </eventMappings>  \n  \n  <rules>  \n  \n    <add name=\"Custom Web Thread Info Event\"   \n      eventName=\"SampleWebThreadInformation\"   \n      provider=\"EventLogProvider\"  \n      profile=\"Custom\" />  \n  \n  </rules>  \n  \n</healthMonitoring>  \n```  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#1](~/add/codesnippet/csharp/t-system.web.management._17_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#1](~/add/codesnippet/visualbasic/t-system.web.management._17_1.vb)]"
   syntax:
@@ -38,8 +38,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Formats thread-related information."
-  remarks: "The FormatToString method provides a uniform format for event information, which is useful if the event data must be logged and later presented to the user. It is called internally when the provider invokes one of the <xref:System.Web.Management.WebBaseEvent.ToString%2A> methods."
+  summary: "Formázza a szál kapcsolatos információkat."
+  remarks: "A FormatToString módszert biztosít események adatait, amely akkor hasznos, ha az eseményadat kell naplózza, és később jelenik meg a felhasználó formátuma nem egységes. Belső azt nevezzük, amikor a szolgáltató hív meg, egy a <xref:System.Web.Management.WebBaseEvent.ToString%2A>módszerek.</xref:System.Web.Management.WebBaseEvent.ToString%2A>"
   example:
   - "The following code example shows how to format custom information.  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#8](~/add/codesnippet/csharp/3f4138bf-4e4f-4608-8d65-_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#8](~/add/codesnippet/visualbasic/3f4138bf-4e4f-4608-8d65-_1.vb)]"
   syntax:
@@ -47,7 +47,7 @@ items:
     parameters:
     - id: formatter
       type: System.Web.Management.WebEventFormatter
-      description: "The <xref href=&quot;System.Web.Management.WebEventFormatter&quot;></xref> that contains the tab and indentation settings used to format the Web health event information."
+      description: "A <xref href=&quot;System.Web.Management.WebEventFormatter&quot;> </xref> , amely tartalmazza a lap és behúzás beállításait, a webes állapotinformációkat esemény formázásához használt."
   overload: System.Web.Management.WebThreadInformation.FormatToString*
   exceptions: []
   platform:
@@ -64,7 +64,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the current thread-impersonation mode."
+  summary: "Lekérdezi az aktuális szál-megszemélyesítési módban."
   remarks: ''
   example:
   - "The following code example shows how to get the thread-impersonation mode.  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#4](~/add/codesnippet/csharp/p-system.web.management._11_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#4](~/add/codesnippet/visualbasic/p-system.web.management._11_1.vb)]"
@@ -72,7 +72,7 @@ items:
     content: public bool IsImpersonating { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the thread is executing in impersonation mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a szál;-megszemélyesítési módban fut Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Management.WebThreadInformation.IsImpersonating*
   exceptions: []
   platform:
@@ -89,7 +89,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the current thread-managed stack trace."
+  summary: "Lekérdezi az aktuális szál által felügyelt alábbi veremkivonatban."
   remarks: ''
   example:
   - "The following code example shows how to get the thread stack trace.  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#5](~/add/codesnippet/csharp/p-system.web.management._22_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#5](~/add/codesnippet/visualbasic/p-system.web.management._22_1.vb)]"
@@ -97,7 +97,7 @@ items:
     content: public string StackTrace { get; }
     return:
       type: System.String
-      description: "The thread-managed stack trace."
+      description: "A szál által felügyelt veremkivonattal."
   overload: System.Web.Management.WebThreadInformation.StackTrace*
   exceptions: []
   platform:
@@ -114,15 +114,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the thread account name."
-  remarks: "The account returned by this property might be arbitrary if the thread is executing in impersonation mode."
+  summary: "Lekérdezi a kérelemszál fiókneve."
+  remarks: "Előfordulhat, hogy a fiók, ez a tulajdonság által visszaadott tetszőleges, ha a szál fut-megszemélyesítési módban."
   example:
   - "The following code example shows how to get the thread account name.  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#6](~/add/codesnippet/csharp/p-system.web.management._9_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#6](~/add/codesnippet/visualbasic/p-system.web.management._9_1.vb)]"
   syntax:
     content: public string ThreadAccountName { get; }
     return:
       type: System.String
-      description: "The thread account name."
+      description: "Kérelemszál fiókneve."
   overload: System.Web.Management.WebThreadInformation.ThreadAccountName*
   exceptions: []
   platform:
@@ -139,15 +139,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets the current thread identifier."
-  remarks: "Even if managed threads might not have direct mapping to the OS threads, for debugging purposes, it is always useful to isolate a specific thread where problems might exist."
+  summary: "Lekérdezi az aktuális szál azonosítója."
+  remarks: "Akkor is, ha felügyelt szálak esetleg nincs közvetlen leképezése az operációs rendszer szálak hibakeresésre, célszerű mindig egy bizonyos szálhoz, ahol előfordulhat, hogy létezik problémákat azonosítása."
   example:
   - "The following code example shows how to get the thread identifier.  \n  \n [!code-cs[System.Web.Management.WebThreadInformation#7](~/add/codesnippet/csharp/p-system.web.management._54_1.cs)]\n [!code-vb[System.Web.Management.WebThreadInformation#7](~/add/codesnippet/visualbasic/p-system.web.management._54_1.vb)]"
   syntax:
     content: public int ThreadID { get; }
     return:
       type: System.Int32
-      description: "The current thread identifier."
+      description: "Az aktuális szál azonosítója."
   overload: System.Web.Management.WebThreadInformation.ThreadID*
   exceptions: []
   platform:
