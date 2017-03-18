@@ -16,8 +16,8 @@ items:
   nameWithType: RsaEncryptionCookieTransform
   fullName: System.IdentityModel.RsaEncryptionCookieTransform
   type: Class
-  summary: "Encrypts a cookie using <xref href=&quot;System.Security.Cryptography.RSA&quot;></xref>."
-  remarks: "Cookies encrypted with this transform may be decrypted by any computer that shares the same RSA private key (generally associated with an X.509 certificate).       The given data is encrypted using a random AES256 key. This key is then encrypted using RSA, and the RSA public key is sent in plain text so that when decoding the class knows which RSA key to use.      > [!IMPORTANT] >  When using the RsaEncryptionCookieTransform with a service, if a key provided by a certificate changes the service must be restarted."
+  summary: "A cookie-k használatával titkosítja <xref href=&quot;System.Security.Cryptography.RSA&quot;> </xref>."
+  remarks: "A transzformáció titkosított cookie-k által közösen használja az ugyanazon RSA társított titkos kulcs (általában egy X.509 tanúsítvány) számítógépek visszafejthető.       Az adott adatok titkosítása véletlenszerűen AES256 kulccsal. Ezt a kulcsot a rendszer ezután titkosítja, RSA használatával, majd az RSA nyilvános kulcs egyszerű szövegként továbbítja, így ha az osztály dekódolás tudja mely RSA-kulcs használata.      > [!IMPORTANT] > Amikor használatával a RsaEncryptionCookieTransform szolgáltatást, ha egy kulcsot, egy tanúsítvány módosítja a szolgáltatás újra kell indítani."
   syntax:
     content: 'public class RsaEncryptionCookieTransform : System.IdentityModel.CookieTransform'
   inheritance:
@@ -39,18 +39,18 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.RsaEncryptionCookieTransform&quot;></xref> class that uses the specified key for encryption and decryption."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IdentityModel.RsaEncryptionCookieTransform&quot;> </xref> osztály, amely a megadott kulcs titkosításához és visszafejtéséhez használt."
   syntax:
     content: public RsaEncryptionCookieTransform (System.Security.Cryptography.RSA key);
     parameters:
     - id: key
       type: System.Security.Cryptography.RSA
-      description: "The key to use as the default encryption and decryption key. Initializes the <xref:System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys*> and <xref:System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*> properties."
+      description: "A kulcs kívánja használni, mint az alapértelmezett titkosítási és visszafejtési kulcsot. Inicializálja a <> </> *> és <> </> *> tulajdonságait."
   overload: System.IdentityModel.RsaEncryptionCookieTransform.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>key</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>key</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.RsaEncryptionCookieTransform.#ctor(System.Security.Cryptography.X509Certificates.X509Certificate2)
@@ -65,21 +65,21 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.RsaEncryptionCookieTransform&quot;></xref> class that uses the private key of the specified X.509 certificate for encryption and decryption."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IdentityModel.RsaEncryptionCookieTransform&quot;> </xref> osztály, amely a titkosítási és visszafejtési megadott X.509-tanúsítvány a titkos kulcsot használja."
   syntax:
     content: public RsaEncryptionCookieTransform (System.Security.Cryptography.X509Certificates.X509Certificate2 certificate);
     parameters:
     - id: certificate
       type: System.Security.Cryptography.X509Certificates.X509Certificate2
-      description: "The certificate whose private key is used to encrypt and decrypt.       The certificate whose private key will be used as the default encryption and decryption key. Initializes the <xref:System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys*> and <xref:System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*> properties."
+      description: "A tanúsítványt, amelynek titkos kulcs titkosítására és visszafejtésére szolgál.       A tanúsítványt, amelynek titkos kulcs látja el az alapértelmezett titkosítási és visszafejtési kulcsot. Inicializálja a <> </> *> és <> </> *> tulajdonságait."
   overload: System.IdentityModel.RsaEncryptionCookieTransform.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>certificate</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>certificate</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>certificate</code> does not have a private key.       -or-       The private key is not RSA."
+    description: "<code>certificate</code>nem rendelkezik titkos kulccsal.       – vagy – a titkos kulcs nem RSA."
   platform:
   - net462
 - uid: System.IdentityModel.RsaEncryptionCookieTransform.Decode(System.Byte[])
@@ -94,30 +94,30 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Decrypts the specified data by using the provided RSA key(s) to decrypt an AES key, which decrypts the cookie."
+  summary: "A megadott adatokat visszafejti a megadott RSA-kulcsával AES-kulccsal, amely visszafejti a cookie-k visszafejtésére használatával."
   syntax:
     content: public override byte[] Decode (byte[] encoded);
     parameters:
     - id: encoded
       type: System.Byte[]
-      description: "The encoded data"
+      description: "A kódolt adatok"
     return:
       type: System.Byte[]
-      description: "The decoded data"
+      description: "A dekódolt adatok"
   overload: System.IdentityModel.RsaEncryptionCookieTransform.Decode*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>encoded</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>encoded</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>encoded</code> contains zero bytes."
+    description: "<code>encoded</code>nulla bájt tartalmazza."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The platform does not support the requested algorithm."
+    description: "A platform nem támogatja a kért algoritmust."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "There are no decryption keys or none of the keys match."
+    description: "Nincsenek visszafejtési kulcsok, vagy a kulcsok egyike sem felel meg."
   platform:
   - net462
 - uid: System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys
@@ -132,12 +132,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Gets the keys used for decryption By default, this property returns a list that contains only the encryption key."
+  summary: "Alapértelmezés szerint a visszafejtéshez használt kulcsok beolvasása a tulajdonság csak a titkosítási kulcsot tartalmazó listát ad vissza."
   syntax:
     content: protected virtual System.Collections.ObjectModel.ReadOnlyCollection<System.Security.Cryptography.RSA> DecryptionKeys { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.Security.Cryptography.RSA}
-      description: "The keys to use for decryption."
+      description: "A használt visszafejtési kulcsok."
   overload: System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys*
   exceptions: []
   platform:
@@ -154,27 +154,27 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Encodes the specified data. The data is encrypted using the default encryption algorithm (AES-256), then the AES key is encrypted using RSA and the RSA public key is appended."
+  summary: "Kódolja a megadott adatokat. Az alapértelmezett titkosítási algoritmus (az AES-256-ot), az adatok titkosítása, majd az AES-kulcs titkosított RSA használatával, és a rendszer hozzáfűzi az RSA nyilvános kulcs."
   syntax:
     content: public override byte[] Encode (byte[] value);
     parameters:
     - id: value
       type: System.Byte[]
-      description: "The data to encode"
+      description: "Az adatok kódolása"
     return:
       type: System.Byte[]
-      description: "The encoded data"
+      description: "A kódolt adatok"
   overload: System.IdentityModel.RsaEncryptionCookieTransform.Encode*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>value</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>value</code> contains zero bytes."
+    description: "<code>value</code>nulla bájt tartalmazza."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "The <xref:System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.</xref:System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*>"
   platform:
   - net462
 - uid: System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey
@@ -189,13 +189,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Gets or sets the RSA key used for encryption"
-  remarks: "Setting this property also sets the <xref:System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys%2A> property to a collection that contains the same key as its only element."
+  summary: "Lekérdezi vagy beállítja a titkosításhoz használt RSA-kulcs"
+  remarks: "A tulajdonság beállítása esetén is beállítása a <xref:System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys%2A>tulajdonság ugyanazzal a kulccsal, mint az egyetlen elem tartalmazó gyűjteményhez.</xref:System.IdentityModel.RsaEncryptionCookieTransform.DecryptionKeys%2A>"
   syntax:
     content: public virtual System.Security.Cryptography.RSA EncryptionKey { get; set; }
     return:
       type: System.Security.Cryptography.RSA
-      description: "The RSA key used for encryption."
+      description: "A titkosításhoz használt RSA-kulcs."
   overload: System.IdentityModel.RsaEncryptionCookieTransform.EncryptionKey*
   exceptions: []
   platform:
@@ -212,13 +212,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel
-  summary: "Gets or sets the name of the hash algorithm to use."
-  remarks: "SHA256 is the default algorithm. This may require a minimum platform of Windows Server 2003 and .NET 3.5 SP1.       If SHA256 is not supported, set the HashName property to &quot;SHA1&quot;."
+  summary: "Lekérdezi vagy beállítja a nevét, a kivonatoló algoritmus használatára."
+  remarks: "SHA-256 az alapértelmezett algoritmus. Ehhez a Windows Server 2003 és a .NET 3.5 SP1 minimális platform lehet szükség.       Ha a rendszer nem támogatja az SHA256, az &quot;SHA1&quot; HashName tulajdonság értéke."
   syntax:
     content: public string HashName { get; set; }
     return:
       type: System.String
-      description: "The name of the hash algorithm to use. The default is “SHA2566”."
+      description: "A kivonatoló algoritmust neve. Az alapértelmezett érték &quot;SHA2566&quot;."
   overload: System.IdentityModel.RsaEncryptionCookieTransform.HashName*
   exceptions: []
   platform:

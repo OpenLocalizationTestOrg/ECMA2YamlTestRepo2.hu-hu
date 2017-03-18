@@ -26,8 +26,8 @@ items:
   nameWithType: MsmqBindingBase
   fullName: System.ServiceModel.MsmqBindingBase
   type: Class
-  summary: "The base class for <xref href=&quot;System.ServiceModel.NetMsmqBinding&quot;></xref> and <xref href=&quot;System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding&quot;></xref>."
-  remarks: "This abstract class contains properties common to <xref:System.ServiceModel.NetMsmqBinding> and <xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding>. All of the fundamental concepts in queuing are displayed in the form of properties."
+  summary: "Az alaposztály <xref href=&quot;System.ServiceModel.NetMsmqBinding&quot;> </xref> és <xref href=&quot;System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding&quot;> </xref>."
+  remarks: "Absztrakt osztály <xref:System.ServiceModel.NetMsmqBinding>és <xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding>.</xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding> </xref:System.ServiceModel.NetMsmqBinding> közös tulajdonságait tartalmazza Az összes alapvető fogalmait, queuing tulajdonságok formájában jelennek meg."
   syntax:
     content: 'public abstract class MsmqBindingBase : System.ServiceModel.Channels.Binding, System.ServiceModel.Channels.IBindingRuntimePreferences'
   inheritance:
@@ -49,7 +49,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.MsmqBindingBase&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.MsmqBindingBase&quot;> </xref> osztály."
   syntax:
     content: protected MsmqBindingBase ();
     parameters: []
@@ -69,13 +69,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a URI that contains the location of the dead-letter queue for each application, where messages that have expired or that have failed transfer or delivery are placed."
-  remarks: "The dead-letter queue is a queue on the queue manager of the sending application for expired messages that failed to be delivered.       The URI that is specified by CustomDeadLetterQueue must use the net.msmq scheme.       If <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> is set to <xref:System.ServiceModel.DeadLetterQueue> or <xref:System.ServiceModel.DeadLetterQueue>, then CustomDeadLetterQueue must be set to `null`. If CustomDeadLetterQueue is not `null`, then <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> must be set to <xref:System.ServiceModel.DeadLetterQueue>."
+  summary: "Lekérdezi vagy beállítja az URI, amely a kézbesítetlen levelek várólistájára az egyes alkalmazásokhoz, ahol az üzenetek lejárt, vagy, amelyek átvitele vagy kézbesítése nem sikerült kerülnek helyét tartalmazza."
+  remarks: "A kézbesítetlen levelek várólistájára egy sort a küldő alkalmazás lejárt üzenetek, amelyeket nem sikerült kézbesíteni a várólista-kezelő.       A megadott CustomDeadLetterQueue URI a net.msmq séma kell használnia.       Ha <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>értéke <xref:System.ServiceModel.DeadLetterQueue>vagy <xref:System.ServiceModel.DeadLetterQueue>, akkor a CustomDeadLetterQueue értékre kell állítani `null`.</xref:System.ServiceModel.DeadLetterQueue> </xref:System.ServiceModel.DeadLetterQueue> </xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> Ha a CustomDeadLetterQueue nincs `null`, majd a <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> <xref:System.ServiceModel.DeadLetterQueue>.</xref:System.ServiceModel.DeadLetterQueue> értékre kell állítani</xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>"
   syntax:
     content: public Uri CustomDeadLetterQueue { get; set; }
     return:
       type: System.Uri
-      description: "The <xref:System.Uri> that contains the location of the dead-letter queue for each application. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A <xref:System.Uri>, amely tartalmazza az egyes alkalmazások a kézbesítetlen levelek várólistájára helyét.</xref:System.Uri> Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue*
   exceptions: []
   platform:
@@ -92,13 +92,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets an enumeration value that indicates the type of dead-letter queue to use."
-  remarks: "The dead-letter queue is a queue on the queue manager of the sending application for expired messages that have failed to be delivered. The dead-letter queue enumeration specifies the type of dead-letter queue to use. The values are:      -   `None`: No dead-letter queue is required. If a message fails delivery, no record of it is maintained in the dead-letter queue. This is the default value when <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is set to `false`.      -   `System`: The system-wide dead-letter queue is used to record messages that fail delivery. Message Queuing (MSMQ) has a transactional, system, dead-letter queue and a non-transactional, system, dead-letter queue to record messages that fail delivery from transactional and non-transactional queues, respectively. This is the default value when <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is set to `true`.      -   `Custom`: The queue specified in the <xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A> property that is used to record messages that fail delivery.       The reasons a message can fail to reach the receiving application include:      -   A transactional message is sent to a non-transactional queue.      -   A non-transactional message is sent to a transactional queue.      -   An unauthenticated message is sent to a queue that accepts only authenticated messages.      -   An unencrypted message is sent to a queue that accepts only encrypted messages.      -   The message expires before the message is delivered to a receiver.      -   The message storage quota of the target computer or the storage quota of the destination queue is exceeded, or there is no available storage space on the target computer when the message arrives.      -   The sender does not have the [access rights](http://go.microsoft.com/fwlink/?LinkID=96167) required to place the message in the destination queue.      -   The digital signature attached to the message is not valid.      -   An encrypted message cannot be decrypted by the destination queue manager.      -   The destination queue is purged or deleted before the message is retrieved."
+  summary: "Lekérdezi vagy beállítja egy számbavételi érték, amely a kézbesítetlen levelek várólistájára használandó típusát jelöli."
+  remarks: "A kézbesítetlen levelek várólistájára a várólista-kezelő a lejárt, amelyek nem lehet kézbesíteni az üzenetet küldő alkalmazás egy sor. A kézbesítetlen levelek várólistájára számbavétel határozza meg a használandó kézbesítetlen levelek várólistájára. Az értékek a következők:- `None`: nincs kézbesítetlen levelek várólistájára szükség. Ha egy üzenet kézbesítése sikertelen, nincs regisztrálva a kézbesítetlen levelek várólistájára megőrződik. Ez az alapértelmezett értéket, amikor <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>értéke `false`.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>      - `System`: A rendszerszintű kézbesítetlen üzenetek kézbesítési teljesítő rögzítésére használatos. A Message Queuing (MSMQ) rendelkezik egy tranzakciós, rendszer, kézbesítetlen levelek várólistájára és egy nem tranzakciós, rendszer, a kézbesítetlen levelek várólistájára rögzítéséhez üzenetek, hogy sikertelen kézbesítési tranzakciós és nem tranzakciós várólisták, illetve. Ez az alapértelmezett értéket, amikor <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>értéke `true`.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>      - `Custom`: A megadott sor a <xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A>rekord üzenetek kézbesítési teljesítő tulajdonság.</xref:System.ServiceModel.MsmqBindingBase.CustomDeadLetterQueue%2A>       A fogadó alkalmazás eléréséhez üzenetet végződhet okai:-nem tranzakcionális egy tranzakciós üzenetet küld.      -A nem tranzakciós üzenet tranzakcionális.      -A nem hitelesített üzenetet küld a várólista csak hitelesített üzeneteket fogad.      -A titkosítatlan üzenetet küld egy üzenetsorba, amely csak a titkosított üzeneteket fogad.      -Az üzenet előtt az üzenetet a rendszer a fogadó lejár.      -A tárolási kvótát a számítógép vagy a a célként megadott várólista tárolási kvótája túllépve, vagy nincs nincs rendelkezésre álló szabad hely a célszámítógépen, az üzenet.      -A küldő nem rendelkezik a [hozzáférési jogosultsággal](http://go.microsoft.com/fwlink/?LinkID=96167) helyezze el az üzenetet a célvárólista szükséges.      – Az üzenethez csatolt a digitális aláírása érvénytelen.      -A célként megadott várólista-kezelő nem tudja visszafejteni titkosított üzenetet.      -A célvárólista kiürítve vagy törlése után a lekért."
   syntax:
     content: public System.ServiceModel.DeadLetterQueue DeadLetterQueue { get; set; }
     return:
       type: System.ServiceModel.DeadLetterQueue
-      description: "A <xref href=&quot;System.ServiceModel.DeadLetterQueue&quot;></xref> enumeration value that indicates the type of dead-letter queue to use."
+      description: "A <xref href=&quot;System.ServiceModel.DeadLetterQueue&quot;> </xref> számbavételi érték, amely a kézbesítetlen levelek várólistájára használandó típusát jelöli."
   overload: System.ServiceModel.MsmqBindingBase.DeadLetterQueue*
   exceptions: []
   platform:
@@ -115,13 +115,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether the messages processed by this binding are durable or volatile."
-  remarks: "A durable message survives when a queue manager stops responding, while a volatile message does not. Volatile messages are useful when applications can tolerate occasional lost messages.       If <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is set to `true`, the messages must be durable."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a kötés által feldolgozott üzenetek megmaradnak vagy törlődhetnek."
+  remarks: "A tartós üzenet survives, ha a várólista-kezelő leáll, míg egy &quot;volatile&quot; üzenet nem. &quot;Volatile&quot; üzenetek akkor hasznos, ha az alkalmazások képesek legyenek tűrni alkalmi elveszett üzenetek.       Ha <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>értéke `true`, lehet, hogy az üzenetek tartós.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>"
   syntax:
     content: public bool Durable { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the messages processed by this binding are durable; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if they are volatile. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kötés által feldolgozott üzenetek tartós; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> , ha &quot;volatile&quot;. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.Durable*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether messages processed by this binding are received exactly once."
-  remarks: "A message can be sent with or without assurances. An assurance enables an application to ensure that a sent message reached the receiving message queue, or if it did not, the application can determine this by reading the dead-letter queue.       Messages sent with ExactlyOnce set to `true` must be sent to a transactional queue only.       ExactlyOnce, when set to `true`, indicates that Message Queuing (MSMQ) ensures that a sent message is delivered to the receiving message queue once and only once. If delivery fails, the message is sent to the dead-letter queue.       For messages that require ExactlyOnce to be `false`, the <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> property defaults to `null`.       For messages that require ExactlyOnce to be `true`, the <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> property defaults to a transactional system-wide dead-letter queue in MSMQ."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a kötés által feldolgozott üzenetek pontosan egyszer kapott-e."
+  remarks: "Egy üzenet küldhető vagy biztosítékok nélkül. Egy megbízhatósági lehetővé teszi az alkalmazás győződjön meg arról, hogy elküldött üzenet elérte a fogadó üzenetsor, vagy ha nem, az alkalmazás állapíthatja meg olvasása a kézbesítetlen levelek várólistájára.       Értékre az ExactlyOnce küldött üzenetek `true` csak tranzakcionális várósornak kell küldeni.       ExactlyOnce, ha beállítása `true`, azt jelzi, hogy a Message Queuing (MSMQ) biztosítja, hogy elküldött üzenet a rendszer a fogadó üzenetsor egyszer és csak egyszer. Kézbesítése sikertelen lesz, ha az üzenet a kézbesítetlen levelek várólistájára.       Az ExactlyOnce kell igénylő üzenetek `false`, a <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>tulajdonság alapértelmezett értéke: `null`.</xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>       Az ExactlyOnce kell igénylő üzenetek `true`, a <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>tulajdonság alapértelmezett értéke az MSMQ tranzakciós rendszerszintű kézbesítetlen levelek várólistájára.</xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>"
   syntax:
     content: public bool ExactlyOnce { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages processed by this binding are received exactly once; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kötés által feldolgozott üzenetek fogadása pontosan egyszer; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.ExactlyOnce*
   exceptions: []
   platform:
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the maximum size, in bytes, for a message that is processed by this binding."
-  remarks: "This bound on message size is intended to limit exposure to Denial of Service (DoS) attacks."
+  summary: "Lekérdezi vagy beállítja a maximális, bájtokban, amely a kötés által feldolgozott üzenet."
+  remarks: "Ez az üzenet mérete kötött szól korlátozható a támadóknak a szolgáltatásmegtagadási (DoS) támadásokkal szemben."
   syntax:
     content: public long MaxReceivedMessageSize { get; set; }
     return:
       type: System.Int64
-      description: "The maximum size (in bytes) for a message that is processed by this binding. The default value is 65,536 bytes."
+      description: "A maximális mérete (bájt), amely a kötés által feldolgozott üzenet. Az alapértelmezett érték: 65 536 bájt."
   overload: System.ServiceModel.MsmqBindingBase.MaxReceivedMessageSize*
   exceptions: []
   platform:
@@ -184,13 +184,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the maximum number of retry cycles to attempt delivery of messages to the receiving application."
-  remarks: "A single retry cycle attempts to deliver a message to an application a specified number of times. The number of attempts made is set by the <xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A> property. If the application fails to access the message after the specified number of immediate retries, the message is sent to a retry queue. Subsequent retry cycles consist of the message being returned from the retry queue to the application queue to attempt delivery to the application again, after a delay specified by the <xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A> property. The MaxRetryCycles property specifies the number of retry cycles that the application uses to attempt to deliver the message."
+  summary: "Lekérdezi vagy beállítja az üzenetek fogadó alkalmazáshoz való kézbesítésére tett kísérletek újrapróbálkozási ciklusok maximális számát."
+  remarks: "Egyetlen újrapróbálkozási ciklust megpróbál egy üzenet egy alkalmazás megadott számú alkalommal. Kísérletek száma állítja be a <xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A>tulajdonság.</xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A> Ha az alkalmazás nem tud hozzáférni az üzenetet a megadott számú azonnali ismételt próbálkozás után, az üzenet küldési át egy újrapróbálkozási várólistájára. Az üzenet, a kérelem várólistára az újrapróbálkozási várólistából ad vissza, hogy ebben az esetben az alkalmazás által meghatározott késleltetéssel áll további újrapróbálkozási ciklusok a <xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A>tulajdonság.</xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A> A MaxRetryCycles tulajdonság határozza meg, hogy az alkalmazás használja az kézbesíteni az üzenetet újrapróbálkozási ciklusok száma."
   syntax:
     content: public int MaxRetryCycles { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of retry cycles to attempt delivery of messages to the application. The default value is 2."
+      description: "Az alkalmazás üzenetek kézbesítése sikertelen bejelentkezési kísérletet újrapróbálkozási ciklusok maximális száma. Az alapértelmezett érték 2."
   overload: System.ServiceModel.MsmqBindingBase.MaxRetryCycles*
   exceptions: []
   platform:
@@ -207,12 +207,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether the receive context behavior is requested."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a fogadási környezet viselkedés van szükség."
   syntax:
     content: public bool ReceiveContextEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the receive context behavior is requested; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a fogadási környezet viselkedés van szükség; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.ReceiveContextEnabled*
   exceptions: []
   platform:
@@ -229,13 +229,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets an enumeration value that specifies how poison messages are handled."
-  remarks: "A message in the queue becomes poisoned if repeated attempts to deliver the message failed. This poison message is eventually handled based on the setting of this property. When this property is set to <xref:System.ServiceModel.ReceiveErrorHandling>, the listener is faulted and a <xref:System.ServiceModel.MsmqPoisonMessageException> is traced and thrown. The poison message is left in the queue and must be removed before more messages can be accessed from the queue. The <xref:System.ServiceModel.MsmqPoisonMessageException> contains a <xref:System.ServiceModel.MsmqPoisonMessageException.MessageLookupId%2A> that can be used to identify and manually remove the poison message from the queue.       When this property is set to <xref:System.ServiceModel.ReceiveErrorHandling>, the poison message is dropped.       When this property is set to <xref:System.ServiceModel.ReceiveErrorHandling>, a negative acknowledgement is sent to the client and the poison message is removed from the queue. This option is available only on Message Queuing 4.0 and requires [!INCLUDE[wv](~/add/includes/wv-md.md)].       When set to <xref:System.ServiceModel.ReceiveErrorHandling>, the poison message is moved to the final poison subqueue. This option is only available on Message Queuing 4.0 and requires [!INCLUDE[wv](~/add/includes/wv-md.md)]."
+  summary: "Lekérdezi vagy beállítja egy számbavételi érték, amely megadja, hogyan elhalt üzenetek kezelésének."
+  remarks: "Egy üzenet válik toxikus, ha kézbesíteni az üzenetet nem sikerült. Az elhalt üzenet idővel kell kezelni, ez a tulajdonság alapján. Ha ez a tulajdonság értéke <xref:System.ServiceModel.ReceiveErrorHandling>, a figyelő hibás és egy <xref:System.ServiceModel.MsmqPoisonMessageException>nyomon követni, és fel.</xref:System.ServiceModel.MsmqPoisonMessageException> </xref:System.ServiceModel.ReceiveErrorHandling> Az elhalt üzenet a várólistában lévő marad, és több üzenetet az üzenetsorból elérése előtt el kell távolítani. A <xref:System.ServiceModel.MsmqPoisonMessageException>tartalmaz egy <xref:System.ServiceModel.MsmqPoisonMessageException.MessageLookupId%2A>, amelyek segítségével azonosíthatja, és manuálisan távolítsa el az elhalt üzenet a várólistában.</xref:System.ServiceModel.MsmqPoisonMessageException.MessageLookupId%2A> </xref:System.ServiceModel.MsmqPoisonMessageException>       Ha ez a tulajdonság értéke <xref:System.ServiceModel.ReceiveErrorHandling>, az elhalt üzenet megszakad.</xref:System.ServiceModel.ReceiveErrorHandling>       Ha ez a tulajdonság értéke <xref:System.ServiceModel.ReceiveErrorHandling>, az negatív visszaigazolást küld, és az elhalt üzenet törlődik az üzenetsorból.</xref:System.ServiceModel.ReceiveErrorHandling> Ez a beállítás csak olyan Message Queuing 4.0 érhető el, és szükséges [!INCLUDE[wv](~/add/includes/wv-md.md)].       Ha beállítása <xref:System.ServiceModel.ReceiveErrorHandling>, az elhalt üzenet átkerül a végső elhalt üzenetek alvárólistájára.</xref:System.ServiceModel.ReceiveErrorHandling> Ez a beállítás csak a Message Queuing 4.0 érhető el, és szükséges [!INCLUDE[wv](~/add/includes/wv-md.md)]."
   syntax:
     content: public System.ServiceModel.ReceiveErrorHandling ReceiveErrorHandling { get; set; }
     return:
       type: System.ServiceModel.ReceiveErrorHandling
-      description: "A <xref href=&quot;System.ServiceModel.ReceiveErrorHandling&quot;></xref> value that specifies how poison and other messages that cannot be dispatched are handled."
+      description: "A <xref href=&quot;System.ServiceModel.ReceiveErrorHandling&quot;> </xref> érték, amely meghatározza a poison és a többi üzenet, amely nem tudja továbbítani kezelésének módját."
   overload: System.ServiceModel.MsmqBindingBase.ReceiveErrorHandling*
   exceptions: []
   platform:
@@ -252,13 +252,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the maximum number of immediate delivery attempts on a message that is read from the application queue."
-  remarks: "If the maximum number of immediate delivery attempts for the message is made and the message is not accessed by the application, then the message is sent to a retry queue to attempt delivery at a later time. If no retry cycles are specified, then the messages is either sent to the poison-message queue, or a negative acknowledgement is sent back to the sender.       [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)] <xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A> and <xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A>."
+  summary: "Lekérdezi vagy beállítja a azonnali kézbesítési próbálkozások maximális számát, amely az alkalmazás üzenetsorból olvasható üzenetben."
+  remarks: "Ha az üzenet nem érhető el az alkalmazás az üzenet azonnali kézbesítési próbálkozások maximális számának legyen, majd a üzenettel újra várólistába való kézbesítésére tett kísérletek egy későbbi időpontban. Ha nem az újrapróbálkozási ciklusok meg van adva, majd az üzenetek vagy elküldeni a poison-üzenet-várólista, vagy negatív visszaigazolást küld vissza a küldő.       [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)]<xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A> and <xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A>.</xref:System.ServiceModel.MsmqBindingBase.RetryCycleDelay%2A></xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A>"
   syntax:
     content: public int ReceiveRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of immediate delivery attempts. The default is 5."
+      description: "Azonnali a kézbesítési kísérletek maximális száma. Az alapértelmezett érték 5."
   overload: System.ServiceModel.MsmqBindingBase.ReceiveRetryCount*
   exceptions: []
   platform:
@@ -275,13 +275,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates the time delay between retry cycles when attempting to deliver a message that cannot be delivered immediately."
-  remarks: "A single retry cycle attempts to deliver a message to a receiving application a specified number of times. The number of attempts made is specified by the <xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A> property. If the application fails to access the message after the specified number of immediate retries, the message is sent to a retry queue. Subsequent retry cycles consist of the message being returned from the retry queue to the application queue to attempt delivery to the application again, after a delay specified by the RetryCycleDelay. The number of retry cycles is specified by <xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A>."
+  summary: "Lekérdezi vagy beállítja egy érték, amely az az időpont között újrapróbálkozási késleltetés ciklusok egy üzenet, amely nem lehet kézbesíteni az azonnal való kézbesítésére tett kísérlet során."
+  remarks: "Egyetlen újrapróbálkozási ciklust megpróbál egy üzenetet fogadó alkalmazáshoz megadott számú alkalommal. Által megadott elvégzett kísérletek száma a <xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A>tulajdonság.</xref:System.ServiceModel.MsmqBindingBase.ReceiveRetryCount%2A> Ha az alkalmazás nem tud hozzáférni az üzenetet a megadott számú azonnali ismételt próbálkozás után, az üzenet küldési át egy újrapróbálkozási várólistájára. A hibaüzenetet, a kérelem várólistára az újrapróbálkozási várólistából ad vissza, hogy ebben az esetben az alkalmazás a RetryCycleDelay által megadott késleltetéssel későbbi újrapróbálkozási ciklusok állnak. Az újrapróbálkozási ciklusok száma <xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A>.</xref:System.ServiceModel.MsmqBindingBase.MaxRetryCycles%2A> van megadva"
   syntax:
     content: public TimeSpan RetryCycleDelay { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time to wait before starting the next cycle of delivery attempts to the receiving application. The default value is 10 minutes."
+      description: "A <xref:System.TimeSpan>, amely megadja, hogy mennyi ideig vár a következő ciklusig a kézbesítési kísérletek során az a fogadó alkalmazás indítása előtt.</xref:System.TimeSpan> Az alapértelmezett érték 10 perc."
   overload: System.ServiceModel.MsmqBindingBase.RetryCycleDelay*
   exceptions: []
   platform:
@@ -298,13 +298,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Returns the scheme for this binding."
-  remarks: "Message Queuing (MSMQ) supports transporting messages between queue managers using both the native MSMQ protocol and the SRMP protocol. Applications that use the queued transport binding can use both of these protocols. The protocol schemes supported by the queued transport binding are net.msmq for the native protocol, net.srmp for the SRMP protocol, and net.srmps for SRMP over HTTPS.       The <xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding> supports a single scheme, msmq.formatname, with which the user can specify the format name of the queue directly in the queue address."
+  summary: "A rendszer ehhez a kötéshez adja vissza."
+  remarks: "Üzenetsorok (MSMQ) várólista-kezelők, mind a natív MSMQ és a SRMP protokoll használata között szállító üzeneteket is támogatja. Az átviteli kötést használó alkalmazások használható mindkét ezeket a protokollokat. Az átviteli kötés által támogatott a protokoll-sémák a következők a natív protokoll net.msmq, net.srmp SRMP protokoll és a SRMP net.srmps HTTPS-KAPCSOLATON keresztül.       A <xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding>egy egyetlen séma msmq.formatname, amellyel a felhasználó adhat meg a várólista formátumnevét közvetlenül a várósor címe támogatja.</xref:System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding>"
   syntax:
     content: public override string Scheme { get; }
     return:
       type: System.String
-      description: "The scheme for this binding. The scheme returned depends on the implementation of <xref href=&quot;System.ServiceModel.MsmqBindingBase&quot;></xref>. The <xref href=&quot;System.ServiceModel.NetMsmqBinding&quot;></xref> implementation returns &quot;net.msmq&quot;. The <xref href=&quot;System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding&quot;></xref> implementation returns &quot;msmq.formatname&quot;."
+      description: "A rendszer ehhez a kötéshez. A rendszer visszaadott végrehajtásának függ <xref href=&quot;System.ServiceModel.MsmqBindingBase&quot;> </xref>. A <xref href=&quot;System.ServiceModel.NetMsmqBinding&quot;> </xref> megvalósítási &quot;net.msmq&quot; adja vissza. A <xref href=&quot;System.ServiceModel.MsmqIntegration.MsmqIntegrationBinding&quot;> </xref> megvalósítási &quot;msmq.formatname&quot; adja vissza."
   overload: System.ServiceModel.MsmqBindingBase.Scheme*
   exceptions: []
   platform:
@@ -322,13 +322,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets a value that indicates whether incoming requests can be handled more efficiently synchronously or asynchronously."
-  remarks: "The <xref:System.ServiceModel.MsmqBindingBase.System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously%2A> property is set to `true` when the <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> is `true`."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy a bejövő kérelmeket több hatékonyan szinkron vagy aszinkron módon lehet kezelni."
+  remarks: "A <xref:System.ServiceModel.MsmqBindingBase.System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously%2A>tulajdonsága `true` amikor a <xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A>van `true`.</xref:System.ServiceModel.MsmqBindingBase.ExactlyOnce%2A> </xref:System.ServiceModel.MsmqBindingBase.System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously%2A>"
   syntax:
     content: bool System.ServiceModel.Channels.IBindingRuntimePreferences.ReceiveSynchronously { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if requests can be handled more efficiently synchronously; otherwise<xref uid=&quot;langword_csharp_ false&quot; name=&quot; false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, to handle requests asynchronously."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kérelmek kezelése hatékonyabban szinkron módon történik; Ellenkező esetben<xref uid=&quot;langword_csharp_ false&quot; name=&quot; false&quot; href=&quot;&quot;></xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, a tanúsítványigénylések aszinkron módon történik."
   overload: System.ServiceModel.MsmqBindingBase.System#ServiceModel#Channels#IBindingRuntimePreferences#ReceiveSynchronously*
   exceptions: []
   platform:
@@ -345,13 +345,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets the interval of time that indicates how long the messages processed by this binding can be in the queue before they expire."
-  remarks: "The TimeToLive property is set to ensure that time-sensitive messages do not become stale before they are processed by the receiving applications. A message in a queue that is not accessed by the receiving application within the time interval specified is expired. Expired messages are sent to a special queue called the dead-letter queue. The location of the dead-letter queue is set with the <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A> property or to the appropriate default, based on assurances."
+  summary: "Lekérdezi vagy beállítja az időtartam, amely azt jelzi, hogy mennyi ideig a kötés által feldolgozott üzenetek lehet a várólistában, mielőtt járnak."
+  remarks: "A TimeToLive tulajdonság értéke győződjön meg arról, hogy időérzékeny üzenetek nem válik elavult előtt feldolgozza a fogadó alkalmazások e tulajdonsággal. Egy üzenet, amely nem érhető el a megadott időintervallumon belül a fogadó alkalmazás-kezelési várólistába lejárt. A lejárt üzenetek kerülnek egy különleges várólista hívása a kézbesítetlen levelek várólistájára. A kézbesítetlen levelek várólistájára helyét azzal van megadva, a <xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>tulajdonság, vagy a megfelelő alapértelmezés szerint a biztosítékok alapján.</xref:System.ServiceModel.MsmqBindingBase.DeadLetterQueue%2A>"
   syntax:
     content: public TimeSpan TimeToLive { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that indicates how long the messages can be in the queue before they expire. The default value is 1 day."
+      description: "A <xref:System.TimeSpan>azt jelzi, hogy mennyi ideig az üzenetek lehet a várólistában, mielőtt várósorban.</xref:System.TimeSpan> Az alapértelmezett érték 1 nap."
   overload: System.ServiceModel.MsmqBindingBase.TimeToLive*
   exceptions: []
   platform:
@@ -368,13 +368,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether messages processed by this binding should be traced."
-  remarks: "When tracing is enabled, report messages are created and sent to the report queue each time the message leaves or arrives at a Message Queuing (MSMQ) computer."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a kötés által feldolgozott üzeneteket nyomon kell követni."
+  remarks: "Ha engedélyezve van a nyomkövetés, jelentésüzenetek létrehozása és a jelentési várólistára küldi minden alkalommal, amikor a üzenetet hagyja, vagy a Message Queuing (MSMQ) számítógépen."
   syntax:
     content: public bool UseMsmqTracing { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages processed by this binding should be traced; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha által feldolgozott üzeneteket nyomon kell követni a kötés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.UseMsmqTracing*
   exceptions: []
   platform:
@@ -391,13 +391,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that indicates whether copies of messages processed by this binding should be stored in the source journal queue."
-  remarks: "Queued applications that keep a record of messages that have left the computer&quot;s outgoing queue can copy the messages to a journal queue. Once a message leaves the outgoing queue and an acknowledgment is received that the message was received on the destination computer, a copy of the message is kept in the sending computer&quot;s system journal queue."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a kötés által feldolgozott üzenetek példányait a forrásnapló-várólistán kell tárolni."
+  remarks: "Nyilvántarthatja a maradtak a számítógép a kimenő várólista üzeneteinek aszinkron alkalmazások másolhatja az üzenetek a forrásnapló-várólistán. Miután egy üzenet, amelyet követően a kimenő várólistában, és olyan nyugtázás érkezett, hogy az üzenet fogadása megtörtént-e a célszámítógépen, az üzenet másolatának tartják a küldő számítógép rendszer naplóvárólistában levő."
   syntax:
     content: public bool UseSourceJournal { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if copies of messages processed by this binding should be stored in the source journal queue; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha által feldolgozott üzenetek példányait a forrásnapló-várólistán; ennek a kötésnek kell tárolni Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.MsmqBindingBase.UseSourceJournal*
   exceptions: []
   platform:
@@ -414,7 +414,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets or sets a value that specifies the duration a message will be locked by the receive context feature."
+  summary: "Lekérdezi vagy beállítja egy érték, amely meghatározza az üzenetet a fogadási környezet szolgáltatás lesz zárolva."
   remarks: >-
     > [!IMPORTANT]
 
@@ -423,7 +423,7 @@ items:
     content: public TimeSpan ValidityDuration { get; set; }
     return:
       type: System.TimeSpan
-      description: "A timespan object."
+      description: "A timespan objektum."
   overload: System.ServiceModel.MsmqBindingBase.ValidityDuration*
   exceptions: []
   platform:

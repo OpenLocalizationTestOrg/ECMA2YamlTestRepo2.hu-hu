@@ -21,8 +21,8 @@ items:
   nameWithType: SecurityTokenResolver
   fullName: System.IdentityModel.Selectors.SecurityTokenResolver
   type: Class
-  summary: "Represents a utility class that can retrieve security tokens or keys when you have a key identifier or key identifier clause."
-  remarks: "Use the SecurityTokenResolver class to retrieve a key or security token when you have a key identifier or key identifier clause. The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> methods retrieve a token given that there is a key identifier or key identifier clause. The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> retrieve a key given that there is a key identifier clause. The methods with a `Try` prefix return `false` when the retrieval is unsuccessful, whereas the methods without a `Try` prefix throw an exception."
+  summary: "A segédprogram-osztály, amely lekérhetik biztonsági jogkivonatok vagy kulcsok, ha már rendelkezik egy kulcsazonosító vagy kulcsazonosító kifejezés jelöli."
+  remarks: "A kulcs vagy biztonsági beolvasása SecurityTokenResolver osztály lexikális elem, ha rendelkezik olyan kulcsazonosító vagy kulcsazonosító kifejezés használata. A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>módszerek jogkivonatot beolvasni, figyelembe véve, hogy a kulcs azonosítója vagy kulcsazonosító kifejezés.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> </xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A>és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>lekérni a kulcsot, figyelembe véve, hogy egy kulcsazonosító kifejezés.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> </xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> A módszerek egy `Try` visszatérési előtag `false` a beolvasása sikertelen, ha mivel nélkül módszerek egy `Try` előtag kivételt jelez."
   syntax:
     content: 'public abstract class SecurityTokenResolver : System.IdentityModel.Configuration.ICustomIdentityConfiguration'
   inheritance:
@@ -44,7 +44,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Selectors.SecurityTokenResolver&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IdentityModel.Selectors.SecurityTokenResolver&quot;> </xref> osztály."
   syntax:
     content: protected SecurityTokenResolver ();
     parameters: []
@@ -64,20 +64,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Creates a default security token resolver for the specified security tokens."
-  remarks: "The security token resolver that is returned from this method, uses the <xref:System.IdentityModel.Tokens.SecurityToken.MatchesKeyIdentifierClause%2A> and <xref:System.IdentityModel.Tokens.SecurityToken.ResolveKeyIdentifierClause%2A> methods on the specified security tokens to resolve key identifiers and key identifier clauses."
+  summary: "Egy alapértelmezett biztonságijogkivonat-feloldó a megadott biztonsági jogkivonatokat hoz létre."
+  remarks: "A biztonságijogkivonat-feloldó visszaadott ezt a módszert használja a <xref:System.IdentityModel.Tokens.SecurityToken.MatchesKeyIdentifierClause%2A>és <xref:System.IdentityModel.Tokens.SecurityToken.ResolveKeyIdentifierClause%2A>kulcs azonosítók és kulcsazonosító záradékban megadott biztonsági jogkivonatokat metódusai.</xref:System.IdentityModel.Tokens.SecurityToken.ResolveKeyIdentifierClause%2A> </xref:System.IdentityModel.Tokens.SecurityToken.MatchesKeyIdentifierClause%2A>"
   syntax:
     content: public static System.IdentityModel.Selectors.SecurityTokenResolver CreateDefaultSecurityTokenResolver (System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Tokens.SecurityToken> tokens, bool canMatchLocalId);
     parameters:
     - id: tokens
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Tokens.SecurityToken}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that contains the set of security tokens for which this security token resolver can resolve key identifiers and key identifier clauses to."
+      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; típusú <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely azokat a biztonsági jogkivonatokat, amelynek a biztonságijogkivonat-feloldó oldhatja kulcs azonosítók és kulcsazonosító művelettel."
     - id: canMatchLocalId
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to resolve the <xref uid=&quot;langword_csharp_&lt;SecurityTokenReference&gt;&quot; name=&quot;&lt;SecurityTokenReference&gt;&quot; href=&quot;&quot;></xref> key identifier clauses that reference a security key that is located somewhere else in the SOAP message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>feloldani a <xref uid=&quot;langword_csharp_&lt;SecurityTokenReference&gt;&quot; name=&quot;&lt;SecurityTokenReference&gt;&quot; href=&quot;&quot;> </xref> kulcs azonosítója záradékban található valahol máshol a SOAP-üzenetet, ha sikertelen, a biztonsági kulcs hivatkozó <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.IdentityModel.Selectors.SecurityTokenResolver
-      description: "A <xref href=&quot;System.IdentityModel.Selectors.SecurityTokenResolver&quot;></xref> that resolves key identifiers and clauses that match the security tokens specified in the <code>tokens</code> parameter."
+      description: "A <xref href=&quot;System.IdentityModel.Selectors.SecurityTokenResolver&quot;> </xref> , oldja fel a kulcs azonosítók és a kikötéseket, amelyek megfelelnek a megadott biztonsági jogkivonatokat a <code> tokens </code> paraméter."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.CreateDefaultSecurityTokenResolver*
   exceptions: []
   platform:
@@ -94,14 +94,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "When overridden in a derived class, loads custom configuration from XML."
-  remarks: "By default, throws a <xref:System.NotImplementedException>. You can override this method to provide functionality in a derived class."
+  summary: "Felülbírálja a származtatott osztály, tölti be egyéni konfigurációs XML-fájljából."
+  remarks: "Alapértelmezés szerint jelez <xref:System.NotImplementedException>.</xref:System.NotImplementedException> Ez a módszer egy származtatott osztályban funkcionalitással felülbírálható."
   syntax:
     content: public virtual void LoadCustomConfiguration (System.Xml.XmlNodeList nodelist);
     parameters:
     - id: nodelist
       type: System.Xml.XmlNodeList
-      description: "The custom configuration elements."
+      description: "Egyéni konfigurációs elemet."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.LoadCustomConfiguration*
   exceptions: []
   platform:
@@ -118,25 +118,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Obtains the key that is referenced in the specified key identifier clause."
-  remarks: "The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> and ResolveSecurityKey methods differ in what happens when the key identifier clause cannot be resolved to a key. The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> method returns `false`, whereas the ResolveSecurityKey method throws an exception."
+  summary: "Beolvassa a kulcs, amely a megadott kulcsazonosító kifejezés hivatkozik."
+  remarks: "A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>és ResolveSecurityKey metódusok nem egyezik a Mi történik, ha a kulcsazonosító kifejezés nem oldható fel egy kulcshoz.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>metódus beolvasása `false`, mivel a ResolveSecurityKey metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>"
   syntax:
     content: public System.IdentityModel.Tokens.SecurityKey ResolveSecurityKey (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to retrieve the key for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a kulcs beolvasása."
     return:
       type: System.IdentityModel.Tokens.SecurityKey
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;></xref> that is the key referenced in the specified key identifier clause."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;> </xref> , amely a megadott kulcsazonosító záradékban hivatkozott kulcs."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyIdentifierClause</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>keyIdentifierClause</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A key could not be retrieved for the key identifier clause specified in the <code>keyIdentifierClause</code> parameter."
+    description: "A kulcs nem olvasható a megadott kulcsazonosító kifejezés a <code> keyIdentifierClause </code> paraméter."
   platform:
   - net462
 - uid: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken(System.IdentityModel.Tokens.SecurityKeyIdentifier)
@@ -151,25 +151,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Retrieves a security token that matches one of the security key identifier clauses contained within the specified key identifier."
-  remarks: "The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> and ResolveToken methods differ in what happens when the key identifier cannot be resolved to a security token. The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> method returns `false`, whereas the ResolveToken method throws an exception."
+  summary: "Lekéri egy biztonsági jogkivonatot, amely megfelel a biztonsági kulcsazonosító záradékban található a megadott kulcsazonosító egyikének."
+  remarks: "A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>és ResolveToken metódusok nem egyezik a Mi történik, ha a kulcs azonosítója nem oldható fel egy biztonsági jogkivonatot.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>metódus beolvasása `false`, mivel a ResolveToken metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>"
   syntax:
     content: public System.IdentityModel.Tokens.SecurityToken ResolveToken (System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier);
     parameters:
     - id: keyIdentifier
       type: System.IdentityModel.Tokens.SecurityKeyIdentifier
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     return:
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcs azonosítója."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyIdentifier</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>keyIdentifier</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A security token cannot be created for the specified key identifier."
+    description: "A megadott kulcs azonosítója nem hozható létre egy biztonsági jogkivonatot."
   platform:
   - net462
 - uid: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken(System.IdentityModel.Tokens.SecurityKeyIdentifierClause)
@@ -184,17 +184,17 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Retrieves the security token that matches the specified key identifier clause."
-  remarks: "The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> and ResolveToken methods differ in what happens when the key identifier clause cannot be resolved to a security token. The <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> method returns `false`, whereas the ResolveToken method throws an exception."
+  summary: "Lekéri a biztonsági jogkivonatot, amely megfelel a megadott kulcsazonosító kifejezés."
+  remarks: "A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>és ResolveToken metódusok nem egyezik a Mi történik, ha a kulcsazonosító kifejezés nem oldható fel egy biztonsági jogkivonatot.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> A <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>metódus beolvasása `false`, mivel a ResolveToken metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>"
   syntax:
     content: public System.IdentityModel.Tokens.SecurityToken ResolveToken (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     return:
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier clause."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcsazonosító kifejezés."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken*
   exceptions: []
   platform:
@@ -211,25 +211,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Attempts to retrieve the key that is referenced in the specified key identifier clause."
-  remarks: "The TryResolveSecurityKey and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> methods differ in what happens when the key identifier clause cannot be resolved to a key. The TryResolveSecurityKey method returns `false`, whereas the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> method throws an exception."
+  summary: "A rendszer megkísérli lekérni a kulcsot, amely a megadott kulcsazonosító kifejezés hivatkozik."
+  remarks: "A TryResolveSecurityKey és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A>metódusok nem egyezik a Mi történik, ha a kulcsazonosító kifejezés nem oldható fel egy kulcshoz.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> A TryResolveSecurityKey metódus visszaadja `false`, mivel a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A>metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A>"
   syntax:
     content: public bool TryResolveSecurityKey (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityKey key);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to retrieve the key for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a kulcs beolvasása."
     - id: key
       type: System.IdentityModel.Tokens.SecurityKey
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;></xref> that contains the key that is referenced in the specified key identifier clause. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;> </xref> , amely tartalmazza a megadott kulcsazonosító záradékban hivatkozott kulcsot. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a key can be retrieved for the specified key identifier clause; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kulcs lekérhető a megadott kulcsazonosító kifejezés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyIdentifierClause</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>keyIdentifierClause</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKeyCore(System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.IdentityModel.Tokens.SecurityKey@)
@@ -244,20 +244,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Attempts to retrieve the key that is referenced in the specified key identifier clause."
-  remarks: "The TryResolveSecurityKeyCore method is called by the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A> and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> methods."
+  summary: "A rendszer megkísérli lekérni a kulcsot, amely a megadott kulcsazonosító kifejezés hivatkozik."
+  remarks: "A TryResolveSecurityKeyCore metódust a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A>módszerek.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveSecurityKey%2A> </xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKey%2A>"
   syntax:
     content: protected abstract bool TryResolveSecurityKeyCore (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityKey key);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to retrieve the key for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a kulcs beolvasása."
     - id: key
       type: System.IdentityModel.Tokens.SecurityKey
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;></xref> that contains the key that is referenced in the specified key identifier clause. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityKey&quot;> </xref> , amely tartalmazza a megadott kulcsazonosító záradékban hivatkozott kulcsot. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a key can be retrieved for the specified key identifier clause; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kulcs lekérhető a megadott kulcsazonosító kifejezés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveSecurityKeyCore*
   exceptions: []
   platform:
@@ -274,25 +274,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Attempts to retrieve the security token that matches one of the key identifier clauses contained within the specified key identifier."
-  remarks: "The TryResolveToken and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> methods differ in what happens when the key identifier cannot be resolved to a security token. The TryResolveToken method returns `false`, whereas the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> method throws an exception."
+  summary: "Megkísérli lekérni a biztonsági jogkivonatot, amely megfelel a megadott kulcsazonosító belül található kulcsazonosító záradékok egyikének."
+  remarks: "A TryResolveToken és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>metódusok nem egyezik a Mi történik, ha a kulcs azonosítója nem oldható fel egy biztonsági jogkivonatot.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> A TryResolveToken metódus visszaadja `false`, mivel a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>"
   syntax:
     content: public bool TryResolveToken (System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier, out System.IdentityModel.Tokens.SecurityToken token);
     parameters:
     - id: keyIdentifier
       type: System.IdentityModel.Tokens.SecurityKeyIdentifier
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     - id: token
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcs azonosítója. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a security token can be retrieved for the specified key identifier; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy biztonsági jogkivonatot lekérhető a megadott kulcsazonosító; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyIdentifier</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>keyIdentifier</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken(System.IdentityModel.Tokens.SecurityKeyIdentifierClause,System.IdentityModel.Tokens.SecurityToken@)
@@ -307,25 +307,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "Attempts to retrieve the security token that matches the specified key identifier clause."
-  remarks: "The TryResolveToken and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> methods differ in what happens when the key identifier clause cannot be resolved to a security token. The TryResolveToken method returns `false`, whereas the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> method throws an exception."
+  summary: "A rendszer megpróbálja beolvasni a biztonsági jogkivonatot, amely megfelel a megadott kulcsazonosító kifejezés."
+  remarks: "A TryResolveToken és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>metódusok nem egyezik a Mi történik, ha a kulcsazonosító kifejezés nem oldható fel egy biztonsági jogkivonatot.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> A TryResolveToken metódus visszaadja `false`, mivel a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>metódus kivételt jelez.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>"
   syntax:
     content: public bool TryResolveToken (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityToken token);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     - id: token
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier clause. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcsazonosító kifejezés. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a security token can be retrieved for the specified key identifier clause; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy biztonsági jogkivonatot lekérhető a megadott kulcsazonosító kifejezés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>keyIdentifierClause</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>keyIdentifierClause</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveTokenCore(System.IdentityModel.Tokens.SecurityKeyIdentifier,System.IdentityModel.Tokens.SecurityToken@)
@@ -340,20 +340,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "When overridden in a derived class, attempts to retrieve the security token that matches at least one of the key identifier clauses contained within the specified key identifier."
-  remarks: "The TryResolveTokenCore method is called by the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> methods."
+  summary: "Felülbírálja a származtatott osztály, próbálja beolvasni a biztonsági jogkivonatot, amely megfelel a megadott kulcsazonosító belül található kulcsazonosító záradékok közül legalább egy."
+  remarks: "A TryResolveTokenCore metódust a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>módszerek.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> </xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>"
   syntax:
     content: protected abstract bool TryResolveTokenCore (System.IdentityModel.Tokens.SecurityKeyIdentifier keyIdentifier, out System.IdentityModel.Tokens.SecurityToken token);
     parameters:
     - id: keyIdentifier
       type: System.IdentityModel.Tokens.SecurityKeyIdentifier
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifier&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     - id: token
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcs azonosítója. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a security token can be retrieved for the specified key identifier; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy biztonsági jogkivonatot lekérhető a megadott kulcsazonosító; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveTokenCore*
   exceptions: []
   platform:
@@ -370,20 +370,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Selectors
-  summary: "When overridden in a derived class, attempts to resolve the security token that matches the specified key identifier clause."
-  remarks: "The TryResolveTokenCore method is called by the <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A> and <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> methods."
+  summary: "Felülbírálja a származtatott osztály, amikor megkísérli feloldani a biztonsági jogkivonatot, amely megfelel a megadott kulcsazonosító kifejezés."
+  remarks: "A TryResolveTokenCore metódust a <xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>és <xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A>módszerek.</xref:System.IdentityModel.Selectors.SecurityTokenResolver.ResolveToken%2A> </xref:System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveToken%2A>"
   syntax:
     content: protected abstract bool TryResolveTokenCore (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause, out System.IdentityModel.Tokens.SecurityToken token);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "The <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to create a security token for."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> a biztonsági jogkivonat létrehozásához."
     - id: token
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "When this method returns, contains a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;></xref> that represents the specified key identifier clause. This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.IdentityModel.Tokens.SecurityToken&quot;> </xref> , amely jelzi, hogy a megadott kulcsazonosító kifejezés. Ez a paraméter lett átadva nem inicializált."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when a security token can be retrieved for the specified key identifier clause; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy biztonsági jogkivonatot lekérhető a megadott kulcsazonosító kifejezés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Selectors.SecurityTokenResolver.TryResolveTokenCore*
   exceptions: []
   platform:

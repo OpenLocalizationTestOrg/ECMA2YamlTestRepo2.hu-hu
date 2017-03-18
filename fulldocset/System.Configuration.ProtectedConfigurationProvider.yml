@@ -12,8 +12,8 @@ items:
   nameWithType: ProtectedConfigurationProvider
   fullName: System.Configuration.ProtectedConfigurationProvider
   type: Class
-  summary: "Is the base class to create providers for encrypting and decrypting protected-configuration data."
-  remarks: "You can encrypt sections of a configuration file to protect sensitive information used by your application. This improves security by making it difficult for unauthorized access even if an attacker gains access to your configuration file.       The .NET Framework includes two protected configuration providers that can be used to encrypt sections of a configuration file. The <xref:System.Configuration.RsaProtectedConfigurationProvider> class uses the <xref:System.Security.Cryptography.RSACryptoServiceProvider> to encrypt configuration sections. The <xref:System.Configuration.DpapiProtectedConfigurationProvider> class uses the Windows Data Protection API (DPAPI) to encrypt configuration sections.       You might have a requirement to encrypt sensitive information using an algorithm other than the RSA or DPAPI providers. In this case, you can build your own custom protected-configuration provider. The ProtectedConfigurationProvider is an abstract base class that you must inherit from to create your own protected-configuration provider.       Whether you use a standard or a custom provider, you must ensure that it is configured with the `add` element in the `providers` section of the `configProtectedData`  configuration section. (See next example.)       For details, see [Implementing a Protected Configuration Provider](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  When ASP.NET encounters encrypted configuration data, it performs decryption transparently using the configured provider. No action is required on your side other than making sure that you configure the required provider."
+  summary: "Az alaposztály szolgáltatók létrehozása védett konfigurációs adatok titkosítása és visszafejtése van."
+  remarks: "A szakaszok egy konfigurációs fájl, amelyet az alkalmazás bizalmas információk védelme érdekében titkosíthatók. Ez növeli a biztonsági azáltal, hogy a jogosulatlan hozzáférés akkor is, ha egy támadó hozzáfér a konfigurációs fájlban.       A .NET-keretrendszer két védett konfigurációszolgáltatók a konfigurációs fájlok titkosítására használható tartalmazza. A <xref:System.Configuration.RsaProtectedConfigurationProvider>osztályt használja a <xref:System.Security.Cryptography.RSACryptoServiceProvider>konfigurációs szakasz titkosítása.</xref:System.Security.Cryptography.RSACryptoServiceProvider> </xref:System.Configuration.RsaProtectedConfigurationProvider> A <xref:System.Configuration.DpapiProtectedConfigurationProvider>osztály a Windows Data Protection API (DPAPI) használja a konfigurációs szakasz titkosítása.</xref:System.Configuration.DpapiProtectedConfigurationProvider>       Lehetséges, hogy a követelmény, hogy titkosítsa a bizalmas adatokat az RSA vagy a DPAPI-t szolgáltató eltérő algoritmus használatával. Ebben az esetben a saját egyéni védett konfigurációs szolgáltatója hozhat létre. A ki a ProtectedConfigurationProvider egy absztrakt alaposztály öröklő meg kell létrehozni a saját védett konfigurációszolgáltatót.       Akár egy szabványos vagy egyéni szolgáltatót, győződjön meg arról, hogy van-e konfigurálva a `add` eleme a `providers` szakasza a `configProtectedData` konfigurációs szakasz. (Lásd a következő példában.)       További információkért lásd: [védett Konfigurációszolgáltatójának végrehajtási](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Ha ASP.NET titkosított konfigurációs adatok észlel, visszafejtési transzparens módon konfigurált-szolgáltató használatával hajtja végre. Nincs szükség felhasználói műveletek eltérő meggyőződött arról, hogy a szükséges szolgáltató konfigurált a oldalon."
   example:
   - "The following example shows how to implement a custom ProtectedConfigurationProvider.  \n  \n To be able to configure this provider, as shown in the next configuration excerpt, you must install it in the Global Assembly Cache (GAC). Refer to [Implementing a Protected Configuration Provider](../Topic/Implementing%20a%20Protected%20Configuration%20Provider.md) for more information.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#1](~/add/codesnippet/csharp/t-system.configuration.p_7_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#1](~/add/codesnippet/visualbasic/t-system.configuration.p_7_1.vb)]  \n  \n The following example shows how to use the previous custom ProtectedConfigurationProvider.  \n  \n [!code-vb[System.Configuration.UsingProtectedConfigurationProvider#11](~/add/codesnippet/visualbasic/t-system.configuration.p_7_2.vb)]\n [!code-cs[System.Configuration.UsingProtectedConfigurationProvider#11](~/add/codesnippet/csharp/t-system.configuration.p_7_2.cs)]  \n  \n The following is an excerpt of the configuration file used by the above examples.  \n  \n```  \n<?xml version=\"1.0\" encoding=\"utf-8\" ?>  \n<configuration>  \n  \n  <configProtectedData >  \n    <providers>  \n      <clear />  \n      <add keyContainerName=\"pcKey.txt\"   \n        name=\"TripleDESProtectedConfigurationProvider\"  \ntype=\"Samples.Aspnet.TripleDESProtectedConfigurationProvider, protectedconfigurationproviderlib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=79e01ae0f5cfc66f, processorArchitecture=MSIL\" />  \n    </providers>  \n  \n  </configProtectedData >  \n  \n  <connectionStrings>  \n    <add name=\"NorthwindConnectionString\"   \n      connectionString=\"Data Source=webnetue2;Initial Catalog=Northwind;User ID=aspnet_test;Password=test\"  \nproviderName=\"System.Data.SqlClient\" />  \n  </connectionStrings>  \n  \n</configuration>  \n```"
   syntax:
@@ -40,7 +40,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Configuration.ProtectedConfigurationProvider&quot;></xref> class using default settings."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Configuration.ProtectedConfigurationProvider&quot;> </xref> osztály az alapértelmezett beállításokkal."
   syntax:
     content: protected ProtectedConfigurationProvider ();
     parameters: []
@@ -60,7 +60,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Decrypts the passed <xref href=&quot;System.Xml.XmlNode&quot;></xref> object from a configuration file."
+  summary: "Az átadott visszafejti <xref href=&quot;System.Xml.XmlNode&quot;> </xref> objektum konfigurációs fájlból."
   remarks: ''
   example:
   - "The following example shows how to use Decrypt method to perform custom decryption.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#2](~/add/codesnippet/csharp/490b80fa-87ff-462a-bceb-_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#2](~/add/codesnippet/visualbasic/490b80fa-87ff-462a-bceb-_1.vb)]"
@@ -69,10 +69,10 @@ items:
     parameters:
     - id: encryptedNode
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object to decrypt."
+      description: "A <xref href=&quot;System.Xml.XmlNode&quot;> </xref> objektum visszafejtéséhez."
     return:
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object containing decrypted data."
+      description: "A <xref href=&quot;System.Xml.XmlNode&quot;> </xref> visszafejtett adatokat tartalmazó objektum."
   overload: System.Configuration.ProtectedConfigurationProvider.Decrypt*
   exceptions: []
   platform:
@@ -89,7 +89,7 @@ items:
   assemblies:
   - System.Configuration
   namespace: System.Configuration
-  summary: "Encrypts the passed <xref href=&quot;System.Xml.XmlNode&quot;></xref> object from a configuration file."
+  summary: "Az átadott titkosítja <xref href=&quot;System.Xml.XmlNode&quot;> </xref> objektum konfigurációs fájlból."
   remarks: ''
   example:
   - "The following example shows how to use Encrypt to perform custom encryption.  \n  \n [!code-cs[System.Configuration.ProtectedConfigurationProvider#3](~/add/codesnippet/csharp/1cc011d4-bc06-4499-99c2-_1.cs)]\n [!code-vb[System.Configuration.ProtectedConfigurationProvider#3](~/add/codesnippet/visualbasic/1cc011d4-bc06-4499-99c2-_1.vb)]"
@@ -98,10 +98,10 @@ items:
     parameters:
     - id: node
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object to encrypt."
+      description: "A <xref href=&quot;System.Xml.XmlNode&quot;> </xref> objektum titkosítására."
     return:
       type: System.Xml.XmlNode
-      description: "The <xref href=&quot;System.Xml.XmlNode&quot;></xref> object containing encrypted data."
+      description: "A <xref href=&quot;System.Xml.XmlNode&quot;> </xref> titkosított adatokat tartalmazó objektum."
   overload: System.Configuration.ProtectedConfigurationProvider.Encrypt*
   exceptions: []
   platform:

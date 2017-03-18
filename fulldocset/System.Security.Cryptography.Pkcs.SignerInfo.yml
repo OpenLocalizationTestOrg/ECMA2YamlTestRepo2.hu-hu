@@ -23,8 +23,8 @@ items:
   nameWithType: SignerInfo
   fullName: System.Security.Cryptography.Pkcs.SignerInfo
   type: Class
-  summary: 'The SignerInfo class represents a signer associated with a <xref href=&quot;System.Security.Cryptography.Pkcs.SignedCms&quot;></xref> object that represents a CMS/PKCS #7 message.'
-  remarks: "The signatures represented by the SignerInfo class can be either over message content or a signature. The latter kind of signature is referred to as a *countersignature*.       This implementation of CMS/PKCS #7 supports only one level of countersignature.  That is, a signature can be signed, which forms a countersignature, but that countersignature cannot be signed again.       This class does not have a public constructor; therefore, it cannot be publicly instantiated. It is a read-only class accessible from the <xref:System.Security.Cryptography.Pkcs.SignedCms.SignerInfos%2A?displayProperty=fullName> property."
+  summary: 'A SignerInfo osztály jelöli egy aláíró társított egy <xref href=&quot;System.Security.Cryptography.Pkcs.SignedCms&quot;> </xref> CMS vagy PKCS #7 üzenet képviselő objektum.'
+  remarks: "A SignerInfo osztályhoz aláírások vagy az üzenet tartalma vagy az aláírás lehet. Az utóbbi típusú aláírás nevezzük egy *ellenjegyzés*.       Ez a megvalósítás CMS vagy PKCS # 7 ellenjegyzés van, csak egy szintet támogatja.  Ez azt jelenti, hogy aláírás írható alá, amely az űrlapos egy ellenjegyzés van, de a ellenjegyzés nem írható alá újra.       Ez az osztály nem rendelkezik nyilvános konstruktorral; ezért az nem szabad nyilvánosan létrehozni. Elérhető egy csak olvasható osztály a <xref:System.Security.Cryptography.Pkcs.SignedCms.SignerInfos%2A?displayProperty=fullName>tulajdonság.</xref:System.Security.Cryptography.Pkcs.SignedCms.SignerInfos%2A?displayProperty=fullName>"
   syntax:
     content: public sealed class SignerInfo
   inheritance:
@@ -45,13 +45,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The Certificate property retrieves the signing certificate associated with the signer information."
-  remarks: "If the signing certificate is not included at signing time by using the <xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A?displayProperty=fullName> property, then the certificate will not be returned."
+  summary: "A tanúsítvány tulajdonságának lekéri az aláíró információk társított aláíró tanúsítvány."
+  remarks: "Ha az aláíró tanúsítvány nincs megadva idő használatával bejelentkezni a <xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A?displayProperty=fullName>tulajdonság, majd a tanúsítvány nem állítható vissza.</xref:System.Security.Cryptography.Pkcs.CmsSigner.IncludeOption%2A?displayProperty=fullName>"
   syntax:
     content: public System.Security.Cryptography.X509Certificates.X509Certificate2 Certificate { get; }
     return:
       type: System.Security.Cryptography.X509Certificates.X509Certificate2
-      description: "An <xref href=&quot;System.Security.Cryptography.X509Certificates.X509Certificate2&quot;></xref> object that represents the signing certificate."
+      description: "Egy <xref href=&quot;System.Security.Cryptography.X509Certificates.X509Certificate2&quot;> </xref> az aláíró tanúsítvány képviselő objektum."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.Certificate*
   exceptions: []
   platform:
@@ -68,8 +68,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: 'The CheckHash method verifies the data integrity of the CMS/PKCS #7 message signer information. CheckHash is a specialized method used in specific security infrastructure applications in which the subject uses the **HashOnly** member of the <xref href=&quot;System.Security.Cryptography.Pkcs.SubjectIdentifierType&quot;></xref> enumeration when setting up a <xref href=&quot;System.Security.Cryptography.Pkcs.CmsSigner&quot;></xref> object. CheckHash does not authenticate the signer information because this method does not involve verifying a digital signature. For general-purpose checking of the integrity and authenticity of CMS/PKCS #7 message signer information and countersignatures, use the &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; or &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Security.Cryptography.X509Certificates.X509Certificate2Collection%2CSystem.Boolean%29&gt; methods.'
-  remarks: 'This method does not provide authentication of the CMS/PKCS #7 message signer information.'
+  summary: 'A CheckHash metódus a CMS vagy PKCS #7 aláíró információt adatok sértetlenségét ellenőrzi. CheckHash egy speciális, amelyben a tulajdonos által használt konkrét biztonsági infrastruktúra alkalmazásokban használt módszer a **HashOnly** tagja a <xref href=&quot;System.Security.Cryptography.Pkcs.SubjectIdentifierType&quot;> </xref> számbavételi beállításakor egy <xref href=&quot;System.Security.Cryptography.Pkcs.CmsSigner&quot;> </xref> objektum. CheckHash nem hitelesíti az aláíró adatokat, mert ez a módszer nem jár a digitális aláírás ellenőrzése. Az általános célú sértetlenségét és ellenőrzését CMS vagy PKCS #7 aláíró üzenetadatok és aláírásokhoz ellenjegyzéseket hitelességének, használja a &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; vagy &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Security.Cryptography.X509Certificates.X509Certificate2Collection%2CSystem.Boolean%29&gt; módszerek.'
+  remarks: 'Ez a módszer nem biztosít hitelesítést a CMS vagy PKCS #7 üzenetet aláíró adatokat.'
   syntax:
     content: public void CheckHash ();
     parameters: []
@@ -77,7 +77,7 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature(System.Boolean)
@@ -92,25 +92,25 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The CheckSignature method verifies the digital signature of the message and, optionally, validates the certificate."
-  remarks: "This method throws an exception if the verification of the digital signature fails or any validation requirements are not met.       If more complex validation is required, the caller can specify that only the signature is verified and then use an <xref:System.Security.Cryptography.X509Certificates.X509Chain> object to perform custom validation."
+  summary: "A CheckSignature metódus ellenőrzi az üzenet digitális aláírását, és szükség esetén érvényesíti a tanúsítványt."
+  remarks: "Ez a metódus kivételt jelez, ha a digitális aláírás ellenőrzése sikertelen, vagy bármely érvényesítési feltételeknek nem felel meg.       Összetettebb érvényesítésre szükség, ha a hívó megadhatja, hogy csak az aláírást annak ellenőrzése, majd egy <xref:System.Security.Cryptography.X509Certificates.X509Chain>objektum egyéni-ellenőrzéshez.</xref:System.Security.Cryptography.X509Certificates.X509Chain>"
   syntax:
     content: public void CheckSignature (bool verifySignatureOnly);
     parameters:
     - id: verifySignatureOnly
       type: System.Boolean
-      description: "A bool value that specifies whether only the digital signature is verified. If `verifySignatureOnly` is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, only the signature is verified. If `verifySignatureOnly` is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, the digital signature is verified, the certificate chain is validated, and the purposes of the certificates are validated. The purposes of the certificate are considered valid if the certificate has no key usage or if the key usage supports digital signature or nonrepudiation."
+      description: "Logikai érték, amely meghatározza, hogy csak a digitális aláírás ellenőrzése. Ha `verifySignatureOnly` van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, csak az aláírás ellenőrzése. Ha `verifySignatureOnly` van <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, a digitális aláírás ellenőrzése, a tanúsítványlánc érvényesítése és a tanúsítványok alkalmazásában érvényesíti. A tanúsítvány alkalmazásában nem kulcshasználat a tanúsítvány-e, vagy ha a kulcshasználati támogatja a digitális aláírás vagy a letagadhatatlanság minősülnek érvényes."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A null reference was passed to a method that does not accept it as a valid argument."
+    description: "Null hivatkozás lett átadva a metódusnak nem fogadja el az érvényes argumentumként."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A method call was invalid for the object&quot;s current state."
+    description: "A metódus hívása érvénytelen az objektum aktuális állapota."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature(System.Security.Cryptography.X509Certificates.X509Certificate2Collection,System.Boolean)
@@ -125,28 +125,28 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The CheckSignature method verifies the digital signature of the message by using the specified collection of certificates and, optionally, validates the certificate."
-  remarks: "This method throws an exception if the verification of the digital signature fails or any validation requirements are not met.       If more complex validation is required, the caller can specify that only the signature is verified and then use an <xref:System.Security.Cryptography.X509Certificates.X509Chain> object to perform custom validation."
+  summary: "A CheckSignature metódus az üzenet digitális aláírásának ellenőrzi a megadott gyűjtemény tanúsítványok használatával, és szükség esetén érvényesíti a tanúsítványt."
+  remarks: "Ez a metódus kivételt jelez, ha a digitális aláírás ellenőrzése sikertelen, vagy bármely érvényesítési feltételeknek nem felel meg.       Összetettebb érvényesítésre szükség, ha a hívó megadhatja, hogy csak az aláírást annak ellenőrzése, majd egy <xref:System.Security.Cryptography.X509Certificates.X509Chain>objektum egyéni-ellenőrzéshez.</xref:System.Security.Cryptography.X509Certificates.X509Chain>"
   syntax:
     content: public void CheckSignature (System.Security.Cryptography.X509Certificates.X509Certificate2Collection extraStore, bool verifySignatureOnly);
     parameters:
     - id: extraStore
       type: System.Security.Cryptography.X509Certificates.X509Certificate2Collection
-      description: "An <xref href=&quot;System.Security.Cryptography.X509Certificates.X509Certificate2Collection&quot;></xref> object that can be used to validate the chain. If no additional certificates are to be used to validate the chain, use &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; instead of CheckSignature."
+      description: "Egy <xref href=&quot;System.Security.Cryptography.X509Certificates.X509Certificate2Collection&quot;> </xref> objektum, amely a lánc érvényesítéséhez használható. Ha nincsenek további tanúsítványokat a rendszer a tanúsítványlánc érvényesítése, használja használja &lt;xref:System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature%28System.Boolean%29&gt; CheckSignature helyett."
     - id: verifySignatureOnly
       type: System.Boolean
-      description: "A bool value that specifies whether only the digital signature is verified. If `verifySignatureOnly` is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, only the signature is verified. If `verifySignatureOnly` is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, the digital signature is verified, the certificate chain is validated, and the purposes of the certificates are validated. The purposes of the certificate are considered valid if the certificate has no key usage or if the key usage supports digital signature or nonrepudiation."
+      description: "Logikai érték, amely meghatározza, hogy csak a digitális aláírás ellenőrzése. Ha `verifySignatureOnly` van <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, csak az aláírás ellenőrzése. Ha `verifySignatureOnly` van <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, a digitális aláírás ellenőrzése, a tanúsítványlánc érvényesítése és a tanúsítványok alkalmazásában érvényesíti. A tanúsítvány alkalmazásában nem kulcshasználat a tanúsítvány-e, vagy ha a kulcshasználati támogatja a digitális aláírás vagy a letagadhatatlanság minősülnek érvényes."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.CheckSignature*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A null reference was passed to a method that does not accept it as a valid argument."
+    description: "Null hivatkozás lett átadva a metódusnak nem fogadja el az érvényes argumentumként."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A method call was invalid for the object&quot;s current state."
+    description: "A metódus hívása érvénytelen az objektum aktuális állapota."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.ComputeCounterSignature
@@ -161,8 +161,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: 'The ComputeCounterSignature method prompts the user to select a signing certificate, creates a countersignature, and adds the signature to the CMS/PKCS #7 message. Countersignatures are restricted to one level.'
-  remarks: "This implementation of CMS/PKCS #7 supports only one level of countersignature.  That is, a signature can be signed, which forms a countersignature, but that countersignature cannot be signed again.       This method displays a user interface in which you choose signers for this message. This requires that the current process is running in *user interactive mode*, meaning that the <xref:System.Environment.UserInteractive%2A?displayProperty=fullName> property is set to `true`. A process is normally in user interactive mode unless it is a service process or running inside a Web application.       Signers whose certificates meet the following conditions will be displayed in the list:      -   The certificate has an associated private key.      -   The certificate is within its validity period.      -   The certificate has no key usage or a key usage that supports digital signatures or nonrepudiation.       Signer certificates are chosen from the My store.      ## .NET Framework Security    The following permissions are required to display the user interface:      -   <xref:System.Security.Permissions.UIPermissionWindow?displayProperty=fullName>       The following permissions are required to access the signature key:      -   <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>      -   <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>"
+  summary: 'A ComputeCounterSignature módszer felszólítja a felhasználót válasszon ki egy aláíró tanúsítványt, létrehoz egy ellenjegyzés van, és hozzáadja az aláírás a CMS vagy PKCS #7 üzenet. Egy szint aláírásokhoz ellenjegyzéseket korlátozódnak.'
+  remarks: "Ez a megvalósítás CMS vagy PKCS # 7 ellenjegyzés van, csak egy szintet támogatja.  Ez azt jelenti, hogy aláírás írható alá, amely az űrlapos egy ellenjegyzés van, de a ellenjegyzés nem írható alá újra.       Ez a módszer az üzenet egyetlen aláírója válassza felhasználói felületet jeleníti meg. Ehhez szükséges, hogy az aktuális folyamat fut *felhasználói interaktív módban*, ami azt jelenti, hogy a <xref:System.Environment.UserInteractive%2A?displayProperty=fullName>tulajdonsága `true`.</xref:System.Environment.UserInteractive%2A?displayProperty=fullName> A folyamat csak egy szolgáltatási folyamat vagy egy webes alkalmazás belül, amelyen felhasználói interaktív módban van általában.       Egyetlen aláírója, amelyek tanúsítványa a következő feltételeknek jelenik meg a listában:-a tanúsítvány rendelkezik egy hozzá tartozó titkos kulcsot.      -Tanúsítvány az érvényességi idején belül van.      -A tanúsítvány nem kulcs használata vagy a kulcs használata, amely támogatja a digitális aláírások vagy letagadhatatlanság rendelkezik.       Aláíró tanúsítványok névazonosító lehetőséget választja a saját tárolóban.      ## .NET-keretrendszer biztonsága a következő engedélyekre van szükség a felhasználói felület megjelenítése:- <xref:System.Security.Permissions.UIPermissionWindow?displayProperty=fullName>a következő engedélyekre van szükség az aláírási kulcs elérésére:- <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>- <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName></xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName> </xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName> </xref:System.Security.Permissions.UIPermissionWindow?displayProperty=fullName>"
   syntax:
     content: public void ComputeCounterSignature ();
     parameters: []
@@ -170,10 +170,10 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A null reference was passed to a method that does not accept it as a valid argument."
+    description: "Null hivatkozás lett átadva a metódusnak nem fogadja el az érvényes argumentumként."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.ComputeCounterSignature(System.Security.Cryptography.Pkcs.CmsSigner)
@@ -188,22 +188,22 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: 'The ComputeCounterSignature method creates a countersignature by using the specified signer and adds the signature to the CMS/PKCS #7 message. Countersignatures are restricted to one level.'
-  remarks: "This implementation of CMS/PKCS #7 supports only one level of countersignature.  That is, a signature can be signed, which forms a countersignature, but that countersignature cannot be signed again.      ## .NET Framework Security    The following permissions are required to access the signature key:      -   <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>      -   <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>"
+  summary: 'A ComputeCounterSignature metódus egy ellenjegyzés van a megadott aláíró használatával hozza létre, és hozzáadja az aláírás a CMS vagy PKCS #7 üzenet. Egy szint aláírásokhoz ellenjegyzéseket korlátozódnak.'
+  remarks: "Ez a megvalósítás CMS vagy PKCS # 7 ellenjegyzés van, csak egy szintet támogatja.  Ez azt jelenti, hogy aláírás írható alá, amely az űrlapos egy ellenjegyzés van, de a ellenjegyzés nem írható alá újra.      ## .NET-keretrendszer biztonsága a következő engedélyekre van szükség az aláírási kulcs elérésére:- <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>- <xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName></xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName> </xref:System.Security.Permissions.KeyContainerPermissionFlags?displayProperty=fullName>"
   syntax:
     content: public void ComputeCounterSignature (System.Security.Cryptography.Pkcs.CmsSigner signer);
     parameters:
     - id: signer
       type: System.Security.Cryptography.Pkcs.CmsSigner
-      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.CmsSigner&quot;></xref> object that represents the counter signer."
+      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.CmsSigner&quot;> </xref> a számláló aláíró képviselő objektum."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.ComputeCounterSignature*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A null reference was passed to a method that does not accept it as a valid argument."
+    description: "Null hivatkozás lett átadva a metódusnak nem fogadja el az érvényes argumentumként."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.CounterSignerInfos
@@ -218,13 +218,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The CounterSignerInfos property retrieves the set of counter signers associated with the signer information."
-  remarks: 'This implementation of CMS/PKCS #7 supports only one level of countersignature. That is, a signature can be signed, which forms a countersignature, but that countersignature cannot be signed again.'
+  summary: "A CounterSignerInfos tulajdonság lekéri az aláíró információk társított számláló egyetlen aláírója készletét."
+  remarks: 'Ez a megvalósítás CMS vagy PKCS # 7 ellenjegyzés van, csak egy szintet támogatja. Ez azt jelenti, hogy aláírás írható alá, amely az űrlapos egy ellenjegyzés van, de a ellenjegyzés nem írható alá újra.'
   syntax:
     content: public System.Security.Cryptography.Pkcs.SignerInfoCollection CounterSignerInfos { get; }
     return:
       type: System.Security.Cryptography.Pkcs.SignerInfoCollection
-      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfoCollection&quot;></xref> collection that represents the counter signers for the signer information. If there are no counter signers, the property is an empty collection."
+      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfoCollection&quot;> </xref> az aláíró információt egyetlen számláló aláírója képviselő gyűjteményt. Ha nincs számláló egyetlen aláírója, a tulajdonság üres gyűjtemény."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.CounterSignerInfos*
   exceptions: []
   platform:
@@ -241,12 +241,12 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The DigestAlgorithm property retrieves the <xref href=&quot;System.Security.Cryptography.Oid&quot;></xref> object that represents the hash algorithm used in the computation of the signatures."
+  summary: "Az DigestAlgorithm tulajdonság lekéri a <xref href=&quot;System.Security.Cryptography.Oid&quot;> </xref> veszik az aláírás használt kivonatoló algoritmus képviselő objektum."
   syntax:
     content: public System.Security.Cryptography.Oid DigestAlgorithm { get; }
     return:
       type: System.Security.Cryptography.Oid
-      description: "An <xref href=&quot;System.Security.Cryptography.Oid&quot;></xref> object that represents the hash algorithm used with the signature."
+      description: "Egy <xref href=&quot;System.Security.Cryptography.Oid&quot;> </xref> aláírással használt kivonatoló algoritmus képviselő objektum."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.DigestAlgorithm*
   exceptions: []
   platform:
@@ -263,18 +263,18 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The RemoveCounterSignature method removes the countersignature at the specified index of the <xref:System.Security.Cryptography.Pkcs.SignerInfo.CounterSignerInfos*> collection."
+  summary: "A RemoveCounterSignature metódus eltávolítja a megadott indexű ellenjegyzés a <xref:System.Security.Cryptography.Pkcs.SignerInfo.CounterSignerInfos*>gyűjtemény.</xref:System.Security.Cryptography.Pkcs.SignerInfo.CounterSignerInfos*>"
   syntax:
     content: public void RemoveCounterSignature (int index);
     parameters:
     - id: index
       type: System.Int32
-      description: "The zero-based index of the countersignature to remove."
+      description: "Eltávolítja a ellenjegyzés nulla alapú indexét."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.RemoveCounterSignature*
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.RemoveCounterSignature(System.Security.Cryptography.Pkcs.SignerInfo)
@@ -289,24 +289,24 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The RemoveCounterSignature method removes the countersignature for the specified <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;></xref> object."
+  summary: "A RemoveCounterSignature metódus eltávolítja a megadott ellenjegyzés <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;> </xref> objektum."
   syntax:
     content: public void RemoveCounterSignature (System.Security.Cryptography.Pkcs.SignerInfo counterSignerInfo);
     parameters:
     - id: counterSignerInfo
       type: System.Security.Cryptography.Pkcs.SignerInfo
-      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;></xref> object that represents the countersignature being removed."
+      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;> </xref> az eltávolítani kívánt ellenjegyzés képviselő objektum."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.RemoveCounterSignature*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A null reference was passed to a method that does not accept it as a valid argument."
+    description: "Null hivatkozás lett átadva a metódusnak nem fogadja el az érvényes argumentumként."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value of an argument was outside the allowable range of values as defined by the called method."
+    description: "Az argumentum értéke az engedélyezett értéktartományon kívül volt, a hívott metódus által definiált konfigurációjának kialakításához."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "A cryptographic operation could not be completed."
+    description: "Egy titkosítási művelet nem fejezhető be."
   platform:
   - net462
 - uid: System.Security.Cryptography.Pkcs.SignerInfo.SignedAttributes
@@ -321,13 +321,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The SignedAttributes property retrieves the <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;></xref> collection of signed attributes that is associated with the signer information. Signed attributes are signed along with the rest of the message content."
-  remarks: "An example of a signed attribute that might be included in the <xref:System.Security.Cryptography.CryptographicAttributeObjectCollection> collection retrieved by the SignedAttributes property is the <xref:System.Security.Cryptography.Pkcs.Pkcs9SigningTime> signing time attribute.       Signed attributes are signed along with the rest of the <xref:System.Security.Cryptography.Pkcs.SignedCms> message content. This means that a party that successfully verifies the signature can have confidence that the contents of these attributes are authentic and have not been altered.       A <xref:System.Security.Cryptography.Pkcs.Pkcs9ContentType> object and a <xref:System.Security.Cryptography.Pkcs.Pkcs9MessageDigest> object will be automatically generated and placed in the SignedAttributes property whenever the <xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A?displayProperty=fullName> property for the corresponding signer is not empty."
+  summary: "Az SignedAttributes tulajdonság lekéri a <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;> </xref> aláírt attribútumok az aláíró információ gyűjteménye. Aláírt attribútumok aláírt az üzenet tartalma a többi mellett."
+  remarks: "Egy aláírt attribútum, amely része lehet például a <xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>SignedAttributes tulajdonság által lekért gyűjtemény a <xref:System.Security.Cryptography.Pkcs.Pkcs9SigningTime>idő attribútum aláíró.</xref:System.Security.Cryptography.Pkcs.Pkcs9SigningTime> </xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>       Aláírt attribútumok aláírással együtt a többi a <xref:System.Security.Cryptography.Pkcs.SignedCms>üzenet tartalma.</xref:System.Security.Cryptography.Pkcs.SignedCms> Ez azt jelenti, hogy egy entitás, amely sikeresen ellenőrzi az aláírást lehet abban, hogy, hogy ezek az attribútumok tartalmát hiteles, és nem módosították.       A <xref:System.Security.Cryptography.Pkcs.Pkcs9ContentType>objektum és a <xref:System.Security.Cryptography.Pkcs.Pkcs9MessageDigest>objektum automatikusan előállítja, és a SignedAttributes tulajdonság helyezett amikor csak a <xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A?displayProperty=fullName>a megfelelő aláíró tulajdonsága nem üres.</xref:System.Security.Cryptography.Pkcs.CmsSigner.SignedAttributes%2A?displayProperty=fullName> </xref:System.Security.Cryptography.Pkcs.Pkcs9MessageDigest> </xref:System.Security.Cryptography.Pkcs.Pkcs9ContentType>"
   syntax:
     content: public System.Security.Cryptography.CryptographicAttributeObjectCollection SignedAttributes { get; }
     return:
       type: System.Security.Cryptography.CryptographicAttributeObjectCollection
-      description: "A <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;></xref> collection that represents the signed attributes. If there are no signed attributes, the property is an empty collection."
+      description: "A <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;> </xref> gyűjteményt, amely aláírt attribútumait tartalmazza. Ha nem aláírt attribútum, a tulajdonság üres gyűjtemény."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.SignedAttributes*
   exceptions: []
   platform:
@@ -344,12 +344,12 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The SignerIdentifier property retrieves the certificate identifier of the signer associated with the signer information."
+  summary: "A SignerIdentifier tulajdonság lekéri az aláíró információk társított aláíró tanúsítvány azonosítóját."
   syntax:
     content: public System.Security.Cryptography.Pkcs.SubjectIdentifier SignerIdentifier { get; }
     return:
       type: System.Security.Cryptography.Pkcs.SubjectIdentifier
-      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SubjectIdentifier&quot;></xref> object that uniquely identifies the certificate associated with the signer information."
+      description: "A <xref href=&quot;System.Security.Cryptography.Pkcs.SubjectIdentifier&quot;> </xref> objektum, amely egyedileg azonosítja az aláíró információk társított tanúsítvány."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.SignerIdentifier*
   exceptions: []
   platform:
@@ -366,13 +366,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The UnsignedAttributes property retrieves the <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;></xref> collection of unsigned attributes that is associated with the <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;></xref> content. Unsigned attributes can be modified without invalidating the signature."
-  remarks: "Unsigned attributes are not signed along with the rest of the <xref:System.Security.Cryptography.Pkcs.SignedCms> message content. Even though a party successfully verifies the signature, the unsigned attributes may have been altered and should not be considered to have authenticity or integrity.       An example of an unsigned attribute that might be included in the <xref:System.Security.Cryptography.CryptographicAttributeObjectCollection> collection retrieved by the UnsignedAttributes property is a countersignature."
+  summary: "Az UnsignedAttributes tulajdonság lekéri a <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;> </xref> gyűjtemény aláíratlan attribútumok, amelyhez társítva van a <xref href=&quot;System.Security.Cryptography.Pkcs.SignerInfo&quot;> </xref> tartalmat. Aláíratlan attribútumok módosíthatják az aláírás érvénytelenítése nélkül."
+  remarks: "Aláíratlan attribútumok nincs bejelentkezve a többi mellett a <xref:System.Security.Cryptography.Pkcs.SignedCms>üzenet tartalma.</xref:System.Security.Cryptography.Pkcs.SignedCms> Annak ellenére, hogy egy entitás sikeresen ellenőrzi az aláírást, az aláíratlan attribútumok módosították, és nem tekinthető eredetiséget vagy sértetlenségét.       Az előjel nélküli attribútum, amely része lehet például a <xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>UnsignedAttributes tulajdonság által lekért gyűjtemény egy ellenjegyzés.</xref:System.Security.Cryptography.CryptographicAttributeObjectCollection>"
   syntax:
     content: public System.Security.Cryptography.CryptographicAttributeObjectCollection UnsignedAttributes { get; }
     return:
       type: System.Security.Cryptography.CryptographicAttributeObjectCollection
-      description: "A <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;></xref> collection that represents the unsigned attributes. If there are no unsigned attributes, the property is an empty collection."
+      description: "A <xref href=&quot;System.Security.Cryptography.CryptographicAttributeObjectCollection&quot;> </xref> gyűjteményt, amely aláíratlan attribútumait tartalmazza. Ha nem aláíratlan attribútum, a tulajdonság egy üres gyűjteményt."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.UnsignedAttributes*
   exceptions: []
   platform:
@@ -389,13 +389,13 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography.Pkcs
-  summary: "The Version property retrieves the signer information version."
-  remarks: 'The version determines whether the message is a PKCS #7 message or a Cryptographic Message Syntax (CMS) message. CMS is a newer superset of PKCS #7.'
+  summary: "A Version tulajdonság a aláíró verziót kéri le."
+  remarks: 'A verzió határozza meg, hogy az üzenet egy PKCS #7 vagy kriptográfiai szintaxisú (CMS) üzenet. A CMS újabb felülbírálja a PKCS #7.'
   syntax:
     content: public int Version { get; }
     return:
       type: System.Int32
-      description: "An int value that specifies the signer information version."
+      description: "Az int érték, amely meghatározza az aláíró verziót."
   overload: System.Security.Cryptography.Pkcs.SignerInfo.Version*
   exceptions: []
   platform:

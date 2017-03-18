@@ -22,8 +22,8 @@ items:
   nameWithType: CustomPeerResolverService
   fullName: System.ServiceModel.PeerResolvers.CustomPeerResolverService
   type: Class
-  summary: "Provides a basic implementation of a custom peer resolver service."
-  remarks: "The CustomPeerResolverService class defines the base implementation of a custom peer resolver service and provides lookup for the resolution of registration IDs to peer endpoint addresses within the mesh maintained by this resolver."
+  summary: "Egy egyéni társ feloldó szolgáltatás megvalósítási biztosít."
+  remarks: "A CustomPeerResolverService osztály egy egyéni társ feloldó szolgáltatás alapszintű megvalósítás határozza meg, és lehetővé teszi keresési feloldása a regisztrációs azonosítók társ végpont címekre a feloldó tartja fenn a hálón."
   syntax:
     content: >-
       [System.Obsolete("PeerChannel feature is obsolete and will be removed in the future.", false)]
@@ -50,7 +50,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Initializes a new default instance of the <xref href=&quot;System.ServiceModel.PeerResolvers.CustomPeerResolverService&quot;></xref> class."
+  summary: "Egy új alapértelmezett példányát inicializálja a <xref href=&quot;System.ServiceModel.PeerResolvers.CustomPeerResolverService&quot;> </xref> osztály."
   syntax:
     content: public CustomPeerResolverService ();
     parameters: []
@@ -70,21 +70,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets or sets the recurring length of time after which stale entries are deleted from the peer resolver service&quot;s registration lookup table."
-  remarks: "This property must be set before the peer resolver service has been and must not be zero. The default interval is 1 minute.       This value must be less than the value of <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval%2A> to avoid the occurrence of stale entries in the peer resolver service&quot;s registration lookup table."
+  summary: "Lekérdezi vagy beállítja az ismétlődő mennyi idő elteltével az elavult bejegyzéseket a társ feloldó szolgáltatás regisztrációs keresési tábla törlődnek."
+  remarks: "Ez a tulajdonság kell állítani, mielőtt a társ-feloldó szolgáltatás le lett, és nem lehet nulla. Az alapértelmezett érték 1 perc.       Ez az érték értékének kisebbnek kell lennie <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval%2A>elkerülése érdekében az elavult bejegyzéseket a társ feloldó szolgáltatás regisztrációs keresési tábla előfordulása.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval%2A>"
   syntax:
     content: public TimeSpan CleanupInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "<xref:System.TimeSpan> that specifies the time interval after which stale entries are deleted from the peer resolver service&quot;s registration lookup table."
+      description: "<xref:System.TimeSpan>amely a Megadja azt az időtartamot, amely után elavult bejegyzéseket törölni a társ feloldó szolgáltatás regisztrációs keresési táblából.</xref:System.TimeSpan>"
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The interval is either zero or greater than <xref:System.Int32.MaxValue>."
+    description: "Az intervallum értéke nulla vagy nagyobb, mint <xref:System.Int32.MaxValue>.</xref:System.Int32.MaxValue>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt to set the property was made after a call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A tulajdonság beállítása kísérlet történt a <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> hívása után"
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Close
@@ -99,7 +99,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Closes the peer resolver service."
+  summary: "Bezárja a társ-feloldó szolgáltatásról."
   syntax:
     content: public virtual void Close ();
     parameters: []
@@ -107,7 +107,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has been closed by a previous call to this method."
+    description: "A szolgáltatás le van zárva, ez a metódus előző hívása."
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.ControlShape
@@ -122,12 +122,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets or sets whether referrals are shared by the peer resolver service."
+  summary: "Lekérdezi vagy beállítja, hogy a hivatkozások megosztásának a társ-feloldó szolgáltatás."
   syntax:
     content: public bool ControlShape { get; set; }
     return:
       type: System.Boolean
-      description: "True if referrals are shared by the peer resolver service; false if they are not."
+      description: "Értéke TRUE, ha a hivatkozások megosztásának a társ-feloldó szolgáltatás; Ha nem FALSE."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.ControlShape*
   exceptions: []
   platform:
@@ -144,13 +144,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Obtains the specific response settings for the peer resolver service."
+  summary: "Beolvassa a társ-feloldó szolgáltatás adott válasz beállításait."
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.ServiceSettingsResponseInfo GetServiceSettings ();
     parameters: []
     return:
       type: System.ServiceModel.PeerResolvers.ServiceSettingsResponseInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ServiceSettingsResponseInfo&quot;></xref> that contains the specific response settings for the custom peer resolver service, including cleanup and refresh interval settings."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ServiceSettingsResponseInfo&quot;></xref>amely tartalmazza a egyéni társ feloldó szolgáltatásról, beleértve a karbantartási és frissítési időközének beállításai adott válasz beállításait."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.GetServiceSettings*
   exceptions: []
   platform:
@@ -167,8 +167,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Opens the peer resolver service."
-  remarks: "When this method is called, it schedules the first registration lookup table cleanup based on the value set for the <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A> property."
+  summary: "Megnyitja a társ-feloldó szolgáltatásról."
+  remarks: "Ez a metódus hívásakor, az első regisztráció keresési tábla karbantartása beállított értéke alapján ütemezés a <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A>tulajdonság.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A>"
   syntax:
     content: public virtual void Open ();
     parameters: []
@@ -176,10 +176,10 @@ items:
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval*> or <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval*> are set to a time span interval of 0."
+    description: "<>*> vagy <> </> *> egy tartomány időintervallumban 0 értékre van beállítva."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The service has been started by a previous call to this method."
+    description: "A szolgáltatás elindult, ez a metódus előző hívása."
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Refresh(System.ServiceModel.PeerResolvers.RefreshInfo)
@@ -194,25 +194,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Refreshes the expiry of an entry in the peer resolver service&quot;s registration lookup table."
-  remarks: "A refresh of an entry extends the length of time for which it remains valid. All information used to uniquely identify the entry must be supplied in the <xref:System.ServiceModel.PeerResolvers.RefreshInfo> object supplied to this method."
+  summary: "A társ feloldó szolgáltatás regisztrációs keresési tábla bejegyzése lejárta frissíti."
+  remarks: "Bejegyzés frissítését kibővíti az időtartamot, amelynek érvényes marad. A bejegyzés egyedi azonosításához használt összes adatot meg kell adni a a <xref:System.ServiceModel.PeerResolvers.RefreshInfo>a metódusnak átadott objektum.</xref:System.ServiceModel.PeerResolvers.RefreshInfo>"
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.RefreshResponseInfo Refresh (System.ServiceModel.PeerResolvers.RefreshInfo refreshInfo);
     parameters:
     - id: refreshInfo
       type: System.ServiceModel.PeerResolvers.RefreshInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RefreshInfo&quot;></xref> object that contains the mesh ID and the registration ID of the entry to refresh in the peer resolver service&quot;s registration lookup table."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RefreshInfo&quot;></xref>a háló azonosítója és a regisztrációs Azonosítót a bejegyzés frissítéséhez a társ feloldó szolgáltatás regisztrációs keresési táblában tartalmazó objektum."
     return:
       type: System.ServiceModel.PeerResolvers.RefreshResponseInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RefreshResponseInfo&quot;></xref> that contains the newly refreshed registration entry."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RefreshResponseInfo&quot;></xref>az újonnan frissített regisztrációs bejegyzés, amely tartalmazza."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Refresh*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>refreshInfo</code> is set to null."
+    description: "<code>refreshInfo</code>értéke null."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "Az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval
@@ -227,21 +227,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets or sets the length of time that entries remain valid in a peer resolver service&quot;s registration lookup table."
-  remarks: "This property must be set before the peer resolver service has been and must not be zero. The default interval is 2 minutes.       When the amount of time supplied to this property has passed for a given entry in a peer resolver service&quot;s registration lookup table, that entry is marked for deletion. The delete occurs when interval specified in the <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A> property occurs.  For example, if this property is set to a timespan of 10 minutes, entries in the registration lookup table will become stale and marked for deletion after the interval has passed. As a result, the peer resolver client must update every ten minutes to avoid having their entry deleted."
+  summary: "Lekérdezi vagy beállítja az, hogy mennyi idő bejegyzések továbbra is érvényesek a társ feloldó szolgáltatás regisztrációs keresési táblában."
+  remarks: "Ez a tulajdonság kell állítani, mielőtt a társ-feloldó szolgáltatás le lett, és nem lehet nulla. Az alapértelmezett érték 2 perc.       Ez a tulajdonság számára megadott idő elteltével egy adott bejegyzést a társ feloldó szolgáltatás regisztrációs keresési tábla, a bejegyzés van jelölve törlésre. A Törlés akkor fordul elő, ha a megadott időköz az <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A>tulajdonság következik be.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.CleanupInterval%2A>  Például ha ez a tulajdonság értéke timespan érték 10 perc, a regisztrációs keresési táblázat lesz elavult, és a törlésre kijelölt a lejárta után. Ennek eredményeképpen a társ-feloldó ügyfél frissítenie kell&10; percenként kívánja kerülni a törölt bejegyzés."
   syntax:
     content: public TimeSpan RefreshInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "<xref:System.TimeSpan> that specifies the length of time that entries remain valid in a peer resolver service&quot;s registration lookup table."
+      description: "<xref:System.TimeSpan>amely megadja, hogy az, hogy mennyi idő bejegyzések továbbra is érvényesek a társ feloldó szolgáltatás regisztrációs keresési táblában.</xref:System.TimeSpan>"
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.RefreshInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The interval is either zero or greater than <xref:System.Int32.MaxValue>."
+    description: "Az intervallum értéke nulla vagy nagyobb, mint <xref:System.Int32.MaxValue>.</xref:System.Int32.MaxValue>"
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "An attempt to set the property was made after a call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A tulajdonság beállítása kísérlet történt a <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> hívása után"
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register(System.ServiceModel.PeerResolvers.RegisterInfo)
@@ -256,31 +256,31 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Adds a new entry to the registration lookup table of the peer resolver service."
-  remarks: "This method adds a new entry to the registration lookup table of the peer resolver service. Note that registrations made after the service is closed  have no effect -- these entries are not returned by resolve requests."
+  summary: "Új bejegyzés hozzáadása a társ-feloldó szolgáltatás regisztrációs keresési táblához."
+  remarks: "Ez a módszer új bejegyzés hozzáadása a társ-feloldó szolgáltatás regisztrációs keresési táblához. Vegye figyelembe, hogy regisztráció után a szolgáltatás le van zárva végzett hatástalan – feloldási kérések nem jeleníti meg ezeket a bejegyzéseket."
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.RegisterResponseInfo Register (System.ServiceModel.PeerResolvers.RegisterInfo registerInfo);
     parameters:
     - id: registerInfo
       type: System.ServiceModel.PeerResolvers.RegisterInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref> that contains information about the registration entry to register with the peer resolver service."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref>a regisztrációs bejegyzés a társ-feloldó szolgáltatásban való regisztráláshoz adatait, amely tartalmazza."
     return:
       type: System.ServiceModel.PeerResolvers.RegisterResponseInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RegisterResponseInfo&quot;></xref> that contains a copy of the entry added to the peer resolver service&quot;s registration lookup table."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.RegisterResponseInfo&quot;></xref>a társ feloldó szolgáltatás regisztrációs keresési tábla hozzáadott bejegyzés másolatát tartalmazza, amelyek."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A registration entry with the same GUID already exists in the lookup table, or the custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A regisztrációs bejegyzés azonos GUID már létezik a keresési tábla, vagy az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref> object supplied to this method was either null or not correctly formed."
+    description: "A <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;> </xref> a metódusnak átadott objektum értéke null, vagy helytelen alakú volt."
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "The AddressInfo property of the object supplied to the <code>registerInfo</code> parameter was null."
+    description: "A megadott objektum AddressInfo tulajdonsága a <code> registerInfo </code> paraméter null értékű volt."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>meshId</code> value supplied to this method is set to null."
+    description: "A <code> meshId </code> Ez a metódus számára megadott értéke null."
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register(System.Guid,System.String,System.ServiceModel.PeerNodeAddress)
@@ -295,36 +295,36 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Adds a new entry to the registration lookup table of the peer resolver service."
+  summary: "Új bejegyzés hozzáadása a társ-feloldó szolgáltatás regisztrációs keresési táblához."
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.RegisterResponseInfo Register (Guid clientId, string meshId, System.ServiceModel.PeerNodeAddress address);
     parameters:
     - id: clientId
       type: System.Guid
-      description: "A <xref:System.Guid> that specifies a unique identifier for the registration entry to register with the resolver service."
+      description: "A <xref:System.Guid>, amely megadja, hogy a regisztrációs bejegyzés a feloldó szolgáltatásban való regisztráláshoz egyedi azonosítója.</xref:System.Guid>"
     - id: meshId
       type: System.String
-      description: "A <xref:System.String> that specifies the mesh ID of the peer mesh in which the registration entry participates."
+      description: "A <xref:System.String>, amely a regisztrációs bejegyzés vesz részt a társ-háló háló Azonosítóját adja meg.</xref:System.String>"
     - id: address
       type: System.ServiceModel.PeerNodeAddress
-      description: "A <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> that contains the endpoint address of the registration entry."
+      description: "A <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> , amely a regisztrációs bejegyzés végpont címét tartalmazza."
     return:
       type: System.ServiceModel.PeerResolvers.RegisterResponseInfo
-      description: "A <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterResponseInfo&quot;></xref> that contains a copy of the entry added to the peer resolver service&quot;s registration lookup table."
+      description: "A <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterResponseInfo&quot;> </xref> , amely a társ feloldó szolgáltatás regisztrációs keresési tábla hozzáadott bejegyzés másolatát tartalmazza."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A registration entry with the same GUID already exists in the lookup table, or the custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A regisztrációs bejegyzés azonos GUID már létezik a keresési tábla, vagy az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref> object supplied to this method was either null or not correctly formed."
+    description: "A <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;> </xref> a metódusnak átadott objektum értéke null, vagy helytelen alakú volt."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The MeshId and/or the RegistrationId property of object supplied to the <code>refreshInfo</code> parameter was null."
+    description: "A Hálóazonosítójú és/vagy a megadott objektum RegistrationId tulajdonsága a <code> refreshInfo </code> paraméter null értékű volt."
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "The MeshId property of the object supplied to the <code>refreshInfo</code> parameter is unknown."
+    description: "A megadott objektum Hálóazonosítójú tulajdonsága a <code> refreshInfo </code> paraméter érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Resolve(System.ServiceModel.PeerResolvers.ResolveInfo)
@@ -339,25 +339,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Returns a list of known endpoints for a registration entry."
-  remarks: "This method looks up a registration entry based on the data supplied in a <xref:System.ServiceModel.PeerResolvers.ResolveInfo> object and returns any corresponding endpoint addresses found in the peer resolver service&quot;s registration lookup table. The number of endpoint addresses returned is equal to or less than the value of the  <xref:System.ServiceModel.PeerResolvers.ResolveInfo.MaxAddresses%2A> property set on the <xref:System.ServiceModel.PeerResolvers.ResolveInfo> object."
+  summary: "A regisztrációs bejegyzés ismert végpontok listáját adja vissza."
+  remarks: "Ez a módszer egy regisztrációs bejegyzés, a megadott adatok alapján keres egy <xref:System.ServiceModel.PeerResolvers.ResolveInfo>objektum és a társ feloldó szolgáltatás regisztrációs keresési táblában található bármely megfelelő végpont címek értéket ad vissza.</xref:System.ServiceModel.PeerResolvers.ResolveInfo> A visszaadott végpontcímek száma értékének kisebbnek vagy azzal egyenlő a <xref:System.ServiceModel.PeerResolvers.ResolveInfo.MaxAddresses%2A>tulajdonság van beállítva a a <xref:System.ServiceModel.PeerResolvers.ResolveInfo>objektum.</xref:System.ServiceModel.PeerResolvers.ResolveInfo> </xref:System.ServiceModel.PeerResolvers.ResolveInfo.MaxAddresses%2A>"
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.ResolveResponseInfo Resolve (System.ServiceModel.PeerResolvers.ResolveInfo resolveInfo);
     parameters:
     - id: resolveInfo
       type: System.ServiceModel.PeerResolvers.ResolveInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ResolveInfo&quot;></xref> that contains information on the registration entry for which endpoints, if known, are to be looked up by the peer resolver service."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ResolveInfo&quot;></xref>a regisztrációs bejegyzés, amelynek végpontok, ha ismert, amelyek a társ-feloldó szolgáltatás által keresett információkat tartalmaz, amelyek."
     return:
       type: System.ServiceModel.PeerResolvers.ResolveResponseInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ResolveResponseInfo&quot;></xref> that contains the endpoints for the registration entry in the lookup table that matches the information supplied in the <code>resolveInfo</code> parameter."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.ResolveResponseInfo&quot;></xref>a végpontok a regisztrációs bejegyzés a keresési táblában, amely megfelel a megadott információkat tartalmazó a <code> resolveInfo </code> paraméter."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Resolve*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <xref href=&quot;System.ServiceModel.PeerResolvers.ResolveInfo&quot;></xref> object is null or is not correctly formed."
+    description: "A <xref href=&quot;System.ServiceModel.PeerResolvers.ResolveInfo&quot;> </xref> objektum értéke null, vagy nem megfelelően formázott."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A registration entry with the same GUID already exists in the lookup table, or the custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A regisztrációs bejegyzés azonos GUID már létezik a keresési tábla, vagy az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Unregister(System.ServiceModel.PeerResolvers.UnregisterInfo)
@@ -372,21 +372,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Removes a specific entry from the registration lookup table of the peer resolver service."
+  summary: "Egy adott belépési eltávolítja a társ-feloldó szolgáltatás regisztrációs keresési táblából."
   syntax:
     content: public virtual void Unregister (System.ServiceModel.PeerResolvers.UnregisterInfo unregisterInfo);
     parameters:
     - id: unregisterInfo
       type: System.ServiceModel.PeerResolvers.UnregisterInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UnregisterInfo&quot;></xref> that contains the information used to uniquely identify the registration entry to remove from the registration lookup table."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UnregisterInfo&quot;></xref>a regisztrációs bejegyzés eltávolítása a regisztrációs keresési tábla egyedi azonosításához használt információkat tartalmazza, amelyek."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Unregister*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An entry for the specified registration entry could not be found, or the supplied <xref href=&quot;System.ServiceModel.PeerResolvers.UnregisterInfo&quot;></xref> object is null or not correctly formed."
+    description: "A megadott regisztrációs bejegyzés bejegyzése nem található, vagy a megadott <xref href=&quot;System.ServiceModel.PeerResolvers.UnregisterInfo&quot;> </xref> objektum értéke null vagy nem megfelelően formázott."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A registration entry with the same GUID already exists in the lookup table, or the custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A regisztrációs bejegyzés azonos GUID már létezik a keresési tábla, vagy az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   platform:
   - net462
 - uid: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Update(System.ServiceModel.PeerResolvers.UpdateInfo)
@@ -401,24 +401,24 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Updates an existing registration entry entry in the registration lookup table of the peer resolver service."
+  summary: "Frissíti a meglévő regisztrációs bejegyzés bejegyzése a társ-feloldó szolgáltatás a regisztrációs keresési táblában."
   syntax:
     content: public virtual System.ServiceModel.PeerResolvers.RegisterResponseInfo Update (System.ServiceModel.PeerResolvers.UpdateInfo updateInfo);
     parameters:
     - id: updateInfo
       type: System.ServiceModel.PeerResolvers.UpdateInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;></xref> that uniquely identifies a specific registration entry and provides updated information for it."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;></xref>amely egyedileg azonosítja az egy adott regisztrációs bejegyzés, és azt a frissített információkat tartalmaz."
     return:
       type: System.ServiceModel.PeerResolvers.RegisterResponseInfo
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;></xref> that contains a copy of the updated registration entry entry."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;></xref>amely tartalmazza a frissített regisztrációs bejegyzés bejegyzés."
   overload: System.ServiceModel.PeerResolvers.CustomPeerResolverService.Update*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "An entry for the specified registration entry could not be found, or the supplied <xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;></xref> object was not correctly formed."
+    description: "A megadott regisztrációs bejegyzés bejegyzése nem található, vagy a megadott <xref href=&quot;System.ServiceModel.PeerResolvers.UpdateInfo&quot;> </xref> nem megfelelően formázott objektum."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A registration entry with the same GUID already exists in the lookup table, or the custom peer resolver service has not been started with a previous call to <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>."
+    description: "A regisztrációs bejegyzés azonos GUID már létezik a keresési tábla, vagy az egyéni társ feloldó szolgáltatás nincs elindítva <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*>.</xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Open*> előző hívása"
   platform:
   - net462
 references:
