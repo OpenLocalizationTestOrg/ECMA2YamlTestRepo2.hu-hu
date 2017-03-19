@@ -13,8 +13,8 @@ items:
   nameWithType: MachineKey
   fullName: System.Web.Security.MachineKey
   type: Class
-  summary: "Provides a way to encrypt or hash data (or both) by using the same algorithms and key values that are used for ASP.NET forms authentication and view state."
-  remarks: "The MachineKey class provides methods that expose the hashing and encryption logic that ASP.NET provides. For information about which encryption and hashing algorithms ASP.NET uses, and the key values that it uses with them, see [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46).      > [!WARNING] >  The  MachineKey APIs should only be used in an ASP.NET app. Behavior of the MachineKey APIs outside the context of an ASP.NET application is undefined"
+  summary: "Lehetővé teszi a titkosításához úgy vagy kivonatoló adatok (vagy mindkettő) azonos algoritmusok és az ASP.NET űrlapos hitelesítése és állapotának megtekintése a használt értékek használatával."
+  remarks: "A MachineKey osztály teszi közzé a kivonatolási és titkosítási logika, hogy az ASP.NET biztosít metódusokat biztosít. Milyen titkosítási és kivonatoló algoritmusok az ASP.NET és a velük használt értékek kapcsolatos információkért lásd: [machineKey elem (ASP.NET beállítási séma)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46).      > [!WARNING] > A MachineKey API-kat csak egy ASP.NET alkalmazás használható. Nincs definiálva a MachineKey API-k kívül az ASP.NET-alkalmazások viselkedését"
   syntax:
     content: public static class MachineKey
   inheritance:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Decodes and/or validates data that has been encrypted or provided with a hash-based message authentication code (HMAC)."
-  remarks: "For information about which encryption and hashing algorithms ASP.NET uses to decrypt and validate the data that is passed in, see [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46)."
+  summary: "Dekódol, és/vagy adatellenőrzési titkosított vagy megadott kivonat-alapú üzenethitelesítő kódot (HMAC)."
+  remarks: "Milyen titkosítási és kivonatoló algoritmusok az ASP.NET visszafejteni és érvényesíteni az adatokat a továbbított információk: [machineKey elem (ASP.NET beállítási séma)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46)."
   example:
   - For a code example, see the <xref:System.Web.Security.MachineKey> class overview.
   syntax:
@@ -44,13 +44,13 @@ items:
     parameters:
     - id: encodedData
       type: System.String
-      description: "The encrypted data to decrypt and/or validate."
+      description: "A titkosított adatok visszafejtésére és/vagy érvényesítése."
     - id: protectionOption
       type: System.Web.Security.MachineKeyProtection
-      description: "Indicates whether the `encodedData` parameter should be encrypted and/or hashed."
+      description: "Azt jelzi, hogy a `encodedData` paraméter kell hogy titkosítva és/vagy kivonat készül."
     return:
       type: System.Byte[]
-      description: "A <xref:System.Byte> array that represents the decrypted data."
+      description: "A <xref:System.Byte>tömb, amely a visszafejtett adatokat képvisel.</xref:System.Byte>"
   overload: System.Web.Security.MachineKey.Decode*
   exceptions: []
   platform:
@@ -67,8 +67,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Encrypts data and/or appends a hash-based message authentication code (HMAC)."
-  remarks: "For information about which encryption and hashing algorithms ASP.NET uses to decrypt and validate the data that is passed in, see [machineKey Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46)."
+  summary: "Titkosítja az adatokat, és/vagy hozzáfűzi a kivonat-alapú üzenethitelesítő kódot (HMAC)."
+  remarks: "Milyen titkosítási és kivonatoló algoritmusok az ASP.NET visszafejteni és érvényesíteni az adatokat a továbbított információk: [machineKey elem (ASP.NET beállítási séma)](http://msdn.microsoft.com/en-us/4b5699a9-bc21-4c4a-85f1-8b3b8ebd2d46)."
   example:
   - For a code example, see the <xref:System.Web.Security.MachineKey> class overview.
   syntax:
@@ -76,13 +76,13 @@ items:
     parameters:
     - id: data
       type: System.Byte[]
-      description: "The data to encrypt."
+      description: "Az adatok titkosításához."
     - id: protectionOption
       type: System.Web.Security.MachineKeyProtection
-      description: "Indicates whether the `data` parameter should be encrypted and/or hashed."
+      description: "Azt jelzi, hogy a `data` paraméter kell hogy titkosítva és/vagy kivonat készül."
     return:
       type: System.String
-      description: "The encrypted value, the input value with an HMAC appended, or the result of encrypting the input value with an HMAC appended."
+      description: "A titkosított érték, a bemeneti érték egy HMAC hozzáfűzi a vagy titkosítására a bemeneti érték egy fűzött HMAC eredményét."
   overload: System.Web.Security.MachineKey.Encode*
   exceptions: []
   platform:
@@ -99,28 +99,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Protects the specified data by encrypting or signing it."
-  remarks: "This method supersedes the <xref:System.Web.Security.MachineKey.Encode%2A> method, which requires the caller to specify whether the plaintext data should be encrypted, signed, or both. The Protect method performs the appropriate operation and securely protects the data. Ciphertext data produced by this method can only be deciphered by the <xref:System.Web.Security.MachineKey.Unprotect%2A> method.       The `purposes` parameter is an optional list of reasons that can lock the ciphertext to a specific purpose. This parameter lets you isolate cryptographic operations performed by different subsystems within an application. A malicious client should not be able to get the result of one subsystem&quot;s Protect method and feed it as input to another subsystem&quot;s <xref:System.Web.Security.MachineKey.Unprotect%2A> method, which could compromise application security. The `purposes` parameter helps ensure that protected data can only be used by the component that originally generated it. Applications should make sure that each subsystem uses a unique `purposes` list.       For example, to protect or unprotect an authentication token, you could call the method using code like the following example:      ```c#   MachineKey.Protect(..., &quot;Authentication token&quot;);   MachineKey.Unprotect(..., &quot;Authentication token&quot;);   ```      ```vb   MachineKey.Protect(..., &quot;Authentication token&quot;)   MachineKey.Unprotect(..., &quot;Authentication token&quot;)   ```       Applications can dynamically generate the `purposes` parameter. In that case, prefix user-supplied values with a fixed value (like &quot;`Username:` &quot; + *username*) to minimize the risk of a malicious client crafting input that matches a token that is used by some other part of the system. Any dynamically-generated strings should come after fixed strings. For example, to protect or unprotect a private message that is tied to a specific user, use code like the following example:      ```c#   MachineKey.Protect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username);   MachineKey.Unprotect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username);   ```      ```vb   MachineKey.Protect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username)   MachineKey.Unprotect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username)   ```       When the <xref:System.Web.Security.MachineKey.Unprotect%2A> method is called, the value that is provided for the `purposes` parameter must be the same value that was provided to the Protect method. Otherwise the operation will fail with a <xref:System.Security.Cryptography.CryptographicException> exception.       The configuration settings that are required for the <xref:System.Web.Configuration.MachineKeyCompatibilityMode?displayProperty=fullName> option are required for this method even if the <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> property is not set to the <xref:System.Web.Configuration.MachineKeyCompatibilityMode> option."
+  summary: "A megadott adatokat védi titkosított, vagy az aláírást."
+  remarks: "Ez a módszer írja felül a <xref:System.Web.Security.MachineKey.Encode%2A>metódus, amely szükséges a hívót annak adja meg az egyszerű szöveges adatokat titkosítani kell-e, aláírva, vagy mindkettőt.</xref:System.Web.Security.MachineKey.Encode%2A> A védelem metódus hajtja végre a megfelelő műveletet, és biztonságos módon védi az adatokat. Ez a metódus által előállított titkosított szöveg adatok csak úgy lehet visszafejteni a <xref:System.Web.Security.MachineKey.Unprotect%2A>metódus.</xref:System.Web.Security.MachineKey.Unprotect%2A>       A `purposes` paraméter egy-egy választható lista, amely egy adott célra való ciphertext zárolhatja okokra vezethető vissza. Ez a paraméter lehetővé teszi a titkosítási műveleteket végzi el az alkalmazáson belül különböző alrendszereket elkülönítése. Egy rosszindulatú ügyfél ne legyen egy alrendszer védelme metódus eredményét, és azt egy másik alrendszer bemeneti hírcsatorna <xref:System.Web.Security.MachineKey.Unprotect%2A>metódus, amely az alkalmazásbiztonság biztonságát veszélyeztető.</xref:System.Web.Security.MachineKey.Unprotect%2A> A `purposes` paraméter segítségével győződjön meg arról, hogy védett adatok csak akkor használható, amelyek eredetileg létrehozott összetevő. Alkalmazások győződjön meg arról, hogy minden alrendszer használ egy egyedi `purposes` listája.       Például védelméhez, vagy egy hitelesítési jogkivonatot a védelmének megszüntetéséhez, sikerült a metódust hívja az alábbi példához hasonló kód használatával: ```c#   MachineKey.Protect(..., &quot;Authentication token&quot;);   MachineKey.Unprotect(..., &quot;Authentication token&quot;);   ``` ```vb   MachineKey.Protect(..., &quot;Authentication token&quot;)   MachineKey.Unprotect(..., &quot;Authentication token&quot;)   ``` alkalmazások lehet dinamikusan generálni a `purposes` paraméter.       Ebben az esetben a felhasználó által megadott értékek egy rögzített értékű előtag (például &quot;`Username:` &quot; + *felhasználónév*), amely megfelel a token többi részét a rendszer által használt bemeneti létrehozásával rosszindulatú ügyfél kockázatának minimalizálása érdekében. Dinamikusan generált karakterláncokkal rögzített karakterláncok után kell következnie. Például védelme vagy a titkos üzeneteket, amelyek egy adott felhasználó kapcsolódna a védelmének megszüntetéséhez használja az alábbi példához hasonló kód: ```c#   MachineKey.Protect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username);   MachineKey.Unprotect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username);   ``` ```vb   MachineKey.Protect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username)   MachineKey.Unprotect(..., &quot;Private message&quot;, &quot;Recipient: &quot; + username)   ``` amikor a <xref:System.Web.Security.MachineKey.Unprotect%2A>metódus lehívásra kerül, az értéke megjelenik a `purposes` paraméternek kell lennie a védelem metódusnak megadott ugyanazt az értéket.</xref:System.Web.Security.MachineKey.Unprotect%2A>       Ellenkező esetben a művelet sikertelen lesz, és egy <xref:System.Security.Cryptography.CryptographicException>kivétel.</xref:System.Security.Cryptography.CryptographicException>       A konfigurációs beállítások, amelyek szükségesek a <xref:System.Web.Configuration.MachineKeyCompatibilityMode?displayProperty=fullName>lehetőséget a metódus még akkor is, amennyiben szükségesek a <xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName>tulajdonság értéke nem a <xref:System.Web.Configuration.MachineKeyCompatibilityMode>beállítás.</xref:System.Web.Configuration.MachineKeyCompatibilityMode> </xref:System.Web.Configuration.MachineKeySection.CompatibilityMode%2A?displayProperty=fullName> </xref:System.Web.Configuration.MachineKeyCompatibilityMode?displayProperty=fullName>"
   syntax:
     content: public static byte[] Protect (byte[] userData, string[] purposes);
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "The data to protect. This data is passed as plaintext."
+      description: "Az adatok védelme érdekében. Ezek az adatok szövegként lett átadva."
     - id: purposes
       type: System.String[]
-      description: "A list of purposes for the data. If this value is specified, the same list must be passed to the <xref:System.Web.Security.MachineKey.Unprotect*> method in order to decipher the returned ciphertext."
+      description: "Az adatok célra listáját. Ezt az értéket, ha ugyanazt a listát kell átadni a <xref:System.Web.Security.MachineKey.Unprotect*>metódus ahhoz, hogy a visszaküldött titkosított szöveg visszafejthetők.</xref:System.Web.Security.MachineKey.Unprotect*>"
     return:
       type: System.Byte[]
-      description: "The ciphertext data."
+      description: "A titkosított szöveg adatokat."
   overload: System.Web.Security.MachineKey.Protect*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>userData</code> parameter is null."
+    description: "A <code> userData </code> paraméterek egyike null értékű."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The purposes array contains one or more whitespace-only entries."
+    description: "A célokra tömb csak szóközt tartalmazó egy vagy több bejegyzést tartalmaz."
   platform:
   - net462
 - uid: System.Web.Security.MachineKey.Unprotect(System.Byte[],System.String[])
@@ -135,31 +135,31 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Unprotects the specified data, which was protected by the <xref:System.Web.Security.MachineKey.Protect*> method."
-  remarks: "For information about this method, see the <xref:System.Web.Security.MachineKey.Protect%2A> method."
+  summary: "A megadott adatokat, amelyek által védett unprotects a <xref:System.Web.Security.MachineKey.Protect*>metódus.</xref:System.Web.Security.MachineKey.Protect*>"
+  remarks: "Ezzel a módszerrel kapcsolatos további információkért lásd: a <xref:System.Web.Security.MachineKey.Protect%2A>metódus.</xref:System.Web.Security.MachineKey.Protect%2A>"
   syntax:
     content: public static byte[] Unprotect (byte[] protectedData, string[] purposes);
     parameters:
     - id: protectedData
       type: System.Byte[]
-      description: "The ciphertext data to unprotect."
+      description: "A titkosított szöveg adatok védelmének feloldása."
     - id: purposes
       type: System.String[]
-      description: "A list of purposes that describe what the data is meant for. This must be the same value that was passed to the <xref:System.Web.Security.MachineKey.Protect*> method when the data was protected."
+      description: "Egy leíró, mit jelent az adatok célokat felsoroló lista. A kapott értéket kell lennie a <xref:System.Web.Security.MachineKey.Protect*>metódust, ha a védett adatok.</xref:System.Web.Security.MachineKey.Protect*>"
     return:
       type: System.Byte[]
-      description: "The plaintext data."
+      description: "Az egyszerű szöveges adatokat."
   overload: System.Web.Security.MachineKey.Unprotect*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The <code>protectedData</code> parameter is null."
+    description: "A <code> protectedData </code> paraméterek egyike null értékű."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The purposes array contains one or more whitespace-only entries."
+    description: "A célokra tömb csak szóközt tartalmazó egy vagy több bejegyzést tartalmaz."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "Possible causes include the following:      -   The protected data was tampered with.      -   The value of the <code>purposes</code> parameter is not the same as the value that was specified when the data was protected.      -   The application is deployed to more than one server and is using auto-generated encryption keys."
+    description: "Lehetséges okok a következők:-a védett adatok sérült vagy módosították.      -A értékének a <code> purposes </code> paraméter nem ugyanazt az értéket, amelyet a rendszer meg van adva amikor védelemmel az adatokat.      – Az alkalmazás több kiszolgálót telepít, és automatikusan létrehozott titkosítási kulcsokat használ."
   platform:
   - net462
 references:

@@ -13,8 +13,8 @@ items:
   nameWithType: FileAuthorizationModule
   fullName: System.Web.Security.FileAuthorizationModule
   type: Class
-  summary: "Verifies that the user has permission to access the file requested. This class cannot be inherited."
-  remarks: "This module provides authorization services against file-system access-control lists (ACLs). When the `mode` attribute of the [authentication Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/27bc0ba9-f23a-45f3-ae42-dbe7916e3ee2) configuration element is set to `Windows` so that the <xref:System.Web.Security.WindowsAuthenticationModule> is being used for the application, the FileAuthorizationModule module ensures that the requesting user is allowed read or write access to the resource, depending on the request verb, before executing the request. For more information, see the <xref:System.Web.Security.FileAuthorizationModule.CheckFileAccessForUser%2A> method."
+  summary: "Ellenőrzi, hogy a felhasználó rendelkezik-e hozzáféréssel a kért fájl. Ez az osztály nem örökölhető."
+  remarks: "Ez a modul hozzáférés-vezérlési listák (ACL) adja meg a hitelesítési szolgáltatásokat fájlrendszer ellen. Ha a `mode` attribútuma a [elem (ASP.NET beállítási séma) hitelesítési](http://msdn.microsoft.com/en-us/27bc0ba9-f23a-45f3-ae42-dbe7916e3ee2) konfigurációs elem értéke `Windows` , hogy a <xref:System.Web.Security.WindowsAuthenticationModule>használja az alkalmazást, a modul biztosítja, hogy engedélyezi-e a kérelmező felhasználó FileAuthorizationModule írási vagy olvasási hozzáférést, attól függően, hogy a kérelem-műveletet az erőforrás a kérelem végrehajtása előtt.</xref:System.Web.Security.WindowsAuthenticationModule> További információkért lásd: a <xref:System.Web.Security.FileAuthorizationModule.CheckFileAccessForUser%2A>metódus.</xref:System.Web.Security.FileAuthorizationModule.CheckFileAccessForUser%2A>"
   syntax:
     content: 'public sealed class FileAuthorizationModule : System.Web.IHttpModule'
   inheritance:
@@ -36,8 +36,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;></xref> class."
-  remarks: "This constructor is not intended to be called from application code.       ASP.NET calls this constructor to create an instance of the <xref:System.Web.Security.FileAuthorizationModule> class. After calling the constructor, it calls the <xref:System.Web.Security.FileAuthorizationModule.Init%2A> method to initialize the new <xref:System.Web.Security.FileAuthorizationModule> object."
+  summary: "Létrehoz egy példányát a <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor nem célja, hogy az alkalmazás kódjában hívható.       ASP.NET meghívja ezt a konstruktort az <xref:System.Web.Security.FileAuthorizationModule>osztály</xref:System.Web.Security.FileAuthorizationModule> egy példányának létrehozása A konstruktor hívása, után hívja a <xref:System.Web.Security.FileAuthorizationModule.Init%2A>metódust is, az új <xref:System.Web.Security.FileAuthorizationModule>objektum.</xref:System.Web.Security.FileAuthorizationModule> </xref:System.Web.Security.FileAuthorizationModule.Init%2A>"
   syntax:
     content: public FileAuthorizationModule ();
     parameters: []
@@ -57,34 +57,34 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Determines whether the user has access to the requested file."
-  remarks: "The CheckFileAccessForUser method checks to see whether the current user, represented by a Windows access token, is granted access to the requested file in the file-system access-control lists (ACLs). The virtual path is mapped to the physical file-system path before the check is made.       If the HTTP verb used to make the request is `GET`, `POST`, or `HEAD`, the CheckFileAccessForUser method checks for read access to the file. If any other verb is used, the CheckFileAccessForUser method checks for read/write permission to the file.       **Security Note** If the <xref:System.Web.Security.FileAuthorizationModule> module is not defined in the `httpModules` configuration section for the application, the <xref:System.Web.Security.FileAuthorizationModule> module always returns `true`."
+  summary: "Meghatározza, hogy a felhasználó rendelkezik-e hozzáféréssel a kért fájl."
+  remarks: "A CheckFileAccessForUser metódus ellenőrzi, hogy az aktuális felhasználó, egy Windows-hozzáférési tokent, által képviselt hozzáférést kap a fájlrendszer hozzáférés-vezérlési listák (ACL) a kért fájl. A virtuális elérési út van leképezve a fájlrendszer fizikai elérési út, az ellenőrzés elvégzése előtt.       Ha van-e a HTTP-műveletet, a kérelem végrehajtásához használt `GET`, `POST`, vagy `HEAD`, a CheckFileAccessForUser módszert keres, olvasási hozzáféréssel rendelkezik a fájlhoz. Minden egyéb művelet használata esetén a CheckFileAccessForUser metódus ellenőrzi olvasási/írási engedéllyel a fájlra.       **Biztonsági megjegyzés** Ha a <xref:System.Web.Security.FileAuthorizationModule>modul nincs definiálva a `httpModules` az alkalmazás-konfigurációs szakaszát a <xref:System.Web.Security.FileAuthorizationModule>modul mindig adja vissza `true`.</xref:System.Web.Security.FileAuthorizationModule> </xref:System.Web.Security.FileAuthorizationModule>"
   syntax:
     content: public static bool CheckFileAccessForUser (string virtualPath, IntPtr token, string verb);
     parameters:
     - id: virtualPath
       type: System.String
-      description: "The virtual path to the file."
+      description: "A fájl virtuális elérési útja."
     - id: token
       type: System.IntPtr
-      description: "A Windows access token representing the user."
+      description: "A felhasználó képviselő Windows hozzáférési jogkivonat."
     - id: verb
       type: System.String
-      description: "The HTTP verb used to make the request."
+      description: "A kérelem végrehajtásához használt HTTP-műveletet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current Windows user represented by <code>token</code> has access to the file using the specified HTTP verb or if the <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;></xref> module is not defined in the application&quot;s configuration file; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az aktuális felhasználó által képviselt <code> token </code> hozzáfér ehhez a fájlhoz a megadott HTTP-műveletet vagy, ha a <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;> </xref> modul nincs az alkalmazás konfigurációs fájljában definiált; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.FileAuthorizationModule.CheckFileAccessForUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>virtualPath</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>token</code> is <xref:System.IntPtr.Zero>.       -or-       <code>verb</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>virtualPath</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>token</code> is <xref:System.IntPtr.Zero>.       -or-       <code>verb</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>virtualPath</code> is not in the application directory structure of the Web application."
+    description: "<code>virtualPath</code>Nincs alkalmazás könyvtárszerkezete a webes alkalmazás."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "The file specified by <code>virtualPath</code> does not exist."
+    description: "A megadott fájl <code> virtualPath </code> nem létezik."
   platform:
   - net462
 - uid: System.Web.Security.FileAuthorizationModule.Dispose
@@ -99,8 +99,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Releases all resources, other than memory, used by the <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;></xref>."
-  remarks: "This method is not intended to be called from application code."
+  summary: "Minden erőforrás által használt memória eltérő kiadja a <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;> </xref>."
+  remarks: "Ez a módszer nem célja, hogy az alkalmazás kódjában hívható."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -120,14 +120,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Initializes the <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;></xref> object."
-  remarks: "This method is not intended to be called from application code.       The Init method ensures that the <xref:System.Web.Security.FileAuthorizationModule> is included in the processing of the <xref:System.Web.HttpApplication.AuthorizeRequest> event."
+  summary: "Inicializálja a <xref href=&quot;System.Web.Security.FileAuthorizationModule&quot;> </xref> objektum."
+  remarks: "Ez a módszer nem célja, hogy az alkalmazás kódjában hívható.       Az inicializálási metódusnak biztosítja, hogy a <xref:System.Web.Security.FileAuthorizationModule>feldolgozása megtalálható a <xref:System.Web.HttpApplication.AuthorizeRequest>esemény.</xref:System.Web.HttpApplication.AuthorizeRequest> </xref:System.Web.Security.FileAuthorizationModule>"
   syntax:
     content: public void Init (System.Web.HttpApplication app);
     parameters:
     - id: app
       type: System.Web.HttpApplication
-      description: "The current <xref href=&quot;System.Web.HttpApplication&quot;></xref> instance."
+      description: "Az aktuális <xref href=&quot;System.Web.HttpApplication&quot;> </xref> példány."
   overload: System.Web.Security.FileAuthorizationModule.Init*
   exceptions: []
   platform:

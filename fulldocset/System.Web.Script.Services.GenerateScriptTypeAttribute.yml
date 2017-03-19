@@ -12,8 +12,8 @@ items:
   nameWithType: GenerateScriptTypeAttribute
   fullName: System.Web.Script.Services.GenerateScriptTypeAttribute
   type: Class
-  summary: "Specifies that the server type must be generated in the proxy object. This class cannot be inherited."
-  remarks: "In AJAX-enabled ASP.NET Web sites, ASP.NET can automatically generate proxy objects for methods of a Web service class. It does this for most top-level types for the input parameters and return values of any Web methods that are marked with <xref:System.Web.Script.Services.ScriptServiceAttribute>.       In other cases, if you proxy objects generated for server types, you must apply GenerateScriptTypeAttribute manually. You can apply GenerateScriptTypeAttribute to the Web service itself or to any Web service method or `static` page method marked with <xref:System.Web.Services.WebMethodAttribute>.       In some cases, even if the type corresponds to an input parameter or return value of a Web service method, the proxy will not be generated automatically. In that case, you must use the GenerateScriptTypeAttribute attribute to generate the proxy object for the type. This occurs for generic types and arrays that have more than one argument, such as `Dictionary<string,<T>>`.       One or more instances of GenerateScriptTypeAttribute can be applied to a Web service class or method. ASP.NET will then generate an ECMAScript (JavaScript) proxy class for each top-level type that is referenced by each declaration of GenerateScriptTypeAttribute.      > [!NOTE] >  If you want to generate proxy objects for nested types, you must manually apply GenerateScriptTypeAttribute to each nested type. ASP.NET generates proxies only for top-level types and does not automatically recursively apply the attribute to nested types.       For more information about how to use attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Meghatározza, hogy a kiszolgáló típusa a proxy objektumban jön létre. Ez az osztály nem örökölhető."
+  remarks: "Az ASP.NET AJAX-támogatott webböngészőből webhelyeken az ASP.NET automatikusan hozhat létre proxyobjektumainak módszer a webes szolgáltatás osztály. A bemeneti paramétereket, és semmilyen <xref:System.Web.Script.Services.ScriptServiceAttribute>.</xref:System.Web.Script.Services.ScriptServiceAttribute> megjelölt webes metódus visszatérési értékének legtöbb legfelső szintű típusok tesz       Egyéb esetekben ha proxyobjektumainak hozta létre a kiszolgáló típusú kell alkalmaznia GenerateScriptTypeAttribute manuálisan. A webes szolgáltatás, vagy bármely webszolgáltatás metódusa alkalmazhat GenerateScriptTypeAttribute vagy `static` <xref:System.Web.Services.WebMethodAttribute>.</xref:System.Web.Services.WebMethodAttribute> jelölésű metódus lapon       Néhány esetben akkor is, ha a típus egy bemeneti paraméter vagy visszatérési értéke egy webszolgáltatási metódusra, felel meg a proxy nem lesz létrehozva automatikusan. Ebben az esetben a GenerateScriptTypeAttribute attribútum kell használnia a proxy objektum a típus létrehozásához. Ez akkor fordul elő, az általános típusok és tömbökben, amelyek több mint egy argumentumot kell megadni, például a `Dictionary<string,<T>>`.       Egy webes szolgáltatás osztály vagy a metódus GenerateScriptTypeAttribute egy vagy több példányát is alkalmazható. ASP.NET ekkor létrehozza az egyes legfelső szintű GenerateScriptTypeAttribute minden deklarációjában által hivatkozott egy ECMAScript (JavaScript) proxyosztályt.      > [!NOTE] > Kíván létrehozni a beágyazott típusok proxyobjektumainak, ha manuálisan telepíteni kell a GenerateScriptTypeAttribute minden beágyazott típusra. Csak a legfelső szintű típusok proxyk az ASP.NET hoz létre, és nem automatikusan rekurzív módon felel meg az attribútum beágyazott típusok.       Attribútumok használatával kapcsolatos további információkért lásd: [attribútumok](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to apply GenerateScriptTypeAttribute to a Web service class and to a Web method. As a result, the `ColorObject` type and its nested type `FavoriteColors` are included in the proxy object.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Script.Services.GenerateScriptTypeAttribute&quot;></xref> class for the specified type."
-  remarks: "The <xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A> property is an optional named parameter for this constructor."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Web.Script.Services.GenerateScriptTypeAttribute&quot;> </xref> osztály a megadott típus esetében."
+  remarks: "A <xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A>tulajdonság használata nem kötelező paraméter neve ehhez a konstruktorhoz.</xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A>"
   example:
   - "The following example shows how to use <xref:System.Web.Script.Services.GenerateScriptTypeAttribute> to generate a proxy object for the specified type that uses a specific type identifier for the metadata marker.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -48,12 +48,12 @@ items:
     parameters:
     - id: type
       type: System.Type
-      description: "The type to include in the proxy class."
+      description: "Ahhoz, hogy szerepeljen a proxyosztály típusát."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>type</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId
@@ -68,13 +68,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Gets or sets the type identifier for the type metadata marker."
-  remarks: "This is an optional property. If specified, the value of ScriptTypeId is used for the type metadata marker (&quot;__type&quot;) on the serialized JSON string instead of the assembly-qualified name of the type. During deserialization, the type resolver that is associated with the <xref:System.Web.Script.Serialization.JavaScriptSerializer> object will use the type metadata marker value to map back to the appropriate managed type."
+  summary: "Lekérdezi vagy beállítja a típusazonosító a metaadatok jelölő típus."
+  remarks: "Ezt a tulajdonságot nem kötelező megadni. Ha meg van adva, ScriptTypeId értékének szolgál a típus metaadatok jelölő (&quot;__type&quot;) a szerializált JSON-karakterlánc típusú minősítve a szerelvény neve helyett. Deszerializálás során, a típus feloldó, amely kapcsolódik a <xref:System.Web.Script.Serialization.JavaScriptSerializer>objektum leképezése a megfelelő felügyelt típus a típus metaadatok jelölő értéket használja.</xref:System.Web.Script.Serialization.JavaScriptSerializer>"
   syntax:
     content: public string ScriptTypeId { get; set; }
     return:
       type: System.String
-      description: "The type identifier for the type metadata marker on the serialized JavaScript Object Notation (JSON) string. The default value is the assembly-qualified name of the type."
+      description: "A szerializált JavaScript Object Notation (JSON) karakterlánc típusú metaadatok jelölő típus azonosítója. Az alapértelmezett érték: a típus minősítve a szerelvény neve."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId*
   exceptions: []
   platform:
@@ -91,12 +91,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Gets the type that is included in the proxy object."
+  summary: "A típus, amely megtalálható a proxy objektum beolvasása."
   syntax:
     content: public Type Type { get; }
     return:
       type: System.Type
-      description: "The type object that is included in the generated proxy object."
+      description: "A type objektum, amely megtalálható a létrehozott proxy objektum."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.Type*
   exceptions: []
   platform:
