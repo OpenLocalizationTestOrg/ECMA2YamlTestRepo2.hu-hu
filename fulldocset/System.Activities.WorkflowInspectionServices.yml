@@ -15,7 +15,7 @@ items:
   nameWithType: WorkflowInspectionServices
   fullName: System.Activities.WorkflowInspectionServices
   type: Class
-  summary: "Provides methods for working with the runtime metadata for an activity tree."
+  summary: "Egy tevékenység-fastruktúra futásidejű metaadatainak való munkához metódusokat biztosít."
   syntax:
     content: public static class WorkflowInspectionServices
   inheritance:
@@ -36,13 +36,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Caches the runtime metadata for the specified activity tree."
+  summary: "A megadott tevékenység-fastruktúra futásidejű metaadatainak gyorsítótárazza."
   syntax:
     content: public static void CacheMetadata (System.Activities.Activity rootActivity);
     parameters:
     - id: rootActivity
       type: System.Activities.Activity
-      description: "The root activity of the activity tree."
+      description: "A tevékenység-fastruktúra a gyökértevékenység."
   overload: System.Activities.WorkflowInspectionServices.CacheMetadata*
   exceptions: []
   platform:
@@ -59,16 +59,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Caches the runtime metadata for the specified activity tree using the specified environment."
+  summary: "A megadott környezet használatával megadott tevékenység-fastruktúra futásidejű metaadatainak gyorsítótárazza."
   syntax:
     content: public static void CacheMetadata (System.Activities.Activity rootActivity, System.Activities.LocationReferenceEnvironment hostEnvironment);
     parameters:
     - id: rootActivity
       type: System.Activities.Activity
-      description: "The root activity of the activity tree."
+      description: "A tevékenység-fastruktúra a gyökértevékenység."
     - id: hostEnvironment
       type: System.Activities.LocationReferenceEnvironment
-      description: "The environment associated with the activity tree."
+      description: "A tevékenység-fastruktúra társított környezet."
   overload: System.Activities.WorkflowInspectionServices.CacheMetadata*
   exceptions: []
   platform:
@@ -85,16 +85,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Specifies whether the service can include idle activities."
+  summary: "Meghatározza, hogy a szolgáltatás üresjárati tevékenységek is tartalmazzák."
   syntax:
     content: public static bool CanInduceIdle (System.Activities.Activity activity);
     parameters:
     - id: activity
       type: System.Activities.Activity
-      description: "The activity."
+      description: "A tevékenység."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the service can include idle activities; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha a szolgáltatás tartalmazhatnak üresjárati tevékenységek; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Activities.WorkflowInspectionServices.CanInduceIdle*
   exceptions: []
   platform:
@@ -111,17 +111,17 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns an &lt;xref:System.Collections.Generic.IEnumerable%601&gt; that represents all activities associated with the input activity."
-  remarks: "The enumeration contains all child activities, delegate handlers, variable defaults, and argument expressions. If the input activity is `null`, an <xref:System.ArgumentNullException> is thrown. The activity tree must remain unmodified and <xref:System.Activities.WorkflowInspectionServices.CacheMetadata%2A> must not be called while the tree is being enumerated or else an <xref:System.InvalidOperationException> is thrown when <xref:System.Collections.IEnumerator.MoveNext%2A> is called.       Calling this method causes a full cache metadata to occur. If you make changes to the workflow after calling this method, you must call the <xref:System.Activities.Validation.ActivityValidationServices> <xref:System.Activities.Validation.ActivityValidationServices.Validate%2A> method after making the changes in order to re-cache the metadata."
+  summary: "Értéket ad vissza egy &lt;xref:System.Collections.Generic.IEnumerable%601&gt; , amely jelzi, hogy a bemeneti tevékenység társított összes tevékenységet."
+  remarks: "A számbavétel gyermektevékenységek, delegált kezelők, változó alapértelmezett és az argumentumként megadott kifejezések tartalmazza. Ha a bemeneti tevékenység `null`, egy <xref:System.ArgumentNullException>vált ki.</xref:System.ArgumentNullException> A tevékenység-fastruktúra változatlan kell maradnia és <xref:System.Activities.WorkflowInspectionServices.CacheMetadata%2A>nem szabad meghívni, amíg a fa fel, vagy folyamatban van egy <xref:System.InvalidOperationException>vált ki, mikor <xref:System.Collections.IEnumerator.MoveNext%2A>nevezik.</xref:System.Collections.IEnumerator.MoveNext%2A> </xref:System.InvalidOperationException> </xref:System.Activities.WorkflowInspectionServices.CacheMetadata%2A>       A metódus meghívása megtörténik a teljes gyorsítótár metaadatok hatására. Ha módosítja a munkafolyamatnak a metódus hívása után, meg kell hívnia a <xref:System.Activities.Validation.ActivityValidationServices> <xref:System.Activities.Validation.ActivityValidationServices.Validate%2A>metódus ahhoz, hogy újra gyorsítótárazza a metaadatok a módosítások elvégzése után.</xref:System.Activities.Validation.ActivityValidationServices.Validate%2A> </xref:System.Activities.Validation.ActivityValidationServices>"
   syntax:
     content: public static System.Collections.Generic.IEnumerable<System.Activities.Activity> GetActivities (System.Activities.Activity activity);
     parameters:
     - id: activity
       type: System.Activities.Activity
-      description: "The root activity."
+      description: "A gyökértevékenység."
     return:
       type: System.Collections.Generic.IEnumerable{System.Activities.Activity}
-      description: "An enumeration that represents all activities associated with the input activity."
+      description: "A bemeneti tevékenységhez társított összes tevékenység jelölő felsorolásoknak."
   overload: System.Activities.WorkflowInspectionServices.GetActivities*
   exceptions: []
   platform:
@@ -138,16 +138,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Retrieves the implementation version of the activity."
+  summary: "A tevékenység végrehajtása verzióját kéri le."
   syntax:
     content: public static Version GetImplementationVersion (System.Activities.Activity activity);
     parameters:
     - id: activity
       type: System.Activities.Activity
-      description: "The activity."
+      description: "A tevékenység."
     return:
       type: System.Version
-      description: "The implementation version of the activity."
+      description: "A tevékenység végrehajtása verziója."
   overload: System.Activities.WorkflowInspectionServices.GetImplementationVersion*
   exceptions: []
   platform:
@@ -164,19 +164,19 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns the activity with the specified <code>id</code> from the specified activity tree."
+  summary: "Visszaadja a megadott tevékenység <code> id </code> a megadott tevékenység fában."
   syntax:
     content: public static System.Activities.Activity Resolve (System.Activities.Activity root, string id);
     parameters:
     - id: root
       type: System.Activities.Activity
-      description: "The activity tree to search."
+      description: "A tevékenység-fastruktúra kereséséhez."
     - id: id
       type: System.String
-      description: "The identifier of the activity to find."
+      description: "A tevékenység található azonosítóját."
     return:
       type: System.Activities.Activity
-      description: "The specified activity if found; otherwise, an <xref:System.ArgumentException> is thrown."
+      description: "A megadott tevékenység, ha található. Ellenkező esetben egy <xref:System.ArgumentException>vált ki.</xref:System.ArgumentException>"
   overload: System.Activities.WorkflowInspectionServices.Resolve*
   exceptions: []
   platform:
