@@ -13,8 +13,8 @@ items:
   nameWithType: IControlDesignerAccessor
   fullName: System.Web.UI.IControlDesignerAccessor
   type: Interface
-  summary: "Provides access to a control designer to store temporary design-time data associated with a control."
-  remarks: "The property and methods defined in the IControlDesignerAccessor interface offer a convenient way for the control designer to access a control for passing and retrieving temporary design-time data. The interface is implemented by the <xref:System.Web.UI.Control> class. Control designers use the implementation of this interface to access the control.       Temporary design-time data is not persisted with the control itself. To persist design-time data for a control, you should retrieve the contents of the <xref:System.Web.UI.IControlDesignerAccessor.UserData%2A> property and store them in a designer-specific location."
+  summary: "Hozzáférést biztosít egy vezérlő designer tartozó vezérlőelem ideiglenes tervezési idejű adatok tárolására."
+  remarks: "A tulajdonság és a IControlDesignerAccessor felületen megadott módszerek egyszerűsítik a vezérlő Designer sikeres, és ideiglenes tervezési idejű adatok beolvasására vezérlő eléréséhez. A felület megvalósítja az <xref:System.Web.UI.Control>osztályhoz.</xref:System.Web.UI.Control> Vezérlő tervezők vezérlő eléréséhez használja az adott illesztő végrehajtására.       Ideiglenes tervezési idejű adatokat nem őrzi meg a vezérlőhöz magát. Vezérlő tervezéskor adatok megmaradnak, be kell olvasni tartalmát a <xref:System.Web.UI.IControlDesignerAccessor.UserData%2A>tulajdonság és a Tervező-specifikus helyen tárolja őket.</xref:System.Web.UI.IControlDesignerAccessor.UserData%2A>"
   syntax:
     content: public interface IControlDesignerAccessor
   implements: []
@@ -32,14 +32,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "When implemented, gets the state from the control during use on the design surface."
-  remarks: "This method is used only by control designers."
+  summary: "Megadásuk után lekérése az állapot a vezérlő a tervezési felülethez a használat során."
+  remarks: "Ez a módszer csak vezérlő tervezők használják."
   syntax:
     content: public System.Collections.IDictionary GetDesignModeState ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> of the control state."
+      description: "Egy <xref:System.Collections.IDictionary>a vezérlő szerinti.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.IControlDesignerAccessor.GetDesignModeState*
   exceptions: []
   platform:
@@ -56,14 +56,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "When implemented, sets control state before rendering it on the design surface."
-  remarks: "In overridden controls, this method is used to retain and set state for the control during design-time mode. This method is used only by control designers."
+  summary: "Megadásuk után vezérlő állapotának beállítása előtt, a Tervező felületére."
+  remarks: "Felülbírált vezérlők Ez a módszer segítségével megőrzése mellett, és állítsa be a vezérlő állapotát tervezési idejű módban. Ez a módszer csak vezérlő tervezők használják."
   syntax:
     content: public void SetDesignModeState (System.Collections.IDictionary data);
     parameters:
     - id: data
       type: System.Collections.IDictionary
-      description: "The <xref:System.Collections.IDictionary> containing the control state."
+      description: "A <xref:System.Collections.IDictionary>tartalmazó a vezérlőhivatkozás.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.IControlDesignerAccessor.SetDesignModeState*
   exceptions: []
   platform:
@@ -80,14 +80,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "When implemented, specifies the control that acts as the owner to the control implementing this method."
-  remarks: "In a composite container scenario where one control contains another control, the container is the control owner."
+  summary: "Megadásuk után megadja a vezérlő, amely különbséglemezként funkcionál a vezérlőt, ez a metódus megvalósítása a tulajdonosa."
+  remarks: "A tároló egy összetett tároló forgatókönyv, ahol egy vezérlőt másik vezérlőt tartalmaz, a vezérlő tulajdonosa."
   syntax:
     content: public void SetOwnerControl (System.Web.UI.Control owner);
     parameters:
     - id: owner
       type: System.Web.UI.Control
-      description: "The control to act as owner."
+      description: "A vezérlő a tulajdonos nevében járhasson el."
   overload: System.Web.UI.IControlDesignerAccessor.SetOwnerControl*
   exceptions: []
   platform:
@@ -104,13 +104,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "When implemented, gets a collection of information that can be accessed by a control designer."
-  remarks: "A control&quot;s properties and content can be persisted, so that the control maintains state in the design-time environment. This property is used only by control designers."
+  summary: "Megadásuk után lekérdezi a vezérlő Designer elérhető információk gyűjteménye."
+  remarks: "A vezérlőelem tulajdonságait és tartalmát is őrizhető meg, úgy, hogy a vezérlőelem megőrzi a tervezési környezetben állapotokat. Ez a tulajdonság csak a vezérlő tervezők által használható."
   syntax:
     content: public System.Collections.IDictionary UserData { get; }
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> containing information about the control."
+      description: "Egy <xref:System.Collections.IDictionary>vezérlő kapcsolatos információkat tartalmazó.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.IControlDesignerAccessor.UserData*
   exceptions: []
   platform:
