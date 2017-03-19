@@ -17,8 +17,8 @@ items:
   nameWithType: BinaryMessageFormatter
   fullName: System.Messaging.BinaryMessageFormatter
   type: Class
-  summary: "Serializes or deserializes an object, or an entire graph of connected objects, to or from the body of a Message Queuing message, using a binary format."
-  remarks: "The BinaryMessageFormatter is very efficient and can be used to serialize most objects. The result is very compact and fast to parse, but does not allow for loosely coupled messaging as the <xref:System.Messaging.XmlMessageFormatter> does. Loosely coupled means that the client and the server can independently version the type that is sent and received.       When the application sends a message to the queue using an instance of the <xref:System.Messaging.MessageQueue> class, the formatter serializes the object into a stream and inserts it into the message body. When reading from a queue using a <xref:System.Messaging.MessageQueue>, the formatter deserializes the message data into the <xref:System.Messaging.Message.Body%2A> property of a <xref:System.Messaging.Message>.       BinaryMessageFormatter provides faster throughput than the <xref:System.Messaging.XmlMessageFormatter>. Use the BinaryMessageFormatter when pure speed rather than loosely coupled messaging is desired."
+  summary: "Rendezi sorba, vagy egy objektumot, vagy egy kapcsolódó objektum, vagy a Message Queuing üzenet, a bináris formátumot használja a teljes diagramot deserializes."
+  remarks: "A BinaryMessageFormatter nagyon hatékony, és a legtöbb objektum szerializálása használható. Eredménye nagyon kompakt és gyors elemzése, de nem engedélyezi a lazán üzenetküldési a <xref:System.Messaging.XmlMessageFormatter>does.</xref:System.Messaging.XmlMessageFormatter> Lazán összekapcsolt azt jelenti, hogy az ügyfél és a kiszolgáló is egymástól függetlenül verzió küldött és fogadott típusát.       Ha az alkalmazás egy üzenetet küld a sorból egy példányát a <xref:System.Messaging.MessageQueue>osztály, formázó rendezi sorba az objektum egy adatfolyamba, és beszúrja az üzenettörzs.</xref:System.Messaging.MessageQueue> Amikor a sorból egy <xref:System.Messaging.MessageQueue>a formázó deserializes a <xref:System.Messaging.Message.Body%2A> <xref:System.Messaging.Message>.</xref:System.Messaging.Message> tulajdonsága</xref:System.Messaging.Message.Body%2A> az állapotüzenet-adatokat</xref:System.Messaging.MessageQueue> olvas       BinaryMessageFormatter biztosít, mint a <xref:System.Messaging.XmlMessageFormatter>.</xref:System.Messaging.XmlMessageFormatter> gyorsabb átviteli A BinaryMessageFormatter használja, ha tiszta sebesség helyett lazán üzenetkezelés van szükség."
   example:
   - >-
     [!code-cpp[MessagingBinaryFormatter#1](~/add/codesnippet/cpp/t-system.messaging.binar_1.cpp)]
@@ -46,8 +46,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class without specifying a type style or top object assembly style."
-  remarks: "You must specify values for the <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> property (which defines how the root object in a graph is laid out) and the <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> property (which defines how object type descriptions are laid out) before using an instance of the <xref:System.Messaging.BinaryMessageFormatter> class to serialize and send a message."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> osztály egy típus stílus vagy legfelső szintű objektumának szerelvény megadása nélkül."
+  remarks: "Az értéket meg kell adni a <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>tulajdonság (amely meghatározza, hogyan jelenjen meg a gyökérszintű objektum egy grafikonon) és a <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>(amely meghatározza, hogyan vannak leírva objektum típusának leírása) tulajdonság példányának használata előtt a <xref:System.Messaging.BinaryMessageFormatter>osztályt szerializálni elküldeni egy üzenetet.</xref:System.Messaging.BinaryMessageFormatter> </xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>"
   syntax:
     content: public BinaryMessageFormatter ();
     parameters: []
@@ -67,16 +67,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class, specifying the formats of the root object and the type descriptions."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> osztály a gyökérszintű objektum és a leírások formátumok megadása."
   syntax:
     content: public BinaryMessageFormatter (System.Runtime.Serialization.Formatters.FormatterAssemblyStyle topObjectFormat, System.Runtime.Serialization.Formatters.FormatterTypeStyle typeFormat);
     parameters:
     - id: topObjectFormat
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "Determines how the top (root) object of a graph is laid out in the serialized stream."
+      description: "Meghatározza, hogyan egy gráf legfelső (gyökér) objektum jelenjen meg a szerializált adatfolyamban."
     - id: typeFormat
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "Determines how type descriptions are laid out in the serialized stream."
+      description: "Meghatározza, hogyan leírások elrendezésének a szerializált adatfolyamban."
   overload: System.Messaging.BinaryMessageFormatter.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Determines whether the formatter can deserialize the contents of the message."
-  remarks: "CanRead returns `false` if the message body is not a binary object.       On the receiving computer, CanRead returns `true` if the assembly for the class to be deserialized exists locally. The assembly must be found in the global assembly cache, or be linked to the application (for example, if the object represents a custom class)."
+  summary: "Meghatározza, hogy a formázó is deszerializálni az üzenet tartalmát."
+  remarks: "CanRead adja vissza `false` Ha az üzenet törzse nem egy bináris objektum.       A fogadó számítógép CanRead adja vissza `true` Ha deszerializálását az osztály a szerelvény létezik helyileg. A szerelvény a globális szerelvény-gyorsítótárban található, vagy lehet a kapcsolódó (például, ha az objektum által jelképezett egyéni osztály)."
   syntax:
     content: public bool CanRead (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to inspect."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref> vizsgálata."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binary message formatter can deserialize the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a bináris üzenetformázó tudja deszerializálni az üzenet; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.BinaryMessageFormatter.CanRead*
   exceptions:
   - type: System.ArgumentNullException
@@ -123,14 +123,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Creates an instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class whose read/write properties (the root object and type description formats) are the same as the current <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>."
-  remarks: "This method creates a copy of the formatter and initializes all its properties to the values of this <xref:System.Messaging.BinaryMessageFormatter>. It is used for scalability, but does not guarantee read or write thread safety."
+  summary: "Létrehoz egy példányát a <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> osztály, amelynek olvasási/írási (a legfelső szintű objektum és a Típus Leírás formátumot) tulajdonságok megegyeznek az aktuális <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>."
+  remarks: "Ez a módszer formázó másolatát hozza létre, és inicializálja az összes tulajdonságát a <xref:System.Messaging.BinaryMessageFormatter>.</xref:System.Messaging.BinaryMessageFormatter> értékeivel Méretezhetőségi, a rendszer, de nem garantálja az olvasási vagy írási szál biztonsági."
   syntax:
     content: public object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "An object whose properties are identical to those of this <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>, but whose metadata does not specify it to be a formatter class instance."
+      description: "Az objektum, amelynek a Tulajdonságok megegyeznek az e <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>, amelynek metaadatok nem határoz meg, hogy egy formatter osztálypéldányt kell."
   overload: System.Messaging.BinaryMessageFormatter.Clone*
   exceptions: []
   platform:
@@ -147,22 +147,22 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Reads the contents from the given message and creates an object that contains the deserialized message."
-  remarks: "> [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378).       The body of the message must be in binary format, and the same serializer must be used to deserialize the message as that which initially serialized it. If the body represents a custom class, the assembly for that class must exist locally."
+  summary: "A tartalom beolvassa az adott üzenethez, és létrehoz egy objektumot, amely tartalmazza a deszerializált üzenet."
+  remarks: "> [!IMPORTANT]> Nem megbízható adatokkal a metódus hívása biztonsági kockázatot jelent. Ez a metódus csak a megbízható meghívható. További információkért lásd: [nem megbízható adatok biztonsági kockázatok](http://go.microsoft.com/fwlink/?LinkId=330378).       Az üzenet törzsét bináris formátumúnak kell lennie, és ugyanazt a szerializáló deszerializálni az üzenetet, amelyet eredetileg szerializálni kell használni. Ha a szervezet egy egyéni osztály, amely a szerelvény helyileg léteznie kell."
   syntax:
     content: public object Read (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref>, in binary format, to deserialize."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref>, bináris formátumú deszerializálása."
     return:
       type: System.Object
-      description: "The deserialized message."
+      description: "A deszerializált üzenet."
   overload: System.Messaging.BinaryMessageFormatter.Read*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The message&quot;s <xref:System.Messaging.Message.BodyType*> property does not indicate a binary object."
+    description: "Az üzenet <xref:System.Messaging.Message.BodyType*>tulajdonság nem jelzi azt egy bináris objektum.</xref:System.Messaging.Message.BodyType*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>message</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -180,13 +180,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how the top (root) object of a graph is deserialized with regards to finding and loading its assembly."
-  remarks: "Currently, you should accept the default value, `AssemblyStyle`."
+  summary: "Lekérdezi vagy beállítja egy érték, amely meghatározza, hogyan egy gráf legfelső (gyökér) objektum keresése és a szerelvény betöltése jelenítik deszerializálni-e."
+  remarks: "Jelenleg, el kell fogadnia az alapértelmezett érték `AssemblyStyle`."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterAssemblyStyle TopObjectFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "One of the <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;></xref> values that defines the deserialization behavior."
+      description: "Egy a <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;> </xref> deszerializálása viselkedését meghatározó értékek."
   overload: System.Messaging.BinaryMessageFormatter.TopObjectFormat*
   exceptions: []
   platform:
@@ -203,13 +203,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how type descriptions are laid out in the serialized stream."
-  remarks: "Currently, you should accept the default value, `TypesWhenNeeded`."
+  summary: "Lekérdezi vagy beállítja egy érték, amely meghatározza, hogyan leírások elrendezésének a szerializált adatfolyamban."
+  remarks: "Jelenleg, el kell fogadnia az alapértelmezett érték `TypesWhenNeeded`."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "A <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;></xref> that defines the type description format."
+      description: "A <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;> </xref> , amely meghatározza, hogy a típusformátum leírása."
   overload: System.Messaging.BinaryMessageFormatter.TypeFormat*
   exceptions: []
   platform:
@@ -226,17 +226,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Serializes an object into the body of the message."
-  remarks: "The top object format and type format need not be specified to write to the queue as they must be when reading. The <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> and <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> properties are used by the formatter only when deserializing a message.       The <xref:System.Messaging.BinaryMessageFormatter> can serialize most objects, but the result is not loosely coupled. However, it is compact, so the formatter is efficient for large objects."
+  summary: "Rendezi sorba az objektum az az üzenet törzsét."
+  remarks: "A legfelső szintű objektum formázása és a típusformátum nem lehet írni a várólista, fel kell olvasásakor kell megadni. A <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>és <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>Tulajdonságok által használt formázó csak akkor, ha egy üzenet deszerializálása.</xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>       A <xref:System.Messaging.BinaryMessageFormatter>lehet szerializálni a legtöbb objektumot, de az eredmény nem lazán.</xref:System.Messaging.BinaryMessageFormatter> Célszerű kompakt, így a formázó hatékony nagy objektumok."
   syntax:
     content: public void Write (System.Messaging.Message message, object obj);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> whose <xref:System.Messaging.Message.Body*> property will contain the serialized object."
+      description: "A <xref href=&quot;System.Messaging.Message&quot;> </xref> amelynek <xref:System.Messaging.Message.Body*>tulajdonság a szerializált objektum fogja tartalmazni.</xref:System.Messaging.Message.Body*>"
     - id: obj
       type: System.Object
-      description: "The object to be serialized into the message body."
+      description: "Az üzenetbe szerializálandó objektum."
   overload: System.Messaging.BinaryMessageFormatter.Write*
   exceptions:
   - type: System.ArgumentNullException

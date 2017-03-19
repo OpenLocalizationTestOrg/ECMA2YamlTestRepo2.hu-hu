@@ -17,8 +17,8 @@ items:
   nameWithType: AuthenticationManager
   fullName: System.Net.AuthenticationManager
   type: Class
-  summary: "Manages the authentication modules called during the client authentication process."
-  remarks: "AuthenticationManager is a static class that manages the authentication modules that an application uses. When a request is made to protected resources, the AuthenticationManager calls the <xref:System.Net.AuthenticationManager.Authenticate%2A> method to get an <xref:System.Net.Authorization> instance to use in subsequent requests.       The AuthenticationManager queries each registered authentication module by calling the <xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName> method for each module. The first authentication module to return an <xref:System.Net.Authorization> instance is used to authenticate the request.       Modules that provide the basic, digest, negotiate, NTLM, and Kerberos authentication types are registered with the AuthenticationManager by default. Additional authentication modules that implement the <xref:System.Net.IAuthenticationModule> interface can be added using the <xref:System.Net.AuthenticationManager.Register%2A> method. Authentication modules are called in the order in which they were added to the list.      > [!NOTE] >  The Kerberos and negotiate authentication type is not supported on Windows 95/98 or Windows NT 4.0."
+  summary: "Kezeli a hitelesítési modulok, az ügyfél-hitelesítési folyamat közben."
+  remarks: "AuthenticationManager az statikus osztály, amely kezeli a hitelesítési modulok, amellyel az alkalmazások. Ha a kérelem a védett erőforrások, az AuthenticationManager hívások a <xref:System.Net.AuthenticationManager.Authenticate%2A>metódus használatával kérje le egy <xref:System.Net.Authorization>példányt a későbbi kérelmeket.</xref:System.Net.Authorization> </xref:System.Net.AuthenticationManager.Authenticate%2A>       Az AuthenticationManager minden egyes regisztrált hitelesítési modul lekérdezi meghívásával a <xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName>minden modul metódusa.</xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName> Az első hitelesítési modul vissza egy <xref:System.Net.Authorization>példányt használja hitelesíteni a kérelmet.</xref:System.Net.Authorization>       Modulok, amely az alapvető, digest, negotiate, NTLM, és a Kerberos hitelesítési típusok alapértelmezés szerint a AuthenticationManager vannak regisztrálva. További hitelesítési modulokat, amelyek megvalósítják az <xref:System.Net.IAuthenticationModule>felület használatával kell hozzáadni a <xref:System.Net.AuthenticationManager.Register%2A>metódus.</xref:System.Net.AuthenticationManager.Register%2A> </xref:System.Net.IAuthenticationModule> Hitelesítési modulok nevezzük a sorrendben, amelyben addig adták hozzá a listához.      > [!NOTE] > A Kerberos és egyezteti hitelesítési típusa nem támogatott a Windows 95/98 vagy Windows NT 4.0-s verzióját."
   example:
   - >-
     [!code-cs[System.Net.Authentication#1](~/add/codesnippet/csharp/t-system.net.authenticat_0_1.cs)]
@@ -44,28 +44,28 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Calls each registered authentication module to find the first module that can respond to the authentication request."
-  remarks: "The Authenticate method calls the <xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName> method on each registered authentication module until one of the module responds with an <xref:System.Net.Authorization> instance.       The first <xref:System.Net.Authorization> instance returned is used to authenticate the request. If no authentication module can authenticate the request, the Authenticate method returns `null`.       Authentication modules are called in the order in which they are registered with the <xref:System.Net.AuthenticationManager>."
+  summary: "Meghívja a első modul keresése, amelyik reagál a hitelesítési kérelem minden regisztrált hitelesítési modul."
+  remarks: "A hitelesítés metódushívások a <xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName>metódus minden egyes regisztrált hitelesítési modul egy, a modul válaszol, amíg egy <xref:System.Net.Authorization>példány.</xref:System.Net.Authorization> </xref:System.Net.IAuthenticationModule.Authenticate%2A?displayProperty=fullName>       Az első <xref:System.Net.Authorization>példányt adott vissza a kérés hitelesítéséhez használt.</xref:System.Net.Authorization> Ha nincs hitelesítési modul képes hitelesíteni a kérelmet, a hitelesítés metódus visszaadja `null`.       A sorrendben, ahol azok regisztrálva vannak a <xref:System.Net.AuthenticationManager>.</xref:System.Net.AuthenticationManager> nevezik hitelesítési modulok"
   syntax:
     content: public static System.Net.Authorization Authenticate (string challenge, System.Net.WebRequest request, System.Net.ICredentials credentials);
     parameters:
     - id: challenge
       type: System.String
-      description: "The challenge returned by the Internet resource."
+      description: "A feladat, az internetes erőforrás által visszaadott."
     - id: request
       type: System.Net.WebRequest
-      description: "The <xref:System.Net.WebRequest> that initiated the authentication challenge."
+      description: "A <xref:System.Net.WebRequest>, amelyek a hitelesítési kérdés kezdeményezett.</xref:System.Net.WebRequest>"
     - id: credentials
       type: System.Net.ICredentials
-      description: "The <xref:System.Net.ICredentials> associated with this request."
+      description: "A <xref:System.Net.ICredentials>Ehhez a kérelemhez társított.</xref:System.Net.ICredentials>"
     return:
       type: System.Net.Authorization
-      description: "An instance of the <xref href=&quot;System.Net.Authorization&quot;></xref> class containing the result of the authorization attempt. If there is no authentication module to respond to the challenge, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Egy példányát a <xref href=&quot;System.Net.Authorization&quot;> </xref> osztály, amely tartalmazza a hitelesítési kísérlet eredményét. Ez a metódus visszaadja-e a kérdésre válaszolni nincs hitelesítési modul, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.AuthenticationManager.Authenticate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>challenge</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>request</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>credentials</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>challenge</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>request</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>credentials</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Net.AuthenticationManager.CredentialPolicy
@@ -80,15 +80,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets or sets the credential policy to be used for resource requests made using the <xref:System.Net.HttpWebRequest> class."
-  remarks: "The credential policy determines whether to send credentials when sending a request for a network resource, such as the content of a Web page. If credentials are sent, servers that require client authentication can attempt to authenticate the client when the request is received instead of sending a response indicating that the client&quot;s credentials are required. While this saves a round trip to the server, this must be balanced against the security risk inherent in sending credentials across the network. When the destination server does not require client authentication it is best to not send credentials.       The credential policy will be called only for requests that specify credentials or use a <xref:System.Net.WebProxy> object that specifies credentials."
+  summary: "Lekérdezi vagy beállítja a hitelesítő adatok házirend használható erőforrás érkező kéréseket az <xref:System.Net.HttpWebRequest>osztály</xref:System.Net.HttpWebRequest> használatával"
+  remarks: "A hitelesítő adatok házirend meghatározza, hogy a hitelesítő adatokat küld, ha egy hálózati erőforráshoz, például a tartalom egy weblap-kérelmet küld-e. Ha a hitelesítő adatok küldése, ügyfél-hitelesítést igénylő kiszolgálók is megkísérelheti a hitelesíteni az ügyfelet, ha a kérelem érkezik helyett egy választ, amely azt jelzi, hogy az ügyfél hitelesítő adatokra szükség. A kiszolgáló oda-vissza ezzel ment, amíg ez szerves része a hitelesítő adatok elküldése a hálózaton keresztül a biztonsági veszély ellen lehet átgondolni. A célkiszolgáló nem igényel ügyfél-hitelesítés esetén a legjobb, ha nem a hitelesítő adatok küldése.       A hitelesítő adatok házirend lesz csak hívható kérelmeket, amelyek a hitelesítő adatok megadásához, vagy használjon egy <xref:System.Net.WebProxy>objektum, amely megadja a hitelesítő adatokat.</xref:System.Net.WebProxy>"
   example:
   - "The following code example demonstrates setting the credential policy.  \n  \n [!code-cpp[NclCredPolicy#2](~/add/codesnippet/cpp/p-system.net.authenticat_1_1.cpp)]\n [!code-cs[NclCredPolicy#2](~/add/codesnippet/csharp/p-system.net.authenticat_1_1.cs)]"
   syntax:
     content: public static System.Net.ICredentialPolicy CredentialPolicy { get; set; }
     return:
       type: System.Net.ICredentialPolicy
-      description: "An object that implements the <xref href=&quot;System.Net.ICredentialPolicy&quot;></xref> interface that determines whether credentials are sent with requests. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Egy objektum, amely megvalósítja a <xref href=&quot;System.Net.ICredentialPolicy&quot;> </xref> felület, amely meghatározza, hogy a hitelesítő adatok küldése a kérelmeket. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Net.AuthenticationManager.CredentialPolicy*
   exceptions: []
   platform:
@@ -105,15 +105,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets the dictionary that contains Service Principal Names (SPNs) that are used to identify hosts during Kerberos authentication for requests made using <xref:System.Net.WebRequest> and its derived classes."
-  remarks: "An SPN is a name by which a client uniquely identifies an instance of a service or application on a server for purposes of mutual authentication. Mutual authentication is requested by default, and you can require it by setting <xref:System.Net.WebRequest.AuthenticationLevel%2A?displayProperty=fullName> to <xref:System.Net.Security.AuthenticationLevel> in your request.       When a <xref:System.Net.WebRequest> requires mutual authentication, the SPN for the destination must be supplied by the client. If you know the SPN, you can add it to the CustomTargetNameDictionary before sending the request. If you have not added SPN information to this dictionary, the <xref:System.Net.AuthenticationManager> uses the <xref:System.Net.WebRequest.RequestUri%2A> method to compose the most likely SPN; however, this is a computed value and might be incorrect. If mutual authentication is attempted and fails, you can check the dictionary to determine the computed SPN. No SPN is entered into the dictionary if the authentication protocol does not support mutual authentication.       To add an SPN value to this dictionary, use the <xref:System.Uri.AbsoluteUri%2A> of the <xref:System.Net.WebRequest.RequestUri%2A> as the key. Internally, the key is truncated to include the <xref:System.Uri.Scheme%2A>, <xref:System.Uri.Host%2A>, and the <xref:System.Uri.Port%2A> if it is not the default port.      > [!NOTE] >  Accessing the methods and properties of the CustomTargetNameDictionary requires unrestricted <xref:System.Net.WebPermission>.      > [!NOTE] >  When Kerberos authentication is performed through a proxy, both the proxy and the ultimate host name need to be resolved to an SPN. The proxy name resolution is protected by a timeout. Resolution of the ultimate host name to a SPN requires a DNS lookup, and there is no timeout associated directly with this operation. Therefore synchronous operations may take longer to timeout. To overcome this, add the ultimate host&quot;s URI prefix to the SPN cache prior to making requests to it.       Version 3.5 SP1 now defaults to specifying the host name used in the request URL in the SPN in the NTLM (NT LAN Manager) authentication exchange when the CustomTargetNameDictionary property is not set. The host name used in the request URL may be different from the Host header specified in the <xref:System.Net.HttpRequestHeader?displayProperty=fullName> in the client request. The host name used in the request URL may be different from the actual host name of the server, the machine name of the server, the computer&quot;s IP address, or the loopback address. In these cases, Windows will fail the authentication request. To address the issue, you may need to notify Windows that the host name used in the request URL in the client request (&quot;contoso&quot;, for example) is actually an alternate name for the local computer."
+  summary: "Lekérdezi a szótár egyszerű szolgáltatásnevek (SPN), amely során a Kerberos-hitelesítést használó kérelmek állomások azonosítására szolgálnak tartalmazó <xref:System.Net.WebRequest>és a származtatott osztályokban.</xref:System.Net.WebRequest>"
+  remarks: "Ha egyszerű Szolgáltatásnevet egy nevet, amellyel egy ügyfél egyedileg azonosít egy szolgáltatás vagy alkalmazás a kölcsönös hitelesítés céljából egy kiszolgáló egy példánya. Kölcsönös hitelesítés alapértelmezés szerint van szükség, és úgy, hogy szükség <xref:System.Net.WebRequest.AuthenticationLevel%2A?displayProperty=fullName>való <xref:System.Net.Security.AuthenticationLevel>a kérelemben.</xref:System.Net.Security.AuthenticationLevel> </xref:System.Net.WebRequest.AuthenticationLevel%2A?displayProperty=fullName>       Ha egy <xref:System.Net.WebRequest>kölcsönös hitelesítést, az egyszerű Szolgáltatásnevet a célhelyen meg kell adni az ügyfél számára.</xref:System.Net.WebRequest> Ha ismeri az egyszerű Szolgáltatásnevet, adhat hozzá, a talált bejegyzés a kérelem elküldése előtt. Ha egyszerű Szolgáltatásnevet információ nem adott hozzá ehhez a szótárhoz a <xref:System.Net.AuthenticationManager>használja a <xref:System.Net.WebRequest.RequestUri%2A>metódus írása az a legvalószínűbb SPN; azonban ez egy számított érték, valószínűleg helytelenek a.</xref:System.Net.WebRequest.RequestUri%2A> </xref:System.Net.AuthenticationManager> Ha a kölcsönös hitelesítési kísérlet történik, és meghiúsul, ellenőrizheti a számított SPN meghatározásához a szótárban. Ha a hitelesítési protokoll nem támogatja a kölcsönös hitelesítés bekerültek a szótár nem egyszerű Szolgáltatásnevet.       Egy egyszerű Szolgáltatásnevet értéket ehhez a szótárhoz való hozzáadásához használja a <xref:System.Uri.AbsoluteUri%2A>, a <xref:System.Net.WebRequest.RequestUri%2A>kulcsként.</xref:System.Net.WebRequest.RequestUri%2A> </xref:System.Uri.AbsoluteUri%2A> Belső, a kulcs a függvény egésszé csonkítja felvenni a <xref:System.Uri.Scheme%2A>, <xref:System.Uri.Host%2A>, és a <xref:System.Uri.Port%2A>Ha még nincs az alapértelmezett porton</xref:System.Uri.Port%2A> </xref:System.Uri.Host%2A> </xref:System.Uri.Scheme%2A>      > [!NOTE] > A metódusok és a CustomTargetNameDictionary tulajdonságainak eléréséhez szükséges a korlátlan <xref:System.Net.WebPermission>.</xref:System.Net.WebPermission>      > [!NOTE] > Ha Kerberos-hitelesítés a proxyn keresztül történik, mind a proxy- és a végső állomásnevet kell feloldani a egyszerű Szolgáltatásnevet. A proxy névfeloldása időtúllépés védi. Egy egyszerű Szolgáltatásnevet a végső állomásnevének feloldása szükséges DNS-címkeresést, és nincs nincs időtúllépés közvetlenül társított ezt a műveletet. Ezért szinkron műveletek is tovább tarthat időtúllépési. Ennek megoldásához, a végső gazdagép URI-előtag hozzáadása előtt kérelmeket az SPN-gyorsítótár.       SP1 3.5-ös verziója most az alapértelmezett adható meg a gazdagép neve a kérelem URL-CÍMÉT az egyszerű szolgáltatásnév az NTLM (NT LAN Manager) hitelesítési exchange használják, ha a CustomTargetNameDictionary tulajdonság nincs beállítva. A gazdagép neve a kérés URL-címében használt eltérhet a Host fejléc a <xref:System.Net.HttpRequestHeader?displayProperty=fullName>az ügyfél kérésében.</xref:System.Net.HttpRequestHeader?displayProperty=fullName> Lehet, hogy a kiszolgáló tényleges állomásnevét, a kiszolgáló, a számítógép IP-címmel, vagy a visszacsatolási neve eltér a gazdagép neve a kérés URL-címében használt. Ezekben az esetekben a Windows nem tud a hitelesítési kérelmet. A probléma esetleg értesíti, hogy a gazdagép nevét használja a kérelem URL-címében, az ügyfél (&quot;contoso&quot;, például) kérelme, mert a helyi számítógép valójában egy másik nevet."
   example:
   - "The following code example demonstrates displaying the contents of the CustomTargetNameDictionary.  \n  \n [!code-cpp[NclCredPolicy#5](~/add/codesnippet/cpp/p-system.net.authenticat_0_1.cpp)]\n [!code-cs[NclCredPolicy#5](~/add/codesnippet/csharp/p-system.net.authenticat_0_1.cs)]"
   syntax:
     content: public static System.Collections.Specialized.StringDictionary CustomTargetNameDictionary { get; }
     return:
       type: System.Collections.Specialized.StringDictionary
-      description: "A writable <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;></xref> that contains the SPN values for keys composed of host information."
+      description: "Egy írható <xref href=&quot;System.Collections.Specialized.StringDictionary&quot;> </xref> , amely tartalmazza az SPN-értékeket, a kulcsok álló állomásadatai."
   overload: System.Net.AuthenticationManager.CustomTargetNameDictionary*
   exceptions: []
   platform:
@@ -130,25 +130,25 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Preauthenticates a request."
-  remarks: "If the authentication module can preauthenticate the request, the PreAuthenticate method returns an Authentication instance and sends the authorization information to the server preemptively instead of waiting for the resource to issue a challenge. This behavior is outlined in section 3.3 of RFC 2617 (HTTP Authentication: Basic and Digest Access Authentication). Authentication modules that support preauthentication allow clients to improve server efficiency by avoiding extra round trips caused by authentication challenges.       Authorization modules that can preauthenticate requests set the <xref:System.Net.IAuthenticationModule.CanPreAuthenticate%2A?displayProperty=fullName> property to `true`."
+  summary: "Előre hitelesíti a webalkalmazásokhoz kérelmet."
+  remarks: "A hitelesítési modul a kérelem is preauthenticate, ha a PreAuthenticate metódus egy hitelesítési példányát adja vissza, és az engedélyezési adatokat küld a kiszolgáló megelőző jelleggel megvárnia kihívást ki az erőforrás. Ez a viselkedés szemlélteti az RFC 2617 3.3 szakasza (HTTP-hitelesítés: Basic és a kivonatoló hitelesítés). Előhitelesítés támogató hitelesítési modulok engedélyezése az ügyfelek lehetőleg ne a hitelesítési kihívást által okozott extra adatváltások server hatékonyság növelése érdekében.       Engedélyezési modulokat is preauthenticate kérelmek beállítása a <xref:System.Net.IAuthenticationModule.CanPreAuthenticate%2A?displayProperty=fullName>tulajdonságot `true`.</xref:System.Net.IAuthenticationModule.CanPreAuthenticate%2A?displayProperty=fullName>"
   syntax:
     content: public static System.Net.Authorization PreAuthenticate (System.Net.WebRequest request, System.Net.ICredentials credentials);
     parameters:
     - id: request
       type: System.Net.WebRequest
-      description: "A <xref:System.Net.WebRequest> to an Internet resource."
+      description: "A <xref:System.Net.WebRequest>az Internet-erőforrás.</xref:System.Net.WebRequest>"
     - id: credentials
       type: System.Net.ICredentials
-      description: "The <xref:System.Net.ICredentials> associated with the request."
+      description: "A <xref:System.Net.ICredentials>a kérelemhez társított.</xref:System.Net.ICredentials>"
     return:
       type: System.Net.Authorization
-      description: "An instance of the <xref href=&quot;System.Net.Authorization&quot;></xref> class if the request can be preauthenticated; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. If <code>credentials</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Egy példányát a <xref href=&quot;System.Net.Authorization&quot;> </xref> osztály, ha a kérelem előhitelesítése; ellenkező esetben lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>. If <code>credentials</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   overload: System.Net.AuthenticationManager.PreAuthenticate*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>request</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>request</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Net.AuthenticationManager.Register(System.Net.IAuthenticationModule)
@@ -163,8 +163,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Registers an authentication module with the authentication manager."
-  remarks: "The Register method adds authentication modules to the end of the list of modules called by the <xref:System.Net.AuthenticationManager.Authenticate%2A> method. Authentication modules are called in the order in which they were added to the list. If a module with the same <xref:System.Net.IAuthenticationModule.AuthenticationType%2A> is already registered, this method removes the registered module and adds `authenticationModule` to the end of the list."
+  summary: "Egy hitelesítési modul regisztrálja a hitelesítéskezelő."
+  remarks: "A regisztrálási metódusa ad hitelesítési modulok által meghívott modulok listájának végére a <xref:System.Net.AuthenticationManager.Authenticate%2A>metódus.</xref:System.Net.AuthenticationManager.Authenticate%2A> Hitelesítési modulok nevezzük a sorrendben, amelyben addig adták hozzá a listához. Ha egy modul azonos <xref:System.Net.IAuthenticationModule.AuthenticationType%2A>van már regisztrálva van, ez a módszer a regisztrált modul eltávolítja, és hozzáadja `authenticationModule` a lista végére.</xref:System.Net.IAuthenticationModule.AuthenticationType%2A>"
   example:
   - "The following example registers an authentication module with the authentication manager. For a complete example, refer to the <xref:System.Net.AuthenticationManager> class.  \n  \n [!code-cs[System.Net.Sockets.Authentication#2](~/add/codesnippet/csharp/m-system.net.authenticat_2_1.cs)]\n [!code-cpp[System.Net.Sockets.Authentication#2](~/add/codesnippet/cpp/m-system.net.authenticat_2_1.cpp)]\n [!code-vb[System.Net.Sockets.Authentication#2](~/add/codesnippet/visualbasic/m-system.net.authenticat_2_1.vb)]"
   syntax:
@@ -172,12 +172,12 @@ items:
     parameters:
     - id: authenticationModule
       type: System.Net.IAuthenticationModule
-      description: "The <xref href=&quot;System.Net.IAuthenticationModule&quot;></xref> to register with the authentication manager."
+      description: "A <xref href=&quot;System.Net.IAuthenticationModule&quot;> </xref> a hitelesítéskezelő regisztrálására."
   overload: System.Net.AuthenticationManager.Register*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>authenticationModule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>authenticationModule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Net.AuthenticationManager.RegisteredModules
@@ -192,15 +192,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets a list of authentication modules that are registered with the authentication manager."
-  remarks: "The RegisteredModules property provides an <xref:System.Collections.IEnumerator> instance that enables the list of registered authentication modules to be read. The <xref:System.Net.AuthenticationManager.Register%2A> method adds modules to the list, and the <xref:System.Net.AuthenticationManager.Unregister%2A> method removes modules from it."
+  summary: "A hitelesítéskezelő regisztrált hitelesítési modulok listájának lekérése."
+  remarks: "A RegisteredModules tulajdonság egy <xref:System.Collections.IEnumerator>példánya, amely lehetővé teszi a listája regisztrált hitelesítési modulok kell olvasni.</xref:System.Collections.IEnumerator> A <xref:System.Net.AuthenticationManager.Register%2A>metódus ad a listában, és a <xref:System.Net.AuthenticationManager.Unregister%2A>metódus eltávolítja belőle modulok</xref:System.Net.AuthenticationManager.Unregister%2A> -modulok</xref:System.Net.AuthenticationManager.Register%2A>"
   example:
   - "The following example uses the RegisteredModules property to get a list of authentication modules that are registered with the authentication manager. For a complete example, refer to the <xref:System.Net.AuthenticationManager> class.  \n  \n [!code-cs[System.Net.Authentication#8](~/add/codesnippet/csharp/p-system.net.authenticat_2_1.cs)]\n [!code-cpp[System.Net.Authentication#8](~/add/codesnippet/cpp/p-system.net.authenticat_2_1.cpp)]\n [!code-vb[System.Net.Authentication#8](~/add/codesnippet/visualbasic/p-system.net.authenticat_2_1.vb)]"
   syntax:
     content: public static System.Collections.IEnumerator RegisteredModules { get; }
     return:
       type: System.Collections.IEnumerator
-      description: "An <xref:System.Collections.IEnumerator> that enables the registered authentication modules to be read."
+      description: "Egy <xref:System.Collections.IEnumerator>, amely lehetővé teszi, hogy a regisztrált hitelesítési modulok kell olvasni.</xref:System.Collections.IEnumerator>"
   overload: System.Net.AuthenticationManager.RegisteredModules*
   exceptions: []
   platform:
@@ -217,8 +217,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Removes the specified authentication module from the list of registered modules."
-  remarks: "The Unregister method removes the specified authentication module from the list of authentication modules called by the <xref:System.Net.AuthenticationManager.Authenticate%2A> method. The module must have been added to the list using the <xref:System.Net.AuthenticationManager.Register%2A> method before it can be removed from the list."
+  summary: "A megadott hitelesítési modul eltávolítása a listából a regisztrált modulokat."
+  remarks: "A Unregister metódus eltávolítja a megadott hitelesítési modul által meghívott hitelesítési modulok listájáról a <xref:System.Net.AuthenticationManager.Authenticate%2A>metódus.</xref:System.Net.AuthenticationManager.Authenticate%2A> A modul fel van véve a lista használatával a <xref:System.Net.AuthenticationManager.Register%2A>metódus előtt el kell távolítani a listáról.</xref:System.Net.AuthenticationManager.Register%2A>"
   example:
   - "The following example uses the Unregister method to remove the specified authentication module from the list of registered modules. For a complete example, refer to the <xref:System.Net.AuthenticationManager> class.  \n  \n [!code-cs[System.Net.Sockets.Authentication#2](~/add/codesnippet/csharp/m-system.net.authenticat_0_1.cs)]\n [!code-cpp[System.Net.Sockets.Authentication#2](~/add/codesnippet/cpp/m-system.net.authenticat_0_1.cpp)]\n [!code-vb[System.Net.Sockets.Authentication#2](~/add/codesnippet/visualbasic/m-system.net.authenticat_0_1.vb)]"
   syntax:
@@ -226,15 +226,15 @@ items:
     parameters:
     - id: authenticationModule
       type: System.Net.IAuthenticationModule
-      description: "The <xref href=&quot;System.Net.IAuthenticationModule&quot;></xref> to remove from the list of registered modules."
+      description: "A <xref href=&quot;System.Net.IAuthenticationModule&quot;> </xref> eltávolítani a regisztrált modulokat a listából."
   overload: System.Net.AuthenticationManager.Unregister*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>authenticationModule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>authenticationModule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The specified <xref href=&quot;System.Net.IAuthenticationModule&quot;></xref> is not registered."
+    description: "A megadott <xref href=&quot;System.Net.IAuthenticationModule&quot;> </xref> nincs regisztrálva."
   platform:
   - net462
 - uid: System.Net.AuthenticationManager.Unregister(System.String)
@@ -249,8 +249,8 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Removes authentication modules with the specified authentication scheme from the list of registered modules."
-  remarks: "The <xref:System.Net.AuthenticationManager.Unregister%2A> method removes the authentication module with the specified authentication scheme from the list of authentication modules called by the <xref:System.Net.AuthenticationManager.Authenticate%2A> method. The module must have been added to the list using the <xref:System.Net.AuthenticationManager.Register%2A> method before it can be removed from the list."
+  summary: "A megadott hitelesítési séma hitelesítési modulok eltávolítása a listából a regisztrált modulokat."
+  remarks: "A <xref:System.Net.AuthenticationManager.Unregister%2A>metódus távolít el a hitelesítési modul a megadott hitelesítési séma a hitelesítési modulok által meghívott a <xref:System.Net.AuthenticationManager.Authenticate%2A>metódus.</xref:System.Net.AuthenticationManager.Authenticate%2A> </xref:System.Net.AuthenticationManager.Unregister%2A> A modul fel van véve a lista használatával a <xref:System.Net.AuthenticationManager.Register%2A>metódus előtt el kell távolítani a listáról.</xref:System.Net.AuthenticationManager.Register%2A>"
   example:
   - "The following example uses the <xref:System.Net.AuthenticationManager.Unregister%2A> method to remove an authentication module with the specified authentication scheme from the list of registered modules.  \n  \n [!code-vb[AuthenticationManager_UnRegister2#2](~/add/codesnippet/visualbasic/m-system.net.authenticat_1_1.vb)]\n [!code-cpp[AuthenticationManager_UnRegister2#2](~/add/codesnippet/cpp/m-system.net.authenticat_1_1.cpp)]\n [!code-cs[AuthenticationManager_UnRegister2#2](~/add/codesnippet/csharp/m-system.net.authenticat_1_1.cs)]"
   syntax:
@@ -258,15 +258,15 @@ items:
     parameters:
     - id: authenticationScheme
       type: System.String
-      description: "The authentication scheme of the module to remove."
+      description: "A hitelesítési séma a modul eltávolítása."
   overload: System.Net.AuthenticationManager.Unregister*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>authenticationScheme</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>authenticationScheme</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "A module for this authentication scheme is not registered."
+    description: "A hitelesítési séma modul nincs regisztrálva."
   platform:
   - net462
 references:

@@ -16,8 +16,8 @@ items:
   nameWithType: HttpListenerContext
   fullName: System.Net.HttpListenerContext
   type: Class
-  summary: "Provides access to the request and response objects used by the <xref href=&quot;System.Net.HttpListener&quot;></xref> class. This class cannot be inherited."
-  remarks: "This class provides the information related to a client&quot;s Hypertext Transfer Protocol (HTTP) request being processed by an <xref:System.Net.HttpListener> object. This class also has methods that allow an <xref:System.Net.HttpListener> object to accept a WebSocket connection.       The <xref:System.Net.HttpListener.GetContext%2A> method returns instances of the HttpListenerContext class. To get the object that represents the client request, use the <xref:System.Net.HttpListenerContext.Request%2A> property. To get the object that represents the response that will be sent to the client by the <xref:System.Net.HttpListener>, use the <xref:System.Net.HttpListenerContext.Response%2A> property. To get user information about the client sending the request, such as its login name and whether it has been authenticated, you can query the properties in the <xref:System.Security.Principal.IPrincipal> object returned by the <xref:System.Net.HttpListenerContext.User%2A> property.       Closing an HttpListenerContext object sends the response to the client and frees any resources used by the HttpListenerContext. Aborting an HttpListenerContext object discards the response to the client if it has not already been sent, and frees any resources used by the HttpListenerContext. After closing or aborting an HttpListenerContext object, you cannot reference its methods or properties. If you do so, you will receive an <xref:System.ObjectDisposedException> exception."
+  summary: "A kérelem-válasz objektumok által használt hozzáférést biztosít a <xref href=&quot;System.Net.HttpListener&quot;> </xref> osztály. Ez az osztály nem örökölhető."
+  remarks: "Ez az osztály a Hypertext Transfer Protocol (HTTP) ügyfélkérések által feldolgozott kapcsolatos információkat tartalmaz az <xref:System.Net.HttpListener>objektum.</xref:System.Net.HttpListener> Ez az osztály is rendelkezik a módszereket, amelyek lehetővé teszik egy <xref:System.Net.HttpListener>objektum WebSocket-kapcsolatok fogadására.</xref:System.Net.HttpListener>       A <xref:System.Net.HttpListener.GetContext%2A>metódus visszaadja a HttpListenerContext osztály példányai</xref:System.Net.HttpListener.GetContext%2A> Az ügyfél kérésében képviselő objektum használatához az <xref:System.Net.HttpListenerContext.Request%2A>tulajdonság.</xref:System.Net.HttpListenerContext.Request%2A> Az objektum, amely jelöli az ügyfél által küldött válasz a <xref:System.Net.HttpListener>, használja a <xref:System.Net.HttpListenerContext.Response%2A>tulajdonság.</xref:System.Net.HttpListenerContext.Response%2A> </xref:System.Net.HttpListener> A kéréseket, például a bejelentkezési nevet, és hogy azt hitelesítése, az ügyfélre vonatkozó felhasználói adatok beolvasása a Tulajdonságok tudja lekérdezni a <xref:System.Security.Principal.IPrincipal>által visszaadott objektum a <xref:System.Net.HttpListenerContext.User%2A>tulajdonság.</xref:System.Net.HttpListenerContext.User%2A> </xref:System.Security.Principal.IPrincipal>       HttpListenerContext objektum záró visszaküldi a választ az ügyfélnek, és felszabadítja a HttpListenerContext által használt erőforrások. Az ügyfél válasz elveti HttpListenerContext objektum megszakítása, ha már nem küldött, és felszabadítja a HttpListenerContext által használt erőforrások. Miután bezárása vagy megszakítása HttpListenerContext objektum, a metódusokra vagy tulajdonságokra nem hivatkozhat. Ha így tesz, kapni fog egy <xref:System.ObjectDisposedException>kivétel.</xref:System.ObjectDisposedException>"
   example:
   - "The following code example displays the user information for a client request.  \n  \n [!code-cs[Net_Listener_Basic#8](~/add/codesnippet/csharp/t-system.net.httplistene_0_1.cs)]"
   syntax:
@@ -40,25 +40,25 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Accept a WebSocket connection as an asynchronous operation."
-  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted.       The size of the receive buffer is 16,385 bytes. The WebSocket keep-alive interval is set to the default value of 30,000 (30 seconds)."
+  summary: "Fogadja el a WebSocket-kapcsolat, mint egy aszinkron művelet."
+  remarks: "Ez a művelet nem fogja tiltani. A visszaadott <xref:System.Threading.Tasks.Task%601>objektum befejezi a WebSocket-kapcsolat elfogadását követően.</xref:System.Threading.Tasks.Task%601>       A fogadási puffer mérete 16,385 bájt. A WebSocket életben tartási időköz 30000 (30 másodperc) alapértelmezett értékét."
   syntax:
     content: public System.Threading.Tasks.Task<System.Net.WebSockets.HttpListenerWebSocketContext> AcceptWebSocketAsync (string subProtocol);
     parameters:
     - id: subProtocol
       type: System.String
-      description: "The supported WebSocket sub-protocol."
+      description: "A támogatott, WebSocket alárendelt protokollt."
     return:
       type: System.Threading.Tasks.Task{System.Net.WebSockets.HttpListenerWebSocketContext}
-      description: "Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.       The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;></xref> object."
+      description: "Beolvasása &lt;xref:System.Threading.Tasks.Task%601&gt;.       Az aszinkron művelet képviselő feladat objektum. A &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; feladat objektum tulajdonságának adja vissza egy <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;> </xref> objektum."
   overload: System.Net.HttpListenerContext.AcceptWebSocketAsync*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>subProtocol</code> is an empty string       -or-       <code>subProtocol</code> contains illegal characters."
+    description: "<code>subProtocol</code>üres karakterlánc - vagy - <code>subProtocol</code> érvénytelen karaktereket tartalmaz."
   - type: System.Net.WebSockets.WebSocketException
     commentId: T:System.Net.WebSockets.WebSocketException
-    description: "An error occurred when sending the response to complete the WebSocket handshake."
+    description: "Hiba történt a WebSocket-kézfogás elvégzéséhez vonatkozó válasz küldésekor."
   platform:
   - net462
 - uid: System.Net.HttpListenerContext.AcceptWebSocketAsync(System.String,System.TimeSpan)
@@ -73,31 +73,31 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Accept a WebSocket connection specifying the supported WebSocket sub-protocol  and WebSocket keep-alive interval as an asynchronous operation."
-  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted.       The size of the receive buffer is 16,385 bytes."
+  summary: "Fogadja el a WebSocket-kapcsolat egy aszinkron művelet, a támogatott WebSocket alárendelt protokoll és a WebSocket életben tartási időköz megadása."
+  remarks: "Ez a művelet nem fogja tiltani. A visszaadott <xref:System.Threading.Tasks.Task%601>objektum befejezi a WebSocket-kapcsolat elfogadását követően.</xref:System.Threading.Tasks.Task%601>       A fogadási puffer mérete 16,385 bájt."
   syntax:
     content: public System.Threading.Tasks.Task<System.Net.WebSockets.HttpListenerWebSocketContext> AcceptWebSocketAsync (string subProtocol, TimeSpan keepAliveInterval);
     parameters:
     - id: subProtocol
       type: System.String
-      description: "The supported WebSocket sub-protocol."
+      description: "A támogatott, WebSocket alárendelt protokollt."
     - id: keepAliveInterval
       type: System.TimeSpan
-      description: "The WebSocket protocol keep-alive interval in milliseconds."
+      description: "A WebSocket protokoll életben tartási ezredmásodpercben."
     return:
       type: System.Threading.Tasks.Task{System.Net.WebSockets.HttpListenerWebSocketContext}
-      description: "Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.       The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;></xref> object."
+      description: "Beolvasása &lt;xref:System.Threading.Tasks.Task%601&gt;.       Az aszinkron művelet képviselő feladat objektum. A &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; feladat objektum tulajdonságának adja vissza egy <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;> </xref> objektum."
   overload: System.Net.HttpListenerContext.AcceptWebSocketAsync*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>subProtocol</code> is an empty string       -or-       <code>subProtocol</code> contains illegal characters."
+    description: "<code>subProtocol</code>üres karakterlánc - vagy - <code>subProtocol</code> érvénytelen karaktereket tartalmaz."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>keepAliveInterval</code> is too small."
+    description: "<code>keepAliveInterval</code>nem elég nagy."
   - type: System.Net.WebSockets.WebSocketException
     commentId: T:System.Net.WebSockets.WebSocketException
-    description: "An error occurred when sending the response to complete the WebSocket handshake."
+    description: "Hiba történt a WebSocket-kézfogás elvégzéséhez vonatkozó válasz küldésekor."
   platform:
   - net462
 - uid: System.Net.HttpListenerContext.AcceptWebSocketAsync(System.String,System.Int32,System.TimeSpan)
@@ -112,34 +112,34 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Accept a WebSocket connection specifying the supported WebSocket sub-protocol, receive buffer size, and WebSocket keep-alive interval as an asynchronous operation."
-  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> > object will complete after the WebSocket connection has been accepted."
+  summary: "Fogadja el a támogatott WebSocket alárendelt protokollt megadó WebSocket-kapcsolat, a fogadó puffer mérete, és egy aszinkron művelet WebSocket életben tartási intervallumhoz."
+  remarks: "Ez a művelet nem fogja tiltani. A visszaadott <xref:System.Threading.Tasks.Task%601>> objektum befejezi a WebSocket-kapcsolat elfogadását követően.</xref:System.Threading.Tasks.Task%601>"
   syntax:
     content: public System.Threading.Tasks.Task<System.Net.WebSockets.HttpListenerWebSocketContext> AcceptWebSocketAsync (string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval);
     parameters:
     - id: subProtocol
       type: System.String
-      description: "The supported WebSocket sub-protocol."
+      description: "A támogatott, WebSocket alárendelt protokollt."
     - id: receiveBufferSize
       type: System.Int32
-      description: "The receive buffer size in bytes."
+      description: "A fogadási puffer mérete bájtban."
     - id: keepAliveInterval
       type: System.TimeSpan
-      description: "The WebSocket protocol keep-alive interval in milliseconds."
+      description: "A WebSocket protokoll életben tartási ezredmásodpercben."
     return:
       type: System.Threading.Tasks.Task{System.Net.WebSockets.HttpListenerWebSocketContext}
-      description: "Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.       The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;></xref> object."
+      description: "Beolvasása &lt;xref:System.Threading.Tasks.Task%601&gt;.       Az aszinkron művelet képviselő feladat objektum. A &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; feladat objektum tulajdonságának adja vissza egy <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;> </xref> objektum."
   overload: System.Net.HttpListenerContext.AcceptWebSocketAsync*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>subProtocol</code> is an empty string       -or-       <code>subProtocol</code> contains illegal characters."
+    description: "<code>subProtocol</code>üres karakterlánc - vagy - <code>subProtocol</code> érvénytelen karaktereket tartalmaz."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>keepAliveInterval</code> is too small.       -or-       <code>receiveBufferSize</code> is less than 16 bytes       -or-       <code>receiveBufferSize</code> is greater than 64K bytes."
+    description: "<code>keepAliveInterval</code>nem elég nagy.       – vagy – <code>receiveBufferSize</code> kisebb, mint 16 bájt – vagy – <code>receiveBufferSize</code> nagyobb, mint 64 kilobájt."
   - type: System.Net.WebSockets.WebSocketException
     commentId: T:System.Net.WebSockets.WebSocketException
-    description: "An error occurred when sending the response to complete the WebSocket handshake."
+    description: "Hiba történt a WebSocket-kézfogás elvégzéséhez vonatkozó válasz küldésekor."
   platform:
   - net462
 - uid: System.Net.HttpListenerContext.AcceptWebSocketAsync(System.String,System.Int32,System.TimeSpan,System.ArraySegment{System.Byte})
@@ -154,37 +154,37 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Accept a WebSocket connection specifying the supported WebSocket sub-protocol, receive buffer size, WebSocket keep-alive interval, and the internal buffer as an asynchronous operation."
-  remarks: "This operation will not block. The returned <xref:System.Threading.Tasks.Task%601> object will complete after the WebSocket connection has been accepted."
+  summary: "Fogadja el a támogatott WebSocket alárendelt protokollt megadó WebSocket-kapcsolat, a puffer mérete, WebSocket életben tartási időköz és a belső puffer mérete, mint egy aszinkron művelet."
+  remarks: "Ez a művelet nem fogja tiltani. A visszaadott <xref:System.Threading.Tasks.Task%601>objektum befejezi a WebSocket-kapcsolat elfogadását követően.</xref:System.Threading.Tasks.Task%601>"
   syntax:
     content: public System.Threading.Tasks.Task<System.Net.WebSockets.HttpListenerWebSocketContext> AcceptWebSocketAsync (string subProtocol, int receiveBufferSize, TimeSpan keepAliveInterval, ArraySegment<byte> internalBuffer);
     parameters:
     - id: subProtocol
       type: System.String
-      description: "The supported WebSocket sub-protocol."
+      description: "A támogatott, WebSocket alárendelt protokollt."
     - id: receiveBufferSize
       type: System.Int32
-      description: "The receive buffer size in bytes."
+      description: "A fogadási puffer mérete bájtban."
     - id: keepAliveInterval
       type: System.TimeSpan
-      description: "The WebSocket protocol keep-alive interval in milliseconds."
+      description: "A WebSocket protokoll életben tartási ezredmásodpercben."
     - id: internalBuffer
       type: System.ArraySegment{System.Byte}
-      description: "An internal buffer to use for this operation."
+      description: "Egy belső puffer használata ehhez a művelethez."
     return:
       type: System.Threading.Tasks.Task{System.Net.WebSockets.HttpListenerWebSocketContext}
-      description: "Returns &lt;xref:System.Threading.Tasks.Task%601&gt;.       The task object representing the asynchronous operation. The &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; property on the task object returns an <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;></xref> object."
+      description: "Beolvasása &lt;xref:System.Threading.Tasks.Task%601&gt;.       Az aszinkron művelet képviselő feladat objektum. A &lt;xref:System.Threading.Tasks.Task%601.Result%2A&gt; feladat objektum tulajdonságának adja vissza egy <xref href=&quot;System.Net.WebSockets.HttpListenerWebSocketContext&quot;> </xref> objektum."
   overload: System.Net.HttpListenerContext.AcceptWebSocketAsync*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>subProtocol</code> is an empty string       -or-       <code>subProtocol</code> contains illegal characters."
+    description: "<code>subProtocol</code>üres karakterlánc - vagy - <code>subProtocol</code> érvénytelen karaktereket tartalmaz."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>keepAliveInterval</code> is too small.       -or-       <code>receiveBufferSize</code> is less than 16 bytes       -or-       <code>receiveBufferSize</code> is greater than 64K bytes."
+    description: "<code>keepAliveInterval</code>nem elég nagy.       – vagy – <code>receiveBufferSize</code> kisebb, mint 16 bájt – vagy – <code>receiveBufferSize</code> nagyobb, mint 64 kilobájt."
   - type: System.Net.WebSockets.WebSocketException
     commentId: T:System.Net.WebSockets.WebSocketException
-    description: "An error occurred when sending the response to complete the WebSocket handshake."
+    description: "Hiba történt a WebSocket-kézfogás elvégzéséhez vonatkozó válasz küldésekor."
   platform:
   - net462
 - uid: System.Net.HttpListenerContext.Request
@@ -199,15 +199,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets the <xref href=&quot;System.Net.HttpListenerRequest&quot;></xref> that represents a client&quot;s request for a resource."
-  remarks: "If you close this <xref:System.Net.HttpListenerContext>, it will send the response to the client, close the <xref:System.Net.HttpListenerResponse> that contains the response, and close the <xref:System.Net.HttpListenerRequest> object returned by this property."
+  summary: "Lekérdezi a <xref href=&quot;System.Net.HttpListenerRequest&quot;> </xref> , amely jelzi, hogy az ügyfél által kért erőforrás."
+  remarks: "Ha bezárja ezt <xref:System.Net.HttpListenerContext>, zárja be a válasz az ügyfél elküldi a <xref:System.Net.HttpListenerResponse>, amely tartalmazza a választ, és zárja be a <xref:System.Net.HttpListenerRequest>Ez a tulajdonság által visszaadott objektum.</xref:System.Net.HttpListenerRequest> </xref:System.Net.HttpListenerResponse> </xref:System.Net.HttpListenerContext>"
   example:
   - "The following code example demonstrates calling this method. The `listener` variable holds an <xref:System.Net.HttpListener> object.  \n  \n [!code-cs[Net_Listener_Basic#3](~/add/codesnippet/csharp/p-system.net.httplistene_16_1.cs)]"
   syntax:
     content: public System.Net.HttpListenerRequest Request { get; }
     return:
       type: System.Net.HttpListenerRequest
-      description: "An <xref href=&quot;System.Net.HttpListenerRequest&quot;></xref> object that represents the client request."
+      description: "Egy <xref href=&quot;System.Net.HttpListenerRequest&quot;> </xref> az ügyfélkérés képviselő objektum."
   overload: System.Net.HttpListenerContext.Request*
   exceptions: []
   platform:
@@ -224,15 +224,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets the <xref href=&quot;System.Net.HttpListenerResponse&quot;></xref> object that will be sent to the client in response to the client&quot;s request."
-  remarks: "Your application configures the response by setting properties in the <xref:System.Net.HttpListenerResponse> object returned by this property. After configuring the response, you send it to the client by closing the response, or by closing this <xref:System.Net.HttpListenerContext> object."
+  summary: "Lekérdezi a <xref href=&quot;System.Net.HttpListenerResponse&quot;> </xref> objektum, amely a program elküldi az ügyfélnek az ügyfél irányuló kérelemre adott válasz."
+  remarks: "Az alkalmazás tulajdonságainak megadásával konfigurálja a válasz a <xref:System.Net.HttpListenerResponse>Ez a tulajdonság által visszaadott objektum.</xref:System.Net.HttpListenerResponse> Miután a választ, elküldés az ügyfélnek a válasz bezárásával, vagy zárja be a <xref:System.Net.HttpListenerContext>objektum.</xref:System.Net.HttpListenerContext>"
   example:
   - "The following code example demonstrates getting the response to a client's request and adding the response body.  \n  \n [!code-cs[Net_Listener_Basic#3](~/add/codesnippet/csharp/p-system.net.httplistene_35_1.cs)]"
   syntax:
     content: public System.Net.HttpListenerResponse Response { get; }
     return:
       type: System.Net.HttpListenerResponse
-      description: "An <xref href=&quot;System.Net.HttpListenerResponse&quot;></xref> object used to send a response back to the client."
+      description: "Egy <xref href=&quot;System.Net.HttpListenerResponse&quot;> </xref> visszajelzés az ügyfélnek való előkészítéséhez használt objektum."
   overload: System.Net.HttpListenerContext.Response*
   exceptions: []
   platform:
@@ -249,15 +249,15 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Gets an object used to obtain identity, authentication information, and security roles for the client whose request is represented by this <xref href=&quot;System.Net.HttpListenerContext&quot;></xref> object."
-  remarks: "An <xref:System.Net.HttpListener> indicates that it requires authentication using the <xref:System.Net.HttpListener.AuthenticationSchemes%2A> property or by specifying an <xref:System.Net.AuthenticationSchemeSelector> delegate using the <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> property.       To determine the client&quot;s login name and authentication information, check the <xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName> property in the object returned by this property."
+  summary: "Lekérdezi az beszerzése az identitást, a hitelesítési adatokat és a biztonsági szerepkörök az ügyfél, amelynek kérelem ez által képviselt használt objektum <xref href=&quot;System.Net.HttpListenerContext&quot;> </xref> objektum."
+  remarks: "Egy <xref:System.Net.HttpListener>, akkor van szükség a hitelesítés a <xref:System.Net.HttpListener.AuthenticationSchemes%2A>tulajdonság vagy adjon meg egy <xref:System.Net.AuthenticationSchemeSelector>használatával delegálása a <xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A>tulajdonság.</xref:System.Net.HttpListener.AuthenticationSchemeSelectorDelegate%2A> </xref:System.Net.AuthenticationSchemeSelector> </xref:System.Net.HttpListener.AuthenticationSchemes%2A> </xref:System.Net.HttpListener>       Az ügyfél-bejelentkezési nevet és a hitelesítési adatokat a megállapításához ellenőrizze a <xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName>tulajdonság az objektum tulajdonságait.</xref:System.Security.Principal.IPrincipal.Identity%2A?displayProperty=fullName>"
   example:
   - "The following code example demonstrates accessing identity and authentication information about the client, and returning it to the client in the response.  \n  \n [!code-cs[Net_Listener_Basic#8](~/add/codesnippet/csharp/p-system.net.httplistene_19_1.cs)]"
   syntax:
     content: public System.Security.Principal.IPrincipal User { get; }
     return:
       type: System.Security.Principal.IPrincipal
-      description: "An <xref:System.Security.Principal.IPrincipal> object that describes the client, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Net.HttpListener&quot;></xref> that supplied this <xref href=&quot;System.Net.HttpListenerContext&quot;></xref> does not require authentication."
+      description: "Egy <xref:System.Security.Principal.IPrincipal>objektum, amely ismerteti az ügyfelet, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a <xref href=&quot;System.Net.HttpListener&quot;> </xref> , amely a megadott <xref href=&quot;System.Net.HttpListenerContext&quot;> </xref> nem igényel hitelesítést.</xref:System.Security.Principal.IPrincipal>"
   overload: System.Net.HttpListenerContext.User*
   exceptions: []
   platform:
