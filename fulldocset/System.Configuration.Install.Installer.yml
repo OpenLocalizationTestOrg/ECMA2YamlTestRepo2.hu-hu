@@ -34,8 +34,8 @@ items:
   nameWithType: Installer
   fullName: System.Configuration.Install.Installer
   type: Class
-  summary: "Provides the foundation for custom installations."
-  remarks: "This is the base class for all custom installers in the .NET Framework. Installers are components that help install applications on a computer.       There are several steps you must follow to use an Installer:      -   Inherit the Installer class.      -   Override the <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods.      -   Add the <xref:System.ComponentModel.RunInstallerAttribute> to your derived class and set it to `true`.      -   Put your derived class in the assembly with your application to install.      -   Invoke the installers. For example, use the InstallUtil.exe to invoke the installers.       The <xref:System.Configuration.Install.Installer.Installers%2A> property contains a collection of installers. If this instance of Installer is part of an installer collection, the <xref:System.Configuration.Install.Installer.Parent%2A> property is set to the Installer instance that contains the collection. For an example of the use of the <xref:System.Configuration.Install.Installer.Installers%2A> collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class.       The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the Installer class go through the collection of installers stored in the <xref:System.Configuration.Install.Installer.Installers%2A> property, and invokes the corresponding method of each installer.       The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods are not always called on the same Installer instance. For example, one Installer instance might be used while installing and committing an application, and then the reference to that instance is released. Later, uninstalling the application creates a reference to a new Installer instance, meaning that the <xref:System.Configuration.Install.Installer.Uninstall%2A> method is called by a different instance of Installer. For this reason, in your derived class, do not save the state of a computer in an installer. Instead, use an <xref:System.Collections.IDictionary> that is preserved across calls and passed into your <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods.       Two situations illustrate the need to save information in the state-saver <xref:System.Collections.IDictionary>. First, suppose that your installer sets a registry key. It should save the key&quot;s original value in the <xref:System.Collections.IDictionary>. If the installation is rolled back, the original value can be restored. Second, suppose the installer replaces an existing file. Save the existing file in a temporary directory and the location of the new location of the file in the <xref:System.Collections.IDictionary>. If the installation is rolled back, the newer file is deleted and replaced by the original from the temporary location.       The <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName> property contains information about the installation. For example, information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run."
+  summary: "Az alapokat ahhoz egyéni telepítések."
+  remarks: "Ez az összes egyéni telepítőcsomagokat a .NET-keretrendszer alaposztálya. Telepítők összetevők, amelyek segítenek az alkalmazások telepítését egy olyan számítógépre.       Számos lépést, amelyeket követnie kell a telepítővel:-a telepítő osztály örökli.      -Bírálja felül a <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>      -Adjon hozzá a <xref:System.ComponentModel.RunInstallerAttribute>számára a származtatott osztály, és állítsa az értékét `true`.</xref:System.ComponentModel.RunInstallerAttribute>      -A származtatott osztály helyezze el a szerelvény az alkalmazás telepítéséhez.      -A telepítőcsomagokat meghívni. Például az InstallUtil.exe segítségével a telepítőcsomagokat meghívni.       A <xref:System.Configuration.Install.Installer.Installers%2A>tulajdonság telepítők gyűjteményét tartalmazza.</xref:System.Configuration.Install.Installer.Installers%2A> A telepítő példányát egy telepítő gyűjtemény része a <xref:System.Configuration.Install.Installer.Parent%2A>tulajdonsága gyűjteményét tartalmazza, a telepítő példányt.</xref:System.Configuration.Install.Installer.Parent%2A> A <xref:System.Configuration.Install.Installer.Installers%2A>gyűjtemény, tekintse meg <xref:System.Configuration.Install.AssemblyInstaller>az osztályt</xref:System.Configuration.Install.AssemblyInstaller> </xref:System.Configuration.Install.Installer.Installers%2A> használja példa       A <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek telepítő osztály halad át tárolt telepítők gyűjteménye a <xref:System.Configuration.Install.Installer.Installers%2A>tulajdonság, és hívja meg a megfelelő módszer minden Installer.</xref:System.Configuration.Install.Installer.Installers%2A> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       A <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>metódusok nem mindig nevű telepítő azonos példányon lévő.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A> Például egy telepítő-példány telepítése és egy alkalmazás véglegesítése közben használhatók, és a referencia-példányhoz megjelenik majd. Később, az alkalmazás eltávolítása egy hivatkozást hoz létre új telepítő példányt, ami azt jelenti, hogy a <xref:System.Configuration.Install.Installer.Uninstall%2A>metódus lehívásra kerül telepítő másik példánya.</xref:System.Configuration.Install.Installer.Uninstall%2A> Ezért a származtatott osztályban ne mentse a telepítő a számítógép állapotát. Ehelyett használjon egy <xref:System.Collections.IDictionary>, amely hívások lesz, és lett átadva a <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A> </xref:System.Collections.IDictionary>       Két olyan helyzet szeretné menteni az állapot-képernyőkímélő <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> információt mutatja be. Első lépésként tegyük fel, hogy a telepítő beállítja egy beállításkulcs megadásával. A <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> , mentse a kulcs eredeti érték Ha a telepítés vissza lesz állítva, az eredeti érték állíthatók vissza. Tegyük fel, a telepítő egy már létező fájlt váltja fel. Mentse a meglévő fájlt egy ideiglenes könyvtárat és az új helyre az <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary> a fájl helye Ha a telepítés vissza lesz állítva, az újabb fájl törlődik, és az átmeneti mappából az eredeti helyébe.       A <xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName>tulajdonság telepítésével kapcsolatos információkat tartalmaz.</xref:System.Configuration.Install.Installer.Context%2A?displayProperty=fullName> Például a telepítés, a fájl mentéséhez szükséges információk helyét a naplófájl helyének adatait a <xref:System.Configuration.Install.Installer.Uninstall%2A>metódust, és a parancssorból futtatható a telepítés futtatásakor megadott.</xref:System.Configuration.Install.Installer.Uninstall%2A>"
   example:
   - "The following example demonstrates the use of the Installer class. It creates a class which inherits from Installer. When <xref:System.Configuration.Install.Installer.Commit%2A> is about to complete, <xref:System.Configuration.Install.Installer.Committing> event occurs and a message is displayed. To use the Installer class, you must reference the **System.Configuration.Install** assembly in your project.  \n  \n [!code-cpp[Installer#1](~/add/codesnippet/cpp/t-system.configuration.i_5_1.cpp)]\n [!code-vb[Installer#1](~/add/codesnippet/visualbasic/t-system.configuration.i_5_1.vb)]\n [!code-cs[Installer#1](~/add/codesnippet/csharp/t-system.configuration.i_5_1.cs)]"
   syntax:
@@ -77,7 +77,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Initializes a new instance of the <xref href=&quot;System.Configuration.Install.Installer&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Configuration.Install.Installer&quot;> </xref> osztály."
   syntax:
     content: public Installer ();
     parameters: []
@@ -97,7 +97,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after the <xref:System.Configuration.Install.Installer.Install*> methods of all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property have run."
+  summary: "Után kerül sor a <> </> *> összes telepítőprogramhoz módszerek a <> </> *> tulajdonság futtatta-e."
   remarks: ''
   example:
   - "The following example demonstrates the AfterInstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnAfterInstall%2A> method.  \n  \n [!code-cpp[Installer_AfterInstall#1](~/add/codesnippet/cpp/e-system.configuration.i_2_1.cpp)]\n [!code-vb[Installer_AfterInstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_2_1.vb)]\n [!code-cs[Installer_AfterInstall#1](~/add/codesnippet/csharp/e-system.configuration.i_2_1.cs)]"
@@ -105,7 +105,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterInstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -121,7 +121,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after the installations of all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+  summary: "Az összes telepítőprogramhoz telepítéseket után kerül sor a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság visszavonásra kerül.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the AfterRollback event. It overrides the <xref:System.Configuration.Install.Installer.Install%2A> method and explicitly throws an <xref:System.ArgumentException> so that the <xref:System.Configuration.Install.Installer.Rollback%2A> method is called. When the <xref:System.Configuration.Install.Installer.Rollback%2A> is completed, the AfterRollback event occurs and a message is displayed.  \n  \n [!code-cs[Installer_AfterRollback#1](~/add/codesnippet/csharp/e-system.configuration.i_1_1.cs)]\n [!code-cpp[Installer_AfterRollback#1](~/add/codesnippet/cpp/e-system.configuration.i_1_1.cpp)]\n [!code-vb[Installer_AfterRollback#1](~/add/codesnippet/visualbasic/e-system.configuration.i_1_1.vb)]"
@@ -129,7 +129,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterRollback;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -145,7 +145,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property perform their uninstallation operations."
+  summary: "Akkor következik be, amikor az összes telepítőprogramhoz a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság a eltávolítási műveleteket.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the AfterUninstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnAfterUninstall%2A> method.  \n  \n [!code-cs[Installer_AfterUninstall#1](~/add/codesnippet/csharp/e-system.configuration.i_7_1.cs)]\n [!code-cpp[Installer_AfterUninstall#1](~/add/codesnippet/cpp/e-system.configuration.i_7_1.cpp)]\n [!code-vb[Installer_AfterUninstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_7_1.vb)]"
@@ -153,7 +153,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler AfterUninstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -169,7 +169,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the <xref:System.Configuration.Install.Installer.Install*> method of each installer in the installer collection has run."
+  summary: "Akkor következik be, mielőtt a <xref:System.Configuration.Install.Installer.Install*>minden Installer a telepítő gyűjteményéhez metódus futott.</xref:System.Configuration.Install.Installer.Install*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeInstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnBeforeInstall%2A> method.  \n  \n [!code-cpp[Installer_BeforeInstall#1](~/add/codesnippet/cpp/e-system.configuration.i_0_1.cpp)]\n [!code-cs[Installer_BeforeInstall#1](~/add/codesnippet/csharp/e-system.configuration.i_0_1.cs)]\n [!code-vb[Installer_BeforeInstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_0_1.vb)]"
@@ -177,7 +177,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeInstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -193,7 +193,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+  summary: "A telepítőprogramhoz előtt következik be a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság visszavonásra kerül.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeRollback event. It overrides the <xref:System.Configuration.Install.Installer.Install%2A> method and explicitly throws an <xref:System.ArgumentException> so that the <xref:System.Configuration.Install.Installer.Rollback%2A> method is called. When the <xref:System.Configuration.Install.Installer.Rollback%2A> is complete, the BeforeRollback event occurs and a message is displayed.  \n  \n [!code-vb[Installer_BeforeRollback#1](~/add/codesnippet/visualbasic/e-system.configuration.i_5_1.vb)]\n [!code-cs[Installer_BeforeRollback#1](~/add/codesnippet/csharp/e-system.configuration.i_5_1.cs)]\n [!code-cpp[Installer_BeforeRollback#1](~/add/codesnippet/cpp/e-system.configuration.i_5_1.cpp)]"
@@ -201,7 +201,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeRollback;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -217,7 +217,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property perform their uninstall operations."
+  summary: "A telepítőprogramhoz előtt következik be a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság hajtsa végre az eltávolítási műveletek.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the BeforeUninstall event. It is raised by the <xref:System.Configuration.Install.Installer.OnBeforeUninstall%2A> method.  \n  \n [!code-cs[Installer_BeforeUninstall#1](~/add/codesnippet/csharp/e-system.configuration.i_4_1.cs)]\n [!code-cpp[Installer_BeforeUninstall#1](~/add/codesnippet/cpp/e-system.configuration.i_4_1.cpp)]\n [!code-vb[Installer_BeforeUninstall#1](~/add/codesnippet/visualbasic/e-system.configuration.i_4_1.vb)]"
@@ -225,7 +225,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler BeforeUninstall;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -241,7 +241,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, completes the install transaction."
+  summary: "Felülbírálja a származtatott osztály, amikor befejeződik a telepítés tranzakció."
   remarks: ''
   example:
   - "The following example demonstrates the Commit method of the <xref:System.Configuration.Install.Installer> class. A class is derived from the <xref:System.Configuration.Install.Installer> base class and the Commit method are overridden.  \n  \n [!code-cs[Installer_Install#2](~/add/codesnippet/csharp/m-system.configuration.i_4_1.cs)]\n [!code-vb[Installer_Install#2](~/add/codesnippet/visualbasic/m-system.configuration.i_4_1.vb)]\n [!code-cpp[Installer_Install#2](~/add/codesnippet/cpp/m-system.configuration.i_4_1.cpp)]"
@@ -250,15 +250,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers in the collection have run."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a számítógép állapotát, miután futtatta a gyűjtemény összes telepítőprogramhoz.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Commit*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – a mentett állapot <xref:System.Collections.IDictionary>Előfordulhat, hogy sérült.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred during the Commit phase of the installation. This exception is ignored and the installation continues. However, the application might not function correctly after the installation is complete."
+    description: "Kivétel történt a telepítés véglegesítési fázisában. Ezt a kivételt a rendszer figyelmen kívül hagyja, és a telepítés folytatódik. Azonban az alkalmazás esetleg nem működik megfelelően a telepítés befejezése után."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Committed
@@ -273,7 +273,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property have committed their installations."
+  summary: "Akkor következik be, amikor az összes telepítőprogramhoz a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság sértették meg azok a telepítések.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the Committed event. It is raised by the <xref:System.Configuration.Install.Installer.OnCommitted%2A> method.  \n  \n [!code-cpp[Installer_Committed1#1](~/add/codesnippet/cpp/e-system.configuration.i_3_1.cpp)]\n [!code-cs[Installer_Committed1#1](~/add/codesnippet/csharp/e-system.configuration.i_3_1.cs)]\n [!code-vb[Installer_Committed1#1](~/add/codesnippet/visualbasic/e-system.configuration.i_3_1.vb)]"
@@ -281,7 +281,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler Committed;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -297,7 +297,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Occurs before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property committ their installations."
+  summary: "A telepítőprogramhoz előtt következik be a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság committ azok telepítésének.</xref:System.Configuration.Install.Installer.Installers*>"
   remarks: ''
   example:
   - "The following example demonstrates the Committing event. It is raised by the <xref:System.Configuration.Install.Installer.OnCommitting%2A> method.  \n  \n [!code-cpp[Installer_Committing#1](~/add/codesnippet/cpp/e-system.configuration.i_6_1.cpp)]\n [!code-cs[Installer_Committing#1](~/add/codesnippet/csharp/e-system.configuration.i_6_1.cs)]\n [!code-vb[Installer_Committing#1](~/add/codesnippet/visualbasic/e-system.configuration.i_6_1.vb)]"
@@ -305,7 +305,7 @@ items:
     content: public event System.Configuration.Install.InstallEventHandler Committing;
     return:
       type: System.Configuration.Install.InstallEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -321,15 +321,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets or sets information about the current installation."
-  remarks: "The Context property contains installation information. For example, information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run.       The program that calls the <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, or <xref:System.Configuration.Install.Installer.Uninstall%2A> methods sets the Context property with information that the methods need.       If an installer belongs to an installer collection, the parent installer sets the Context property before calling any of these methods. The parent installer can be accessed through the <xref:System.Configuration.Install.Installer.Parent%2A> property."
+  summary: "Lekérdezi vagy beállítja az aktuális telepítésre vonatkozó információkat."
+  remarks: "A Context tulajdonság tartalmazza a telepítési információkat. Például a telepítés, a fájl mentéséhez szükséges információk helyét a naplófájl helyének adatait a <xref:System.Configuration.Install.Installer.Uninstall%2A>metódust, és a parancssorból futtatható a telepítés futtatásakor megadott.</xref:System.Configuration.Install.Installer.Uninstall%2A>       A program, amely behívja a <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, vagy <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek beállítja a Context tulajdonság információ, amely a metódusok hívására van szükség.</xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       Telepítő tartozik egy telepítő gyűjteményt, ha a szülő telepítő beállítja a Context tulajdonság az alábbi módszereket hívása előtt. A szülő telepítő is elérhetőek a <xref:System.Configuration.Install.Installer.Parent%2A>tulajdonság.</xref:System.Configuration.Install.Installer.Parent%2A>"
   example:
   - "The following example demonstrates the Context property of the <xref:System.Configuration.Install.Installer> class. The contents of the Context property contain information about the location of the log file for the installation, the location of the file to save information required by the <xref:System.Configuration.Install.Installer.Uninstall%2A> method, and the command line that was entered when the installation executable was run. These contents are then displayed on the console.  \n  \n [!code-cpp[Installer_Context#1](~/add/codesnippet/cpp/p-system.configuration.i_9_1.cpp)]\n [!code-cs[Installer_Context#1](~/add/codesnippet/csharp/p-system.configuration.i_9_1.cs)]\n [!code-vb[Installer_Context#1](~/add/codesnippet/visualbasic/p-system.configuration.i_9_1.vb)]"
   syntax:
     content: public System.Configuration.Install.InstallContext Context { get; set; }
     return:
       type: System.Configuration.Install.InstallContext
-      description: "An <xref href=&quot;System.Configuration.Install.InstallContext&quot;></xref> that contains information about the current installation."
+      description: "Egy <xref href=&quot;System.Configuration.Install.InstallContext&quot;> </xref> , amely tartalmazza az aktuális telepítésre vonatkozó információkat."
   overload: System.Configuration.Install.Installer.Context*
   exceptions: []
   platform:
@@ -346,7 +346,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets the help text for all the installers in the installer collection."
+  summary: "A telepítő gyűjteményéhez összes telepítőprogramhoz tartozó súgószöveg beolvasása."
   remarks: ''
   example:
   - "The following example demonstrates the HelpText property. This property is defined in the <xref:System.Configuration.Install.Installer> class, which, when called, returns the description of the <xref:System.Configuration.Install.Installer> and the command line options for the installation executable, such as the Installutil.exe utility, that can be passed to and understood by the <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cs[Installer_HelpText#1](~/add/codesnippet/csharp/p-system.configuration.i_1_1.cs)]\n [!code-cpp[Installer_HelpText#1](~/add/codesnippet/cpp/p-system.configuration.i_1_1.cpp)]\n [!code-vb[Installer_HelpText#1](~/add/codesnippet/visualbasic/p-system.configuration.i_1_1.vb)]"
@@ -354,12 +354,12 @@ items:
     content: public virtual string HelpText { get; }
     return:
       type: System.String
-      description: "The help text for all the installers in the installer collection, including the description of what the installer does and the command line options for the installation executable, such as the InstallUtil.exe utility, that can be passed to and understood by this installer."
+      description: "A telepítő gyűjteményéhez, köztük a leírását, a telepítő működése és a parancssori kapcsolók végrehajtható, például az InstallUtil.exe segédprogram, amely átadott és tudja értelmezni a telepítő a telepítés összes telepítőprogramhoz tartozó súgószöveg."
   overload: System.Configuration.Install.Installer.HelpText*
   exceptions:
   - type: System.NullReferenceException
     commentId: T:System.NullReferenceException
-    description: "One of the installers in the installer collection specifies a null reference instead of help text. A likely cause for this exception is that a field to contain the help text is defined but not initialized."
+    description: "A telepítő gyűjteményéhez telepítők egyik határozza meg a súgószöveg helyett egy null hivatkozás. Ehhez a kivételhez egy ennek valószínű oka az, hogy egy mezőt tartalmaz a súgószöveg definiálva, de nincs inicializálva."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Install(System.Collections.IDictionary)
@@ -374,7 +374,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, performs the installation."
+  summary: "Ha a származtatott osztály felülbírálva, a telepítést hajt végre."
   remarks: ''
   example:
   - "The following example demonstrates the Install method of the <xref:System.Configuration.Install.Installer> class. A class is derived from the <xref:System.Configuration.Install.Installer> base class and the Install method is overridden.  \n  \n [!code-cs[Installer_Install#1](~/add/codesnippet/csharp/m-system.configuration.i_0_1.cs)]\n [!code-vb[Installer_Install#1](~/add/codesnippet/visualbasic/m-system.configuration.i_0_1.vb)]\n [!code-cpp[Installer_Install#1](~/add/codesnippet/cpp/m-system.configuration.i_0_1.cpp)]"
@@ -383,7 +383,7 @@ items:
     parameters:
     - id: stateSaver
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> used to save information needed to perform a commit, rollback, or uninstall operation."
+      description: "Egy <xref:System.Collections.IDictionary>tevékenységgel menthetők a fordítás során hajtsa végre a véglegesítés visszaállítási, vagy távolítsa el a műveletet.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Install*
   exceptions:
   - type: System.ArgumentException
@@ -391,7 +391,7 @@ items:
     description: "The <code>stateSaver</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An exception occurred in the <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;></xref> event handler of one of the installers in the collection.       -or-       An exception occurred in the <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;></xref> event handler of one of the installers in the collection."
+    description: "Kivétel történt a <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;> </xref> a telepítőcsomagokat a gyűjtemény egyik eseménykezelő.       - vagy - kivétel keletkezett a <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;> </xref> a telepítőcsomagokat a gyűjtemény egyik eseménykezelő."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Installers
@@ -406,15 +406,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets the collection of installers that this installer contains."
-  remarks: "The Installers property contains a collection of installers that install objects needed by this <xref:System.Configuration.Install.Installer> instance to correctly install the component. The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the <xref:System.Configuration.Install.Installer> class go through the collection of installers and invokes the corresponding method of each installer.       If this instance of <xref:System.Configuration.Install.Installer> is contained in an installer collection, the <xref:System.Configuration.Install.Installer.Parent%2A> property is the <xref:System.Configuration.Install.Installer> instance that contains the collection. For an example of the use of the Installers collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class."
+  summary: "Ezt a telepítőt tartalmazó telepítőcsomagokat gyűjteményének beolvasása."
+  remarks: "A telepítők tulajdonság telepítőcsomagokat telepítse a szükséges objektumok gyűjteményét tartalmazza <xref:System.Configuration.Install.Installer>példány megfelelően telepíteni az összetevőt.</xref:System.Configuration.Install.Installer> A <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek a <xref:System.Configuration.Install.Installer>osztály telepítők gyűjteménye keresztül halad, és hívja meg a megfelelő módszer minden Installer.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>       Ha ezen példányának <xref:System.Configuration.Install.Installer>telepítő gyűjteményben, tartalmazza a <xref:System.Configuration.Install.Installer.Parent%2A>tulajdonság a <xref:System.Configuration.Install.Installer>példány, a gyűjteményt tartalmazó.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Parent%2A> </xref:System.Configuration.Install.Installer> Például egy gyűjteményben használatát tekintse meg az <xref:System.Configuration.Install.AssemblyInstaller>osztályhoz.</xref:System.Configuration.Install.AssemblyInstaller>"
   example:
   - "The following example demonstrates the Installers and <xref:System.Configuration.Install.Installer.Parent%2A> properties. The Installers property shows the <xref:System.Configuration.Install.InstallerCollection> associated with an <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cs[Installer_Installers#1](~/add/codesnippet/csharp/p-system.configuration.i_12_1.cs)]\n [!code-cpp[Installer_Installers#1](~/add/codesnippet/cpp/p-system.configuration.i_12_1.cpp)]\n [!code-vb[Installer_Installers#1](~/add/codesnippet/visualbasic/p-system.configuration.i_12_1.vb)]"
   syntax:
     content: public System.Configuration.Install.InstallerCollection Installers { get; }
     return:
       type: System.Configuration.Install.InstallerCollection
-      description: "An <xref href=&quot;System.Configuration.Install.InstallerCollection&quot;></xref> containing the collection of installers associated with this installer."
+      description: "Egy <xref href=&quot;System.Configuration.Install.InstallerCollection&quot;> </xref> tartalmazó telepítőcsomagokat ezt a telepítőt társított gyűjteménye."
   overload: System.Configuration.Install.Installer.Installers*
   exceptions: []
   platform:
@@ -431,8 +431,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Install%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterInstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.AfterInstall&quot;> </xref> esemény."
+  remarks: "Ez a metódus neve után a <xref:System.Configuration.Install.Installer.Install%2A>Ehhez a példányhoz tartozó összes telepítőprogramhoz módszerek <xref:System.Configuration.Install.InstallerCollection>futtassa.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Install%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnAfterInstall módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   example:
   - "The following example demonstrates the OnAfterInstall method. This method is overridden in the derived class. Space is provided to add steps to be done after the installation in the OnAfterInstall method.  \n  \n [!code-cs[Installer_OnInstall#2](~/add/codesnippet/csharp/60146eeb-3353-443b-b027-_1.cs)]\n [!code-vb[Installer_OnInstall#2](~/add/codesnippet/visualbasic/60146eeb-3353-443b-b027-_1.vb)]\n [!code-cpp[Installer_OnInstall#2](~/add/codesnippet/cpp/60146eeb-3353-443b-b027-_1.cpp)]"
   syntax:
@@ -440,7 +440,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property have completed their installations."
+      description: "Egy <xref:System.Collections.IDictionary>szereplő összes telepítőprogramhoz után a számítógép állapotát, amely tartalmazza a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság a telepítés befejeződött.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterInstall*
   exceptions: []
   platform:
@@ -457,14 +457,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterRollback&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Rollback%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> have run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterRollback method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.AfterRollback&quot;> </xref> esemény."
+  remarks: "Ez a metódus neve után a <xref:System.Configuration.Install.Installer.Rollback%2A>Ehhez a példányhoz tartozó összes telepítőprogramhoz módszerek <xref:System.Configuration.Install.InstallerCollection>futtatta.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Rollback%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnAfterRollback módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnAfterRollback (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+      description: "Egy <xref:System.Collections.IDictionary>a telepítőcsomagokat szereplő után a számítógép állapotát, amely tartalmazza a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság visszavonásra kerül.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterRollback*
   exceptions: []
   platform:
@@ -481,14 +481,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.AfterUninstall&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of all the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> have run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnAfterUninstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.AfterUninstall&quot;> </xref> esemény."
+  remarks: "Ez a metódus neve után a <xref:System.Configuration.Install.Installer.Uninstall%2A>Ehhez a példányhoz tartozó összes telepítőprogramhoz módszerek <xref:System.Configuration.Install.InstallerCollection>futtatta.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Uninstall%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnAfterUninstall módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnAfterUninstall (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers contained in the <xref:System.Configuration.Install.Installer.Installers*> property are uninstalled."
+      description: "Egy <xref:System.Collections.IDictionary>szereplő összes telepítőprogramhoz után a számítógép állapotát, amely tartalmazza a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság eltávolítása folyamatban van.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnAfterUninstall*
   exceptions: []
   platform:
@@ -505,8 +505,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Install%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are called.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeInstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.BeforeInstall&quot;> </xref> esemény."
+  remarks: "Ezt a módszert nevezik, mielőtt a <xref:System.Configuration.Install.Installer.Install%2A>Ebben az esetben a telepítőcsomagokat módszerek <xref:System.Configuration.Install.InstallerCollection>nevezzük.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Install%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnBeforeInstall módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   example:
   - "The following example demonstrates the OnBeforeInstall method. This method is overridden in the derived class. Space is provided to add steps to be done before the installation in the OnBeforeInstall method.  \n  \n [!code-cs[Installer_OnInstall#1](~/add/codesnippet/csharp/05e12d6b-04c9-42f3-be39-_1.cs)]\n [!code-vb[Installer_OnInstall#1](~/add/codesnippet/visualbasic/05e12d6b-04c9-42f3-be39-_1.vb)]\n [!code-cpp[Installer_OnInstall#1](~/add/codesnippet/cpp/05e12d6b-04c9-42f3-be39-_1.cpp)]"
   syntax:
@@ -514,7 +514,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are installed. This <xref:System.Collections.IDictionary> object should be empty at this point."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a telepítőprogramhoz előtt a számítógép állapotát a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság telepítve vannak.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary> Ez <xref:System.Collections.IDictionary>objektum üresnek kell lennie ezen a ponton.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeInstall*
   exceptions: []
   platform:
@@ -531,14 +531,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeRollback&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Rollback%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are called.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeRollback method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.BeforeRollback&quot;> </xref> esemény."
+  remarks: "Ezt a módszert nevezik, mielőtt a <xref:System.Configuration.Install.Installer.Rollback%2A>Ebben az esetben a telepítőcsomagokat módszerek <xref:System.Configuration.Install.InstallerCollection>nevezzük.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Rollback%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnBeforeRollback módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnBeforeRollback (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are rolled back."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a telepítőprogramhoz előtt a számítógép állapotát a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság visszavonásra kerül.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeRollback*
   exceptions: []
   platform:
@@ -555,14 +555,14 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.BeforeUninstall&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> are uninstalled.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnBeforeUninstall method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.BeforeUninstall&quot;> </xref> esemény."
+  remarks: "Ezt a módszert nevezik, mielőtt a <xref:System.Configuration.Install.Installer.Uninstall%2A>Ebben az esetben a telepítőcsomagokat módszerek <xref:System.Configuration.Install.InstallerCollection>eltávolítása folyamatban van.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Uninstall%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnBeforeUninstall módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnBeforeUninstall (System.Collections.IDictionary savedState);
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property uninstall their installations."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a telepítőprogramhoz előtt a számítógép állapotát a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság, távolítsa el a telepítés.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnBeforeUninstall*
   exceptions: []
   platform:
@@ -579,8 +579,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.Committed&quot;></xref> event."
-  remarks: "This method is called after the <xref:System.Configuration.Install.Installer.Commit%2A> methods of all the installers contained in this instance&quot;s installer collection run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnCommitted method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.Committed&quot;> </xref> esemény."
+  remarks: "Ez a metódus neve után a <xref:System.Configuration.Install.Installer.Commit%2A>futtatni ehhez a példányhoz telepítő gyűjteményben található összes telepítőprogramhoz módszereire.</xref:System.Configuration.Install.Installer.Commit%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnCommitted módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   example:
   - "The following example demonstrates the OnCommitted method of the <xref:System.Configuration.Install.Installer> class. The OnCommitted method is overridden in the derived class. Space is provided for the user to add the steps to be performed before committing and after committing.  \n  \n [!code-cs[Installer_Committed#2](~/add/codesnippet/csharp/5648b84f-6316-46f8-bd1c-_1.cs)]\n [!code-cpp[Installer_Committed#2](~/add/codesnippet/cpp/5648b84f-6316-46f8-bd1c-_1.cpp)]\n [!code-vb[Installer_Committed#2](~/add/codesnippet/visualbasic/5648b84f-6316-46f8-bd1c-_1.vb)]"
   syntax:
@@ -588,7 +588,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after all the installers in the <xref:System.Configuration.Install.Installer.Installers*> property run."
+      description: "Egy <xref:System.Collections.IDictionary>összes telepítőprogramhoz után a számítógép állapotát, amely tartalmazza a <xref:System.Configuration.Install.Installer.Installers*>futtatása tulajdonság.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnCommitted*
   exceptions: []
   platform:
@@ -605,8 +605,8 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Raises the <xref href=&quot;System.Configuration.Install.Installer.Committing&quot;></xref> event."
-  remarks: "This method is called before the <xref:System.Configuration.Install.Installer.Commit%2A> methods of the installers in this instance&quot;s <xref:System.Configuration.Install.InstallerCollection> run.       Raising an event invokes the event handler through a delegate. For more information, see [Events](~/add/includes/ajax-current-ext-md.md).       The OnCommitting method allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Configuration.Install.Installer.Committing&quot;> </xref> esemény."
+  remarks: "Ezt a módszert nevezik, mielőtt a <xref:System.Configuration.Install.Installer.Commit%2A>Ebben az esetben a telepítőcsomagokat módszerek <xref:System.Configuration.Install.InstallerCollection>futtassa.</xref:System.Configuration.Install.InstallerCollection> </xref:System.Configuration.Install.Installer.Commit%2A>       Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [események](~/add/includes/ajax-current-ext-md.md).       A OnCommitting módszer lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályokat. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   example:
   - "The following example demonstrates the OnCommitting method of the <xref:System.Configuration.Install.Installer> class. The OnCommitting method is overridden in the derived class. Space is provided for the user to add the steps to be performed before committing and after committing.  \n  \n [!code-cs[Installer_Committed#1](~/add/codesnippet/csharp/4332932f-4b73-47c5-9f45-_1.cs)]\n [!code-cpp[Installer_Committed#1](~/add/codesnippet/cpp/4332932f-4b73-47c5-9f45-_1.cpp)]\n [!code-vb[Installer_Committed#1](~/add/codesnippet/visualbasic/4332932f-4b73-47c5-9f45-_1.vb)]"
   syntax:
@@ -614,7 +614,7 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer before the installers in the <xref:System.Configuration.Install.Installer.Installers*> property are committed."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a telepítőprogramhoz előtt a számítógép állapotát a <xref:System.Configuration.Install.Installer.Installers*>tulajdonság elkötelezettek.</xref:System.Configuration.Install.Installer.Installers*> </xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.OnCommitting*
   exceptions: []
   platform:
@@ -631,15 +631,15 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "Gets or sets the installer containing the collection that this installer belongs to."
-  remarks: "If this instance of <xref:System.Configuration.Install.Installer> is part of an installer collection, the Parent property is set to the <xref:System.Configuration.Install.Installer> instance that contains the collection. For an example of the use of the <xref:System.Configuration.Install.Installer.Installers%2A> collection, see the <xref:System.Configuration.Install.AssemblyInstaller> class.       The <xref:System.Configuration.Install.Installer.Installers%2A> property contains a collection of installers. The <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, and <xref:System.Configuration.Install.Installer.Uninstall%2A> methods of the <xref:System.Configuration.Install.Installer> class go through the collection of installers and invokes the corresponding method of each installer."
+  summary: "Lekérdezi vagy beállítja azt a gyűjteményt, amely tartozik ezt a telepítőt tartalmazó telepítő."
+  remarks: "Ha ezen példányának <xref:System.Configuration.Install.Installer>része egy telepítő gyűjteményt, a szülő tulajdonság értéke a <xref:System.Configuration.Install.Installer>példány, a gyűjteményt tartalmazó.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer> A <xref:System.Configuration.Install.Installer.Installers%2A>gyűjtemény, tekintse meg <xref:System.Configuration.Install.AssemblyInstaller>az osztályt</xref:System.Configuration.Install.AssemblyInstaller> </xref:System.Configuration.Install.Installer.Installers%2A> használja példa       A <xref:System.Configuration.Install.Installer.Installers%2A>tulajdonság telepítők gyűjteményét tartalmazza.</xref:System.Configuration.Install.Installer.Installers%2A> A <xref:System.Configuration.Install.Installer.Install%2A>, <xref:System.Configuration.Install.Installer.Commit%2A>, <xref:System.Configuration.Install.Installer.Rollback%2A>, és <xref:System.Configuration.Install.Installer.Uninstall%2A>módszerek a <xref:System.Configuration.Install.Installer>osztály telepítők gyűjteménye keresztül halad, és hívja meg a megfelelő módszer minden Installer.</xref:System.Configuration.Install.Installer> </xref:System.Configuration.Install.Installer.Uninstall%2A> </xref:System.Configuration.Install.Installer.Rollback%2A> </xref:System.Configuration.Install.Installer.Commit%2A> </xref:System.Configuration.Install.Installer.Install%2A>"
   example:
   - "The following example demonstrates the Parent property. The Parent property gets the <xref:System.Configuration.Install.Installer> containing the collection that this <xref:System.Configuration.Install.Installer> belongs to.  \n  \n [!code-cs[Installer_Installers#2](~/add/codesnippet/csharp/p-system.configuration.i_7_1.cs)]\n [!code-cpp[Installer_Installers#2](~/add/codesnippet/cpp/p-system.configuration.i_7_1.cpp)]\n [!code-vb[Installer_Installers#2](~/add/codesnippet/visualbasic/p-system.configuration.i_7_1.vb)]"
   syntax:
     content: public System.Configuration.Install.Installer Parent { get; set; }
     return:
       type: System.Configuration.Install.Installer
-      description: "An <xref href=&quot;System.Configuration.Install.Installer&quot;></xref> containing the collection that this instance belongs to, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this instance does not belong to a collection."
+      description: "Egy <xref href=&quot;System.Configuration.Install.Installer&quot;> </xref> ehhez a példányhoz tartozik, a gyűjteményt tartalmazó vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha ez a példány nem tartozik egy gyűjteményhez."
   overload: System.Configuration.Install.Installer.Parent*
   exceptions: []
   platform:
@@ -656,7 +656,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, restores the pre-installation state of the computer."
+  summary: "Felül van bírálva a származtatott osztály, ha visszaállítja a számítógépet a telepítés előtti állapotát."
   remarks: ''
   example:
   - "The following example demonstrates the Rollback method of <xref:System.Configuration.Install.Installer>. The Rollback method is overridden in the derived class of <xref:System.Configuration.Install.Installer>. An exception is generated to force an installation rollback.  \n  \n [!code-cpp[Installer_Rollback#1](~/add/codesnippet/cpp/f7b5aa66-1011-46b1-9df6-_1.cpp)]\n [!code-cs[Installer_Rollback#1](~/add/codesnippet/csharp/f7b5aa66-1011-46b1-9df6-_1.cs)]\n [!code-vb[Installer_Rollback#1](~/add/codesnippet/visualbasic/f7b5aa66-1011-46b1-9df6-_1.vb)]"
@@ -665,15 +665,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the pre-installation state of the computer."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a számítógépet a telepítés előtti állapotát.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Rollback*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "The <code>savedState</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – a mentett állapot <xref:System.Collections.IDictionary>Előfordulhat, hogy sérült.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred during the Rollback phase of the installation. This exception is ignored and the rollback continues. However, the computer might not be fully reverted to its initial state after the rollback completes."
+    description: "Kivétel történt a telepítés visszagörgetési fázisában. Ezt a kivételt a rendszer figyelmen kívül hagyja, és a visszagörgetés folytatódik. Azonban a számítógép lehet, hogy nem teljesen visszaállítani a kezdeti állapotot a visszaállítás befejezése után."
   platform:
   - net462
 - uid: System.Configuration.Install.Installer.Uninstall(System.Collections.IDictionary)
@@ -688,7 +688,7 @@ items:
   assemblies:
   - System.Configuration.Install
   namespace: System.Configuration.Install
-  summary: "When overridden in a derived class, removes an installation."
+  summary: "Felülbírálja a származtatott osztály, amikor eltávolítja a telepítés."
   remarks: ''
   example:
   - "The following example demonstrates the Uninstall method of <xref:System.Configuration.Install.Installer>. The Uninstall method is overridden in the derived class of <xref:System.Configuration.Install.Installer>.  \n  \n [!code-cpp[Installer_Uninstall#1](~/add/codesnippet/cpp/6ad3795d-c7c2-494d-bf0b-_1.cpp)]\n [!code-vb[Installer_Uninstall#1](~/add/codesnippet/visualbasic/6ad3795d-c7c2-494d-bf0b-_1.vb)]\n [!code-cs[Installer_Uninstall#1](~/add/codesnippet/csharp/6ad3795d-c7c2-494d-bf0b-_1.cs)]"
@@ -697,15 +697,15 @@ items:
     parameters:
     - id: savedState
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that contains the state of the computer after the installation was complete."
+      description: "Egy <xref:System.Collections.IDictionary>, amely tartalmazza a számítógép állapotát, miután a telepítés befejeződött.</xref:System.Collections.IDictionary>"
   overload: System.Configuration.Install.Installer.Uninstall*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The saved-state <xref:System.Collections.IDictionary> might have been corrupted."
+    description: "A mentett állapot <xref:System.Collections.IDictionary>Előfordulhat, hogy sérült.</xref:System.Collections.IDictionary>"
   - type: System.Configuration.Install.InstallException
     commentId: T:System.Configuration.Install.InstallException
-    description: "An exception occurred while uninstalling. This exception is ignored and the uninstall continues. However, the application might not be fully uninstalled after the uninstallation completes."
+    description: "Kivétel történt az eltávolítás során. Ezt a kivételt a rendszer figyelmen kívül hagyja, és az eltávolítás folytatódik. Azonban az alkalmazás esetleg nem lesz teljes mértékben eltávolítva az eltávolítás befejezése után."
   platform:
   - net462
 references:

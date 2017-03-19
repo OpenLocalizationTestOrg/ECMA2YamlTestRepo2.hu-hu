@@ -18,8 +18,8 @@ items:
   nameWithType: ILease
   fullName: System.Runtime.Remoting.Lifetime.ILease
   type: Interface
-  summary: "Defines a lifetime lease object that is used by the remoting lifetime service."
-  remarks: "Distributed garbage collection controls when server applications can be deleted. Traditionally, distributed garbage collection uses reference counts and pinging for control. This works well when there are a few clients per object, but does not work well when there are thousands of clients per each object. The lifetime service can assume the function of a traditional distributed garbage collector, and scales well when the number of clients increases.       The lifetime service associates a lease with each remotely activated object. When the lease expires, the object is removed. A lease can specify that an object has an infinite lifetime.       Each <xref:System.AppDomain> contains a lease manager that administers the leases in the domain. The lease manager periodically examines the leases for time expiration. If a lease has expired, it can either be canceled by removing its reference to the lease, or renewed by invoking one or more of the lease&quot;s sponsors.       A lease contains properties that determine its policies, and methods that renew the lease time. The lease exposes the ILease interface.       For an example showing how to use the ILease interface see [Lifetimes](http://msdn.microsoft.com/en-us/334a30e5-33cb-4f0f-a38a-ed4abc5560fa)."
+  summary: "Definiál egy élettartama bérleti objektumot, amely a távoli eljáráshívás élettartama szolgáltatás által használt."
+  remarks: "Elosztott szemétgyűjtési gyűjtemény vezérlők kiszolgálóalkalmazások törlésekor. Hagyományosan elosztott szemétgyűjtés hivatkozás számát, valamint a pingelés vezérlő használja. Ez jól működik, ha néhány ügyfél objektumonként, de nem működik jól, ha ügyfelek az egyes objektumok száma ezer van. Az élettartam szolgáltatás egy hagyományos elosztott szemétgyűjtő, és méretezik funkciót feltételezheti, megfelelő, ha az ügyfelek számát növeli.       Az élettartam szolgáltatás társítja a címbérlet minden távolról aktivált objektum. Amikor bérlete lejár, a rendszer eltávolítja az objektumhoz. A címbérlet adhatja meg, hogy az objektum rendelkezik-e végtelen élettartammal.       Minden egyes <xref:System.AppDomain>tartalmaz, amely felügyeli a tartomány a bérletek bérleti vezető.</xref:System.AppDomain> A bérleti manager rendszeres időközönként megvizsgálja a bérletek a lejárati idő. Ha lejárt a címbérlet, azt is kell megszakította a címbérlet mutató hivatkozás eltávolítását vagy megújítani az legalább egy, a címbérlet szponzorok meghívása.       A címbérlet tartalmaz, a házirendek meghatározó tulajdonságok és metódusok újítsa meg a bérleti idő. A bérlet elérhetővé teszi a ILease adaptert.       A ILease felülettel bemutató példa: [élettartama](http://msdn.microsoft.com/en-us/334a30e5-33cb-4f0f-a38a-ed4abc5560fa)."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -40,17 +40,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets the amount of time remaining on the lease."
+  summary: "Lekérdezi a címbérlet hátralévő időt."
   syntax:
     content: public TimeSpan CurrentLeaseTime { get; }
     return:
       type: System.TimeSpan
-      description: "The amount of time remaining on the lease."
+      description: "A bérlet hátralévő idő mennyiségét."
   overload: System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.CurrentState
@@ -65,17 +65,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets the current <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref> of the lease."
+  summary: "Lekérdezi az aktuális <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;> </xref> a címbérlet."
   syntax:
     content: public System.Runtime.Remoting.Lifetime.LeaseState CurrentState { get; }
     return:
       type: System.Runtime.Remoting.Lifetime.LeaseState
-      description: "The current <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;></xref> of the lease."
+      description: "Az aktuális <xref href=&quot;System.Runtime.Remoting.Lifetime.LeaseState&quot;> </xref> a címbérlet."
   overload: System.Runtime.Remoting.Lifetime.ILease.CurrentState*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.InitialLeaseTime
@@ -90,18 +90,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the initial time for the lease."
-  remarks: "If the InitialLeaseTime property is set to <xref:System.TimeSpan?displayProperty=fullName>, then the lease will never time out and the object associated with it will have an infinite lifetime."
+  summary: "Lekérdezi vagy beállítja a bérlet kezdeti időpontját."
+  remarks: "Ha az InitialLeaseTime tulajdonság értéke <xref:System.TimeSpan?displayProperty=fullName>, majd a címbérlet sosem fog túllépi az időkorlátot, és a hozzá társított objektumot kell határozatlan.</xref:System.TimeSpan?displayProperty=fullName>"
   syntax:
     content: public TimeSpan InitialLeaseTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The initial time for the lease."
+      description: "A bérlet kezdeti időpontját."
   overload: System.Runtime.Remoting.Lifetime.ILease.InitialLeaseTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Register(System.Runtime.Remoting.Lifetime.ISponsor)
@@ -116,19 +116,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Registers a sponsor for the lease without renewing the lease."
-  remarks: "If a sponsor is registered with the current method, the lease is not renewed."
+  summary: "A megbízó a címbérlet regisztrálja a címbérlet megújítása nélkül."
+  remarks: "A megbízó regisztrálva van az aktuális metódust, ha nem hosszabbítja meg bérleti idejét."
   syntax:
     content: public void Register (System.Runtime.Remoting.Lifetime.ISponsor obj);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The callback object of the sponsor."
+      description: "A megbízó visszahívási objektum."
   overload: System.Runtime.Remoting.Lifetime.ILease.Register*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Register(System.Runtime.Remoting.Lifetime.ISponsor,System.TimeSpan)
@@ -143,21 +143,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Registers a sponsor for the lease, and renews it by the specified <xref:System.TimeSpan>."
+  summary: "A megbízó a címbérlet regisztrálja, és azt a megadott <xref:System.TimeSpan>.</xref:System.TimeSpan> megújítja"
   syntax:
     content: public void Register (System.Runtime.Remoting.Lifetime.ISponsor obj, TimeSpan renewalTime);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The callback object of the sponsor."
+      description: "A megbízó visszahívási objektum."
     - id: renewalTime
       type: System.TimeSpan
-      description: "The length of time to renew the lease by."
+      description: "Mennyi ideig által a címbérlet megújítása."
   overload: System.Runtime.Remoting.Lifetime.ILease.Register*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Renew(System.TimeSpan)
@@ -172,22 +172,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Renews a lease for the specified time."
-  remarks: "The lease time is set to the maximum of the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> or the current time plus the renewal time."
+  summary: "A címbérlet megújítása a megadott időpontban."
+  remarks: "A bérleti idő a maximális értéke a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>vagy a jelenlegi időpontnál a megújítási idejének.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>"
   syntax:
     content: public TimeSpan Renew (TimeSpan renewalTime);
     parameters:
     - id: renewalTime
       type: System.TimeSpan
-      description: "The length of time to renew the lease by."
+      description: "Mennyi ideig által a címbérlet megújítása."
     return:
       type: System.TimeSpan
-      description: "The new expiration time of the lease."
+      description: "Az új lejárati időt a címbérlet."
   overload: System.Runtime.Remoting.Lifetime.ILease.Renew*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.RenewOnCallTime
@@ -202,18 +202,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time by which a call to the remote object renews the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>."
-  remarks: "When you make a call to a remote object, the lifetime service adds the RenewOnCallTime to the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> only if the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> has dropped below the RenewOnCallTime. Sequential calls therefore do not increase the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> without bound. Instead, immediately after any call, the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> is guaranteed to be the RenewOnCallTime or longer."
+  summary: "Lekérdezi vagy beállítja azt az időt, amely szerint a távoli objektum hívása megújítja a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>"
+  remarks: "Ha a távoli objektumok hívása, az élettartam szolgáltatás hozzáadja a RenewOnCallTime a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>csak akkor, ha a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>a RenewOnCallTime alá esett.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> </xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> Egymást követő hívások ezért ne növelje a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>kötött nélkül.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A> Ehelyett közvetlenül semmilyen hívásban, után a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>garantált, hogy a RenewOnCallTime vagy hosszabb.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime%2A>"
   syntax:
     content: public TimeSpan RenewOnCallTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The amount of time by which a call to the remote object renews the <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>."
+      description: "Ennyi idő alatt, amely szerint a távoli objektum hívása megújítja a <xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>.</xref:System.Runtime.Remoting.Lifetime.ILease.CurrentLeaseTime*>"
   overload: System.Runtime.Remoting.Lifetime.ILease.RenewOnCallTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.SponsorshipTimeout
@@ -228,18 +228,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time to wait for a sponsor to return with a lease renewal time."
-  remarks: "If the SponsorshipTimeout is <xref:System.TimeSpan?displayProperty=fullName>, then this lease will not take sponsors.       If a sponsor does not respond to a call to renew a lease within the time-out period, it is assumed to be dead and is removed from the list of sponsors for the current lease."
+  summary: "Lekérdezi vagy beállítja a megbízó vissza a bérlet megújítási idejének a várakozási idő."
+  remarks: "Ha a SponsorshipTimeout <xref:System.TimeSpan?displayProperty=fullName>, akkor a címbérlet nem lépnek szponzorok.</xref:System.TimeSpan?displayProperty=fullName>       Ha a megbízó nem válaszol az időkorláton belül a címbérlet megújítása hívás, inaktív adottnak, és törlődik az aktuális címbérlet szponzorok listája."
   syntax:
     content: public TimeSpan SponsorshipTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The amount of time to wait for a sponsor to return with a lease renewal time."
+      description: "A várakozási idő a megbízó és a bérlet megújítási idejének vissza a mennyisége."
   overload: System.Runtime.Remoting.Lifetime.ILease.SponsorshipTimeout*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.ILease.Unregister(System.Runtime.Remoting.Lifetime.ISponsor)
@@ -254,18 +254,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Removes a sponsor from the sponsor list."
+  summary: "A megbízó távolít el egy megbízó."
   syntax:
     content: public void Unregister (System.Runtime.Remoting.Lifetime.ISponsor obj);
     parameters:
     - id: obj
       type: System.Runtime.Remoting.Lifetime.ISponsor
-      description: "The lease sponsor to unregister."
+      description: "A bérleti megbízó regisztrációjának törlése."
   overload: System.Runtime.Remoting.Lifetime.ILease.Unregister*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller makes the call through a reference to the interface and does not have infrastructure permission."
+    description: "A közvetlen hívónak hivatkozni kell a felületen keresztül a hívást, és nincs engedélye infrastruktúra."
   platform:
   - net462
 references:
