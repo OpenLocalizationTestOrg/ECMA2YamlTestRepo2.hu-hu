@@ -19,8 +19,8 @@ items:
   nameWithType: AddInProcess
   fullName: System.AddIn.Hosting.AddInProcess
   type: Class
-  summary: "Provides an external process for running add-ins out-of-process from the host application."
-  remarks: "To activate an add-in in an external process, pass an AddInProcess object to the appropriate <xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName> method overload.       The executable that runs the add-in is obtained from one of two files installed with the .NET Framework under the Windows directory. By default, the executable that matches the bits-per-word of the host application is used. If the host is a 64-bit process, AddInProcess.exe is run; otherwise, AddInProcess32.exe is run. To specify the way the executable is selected, use the <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29> constructor to create the AddInProcess object."
+  summary: "Egy külső folyamat biztosít a beépülő modulok-folyamaton kívüli futtatja a gazdaalkalmazást."
+  remarks: "Egy beépülő külső folyamat aktiválásához adja át az AddInProcess objektum a megfelelő <xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName>metódus túlterhelési.</xref:System.AddIn.Hosting.AddInToken.Activate%60%601%28System.AddIn.Hosting.AddInProcess%2CSystem.Security.PermissionSet%29?displayProperty=fullName>       A végrehajtható fájlt a futó egyik két fájlt a Windows könyvtárban a .NET-keretrendszer telepített származik. Alapértelmezés szerint a végrehajtható fájl, amely megfelel a bits-/-word a fogadó alkalmazás szolgál. Ha a gazdagép egy 64 bites folyamat, AddInProcess.exe fut; egyébként futtassa a AddInProcess32.exe. Adja meg a módot a végrehajtható fájl be van jelölve, a <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>konstruktor az AddInProcess objektum létrehozásához.</xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>"
   example:
   - "The following example activates an add-in in an external process.  \n  \n [!code-vb[AddInP3Host#10](~/add/codesnippet/visualbasic/addinp3hostvb/p3host.vb#10)]\n [!code-cs[AddInP3Host#10](~/add/codesnippet/csharp/addinP3Host/P3Host.cs#10)]"
   syntax:
@@ -43,8 +43,8 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> class."
-  remarks: "This constructor has the same effect as using the <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29> constructor with the <xref:System.AddIn.Hosting.Platform?displayProperty=fullName> flag, to specify that the process that runs the add-in will have the same bits-per-word as the host process."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor hatása használatával a <xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>rendelkező konstruktor a <xref:System.AddIn.Hosting.Platform?displayProperty=fullName>jelzőre, adja meg, hogy a folyamat, amely futtatja a lesz-e az azonos bits-/-word, a gazdagép-folyamat.</xref:System.AddIn.Hosting.Platform?displayProperty=fullName> </xref:System.AddIn.Hosting.AddInProcess.%23ctor%28System.AddIn.Hosting.Platform%29>"
   syntax:
     content: public AddInProcess ();
     parameters: []
@@ -64,19 +64,19 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> class, specifying the bits-per-word of the process in which the add-in runs."
-  remarks: "The following table shows how `platform` affects the bits-per-word of the process on different operating systems:      ||32-bit operating system|64-bit operating system|   |-|------------------------------|------------------------------|   |Host|32-bit|Same as the host process|   |AnyCPU|32-bit|64-bit|   |X86|32-bit|32-bit|   |X64|Exception is thrown|64-bit|"
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> osztály, adja meg a bits-/-szót, amelyben a futtatja a folyamat."
+  remarks: "Az alábbi táblázatban látható, hogyan `platform` hatással van a bits-/-word a folyamat a különböző operációs rendszereken: ||&32; bites operációs rendszer |}&64; bites operációs rendszer |}   |-|------------------------------|------------------------------|   | Állomás |}&32; bites |} Ugyanaz, mint a gazdafolyamat |}   | AnyCPU |}&32; bites |}&64; bites |}   | X86 |}&32; bites |}&32; bites |}   | X64 |} Kivétel történt |}&64; bites |}"
   syntax:
     content: public AddInProcess (System.AddIn.Hosting.Platform platform);
     parameters:
     - id: platform
       type: System.AddIn.Hosting.Platform
-      description: "A value that specifies the bits-per-word of the process that runs the add-in."
+      description: "Egy érték, amely meghatározza a bits-/-word a folyamat, amely futtatja a."
   overload: System.AddIn.Hosting.AddInProcess.#ctor*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The registry entry for the path to the executable (AddInProcess.exe or AddInProcess32.exe) is missing.       -or-       The executable is missing."
+    description: "Hiányzik az elérési utat a végrehajtható fájl (AddInProcess.exe vagy AddInProcess32.exe) bejegyzést a beállításjegyzékből.       – vagy – a végrehajtható fájl hiányzik."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.IsCurrentProcess
@@ -91,15 +91,15 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets a value that indicates whether the current <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object represents the host application process."
-  remarks: "If the value of this property is `true`, the add-in is running in-process with the host application. In that case, using the <xref:System.AddIn.Hosting.AddInProcess.Start%2A> or <xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A> method throws an <xref:System.InvalidOperationException>.      > [!NOTE] >  The <xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName> property returns an <xref:System.AddIn.Hosting.AddInProcess> object that represents the host application process if the add-in is running in-process."
+  summary: "Lekérdezi egy érték, amely azt jelzi, hogy az aktuális <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> objektum által jelképezett a fogadó alkalmazás folyamata."
+  remarks: "Ha ez a tulajdonság értéke `true`, a rendszer futó-folyamat az állomás alkalmazással. Ebben az esetben a használatával <xref:System.AddIn.Hosting.AddInProcess.Start%2A>vagy a <xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A>metódus egy <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> jelez</xref:System.AddIn.Hosting.AddInProcess.Shutdown%2A> </xref:System.AddIn.Hosting.AddInProcess.Start%2A>      > [!NOTE] > A <xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName>tulajdonság értéket ad vissza egy <xref:System.AddIn.Hosting.AddInProcess>a futása folyamaton belüli alkalmazás gazdafolyamat képviselő objektum.</xref:System.AddIn.Hosting.AddInProcess> </xref:System.AddIn.Hosting.AddInEnvironment.Process%2A?displayProperty=fullName>"
   example:
   - "The following example activates an add-in in an external process and uses the IsCurrentProcess property to determine whether the add-in is in the same process as the host application process.  \n  \n [!code-vb[AddInP3Host#10](~/add/codesnippet/visualbasic/addinp3hostvb/p3host.vb#10)]\n [!code-cs[AddInP3Host#10](~/add/codesnippet/csharp/addinP3Host/P3Host.cs#10)]"
   syntax:
     content: public bool IsCurrentProcess { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object corresponds to the current process; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> objektum megfelel az aktuális folyamat; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.IsCurrentProcess*
   exceptions: []
   platform:
@@ -116,13 +116,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets or sets a value that indicates whether to keep the external process alive."
-  remarks: "Set this property to `false` to aggressively shut down the external process after the last add-in inside the process has been shut down."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a külső folyamat életben tartása."
+  remarks: "Ez a tulajdonság beállítása `false` agresszív le kell állítania a külső folyamat után utolsó adja hozzá a belül a folyamat le lett állítva."
   syntax:
     content: public bool KeepAlive { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the external process should be kept alive; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a külső folyamat kell életben tartania; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.KeepAlive*
   exceptions: []
   platform:
@@ -139,13 +139,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets the bits-per-word of the process in which the out-of-process add-in is run."
-  remarks: "The bits-per-word is set when the <xref:System.AddIn.Hosting.AddInProcess> object is initialized, and cannot be changed."
+  summary: "Lekérdezi a bits-/-word a folyamat, amelyben a folyamaton a beépülő modul futtatása."
+  remarks: "A bits-/-szó van beállítva, ha a <xref:System.AddIn.Hosting.AddInProcess>objektum inicializálva, és nem módosítható.</xref:System.AddIn.Hosting.AddInProcess>"
   syntax:
     content: public System.AddIn.Hosting.Platform Platform { get; }
     return:
       type: System.AddIn.Hosting.Platform
-      description: "The bits-per-word of the process that runs the add-in."
+      description: "A bits-/-word a folyamat, amely a futtatja."
   overload: System.AddIn.Hosting.AddInProcess.Platform*
   exceptions: []
   platform:
@@ -162,13 +162,13 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets the process ID of the external process."
-  remarks: "Use this property for debugging."
+  summary: "Lekérdezi a külső folyamat Folyamatazonosítója."
+  remarks: "Használja ezt a tulajdonságot a hibakereséshez."
   syntax:
     content: public int ProcessId { get; }
     return:
       type: System.Int32
-      description: "The process ID, or -1 if the external process has not started."
+      description: "A folyamat azonosítója vagy&1; értéket, ha a külső folyamat nem indult el."
   overload: System.AddIn.Hosting.AddInProcess.ProcessId*
   exceptions: []
   platform:
@@ -185,18 +185,18 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Forcibly shuts down the external process."
+  summary: "A külső folyamat kényszerített leáll."
   syntax:
     content: public bool Shutdown ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the external process was running and is successfully shut down; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there is no active process associated with the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a külső folyamat futása, és sikeresen leállításakor; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> esetén nem aktív folyamat társított a <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref>."
   overload: System.AddIn.Hosting.AddInProcess.Shutdown*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The add-in is running in-process with the host application. Starting and stopping the process is allowed only for external processes, not for the host process."
+    description: "A futó-folyamat az állomás alkalmazással. Indítása és leállítása a folyamat csak a külső folyamatok, a gazdagép-folyamat a nem engedélyezett."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.ShuttingDown
@@ -211,12 +211,12 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Occurs when the process represented by the <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;></xref> object is about to be shut down."
+  summary: "Akkor következik be, amikor a folyamat által képviselt a <xref href=&quot;System.AddIn.Hosting.AddInProcess&quot;> </xref> objektum arra készül, hogy le kell állítani."
   syntax:
     content: public event EventHandler<System.ComponentModel.CancelEventArgs> ShuttingDown;
     return:
       type: System.EventHandler{System.ComponentModel.CancelEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -232,18 +232,18 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Starts the external process."
+  summary: "A külső folyamat elindul."
   syntax:
     content: public bool Start ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the process is successfully started; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the process is already running."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a folyamat sikeresen elindult; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> a folyamat már fut. Ha."
   overload: System.AddIn.Hosting.AddInProcess.Start*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The add-in is running in-process with the host application. Starting and stopping the process is allowed only for external processes, not for the host process."
+    description: "A futó-folyamat az állomás alkalmazással. Indítása és leállítása a folyamat csak a külső folyamatok, a gazdagép-folyamat a nem engedélyezett."
   platform:
   - net462
 - uid: System.AddIn.Hosting.AddInProcess.StartupTimeout
@@ -258,21 +258,21 @@ items:
   assemblies:
   - System.AddIn
   namespace: System.AddIn.Hosting
-  summary: "Gets or sets the number of seconds to allow for the process to start."
-  remarks: "The default value is 10 seconds. This property is usually used during debugging, to increase the startup time for the process that runs the out-of-process add-in."
+  summary: "Lekérdezi vagy beállítja azt az időtartamot másodpercben, a folyamat elindításához engedélyezése."
+  remarks: "Az alapértelmezett érték 10 másodperc. Ez a tulajdonság általában használható hibakeresési, növelje a indítási időt a folyamat, amely futtatja a folyamaton a beépülő modul."
   syntax:
     content: public TimeSpan StartupTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The number of seconds to allow for process startup."
+      description: "Az időtartamot másodpercben, lehetővé teszik a folyamat elindítása."
   overload: System.AddIn.Hosting.AddInProcess.StartupTimeout*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The process is already running."
+    description: "A folyamat már fut."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The assigned value is less than 0 (zero)."
+    description: "A hozzárendelt érték kisebb, mint 0 (nulla)."
   platform:
   - net462
 references:
