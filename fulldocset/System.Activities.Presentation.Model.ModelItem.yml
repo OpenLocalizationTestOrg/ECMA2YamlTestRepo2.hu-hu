@@ -28,8 +28,8 @@ items:
   nameWithType: ModelItem
   fullName: System.Activities.Presentation.Model.ModelItem
   type: Class
-  summary: "Represents a single item in the editing model. An item can be anything from a complex data structure down to a color or integer."
-  remarks: "You can access the item’s properties through its <xref:System.Activities.Presentation.Model.ModelItem.Properties%2A> collection and make changes to the values of the properties.       A ModelItem is a wrapper around the underlying data model of the designer. You can access the underlying model through the <xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A> method.      > [!NOTE] >  Any changes you make to an object returned from the <xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A> method will not be reflected by the serialization and undo systems of the designer."
+  summary: "A szerkesztési modell csak egy elemet jelképezi. Egy elem foglalhatnak egy összetett adatszerkezet le szín vagy egész szám lehet."
+  remarks: "Az elem tulajdonságainak keresztül érheti el a <xref:System.Activities.Presentation.Model.ModelItem.Properties%2A>gyűjteményben, és később módosításait a tulajdonságok értékeit.</xref:System.Activities.Presentation.Model.ModelItem.Properties%2A>       Egy ModelItem a Designer az alapul szolgáló adatmodellt csomagolásának. Az alapul szolgáló modell keresztül érheti el a <xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A>metódus.</xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A>      > [!NOTE] > Által visszaadott objektum végzett módosításokat a <xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A>metódus nem jelenik meg a tervező a szerializálás és a visszavonás rendszerek által.</xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A>"
   example:
   - "The ModelItem can be thought of as a thin proxy for an object at which it points. First define a simple `Animal` object.  \n  \n```  \n  \npublic class Animal  \n{  \n    // simple property  \n    public string Name { get; set; }  \n    // complex property   \n    public Location Residence { get; set; }   \n    // list   \n    public List<Animal> CloseRelatives { get; set; }  \n    // dictionary  \n    public Dictionary<string, object> Features { get; set; }   \n}  \n  \npublic class Location  \n{  \n    public string StreetAddress { get; set; }  \n    public string City { get; set; }  \n    public string State { get; set; }   \n}  \n  \n```  \n  \n Secondly, create an instance of that `Animal` and a ModelItem that is a proxy for it. The object can then be retrieved by calling <xref:System.Activities.Presentation.Model.ModelItem.GetCurrentValue%2A>. The following code also shows how to use other properties defined by ModelItem.  \n  \n```  \n  \nEditingContext ec = new EditingContext();  \nvar companion1 = new Animal { Name = \"Houdini the parakeet\" };  \nvar companion2 = new Animal { Name = \"Groucho the fish\" };  \nvar animal = new Animal   \n   {  \n      Name = \"Sasha the pug\",  \n      Residence = new Location   \n      {  \n         StreetAddress = \"123 Main Street\",  \n         City = \"AnyTown\",  \n         State = \"Washington\"  \n      },  \n      Features = new Dictionary<string, object> {   \n         {\"noise\", \"snort\" },  \n         {\"MeanTimeUntilNaps\", TimeSpan.FromMinutes(15) }  \n      },  \n      CloseRelatives = new List<Animal> { companion1, companion2 }   \n   };  \nModelTreeManager mtm = new ModelTreeManager(ec);  mtm.Load(animal);  \nModelItem mi = mtm.Root;  \n  \n//Testing other properties of the class  \nModelItem root = mtm.Root;  \nAssert.IsTrue(root.GetCurrentValue() == animal, \"GetCurrentValue() returns same object\");  \nAssert.IsTrue(root.ItemType == typeof(Animal),\"ItemType describes the item\");  \nAssert.IsTrue(root.Parent == null,\"root parent is null\");  \nAssert.IsTrue(root.Source == null, \"root source is null\");  \nAssert.IsTrue(((List<Animal>)root.Properties[\"CloseRelatives\"].ComputedValue)[0] == companion1,   \n   \"ComputedValue of prop == actual object\");  \nAssert.IsFalse(((List<Animal>)root.Properties[\"CloseRelatives\"].ComputedValue)[0] == companion2,   \n   \"ComputedValue of prop == actual object\");  \nAssert.AreEqual(root.Properties[\"Residence\"].  \n   Value.  \n   Properties[\"StreetAddress\"].  \n   Value.GetCurrentValue(), \"123 Main Street\", \"get actual value back out\");  \nAssert.AreEqual(root, root.Properties[\"Residence\"].Parent, \"property points to owner\");  \nModelItem location = root.Properties[\"Residence\"].Value;  \nAssert.AreEqual(root.Properties[\"Residence\"], location.Source, \"sources point to the right place\");  \n  \n```"
   syntax:
@@ -53,7 +53,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Creates a new instance of the <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> class."
+  summary: "Létrehoz egy új példányt a <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;> </xref> osztály."
   syntax:
     content: protected ModelItem ();
     parameters: []
@@ -73,12 +73,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the attributes declared on this item."
+  summary: "Lekérdezi az attribútumokat, ezzel a lehetőséggel deklarálni."
   syntax:
     content: public abstract System.ComponentModel.AttributeCollection Attributes { get; }
     return:
       type: System.ComponentModel.AttributeCollection
-      description: "A collection that contains the attributes of the item."
+      description: "Az elem attribútumait tartalmazó gyűjtemény."
   overload: System.Activities.Presentation.Model.ModelItem.Attributes*
   exceptions: []
   platform:
@@ -95,14 +95,14 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Opens an editing scope for the designer. After an editing scope is open, all changes across all objects will be saved into the scope until the transaction is completed or reverted. Editing scopes can be nested, but must be committed in order."
-  remarks: "An editing scope allows multiple changes to the model to be applied as a single transaction. All of the changes made within the editing scope can be reverted at any time before the transaction is completed.       Editing scopes are global to the designer. An editing scope can be created for any item in the designer; you do not need to create an editing scope for the specific item you are changing."
+  summary: "Megnyit egy szerkesztési hatókör a Designer. A szerkesztési hatókörök megnyitása után minden módosítások az összes objektum lesznek mentve hatálya mindaddig, amíg a tranzakció befejeződött vagy tért vissza. Szerkesztési hatókörök egymásba, de sorrendben kell véglegesítenie."
+  remarks: "A szerkesztési hatókörök lehetővé teszi, hogy több változtatást egyetlen alkalmazni a modellhez. Az összes szerkesztési hatókörén belül végrehajtott módosítások a tranzakció befejezése előtt bármikor alakítható vissza.       A Tervező szerkesztési hatókörök teljes. A szerkesztési hatókörök hozható létre valamely elemére a Tervező; nem kell módosítani az adott elem egy szerkesztési hatókör létrehozása."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelEditingScope BeginEdit ();
     parameters: []
     return:
       type: System.Activities.Presentation.Model.ModelEditingScope
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;></xref>, which must be either completed or reverted."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;> </xref>, amely lehet befejeződött vagy el kell visszaállítani."
   overload: System.Activities.Presentation.Model.ModelItem.BeginEdit*
   exceptions: []
   platform:
@@ -119,16 +119,16 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Opens an editing scope for the designer."
+  summary: "Megnyit egy szerkesztési hatókör a Designer."
   syntax:
     content: public virtual System.Activities.Presentation.Model.ModelEditingScope BeginEdit (bool shouldApplyChangesImmediately);
     parameters:
     - id: shouldApplyChangesImmediately
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the changes should be applied immediately; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a módosítások azonnal; kell alkalmazni Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Activities.Presentation.Model.ModelEditingScope
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;></xref>, which must be either completed or reverted."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;> </xref>, amely lehet befejeződött vagy el kell visszaállítani."
   overload: System.Activities.Presentation.Model.ModelItem.BeginEdit*
   exceptions: []
   platform:
@@ -145,17 +145,17 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Opens an editing scope for the designer. After an editing scope is open, all changes across all objects will be saved into the scope until the transaction is completed or reverted. Editing scopes can be nested, but must be committed in order."
-  remarks: "An editing scope allows multiple changes to the model to be applied as a single transaction. All of the changes made within the editing scope can be reverted at any time before the transaction is completed.       Editing scopes are global to the designer. An editing scope can be created for any item in the designer; you do not need to create an editing scope for the specific item you are changing."
+  summary: "Megnyit egy szerkesztési hatókör a Designer. A szerkesztési hatókörök megnyitása után minden módosítások az összes objektum lesznek mentve hatálya mindaddig, amíg a tranzakció befejeződött vagy tért vissza. Szerkesztési hatókörök egymásba, de sorrendben kell véglegesítenie."
+  remarks: "A szerkesztési hatókörök lehetővé teszi, hogy több változtatást egyetlen alkalmazni a modellhez. Az összes szerkesztési hatókörén belül végrehajtott módosítások a tranzakció befejezése előtt bármikor alakítható vissza.       A Tervező szerkesztési hatókörök teljes. A szerkesztési hatókörök hozható létre valamely elemére a Tervező; nem kell módosítani az adott elem egy szerkesztési hatókör létrehozása."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelEditingScope BeginEdit (string description);
     parameters:
     - id: description
       type: System.String
-      description: "An optional description of the change. This will be set into the <xref:System.Activities.Presentation.Model.ModelEditingScope.Description*> property of the editing scope."
+      description: "A módosítás leírását. Ez állít be a <xref:System.Activities.Presentation.Model.ModelEditingScope.Description*>tulajdonság szerkesztési hatókör.</xref:System.Activities.Presentation.Model.ModelEditingScope.Description*>"
     return:
       type: System.Activities.Presentation.Model.ModelEditingScope
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;></xref>, which must be either completed or reverted."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;> </xref>, amely lehet befejeződött vagy el kell visszaállítani."
   overload: System.Activities.Presentation.Model.ModelItem.BeginEdit*
   exceptions: []
   platform:
@@ -172,19 +172,19 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Opens an editing scope for the designer."
+  summary: "Megnyit egy szerkesztési hatókör a Designer."
   syntax:
     content: public virtual System.Activities.Presentation.Model.ModelEditingScope BeginEdit (string description, bool shouldApplyChangesImmediately);
     parameters:
     - id: description
       type: System.String
-      description: "An optional description of the change. This will be set into the <xref:System.Activities.Presentation.Model.ModelEditingScope.Description*> property of the editing scope."
+      description: "A módosítás leírását. Ez állít be a <xref:System.Activities.Presentation.Model.ModelEditingScope.Description*>tulajdonság szerkesztési hatókör.</xref:System.Activities.Presentation.Model.ModelEditingScope.Description*>"
     - id: shouldApplyChangesImmediately
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that the changes should be applied immediately; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>jelzi, hogy a módosítások azonnal; kell alkalmazni Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Activities.Presentation.Model.ModelEditingScope
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;></xref>, which must be either completed or reverted."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelEditingScope&quot;> </xref>, amely lehet befejeződött vagy el kell visszaállítani."
   overload: System.Activities.Presentation.Model.ModelItem.BeginEdit*
   exceptions: []
   platform:
@@ -201,12 +201,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;></xref> of the item, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+  summary: "Lekérdezi a <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;> </xref> elem, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelProperty Content { get; }
     return:
       type: System.Activities.Presentation.Model.ModelProperty
-      description: "The <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;></xref> of the item as a <xref href=&quot;System.Activities.Presentation.Model.ModelProperty&quot;></xref>. If the <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;></xref> is not declared by the <xref:System.Activities.Presentation.Model.ModelItem.ItemType*> of this item, Content returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "The <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;></xref> of the item as a <xref href=&quot;System.Activities.Presentation.Model.ModelProperty&quot;></xref>. Ha a <xref uid=&quot;langword_csharp_ContentPropertyAttribute&quot; name=&quot;ContentPropertyAttribute&quot; href=&quot;&quot;> </xref> típusa nem deklarál a <xref:System.Activities.Presentation.Model.ModelItem.ItemType*>ennek az elemnek a tartalom beolvasása <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Activities.Presentation.Model.ModelItem.ItemType*>"
   overload: System.Activities.Presentation.Model.ModelItem.Content*
   exceptions: []
   platform:
@@ -223,14 +223,14 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Returns the current value of the underlying model object that the <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> is wrapping."
-  remarks: "You can inspect this object, but you should not make any changes to it. Changes made to the object returned will not be incorporated into the designer. The GetCurrentValue method can return either an existing or new cloned instance of the object."
+  summary: "Az alapul szolgáló modell objektum aktuális értékét adja vissza a <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;> </xref> körbefuttatási van."
+  remarks: "Ez az objektum vizsgálhatja meg, de meg kell nem módosítja azt. A visszaadott objektum módosításai nem kell építeni a tervezőben. A GetCurrentValue metódust vagy a meglévő vagy új klónozott objektum egy példányát a adhat vissza."
   syntax:
     content: public abstract object GetCurrentValue ();
     parameters: []
     return:
       type: System.Object
-      description: "The current value of the underlying model object that the <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> is wrapping as an <xref:System.Object>."
+      description: "Az aktuális értékét az alapul szolgáló modell objektum, amely a <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;> </xref> van, mint a <xref:System.Object>.</xref:System.Object> körbefuttatási"
   overload: System.Activities.Presentation.Model.ModelItem.GetCurrentValue*
   exceptions: []
   platform:
@@ -247,12 +247,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the type of object that the item represents."
+  summary: "Lekérdezi a cikk képviselő objektum típusa."
   syntax:
     content: public abstract Type ItemType { get; }
     return:
       type: System.Type
-      description: "The type of object that the item represents."
+      description: "A cikk képviselő objektum típusa."
   overload: System.Activities.Presentation.Model.ModelItem.ItemType*
   exceptions: []
   platform:
@@ -269,13 +269,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets or sets the name or ID of the item."
-  remarks: "Not all items need to have names, so this might return `null`. Depending on the type of item and where it sits in the hierarchy, it might not always be legal to set the Name on an item. If the <xref:System.Activities.Presentation.Model.ModelItem.ItemType%2A> of this item declares a `RuntimeNamePropertyAttribute`, the  Name property is a direct mapping to the property dictated by that attribute."
+  summary: "Lekérdezi vagy beállítja a nevét vagy az elem Azonosítóját."
+  remarks: "Nem minden elem kell rendelkeznie a nevét, így ez előfordulhat, hogy vissza `null`. Attól függően, hogy milyen elemet, és ha a hierarchiában helyezkedik el nem mindig lehet beállítani a nevét egy érvényes. Ha a <xref:System.Activities.Presentation.Model.ModelItem.ItemType%2A>elem deklarál egy `RuntimeNamePropertyAttribute`, a Name tulajdonság nincs meghatározni, hogy az attribútum a tulajdonság egy közvetlen leképezése.</xref:System.Activities.Presentation.Model.ModelItem.ItemType%2A>"
   syntax:
     content: public abstract string Name { get; set; }
     return:
       type: System.String
-      description: "The name or ID of the item as a <xref:System.String>."
+      description: "A név vagy mint <xref:System.String>.</xref:System.String> elem azonosítója"
   overload: System.Activities.Presentation.Model.ModelItem.Name*
   exceptions: []
   platform:
@@ -292,12 +292,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the item that is the parent of this item."
+  summary: "Lekérdezi a cikket, amely ezt az elemet a szülőjének."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelItem Parent { get; }
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> that is the parent of this item. If an item is contained in a collection or dictionary, the object that owns the collection or dictionary is returned instead."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;> </xref> ezt az elemet, amely a szülőjének. Ha egy elemet egy gyűjtemény vagy szótár szerepel, az objektum, amely a gyűjtemény vagy szótár tulajdonosa Ehelyett adja vissza."
   overload: System.Activities.Presentation.Model.ModelItem.Parent*
   exceptions: []
   platform:
@@ -314,12 +314,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets all parents of this item."
+  summary: "Az elem minden szülő lekérdezi."
   syntax:
     content: public abstract System.Collections.Generic.IEnumerable<System.Activities.Presentation.Model.ModelItem> Parents { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.Activities.Presentation.Model.ModelItem}
-      description: "The parents of this item."
+      description: "Ez az elem szülőkhöz."
   overload: System.Activities.Presentation.Model.ModelItem.Parents*
   exceptions: []
   platform:
@@ -336,13 +336,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the public properties on this item."
-  remarks: "The set of properties returned might change based on attached properties or changes to the editing scope."
+  summary: "Nyilvános tulajdonságait olvassa be erre az elemre."
+  remarks: "Visszaadott tulajdonságok készletét csatolt tulajdonságok vagy módosításokat függően előfordulhat, hogy módosítsa a szerkesztési hatókörre."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelPropertyCollection Properties { get; }
     return:
       type: System.Activities.Presentation.Model.ModelPropertyCollection
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItemCollection&quot;></xref> that contains the public properties of this item."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItemCollection&quot;> </xref> , amely tartalmazza ezt az elemet nyilvános tulajdonságait."
   overload: System.Activities.Presentation.Model.ModelItem.Properties*
   exceptions: []
   platform:
@@ -359,13 +359,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Implements <xref uid=&quot;langword_csharp_INotifyPropertyChanged&quot; name=&quot;INotifyPropertyChanged&quot; href=&quot;&quot;></xref>. Use this event to listen for changes to the model. This is also used by the data binding features of WPF."
-  remarks: "Disconnect events from items when you are finished with them. Otherwise, you might prevent the garbage collector from disposing of an item that is no longer in use."
+  summary: "Megvalósítja <xref uid=&quot;langword_csharp_INotifyPropertyChanged&quot; name=&quot;INotifyPropertyChanged&quot; href=&quot;&quot;> </xref>. Használja ezt az eseményt a modell módosításainak figyelését. A WPF az adatok kötésének funkcióit is használja."
+  remarks: "Ha elkészült, válassza le események elemeket. Ellenkező esetben a szemétgyűjtő megakadályozása előfordulhat, hogy egy elem, amely már nem használt megsemmisítése."
   syntax:
     content: public abstract event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
     return:
       type: System.ComponentModel.PropertyChangedEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -381,12 +381,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the item that is the root of this tree."
+  summary: "Lekérdezi a fa gyökere elemet."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelItem Root { get; }
     return:
       type: System.Activities.Presentation.Model.ModelItem
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;></xref> that is the root of this tree, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if this item is not part of a tree."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelItem&quot;> </xref> , amely a fa gyökerében vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha ez az elem nem egy fa része."
   overload: System.Activities.Presentation.Model.ModelItem.Root*
   exceptions: []
   platform:
@@ -403,13 +403,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets the property that provided this value."
-  remarks: "If the item represents the root of the object graph, this will return `null`. If an item is a member of a collection or dictionary, the property returned from Source will be a pseudo-property provided by the collection or dictionary. For other values, the Source property returns the property where the value was actually set. Therefore, if a value is being inherited, Source allows you to find out who originally provided the value."
+  summary: "A tulajdonság, amely a megadott érték beolvasása."
+  remarks: "Ha a cikk a objektumdiagram gyökerét jelző, ezzel visszatér `null`. Ha egy elemet egy gyűjtemény vagy szótár tagja, az adatforrás által visszaadott tulajdonság nem egy gyűjtemény vagy szótár által biztosított látszólagosan tulajdonság. A más értékek a Source tulajdonság adja vissza a tulajdonság ahol ténylegesen beállított értéket. Ezért értéket örökölt, ha a forrás lehetővé teszi annak megállapítása, aki eredetileg megadott érték."
   syntax:
     content: public abstract System.Activities.Presentation.Model.ModelProperty Source { get; }
     return:
       type: System.Activities.Presentation.Model.ModelProperty
-      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelProperty&quot;></xref> that indicates the source of this value."
+      description: "A <xref href=&quot;System.Activities.Presentation.Model.ModelProperty&quot;> </xref> , amely jelzi, hogy ez az érték forrását."
   overload: System.Activities.Presentation.Model.ModelItem.Source*
   exceptions: []
   platform:
@@ -426,12 +426,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets all the properties that hold this value."
+  summary: "Ez az érték rendelkező összes tulajdonságait olvassa be."
   syntax:
     content: public abstract System.Collections.Generic.IEnumerable<System.Activities.Presentation.Model.ModelProperty> Sources { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.Activities.Presentation.Model.ModelProperty}
-      description: "The sources of this value."
+      description: "Ez az érték forrásai."
   overload: System.Activities.Presentation.Model.ModelItem.Sources*
   exceptions: []
   platform:
@@ -448,13 +448,13 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Returns a string representation of the underlying model object contained in this model item."
+  summary: "Az alapul szolgáló modell objektum szerepel a modellelemet karakterlánc alakot adja vissza."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A string representation of the underlying model object contained in this model item."
+      description: "Az alapul szolgáló modell objektum szerepel a modellelemet karakterlánc-ábrázolása."
   overload: System.Activities.Presentation.Model.ModelItem.ToString*
   exceptions: []
   platform:
@@ -471,12 +471,12 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.Model
-  summary: "Gets a <xref href=&quot;System.Windows.DependencyObject&quot;></xref> that graphically represents this item."
+  summary: "Lekérdezi a <xref href=&quot;System.Windows.DependencyObject&quot;> </xref> , amely ábrázolja ezt az elemet."
   syntax:
     content: public abstract System.Windows.DependencyObject View { get; }
     return:
       type: System.Windows.DependencyObject
-      description: "A <xref href=&quot;System.Windows.DependencyObject&quot;></xref> that graphically represents this item, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no such representation."
+      description: "A <xref href=&quot;System.Windows.DependencyObject&quot;> </xref> , amely ábrázolja ezt az elemet vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> , ha nincs ilyen ábrázolását."
   overload: System.Activities.Presentation.Model.ModelItem.View*
   exceptions: []
   platform:

@@ -15,8 +15,8 @@ items:
   nameWithType: Bookmark
   fullName: System.Activities.Bookmark
   type: Class
-  summary: "Represents a point at which a workflow or activity can passively wait to be resumed."
-  remarks: "When an activity creates a Bookmark, it becomes idle and waits for the Bookmark to be resumed. If there are other activities in parallel with the activity that created the Bookmark, they will be scheduled for execution.       Bookmarks can be resumed by the host application using one of the <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A> overloads.       [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] bookmarks, see [Using WorkflowInvoker and WorkflowApplication](~/add/includes/ajax-current-ext-md.md), [Bookmarks](~/add/includes/ajax-current-ext-md.md), and the [Bookmarks &#91; WF Samples&#93;](~/add/includes/ajax-current-ext-md.md) and [Wait For Input Activity &#91;WF Samples&#93;](~/add/includes/ajax-current-ext-md.md) samples."
+  summary: "Egy pontját jelöli, amelyek munkafolyamat vagy tevékenység passzívan várja meg, amíg folytatható."
+  remarks: "Amikor egy tevékenység könyvjelzőt hoz létre, üresjárati válik, és megvárja-e a könyvjelző folytatható. Ha a tevékenység által létrehozott könyvjelzőt párhuzamosan más tevékenységek, akkor lesz végrehajtásra ütemezni.       A könyvjelzők használata a gazdagép alkalmazást az egyik folytathatók a <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A>túlterhelések.</xref:System.Activities.WorkflowApplication.ResumeBookmark%2A>       [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)]könyvjelzők, lásd: [használatával WorkflowInvoker és WorkflowApplication](~/add/includes/ajax-current-ext-md.md), [könyvjelzők](~/add/includes/ajax-current-ext-md.md), és a [könyvjelzők [WF minták]](~/add/includes/ajax-current-ext-md.md) és [Várjon, amíg a bemeneti tevékenység [WF minták]](~/add/includes/ajax-current-ext-md.md) minták."
   example:
   - "In the following example, a `ReadLine` activity is created. When executed, the `ReadLine` activity creates a Bookmark, registers a callback, and then waits for the Bookmark to be resumed. When it is resumed, the `ReadLine` activity assigns the data that was passed with the Bookmark to its <xref:System.Activities.Activity%601.Result%2A> argument.  \n  \n<CodeContentPlaceHolder>0</CodeContentPlaceHolder>  \n In the following example, a workflow is created that uses the `ReadLine` activity to gather the user’s name and display it to the console window. The host application performs the actual work of gathering the input and passes it to the workflow by resuming the Bookmark.  \n  \n<CodeContentPlaceHolder>1</CodeContentPlaceHolder>  \n When the `ReadLine` activity is executed, it creates a Bookmark named `UserName` and then waits for the bookmark to be resumed. The host collects the desired data and then resumes the Bookmark. The workflow resumes, displays the name, and then completes. Note that no synchronization code is required with regard to resuming the bookmark. A Bookmark can only be resumed when the workflow is idle, and if the workflow is not idle, the call to <xref:System.Activities.WorkflowApplication.ResumeBookmark%2A> blocks until the workflow becomes idle."
   syntax:
@@ -43,13 +43,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Initializes a new instance of the <xref href=&quot;System.Activities.Bookmark&quot;></xref> class using the specified name."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Activities.Bookmark&quot;> </xref> osztály a megadott név használatával."
   syntax:
     content: public Bookmark (string name);
     parameters:
     - id: name
       type: System.String
-      description: "A name that identifies the bookmark."
+      description: "Amely azonosítja a könyvjelző nevét."
   overload: System.Activities.Bookmark.#ctor*
   exceptions: []
   platform:
@@ -66,16 +66,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Determines whether the current <xref href=&quot;System.Activities.Bookmark&quot;></xref> and the specified <xref href=&quot;System.Activities.Bookmark&quot;></xref> refer to the same continuation point in a workflow."
+  summary: "Meghatározza, hogy az aktuális <xref href=&quot;System.Activities.Bookmark&quot;> </xref> és a megadott <xref href=&quot;System.Activities.Bookmark&quot;> </xref> tekintse meg a munkafolyamat folytatása pontján."
   syntax:
     content: public bool Equals (System.Activities.Bookmark other);
     parameters:
     - id: other
       type: System.Activities.Bookmark
-      description: "The bookmark to compare."
+      description: "A könyvjelző összehasonlítani."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Activities.Bookmark&quot;></xref> objects are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.Activities.Bookmark&quot;> </xref> objektum, annál; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Activities.Bookmark.Equals*
   exceptions: []
   platform:
@@ -92,16 +92,16 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Determines whether the current <xref href=&quot;System.Activities.Bookmark&quot;></xref> and the specified object refer to the same continuation point in a workflow."
+  summary: "Meghatározza, hogy az aktuális <xref href=&quot;System.Activities.Bookmark&quot;> </xref> , majd tekintse át a megadott objektum munkafolyamat folytatása pontján."
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to compare."
+      description: "Az objektum összehasonlítani."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Activities.Bookmark&quot;></xref> objects are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.Activities.Bookmark&quot;> </xref> objektum, annál; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Activities.Bookmark.Equals*
   exceptions: []
   platform:
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns a unique identifier for this <xref href=&quot;System.Activities.Bookmark&quot;></xref> instance."
+  summary: "Ez egy egyedi azonosítójának beolvasása <xref href=&quot;System.Activities.Bookmark&quot;> </xref> példány."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The unique identifier of this <xref href=&quot;System.Activities.Bookmark&quot;></xref> instance."
+      description: "Ez az egyedi azonosítója <xref href=&quot;System.Activities.Bookmark&quot;> </xref> példány."
   overload: System.Activities.Bookmark.GetHashCode*
   exceptions: []
   platform:
@@ -141,12 +141,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Gets the bookmark name."
+  summary: "Lekérdezi a könyvjelző nevét."
   syntax:
     content: public string Name { get; }
     return:
       type: System.String
-      description: "The bookmark name."
+      description: "A könyvjelző nevét."
   overload: System.Activities.Bookmark.Name*
   exceptions: []
   platform:
@@ -163,13 +163,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities
-  summary: "Returns the bookmark name for a named bookmark or the bookmark ID for an unnamed bookmark."
+  summary: "Egy nevesített könyvjelző a könyvjelző nevét vagy a könyvjelző-azonosítója egy névtelen könyvjelző adja vissza."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The bookmark name or ID."
+      description: "A könyvjelző nevét vagy azonosítója."
   overload: System.Activities.Bookmark.ToString*
   exceptions: []
   platform:
