@@ -11,8 +11,8 @@ items:
   nameWithType: ICancelAddNew
   fullName: System.ComponentModel.ICancelAddNew
   type: Interface
-  summary: "Adds transactional capability when adding a new item to a collection."
-  remarks: "The ICancelAddNew interface enables a collection to add a new item in an extensible way. The new item subsequently can be committed or rolled back. The <xref:System.ComponentModel.IBindingList.AddNew%2A> method of the collection is used to tentatively add the item, which is subsequently transacted through the following operations:      -   The <xref:System.ComponentModel.ICancelAddNew.EndNew%2A> method will explicitly commit the pending addition.      -   Performing another collection operation, such as an insertion, removal, or move will implicitly commit the pending addition.      -   The <xref:System.ComponentModel.ICancelAddNew.CancelNew%2A> method will roll back the pending addition if it has not already been committed.      > [!NOTE] >  In some scenarios, such as Windows Forms complex data binding, the collection may receive <xref:System.ComponentModel.ICancelAddNew.CancelNew%2A> or <xref:System.ComponentModel.ICancelAddNew.EndNew%2A> calls for items other than the newly added item. (Each item is typically a row in a data view.) Ignore these calls; cancel or commit the new item only when that item&quot;s index is specified.       There are two models that allow transactional addition of an item to a data-bound collection:      -   The older model relies directly on a collection that implements the <xref:System.ComponentModel.IBindingList> interface and is data-bound directly using the <xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName> class. The <xref:System.Windows.Forms.CurrencyManager.AddNew%2A>, <xref:System.Windows.Forms.CurrencyManager.EndCurrentEdit%2A>, and <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A> methods of the <xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName> class are responsible for transactional support for adding new items. However, this functionality depends upon the items supporting transactional behavior through the <xref:System.ComponentModel.IEditableObject> interface. If the items do not support this interface, the item will always be added to the list, regardless of subsequent calls to <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>.      -   The newer model supports a more robust data-binding scenario through the generic <xref:System.ComponentModel.BindingList%601> class, which implements the <xref:System.ComponentModel.IBindingList> and ICancelAddNew interfaces. In this case, the transactional support is managed by the <xref:System.ComponentModel.BindingList%601> collection directly."
+  summary: "Tranzakciós funkció hozzáadása, ha új elem hozzáadása a gyűjteményhez."
+  remarks: "A ICancelAddNew felület lehetővé teszi, hogy az új elem hozzáadása egy bővíthető módja a gyűjtemény. Az új elem később is lehet véglegesítés vagy visszaállítás. A <xref:System.ComponentModel.IBindingList.AddNew%2A>a gyűjtemény módszert feltételesen hozzáadása az elem, amely ezt követően a következő műveletek révén van tranzakcióalapú: - a <xref:System.ComponentModel.ICancelAddNew.EndNew%2A>metódus explicit módon véglegesíti a függő Hozzáadás.</xref:System.ComponentModel.ICancelAddNew.EndNew%2A> </xref:System.ComponentModel.IBindingList.AddNew%2A>      -Művelet egy másik gyűjtemény, például egy beszúrási, eltávolítása vagy áthelyezés implicit módon véglegesítése a függőben lévő hozzáadását.      -A <xref:System.ComponentModel.ICancelAddNew.CancelNew%2A>metódus visszaállítja a függőben lévő továbbá ha már nem véglegesített.</xref:System.ComponentModel.ICancelAddNew.CancelNew%2A>      > [!NOTE] > Bizonyos esetekben, például a Windows Forms összetett adatkötés, jelenhet meg a gyűjtemény <xref:System.ComponentModel.ICancelAddNew.CancelNew%2A>vagy <xref:System.ComponentModel.ICancelAddNew.EndNew%2A>az újonnan felvett elem nem tesz szükségessé.</xref:System.ComponentModel.ICancelAddNew.EndNew%2A> </xref:System.ComponentModel.ICancelAddNew.CancelNew%2A> (Minden elem általában egy sor adatok nézetben.) Figyelmen kívül hagyja az adott hívások; Zárja be, és véglegesíti az új elem csak akkor, ha ez az elem indexe meg van adva.       Nincsenek két modellek, amelyek lehetővé teszik az adathoz kötött gyűjtemény elem tranzakciós hozzáadását:-a régebbi modell közvetlenül támaszkodik egy gyűjteményt, amely megvalósítja a <xref:System.ComponentModel.IBindingList>felületet, és adatokhoz kötve közvetlenül az <xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName>osztály</xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName> használatával</xref:System.ComponentModel.IBindingList> A <xref:System.Windows.Forms.CurrencyManager.AddNew%2A>, <xref:System.Windows.Forms.CurrencyManager.EndCurrentEdit%2A>, és <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>módszerek a <xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName>osztály felelősek az új elemek hozzáadására szolgáló dokumentumos tranzakciótámogatást.</xref:System.Windows.Forms.CurrencyManager?displayProperty=fullName> </xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A> </xref:System.Windows.Forms.CurrencyManager.EndCurrentEdit%2A> </xref:System.Windows.Forms.CurrencyManager.AddNew%2A> Azonban ez a funkció attól függ, hogy a tranzakciós viselkedés keresztül támogató elemek a <xref:System.ComponentModel.IEditableObject>felületet.</xref:System.ComponentModel.IEditableObject> Az elemek nem támogatják az illesztő, ha az elemet mindig lehet hozzáadni a listában, függetlenül a <xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A>.</xref:System.Windows.Forms.CurrencyManager.CancelCurrentEdit%2A> későbbi hívások      -A újabb modellt támogatja egy sokkal hatékonyabban adatkötési forgatókönyv keresztül az általános <xref:System.ComponentModel.BindingList%601>osztály, amely megvalósítja a <xref:System.ComponentModel.IBindingList>és ICancelAddNew felületek.</xref:System.ComponentModel.IBindingList> </xref:System.ComponentModel.BindingList%601> Ebben az esetben a dokumentumos tranzakciótámogatást kezeli a <xref:System.ComponentModel.BindingList%601>gyűjtemény közvetlenül.</xref:System.ComponentModel.BindingList%601>"
   syntax:
     content: public interface ICancelAddNew
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Discards a pending new item from the collection."
-  remarks: "The CancelNew method rolls back a pending addition (<xref:System.ComponentModel.IBindingList.AddNew%2A>) of an item previously added to the collection at position `itemIndex`. The index parameter is necessary because several new items can be simultaneously pending."
+  summary: "Elveti a függőben lévő új elemet a gyűjteményből."
+  remarks: "A CancelNew metódus visszaállítja egy függőben lévő hozzáadása (<xref:System.ComponentModel.IBindingList.AddNew%2A>) elem a gyűjteményben, pozíciótól korábban hozzáadott `itemIndex`.</xref:System.ComponentModel.IBindingList.AddNew%2A> Az index paraméter szükség, mert lehet, hogy több új elem egyidejűleg függőben."
   syntax:
     content: public void CancelNew (int itemIndex);
     parameters:
     - id: itemIndex
       type: System.Int32
-      description: "The index of the item that was previously added to the collection."
+      description: "A korábban a gyűjteménybe felvett elem indexe."
   overload: System.ComponentModel.ICancelAddNew.CancelNew*
   exceptions: []
   platform:
@@ -54,14 +54,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Commits a pending new item to the collection."
-  remarks: "The EndNew commits a pending addition (<xref:System.ComponentModel.IBindingList.AddNew%2A>) of an item previously added to the collection at position `itemIndex`. The index parameter is necessary because several new items can be simultaneously pending."
+  summary: "Függőben lévő új elem véglegesítése a gyűjteményhez."
+  remarks: "Egy függőben lévő hozzáadása a EndNew megmutatják a véglegesítések számát (<xref:System.ComponentModel.IBindingList.AddNew%2A>) elem a gyűjteményben, pozíciótól korábban hozzáadott `itemIndex`.</xref:System.ComponentModel.IBindingList.AddNew%2A> Az index paraméter szükség, mert lehet, hogy több új elem egyidejűleg függőben."
   syntax:
     content: public void EndNew (int itemIndex);
     parameters:
     - id: itemIndex
       type: System.Int32
-      description: "The index of the item that was previously added to the collection."
+      description: "A korábban a gyűjteménybe felvett elem indexe."
   overload: System.ComponentModel.ICancelAddNew.EndNew*
   exceptions: []
   platform:

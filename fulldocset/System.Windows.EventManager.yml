@@ -14,8 +14,8 @@ items:
   nameWithType: EventManager
   fullName: System.Windows.EventManager
   type: Class
-  summary: "Provides event-related utility methods that register routed events for class owners and add class handlers."
-  remarks: "This class is most commonly used to register a new routed event, with <xref:System.Windows.EventManager.RegisterRoutedEvent%2A>.       The second most common [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] usage is <xref:System.Windows.EventManager.RegisterClassHandler%2A>. You use this method to enable class handling of a routed event on the class, or an attached event. For details, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Irányított események regisztrálni az osztály tulajdonosai számára, és adja hozzá az osztályleírók esemény kapcsolatos segédprogram-metódusokat biztosít."
+  remarks: "Ez az osztály a leggyakrabban használt regisztrálni egy új irányított események, a <xref:System.Windows.EventManager.RegisterRoutedEvent%2A>.</xref:System.Windows.EventManager.RegisterRoutedEvent%2A>       A második legtöbb közös [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] használati <xref:System.Windows.EventManager.RegisterClassHandler%2A>.</xref:System.Windows.EventManager.RegisterClassHandler%2A> Ezt a módszert használja az osztály egy irányított események vagy egy kapcsolódó esemény osztály kezelésének engedélyezéséhez. További információkért lásd: [jelölés irányított események osztály kezeli, és kezelt](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example show how to use this class to register a new routed event as a class member, along with the routed event \"wrapper\" technique of overriding the add and remove implementations for a [!INCLUDE[TLA2#tla_clr](~/add/includes/tla2sharptla-clr-md.md)] event.  \n  \n [!code-cs[DPCustom#EventManagerClass](~/add/codesnippet/csharp/DPCustom/default.xaml.cs#eventmanagerclass)]\n [!code-vb[DPCustom#EventManagerClass](~/add/codesnippet/visualbasic/dpcustom/default.xaml.vb#eventmanagerclass)]"
   syntax:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Returns identifiers for routed events that have been registered to the event system."
-  remarks: "More <xref:System.Windows.RoutedEvent> objects can be registered later. This method gets a snapshot and the collection of routed events is writeable throughout an application&quot;s lifetime. The collection returned might be quite large. Even just counting the events that are part of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)], the collection count is in the high hundreds."
+  summary: "Az Eseménynapló rendszer irányított események regisztrált azonosítót ad vissza."
+  remarks: "További <xref:System.Windows.RoutedEvent>objektumok később regisztrálható.</xref:System.Windows.RoutedEvent> Ez a módszer lekérdezi a pillanatkép és irányított események gyűjtése az alkalmazás élettartamának teljes írható. A gyűjtemény visszaadott Igen tekintélyes lehet. Akkor is csak számbavételi az eseményeket, amelyek részei a [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)], a gyűjtemény count van a magas több száz."
   syntax:
     content: public static System.Windows.RoutedEvent[] GetRoutedEvents ();
     parameters: []
     return:
       type: System.Windows.RoutedEvent[]
-      description: "An array of type <xref href=&quot;System.Windows.RoutedEvent&quot;></xref> that contains the registered objects."
+      description: "Típusú tömb <xref href=&quot;System.Windows.RoutedEvent&quot;> </xref> , amely a regisztrált objektumokat tartalmaz."
   overload: System.Windows.EventManager.GetRoutedEvents*
   exceptions: []
   platform:
@@ -62,16 +62,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Finds all routed event identifiers for events that are registered with the provided owner type."
+  summary: "Az összes irányított események azonosítónak megkeresése az eseményeket, amelyek a megadott tulajdonos típus vannak regisztrálva."
   syntax:
     content: public static System.Windows.RoutedEvent[] GetRoutedEventsForOwner (Type ownerType);
     parameters:
     - id: ownerType
       type: System.Type
-      description: "The type to start the search with. Base classes are included in the search."
+      description: "A keresés indításához típusa. Alaposztályok szerepel a keresésben."
     return:
       type: System.Windows.RoutedEvent[]
-      description: "An array of matching routed event identifiers if any match is found; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Irányított események azonosítónak megfelelő, ha bármely egyezés; tömbje Ellenkező esetben <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.EventManager.GetRoutedEventsForOwner*
   exceptions: []
   platform:
@@ -88,8 +88,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a class handler for a particular routed event."
-  remarks: "Class handling is a feature that is available for routed events, including attached events that are implemented with routed event backing. A class handler is like a static handler that exists for all instances of the class. Because the handler is static, you cannot change instance properties directly with a class handler, but you can access instances through the `sender` parameter and/or the event data.       Class handlers are invoked before instance handlers. You can implement a class handler that has the behavior of marking the event as handled. Therefore, instance handlers for a class-handled event are not invoked unless the instance handlers register specifically for handled events.       Many of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] base element events provide class handling virtual methods. By overriding these methods in classes that inherit the base classes, you can implement class handling without calling RegisterClassHandler in static constructors. These class handling methods typically exist for input events and have names that start with &quot;On&quot; and end with the name of the event being class handled.       For more information about class handling, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md).       Using this signature, class handlers will be registered to invoke only in response to unhandled events. You can also register class handlers to invoke even if the event arguments are marked handled, by using the <xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29> signature, with `handledEventsToo` set to `true`."
+  summary: "Regisztrálja a osztály kezelő egy adott irányított esemény."
+  remarks: "Osztály kezelése az irányított események, beleértve a csatolt események, amelyeket a rendszer az irányított események biztonsági érhető el szolgáltatás. Egy osztály kezelő olyan, mint a statikus kezelő, amely létezik a következő osztály összes példányánál. Mert a kezelő statikus, közvetlenül az osztály kezelő példány tulajdonságai nem módosíthatók, de példányok keresztül érheti el a `sender` paraméter és/vagy az eseményadatok.       Az osztályleírók előtt példány kezelők hívják. Megvalósíthat egy osztály kezelő, amely rendelkezik az esemény jelölés, kezelt viselkedését. Példány kezelők-esemény osztály kezeli, ezért nem hívják kivéve, ha a példány kezelők kifejezetten a kezelt események regisztrálni.       Hány a [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] a(z) események virtuális metódusok kezelése osztály biztosítanak. Ezek a módszerek az alaposztályok öröklő osztály felülbírálásával, osztály kezeli a statikus konstruktorok RegisterClassHandler hívása nélkül valósíthat meg. Ezen osztály kezelési módszerek általában bemeneti események léteznek, és az &quot;On&quot; kezdő és záró nevű, amely kezelt osztály esemény neve.       Osztály kezelési kapcsolatos további információkért lásd: [jelölés irányított események osztály kezeli, és kezelt](~/add/includes/ajax-current-ext-md.md).       Az aláírás használatával, az osztályleírók regisztrálva lesz hívása csak a nem kezelt eseményekre válaszként. Akkor is, ha az esemény argumentumainál használatával kezelt, megjelölve meghívni osztály kezelők is regisztrálhatja a <xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29>aláírás, az `handledEventsToo` beállítása `true`.</xref:System.Windows.EventManager.RegisterClassHandler%28System.Type%2CSystem.Windows.RoutedEvent%2CSystem.Delegate%2CSystem.Boolean%29>"
   example:
   - "The following example adds a handler for <xref:System.Windows.UIElement.PreviewMouseLeftButtonDown>, calling RegisterClassHandler.  \n  \n [!code-vb[ClassHandling#StaticAndRegisterClassHandler](~/add/codesnippet/visualbasic/ClassHandling.sdksamplelibrary/class1.vb#staticandregisterclasshandler)]\n [!code-cs[ClassHandling#StaticAndRegisterClassHandler](~/add/codesnippet/csharp/ClassHandling/SDKSampleLibrary/class1.cs#staticandregisterclasshandler)]"
   syntax:
@@ -97,13 +97,13 @@ items:
     parameters:
     - id: classType
       type: System.Type
-      description: "The type of the class that is declaring class handling."
+      description: "Az osztályhoz, amely osztály kezelésére van deklarálási típusa."
     - id: routedEvent
       type: System.Windows.RoutedEvent
-      description: "The routed event identifier of the event to handle."
+      description: "Az esemény kezelésének irányított események azonosítóját."
     - id: handler
       type: System.Delegate
-      description: "A reference to the class handler implementation."
+      description: "Az osztály eseménykezelő megvalósítása mutató hivatkozás."
   overload: System.Windows.EventManager.RegisterClassHandler*
   exceptions: []
   platform:
@@ -120,23 +120,23 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a class handler for a particular routed event, with the option to handle events where event data is already marked handled."
-  remarks: "Class handling is a feature that is available for routed events, including attached events that are implemented with routed event backing. A class handler is like a static handler that exists for all instances of the class. Because the handler is static, you cannot change instance properties directly with a class handler, but you can access instances through the `sender` parameter and/or the event data.       Class handlers are invoked before instance handlers. You can implement a class handler that has the behavior of marking the event as handled. Therefore, instance handlers for a class-handled event are not invoked unless the instance handlers register specifically for handled events.       Many of the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] base element events provide class handling virtual methods. By overriding these methods in classes that inherit the base classes, you can implement class handling without calling <xref:System.Windows.EventManager.RegisterClassHandler%2A> in static constructors. These class handling methods typically exist for input events and have names that start with &quot;On&quot; and end with the name of the event being class handled.       For more information about class handling, see [Marking Routed Events as Handled, and Class Handling](~/add/includes/ajax-current-ext-md.md).       Using this signature, class handlers can be registered to invoke upon handled events, by setting `handledEventsToo` set to `true`. Generally, you should do this only if there is a known handling issue you are trying to work around, such as input system handling from mouse or keyboard events."
+  summary: "Regisztrálja a osztály kezelő egy adott irányított esemény kezelt amennyiben eseményadatokat már meg van jelölve események kezelésére is."
+  remarks: "Osztály kezelése az irányított események, beleértve a csatolt események, amelyeket a rendszer az irányított események biztonsági érhető el szolgáltatás. Egy osztály kezelő olyan, mint a statikus kezelő, amely létezik a következő osztály összes példányánál. Mert a kezelő statikus, közvetlenül az osztály kezelő példány tulajdonságai nem módosíthatók, de példányok keresztül érheti el a `sender` paraméter és/vagy az eseményadatok.       Az osztályleírók előtt példány kezelők hívják. Megvalósíthat egy osztály kezelő, amely rendelkezik az esemény jelölés, kezelt viselkedését. Példány kezelők-esemény osztály kezeli, ezért nem hívják kivéve, ha a példány kezelők kifejezetten a kezelt események regisztrálni.       Hány a [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] a(z) események virtuális metódusok kezelése osztály biztosítanak. Ezek a módszerek az alaposztályok öröklő osztály felülbírálása, hívása nélkül kezelése osztály valósíthatja <xref:System.Windows.EventManager.RegisterClassHandler%2A>a statikus konstruktorok.</xref:System.Windows.EventManager.RegisterClassHandler%2A> Ezen osztály kezelési módszerek általában bemeneti események léteznek, és az &quot;On&quot; kezdő és záró nevű, amely kezelt osztály esemény neve.       Osztály kezelési kapcsolatos további információkért lásd: [jelölés irányított események osztály kezeli, és kezelt](~/add/includes/ajax-current-ext-md.md).       Az aláírás használatával, osztály regisztrálhatók úgy, hogy a kezelt események esetén meghívni `handledEventsToo` beállítása `true`. Általában akkor tegye ezt csak akkor, ha egy ismert kezelési probléma megoldása, például az egér vagy a billentyűzet események kezelő bemeneti rendszer kívánt."
   syntax:
     content: public static void RegisterClassHandler (Type classType, System.Windows.RoutedEvent routedEvent, Delegate handler, bool handledEventsToo);
     parameters:
     - id: classType
       type: System.Type
-      description: "The type of the class that is declaring class handling."
+      description: "Az osztályhoz, amely osztály kezelésére van deklarálási típusa."
     - id: routedEvent
       type: System.Windows.RoutedEvent
-      description: "The routed event identifier of the event to handle."
+      description: "Az esemény kezelésének irányított események azonosítóját."
     - id: handler
       type: System.Delegate
-      description: "A reference to the class handler implementation."
+      description: "Az osztály eseménykezelő megvalósítása mutató hivatkozás."
     - id: handledEventsToo
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to invoke this class handler even if arguments of the routed event have been marked as handled; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to retain the default behavior of not invoking the handler on any marked-handled event."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ez az osztály kezelő meghívni, még akkor is, ha az irányított események argumentumának van megjelölve kezelt; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> alapértelmezett működését minden kezelt jelölésű esemény a kezelő nem hívja a megőrizni kívánt."
   overload: System.Windows.EventManager.RegisterClassHandler*
   exceptions: []
   platform:
@@ -153,26 +153,26 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Registers a new routed event with the [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] event system."
-  remarks: "Use the return value of this method to create the static declaration for a unique <xref:System.Windows.RoutedEvent> identifier field. This field should be stored within the owner type.       There are a considerable number of conventions and best practices associated with how routed events should be named, registered, and exposed in a class. For more information, see [Routed Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Az új irányított események regisztrálja a [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] esemény rendszer."
+  remarks: "Ez a metódus visszatérési értékének használatával hozzon létre egy egyedi statikus nyilatkozat <xref:System.Windows.RoutedEvent>alkalmazásazonosító mezőben.</xref:System.Windows.RoutedEvent> Ez a mező a tulajdonos típus belül kell tárolni.       Egyezmények jelentős számú és hogyan irányított események társított gyakorlati tanácsok kell kell nevű regisztrált, és elérhetővé az osztály. További információkért lásd: [irányított események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public static System.Windows.RoutedEvent RegisterRoutedEvent (string name, System.Windows.RoutingStrategy routingStrategy, Type handlerType, Type ownerType);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the routed event. The name must be unique within the owner type and cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty string."
+      description: "Az irányított események neve. A név a tulajdonos típus belül egyedieknek kell lenniük, és nem lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> vagy üres karakterlánc."
     - id: routingStrategy
       type: System.Windows.RoutingStrategy
-      description: "The routing strategy of the event as a value of the enumeration."
+      description: "Az útválasztási stratégia az esemény, a számbavételi érték."
     - id: handlerType
       type: System.Type
-      description: "The type of the event handler. This must be a delegate type and cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Az eseménykezelő típusa. Ez a delegált típusnak kell lennie, és nem lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
     - id: ownerType
       type: System.Type
-      description: "The owner class type of the routed event. This cannot be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A tulajdonos osztály típusú az irányított események. Ez nem lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Windows.RoutedEvent
-      description: "The identifier for the newly registered routed event. This identifier object can now be stored as a static field in a class and then used as a parameter for methods that attach handlers to the event. The routed event identifier is also used for other event system [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)]."
+      description: "Az újonnan regisztrált irányított események azonosítója. Az azonosító objektum most lehet egy statikus mezője az osztály tárolja, és majd használt paraméterként, amely a kezelők csatlakoztatni az esemény. Az irányított események azonosító is más esemény rendszerhez használt [!INCLUDE[TLA2#tla_api#plural](~/add/includes/tla2sharptla-apisharpplural-md.md)]."
   overload: System.Windows.EventManager.RegisterRoutedEvent*
   exceptions: []
   platform:

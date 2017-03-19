@@ -10,8 +10,8 @@ items:
   nameWithType: IAsyncErrorNotify
   fullName: System.EnterpriseServices.IAsyncErrorNotify
   type: Interface
-  summary: "Implements error trapping on the asynchronous batch work that is submitted by the <xref href=&quot;System.EnterpriseServices.Activity&quot;></xref> object."
-  remarks: "IAsyncErrorNotify is used to implement error trapping on the asynchronous batch work that is submitted by the <xref:System.EnterpriseServices.Activity> object. Implement this interface on the object that is passed in the call to <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> on the <xref:System.EnterpriseServices.Activity> object. <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> determines if an error occurred in batch work that is running asynchronously. This interface enables you to be informed of errors that occur in asynchronous batch work, and the process will terminate (failfast) on any unrecoverable error.       For information about failfast, see the &quot;Fault Isolation and Failfast Policy&quot; topic in the Platform SDK in MSDN."
+  summary: "Hibakezelés megvalósítja az aszinkron kötegelt munka elküldte a <xref href=&quot;System.EnterpriseServices.Activity&quot;> </xref> objektum."
+  remarks: "IAsyncErrorNotify használt hibakezelés valósítja meg az aszinkron kötegelt munka elküldte a <xref:System.EnterpriseServices.Activity>objektum.</xref:System.EnterpriseServices.Activity> Ez a felület megvalósítása hívásában átadott objektumon <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>a a <xref:System.EnterpriseServices.Activity>objektum.</xref:System.EnterpriseServices.Activity> </xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>azt határozza meg, ha hiba történt a kötegelt munka aszinkron módon futtató.</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> Ez az interfész lehetővé teszi tájékoztatni aszinkron kötegelt munka előforduló hibákat, és a folyamat befejeződik (failfast) bármely helyreállíthatatlan hiba.       Failfast információt az MSDN-en a Platform SDK &quot;Hiba elkülönítési és Failfast Policy&quot; témakörében talál."
   syntax:
     content: >-
       [System.Runtime.InteropServices.Guid("FE6777FB-A674-4177-8F32-6D707E113484")]
@@ -34,14 +34,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Handles errors for asynchronous batch work."
-  remarks: "This method should be implemented to gracefully handle errors that occur when batch work is running asynchronously. Because the process terminates (failfast) on any unrecoverable error, without this method there is no way of knowing when errors occur in asynchronous batch work. The process also terminates when this method returns an error as its return value. The batch work itself is implemented in <xref:System.EnterpriseServices.IServiceCall.OnCall%2A>, and it is run asynchronously by calling <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.       This method supports the standard return values `E_FAIL`, `E_INVALIDARG`, and `E_OUTOFMEMORY`, as well as `S_OK`, which indicates the method call returned successfully."
+  summary: "Kezeli az aszinkron kötegelt munka által jelzett hibákat."
+  remarks: "Ez a módszer kötegelt munka aszinkron módon futtatásakor előforduló hibákat kezelésére kell végrehajtani. A folyamat leállítása (failfast) bármely helyreállíthatatlan hiba, mert ez a módszer nélkül nincs mód annak ismerete, ha a hibák lépnek fel a aszinkron kötegelt munka. A folyamat is ér véget, amikor ez a metódus visszatérési értéke hibát ad vissza. A kötegelt munka magát a megvalósított <xref:System.EnterpriseServices.IServiceCall.OnCall%2A>, és <xref:System.EnterpriseServices.Activity.AsynchronousCall%2A>.</xref:System.EnterpriseServices.Activity.AsynchronousCall%2A> hívásával aszinkron módon fut</xref:System.EnterpriseServices.IServiceCall.OnCall%2A>       Ez a metódus támogatja a szabványos visszatérési értékek `E_FAIL`, `E_INVALIDARG`, és `E_OUTOFMEMORY`, valamint `S_OK`, ami azt jelenti, hogy a metódus hívása sikeresen adott vissza."
   syntax:
     content: public void OnError (int hresult);
     parameters:
     - id: hresult
       type: System.Int32
-      description: "The HRESULT of the error that occurred while the batch work was running asynchronously."
+      description: "A következő hiba történt a kötegelt munka során, HRESULT aszinkron módon fut."
   overload: System.EnterpriseServices.IAsyncErrorNotify.OnError*
   exceptions: []
   platform:

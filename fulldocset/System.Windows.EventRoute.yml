@@ -15,8 +15,8 @@ items:
   nameWithType: EventRoute
   fullName: System.Windows.EventRoute
   type: Class
-  summary: "Represents the container for the route to be followed by a routed event."
-  remarks: "This class corresponds to a valid <xref:System.Windows.RoutedEvent>, and contains an ordered list of target object and handler list pairs that refer to the event route for that event. EventRoute supports adding new entries to the list and also allows for the handlers in the list to be invoked.       Most normal operations for adding handlers for [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] events do not require working with this class (for instance, use <xref:System.Windows.EventManager> methods to add class handling, or query for existing handlers of an event). This class is mainly for use when elements have particular knowledge about child elements or parent elements that make it practical to either add elements to or remove elements from the default calculated event route."
+  summary: "A tároló az irányított események által követendő útvonal jelöli."
+  remarks: "Ez az osztály felel meg egy érvényes <xref:System.Windows.RoutedEvent>, és a cél az objektum és a kezelő lista párok az eseményútvonal esemény hivatkozó rendezett listáját tartalmazza.</xref:System.Windows.RoutedEvent> EventRoute támogatja az új bejegyzés hozzáadása a listához, és lehetővé teszi a lista azon kezelők esetében meg kell hívni.       A normál műveletek a kivételkezelők hozzáadásával [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] események nem szükséges ez az osztály azokkal (használja például a <xref:System.Windows.EventManager>módszerek osztály kezelési hozzáadásához vagy lekérdezni a meglévő kezelők esemény).</xref:System.Windows.EventManager> Ez az osztály esetén főként használatra rendelkezniük gyermekelemeket vagy szülőelemek, melyek gyakorlati elemek hozzáadása vagy elemek eltávolítása az alapértelmezett számított eseményútvonal adott ismerete."
   syntax:
     content: public sealed class EventRoute
   inheritance:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Initializes an instance of the <xref href=&quot;System.Windows.EventRoute&quot;></xref> class."
+  summary: "Egy példányát inicializálja a <xref href=&quot;System.Windows.EventRoute&quot;> </xref> osztály."
   syntax:
     content: public EventRoute (System.Windows.RoutedEvent routedEvent);
     parameters:
     - id: routedEvent
       type: System.Windows.RoutedEvent
-      description: "The non-NULL event identifier to be associated with this event route."
+      description: "Ez az esemény útvonal társítani kell a NULL értékű esemény azonosítója"
   overload: System.Windows.EventRoute.#ctor*
   exceptions: []
   platform:
@@ -60,20 +60,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Adds the specified handler for the specified target to the route."
-  remarks: "It is not an error to add a handler for a particular target instance twice. In such a case, the handler will be called twice."
+  summary: "A megadott kezelő, a megadott cél ad hozzá az útvonalat."
+  remarks: "A kezelő egy adott célszámítógéphez példány kétszer hozzáadandó hiba nincs. Ebben az esetben a kezelő rendszer hívható meg kétszer."
   syntax:
     content: public void Add (object target, Delegate handler, bool handledEventsToo);
     parameters:
     - id: target
       type: System.Object
-      description: "Specifies the target object of which the handler is to be added to the route."
+      description: "Meghatározza azt a célobjektumot, amelynek a kezelő is fel kell venni az útvonal."
     - id: handler
       type: System.Delegate
-      description: "Specifies the handler to be added to the route."
+      description: "Megadja azt az útvonal adható hozzá."
     - id: handledEventsToo
       type: System.Boolean
-      description: "Indicates whether or not the listener detects events that have already been handled."
+      description: "Azt jelzi-e a figyelő észleli az eseményeket, amelyek már kezeli."
   overload: System.Windows.EventRoute.Add*
   exceptions: []
   platform:
@@ -90,13 +90,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Returns the top-most element on the event route stack at which two logical trees diverge."
+  summary: "A childwindow-elem beolvasása az esemény útvonal veremben két logikai fák tér el."
   syntax:
     content: public object PeekBranchNode ();
     parameters: []
     return:
       type: System.Object
-      description: "The top-most element on the event route stack at which two logical trees diverge."
+      description: "Az esemény útvonal veremben két logikai fák tér el a childwindow-elem."
   overload: System.Windows.EventRoute.PeekBranchNode*
   exceptions: []
   platform:
@@ -113,13 +113,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Returns the source for the top-most element on the event route stack at which two logical trees diverge."
+  summary: "Az esemény útvonal verem két logikai fák tér el a forrás childwindow-elemhez adja vissza."
   syntax:
     content: public object PeekBranchSource ();
     parameters: []
     return:
       type: System.Object
-      description: "The source for the top-most element on the event route stack at which two logical trees diverge."
+      description: "Az esemény útvonal veremben két logikai fák tér el a childwindow-elem forrása."
   overload: System.Windows.EventRoute.PeekBranchSource*
   exceptions: []
   platform:
@@ -136,13 +136,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Returns the top-most node on the event route stack at which two logical trees diverge."
+  summary: "Az esemény útvonal verem két logikai fák tér el a childwindow-csomópont adja vissza."
   syntax:
     content: public object PopBranchNode ();
     parameters: []
     return:
       type: System.Object
-      description: "The top-most node on the event route stack at which two logical trees diverge."
+      description: "A childwindow-csomópont a esemény útvonal veremben két logikai fák tér el."
   overload: System.Windows.EventRoute.PopBranchNode*
   exceptions: []
   platform:
@@ -159,16 +159,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows
-  summary: "Adds the top-most node to the event route stack at which two logical trees diverge."
+  summary: "A childwindow-csomópont hozzáadása az esemény útvonal verem két logikai fák tér el."
   syntax:
     content: public void PushBranchNode (object node, object source);
     parameters:
     - id: node
       type: System.Object
-      description: "The top-most element on the event route stack at which two logical trees diverge."
+      description: "Az esemény útvonal veremben két logikai fák tér el a childwindow-elem."
     - id: source
       type: System.Object
-      description: "The source for the top-most element on the event route stack at which two logical trees diverge."
+      description: "Az esemény útvonal veremben két logikai fák tér el a childwindow-elem forrása."
   overload: System.Windows.EventRoute.PushBranchNode*
   exceptions: []
   platform:

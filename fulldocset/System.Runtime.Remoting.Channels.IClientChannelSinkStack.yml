@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkStack
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkStack
   type: Interface
-  summary: "Provides functionality for a stack of client channel sinks that must be invoked during an asynchronous message response decoding."
-  remarks: "The IClientChannelSinkStack is used during processing of responses to asynchronous calls.       During a synchronous call, the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> method is called when a message is outbound to the server. Each sink in the sink chain calls the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> method on the next sink until the call reaches the transport sink at the end of the chain. From there the message is transported to the server.       When the formatter sink is called through the <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> method, it dispatches the call asynchronously by calling <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> on the next channel sink. A stack of reply sinks is needed to process the response. Any sink that wants to process the response needs to push itself to the client channel sink stack inside of <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>."
+  summary: "A funkcionalitást biztosítja a verem ügyfél csatorna mosdók, amely egy aszinkron üzenet válasz dekódolás közben kell meghívni."
+  remarks: "A IClientChannelSinkStack szolgál a válaszok aszinkron hívás feldolgozása során.       Egy aszinkron hívás során a <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName>metódus lehívásra kerül, a kiszolgáló a kimenő üzenet esetén.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> A fogadó lánc hívásokban minden fogadó a <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>metódust a következő fogadó, amíg a hívás elérte az átviteli gyűjtő a lánc végén.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> Az üzenet szállítják ott a kiszolgálón.       A formázógyűjtőjébe meghívásakor keresztül a <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A>metódust, akkor kiszállítja a hívás aszinkron függvény meghívásával <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>a következő csatornagyűjtőn.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> </xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> A verem válasz nyelő szükség van a válasz feldolgozása. A fogadó, hogy a válasz feldolgozása próbál meg kell leküldéssel magát az ügyfél csatornagyűjtő-veremből <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> belül"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,21 +34,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pops the information associated with all the sinks from the sink stack up to and including the specified sink."
+  summary: "Az adatokat a fogadó veremből összes mosdók legfeljebb társított, és többek között a megadott fogadó ugrik."
   syntax:
     content: public object Pop (System.Runtime.Remoting.Channels.IClientChannelSink sink);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to remove and return from the sink stack."
+      description: "A gyűjtő eltávolítása és a gyűjtőverem vissza."
     return:
       type: System.Object
-      description: "Information generated on the request side and associated with the specified sink."
+      description: "A kérelem oldalon jön létre, és a megadott fogadó társított információkat."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Pop*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push(System.Runtime.Remoting.Channels.IClientChannelSink,System.Object)
@@ -63,22 +63,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pushes the specified sink and information associated with it onto the sink stack."
-  remarks: "The information generated on the request side and specified in the `state` parameter is returned in the `state` parameter of the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A> method on the corresponding sink."
+  summary: "Leküldéses értesítések a megadott fogadó és a fogadó verembe társított információkat."
+  remarks: "A kérelem oldalon generált, valamint a megadott a `state` paraméter eredmény abban az esetben a `state` paramétere a <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>metódust a megfelelő fogadó.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>"
   syntax:
     content: public void Push (System.Runtime.Remoting.Channels.IClientChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to push onto the sink stack."
+      description: "A fogadó verembe leküldéses fogadó."
     - id: state
       type: System.Object
-      description: "Information generated on the request side that is needed on the response side."
+      description: "A kérelem oldalon, a válasz oldalon szükséges generált adatokat."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 references:
