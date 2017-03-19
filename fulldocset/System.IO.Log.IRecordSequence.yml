@@ -47,8 +47,8 @@ items:
   nameWithType: IRecordSequence
   fullName: System.IO.Log.IRecordSequence
   type: Interface
-  summary: "Provides a generic interface to a sequence of records."
-  remarks: "The IRecordSequence interface provides an abstract interface to a record-oriented stream. A IRecordSequence instance can be used to read and write log records.       The IRecordSequence interface provides the following capabilities,      -   Append log records using the <xref:System.IO.Log.IRecordSequence.Append%2A> methods.      -   Read the appended records using the <xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A> method.      -   Write a special restart record using the <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> method.      -   Read restart records from the most recently written restart record using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.      -   Flush the records to durable store using the  <xref:System.IO.Log.IRecordSequence.Flush%2A> method.      -   Reserve space for appending records.      -   Free log space by advancing the base of the log.      -   Receive <xref:System.IO.Log.IRecordSequence.TailPinned> event notifications to move the base of the log to free space.       Log records are appended to a IRecordSequence instance, and each log record is given a unique sequence number. Sequence numbers are strictly monotonically increasing within a given record sequence. A log record consists of opaque data, supplied to the IRecordSequence instance in an <xref:System.Collections.IList> of ArraySegments of bytes.       The IRecordSequence interface also exposes a few basic properties which provides information about log boundaries.      -   The <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> property contains the sequence number of the first valid record in the record sequence.      -   The <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A> property contains a sequence number that is guaranteed to be larger than the sequence number of the last appended record.      -   The <xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A> property contains the sequence number of the last written restart area.      -   The <xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A> property contains the size of the largest record that can be appended to, or read from the sequence.      -   The <xref:System.IO.Log.IRecordSequence.ReservedBytes%2A> property contains the total size of all reservations made in this record sequence.      -   If the <xref:System.IO.Log.IRecordSequence.RetryAppend%2A> property is set to `true`, and an <xref:System.IO.Log.IRecordSequence.Append%2A> operation fails because there is no space in the sequence, the record sequence will attempt to free space, and retry the Append operation."
+  summary: "Bejegyzések sorozatát általános felületet biztosít."
+  remarks: "A IRecordSequence felület révén rekord célú adatfolyamba absztrakt illesztőfelület. A IRecordSequence példánya írási és olvasási naplórekordokat használható.       A következő lehetőségeket biztosítja a IRecordSequence felületet, - hozzáfűzése napló használatával rögzíti a <xref:System.IO.Log.IRecordSequence.Append%2A>módszerek.</xref:System.IO.Log.IRecordSequence.Append%2A>      -A hozzáfűzött rekordok olvasása használatával a <xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadLogRecords%2A>      -Írni a különleges újraindítás rekord használatával a <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>metódus.</xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>      -Olvasás, indítsa újra a legutóbb írt újraindítás rekord a rekordok a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>      -Ürítse ki a rekordok tartós tároló használatára a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A>      -Hely a rekordok hozzáfűzése lefoglalni.      -Szabad területet a napló a következő speciális által.      -Fogadási <xref:System.IO.Log.IRecordSequence.TailPinned>történő áthelyezéséhez szabadítson fel lemezterületet a napló a következő rendszeresemény-értesítéseket.</xref:System.IO.Log.IRecordSequence.TailPinned>       Naplórekordok IRecordSequence példányhoz lesz hozzáfűzve, és a Minden naplóbejegyzés egyedi sorszámot. Sorozatszámok belül egy adott rekordsorozat szigorúan monoton növekednek. Egy naplóbejegyzést képviselnek nem átlátszó adat, a IRecordSequence példánya a áll egy <xref:System.Collections.IList>a ArraySegments bájt.</xref:System.Collections.IList>       A IRecordSequence felület is közzétesz néhány alapvető tulajdonságaiban, amely tájékoztatást ad azokról a napló határokat.      -A <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>tulajdonsága tartalmazza a sorszám az első érvényes rekord a rekordsorozat.</xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>      -A <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>tulajdonsága tartalmazza a sorszámot, amely nagyobb, mint a sorozat száma az utolsó hozzáfűzi a rekordot.</xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>      -A <xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A>tulajdonsága tartalmazza a sorszám az utolsó írásbeli újraindítás terület.</xref:System.IO.Log.IRecordSequence.RestartSequenceNumber%2A>      -A <xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A>tulajdonsága tartalmazza a legnagyobb rekordot, amely lesz hozzáfűzve, vagy a sorozatot olvasására méretét.</xref:System.IO.Log.IRecordSequence.MaximumRecordLength%2A>      -A <xref:System.IO.Log.IRecordSequence.ReservedBytes%2A>tulajdonsága tartalmazza az összes foglalások rekord sorozatszáma teljes mérete.</xref:System.IO.Log.IRecordSequence.ReservedBytes%2A>      -Ha a <xref:System.IO.Log.IRecordSequence.RetryAppend%2A>tulajdonsága `true`, és egy <xref:System.IO.Log.IRecordSequence.Append%2A>művelet sikertelen, mert nincs hely a sorrendben, a rekordsorozat szabadítson fel lemezterületet, majd próbálja megismételni a hozzáfűzési művelet megkísérli.</xref:System.IO.Log.IRecordSequence.Append%2A> </xref:System.IO.Log.IRecordSequence.RetryAppend%2A>"
   syntax:
     content: 'public interface IRecordSequence : IDisposable'
   implements:
@@ -67,31 +67,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Moves the base sequence number of the log forward."
-  remarks: "When you use a <xref:System.IO.Log.LogRecordSequence> instance and try to advance the sequence number to free up space in the log, the new base sequence number must reside in a different log extent for the previous extent to be marked as empty. Freeing extents partially is not supported."
+  summary: "A kiinduló sorszám napló továbblép."
+  remarks: "Ha egy <xref:System.IO.Log.LogRecordSequence>példányt, és próbálja meg a szabadítson fel lemezterületet a napló sorszáma előzetes, az új alap sequence számot egy másik napló mértékben üresen kell megjelölni a korábbi egység kell lennie,.</xref:System.IO.Log.LogRecordSequence> Egységek részben felszabadítása nem támogatott."
   syntax:
     content: public void AdvanceBaseSequenceNumber (System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number of the record sequence."
+      description: "A rekordsorozat új alap sequence száma."
   overload: System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>newBaseSequenceNumber</code> is invalid."
+    description: "<code>newBaseSequenceNumber</code>érvénytelen."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>newBaseSequenceNumber</code> is not active in the log."
+    description: "<code>newBaseSequenceNumber</code>Nincs aktív a naplóba."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while modifying the sequence."
+    description: "I/o-hiba történt a feladatütemezési módosítása."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence is full."
+    description: "A rekordsorozat megtelt."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)
@@ -106,40 +106,40 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Felülbírálja a származtatott osztály, amikor a napló rekordot ír a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions)
@@ -154,40 +154,40 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, hozzáfűz egy naplóbejegyzést képviselnek, hogy a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)
@@ -202,43 +202,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>, using space previously reserved in the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, hozzáfűz egy naplóbejegyzést képviselnek, hogy a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>, sorrendben korábban fenntartott helyet használja."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A hozzáfűzött rekord fogyaszt korábban lefoglalt, által megadott foglalást használó hely a `reservations` paraméter. Ha a Hozzáfűzés sikeres, a legkisebb foglalás területet, amely képes tárolni az adatokat, és hogy a Foglalás terület törlődni fognak a gyűjtemény fog felhasználni.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a foglalás, amely ezt a rekordot szeretne használni."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Append(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection)
@@ -253,43 +253,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, appends a log record to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>, using space previously reserved in the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, hozzáfűz egy naplóbejegyzést képviselnek, hogy a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>, sorrendben korábban fenntartott helyet használja."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A hozzáfűzött rekord fogyaszt korábban lefoglalt, által megadott foglalást használó hely a `reservations` paraméter. Ha a Hozzáfűzés sikeres, a legkisebb foglalás területet, amely képes tárolni az adatokat, és hogy a Foglalás terület törlődni fognak a gyűjtemény fog felhasználni.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber Append (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a foglalás, amely ezt a rekordot szeretne használni."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.Append*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BaseSequenceNumber
@@ -304,18 +304,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the first valid record in the current <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "Valid sequence numbers are greater than or equal to BaseSequenceNumber and less than <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>.       The value of this property can be changed by calling the <xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A> or <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> method."
+  summary: "Felülbírálja a származtatott osztály, amikor az első érvényes rekord sorszámát lekérdezi az aktuális <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
+  remarks: "Érvényes sorszámok: nagyobb vagy egyenlő BaseSequenceNumber és <xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A>.</xref:System.IO.Log.IRecordSequence.LastSequenceNumber%2A> -nál kisebb       Ez a tulajdonság értékének megváltoztatására meghívásával a <xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A>vagy <xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A>metódus.</xref:System.IO.Log.IRecordSequence.WriteRestartArea%2A> </xref:System.IO.Log.IRecordSequence.AdvanceBaseSequenceNumber%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber BaseSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The lowest sequence number that corresponds to a valid record in the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
+      description: "A legalacsonyabb sorszám, amely érvényes rekord megfelel a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
   overload: System.IO.Log.IRecordSequence.BaseSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)
@@ -330,46 +330,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, elkezdi egy aszinkron művelet hozzáfűzése."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron append, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.AsyncCallback,System.Object)
@@ -384,46 +384,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, elkezdi az aszinkron műveletet, a sorrendben korábban fenntartott helyet hozzáfűzése."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron append, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -438,49 +438,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, elkezdi az aszinkron műveletet sorrendben korábban fenntartott helyet hozzáfűzése."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A hozzáfűzött rekord fogyaszt korábban lefoglalt, által megadott foglalást használó hely a `reservations` paraméter. Ha a Hozzáfűzés sikeres, a legkisebb foglalás területet, amely képes tárolni az adatokat, és hogy a Foglalás terület törlődni fognak a gyűjtemény fog felhasználni.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a foglalás, amely ezt a rekordot szeretne használni."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron append, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -495,49 +495,49 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous append operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The appended record will consume space that has been previously reserved, using a reservation specified by the `reservations` parameter. If the append succeeds, it will consume the smallest reservation area that can hold the data, and that reservation area will be removed from the collection.       Normally, this method completes before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, elkezdi az aszinkron műveletet, a sorrendben korábban fenntartott helyet hozzáfűzése."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A hozzáfűzött rekord fogyaszt korábban lefoglalt, által megadott foglalást használó hely a `reservations` paraméter. Ha a Hozzáfűzés sikeres, a legkisebb foglalás területet, amely képes tárolni az adatokat, és hogy a Foglalás terület törlődni fognak a gyűjtemény fog felhasználni.       Általában ez a metódus befejezése előtt a rekord írása után. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public IAsyncResult BeginAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousUndoRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservations
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this record."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a foglalás, amely ezt a rekordot szeretne használni."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous append, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelöli az aszinkron append, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginFlush(System.IO.Log.SequenceNumber,System.AsyncCallback,System.Object)
@@ -552,34 +552,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous flush operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by the current method to the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method to ensure that the flush completes and resources are freed appropriately. If an error occurs during an asynchronous flush, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Calling this method ensures that all records that have been appended to the <xref:System.IO.Log.IRecordSequence> are durably written.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous flush request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndFlush%2A> method is called."
+  summary: "Amikor felül van bírálva a származtatott osztály, elkezdi az aszinkron kiürítési művelet, a sorrendben korábban fenntartott helyet használja."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>az aktuális metódus által visszaadott a <xref:System.IO.Log.IRecordSequence.EndFlush%2A>módszer annak biztosítására, hogy a kiürítés befejeződött, és erőforrásokat megfelelő felszabadítását.</xref:System.IO.Log.IRecordSequence.EndFlush%2A> </xref:System.IAsyncResult> Egy aszinkron kiürítése közben hiba lép fel, ha kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndFlush%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndFlush%2A>       A metódus hívása biztosítja, hogy az összes rögzíti, amely rendelkezik lett hozzáfűzi a <xref:System.IO.Log.IRecordSequence>tartósan íródtak.</xref:System.IO.Log.IRecordSequence>       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Aszinkron kiürítési kérés, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák hatására a kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndFlush%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndFlush%2A>"
   syntax:
     content: public IAsyncResult BeginFlush (System.IO.Log.SequenceNumber sequenceNumber, AsyncCallback callback, object state);
     parameters:
     - id: sequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the latest record that must be written. If this <xref href=&quot;System.IO.Log.SequenceNumber&quot;></xref> is invalid, then all records must be written."
+      description: "A legfrissebb rekord, amely úgy kell megírni, sorszámát. Ha a <xref href=&quot;System.IO.Log.SequenceNumber&quot;> </xref> érvénytelen, akkor úgy kell megírni, az összes rekord."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the flush is complete."
+      description: "Egy nem kötelező aszinkron visszahívás, hogy hívható meg abban az esetben, ha a kiürítés befejeződött."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous flush request from other requests."
+      description: "A felhasználó által megadott objektum, amely az adott aszinkron kiürítési kérés megkülönbözteti küldött egyéb kérések."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous flush operation, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, hogy jelöli az aszinkron flush műveletet, amely sikerült még függőben lehet.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginFlush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "I/o-hiba történt az adatok."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)
@@ -594,52 +594,52 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous reserve and append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "Ha a felülbírálva a származtatott osztály, egy aszinkron tartalék kezdődik, és hozzáfűzése művelet."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A megadott foglalásokat ad hozzá a megadott foglalási gyűjteményt a rekordot tartalmazó atomi művelet fűzzön hozzá műveletet. A Hozzáfűzés nem sikerül, ha nincs szabad hely van fenntartva.       Ez a módszer általában előtt a rekord írása után előfordulhat, hogy végezze. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public IAsyncResult BeginReserveAndAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "A foglalási gyűjteményt, amelyben a fenntartásokat."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "A foglalások bájtban tételéhez."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents this asynchronous operation, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelzi, hogy ehhez az aszinkron művelethez, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat, vagy ellenőrizze a foglalást."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[],System.AsyncCallback,System.Object)
@@ -654,52 +654,52 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous reserve and append operation."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method to ensure that the append operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous append, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "Ha a felülbírálva a származtatott osztály, egy aszinkron tartalék kezdődik, és hozzáfűzése művelet."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>módszer annak biztosítására, hogy a hozzáfűzési művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> </xref:System.IAsyncResult> Ha hiba történt egy aszinkron append, kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A megadott foglalásokat ad hozzá a megadott foglalási gyűjteményt a rekordot tartalmazó atomi művelet fűzzön hozzá műveletet. A Hozzáfűzés nem sikerül, ha nincs szabad hely van fenntartva.       Ez a módszer általában előtt a rekord írása után előfordulhat, hogy végezze. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public IAsyncResult BeginReserveAndAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "A foglalási gyűjteményt, amelyben a fenntartásokat."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "A foglalások bájtban tételéhez."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the append is complete."
+      description: "Egy nem kötelező aszinkron visszahívás a hozzáfűző befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous append request from other requests."
+      description: "A felhasználó által megadott objektum, amely megkülönbözteti az adott aszinkron hozzáfűzése küldött egyéb kérések-kéréseket."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents this asynchronous operation, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, amely jelzi, hogy ehhez az aszinkron művelethez, esetleg még függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat, vagy ellenőrizze a foglalást."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.BeginWriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection,System.AsyncCallback,System.Object)
@@ -714,29 +714,29 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous restart area write operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method, to assure that the restart area write operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous restart area write operation, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       When the operation successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a <xref:System.IO.Log.ReservationCollection> is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can hold the data, and that reservation will be removed from the collection.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called."
+  summary: "Felülbírálja a származtatott osztály, amikor megkezdi egy aszinkron újraindítás terület írási művelet, a sorrendben korábban fenntartott helyet használ."
+  remarks: "Át kell a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>metódus ahhoz, hogy biztosítsa, hogy az újraindítás terület írási művelet befejeződött, és erőforrásokat is megfelelő felszabadítását.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> </xref:System.IAsyncResult> Hiba történt egy aszinkron újraindítás terület írási művelet során, ha kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Ha a művelet sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el.       Ha egy <xref:System.IO.Log.ReservationCollection>van megadva, az írásbeli újraindítás területen fogyaszt korábban lefoglalt, használja a gyűjteményben szereplő foglalás terület.</xref:System.IO.Log.ReservationCollection> Ha a metódus sikeres, a legkisebb foglalást, amely képes tárolni az adatokat, és hogy a Foglalás törlődni fognak a gyűjtemény fog felhasználni.       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>"
   syntax:
     content: public IAsyncResult BeginWriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a Foglalás a újraindítás terület használandó."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the restart area write is complete."
+      description: "Egy nem kötelező aszinkron visszahívás, az újraindítás terület írási befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous restart area write request from other requests."
+      description: "A felhasználó által megadott objektum, amely az adott aszinkron újraindítás terület írási kérelem megkülönbözteti küldött egyéb kérések."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous restart area write operation, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, hogy jelöli az aszinkron indítsa újra a sikertelen még terület írási művelet lehet függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginWriteRestartArea*
   exceptions: []
   platform:
@@ -753,43 +753,43 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, begins an asynchronous restart area write operation, using space previously reserved in the sequence."
-  remarks: "You should pass the <xref:System.IAsyncResult> returned by this method to the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method to ensure that the restart area write operation has completed and resources can be freed appropriately. If an error has occurred during an asynchronous restart area write operation, an exception is not thrown until the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called with the <xref:System.IAsyncResult> returned by this method.       Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       When the operation successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a <xref:System.IO.Log.ReservationCollection> is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can hold the data, and that reservation will be removed from the collection.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> method is called."
+  summary: "Felülbírálja a származtatott osztály, amikor megkezdi egy aszinkron újraindítás terület írási művelet, a sorrendben korábban fenntartott helyet használ."
+  remarks: "Meg kell adni a <xref:System.IAsyncResult>vissza ezt a metódust a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>módszer annak biztosítására, hogy az újraindítási terület írási művelet befejeződött, és erőforrások megfelelően szabadítható.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A> </xref:System.IAsyncResult> Hiba történt egy aszinkron újraindítás terület írási művelet során, ha kivételt nem vált ki, amíg a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>metódus hívásakor a <xref:System.IAsyncResult>Ez a metódus által visszaadott.</xref:System.IAsyncResult> </xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>       Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       Ha a művelet sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el.       Ha egy <xref:System.IO.Log.ReservationCollection>van megadva, az írásbeli újraindítás területen fogyaszt korábban lefoglalt, használja a gyűjteményben szereplő foglalás terület.</xref:System.IO.Log.ReservationCollection> Ha a metódus sikeres, a legkisebb foglalást, amely képes tárolni az adatokat, és hogy a Foglalás törlődni fognak a gyűjtemény fog felhasználni.       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndWriteRestartArea%2A>"
   syntax:
     content: public IAsyncResult BeginWriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation, AsyncCallback callback, object state);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a Foglalás a újraindítás terület használandó."
     - id: callback
       type: System.AsyncCallback
-      description: "An optional asynchronous callback, to be called when the restart area write is complete."
+      description: "Egy nem kötelező aszinkron visszahívás, az újraindítás terület írási befejezésekor hívandó."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous restart area write request from other requests."
+      description: "A felhasználó által megadott objektum, amely az adott aszinkron újraindítás terület írási kérelem megkülönbözteti küldött egyéb kérések."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> that represents the asynchronous restart area write operation, which could still be pending."
+      description: "Egy <xref:System.IAsyncResult>, hogy jelöli az aszinkron indítsa újra a sikertelen még terület írási művelet lehet függőben.</xref:System.IAsyncResult>"
   overload: System.IO.Log.IRecordSequence.BeginWriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.CreateReservationCollection
@@ -804,18 +804,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, creates a new <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+  summary: "Ha a származtatott osztály felülbírálva, létrehoz egy új <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>."
   syntax:
     content: public System.IO.Log.ReservationCollection CreateReservationCollection ();
     parameters: []
     return:
       type: System.IO.Log.ReservationCollection
-      description: "The newly created <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref>."
+      description: "Az újonnan létrehozott <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref>."
   overload: System.IO.Log.IRecordSequence.CreateReservationCollection*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndAppend(System.IAsyncResult)
@@ -830,25 +830,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous append operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndAppend is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginAppend%2A> method."
+  summary: "Felülbírálja a származtatott osztály, amikor befejeződik az aszinkron hozzáfűzése művelet."
+  remarks: "Ez a módszer blokkolja az i/o-művelet befejezéséig. Egy aszinkron írási kérelem, például a lemez i/o kérelem során során előforduló hibákat EndAppend meghívásakor láthatóvá válnak.       Ez a módszer pontosan egyszer hívható meg minden <xref:System.IAsyncResult>által visszaadott a <xref:System.IO.Log.IRecordSequence.BeginAppend%2A>metódus.</xref:System.IO.Log.IRecordSequence.BeginAppend%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndAppend (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "A függőben lévő aszinkron i/o-kérelmek mutató hivatkozás."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.EndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndFlush(System.IAsyncResult)
@@ -863,25 +863,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous flush operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous flush request, such as a disk failure during the I/O request, become visible when EndFlush is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginFlush%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, befejeződik az aszinkron kiürítési művelet."
+  remarks: "Ez a módszer blokkolja az i/o-művelet befejezéséig. Egy aszinkron kiürítési kérés, például a lemez i/o kérelem során során előforduló hibákat EndFlush meghívásakor láthatóvá válnak.       Ez a módszer pontosan egyszer hívható meg minden <xref:System.IAsyncResult>által visszaadott a <xref:System.IO.Log.IRecordSequence.BeginFlush%2A>metódus.</xref:System.IO.Log.IRecordSequence.BeginFlush%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndFlush (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "A függőben lévő aszinkron i/o-kérelmek mutató hivatkozás."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "Az utolsó rekord írása sorszámát."
   overload: System.IO.Log.IRecordSequence.EndFlush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndReserveAndAppend(System.IAsyncResult)
@@ -896,25 +896,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous reserve and append operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndReserveAndAppend is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A> method."
+  summary: "Felülbírálja a származtatott osztály, ha a végpontok aszinkron lefoglalni, és a hozzáfűző műveletet."
+  remarks: "Ez a módszer blokkolja az i/o-művelet befejezéséig. Egy aszinkron írási kérelem, például a lemez i/o kérelem során során előforduló hibákat EndReserveAndAppend meghívásakor láthatóvá válnak.       Ez a módszer pontosan egyszer hívható meg minden <xref:System.IAsyncResult>által visszaadott a <xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A>metódus.</xref:System.IO.Log.IRecordSequence.BeginReserveAndAppend%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndReserveAndAppend (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "A függőben lévő aszinkron i/o-kérelmek mutató hivatkozás."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.EndReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.EndWriteRestartArea(System.IAsyncResult)
@@ -929,25 +929,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ends an asynchronous restart area write operation."
-  remarks: "This method blocks until the I/O operation has completed. Errors that occur during an asynchronous write request, such as a disk failure during the I/O request, become visible when EndWriteRestartArea is called.       This method must be called exactly once on every <xref:System.IAsyncResult> returned by the <xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A> method."
+  summary: "Amikor felül van bírálva a származtatott osztály, befejeződik az aszinkron újraindítás terület írási művelet."
+  remarks: "Ez a módszer blokkolja az i/o-művelet befejezéséig. Egy aszinkron írási kérelem, például a lemez i/o kérelem során során előforduló hibákat EndWriteRestartArea meghívásakor láthatóvá válnak.       Ez a módszer pontosan egyszer hívható meg minden <xref:System.IAsyncResult>által visszaadott a <xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A>metódus.</xref:System.IO.Log.IRecordSequence.BeginWriteRestartArea%2A> </xref:System.IAsyncResult>"
   syntax:
     content: public System.IO.Log.SequenceNumber EndWriteRestartArea (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "A reference to the outstanding asynchronous I/O request."
+      description: "A függőben lévő aszinkron i/o-kérelmek mutató hivatkozás."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written log record."
+      description: "Írásbeli naplórekord sorszámát."
   overload: System.IO.Log.IRecordSequence.EndWriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Flush
@@ -962,22 +962,22 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ensures that all appended records have been written."
-  remarks: "Calling this method ensures that all records that have been appended to the <xref:System.IO.Log.IRecordSequence> have been durably written."
+  summary: "Ha felül van bírálva a származtatott osztály, biztosítja, hogy az összes hozzáfűzött rekord készült."
+  remarks: "A metódus hívása biztosítja, hogy az összes rögzíti, amely rendelkezik lett hozzáfűzi a <xref:System.IO.Log.IRecordSequence>tartósan írt.</xref:System.IO.Log.IRecordSequence>"
   syntax:
     content: public System.IO.Log.SequenceNumber Flush ();
     parameters: []
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "Az utolsó rekord írása sorszámát."
   overload: System.IO.Log.IRecordSequence.Flush*
   exceptions:
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "I/o-hiba történt az adatok."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.Flush(System.IO.Log.SequenceNumber)
@@ -992,28 +992,28 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, ensures that all appended records up to and including the record with the specified sequence number have been durably written."
-  remarks: "Calling this method ensures that all records with sequence numbers up to and including the specified sequence number have been durably written."
+  summary: "Ha felül van bírálva a származtatott osztály, biztosítja, hogy az összes hozzáfűzött rekord a rekord, a megadott sorszám bezárólag tartósan készült."
+  remarks: "Ez a módszer biztosítja, hogy az összes rekordot feladatütemezési legfeljebb számok hívása és többek között a megadott sorszám tartósan készült."
   syntax:
     content: public System.IO.Log.SequenceNumber Flush (System.IO.Log.SequenceNumber sequenceNumber);
     parameters:
     - id: sequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the latest record that must be written. If this <xref href=&quot;System.IO.Log.SequenceNumber&quot;></xref> is invalid, then all records must be written."
+      description: "A legfrissebb rekord, amely úgy kell megírni, sorszámát. Ha a <xref href=&quot;System.IO.Log.SequenceNumber&quot;> </xref> érvénytelen, akkor úgy kell megírni, az összes rekord."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the last record written."
+      description: "Az utolsó rekord írása sorszámát."
   overload: System.IO.Log.IRecordSequence.Flush*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while flushing the data."
+    description: "I/o-hiba történt az adatok."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.LastSequenceNumber
@@ -1028,18 +1028,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number which is greater than the last record appended."
-  remarks: "This property contains a sequence number that is guaranteed to be larger than the sequence number of the last appended record. Valid sequence numbers are greater than or equal to <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> and less than LastSequenceNumber.      > [!NOTE] >  When using a <xref:System.IO.Log.LogRecordSequence> instance, the <xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A> value can become out of date until records are flushed to the log. See <xref:System.IO.Log.IRecordSequence.Flush%2A> and <xref:System.IO.Log.RecordAppendOptions> for more information on flushing records.."
+  summary: "Felülbírálja a származtatott osztály, amikor lekérdezi a sorszám lesz hozzáfűzve utolsó rekordját nagyobb."
+  remarks: "Ez a tulajdonság tartalmazza a sorszámot, amely nagyobb, mint a sorozat száma az utolsó hozzáfűzi a rekordot. Érvényes sorszámok nagyobb vagy egyenlő <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>pedig kisebb LastSequenceNumber.</xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>      > [!NOTE] > Egy <xref:System.IO.Log.LogRecordSequence>példányt, <xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A>értéket is elavulttá válnak mindaddig, amíg a napló tartalmát rekordok</xref:System.IO.Log.LogRecordSequence.LastSequenceNumber%2A> </xref:System.IO.Log.LogRecordSequence> használata esetén Olvassa el <xref:System.IO.Log.IRecordSequence.Flush%2A>és a <xref:System.IO.Log.RecordAppendOptions>További tájékoztatást a könyvelési rögzíti.</xref:System.IO.Log.RecordAppendOptions> </xref:System.IO.Log.IRecordSequence.Flush%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber LastSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "A sequence number which is greater than the last record appended."
+      description: "A sorszám, ez pedig nagyobb, mint az utolsó hozzáfűzött rekord."
   overload: System.IO.Log.IRecordSequence.LastSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.MaximumRecordLength
@@ -1054,17 +1054,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the size of the largest record that can be appended to or read from this sequence, in bytes."
+  summary: "Felülbírálja a származtatott osztály, kap a legnagyobb rekordot, amely fűzött vagy olvasni az ebben a sorozatban, bájtban méretét."
   syntax:
     content: public long MaximumRecordLength { get; }
     return:
       type: System.Int64
-      description: "The size of the largest record that can be appended to or read from this sequence, in bytes."
+      description: "A legnagyobb rekordot, amely fűzött vagy olvasni az ebben a sorozatban, bájtban kifejezett mérete."
   overload: System.IO.Log.IRecordSequence.MaximumRecordLength*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReadLogRecords(System.IO.Log.SequenceNumber,System.IO.Log.LogRecordEnumeratorType)
@@ -1079,8 +1079,8 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, returns an enumerable collection of records in the sequence."
-  remarks: "When overridden in a derived class, returns an enumerable collection of records in the sequence. The order of the enumerated records depends on the value of the `logRecordEnum` parameter."
+  summary: "Ha felül van bírálva a származtatott osztály, a feladatütemezési adja vissza a rekordok egy enumerálható gyűjteményhez."
+  remarks: "Ha felül van bírálva a származtatott osztály, a feladatütemezési adja vissza a rekordok egy enumerálható gyűjteményhez. A felsorolt rekordok függ értékének a `logRecordEnum` paraméter."
   example:
   - "This sample demonstrates the use of the ReadLogRecords method.  \n  \n```c#  \nusing System;  \n using System.IO;  \n using System.IO.Log;  \n  \n class ReadRecordsSample  \n {  \n     static SequenceNumber AppendRecord(IRecordSequence sequence,  \n                                        string message,  \n                                        SequenceNumber user,  \n                                        SequenceNumber previous)  \n     {  \n         MemoryStream data = new MemoryStream();  \n         BinaryWriter writer = new BinaryWriter(data);  \n         writer.Write(message);  \n  \n         ArraySegment<byte>[] segments;  \n         segments = new ArraySegment<byte>[1];  \n         segments[0] = new ArraySegment(data.GetBuffer(),  \n                                        0,  \n                                        Data.Length);  \n  \n         return sequence.Append(segments,  \n                                user,  \n                                previous,  \n                                WriteFlags.None);  \n     }  \n  \n     public static void Main(string[] args)  \n     {  \n         IRecordSequence sequence;  \n         sequence = new FileIRecordSequence(args[0]);  \n  \n         SequenceNumber a, b, c, d;  \n  \n         a = AppendRecord(sequence,  \n                          \"This is record A\",  \n                          SequenceNumber.Invalid,  \n                          SequenceNumber.Invalid);  \n         Console.WriteLine(\"Record A has sequence number System.IO.Log\", a);  \n  \n         b = AppendRecord(sequence,  \n                          \"This is record B\",  \n                          a,  \n                          a);  \n         Console.WriteLine(\"Record B has sequence number System.IO.Log\", b);  \n  \n         c = AppendRecord(sequence,  \n                          \"This is record C\",  \n                          a,  \n                          a);  \n         Console.WriteLine(\"Record C has sequence number System.IO.Log\", c);  \n  \n         d = AppendRecord(sequence,  \n                          \"This is record D\",  \n                          b,  \n                          c);  \n         Console.WriteLine(\"Record D has sequence number System.IO.Log\", d);  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(a, ReadDirection.Forward))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(d, ReadDirection.User))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n  \n         foreach(LogRecord record in  \n                 sequence.ReadLogRecords(d, ReadDirection.Previous))  \n         {  \n             BinaryReader reader = new BinaryReader(record.Data);  \n             Console.WriteLine(\"System.IO.Log: T:System.IO.Log.IRecordSequence\",  \n                               record.SequenceNumber,  \n                               reader.ReadString());  \n         }  \n     }  \n       }  \n```"
   syntax:
@@ -1088,24 +1088,24 @@ items:
     parameters:
     - id: start
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the first record where the reading starts."
+      description: "Ha a olvasási indítja el az első rekordra sorszámát."
     - id: logRecordEnum
       type: System.IO.Log.LogRecordEnumeratorType
-      description: "A valid <xref href=&quot;System.IO.Log.LogRecordEnumeratorType&quot;></xref> value that specifies the manner (that is, forward or backward) in which records should be read from a <xref href=&quot;System.IO.Log.LogRecordSequence&quot;></xref>."
+      description: "Egy érvényes <xref href=&quot;System.IO.Log.LogRecordEnumeratorType&quot;> </xref> érték, amely meghatározza a rekordok olvassa el a módon (vagyis előre vagy visszafelé haladva) egy <xref href=&quot;System.IO.Log.LogRecordSequence&quot;> </xref>."
     return:
       type: System.Collections.Generic.IEnumerable{System.IO.Log.LogRecord}
-      description: "An enumerable collection of records in the sequence."
+      description: "Rögzíti a sorozatban enumerálható gyűjteménye."
   overload: System.IO.Log.IRecordSequence.ReadLogRecords*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while reading the record."
+    description: "I/o-hiba történt a rekord olvasása közben."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReadRestartAreas
@@ -1120,25 +1120,25 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, returns an enumerable collection of the restart areas in the sequence."
-  remarks: "The restart areas are enumerated in reverse sequence number order, that is, from the highest sequence number to the lowest sequence number. Only restart areas with sequence numbers between the last sequence number and the base sequence number are enumerated.      > [!NOTE] >  If the log extent containing the <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> becomes corrupted, this method can throw an <xref:System.IO.IOException> with the error message &quot;The request could not be performed because of an unexpected I/O exception. The following error code was returned: &quot;80070026&quot;&quot;."
+  summary: "Ha felül van bírálva a származtatott osztály, az újraindítás területek enumerálható gyűjteményt a feladatütemezési adja vissza."
+  remarks: "Az újraindítás területek enumerálása a feladatütemezési fordított sorrendben, ez azt jelenti, hogy az a legnagyobb sorszám a legalacsonyabb sorszámmal. Csak indítsa újra a területek sorszámmal közötti utolsó számát, és a kiinduló sorszám enumerálása.      > [!NOTE] > Ha a napló mértékben tartalmazó a <xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A>akkor kerül sérült, ez a módszer segítségével throw egy <xref:System.IO.IOException>a következő hibaüzenettel &quot;a kérelmet nem lehetett végrehajtani, mert váratlan i/o-kivétel.</xref:System.IO.IOException> </xref:System.IO.Log.IRecordSequence.BaseSequenceNumber%2A> A következő hibát jelezte: &quot;80070026&quot; &quot;."
   syntax:
     content: public System.Collections.Generic.IEnumerable<System.IO.Log.LogRecord> ReadRestartAreas ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerable{System.IO.Log.LogRecord}
-      description: "An enumerable collection of the restart areas in the sequence."
+      description: "A feladatütemezési újraindítás területein enumerálható gyűjteménye."
   overload: System.IO.Log.IRecordSequence.ReadRestartAreas*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while reading the record."
+    description: "I/o-hiba történt a rekord olvasása közben."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReserveAndAppend(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])
@@ -1153,46 +1153,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, automatically makes a single reservation and appends a record to the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, automatikusan lehetővé teszi egyetlen foglalás, és hozzáfűzi a rekord a feladatütemezési."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A megadott foglalásokat ad hozzá a megadott foglalási gyűjteményt a rekordot tartalmazó atomi művelet fűzzön hozzá műveletet. A Hozzáfűzés nem sikerül, ha nincs szabad hely van fenntartva.       Ez a módszer általában előtt a rekord írása után előfordulhat, hogy végezze. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber ReserveAndAppend (ArraySegment<byte> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the collection to make reservations in."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a gyűjteményt, amelyben a fenntartásokat."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "A foglalások bájtban tételéhez."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.ReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat, vagy ellenőrizze a foglalást."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReserveAndAppend(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.SequenceNumber,System.IO.Log.RecordAppendOptions,System.IO.Log.ReservationCollection,System.Int64[])
@@ -1207,46 +1207,46 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, automatically makes a single reservation and appends a record to the sequence."
-  remarks: "Data contained in the `data` parameter will be concatenated into a single byte array for appending as the record. However, no provision is made for splitting data back into array segments when the record is read.       The specified reservations are added to the provided reservation collection in an atomic operation with a record append operation. If the append fails, no space is reserved.       Normally, this method may complete before the record has been written. To ensure that a record has been written, either specify the <xref:System.IO.Log.RecordAppendOptions> flag using the `recordAppendOptions` parameter, or call the <xref:System.IO.Log.IRecordSequence.Flush%2A> method."
+  summary: "Ha felül van bírálva a származtatott osztály, automatikusan lehetővé teszi egyetlen foglalás, és hozzáfűzi a rekord a feladatütemezési."
+  remarks: "Szereplő adatok a `data` paraméter fog összefűzendő, a rekordként lehetőséggel egy egybájtos tömbbe. Azonban nem rendelkezik vágását meghatározó adatok tömb szegmensek programba, amikor a rekord olvasható legyen.       A megadott foglalásokat ad hozzá a megadott foglalási gyűjteményt a rekordot tartalmazó atomi művelet fűzzön hozzá műveletet. A Hozzáfűzés nem sikerül, ha nincs szabad hely van fenntartva.       Ez a módszer általában előtt a rekord írása után előfordulhat, hogy végezze. Győződjön meg arról, hogy a rekord írása után, vagy adja meg a <xref:System.IO.Log.RecordAppendOptions>használata jelzőt a `recordAppendOptions` paraméter vagy hívási a <xref:System.IO.Log.IRecordSequence.Flush%2A>metódus.</xref:System.IO.Log.IRecordSequence.Flush%2A> </xref:System.IO.Log.RecordAppendOptions>"
   syntax:
     content: public System.IO.Log.SequenceNumber ReserveAndAppend (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber nextUndoRecord, System.IO.Log.SequenceNumber previousRecord, System.IO.Log.RecordAppendOptions recordAppendOptions, System.IO.Log.ReservationCollection reservationCollection, long[] reservations);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: nextUndoRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified order."
+      description: "A sorszám a következő rekord, a felhasználó által megadott sorrendben."
     - id: previousRecord
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in Previous order."
+      description: "A sorszám a következő rekord előző sorrendben."
     - id: recordAppendOptions
       type: System.IO.Log.RecordAppendOptions
-      description: "A valid value of <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;></xref> that specifies how the data should be written."
+      description: "Érvényes értéket <xref href=&quot;System.IO.Log.RecordAppendOptions&quot;> </xref> , amely meghatározza, hogyan lehet az adatokat írni."
     - id: reservationCollection
       type: System.IO.Log.ReservationCollection
-      description: "The reservation collection to make reservations in."
+      description: "A foglalási gyűjteményt, amelyben a fenntartásokat."
     - id: reservations
       type: System.Int64[]
-      description: "The reservations to make, in bytes."
+      description: "A foglalások bájtban tételéhez."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the appended log record."
+      description: "A hozzáfűzött naplóbejegyzés sorszámát."
   overload: System.IO.Log.IRecordSequence.ReserveAndAppend*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while appending the record."
+    description: "I/o-hiba történt a rekord fűznek."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new record, or to make the reservation."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új rekordot tartalmazhat, vagy ellenőrizze a foglalást."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.ReservedBytes
@@ -1261,17 +1261,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the total number of bytes that have been reserved."
+  summary: "Felülbírálja a származtatott osztály, amikor lekérdezi a lefoglalt bájtok teljes száma."
   syntax:
     content: public long ReservedBytes { get; }
     return:
       type: System.Int64
-      description: "The total size of all reservations made in this record sequence."
+      description: "A rekord sorozat összes foglalások teljes mérete."
   overload: System.IO.Log.IRecordSequence.ReservedBytes*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.RestartSequenceNumber
@@ -1286,18 +1286,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the most recently written restart area."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process."
+  summary: "Felül van bírálva a származtatott osztály, amikor lekérdezi a legutóbb írt újraindítási terület sorszámát."
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók."
   syntax:
     content: public System.IO.Log.SequenceNumber RestartSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the most recently written restart area."
+      description: "A legtöbb legutóbb írt sorszámát területén indítsa újra."
   overload: System.IO.Log.IRecordSequence.RestartSequenceNumber*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.RetryAppend
@@ -1312,18 +1312,18 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets or sets a value indicating whether appends are automatically retried if the log is full."
-  remarks: "If the value of this property is `true`, and an <xref:System.IO.Log.IRecordSequence.Append%2A> call fails because there is not enough space in the sequence, the record sequence will try to free space and retry the append."
+  summary: "Lekérdezi vagy beállítja, hogy egy érték, amely jelzi, hogy hozzáfűzi a rendszer automatikusan rendszer megpróbálja újból végrehajtani a napló megtelt."
+  remarks: "Ha ez a tulajdonság értéke `true`, és egy <xref:System.IO.Log.IRecordSequence.Append%2A>hívás sikertelen lesz, mivel nincs elegendő lemezterület a sorrendben, a rekordsorozat megpróbálja szabadítson fel lemezterületet, és ismételje meg a Hozzáfűzés.</xref:System.IO.Log.IRecordSequence.Append%2A>"
   syntax:
     content: public bool RetryAppend { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if appends are automatically retried if the log is full; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha hozzáfűzi a rendszer automatikusan rendszer megpróbálja újból végrehajtani a napló megtelt; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.IO.Log.IRecordSequence.RetryAppend*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The property was accessed after the sequence has been disposed of."
+    description: "A tulajdonság után a feladatütemezési el lett távolítva a történt hozzáférés."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.TailPinned
@@ -1338,13 +1338,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Occurs when the record sequence determines that the tail must be moved forward."
-  remarks: "You can fire this event when the record sequence has run out of space. When this event is fired, the tail of the sequence (that is, the base sequence number) is moved forward to free up space."
+  summary: "A rekord feladatütemezési határozza meg, hogy a kiegészítő kell áthelyezni előre következik be."
+  remarks: "Ezt az eseményt, amikor a rekordsorozat elfogyott a lemezterület is érvényesítést. Ez az esemény akkor következik be, amikor a feladatütemezési (Ez azt jelenti, hogy az alap sorszáma) végének került előre szabadítson fel lemezterületet."
   syntax:
     content: public event EventHandler<System.IO.Log.TailPinnedEventArgs> TailPinned;
     return:
       type: System.EventHandler{System.IO.Log.TailPinnedEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1360,31 +1360,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. The Common Log File System (CLFS) maintains two restart areas to guarantee that at least one valid area is always available. When a recovery is necessary, the CLFS reads its restart area and all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process.       A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       The data in the byte array segments will be concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. A közös napló fájl System (Naplófájlrendszer) tart fenn két indítsa újra a területek garantálja, hogy az legalább egy érvényes terület mindig elérhető legyen. Ha egy helyreállítási szükség, a CLFS olvassa be az újraindítás területről, és az adatok az utolsó ellenőrzőpont-művelet. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók.       Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Az adatok a bájt tömb szegmensekben fog kell összefűzendő a rekordként lehetőséggel egy egybájtos tömbbe. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}})
@@ -1399,31 +1399,31 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref>."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       The data in the byte array segments will be concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref>."
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók. Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Az adatok a bájt tömb szegmensekben fog kell összefűzendő a rekordként lehetőséggel egy egybájtos tömbbe. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber)
@@ -1438,34 +1438,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> and updates the base sequence number"
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> , és frissíti az alap sequence száma"
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók. Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Egy újraindítás terület írásakor az adatokat a bájt tömb szegmensekben a rekordként lehetőséggel egyetlen bájttömb be vannak összefűzendő. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen.       Ha ez a metódus sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber)
@@ -1480,34 +1480,34 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> and updates the base sequence number."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> , és frissíti a alap sorszám."
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók. Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Egy újraindítás terület írásakor az adatokat a bájt tömb szegmensekben a rekordként lehetőséggel egyetlen bájttömb be vannak összefűzendő. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen.       Ha ez a metódus sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el."
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.ArraySegment{System.Byte},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)
@@ -1522,37 +1522,37 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> using a reservation, and updates the base sequence number"
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       If a reservation is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can contain the data, and that reservation will be removed from the collection.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> foglalás használ, és frissíti a alap sorszám"
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók. Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Egy újraindítás terület írásakor az adatokat a bájt tömb szegmensekben a rekordként lehetőséggel egyetlen bájttömb be vannak összefűzendő. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen.       Ha foglalás van megadva, az írásbeli újraindítás területen fog használni, korábban lefoglalt, a gyűjteményben szereplő foglalást használó hely. Ha a metódus sikeres, a legkisebb foglalást, amely az adatokat is tartalmazhat, és hogy a Foglalás törlődni fognak a gyűjtemény fog felhasználni.       Ha ez a metódus sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el.       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (ArraySegment<byte> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation);
     parameters:
     - id: data
       type: System.ArraySegment{System.Byte}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a Foglalás a újraindítás terület használandó."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 - uid: System.IO.Log.IRecordSequence.WriteRestartArea(System.Collections.Generic.IList{System.ArraySegment{System.Byte}},System.IO.Log.SequenceNumber,System.IO.Log.ReservationCollection)
@@ -1567,37 +1567,37 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, writes a restart area to the <xref href=&quot;System.IO.Log.IRecordSequence&quot;></xref> using a reservation, and updates the base sequence number."
-  remarks: "A restart area is used to temporarily store information containing a client&quot;s last checkpoint operation. When a recovery is necessary, you can parse the restart area to retrieve all the data from the last checkpoint operation. This data initializes the transaction table, dirty pages table, and open file table so they can be used in the recovery process. A restart area can be read using the <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A> method.       When a restart area is written, the data in the byte array segments are concatenated into a single byte array for appending as the record. No provision is made for splitting data back into array segments when the restart area is read.       If a reservation is specified, the written restart area will consume space that has been previously reserved, using a reservation contained in the collection. If the method succeeds, it will consume the smallest reservation that can contain the data, and that reservation will be removed from the collection.       When this method successfully completes, the base sequence number has been updated. All log records with sequence numbers less than the new base sequence number are inaccessible.       If a record sequence has been disposed of, or if you pass an invalid argument, exceptions are thrown immediately within this operation. Errors that occurred during an asynchronous append request, for example, a disk failure during the I/O request, will result in exceptions being thrown when the <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A> method is called."
+  summary: "Felülbírálja a származtatott osztály, amikor egy újraindítás területen írja a <xref href=&quot;System.IO.Log.IRecordSequence&quot;> </xref> foglalás használ, és frissíti a alap sorozatszámot."
+  remarks: "Egy újraindítás terület ideiglenesen tárolja az adatokat tartalmazó ügyfél utolsó ellenőrzőpont-művelet használható. Ha egy helyreállítási szükség, elemzi a lekérik az adatokat az utolsó ellenőrzőpont-művelet az újraindítás területen. Ezeket az adatokat a tranzakció, inkonzisztencia lapok tábla, nyitott fájlok táblázat és inicializálja, a helyreállítási folyamat során is használhatók. Használatával egy újraindítás területen tudja olvasni a <xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>metódus.</xref:System.IO.Log.IRecordSequence.ReadRestartAreas%2A>       Egy újraindítás terület írásakor az adatokat a bájt tömb szegmensekben a rekordként lehetőséggel egyetlen bájttömb be vannak összefűzendő. Nem rendelkezik vágását meghatározó adatok tömb szegmensek be, ha az újraindítás területen olvasható legyen.       Ha foglalás van megadva, az írásbeli újraindítás területen fog használni, korábban lefoglalt, a gyűjteményben szereplő foglalást használó hely. Ha a metódus sikeres, a legkisebb foglalást, amely az adatokat is tartalmazhat, és hogy a Foglalás törlődni fognak a gyűjtemény fog felhasználni.       Ha ez a metódus sikeresen befejeződött, a kiinduló sorszám frissítve lett. Az összes naplórekordok sorszámmal kisebb, mint az új alap sorszáma nem érhetők el.       Ha egy rekord feladatütemezési el lett távolítva a, vagy érvénytelen argumentumot át, kivételek azonnal belül ezt a műveletet. Egy aszinkron append kérelem, például egy lemezt érintő hibákkal az i/o-kérelem során bekövetkezett hibák eredményez kivételek merültek fel, ha a <xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>metódust.</xref:System.IO.Log.IRecordSequence.EndReserveAndAppend%2A>"
   syntax:
     content: public System.IO.Log.SequenceNumber WriteRestartArea (System.Collections.Generic.IList<ArraySegment<byte>> data, System.IO.Log.SequenceNumber newBaseSequenceNumber, System.IO.Log.ReservationCollection reservation);
     parameters:
     - id: data
       type: System.Collections.Generic.IList{System.ArraySegment{System.Byte}}
-      description: "A list of byte array segments that will be concatenated and appended as the record."
+      description: "Bájt tömb szegmensek összefűzendő, és hozzáfűzi a rekordként listáját."
     - id: newBaseSequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The new base sequence number. The specified sequence number must be greater than or equal to the current base sequence number."
+      description: "Az új alap sorszáma. A megadott sorszám nagyobb vagy egyenlő a jelenlegi alap sorszámmal kell lennie."
     - id: reservation
       type: System.IO.Log.ReservationCollection
-      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;></xref> that contains the reservation that should be used for this restart area."
+      description: "A <xref href=&quot;System.IO.Log.ReservationCollection&quot;> </xref> , amely tartalmazza a Foglalás a újraindítás terület használandó."
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the written restart area."
+      description: "A sorszám írásbeli terület indítsa újra."
   overload: System.IO.Log.IRecordSequence.WriteRestartArea*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "One or more of the arguments is invalid."
+    description: "Egy vagy több argumentum érvénytelen."
   - type: System.IO.IOException
     commentId: T:System.IO.IOException
-    description: "An I/O error occurred while writing the restart area."
+    description: "I/o-hiba történt az újraindítás területen írása közben."
   - type: System.IO.Log.SequenceFullException
     commentId: T:System.IO.Log.SequenceFullException
-    description: "The record sequence could not make enough free space to contain the new restart area."
+    description: "A rekordsorozat nem sikerült elég szabad hely az új újraindítás területet tartalmaz."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The method was called after the sequence has been disposed of."
+    description: "A metódus lett meghívva, miután a feladatütemezési el lett távolítva a."
   platform:
   - net462
 references:

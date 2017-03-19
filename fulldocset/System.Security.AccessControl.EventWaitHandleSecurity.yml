@@ -26,8 +26,8 @@ items:
   nameWithType: EventWaitHandleSecurity
   fullName: System.Security.AccessControl.EventWaitHandleSecurity
   type: Class
-  summary: "Represents the Windows access control security applied to a named system wait handle. This class cannot be inherited."
-  remarks: "An EventWaitHandleSecurity object specifies access rights for a named system wait handle, and also specifies the way access attempts are audited. Access rights to the wait handle are expressed as rules, with each access rule represented by an <xref:System.Security.AccessControl.EventWaitHandleAccessRule> object. Each auditing rule is represented by an <xref:System.Security.AccessControl.EventWaitHandleAuditRule> object.       This mirrors the underlying Windows security system, in which each securable object has at most one discretionary access control list (DACL) that controls access to the secured object, and at most one system access control list (SACL) that specifies which access attempts are audited. The DACL and SACL are ordered lists of access control entries (ACE) that specify access and auditing for users and groups. An <xref:System.Security.AccessControl.EventWaitHandleAccessRule> or <xref:System.Security.AccessControl.EventWaitHandleAuditRule> object might represent more than one ACE.      > [!NOTE] >  An <xref:System.Threading.EventWaitHandle> object can represent a local wait handle or a named system wait handle. Windows access control security is meaningful only for named system wait handles.       The EventWaitHandleSecurity, <xref:System.Security.AccessControl.EventWaitHandleAccessRule>, and <xref:System.Security.AccessControl.EventWaitHandleAuditRule> classes hide the implementation details of ACLs and ACEs. They allow you to ignore the seventeen different ACE types and the complexity of correctly maintaining inheritance and propagation of access rights. These objects are also designed to prevent the following common access control errors:      -   Creating a security descriptor with a null DACL. A null reference to a DACL allows any user to add access rules to an object, potentially creating a denial-of-service attack. A new EventWaitHandleSecurity object always starts with an empty DACL, which denies all access for all users.      -   Violating the canonical ordering of ACEs. If the ACE list in the DACL is not kept in the canonical order, users might inadvertently be given access to the secured object. For example, denied access rights must always appear before allowed access rights. EventWaitHandleSecurity objects maintain the correct order internally.      -   Manipulating security descriptor flags, which should be under resource manager control only.      -   Creating invalid combinations of ACE flags.      -   Manipulating inherited ACEs. Inheritance and propagation are handled by the resource manager, in response to changes you make to access and audit rules.      -   Inserting meaningless ACEs into ACLs.       The only capabilities not supported by the .NET security objects are dangerous activities that should be avoided by the majority of application developers, such as the following:      -   Low-level tasks that are normally performed by the resource manager.      -   Adding or removing access control entries in ways that do not maintain the canonical ordering.       To modify Windows access control security for a named wait handle, use the <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> method to get the EventWaitHandleSecurity object. Modify the security object by adding and removing rules, and then use the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method to reattach it.      > [!IMPORTANT] >  Changes you make to an EventWaitHandleSecurity object do not affect the access levels of the named wait handle until you call the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the named wait handle.       To copy access control security from one wait handle to another, use the <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> method to get an EventWaitHandleSecurity object representing the access and audit rules for the first wait handle, and then use the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method, or a constructor that accepts an EventWaitHandleSecurity object, to assign those rules to the second wait handle.       Users with an investment in the security descriptor definition language (SDDL) can use the <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> method to set access rules for a named wait handle, and the <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> method to obtain a string that represents the access rules in SDDL format. This is not recommended for new development."
+  summary: "A Windows hozzáférés-vezérléssel egy elnevezett rendszer várakozási leíró alkalmazott jelöli. Ez az osztály nem örökölhető."
+  remarks: "EventWaitHandleSecurity objektum adja meg egy nevesített rendszer várakozási leíró hozzáférési jogait, és a hozzáférések naplóz módját is megadja. Hozzáférési jogosultsága ahhoz, hogy a várakozási leíró egész szabályokat, minden hozzáférési szabály által képviselt egy <xref:System.Security.AccessControl.EventWaitHandleAccessRule>objektum.</xref:System.Security.AccessControl.EventWaitHandleAccessRule> Minden egyes naplózási szabály által képviselt egy <xref:System.Security.AccessControl.EventWaitHandleAuditRule>objektum.</xref:System.Security.AccessControl.EventWaitHandleAuditRule>       Ez tükrözi, a Windows biztonsági rendszer, amelyben minden biztonságos objektumot rendelkezik legfeljebb egy tulajdonosi hozzáférés szabályozási listához (DACL), hogy szabályozza a hozzáférést a védett objektum, és legfeljebb egy rendszer hozzáférés-vezérlési lista (Rendszerszintű) határozza meg, melyik hozzáférések naplóz. A hozzáférés-vezérlési lista és a Rendszerszintű hozzáférés-vezérlő bejegyzések (ACE) által megadott hozzáférési és naplózási felhasználók és csoportok listájának vannak rendezve. Egy <xref:System.Security.AccessControl.EventWaitHandleAccessRule>vagy <xref:System.Security.AccessControl.EventWaitHandleAuditRule>objektum egynél több hozzáférés-vezérlő bejegyzések jelenthet.</xref:System.Security.AccessControl.EventWaitHandleAuditRule> </xref:System.Security.AccessControl.EventWaitHandleAccessRule>      > [!NOTE] > Egy <xref:System.Threading.EventWaitHandle>objektum jelenthet egy helyi várakozási leíró, vagy egy nevesített rendszer várakozási leíró.</xref:System.Threading.EventWaitHandle> A Windows hozzáférés-vezérléssel értéke csak a megnevezett várakozási kezeli értelmezhető.       A EventWaitHandleSecurity <xref:System.Security.AccessControl.EventWaitHandleAccessRule>, és <xref:System.Security.AccessControl.EventWaitHandleAuditRule>osztályok megvalósítása részletes ACL-EK és ACE-k elrejtése.</xref:System.Security.AccessControl.EventWaitHandleAuditRule> </xref:System.Security.AccessControl.EventWaitHandleAccessRule> Ezek lehetővé teszik, hogy hagyja figyelmen kívül a tizenhét különböző hozzáférés-vezérlő bejegyzések és öröklési és terjesztése a hozzáférési jogok megfelelően fenntartásának összetettségét. Ezek az objektumok is készültek, a következő gyakori ellenőrzési hibák megelőzése érdekében:-hoz létre biztonsági leíró null hozzáférés-vezérlési lista. Egy null hivatkozás egy hozzáférés-vezérlési lista lehetővé teszi, hogy a felhasználók hozzáférési szabályok felvétele objektumra, a-szolgáltatásmegtagadásos támadás potenciálisan létrehozása. Új EventWaitHandleSecurity objektum mindig egy üres hozzáférés-vezérlési lista, amely megtagadja az összes felhasználó hozzáférésének kezdődik.      -A szabályt sértő ACE kanonikus sorrendje. Ha a hozzáférés-vezérlő bejegyzések listáján, a hozzáférés-vezérlési lista nem kanonikus sorrendje maradjanak, felhasználók előfordulhat, hogy véletlenül hozzáférést kell biztosítani a biztonságos objektum. Például letiltott hozzáférési jogok mindig előtt kell szerepelnie engedélyezett hozzáférési jogosultsága. EventWaitHandleSecurity objektumok belsőleg karbantartása a megfelelő sorrendben.      -Kezelésére szolgáló biztonsági leíró jelzőket, amelyek csak a resource manager ellenőrzése alatt kell lennie.      -Létrehozása a hozzáférés-vezérlő bejegyzések jelzők kombinációja érvénytelen.      -Az örökölt hozzáférés kezelésére. Öröklési és terjesztése az erőforrás-kezelő, hozzáférési és naplózási szabályok módosításai válaszként kezeli.      -A hozzáférés-vezérlési listák értelmetlen ACE-k beszúrása.       A nem támogatja a .NET biztonsági objektumok csak lehetőségek érhetők el kell kerülni az alkalmazásfejlesztők, például a következő többségével veszélyes tevékenységek:-általában az erőforrás-kezelő által elvégzett alacsony szintű feladatokat.      -Hozzáadása vagy eltávolítása a hozzáférés-vezérlő bejegyzéseket, amelyek nem tartanak kanonikus sorrendje módon.       A Windows hozzáférés-vezérléssel egy elnevezett várakozási leíró módosításához használja a <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>metódus használatával kérje le a EventWaitHandleSecurity objektum.</xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> Módosítsa a biztonsági objektum hozzáadása és eltávolítása a szabályok, és használja a <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>metódus újracsatolni azt.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>      > [!IMPORTANT] > EventWaitHandleSecurity objektum módosításai nem befolyásolják a hozzáférési szintek az elnevezett várakozási leíró csak akkor hívható meg a <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>a módosított biztonsági objektum hozzárendelése a nevesített várakozási leíró metódus.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>       Hozzáférés-vezérléssel másolása egy várakozási leíró a másikra, használja a <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>metódust az EventWaitHandleSecurity objektum képviselő az első várakozási leíró hozzáférési és naplózási szabályait, és használja a <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>metódus, vagy kezelni EventWaitHandleSecurity objektum, ezeket a szabályokat rendelhet hozzá a második várakozási elfogadó konstruktorral.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> </xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>       A biztonsági leíró definition language (SDDL) befektetést rendelkező felhasználók használhatják a <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A>metódus egy elnevezett várakozási leíró vonatkozó hozzáférési szabályok beállítása és a <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A>SDDL-formátumban a hozzáférési szabályok jelölő karakterlánccá beszerzéséhez.</xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> Ez nem ajánlott új fejlesztésekhez."
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates an EventWaitHandleSecurity object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in<xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_14_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_14_1.vb)]"
   syntax:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class with default values."
-  remarks: "A new <xref:System.Security.AccessControl.EventWaitHandleSecurity> object always starts with an empty discretionary access list (DACL), which denies all access for all users."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> osztály az alapértelmezett értékekkel."
+  remarks: "Egy új <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektum mindig egy üres tulajdonosi hozzáférés listához (DACL), amely megtagadja az összes felhasználó hozzáférésének kezdődik.</xref:System.Security.AccessControl.EventWaitHandleSecurity>"
   syntax:
     content: public EventWaitHandleSecurity ();
     parameters: []
@@ -113,7 +113,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This class is not supported on Windows 98 or Windows Millennium Edition."
+    description: "Ez az osztály nem támogatott Windows 98 vagy Windows Me."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AccessRightType
@@ -128,13 +128,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the enumeration type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent access rights."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> property and return the type they use to represent access rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct enumeration type to use with each security object."
+  summary: "A számbavételi típus, amely lekérdezi a <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> használ hozzáférési jogok képviselő osztályt."
+  remarks: "Osztályok, amelyek a a <xref:System.Security.AccessControl.ObjectSecurity>felülbírálás osztály a <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A>tulajdonság és visszaállítja a hozzáférési jogok képviselő használata típusát.</xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Tömbök vagy több biztonsági objektumtípusokat tartalmazó gyűjtemények használata, ez a tulajdonság segítségével határozza meg a megfelelő enumerálástípusra használata minden egyes biztonsági objektum."
   syntax:
     content: public override Type AccessRightType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> enumeration."
+      description: "A <xref:System.Type>objektumot képviselő a <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> számbavételi.</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRightType*
   exceptions: []
   platform:
@@ -151,43 +151,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new access control rule for the specified user, with the specified access rights, access control, and flags."
-  remarks: "The recommended way to create access control rules is to use the constructors of the <xref:System.Security.AccessControl.EventWaitHandleAccessRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named events, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "Hoz létre egy új szabályhoz a megadott felhasználó a megadott hozzáférési jogosultságokat, a hozzáférés-vezérlés és a jelzők."
+  remarks: "Hozzáférés-vezérlési szabályok létrehozása az ajánlott módszer használatához az <xref:System.Security.AccessControl.EventWaitHandleAccessRule>osztály</xref:System.Security.AccessControl.EventWaitHandleAccessRule> a konstruktorok      > [!NOTE] > Öröklési és propagálás jelző elnevezett események értelmetlenné válnak, bár továbbra is lehetőség adja meg azokat. Ez nem ajánlott, mert azt feleslegesen bonyolítja szabályok, a karbantartási például által zavarja a szabályok, amelyek egyébként kompatibilis kombinációja."
   syntax:
     content: public override System.Security.AccessControl.AccessRule AccessRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "Egy <xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref> , amely azonosítja a felhasználót vagy csoportot a szabály vonatkozik."
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> values specifying the access rights to allow or deny, cast to an integer."
+      description: "Tagértékeinek <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> értékek megadása vagy elutasításáról, hozzáférési jogosultságokat az egész számra konvertálni."
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "Egy a <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> megadása, hogy a jogok engedélyezett vagy megtagadott értékeket."
     return:
       type: System.Security.AccessControl.AccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> object representing the specified rights for the specified user."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> a megadott felhasználó a megadott jogok képviselő objektum."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>type</code> specifies an invalid value."
+    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, vagy <code>type</code> érvénytelen értéket."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – <code>accessMask</code> nulla."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>az egyik típus sem <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>, és nem olyan típusú, mint <xref href=&quot;System.Security.Principal.NTAccount&quot;> </xref> be, amely átalakítható <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleType
@@ -202,13 +202,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent access rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> property and return the type they use to represent access rules. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct access rule type to use with each security object."
+  summary: "A típus, amely lekérdezi a <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> képviselő hozzáférési szabályok által használt osztály."
+  remarks: "Osztályok, amelyek a a <xref:System.Security.AccessControl.ObjectSecurity>felülbírálás osztály a <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A>tulajdonság és visszaállítja a hozzáférési szabályok ábrázolására használják típusát.</xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Tömb, vagy több biztonsági objektumtípusokat tartalmazó gyűjtemények használata, a tulajdonság segítségével határozza meg a megfelelő hozzáférési szabály típust kíván használni a minden egyes biztonsági objektum."
   syntax:
     content: public override Type AccessRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> class."
+      description: "A <xref:System.Type>objektumot képviselő a <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> osztály</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleType*
   exceptions: []
   platform:
@@ -225,8 +225,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for a matching access control rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAccessRule method searches for rules with the same user or group and the same <xref:System.Security.AccessControl.AccessControlType> as `rule`. If none are found, `rule` is added. If a matching rule is found, the rights in `rule` are merged with the existing rule."
+  summary: "A megfelelő hozzáférés-vezérlési szabály, amelyhez az új szabály egyesíthető keres. Ha egyik sem található, az új szabály hozzáadása."
+  remarks: "A AddAccessRule módszer megkeresi az ugyanazon felhasználó vagy csoport, és ugyanez rendelkező szabályok <xref:System.Security.AccessControl.AccessControlType>, `rule`.</xref:System.Security.AccessControl.AccessControlType> Ha nincs találhatók, `rule` jelenik meg. Ha egy megfelelő szabályt található, a jogok `rule` egyesítve lesznek az a meglévő szabályt."
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/csharp/729692a8-5e98-486a-9864-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/729692a8-5e98-486a-9864-_1.vb)]"
   syntax:
@@ -234,12 +234,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The access control rule to add."
+      description: "A hozzáférési szabályhoz hozzáadásához."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AddAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -254,19 +254,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAuditRule method searches for rules with the same user or group as `rule`. If none are found, `rule` is added. If a matching rule is found, the flags in `rule` are merged into the existing rule."
+  summary: "Egy naplózási szabály, amelyhez az új szabály egyesíthető keres. Ha egyik sem található, az új szabály hozzáadása."
+  remarks: "A AddAuditRule módszer megkeresi az ugyanazon felhasználó vagy csoport rendelkező szabályok `rule`. Ha nincs találhatók, `rule` jelenik meg. Ha egy megfelelő szabályt található, a jelzők a `rule` egyesülnek a meglévő szabályt."
   syntax:
     content: public void AddAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The audit rule to add. The user specified by this rule determines the search."
+      description: "A naplózási szabály hozzáadásához. Ez a szabály a megadott felhasználó meghatározza, hogy a keresés."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AddAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory(System.Security.Principal.IdentityReference,System.Int32,System.Boolean,System.Security.AccessControl.InheritanceFlags,System.Security.AccessControl.PropagationFlags,System.Security.AccessControl.AuditFlags)
@@ -281,43 +281,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new audit rule, specifying the user the rule applies to, the access rights to audit, and the outcome that triggers the audit rule."
-  remarks: "The recommended way to create audit rules is to use the constructors of the <xref:System.Security.AccessControl.EventWaitHandleAuditRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named events, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "Létrehoz egy új naplózási szabály, a felhasználó a szabály vonatkozik, a hozzáférési jogok naplózása és az eredménye, amely elindítja a naplózási szabály megadása."
+  remarks: "Naplózási szabályok létrehozása az ajánlott módszer használatához az <xref:System.Security.AccessControl.EventWaitHandleAuditRule>osztály</xref:System.Security.AccessControl.EventWaitHandleAuditRule> a konstruktorok      > [!NOTE] > Öröklési és propagálás jelző elnevezett események értelmetlenné válnak, bár továbbra is lehetőség adja meg azokat. Ez nem ajánlott, mert azt feleslegesen bonyolítja szabályok, a karbantartási például által zavarja a szabályok, amelyek egyébként kompatibilis kombinációja."
   syntax:
     content: public override System.Security.AccessControl.AuditRule AuditRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "Egy <xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref> , amely azonosítja a felhasználót vagy csoportot a szabály vonatkozik."
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> values specifying the access rights to audit, cast to an integer."
+      description: "Tagértékeinek <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> értékek megadását rendszervizsgálati, hozzáférési jogosultságokat az egész számra konvertálni."
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Értelmetlen elnevezett Várjon, amíg a kezeli, mert az nincs hierarchia."
     - id: flags
       type: System.Security.AccessControl.AuditFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> values specifying whether to audit successful access, failed access, or both."
+      description: "Tagértékeinek <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;> </xref> értékek megadása kell-e hozzáférési sikeres, sikertelen vagy mindkettő naplózni."
     return:
       type: System.Security.AccessControl.AuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> object representing the specified audit rule for the specified user. The return type of the method is the base class, <xref href=&quot;System.Security.AccessControl.AuditRule&quot;></xref>, but the return value can be cast safely to the derived class."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> a megadott felhasználó a megadott naplózási szabály képviselő objektum. A metódus visszatérési típusa az alaposztály <xref href=&quot;System.Security.AccessControl.AuditRule&quot;> </xref>, de az eredményül kapott értéket is konvertálható biztonságosan a származtatott osztály."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>flags</code> specifies an invalid value."
+    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, vagy <code>flags</code> érvénytelen értéket."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       – vagy – <code>accessMask</code> nulla."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>az egyik típus sem <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>, és nem olyan típusú, mint <xref href=&quot;System.Security.Principal.NTAccount&quot;> </xref> be, amely átalakítható <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleType
@@ -332,13 +332,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent audit rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> property and return the type they use to represent audit rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct audit rule type to use with each security object."
+  summary: "A típus, amely lekérdezi a <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> képviselő naplózási szabályok által használt osztály."
+  remarks: "Osztályok, amelyek a a <xref:System.Security.AccessControl.ObjectSecurity>felülbírálás osztály a <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A>tulajdonság és visszaállítja a naplózási jogosultságok képviselő használata típusa.</xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Tömb, vagy több biztonsági objektumtípusokat tartalmazó gyűjtemények használata, a tulajdonság segítségével határozza meg a megfelelő naplózási szabály típust kíván használni a minden egyes biztonsági objektum."
   syntax:
     content: public override Type AuditRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> class."
+      description: "A <xref:System.Type>objektumot képviselő a <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> osztály</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleType*
   exceptions: []
   platform:
@@ -355,8 +355,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified access rule, and with compatible inheritance and propagation flags; if such a rule is found, the rights contained in the specified access rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for a rule that has the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for event access rules, by creating them with the <xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named events, and they make the maintenance of access rules more complicated."
+  summary: "Keres egy hozzáférés-vezérlési szabály ugyanazt a felhasználói és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (engedélyezése vagy megtagadása) a megadott hozzáférési szabály, és kompatibilis öröklési és propagálás jelzők; Ha egy ilyen szabályt, a jogosultságok, a megadott hozzáférési szabály törlődnek azt."
+  remarks: "Az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>kell keresni egy szabályt, amely ugyanahhoz a felhasználóhoz, és ugyanez <xref:System.Security.AccessControl.AccessControlType>érték szerint `rule`.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.EventWaitHandleSecurity> Ha nincs ilyen szabály található, nem szükséges művelet, és a metódus visszaadja `false`. Ha a megfeleltetési szabályoknak talál, az öröklési és kompatibilitási jelző kompatibilitás érdekében szerepel a jelzők ellenőrzi `rule`. Ha nem kompatibilis a szabály található, nem szükséges művelet, és a metódus visszaadja `false`. Ha egy szabály a kompatibilis jelzőkkel található, a jogok megadott `rule` kompatibilis a szabály el lesznek távolítva, és a metódus visszaadja `true`. Ha `rule` megadja a jogok kompatibilis a szabály nem található, nem szükséges művelet tekintetében ezeket a jogokat. Minden jog el lesznek távolítva a kompatibilis szabály, ha a teljes szabály törlődik az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektum.</xref:System.Security.AccessControl.EventWaitHandleSecurity>      > [!IMPORTANT] > Bár létrehozásával, az öröklési és propagálás jelző esemény hozzáférési szabályait, megadhatja a <xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A>metódus, ez nem ajánlott.</xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A> Öröklési és propagálás nem jelentéssel rendelkezhetnek elnevezett eseményeket, és általuk végrehajtott hozzáférési szabályok karbantartására bonyolultabb."
   example:
   - "The following code example demonstrates the use of the RemoveAccessRule method to remove rights from an <xref:System.Security.AccessControl.AccessControlType> rule in an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object. It also shows that other rights in `rule` are ignored.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The rights allowed include <xref:System.Security.AccessControl.EventWaitHandleRights>, <xref:System.Security.AccessControl.EventWaitHandleRights>, and <xref:System.Security.AccessControl.EventWaitHandleRights>. The example then creates a new rule for the current user, including <xref:System.Security.AccessControl.EventWaitHandleRights> and <xref:System.Security.AccessControl.EventWaitHandleRights> rights, and uses that rule with the RemoveAccessRule method to remove <xref:System.Security.AccessControl.EventWaitHandleRights> from the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object. The <xref:System.Security.AccessControl.EventWaitHandleRights> right in `rule` is ignored.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule#1](~/add/codesnippet/csharp/22dce09a-3e98-48e6-a61f-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule#1](~/add/codesnippet/visualbasic/22dce09a-3e98-48e6-a61f-_1.vb)]"
   syntax:
@@ -364,15 +364,15 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> , amely meghatározza, hogy a felhasználói és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> keresse meg és öröklési és propagálás jelzőket, amelyek egy megfelelő szabályt, ha található, kompatibilisnek kell lennie. Megadja a kompatibilis szabály eltávolítása, ha a jogok található."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy kompatibilis szabály található; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -387,8 +387,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for rules that have the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. Any rights specified by `rule` are ignored when performing this search. All matching rules are removed. If no matching rules are found, no action is taken."
+  summary: "Megkeresi az összes hozzáférést vezérlő szabályaival ugyanahhoz a felhasználóhoz és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (engedélyezése vagy megtagadása) a megadott szabály és, ha található, távolítja el azokat."
+  remarks: "Az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>kell keresni a szabályok, amelyek ugyanahhoz a felhasználóhoz, és ugyanez <xref:System.Security.AccessControl.AccessControlType>érték szerint `rule`.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.EventWaitHandleSecurity> Által megadott jogok `rule` a keresés végrehajtása során figyelmen kívül lesznek hagyva. Minden ilyen szabályt a rendszer törli. Ha nincsenek egyező szabályok találhatók, semmilyen művelet nem lesz végrehajtva."
   example:
   - "The following code example shows that the RemoveAccessRuleAll method removes all rules that match user and <xref:System.Security.AccessControl.AccessControlType>, ignoring rights.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> rule. The example then creates a new rule that allows the current user to take ownership, and uses that rule to remove the <xref:System.Security.AccessControl.AccessControlType> rule from the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/visualbasic/a6ff73cc-4227-4079-abe7-_1.vb)]\n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/csharp/a6ff73cc-4227-4079-abe7-_1.cs)]"
   syntax:
@@ -396,12 +396,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for. Any rights specified by this rule are ignored."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> , amely meghatározza, hogy a felhasználói és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> kereséséhez. Ez a szabály által megadott jogok figyelmen kívül lesznek hagyva."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -416,8 +416,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other rules with the same user and <xref:System.Security.AccessControl.AccessControlType> are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the access security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAccessRuleSpecific method cannot remove it."
+  summary: "Keres egy hozzáférés-vezérlési szabály, amely pontosan megegyezik a megadott szabály és, ha található, eltávolítja azt."
+  remarks: "A szabály csak akkor, ha pontosan megegyezik eltávolítják `rule` összes részleteit, beleértve a jelzők. Adott felhasználó más szabályaival és <xref:System.Security.AccessControl.AccessControlType>, nem érintettek.</xref:System.Security.AccessControl.AccessControlType>      > [!IMPORTANT] > Szabály egy vagy több alapul szolgáló hozzáférés-vezérlő bejegyzések (ACE) jelöli, és ezek a bejegyzések felosztásához vagy kombinált szükség szerint, amikor egy felhasználó a hozzáférési szabályok módosítása. Emiatt a szabály már nem létező előfordulhat, hogy az adott űrlap, amikor vették fel kellett, és ebben az esetben a RemoveAccessRuleSpecific metódus nem távolítható el."
   example:
   - "The following code example shows that the RemoveAccessRuleSpecific method requires an exact match in order to remove a rule, and that rules to allow and deny rights are independent of each other.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> access rule. The example then passes the original <xref:System.Security.AccessControl.AccessControlType> rule to the RemoveAccessRuleSpecific method, and displays the results, showing that nothing is deleted. The example then constructs a rule that matches the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, and successfully uses the RemoveAccessRuleSpecific method to remove the rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/csharp/4b0413fe-85b1-4175-8dfd-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/visualbasic/4b0413fe-85b1-4175-8dfd-_1.vb)]"
   syntax:
@@ -425,12 +425,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to remove."
+      description: "A <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> eltávolítása."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -445,22 +445,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with the same user as the specified rule, and with compatible inheritance and propagation flags; if a compatible rule is found, the rights contained in the specified rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for an audit rule that has the same user as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for event audit rules, by creating them with the <xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named events, and they make the maintenance of audit rules more complicated."
+  summary: "Egy naplózási szabály ugyanaz a felhasználó a megadott szabály, és kompatibilis öröklési és propagálás jelzők; keres egy kompatibilis szabály található, a jogosultságok, a megadott szabály eltávolítja belőle."
+  remarks: "Az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>egy naplózási szabály, amely rendelkezik a felhasználónak kell keresni `rule`.</xref:System.Security.AccessControl.EventWaitHandleSecurity> Ha nincs ilyen szabály található, nem szükséges művelet, és a metódus visszaadja `false`. Ha a megfeleltetési szabályoknak talál, az öröklési és kompatibilitási jelző kompatibilitás érdekében szerepel a jelzők ellenőrzi `rule`. Ha nem kompatibilis a szabály található, nem szükséges művelet, és a metódus visszaadja `false`. Ha egy szabály a kompatibilis jelzőkkel található, a jogok megadott `rule` kompatibilis a szabály el lesznek távolítva, és a metódus visszaadja `true`. Ha `rule` megadja a jogok kompatibilis a szabály nem található, nem szükséges művelet tekintetében ezeket a jogokat. Minden jog el lesznek távolítva a kompatibilis szabály, ha a teljes szabály törlődik az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektum.</xref:System.Security.AccessControl.EventWaitHandleSecurity>      > [!IMPORTANT] > Bár létrehozásával, az öröklési és propagálás jelző esemény ellenőrzési szabályok, megadhatja a <xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A>metódus, ez nem ajánlott.</xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A> Öröklési és propagálás nem jelentéssel rendelkezhetnek elnevezett eseményeket, és általuk végrehajtott ellenőrzési szabályok karbantartására bonyolultabb."
   syntax:
     content: public bool RemoveAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> that specifies the user to search for and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> , amely megadja a felhasználót, hogy keresse meg és öröklési és propagálás jelzőket, amelyek egy megfelelő szabályt, ha található, kompatibilisnek kell lennie. Megadja a kompatibilis szabály eltávolítása, ha a jogok található."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy kompatibilis szabály található; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleAll(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -475,19 +475,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all audit rules with the same user as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for audit rules that have the same user as `rule`. Any rights specified by `rule` are ignored when performing this search. All matching rules are removed. If no matching rules are found, no action is taken."
+  summary: "Összes naplózási ugyanaz a felhasználó a megadott szabály szabályokat, és ha találhatók, eltávolítja azokat."
+  remarks: "Az aktuális <xref:System.Security.AccessControl.EventWaitHandleSecurity>ellenőrzési szabályok, amelyek a felhasználónak kell keresni `rule`.</xref:System.Security.AccessControl.EventWaitHandleSecurity> Által megadott jogok `rule` a keresés végrehajtása során figyelmen kívül lesznek hagyva. Minden ilyen szabályt a rendszer törli. Ha nincsenek egyező szabályok találhatók, semmilyen művelet nem lesz végrehajtva."
   syntax:
     content: public void RemoveAuditRuleAll (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> that specifies the user to search for. Any rights specified by this rule are ignored."
+      description: "Egy <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> , amely megadja, hogy a felhasználó kereséséhez. Ez a szabály által megadott jogok figyelmen kívül lesznek hagyva."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleSpecific(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -502,19 +502,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other audit rules for the same user are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the audit security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAuditRuleSpecific method cannot remove it."
+  summary: "Egy naplózási szabály, amely pontosan megegyezik a megadott keres szabály és, ha található, eltávolítja azt."
+  remarks: "A szabály csak akkor, ha pontosan megegyezik eltávolítják `rule` összes részleteit, beleértve a jelzők. A felhasználónak más naplózási szabály nem lesz hatással.      > [!IMPORTANT] > Szabály egy vagy több alapul szolgáló hozzáférés-vezérlő bejegyzések (ACE) jelöli, és ezek a bejegyzések vágási vagy kombinált szükség szerint, amikor módosítja egy felhasználó naplózási biztonsági szabályait. Emiatt a szabály már nem létező előfordulhat, hogy az adott űrlap, amikor vették fel kellett, és ebben az esetben a RemoveAuditRuleSpecific metódus nem távolítható el."
   syntax:
     content: public void RemoveAuditRuleSpecific (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to remove."
+      description: "A <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> eltávolítása."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -529,8 +529,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user as the specified rule, regardless of <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>, and then adds the specified rule."
-  remarks: "If there are no access rules whose user matches the specified rule, `rule` is added."
+  summary: "Eltávolítja a hozzáférés-vezérlési szabályokkal rendelkező ugyanaz a felhasználó a megadott szabály, függetlenül attól, <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref>, és hozzáadja a megadott szabály."
+  remarks: "Ha nincsenek hozzáférési szabályok, amelynek felhasználói megegyezik a megadott szabály `rule` jelenik meg."
   example:
   - "The following code example shows how the ResetAccessRule method replaces all rules for the matching user with the rule specified for the match.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the ResetAccessRule method to replace both of the existing rules with the new rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule#1](~/add/codesnippet/csharp/831b1f62-72fc-4f57-bcc7-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule#1](~/add/codesnippet/visualbasic/831b1f62-72fc-4f57-bcc7-_1.vb)]"
   syntax:
@@ -538,12 +538,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. Ez a szabály a megadott felhasználó meghatározza, hogy ez a szabály hozzáadása előtt eltávolítja a szabályokat."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -558,8 +558,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule, and then adds the specified rule."
-  remarks: "If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, the effect of this method is to remove all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user, replacing them with the specified rule. If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user are replaced with the specified rule.       If there are no rules whose user and <xref:System.Security.AccessControl.AccessControlType> match the specified rule, `rule` is added."
+  summary: "Eltávolítja a hozzáférés-vezérlési szabályok azonos felhasználói és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (engedélyezése vagy megtagadása) a megadott szabály, és hozzáadja a megadott szabály."
+  remarks: "Ha a megadott szabály <xref:System.Security.AccessControl.AccessControlType>, annak hatását, hogy ez a módszer az, hogy távolítsa el az összes <xref:System.Security.AccessControl.AccessControlType>szabályok a megadott felhasználó, a megadott szabály lecserélése.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType> Ha a megadott szabály <xref:System.Security.AccessControl.AccessControlType>, minden <xref:System.Security.AccessControl.AccessControlType>szabályok a megadott felhasználó a megadott szabály cserélése.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType>       Ha nincsenek szabályok felhasználót és <xref:System.Security.AccessControl.AccessControlType>felel meg a megadott szabály `rule` kerül.</xref:System.Security.AccessControl.AccessControlType>"
   example:
   - "The following code example shows how the SetAccessRule method removes all rules that match both the user and the <xref:System.Security.AccessControl.AccessControlType> of `rule`, replacing them with `rule`.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the SetAccessRule method to replace the existing <xref:System.Security.AccessControl.AccessControlType> rule with the new rule. The rule that denies access is not affected.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule#1](~/add/codesnippet/visualbasic/2e843fc0-0bf3-426e-ae6b-_1.vb)]\n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule#1](~/add/codesnippet/csharp/2e843fc0-0bf3-426e-ae6b-_1.cs)]"
   syntax:
@@ -567,12 +567,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. The user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> of this rule determine the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. A felhasználói és <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> Ez a szabály a meghatározását, hogy ez a szabály hozzáadása előtt eltávolítja a szabályokat."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.SetAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -587,19 +587,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all audit rules with the same user as the specified rule, regardless of the <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> value, and then adds the specified rule."
-  remarks: "If there are no audit rules whose user matches the specified rule, `rule` is added."
+  summary: "Összes naplózási szabályokat ugyanaz a felhasználó a megadott szabály, függetlenül attól, hogy eltávolítja a <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;> </xref> értékét, és hozzáadja a megadott szabály."
+  remarks: "Ha nincs naplózási szabály, amelynek felhasználói megegyezik a megadott szabály `rule` jelenik meg."
   syntax:
     content: public void SetAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to add. Ez a szabály a megadott felhasználó meghatározza, hogy ez a szabály hozzáadása előtt eltávolítja a szabályokat."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.SetAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

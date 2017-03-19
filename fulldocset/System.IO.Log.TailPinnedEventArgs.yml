@@ -11,8 +11,8 @@ items:
   nameWithType: TailPinnedEventArgs
   fullName: System.IO.Log.TailPinnedEventArgs
   type: Class
-  summary: "Provides data for the <xref href=&quot;System.IO.Log.IRecordSequence.TailPinned&quot;></xref> event. This class cannot be inherited."
-  remarks: "The <xref:System.IO.Log.IRecordSequence.TailPinned> event can be fired when the record sequence has run out of space. When this event is fired, the tail of the sequence (that is, the base sequence number) is moved forward to free up space."
+  summary: "Adja meg az adatait a <xref href=&quot;System.IO.Log.IRecordSequence.TailPinned&quot;> </xref> esemény. Ez az osztály nem örökölhető."
+  remarks: "A <xref:System.IO.Log.IRecordSequence.TailPinned>esemény is indítható, ha a rekordsorozat elfogyott a lemezterület.</xref:System.IO.Log.IRecordSequence.TailPinned> Ez az esemény akkor következik be, amikor a feladatütemezési (Ez azt jelenti, hogy az alap sorszáma) végének került előre szabadítson fel lemezterületet."
   example:
   - "This example shows how to use the <xref:System.IO.Log.LogRecordSequence.TailPinned> event to free up space in a log sequence.  \n  \n```  \nrecordSequence.RetryAppend = true;  \nrecordSequence.TailPinned += new EventHandler<TailPinnedEventArgs>(HandleTailPinned);  \n  \nvoid HandleTailPinned(object sender, TailPinnedEventArgs tailPinnedEventArgs)  \n{  \n   // tailPinnedEventArgs.TargetSequenceNumber is the target   \n   // sequence number to free up space to.    \n   // However, this sequence number is not necessarily valid.  We have  \n   // to use this sequence number as a starting point for finding a  \n   // valid point within the log to advance toward. You need to  \n   // identify a record with a sequence number equal to, or greater  \n   // than TargetSequenceNumber; let's call this   \n   // realTargetSequenceNumber. Once found, move the base  \n  \n   recordSequence.AdvanceBaseSequenceNumber(realTargetSequenceNumber);  \n  \n}  \n```"
   syntax:
@@ -35,13 +35,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.TailPinnedEventArgs&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IO.Log.TailPinnedEventArgs&quot;> </xref> osztály."
   syntax:
     content: public TailPinnedEventArgs (System.IO.Log.SequenceNumber sequenceNumber);
     parameters:
     - id: sequenceNumber
       type: System.IO.Log.SequenceNumber
-      description: "The target sequence number."
+      description: "A célként megadott sorszám."
   overload: System.IO.Log.TailPinnedEventArgs.#ctor*
   exceptions: []
   platform:
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Gets the sequence number that the tail should be moved past."
+  summary: "Lekérdezi a sorszám, amely a végéről túli helyezni."
   syntax:
     content: public System.IO.Log.SequenceNumber TargetSequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number that the tail should be moved past."
+      description: "A sorszám, amely a naplóvég túli helyezni."
   overload: System.IO.Log.TailPinnedEventArgs.TargetSequenceNumber*
   exceptions: []
   platform:

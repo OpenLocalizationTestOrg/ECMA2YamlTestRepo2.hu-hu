@@ -34,8 +34,8 @@ items:
   nameWithType: BasicDesignerLoader
   fullName: System.ComponentModel.Design.Serialization.BasicDesignerLoader
   type: Class
-  summary: "Provides an implementation of the <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderService&quot;></xref> interface."
-  remarks: "A BasicDesignerLoader is a complete implementation of a designer loader without anything relating to a persistence format. A BasicDesignerLoader does not dictate either a text or binary persistence, but it does support the following features:      -   Multiple load dependencies.      -   Tracking changes within the designer.      -   Deferred idle-time reloading.       A BasicDesignerLoader adds two kinds of services to the designer host’s service container: replaceable services and irreplaceable services. You can replace a replaceable service by changing the value of the protected <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.LoaderHost%2A> property. You cannot replace irreplaceable services because their implementations depend on each other.       The following table describes the services that are provided by default.      |Default Service|Description|   |---------------------|-----------------|   |<xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>|Allows objects to request that the designer reload itself when it is idle. This is a replaceable service.|   |<xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>|Used to serialize and deserialize objects. The serialization manager is added as a service so objects that need to perform serialization can utilize any serialization providers that were added to the serialization manager. This is an irreplaceable service.|"
+  summary: "Egy valósítja meg a <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderService&quot;> </xref> felületet."
+  remarks: "Egy BasicDesignerLoader tervező-betöltő nélkül semmit adatmegőrzési formátum vonatkozó teljes végrehajtását. Egy BasicDesignerLoader nem előírják, szöveges vagy bináris adatmegőrzési, de támogatja a következő szolgáltatásokat: több - függőségek betölteni.      -A Tervező nyomkövetési változásokkal.      -A halasztott üresjárati idő újból betölteni.       Egy BasicDesignerLoader két típusú szolgáltatások hozzáadja a Tervező host szolgáltatás tárolójának: cserélhető szolgáltatásokat és a pótolhatatlan. Egy cserélhető szolgáltatás lecserélheti a védett értékének módosításával <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.LoaderHost%2A>tulajdonság.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.LoaderHost%2A> Pótolhatatlan szolgáltatások nem cserélhető le, mert a rendszerbeli egymástól függenek.       A következő táblázat ismerteti a szolgáltatások alapértelmezés szerint biztosított.      | Alapértelmezett szolgáltatás |} Leírás |}   |---------------------|-----------------|   | <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>| Lehetővé teszi, hogy a Tervező töltse be újra maga tétlen állapotában kéréséhez objektumok.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> Ez egy olyan cserélhető szolgáltatás. |}   | <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager>| Használt segítségével szerializáltuk és objektum deszerializálása.</xref:System.ComponentModel.Design.Serialization.IDesignerSerializationManager> A szerializáláskezelő szolgáltatásként kerül, így kell elvégeznie a szerializálási objektumok nyújthatnak olyan, mint a szerializáláskezelő szerializálási szolgáltatót. Ez egy olyan pótolhatatlan szolgáltatás. |}"
   syntax:
     content: >-
       [System.Security.SecurityCritical]
@@ -61,7 +61,7 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.BasicDesignerLoader&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ComponentModel.Design.Serialization.BasicDesignerLoader&quot;> </xref> osztály."
   syntax:
     content: protected BasicDesignerLoader ();
     parameters: []
@@ -81,25 +81,25 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Starts the loading process."
-  remarks: "This is an implementation of the abstract <xref:System.ComponentModel.Design.Serialization.DesignerLoader.BeginLoad%2A?displayProperty=fullName> method. You do not need to override this method in your own class. The BeginLoad method performs the following actions:      -   It verifies that the design surface has not already loaded.      -   On the first call, it adds relevant services and calls the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Initialize%2A> method.      -   It calls the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A>, and <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> methods.       If the designer loader service has not been removed from the service container, BeginLoad will call the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A> and <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> methods instead of the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> and <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> methods. In this situation, it is the responsibility of the designer loader service to call <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> and <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>."
+  summary: "A betöltés folyamat elindul."
+  remarks: "Ez az absztrakt megvalósítása az <xref:System.ComponentModel.Design.Serialization.DesignerLoader.BeginLoad%2A?displayProperty=fullName>metódus.</xref:System.ComponentModel.Design.Serialization.DesignerLoader.BeginLoad%2A?displayProperty=fullName> Nem kell bírálja felül ezt a módszert a saját osztályban. A BeginLoad metódus a következő műveleteket hajtja végre:-ellenőrzi, hogy a tervezési felülethez már nem már be van töltve.      -A, első hívás kapcsolódó szolgáltatás és a hívások hozzáadja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Initialize%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Initialize%2A>      -Meghívja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A>, és <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>módszerek.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>       A tervező betöltőprogramja szolgáltatás a szolgáltatás tárolójából. nem el lett távolítva, BeginLoad hívni fogja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A>és <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A>módszerek ahelyett, hogy a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>és <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>módszerek.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A> Ebben a helyzetben a feladata a tervező betöltőprogramja szolgáltatást <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>és <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> meghívása"
   syntax:
     content: public override void BeginLoad (System.ComponentModel.Design.Serialization.IDesignerLoaderHost host);
     parameters:
     - id: host
       type: System.ComponentModel.Design.Serialization.IDesignerLoaderHost
-      description: "The designer loader host to load."
+      description: "A tervező betöltőprogramja gazdagép betöltése."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>host</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>host</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The designer is already loaded, or BeginLoad has been called with a different designer loader host."
+    description: "A Tervező már be töltve, vagy egy másik tervező betöltőprogramja állomás BeginLoad lett meghívva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "<code>host</code> has been disposed."
+    description: "<code>host</code>el lett távolítva."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Dispose
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Releases the resources used by the <xref href=&quot;System.ComponentModel.Design.Serialization.BasicDesignerLoader&quot;></xref>."
-  remarks: "Calling the Dispose method does not flush changes to the designer loader. If you want changes to be saved, call <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A> before calling Dispose.       Call Dispose when you are finished using the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>. The Dispose method leaves the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> in an unusable state. After calling Dispose, you must release all references to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> so the garbage collector can reclaim the memory that the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> was occupying. For more information, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md) and [Implementing a Dispose Method](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  Always call Dispose before you release your last reference to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> object&quot;s `Finalize` method."
+  summary: "Feloldja a által használt erőforrások a <xref href=&quot;System.ComponentModel.Design.Serialization.BasicDesignerLoader&quot;> </xref>."
+  remarks: "A Dispose metódus meghívása nem kiüríti azokat a módosításokat a tervező betöltőprogramja számára. Ha azt szeretné, hogy a módosításokat menteni, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>előtt hívja az Dispose.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>       Dispose hívható, amikor végzett a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> használatával A Dispose metódus elhagyja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>használhatatlan állapotban.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> Hívása Dispose, után fel kell szabadítania mutató összes hivatkozást az <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>, a szemétgyűjtő is visszaszerezni a memória, amely a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>lett elfoglaló.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> További információkért lásd: [nem felügyelt erőforrások tisztítás](~/add/includes/ajax-current-ext-md.md) és [eldobásakor metódusának](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Mindig hívás eldobásakor az <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> utolsó referenciaként a engedélyezés előtt Ellenkező esetben az erőforrásoknak nem szabadul szemétgyűjtő hívást csak a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>objektum `Finalize` metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>"
   syntax:
     content: public override void Dispose ();
     parameters: []
@@ -135,16 +135,16 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Enables or disables component notification with the <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;></xref>."
+  summary: "Engedélyezi vagy letiltja az összetevő-értesítés a a <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;> </xref>."
   syntax:
     content: protected virtual bool EnableComponentNotification (bool enable);
     parameters:
     - id: enable
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to enable component notification by the <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;></xref>; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to disable component notification by the <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az összetevő értesítés által engedélyezéséhez a <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;> </xref>; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> által az összetevő értesítések letiltása a <xref href=&quot;System.ComponentModel.Design.Serialization.DesignerLoader&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the component notification was enabled prior to this call; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az összetevő értesítés engedélyezve lett; e hívás előtt Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.EnableComponentNotification*
   exceptions: []
   platform:
@@ -161,8 +161,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Flushes pending changes to the designer loader."
-  remarks: "If the designer loader has not been loaded or has not been marked as modified, the Flush method returns immediately. Otherwise, Flush asks the serialization manager to create a serialization session and then calls <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A>."
+  summary: "Függőben lévő módosítások, hogy a tervező betöltőprogramja kiürítéseinek."
+  remarks: "Ha a tervező betöltőprogramja nem lett betöltve, vagy nem jelölte meg a módosított, a kiürítés metódus azonnal visszaadja. Ellenkező esetben a kiürítése a szerializáláskezelő szerializálási munkamenet létrehozására kéri, és ekkor meghívja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A>"
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -182,17 +182,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the requested service."
-  remarks: "GetService is a helper method that allows classes deriving from <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> to access services offered by the designer loader host."
+  summary: "Lekérdezi a kért szolgáltatást."
+  remarks: "GetService egy segédmetódust, amely lehetővé teszi a származtatott osztályainak <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>a tervező betöltőprogramja állomás által kínált hozzáférhet olyan szolgáltatásokhoz.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>"
   syntax:
     content: protected object GetService (Type serviceType);
     parameters:
     - id: serviceType
       type: System.Type
-      description: "The <xref:System.Type> of the service."
+      description: "A <xref:System.Type>a szolgáltatást.</xref:System.Type>"
     return:
       type: System.Object
-      description: "The requested service, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the requested service cannot be found."
+      description: "A kért szolgáltatást, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha nem található a kért szolgáltatást."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.GetService*
   exceptions: []
   platform:
@@ -209,8 +209,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes services."
-  remarks: "The Initialize method is called the first time <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> is invoked. You can add any services necessary to the designer loader host at this time. The base implementation adds services that <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> provides, so after calling the base implementation you may replace existing services. You must remove any custom services you add here by overriding <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Dispose%2A>."
+  summary: "Szolgáltatások inicializál."
+  remarks: "Az Initialize metódus neve először <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>meghívták.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> A tervező betöltőprogramja állomás szükséges szolgáltatások jelenleg is hozzáadhat. Az alapszintű megvalósítás hozzáadja-szolgáltatások <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>nyújt, így az alapszintű megvalósítás hívása után előfordulhat, hogy lecseréli a meglévő szolgáltatások.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> Távolítsa el, Itt veheti fel <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Dispose%2A>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Dispose%2A> felülbírálásával egyéni szolgáltatások"
   syntax:
     content: protected virtual void Initialize ();
     parameters: []
@@ -218,10 +218,10 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.IsReloadNeeded
@@ -236,14 +236,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Indicates whether the designer should be reloaded."
-  remarks: "The IsReloadNeeded method is used by some designer loaders to optimize reloading. This method can be overridden if your designer loader supports intelligent reloading. Some designer loaders can detect changes made to their underlying document and determine if a reload of the designer is actually necessary. If not, they should return `false` from this method. The default implementation always returns `true`, indicating that any call to <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload%2A> will succeed."
+  summary: "Azt jelzi, hogy van-e a Tervező töltve."
+  remarks: "A IsReloadNeeded metódus újból betölteni optimalizálása érdekében néhány Tervező betöltők használják. Ez a módszer felülbírálható, ha a tervező betöltőprogramja támogatja az intelligens újból betölteni. Néhány Tervező betöltők a képesek észlelni az alapul szolgáló dokumentum módosításai, és annak megállapítása, hogy egy a Tervező újbóli betöltése ténylegesen szükséges. Ha nem, kellene visszaadnia `false` a metódus. Az alapértelmezett implementációja mindig adja vissza `true`, jelezve, hogy semmilyen hívásban való <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload%2A>sikeres lesz.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload%2A>"
   syntax:
     content: protected virtual bool IsReloadNeeded ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the designer should be reloaded; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default implementation always returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a Tervező kell tölteni. Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett implementációja mindig adja vissza <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.IsReloadNeeded*
   exceptions: []
   platform:
@@ -260,21 +260,21 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the loader host."
-  remarks: "This method returns the loader host that was given to this designer loader. This can be `null` if <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> has not been called yet, or if this designer loader has been disposed."
+  summary: "Lekérdezi a betöltő állomás."
+  remarks: "Ez a módszer az, hogy a tervező betöltőprogramja az adott betöltő állomás adja vissza. Ez lehet `null` Ha <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>nem lett meghívva, vagy ha a tervező betöltőprogramja használaton kívül lett helyezve.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>"
   syntax:
     content: protected System.ComponentModel.Design.Serialization.IDesignerLoaderHost LoaderHost { get; }
     return:
       type: System.ComponentModel.Design.Serialization.IDesignerLoaderHost
-      description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> that was passed to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad*> method."
+      description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> , amely lett átadva a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad*>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad*>"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.LoaderHost*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Loading
@@ -289,13 +289,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets a value indicating whether the designer loader is loading the design surface."
-  remarks: "The <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> class provides the <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>, which supports load dependencies. This property takes load dependencies into account and will return `true` if there are any outstanding load dependencies."
+  summary: "Egy érték, amely jelzi, hogy a tervező betöltőprogramja betöltése a tervezési felülethez lekérdezi."
+  remarks: "A <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>osztály biztosít a <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>, mely támogatja a terheléselosztást függőségek.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> Ez a tulajdonság veszi terhelés függőségek lesz és figyelembe visszatérési `true` függőben lévő terheléselosztási függőségek esetén."
   syntax:
     content: public override bool Loading { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the designer loader is currently loading the design surface; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tervező betöltőprogramja jelenleg betöltése a tervezési felülethez; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Loading*
   exceptions: []
   platform:
@@ -312,13 +312,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets or sets a value indicating whether the designer has been modified."
-  remarks: "Determines if the designer loader has detected that the designer has been modified. If this property is `true` when the designer loader’s <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A> method is called, the designer loader will call the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A> method."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy módosult-e a tervezőben."
+  remarks: "Azt határozza meg, ha a tervező betöltőprogramja észlelte, hogy a tervező nem módosultak. Ha ez a tulajdonság `true` amikor a tervező betöltőprogramja <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>metódus lehívásra kerül, a tervező betöltőprogramja fel fogja hívni a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>"
   syntax:
     content: protected virtual bool Modified { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the designer has been modified; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>,"
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tervező nem módosított; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>,"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Modified*
   exceptions: []
   platform:
@@ -335,8 +335,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Notifies the designer loader that loading is about to begin."
-  remarks: "The OnBeginLoad method is invoked to start the loading process. You should perform any necessary initialization for loading at this time. This method should not be used to perform the actual load. The default implementation disables change notifications and sets up the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> for loading.       If you implement <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> to provide dependent load support, you should call OnBeginLoad when the first dependent load occurs. Call the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> method after the last call to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> method. By default, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> implements <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> and does this for you. If <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> is not available when <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> is called, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> will directly call OnBeginLoad.       If you provide your own loader service, or if you choose not to provide a loader service, you are responsible for calling this method. The <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> method will automatically call this, either indirectly by calling <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A> if <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> is available, or directly if it is not."
+  summary: "Értesíti a tervező betöltőprogramja, hogy betöltés megkezdi."
+  remarks: "A OnBeginLoad metódus meghívták a betöltés megkezdéséhez. Ekkor be minden szükséges inicializálási végre kell hajtania. Ez a módszer nem használandó tényleges betöltése. Az alapértelmezett implementációja letiltja a változási értesítéseket, és beállítja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>be.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>       Ha megvalósítása <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>függő terhelés támogatása érdekében célszerű hívni OnBeginLoad, az első függő betöltés esetén.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> Hívja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>metódus után utolsó hívása a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> Alapértelmezés szerint <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>megvalósítja <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>, és ez az Ön.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> Ha <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>nem érhető el mikor <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>nevezik, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>közvetlenül fel fogja hívni a OnBeginLoad.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>       Ha a saját betöltő kiszolgálása, vagy ha nem kíván a betöltő szolgáltatást, Ön felelősséggel tartozik a metódus hívása. A <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>metódus automatikusan hívni fogja a, akár közvetve meghívásával <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A>Ha <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>érhető el, vagy közvetlenül, ha nem.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>"
   syntax:
     content: protected virtual void OnBeginLoad ();
     parameters: []
@@ -356,8 +356,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Notifies the designer loader that unloading is about to begin."
-  remarks: "The OnBeginUnload method is invoked when the designer loader is about to unload the document.       The document may be unloaded in preparation for reloading, or if the document failed to load. If you added document-specific services in <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> or <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>, remove them here."
+  summary: "Értesíti a tervező betöltőprogramja, hogy memóriából való eltávolítása megkezdi."
+  remarks: "A OnBeginUnload metódus a tervező betöltőprogramja arra készül, hogy a dokumentum kiadása hív meg.       A dokumentum előkészítésekor újból betölteni, előfordulhat, hogy ki kell kapcsolni, vagy ha a dokumentum betöltése nem sikerült. Ha a dokumentum-specifikus szolgáltatások hozzáadott <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>vagy <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A>, távolítsa el őket itt.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>"
   syntax:
     content: protected virtual void OnBeginUnload ();
     parameters: []
@@ -377,25 +377,25 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Notifies the designer loader that loading is complete."
-  remarks: "The OnEndLoad method is invoked when loading is finished. It is always called, even if an exception is thrown during loading. The value of `successful` will be set to `true` if the load succeeded, or `false` if a fatal error occurred. The `errors` collection will contain objects that were reported as errors. Usually, these objects are exceptions.       If you implement <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> to provide dependent load support, you should call the OnEndLoad method after the last call to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> method. By default, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> implements <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> and does this for you. If <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> is not available when <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> is called, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> will directly call OnEndLoad after calling <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A>.       This method should be called by the designer loader service when all dependent loads have been completed.  This stops the loading process that was initiated by the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> method. If you provide your own loader service, or if you choose not to provide a loader service, you are responsible for calling this method. The <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> method will automatically call this, either indirectly by calling the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> method if <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> is available, or directly if it is not."
+  summary: "Értesíti a tervező betöltőprogramja, hogy helyesek-e be."
+  remarks: "A OnEndLoad metódus betöltése befejeződik hív meg. Mindig a neve, még akkor is, ha kivétel történik betöltése során. Értékének `successful` úgy lesz beállítva, `true` Ha a terhelést sikeres volt, vagy `false` Ha végzetes hiba történt. A `errors` gyűjtemény hibásként jelentett objektumok fogja tartalmazni. Ezek az objektumok általában kivételek.       Ha megvalósítása <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>függő terhelés támogatásához után utolsó hívása a OnEndLoad metódust kell hívni a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> Alapértelmezés szerint <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader>megvalósítja <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>, és ez az Ön.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader> Ha <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>nem érhető el mikor <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>nevezik, <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>OnEndLoad <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad%2A> hívása után hívja közvetlenül</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>       Ezt a metódust a tervező betöltőprogramja szolgáltatás kell meghívni, az összes függő terhelések befejezésekor.  Ez a betöltés folyamat által kezdeményezett leállítja a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A> Ha a saját betöltő kiszolgálása, vagy ha nem kíván a betöltő szolgáltatást, Ön felelősséggel tartozik a metódus hívása. A <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>metódus automatikusan hívni fogja a, akár közvetve meghívásával a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A>metódus Ha <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService>érhető el, vagy közvetlenül, ha nem.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23DependentLoadComplete%2A> </xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.BeginLoad%2A>"
   syntax:
     content: protected virtual void OnEndLoad (bool successful, System.Collections.ICollection errors);
     parameters:
     - id: successful
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the load completed successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a terhelést sikeresen befejeződött; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: errors
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> containing objects (usually exceptions) that were reported as errors."
+      description: "Egy <xref:System.Collections.ICollection>objektumai (általában kivételek) jelentett hibák.</xref:System.Collections.ICollection>"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnEndLoad*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnModifying
@@ -410,8 +410,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Notifies the designer loader that the state of the document is about to be modified."
-  remarks: "The OnModifying method is called in response to a component changing, adding, or removing event which indicates that the designer is about to be modified. You can implement source code control by overriding this method. A call to OnModifying does not mean that the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Modified%2A> property will later be set to `true`; it merely indicates an intention to do so."
+  summary: "Értesíti a tervező betöltőprogramja, amely a dokumentum állapotát hamarosan módosítható."
+  remarks: "A OnModifying metódus lehívásra kerül egy változó összetevő, ad hozzá, vagy a designer eltávolítása az esemény, amely azt jelzi, hogy módosítható. Verziókövetési valósíthatja meg ezt a módszert felülbírálja. OnModifying hívása nem jelenti azt, hogy a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Modified%2A>tulajdonság később úgy lesz beállítva, `true`; csupán azt jelzi egy szándékát, hogy erre.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Modified%2A>"
   syntax:
     content: protected virtual void OnModifying ();
     parameters: []
@@ -431,14 +431,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Flushes all changes to the designer."
-  remarks: "The PerformFlush method is invoked when the designer loader needs to flush to persistence any changes made to the designers. It is invoked in response to a call to the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A> method."
+  summary: "Kiüríti az összes módosítást a Designer."
+  remarks: "A PerformFlush metódus a tervező betöltőprogramja kell ürítse ki az adatmegőrzési milyen módosítások történtek a tervezők hív meg. Hívása válaszul meghívták a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>"
   syntax:
     content: protected abstract void PerformFlush (System.ComponentModel.Design.Serialization.IDesignerSerializationManager serializationManager);
     parameters:
     - id: serializationManager
       type: System.ComponentModel.Design.Serialization.IDesignerSerializationManager
-      description: "An <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerSerializationManager&quot;></xref> to use for persisting the state of loaded designers."
+      description: "Egy <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerSerializationManager&quot;> </xref> használandó megőrzése betöltött tervezők állapotát."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformFlush*
   exceptions: []
   platform:
@@ -455,14 +455,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Loads a designer from persistence."
-  remarks: "The PerformLoad method is invoked when the designer loader needs to load its state. PerformLoad is called before the <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> method. You must implement this method to load the designer contents."
+  summary: "A Tervező betölti az állandóságból."
+  remarks: "A PerformLoad metódus hív meg a tervező betöltőprogramja kell betölteni állapotában. PerformLoad neve előtt a <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A>metódus.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.OnBeginLoad%2A> Meg kell valósítani ezt a metódust a Tervező tartalom betöltéséhez."
   syntax:
     content: protected abstract void PerformLoad (System.ComponentModel.Design.Serialization.IDesignerSerializationManager serializationManager);
     parameters:
     - id: serializationManager
       type: System.ComponentModel.Design.Serialization.IDesignerSerializationManager
-      description: "An <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerSerializationManager&quot;></xref> to use for loading state for the designers."
+      description: "Egy <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerSerializationManager&quot;> </xref> állapot betöltésekor a tervezők használandó."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.PerformLoad*
   exceptions: []
   platform:
@@ -479,18 +479,18 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets or sets the property provider for the serialization manager being used by the loader."
-  remarks: "The serialization manager provides a `Properties` property on its primary interface that can be read by serializers to customize their serialization to specific needs. The properties that are examined by the serializers vary depending on the type of serializer used."
+  summary: "Lekérdezi vagy beállítja a tulajdonság-szolgáltató az éppen használják a betöltő szerializáláskezelő."
+  remarks: "A szerializáláskezelő biztosít egy `Properties` tudja olvasni. a szerializálási konkrét igényeinek megfelelően testre objektumszerializáló elsődleges illesztőjén tulajdonság. A tulajdonságokat, amelyeket a objektumszerializáló megvizsgálja a szerializáló használt típusától függően eltérnek."
   syntax:
     content: protected object PropertyProvider { get; set; }
     return:
       type: System.Object
-      description: "An object whose properties are to be provided to the serialization manager."
+      description: "Egy objektum, amelynek a tulajdonságait meg kell adni, hogy a szerializáláskezelő vannak."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.PropertyProvider*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload(System.ComponentModel.Design.Serialization.BasicDesignerLoader.ReloadOptions)
@@ -510,7 +510,7 @@ items:
     parameters:
     - id: flags
       type: System.ComponentModel.Design.Serialization.BasicDesignerLoader.ReloadOptions
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload*
   exceptions: []
   platform:
@@ -527,12 +527,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets a value indicating whether a reload has been queued."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy egy Újrabetöltés sorba állítása megtörtént."
   syntax:
     content: protected bool ReloadPending { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if a call to <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload*> has queued a reload request; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, ha hívása <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload*>rendelkezik Újrabetöltés kérelem várólistára; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Reload*>"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.ReloadPending*
   exceptions: []
   platform:
@@ -549,19 +549,19 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Reports errors that occurred while flushing changes."
-  remarks: "The ReportFlushErrors method is called during <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A> if one or more errors occurred while flushing changes. The values in the `errors` collection can be exceptions or objects with <xref:System.Object.ToString%2A> values that describe the error. The default implementation of ReportFlushErrors raises the last exception in the collection."
+  summary: "Változtatások kiürítése történt hibákról."
+  remarks: "A ReportFlushErrors metódus lehívásra kerül során <xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A>Ha egy vagy több hiba történt a változtatások kiürítése.</xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.Flush%2A> Az értékek a `errors` gyűjtemény kivételek vagy objektumok lehetnek <xref:System.Object.ToString%2A>értékeket, amelyeket a hiba leírása.</xref:System.Object.ToString%2A> A ReportFlushErrors alapértelmezett implementációja riasztást utoljára előfordult kivétel a gyűjteményben."
   syntax:
     content: protected virtual void ReportFlushErrors (System.Collections.ICollection errors);
     parameters:
     - id: errors
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> containing error objects, usually exceptions."
+      description: "Egy <xref:System.Collections.ICollection>hiba objektumokat, általában kivételek tartalmazó.</xref:System.Collections.ICollection>"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.ReportFlushErrors*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "One or more errors occurred while flushing changes."
+    description: "Egy vagy több hiba történt a változtatások kiürítése."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.SetBaseComponentClassName(System.String)
@@ -576,19 +576,19 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Sets the full class name of the base component."
-  remarks: "The SetBaseComponentClassName method should be called during loading to establish the full name of the component a designer is designing."
+  summary: "Beállítja az alap összetevő teljes osztály nevét."
+  remarks: "A SetBaseComponentClassName metódus hívható a teljes nevet, az összetevő a Tervező tervez létrehozni betöltése során."
   syntax:
     content: protected void SetBaseComponentClassName (string name);
     parameters:
     - id: name
       type: System.String
-      description: "A string representing the full name of the component to be designed."
+      description: "Egy karakterlánc, amely a teljes nevet, az összetevő tervezték."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.SetBaseComponentClassName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>name</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.System#ComponentModel#Design#Serialization#IDesignerLoaderService#AddLoadDependency
@@ -604,8 +604,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Registers an external component as part of the load process managed by <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderService&quot;></xref>."
-  remarks: "Call the <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> method once for each external object participating in the load process. The <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> method is called when the work of the load process is done."
+  summary: "Egy külső összetevő regisztrálja a betöltési folyamat által kezelt <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderService&quot;> </xref>."
+  remarks: "Hívja a <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>módszer egyszer minden külső objektum részt a betöltés folyamatban.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> A <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>metódus lehívásra kerül, ha a betöltési folyamat a munkát.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>"
   syntax:
     content: void IDesignerLoaderService.AddLoadDependency ();
     parameters: []
@@ -613,7 +613,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.System#ComponentModel#Design#Serialization#IDesignerLoaderService#DependentLoadComplete(System.Boolean,System.Collections.ICollection)
@@ -629,25 +629,25 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Signals that a dependent load has finished."
-  remarks: "The IDesignerLoaderService.DependentLoadComplete method is called to signal that a dependent loading operation has completed. Call the <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A> method once for every process that was registered by calling the <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> method, which has already completed.       If the dependent load succeeds, the caller sets the `successful` parameter to `true` and passes either an empty collection or `null` to the `errorCollection` parameter. If the dependent load encounters errors, the caller sets the `successful` parameter to `false` and passes a collection of exceptions that indicate the reason or reasons for failure to the `errorCollection` parameter."
+  summary: "Azt jelzi, hogy egy függő terheléselosztási befejeződött."
+  remarks: "A IDesignerLoaderService.DependentLoadComplete metódus lehívásra kerül, hogy jelezze, hogy a függő betöltése művelet befejeződött. Hívja a <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>metódus meghívásával regisztrált minden folyamat esetében a <xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A>metódus, amely már befejeződött.</xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.AddLoadDependency%2A> </xref:System.ComponentModel.Design.Serialization.IDesignerLoaderService.DependentLoadComplete%2A>       Ha a függő betöltés sikeres, a hívó beállítása a `successful` paramétert `true` , és továbbadja vagy egy üres gyűjteményt vagy `null` számára a `errorCollection` paraméter. A függő terhelés hibát észlel, ha a hívó beállítja a `successful` paramétert `false` , és továbbadja, amelyek jelzik, az OK vagy okok miatt nem sikerült a kivételek gyűjteménye a `errorCollection` paraméter."
   syntax:
     content: void IDesignerLoaderService.DependentLoadComplete (bool successful, System.Collections.ICollection errorCollection);
     parameters:
     - id: successful
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to load successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>betöltése sikeresen; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: errorCollection
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> containing errors that occurred during the load."
+      description: "Egy <xref:System.Collections.ICollection>tartalmazó betöltése közben történt hibákról.</xref:System.Collections.ICollection>"
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.System#ComponentModel#Design#Serialization#IDesignerLoaderService#DependentLoadComplete*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No load dependencies have been added by &lt;xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A&gt;, or the <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has not been initialized."
+    description: "Betöltési függőségek által hozzáadott &lt;xref:System.ComponentModel.Design.Serialization.BasicDesignerLoader.System%23ComponentModel%23Design%23Serialization%23IDesignerLoaderService%23AddLoadDependency%2A&gt;, vagy a <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> nem lett inicializálva."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;></xref> has been disposed."
+    description: "A <xref href=&quot;System.ComponentModel.Design.Serialization.IDesignerLoaderHost&quot;> </xref> használaton kívül lett helyezve."
   platform:
   - net462
 - uid: System.ComponentModel.Design.Serialization.BasicDesignerLoader.System#ComponentModel#Design#Serialization#IDesignerLoaderService#Reload
@@ -663,14 +663,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Reloads the design document."
-  remarks: "Any object can call the IDesignerLoaderService.Reload method to request that the loader reload the design document. If the loader supports reloading and complies with the reload, the designer loader can return `true`. Otherwise, it returns `false`, indicating that the reload will not occur. Callers cannot rely on the reload happening immediately; the designer loader can schedule this for some other time, or it can try to reload the designer at once.       The caller can display a message to the user if the designer cannot be reloaded."
+  summary: "A tervezési dokumentum Újratölti."
+  remarks: "Minden objektum meghívhatja a IDesignerLoaderService.Reload módszert kéri, hogy a betöltő be újra a tervezési dokumentum. Ha a betöltő újból betölteni támogatja, és megfelel-e a Újrabetöltés, lépjen vissza a tervező betöltőprogramja `true`. Ellenkező esetben az eredmény `false`, amely jelzi, hogy a Újrabetöltés nem történik. Hívók nem elegendő a Újrabetöltés azonnal; történik? a tervező betöltőprogramja is ütemezheti a bizonyos ideig, vagy töltse be újra a Tervező egyszerre próbálkozhat.       A hívó is megjelenít egy üzenetet a felhasználó, ha a tervező nem tölthető be."
   syntax:
     content: bool IDesignerLoaderService.Reload ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reload request is accepted; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the loader does not allow the reload."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a Újrabetöltés kérelem elfogadása; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha a betöltő nem teszi lehetővé a be újra."
   overload: System.ComponentModel.Design.Serialization.BasicDesignerLoader.System#ComponentModel#Design#Serialization#IDesignerLoaderService#Reload*
   exceptions: []
   platform:

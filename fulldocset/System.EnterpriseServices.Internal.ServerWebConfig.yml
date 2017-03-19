@@ -12,8 +12,8 @@ items:
   nameWithType: ServerWebConfig
   fullName: System.EnterpriseServices.Internal.ServerWebConfig
   type: Class
-  summary: "Creates a Web.config file for a SOAP-enabled COM+ application. Can also add component entries to the file for COM interfaces being published in the application."
-  remarks: "The ServerWebConfig class is used to create a Web.config file during creation of a virtual root in Internet Information Services (IIS) 6.0 for a SOAP-enabled COM+ application. It also can add XML elements to the Web.config file for component interfaces being added to the application.       ServerWebConfig is used internally by the .NET Framework. You do not need to use it directly in your code."
+  summary: "Létrehoz egy SOAP-kompatibilis COM + alkalmazás Web.config fájlt. Összetevő-bejegyzések is adhat hozzá a fájlt az alkalmazás közzétett COM-felületek."
+  remarks: "A ServerWebConfig osztály segítségével hozzon létre egy Web.config fájlt az Internet Information Services (IIS) 6.0 egy SOAP-kompatibilis COM + alkalmazás virtuális gyökérkönyvtár létrehozása során. Azt is adhat hozzá az XML-elemek a Web.config fájl az alkalmazáshoz hozzáadott összetevő-illesztőfelületei számára.       ServerWebConfig a .NET-keretrendszer belsőleg használja. Nem szeretné használni, azt közvetlenül a kódban."
   syntax:
     content: 'public class ServerWebConfig : System.EnterpriseServices.Internal.IServerWebConfig'
   inheritance:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Initializes a new instance of the <xref href=&quot;System.EnterpriseServices.Internal.ServerWebConfig&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.EnterpriseServices.Internal.ServerWebConfig&quot;> </xref> osztály."
   syntax:
     content: public ServerWebConfig ();
     parameters: []
@@ -55,29 +55,29 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Adds XML elements to a Web.config file for a COM interface being published in a SOAP-enabled COM+ application."
-  remarks: "For the specified type, the AddElement method adds to the Web.config file the `<wellknown>` and `<activated>` elements as children of the `<service>` element with the following XPath:       `/configuration/system.runtime.remoting/application/service`       The `AssemblyName`, `TypeName`, `ProgId`, and `WkoMode` parameters are incorporated into the attribute values of the two added elements.       AddElement should not be called directly. Instead, call the <xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A> method."
+  summary: "XML-elemeket ad hozzá egy COM-illesztőfelület egy SOAP-kompatibilis COM + alkalmazás közzétett a Web.config fájlban."
+  remarks: "A megadott típus esetében a AddElement metódus hozzáadja a Web.config fájlt a `<wellknown>` és `<activated>` elem gyermekeként a `<service>` elem a következő XPath: `/configuration/system.runtime.remoting/application/service` a `AssemblyName`, `TypeName`, `ProgId`, és `WkoMode` paraméterek be vannak építve az attribútumértékek két hozzáadott elem.       AddElement közvetlenül nem hívható. Ehelyett hívja a <xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A>metódus.</xref:System.EnterpriseServices.Internal.Publish.ProcessServerTlb%2A>"
   syntax:
     content: public void AddElement (string FilePath, string AssemblyName, string TypeName, string ProgId, string WkoMode, out string Error);
     parameters:
     - id: FilePath
       type: System.String
-      description: "The path of the existing Web.config file."
+      description: "A meglévő Web.config fájl elérési útját."
     - id: AssemblyName
       type: System.String
-      description: "The name of the assembly that contains the type being added."
+      description: "A hozzáadni kívánt típust tartalmazó szerelvény neve."
     - id: TypeName
       type: System.String
-      description: "The name of the type being added."
+      description: "A hozzáadni kívánt típus neve."
     - id: ProgId
       type: System.String
-      description: "The programmatic identifier for the type being added."
+      description: "A hozzáadni kívánt típusának programozott azonosítója."
     - id: WkoMode
       type: System.String
-      description: "A string constant that corresponds to the name of a member from the <xref href=&quot;System.Runtime.Remoting.WellKnownObjectMode&quot;></xref> enumeration, which indicates how a well-known object is activated."
+      description: "Egy karakterlánc-konstansra, amely a tag neve egyezik a <xref href=&quot;System.Runtime.Remoting.WellKnownObjectMode&quot;> </xref> számbavételi, amely megadja, hogy milyen jól ismert objektumok aktiválva van."
     - id: Error
       type: System.String
-      description: "A string to which an error message can be written."
+      description: "Egy karakterlánc, amelyre hibaüzenetet is beírhatók."
   overload: System.EnterpriseServices.Internal.ServerWebConfig.AddElement*
   exceptions: []
   platform:
@@ -94,20 +94,20 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices.Internal
-  summary: "Creates a Web.config file for a SOAP-enabled COM+ application so that the file is ready to have XML elements added for COM interfaces being published."
-  remarks: "The Create method creates a Web.config file that contains the hierarchy for an empty element with the following XPath:      ```   /configuration/system.runtime.remoting/application/service   ```       Instead of instantiating a <xref:System.EnterpriseServices.Internal.ServerWebConfig> class object and calling Create directly, call the <xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A> method."
+  summary: "Létrehoz egy Web.config egy SOAP-kompatibilis COM + alkalmazás, hogy a fájl készen áll a COM-felületek közzétett hozzá az XML-elemek rendelkezik."
+  remarks: "A Create metódussal hoz létre, amely tartalmazza a hierarchiát a következő XPath üres elem a Web.config fájlban: ```   /configuration/system.runtime.remoting/application/service   ``` példányának helyett egy <xref:System.EnterpriseServices.Internal.ServerWebConfig>objektum és a közvetlenül, létrehozás hívása történt a <xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A>metódus.</xref:System.EnterpriseServices.Internal.Publish.CreateVirtualRoot%2A> </xref:System.EnterpriseServices.Internal.ServerWebConfig>"
   syntax:
     content: public void Create (string FilePath, string FilePrefix, out string Error);
     parameters:
     - id: FilePath
       type: System.String
-      description: "The folder in which the configuration file should be created."
+      description: "A mappa, amely a konfigurációs fájlban kell létrehozni."
     - id: FilePrefix
       type: System.String
-      description: "The string value &quot;Web&quot;, to which a config extension is added."
+      description: "A karakterlánc-érték &quot;Web&quot;, amelyre a konfigurációs kiterjesztés kerül."
     - id: Error
       type: System.String
-      description: "A string to which an error message can be written."
+      description: "Egy karakterlánc, amelyre hibaüzenetet is beírhatók."
   overload: System.EnterpriseServices.Internal.ServerWebConfig.Create*
   exceptions: []
   platform:

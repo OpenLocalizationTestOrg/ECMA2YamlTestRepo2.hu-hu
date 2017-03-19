@@ -14,8 +14,8 @@ items:
   nameWithType: LifetimeServices
   fullName: System.Runtime.Remoting.Lifetime.LifetimeServices
   type: Class
-  summary: "Controls the.NET remoting lifetime services."
-  remarks: "Distributed garbage collection is responsible for controlling the lifetimes of server applications, and for deleting them when their lifetimes have expired. Traditionally, distributed garbage collection uses reference counts and pinging for control. This works well when there are a few clients per object, but does not work well when there are thousands of clients per each object. The lifetime service can assume the function of a traditional distributed garbage collector, and scales well when the number of clients increases.       The lifetime service associates a lease with each remotely activated object. When the lease expires, the object is removed.      > [!NOTE] >  This class makes a link demand. A SecurityException is thrown if the immediate caller does not have infrastructure permission. See [Link Demands](~/add/includes/ajax-current-ext-md.md) for more information."
+  summary: ".NET távelérési élettartama szolgáltatás szabályozza."
+  remarks: "Elosztott szemétgyűjtés felelős a kiszolgálóalkalmazások élettartamának vezérlése, és törölni őket, amikor azok élettartama lejárt. Hagyományosan elosztott szemétgyűjtés hivatkozás számát, valamint a pingelés vezérlő használja. Ez jól működik, ha néhány ügyfél objektumonként, de nem működik jól, ha ügyfelek az egyes objektumok száma ezer van. Az élettartam szolgáltatás egy hagyományos elosztott szemétgyűjtő, és méretezik funkciót feltételezheti, megfelelő, ha az ügyfelek számát növeli.       Az élettartam szolgáltatás társítja a címbérlet minden távolról aktivált objektum. Amikor bérlete lejár, a rendszer eltávolítja az objektumhoz.      > [!NOTE] > Ez az osztály a hivatkozás lehetővé teszi. Egy SecurityException hiba miatt fordul elő, ha a közvetlen hívónak nincs engedélye infrastruktúra. Lásd: [hivatkozás iránti igények kielégítése érdekében](~/add/includes/ajax-current-ext-md.md) további információt."
   example:
   - >-
     [!code-cpp[System.Runtime.Remoting.Lifetime#2](~/add/codesnippet/cpp/t-system.runtime.remotin_69_1.cpp)]
@@ -46,7 +46,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Creates an instance of <xref href=&quot;System.Runtime.Remoting.Lifetime.LifetimeServices&quot;></xref>."
+  summary: "Létrehoz egy új <xref href=&quot;System.Runtime.Remoting.Lifetime.LifetimeServices&quot;> </xref>."
   syntax:
     content: public LifetimeServices ();
     parameters: []
@@ -66,18 +66,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the time interval between each activation of the lease manager to clean up expired leases."
-  remarks: "The current property defines the frequency at which the lease manager becomes active to clean up expired leases. For example, if LeaseManagerPollTime is set to 100 seconds, the lease list is inspected for cleanups and renewals every 100 seconds.       The default value of the LeaseManagerPollTime property is 10 seconds."
+  summary: "Lekérdezi vagy beállítja az egyes aktiválások a címbérlet-kezelő lejárt bérletek karbantartása közötti időközt."
+  remarks: "Az aktuális tulajdonság határozza meg a gyakoriság, amellyel a címbérlet-kezelő lejárt bérletek karbantartása aktívvá válik. Például ha LeaseManagerPollTime értéke 100 másodperc, a címbérlet listáját a rendszer megvizsgálja cleanups és megújításokat 100 másodpercenként.       A LeaseManagerPollTime tulajdonság alapértelmezett értéke 10 másodperc."
   syntax:
     content: public static TimeSpan LeaseManagerPollTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The default amount of time the lease manager sleeps after checking for expired leases."
+      description: "Az alapértelmezés szerinti a címbérlet-kezelő alvó állapotban marad, miután ellenőrzése lejárt a címbérlet."
   overload: System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels. This exception is thrown only when setting the property value."
+    description: "A hívási verem feljebb hívók legalább egy nincs engedélye a távoli eljáráshívás típusok és csatornák beállítása. A kivétel csak a tulajdonság értékének beállításakor."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseTime
@@ -92,18 +92,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the initial lease time span for an <xref href=&quot;System.AppDomain&quot;></xref>."
-  remarks: "The default lease time span is 5 minutes."
+  summary: "Lekérdezi vagy beállítja a címbérlet időtartamának egy <xref href=&quot;System.AppDomain&quot;> </xref>."
+  remarks: "Az alapértelmezett címbérleti időtartam érték 5 perc."
   syntax:
     content: public static TimeSpan LeaseTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The initial lease <xref:System.TimeSpan> for objects that can have leases in the <xref href=&quot;System.AppDomain&quot;></xref>."
+      description: "A címbérlet <xref:System.TimeSpan>objektum tartozhat bérletek esetében a <xref href=&quot;System.AppDomain&quot;> </xref>.</xref:System.TimeSpan>"
   overload: System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels. This exception is thrown only when setting the property value."
+    description: "A hívási verem feljebb hívók legalább egy nincs engedélye a távoli eljáráshívás típusok és csatornák beállítása. A kivétel csak a tulajdonság értékének beállításakor."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.LifetimeServices.RenewOnCallTime
@@ -118,8 +118,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time by which the lease is extended every time a call comes in on the server object."
-  remarks: "The default renewal time by which a lifetime lease is extended is 2 minutes."
+  summary: "Lekérdezi vagy beállítja az időt, amely szerint a címbérlet ki van bővítve minden alkalommal, amikor a hívás érkezik a server objektum."
+  remarks: "Az alapértelmezett megújítási élettartama címbérletet kiterjesztette érték 2 perc."
   example:
   - >-
     [!code-cpp[ILease_ILease#3](~/add/codesnippet/cpp/p-system.runtime.remotin_103_1.cpp)]
@@ -129,12 +129,12 @@ items:
     content: public static TimeSpan RenewOnCallTime { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> by which a lifetime lease in the current <xref href=&quot;System.AppDomain&quot;></xref> is extended after each call."
+      description: "A <xref:System.TimeSpan>által, amely a élettartamát az aktuális címbérlet <xref href=&quot;System.AppDomain&quot;> </xref> ki van bővítve minden hívása után.</xref:System.TimeSpan>"
   overload: System.Runtime.Remoting.Lifetime.LifetimeServices.RenewOnCallTime*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels. This exception is thrown only when setting the property value."
+    description: "A hívási verem feljebb hívók legalább egy nincs engedélye a távoli eljáráshívás típusok és csatornák beállítása. A kivétel csak a tulajdonság értékének beállításakor."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Lifetime.LifetimeServices.SponsorshipTimeout
@@ -149,8 +149,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Lifetime
-  summary: "Gets or sets the amount of time the lease manager waits for a sponsor to return with a lease renewal time."
-  remarks: "The default time until a call to a sponsor is timed out is 2 minutes."
+  summary: "Lekérdezi vagy beállítja az időt a címbérlet-kezelő megvárja a megbízó a bérlet megújítási idejének való visszatéréshez."
+  remarks: "Az alapértelmezett időtartamot, amíg a megbízó hívása túllépte az időkorlátot érték 2 perc."
   example:
   - >-
     [!code-cpp[ILease_ILease#3](~/add/codesnippet/cpp/p-system.runtime.remotin_75_1.cpp)]
@@ -160,12 +160,12 @@ items:
     content: public static TimeSpan SponsorshipTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The initial sponsorship time-out."
+      description: "A kezdeti szponzorálás időtúllépés."
   overload: System.Runtime.Remoting.Lifetime.LifetimeServices.SponsorshipTimeout*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "At least one of the callers higher in the callstack does not have permission to configure remoting types and channels. This exception is thrown only when setting the property value."
+    description: "A hívási verem feljebb hívók legalább egy nincs engedélye a távoli eljáráshívás típusok és csatornák beállítása. A kivétel csak a tulajdonság értékének beállításakor."
   platform:
   - net462
 references:

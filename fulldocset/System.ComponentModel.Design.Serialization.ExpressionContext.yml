@@ -15,8 +15,8 @@ items:
   nameWithType: ExpressionContext
   fullName: System.ComponentModel.Design.Serialization.ExpressionContext
   type: Class
-  summary: "Provides a means of passing context state among serializers. This class cannot be inherited."
-  remarks: "An ExpressionContext is placed on the context stack and contains the most relevant expression during serialization. The following C# code demonstrates an assignment.      ```   button1.Text = &quot;Hello&quot;;   ```       During serialization, several serializers are responsible for creating this single statement. One of those serializers is responsible for creating &quot;Hello&quot;. There are times when that serializer may need to know the context in which it is creating its expression. In the previous example, this context is not needed. The following C# code shows a situation in which knowledge of the context is necessary.      ```   button1.Text = rm.GetString(&quot;button1_Text&quot;);   ```       In this case, the serializer responsible for creating the resource expression needs to be informed of the names of the target objects. The ExpressionContext class can be used for this. As each serializer creates an expression and invokes a serializer to handle a smaller part of the statement as a whole, the serializer pushes an expression context on the context stack. Each expression context has a parent property that locates the next expression context on the stack. This provides a convenient traversal capability."
+  summary: "Lehetővé teszi az áthaladó környezet állapota objektumszerializáló között. Ez az osztály nem örökölhető."
+  remarks: "Egy ExpressionContext helyezkedik el a környezeti verem és a szerializálás során legfontosabb kifejezést tartalmaz. A következő C#-kódban hozzárendelés mutatja be.      ```   button1.Text = &quot;Hello&quot;;   ```A szerializálás során több objektumszerializáló felelősek az egyetlen utasítás létrehozásához. Egy adott objektumszerializáló létrehozásáért felelős &quot;Hello szövegrészt&quot;. Vannak olyan helyzetek, amikor, hogy a szerializáló előfordulhat, hogy ismernie kell a környezetben, amelyben azt hoz létre a kifejezésében. Az előző példában szereplő ebben a környezetben nem szükséges. A következő C# kód bemutatja a helyzetet, amelyben a környezet ismerete szükség.      ```   button1.Text = rm.GetString(&quot;button1_Text&quot;);   ```Ebben az esetben a szerializáló az erőforrás-kifejezés létrehozásáért felelős tájékoztatni kell, a célobjektumokhoz nevei. Ez a ExpressionContext osztály használható. Minden szerializáló hoz létre egy kifejezést, és kezelni egy teljes utasítás kisebb részét szerializálót hív, a szerializáló a környezeti verem a leküldéses értesítések egy kifejezés környezetben. Minden egyes kifejezés környezet magában hordozza a szülő tulajdonságot, amely a következő kifejezés környezetben a veremben. Ez lehetővé teszi egy kényelmes könyvtármegkerülési."
   syntax:
     content: public sealed class ExpressionContext
   inheritance:
@@ -37,19 +37,19 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref> class with the given expression and owner."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;> </xref> osztály a megadott kifejezésnek és a tulajdonos."
   syntax:
     content: public ExpressionContext (System.CodeDom.CodeExpression expression, Type expressionType, object owner);
     parameters:
     - id: expression
       type: System.CodeDom.CodeExpression
-      description: "The given code expression."
+      description: "A megadott kód kifejezés."
     - id: expressionType
       type: System.Type
-      description: "The given code expression type."
+      description: "A megadott kifejezés típusa."
     - id: owner
       type: System.Object
-      description: "The given code expression owner."
+      description: "A megadott kód kifejezés tulajdonosa."
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -69,22 +69,22 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;></xref> class with a current value."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ComponentModel.Design.Serialization.ExpressionContext&quot;> </xref> osztály aktuális értékkel."
   syntax:
     content: public ExpressionContext (System.CodeDom.CodeExpression expression, Type expressionType, object owner, object presetValue);
     parameters:
     - id: expression
       type: System.CodeDom.CodeExpression
-      description: "The given code expression."
+      description: "A megadott kód kifejezés."
     - id: expressionType
       type: System.Type
-      description: "The given code expression type."
+      description: "A megadott kifejezés típusa."
     - id: owner
       type: System.Object
-      description: "The given code expression owner."
+      description: "A megadott kód kifejezés tulajdonosa."
     - id: presetValue
       type: System.Object
-      description: "The given code expression preset value."
+      description: "A megadott kód kifejezés beállított értéket."
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -104,12 +104,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the expression this context represents."
+  summary: "Lekérdezi a kifejezés ebben a környezetben jelöli."
   syntax:
     content: public System.CodeDom.CodeExpression Expression { get; }
     return:
       type: System.CodeDom.CodeExpression
-      description: "The expression this context represents."
+      description: "A kifejezés ebben a környezetben jelöli."
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.Expression*
   exceptions: []
   platform:
@@ -126,13 +126,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the <xref:System.Type> of the expression."
-  remarks: "You can use <xref:System.ComponentModel.Design.Serialization.ExpressionContext> to determine if a cast is needed when assigning to the expression."
+  summary: "Lekérdezi a <xref:System.Type>a kifejezésben.</xref:System.Type>"
+  remarks: "Használhat <xref:System.ComponentModel.Design.Serialization.ExpressionContext>annak meghatározásához, hogy szükséges-e egy típuskonverzió, kifejezésre hozzárendelésekor.</xref:System.ComponentModel.Design.Serialization.ExpressionContext>"
   syntax:
     content: public Type ExpressionType { get; }
     return:
       type: System.Type
-      description: "The <xref:System.Type> of the expression."
+      description: "A <xref:System.Type>a kifejezésben.</xref:System.Type>"
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.ExpressionType*
   exceptions: []
   platform:
@@ -149,13 +149,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the object owning this expression."
-  remarks: "If the expression is a property reference to the <xref:System.Windows.Forms.Control.Text%2A> property of an instance of <xref:System.Windows.Forms.Button> called `button1`, Owner returns `button1`."
+  summary: "Lekérdezi az objektumot a tulajdonos ebben a kifejezésben."
+  remarks: "Ha a kifejezés tulajdonság hivatkozni kell a <xref:System.Windows.Forms.Control.Text%2A>tulajdonság egy példányának <xref:System.Windows.Forms.Button>nevű `button1`, tulajdonosa adja vissza `button1`.</xref:System.Windows.Forms.Button> </xref:System.Windows.Forms.Control.Text%2A>"
   syntax:
     content: public object Owner { get; }
     return:
       type: System.Object
-      description: "The object owning this expression."
+      description: "Az objektumot a tulajdonos ebben a kifejezésben."
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.Owner*
   exceptions: []
   platform:
@@ -172,13 +172,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Gets the preset value of an expression."
-  remarks: "Contains the preset value of an expression, should one exist. For example, if the expression is a property reference expression referring to the <xref:System.Windows.Forms.Control.Controls%2A> property of a <xref:System.Windows.Forms.Button>, the PresetValue property contains the instance of the <xref:System.Windows.Forms.Control.Controls%2A> property. This is because the property is read-only and preset by the object to contain a value. On the other hand, a property such as <xref:System.Windows.Forms.Control.Text%2A> or <xref:System.Windows.Forms.Control.Visible%2A> does not have a preset value and therefore the PresetValue property returns `null`.       The following C# code shows how serializers can use this information to guide serialization.       [C#]      ```   Padding p = new Padding();   p.Left = 5;   button1.Padding = p;      button1.Padding.Left = 5;   ```       The serializer of the <xref:System.Windows.Forms.Padding> structure needs to be informed if it should generate the first or second form. The first form is generated by default. The second form is only generated if there is an <xref:System.ComponentModel.Design.Serialization.ExpressionContext> on the context stack that contains a PresetValue equal to the value of the <xref:System.Windows.Forms.Padding> currently being serialized."
+  summary: "Lekérdezi az előre definiált-kifejezés értékét."
+  remarks: "Egy léteznie kell egy kifejezés, előre definiált értéket tartalmazza. Például, ha a kifejezés egy tulajdonság hivatkozó kifejezés hivatkozik a <xref:System.Windows.Forms.Control.Controls%2A>tulajdonsága egy <xref:System.Windows.Forms.Button>, a PresetValue tulajdonsága tartalmazza az példányát a <xref:System.Windows.Forms.Control.Controls%2A>tulajdonság.</xref:System.Windows.Forms.Control.Controls%2A> </xref:System.Windows.Forms.Button> </xref:System.Windows.Forms.Control.Controls%2A> Ez azért, mert a tulajdonság csak olvasható, és előre definiált értéket tartalmazó objektum. Másrészről, például egy tulajdonság <xref:System.Windows.Forms.Control.Text%2A>vagy <xref:System.Windows.Forms.Control.Visible%2A>nincs előre definiált értéket, és ezért a PresetValue tulajdonság visszaadja `null`.</xref:System.Windows.Forms.Control.Visible%2A> </xref:System.Windows.Forms.Control.Text%2A>       A következő C# kód bemutatja, hogyan objektumszerializáló segítségével ezt az információt szerializálási útmutató.       [C#]      ```   Padding p = new Padding();   p.Left = 5;   button1.Padding = p;      button1.Padding.Left = 5;   ``` a szerializáló példánya a <xref:System.Windows.Forms.Padding>struktúra kell értesíti, ha azt az első és második űrlap kell létrehozni.</xref:System.Windows.Forms.Padding> Az első képernyőn alapértelmezés szerint létrejön. A második űrlap csak akkor állít elő, ha egy <xref:System.ComponentModel.Design.Serialization.ExpressionContext>értékének a környezeti verem, amely tartalmaz egy PresetValue egyenlő a <xref:System.Windows.Forms.Padding>éppen szerializált.</xref:System.Windows.Forms.Padding> </xref:System.ComponentModel.Design.Serialization.ExpressionContext>"
   syntax:
     content: public object PresetValue { get; }
     return:
       type: System.Object
-      description: "The preset value of this expression, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if not assigned."
+      description: "Az előre beállított értéke ebben a kifejezésben vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha nincs hozzárendelve."
   overload: System.ComponentModel.Design.Serialization.ExpressionContext.PresetValue*
   exceptions: []
   platform:

@@ -14,8 +14,8 @@ items:
   nameWithType: MarshalByRefObject
   fullName: System.MarshalByRefObject
   type: Class
-  summary: "Enables access to objects across application domain boundaries in applications that support remoting."
-  remarks: "An application domain is a partition in an operating system process where one or more applications reside. Objects in the same application domain communicate directly. Objects in different application domains communicate either by transporting copies of objects across application domain boundaries, or by using a proxy to exchange messages.       MarshalByRefObject is the base class for objects that communicate across application domain boundaries by exchanging messages using a proxy. Objects that do not inherit from MarshalByRefObject are implicitly marshal by value. When a remote application references a marshal by value object, a copy of the object is passed across application domain boundaries.       MarshalByRefObject objects are accessed directly within the boundaries of the local application domain. The first time an application in a remote application domain accesses a MarshalByRefObject, a proxy is passed to the remote application. Subsequent calls on the proxy are marshaled back to the object residing in the local application domain.       Types must inherit from MarshalByRefObject when the type is used across application domain boundaries, and the state of the object must not be copied because the members of the object are not usable outside the application domain where they were created.       When you derive an object from MarshalByRefObject for use across application domain boundaries, you should not override any of its members, nor should you call its methods directly. The runtime recognizes that classes derived from  MarshalByRefObject should be marshaled across app domain boundaries."
+  summary: "Lehetővé teszi, hogy a hozzáférést az objektumok alkalmazásokban alkalmazás tartományhatárokon keresztül, hogy támogatási távoli eljáráshívás."
+  remarks: "Egy alkalmazástartomány egy olyan partíció egy operációs rendszer folyamatban, ahol egy vagy több alkalmazást találhatók. Alkalmazás ugyanabban a tartományban az objektumok közvetlen kommunikációra. Az objektumok különböző alkalmazástartományok objektumok másolatai szállítására alkalmazás tartományhatárokon keresztül, vagy egy proxy használatával az üzenetek kommunikálnak.       MarshalByRefObject üzeneteket proxy használata kicserélésével alkalmazás tartományhatárokon keresztül kommunikáló objektumok alaposztálya. Egy objektum, amely nem örököl a MarshalByRefObject implicit módon van érték átadásra. Ha egy távoli alkalmazás érték objektum által az átadásra előkészített hivatkozik, az objektum egy példányát alkalmazás tartományhatárokon keresztül lett átadva.       MarshalByRefObject objektumok érhetők el közvetlenül a helyi alkalmazástartomány határain belül. Egy alkalmazás egy távoli alkalmazás tartományban fér hozzá a MarshalByRefObject, először a távoli alkalmazás proxy kerülnek. A proxy a további hívások át végrehajtásra, a helyi alkalmazástartományt szereplő objektummá.       Típusok a MarshalByRefObject osztályból származtatott kell örökölnie alkalmazás tartományhatárokon keresztül használja a típus, és az objektum állapota nem kell átmásolni, mert az objektum tagjait nem használható a helyén találhassuk alkalmazás tartományon kívülről.       Amikor Ön származik objektum MarshalByRefObject használható alkalmazás tartományhatárokon keresztül, kell nem felülbírálása egyetlen tagot, és nem kell meghívja a módszerei közvetlenül. A futtatókörnyezet felismeri, hogy a MarshalByRefObject osztályból származtatott osztályok app tartományhatárokon keresztül kell átadni."
   example:
   - "This section contains two code examples. The first code example shows how to create an instance of a class in another application domain. The second code example shows a simple class that can be used for remoting.  \n  \n **Example 1**  \n  \n The following code example shows the simplest way to execute code in another application domain. The example defines a class named `Worker` that inherits MarshalByRefObject, with a method that displays the name of the application domain in which it is executing. The example creates instances of `Worker` in the default application domain and in a new application domain.  \n  \n> [!NOTE]\n>  The assembly that contains `Worker` must be loaded into both application domains, but it could load other assemblies that would exist only in the new application domain.  \n  \n [!code-cpp[CreateInstanceAndUnwrap2#1](~/add/codesnippet/cpp/t-system.marshalbyrefobj_1.cpp)]\n [!code-cs[CreateInstanceAndUnwrap2#1](~/add/codesnippet/csharp/t-system.marshalbyrefobj_1.cs)]\n [!code-vb[CreateInstanceAndUnwrap2#1](~/add/codesnippet/visualbasic/t-system.marshalbyrefobj_1.vb)]  \n  \n **Example 2**  \n  \n The following example demonstrates a class derived from MarshalByRefObject that is used later in remoting.  \n  \n [!code-cpp[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/cpp/t-system.marshalbyrefobj_2.cpp)]\n [!code-cs[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/csharp/t-system.marshalbyrefobj_2.cs)]\n [!code-vb[RemotingServices.SetObjectUriForMarshal#1](~/add/codesnippet/visualbasic/t-system.marshalbyrefobj_2.vb)]"
   syntax:
@@ -41,7 +41,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.MarshalByRefObject&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.MarshalByRefObject&quot;> </xref> osztály."
   syntax:
     content: protected MarshalByRefObject ();
     parameters: []
@@ -61,25 +61,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object."
-  remarks: "TheCreateObjRef method is called by remote object creation methods such as <xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName> and <xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName>. In most cases, there is no need to override this method."
+  summary: "Létrehoz egy objektum, amely a proxy használatával kommunikálnak a távoli objektumok létrehozásához szükséges összes vonatkozó információt tartalmazza."
+  remarks: "Például <xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName>és <xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName>.</xref:System.AppDomain.CreateInstanceAndUnwrap%2A?displayProperty=fullName> </xref:System.AppDomain.CreateInstance%2A?displayProperty=fullName> távoli objektum-létrehozási módszert hívja TheCreateObjRef módszer A legtöbb esetben nincs szükség a bírálja felül ezt a módszert."
   syntax:
     content: public virtual System.Runtime.Remoting.ObjRef CreateObjRef (Type requestedType);
     parameters:
     - id: requestedType
       type: System.Type
-      description: "The <xref:System.Type> of the object that the new <xref href=&quot;System.Runtime.Remoting.ObjRef&quot;></xref> will reference."
+      description: "A <xref:System.Type>az objektum, amely az új <xref href=&quot;System.Runtime.Remoting.ObjRef&quot;> </xref> hivatkoznak.</xref:System.Type>"
     return:
       type: System.Runtime.Remoting.ObjRef
-      description: "Information required to generate a proxy."
+      description: "A proxy létrehozásához szükséges adatokat."
   overload: System.MarshalByRefObject.CreateObjRef*
   exceptions:
   - type: System.Runtime.Remoting.RemotingException
     commentId: T:System.Runtime.Remoting.RemotingException
-    description: "This instance is not a valid remoting object."
+    description: "-Példány nem egy érvényes távoli eljáráshívási objektum."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.MarshalByRefObject.GetLifetimeService
@@ -94,19 +94,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Retrieves the current lifetime service object that controls the lifetime policy for this instance."
-  remarks: "For more information about lifetime services, see the <xref:System.Runtime.Remoting.Lifetime.LifetimeServices> class."
+  summary: "Lekérdezi az aktuális élettartama szolgáltatás objektum, amely meghatározza, ez a példány élettartamát házirendje."
+  remarks: "Élettartam szolgáltatásokkal kapcsolatos további információkért lásd: a <xref:System.Runtime.Remoting.Lifetime.LifetimeServices>osztályhoz.</xref:System.Runtime.Remoting.Lifetime.LifetimeServices>"
   syntax:
     content: public object GetLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "An object of type <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;></xref> used to control the lifetime policy for this instance."
+      description: "Típusú objektum <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;> </xref> elérhető ez a példány élettartamát házirendje."
   overload: System.MarshalByRefObject.GetLifetimeService*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.MarshalByRefObject.InitializeLifetimeService
@@ -121,8 +121,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Obtains a lifetime service object to control the lifetime policy for this instance."
-  remarks: "For more information about lifetime services, see the <xref:System.Runtime.Remoting.Lifetime.LifetimeServices> class."
+  summary: "Ez a példány élettartamát házirendje szabályozza egy élettartama szolgáltatás objektumot kap."
+  remarks: "Élettartam szolgáltatásokkal kapcsolatos további információkért lásd: a <xref:System.Runtime.Remoting.Lifetime.LifetimeServices>osztályhoz.</xref:System.Runtime.Remoting.Lifetime.LifetimeServices>"
   example:
   - "The following code example demonstrates creating a lease.  \n  \n [!code-cpp[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/cpp/m-system.marshalbyrefobj_1.cpp)]\n [!code-vb[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/visualbasic/m-system.marshalbyrefobj_1.vb)]\n [!code-cs[Classic MarshalByRefObject.InitializeLifetimeService Example#1](~/add/codesnippet/csharp/m-system.marshalbyrefobj_1.cs)]"
   syntax:
@@ -130,12 +130,12 @@ items:
     parameters: []
     return:
       type: System.Object
-      description: "An object of type <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;></xref> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the &lt;xref:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime%2A?displayProperty=fullName&gt; property."
+      description: "Típusú objektum <xref href=&quot;System.Runtime.Remoting.Lifetime.ILease&quot;> </xref> elérhető ez a példány élettartamát házirendje. Ez a szolgáltatás objektum az adott példány, ha egy létezik; aktuális élettartama Ellenkező esetben az egy új élettartama szolgáltatás objektum inicializálása értékének a &lt;xref:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime%2A?displayProperty=fullName&gt; tulajdonság."
   overload: System.MarshalByRefObject.InitializeLifetimeService*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.MarshalByRefObject.MemberwiseClone(System.Boolean)
@@ -150,17 +150,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Creates a shallow copy of the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object."
-  remarks: "The MemberwiseClone method creates a shallow copy by creating a new <xref:System.MarshalByRefObject> object, and then copying the nonstatic fields of the current <xref:System.MarshalByRefObject> object to the new object. If a field is a value type, a bit-by-bit copy of the field is performed. If a field is a reference type, the reference is copied but the referred object is not; therefore, the original object and its clone refer to the same object.       For example, consider a <xref:System.MarshalByRefObject> object called X that references objects A and B. Object B, in turn, references object C. A shallow copy of X creates new object X2 that also references objects A and B. In contrast, a deep copy of X creates a new object X2 that references the new objects A2 and B2, which are copies of A and B. B2, in turn, references the new object C2, which is a copy C. Use a class that implements the <xref:System.ICloneable> interface to perform a deep or shallow copy of an object.       The identity of a <xref:System.MarshalByRefObject> object is defined as the remote server object that is the target of a remoting client call. By default, the memberwise clone of a <xref:System.MarshalByRefObject> object has the same identity as the original object, which is typically not the correct behavior for clones of server-side objects that are marshaled across a remoting boundary to the client side. Specify `false`, which is usually appropriate, to delete the identity of the clone and cause a new identity to be assigned when the clone is marshaled across a remoting boundary, or `true` to cause the clone to retain the identity of the original <xref:System.MarshalByRefObject> object. The MemberwiseClone method is intended to be used by developers implementing remote server objects."
+  summary: "Az aktuális sekély másolat <xref href=&quot;System.MarshalByRefObject&quot;> </xref> objektum."
+  remarks: "A MemberwiseClone metódus sekély másolatot készít egy új létrehozásával <xref:System.MarshalByRefObject>objektum, majd másolja a következő nem statikus mezők az aktuális <xref:System.MarshalByRefObject>objektumot az új objektumot.</xref:System.MarshalByRefObject> </xref:System.MarshalByRefObject> Ha egy mező értéktípus, a mező bit által-bites másolatát történik. Ha egy mező referencia típus, a hivatkozás másolását, de a hivatkozott objektum nincs; ezért az eredeti objektum és a Klónozás hivatkozik ugyanarra az objektumra.       Vegyük példaként a <xref:System.MarshalByRefObject>objektum X hivatkozó objektumok A és b objektum B, viszont nevű hivatkozások objektum a c kiszolgálóra. X sekély másolatot hoz létre A és b objektumok is hivatkozó új X2 objektum Ezzel szemben X mély másolatát új objektumot hoz létre X2 az új objektumokat A2 és K2, amely másolatai A hivatkozó és b K2, viszont az új objektum C2, amely c használja, amely megvalósítja az osztály példánya hivatkozik a <xref:System.ICloneable>illesztőfelület-objektum mély vagy sekély árnyékmásolata.</xref:System.ICloneable> </xref:System.MarshalByRefObject>       Identitását egy <xref:System.MarshalByRefObject>objektum a távoli kiszolgáló objektum, amely kezdeményezett távoli eljáráshívás céljaként van definiálva.</xref:System.MarshalByRefObject> Alapértelmezés szerint a memberwise klónja egy <xref:System.MarshalByRefObject>objektumnak identitása megegyezik az eredeti objektum, amely általában nem a megfelelő át végrehajtásra, keresztül egy távoli eljáráshívás oszlopazonosító ügyféloldali, kiszolgálóoldali-objektumok klónok viselkedése.</xref:System.MarshalByRefObject> Adja meg `false`, vagyis általában megfelelő, egy új identitásra hozzárendelendő, ha a Klónozás át végrehajtásra, a távoli eljáráshívás határ keresztül, ezáltal a klón identitásának törlése vagy `true` okozhat a klónt az eredeti identitás megtartása <xref:System.MarshalByRefObject>objektum.</xref:System.MarshalByRefObject> A MemberwiseClone metódus végrehajtása a távoli kiszolgáló objektumok fejlesztők által használandó készült."
   syntax:
     content: protected MarshalByRefObject MemberwiseClone (bool cloneIdentity);
     parameters:
     - id: cloneIdentity
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to delete the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object&quot;s identity, which will cause the object to be assigned a new identity when it is marshaled across a remoting boundary. A value of <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> is usually appropriate. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to copy the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object&quot;s identity to its clone, which will cause remoting client calls to be routed to the remote server object."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>törli a jelenlegi <xref href=&quot;System.MarshalByRefObject&quot;> </xref> objektum identitása, aminek következtében az objektum is hozzárendeli egy új identitásra, ha azt a távoli eljáráshívás határ között elő átadásra. Érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> általában megfelelő. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>másolja az aktuális <xref href=&quot;System.MarshalByRefObject&quot;> </xref> a klónnak, aminek következtében távoli eljáráshívás ügyfélhívásokat irányíthatja át a távoli kiszolgáló objektum objektum identitása."
     return:
       type: System.MarshalByRefObject
-      description: "A shallow copy of the current <xref href=&quot;System.MarshalByRefObject&quot;></xref> object."
+      description: "Az aktuális sekély másolatát <xref href=&quot;System.MarshalByRefObject&quot;> </xref> objektum."
   overload: System.MarshalByRefObject.MemberwiseClone*
   exceptions: []
   platform:
