@@ -14,8 +14,8 @@ items:
   nameWithType: ExceptionHandler
   fullName: System.ServiceModel.Dispatcher.ExceptionHandler
   type: Class
-  summary: "Extend the ExceptionHandler class to create an exception handler for unhandled exceptions that occur within the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime."
-  remarks: "Extend the ExceptionHandler class and override the <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> method to determine whether an exception should terminate the application. Then create a new instance of your custom ExceptionHandler class and assign it to the static <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A> or <xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A> property prior to creating [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] clients or services."
+  summary: "Egy kivételkezelőbe belül előforduló kezeletlen kivételek a létrehozni kívánt ExceptionHandler osztály kiterjesztése a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] futásidejű."
+  remarks: "A ExceptionHandler osztály kiterjesztése, és felülírja a <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>módszer annak meghatározásához, hogy kivételt kell-e az alkalmazás befejezéséhez.</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> Ezután létrehozhat az egyéni ExceptionHandler osztály új példánya, és rendelje hozzá a statikus <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A>vagy <xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A>tulajdonság létrehozása előtt [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] ügyfelek vagy a szolgáltatások.</xref:System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler%2A> </xref:System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler%2A>"
   example:
   - "The following code example shows an implementation of the ExceptionHandler abstract class that overrides the <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> method.  \n  \n [!code-cs[S_UEExceptionHandler#0](~/add/codesnippet/csharp/s_ueexceptionhandler.cs/program.cs#0)]\n [!code-vb[S_UEExceptionHandler#0](~/add/codesnippet/visualbasic/s_ueexceptionhandler.cs/module1.vb#0)]  \n  \n The following code example shows how to enable the custom `MyExceptionHandler` for unhandled exceptions that occur within the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] runtime.  \n  \n [!code-cs[S_UEExceptionHandler#1](~/add/codesnippet/csharp/s_ueexceptionhandler.cs/program.cs#1)]\n [!code-vb[S_UEExceptionHandler#1](~/add/codesnippet/visualbasic/s_ueexceptionhandler.cs/module1.vb#1)]"
   syntax:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> osztály."
   syntax:
     content: protected ExceptionHandler ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets an instance of <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> that handles all exceptions."
+  summary: "Lekérdezi a példányának <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> , amely kezeli az összes kivétel."
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler AlwaysHandle { get; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "An <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> for all exceptions."
+      description: "Egy <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> visszaadó objektum <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> tartozó összes kivétel."
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle*
   exceptions: []
   platform:
@@ -80,13 +80,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the current <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> implementation for the application domain."
-  remarks: "By default, the AsynchronousThreadExceptionHandler property is `null`, and unhandled exceptions on asynchronous [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] threads terminate the application.  Set this property to an <xref:System.ServiceModel.Dispatcher.ExceptionHandler> object to receive and react to these exceptions.       If an unhandled exception occurs on an asynchronous [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] thread and reaches this handler, the state of the application domain may be compromised.  <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> should not return `true` for these exceptions."
+  summary: "Lekérdezi vagy beállítja az aktuális <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> alkalmazástartományt implementációja."
+  remarks: "Alapértelmezés szerint a AsynchronousThreadExceptionHandler tulajdonság értéke `null`, és nem kezelt kivételek aszinkron [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] szálak az alkalmazás befejezéséhez.  Ez a tulajdonság beállítása egy <xref:System.ServiceModel.Dispatcher.ExceptionHandler>objektumot kap, és reagálni azokra az ilyen kivételek.</xref:System.ServiceModel.Dispatcher.ExceptionHandler>       Ha nem kezelt kivétel lép fel egy aszinkron [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] szál és éri el a kezelő az alkalmazástartományt állapotát is megsérülhet.  <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>nem adhat vissza `true` a leírt kivételekhez.</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>"
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler AsynchronousThreadExceptionHandler { get; set; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "Assign a custom <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that receives unhandled exceptions that occur on asynchronous [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] threads."
+      description: "Rendelje hozzá az egyéni <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> objektum, amely megkapja a nem kezelt kivételek aszinkron előforduló [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] szálak."
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.AsynchronousThreadExceptionHandler*
   exceptions: []
   platform:
@@ -103,8 +103,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the exception has been handled, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the exception should be rethrown and the application terminated."
-  remarks: "The HandleException property returns `true` if the exception has been handled. If it returns `false` or throws a different exception, the original exception is rethrown."
+  summary: "Ha felülbírálva származtatott osztályban található, visszaadja <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> a kivétel kezelve van, ha vagy <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha kell újra kiváltja a kivételt, és az alkalmazás leállt."
+  remarks: "A HandleException tulajdonság beolvasása `true` Ha a kivétel kezelve van. Ha a visszaadott érték `false` vagy egy másik kivétel, az eredeti kivételt a rendszer újra kiváltja jelez."
   example:
   - "The following code example shows an implementation of the <xref:System.ServiceModel.Dispatcher.ExceptionHandler> abstract class that overrides the HandleException method.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following code example shows how to enable the custom `MyExceptionHandler` for unhandled exceptions that occur within the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] runtime.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -112,10 +112,10 @@ items:
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception the occurred within the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime and which may terminate the application."
+      description: "A történt kivétel belül a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] futásidejű, és amely előfordulhat, hogy az alkalmazás befejezéséhez."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the exception has been handled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kivétel kezelve van; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.HandleException*
   exceptions: []
   platform:
@@ -132,13 +132,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets or sets the current transport <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> implementation for the application domain."
-  remarks: "By default, the TransportExceptionHandler property is set to the value of <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>, causing unhandled exceptions within [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] transports to be ignored.  Set this property to an instance of <xref:System.ServiceModel.Dispatcher.ExceptionHandler> to receive and react to these exceptions.       If an unhandled exception occurs within a global [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] transport and reaches this handler, there is a possibility that the state of the application domain is compromised. <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A> can return `false` for these exceptions to cause the application to be terminated."
+  summary: "Lekérdezi vagy beállítja a jelenlegi átvitel <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> alkalmazástartományt implementációja."
+  remarks: "Alapértelmezés szerint a TransportExceptionHandler tulajdonsága értékének <xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>, nem kezelt kivételek belül, amely [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] átvitelek figyelmen kívül.</xref:System.ServiceModel.Dispatcher.ExceptionHandler.AlwaysHandle%2A>  A tulajdonság értéke példányának <xref:System.ServiceModel.Dispatcher.ExceptionHandler>kapnak, és ezeket a kivételeket reagálnak.</xref:System.ServiceModel.Dispatcher.ExceptionHandler>       Nem kezelt kivétel történik egy globális belül [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] átviteli és eléri az ehhez a kezelőhöz fennáll annak a lehetősége, hogy az alkalmazástartomány állapota sérült. <xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>Lépjen vissza `false` a leírt kivételekhez történő állítható le az alkalmazást.</xref:System.ServiceModel.Dispatcher.ExceptionHandler.HandleException%2A>"
   syntax:
     content: public static System.ServiceModel.Dispatcher.ExceptionHandler TransportExceptionHandler { get; set; }
     return:
       type: System.ServiceModel.Dispatcher.ExceptionHandler
-      description: "A custom <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;></xref> object that receives unhandled exceptions that occur within the global [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] transports."
+      description: "Egyéni <xref href=&quot;System.ServiceModel.Dispatcher.ExceptionHandler&quot;> </xref> objektum, amely megkapja a kezeletlen kivételek fellépése, amelyek a globális múlva [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] átvitelek."
   overload: System.ServiceModel.Dispatcher.ExceptionHandler.TransportExceptionHandler*
   exceptions: []
   platform:

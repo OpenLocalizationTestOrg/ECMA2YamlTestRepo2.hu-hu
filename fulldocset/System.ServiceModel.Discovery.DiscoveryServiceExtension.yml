@@ -14,8 +14,8 @@ items:
   nameWithType: DiscoveryServiceExtension
   fullName: System.ServiceModel.Discovery.DiscoveryServiceExtension
   type: Class
-  summary: "An abstract WCF extension class for specifying a custom discovery service or for getting the published endpoints."
-  remarks: "Derive a class from DiscoveryServiceExtension and override the <xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A> method to return your custom discovery service. Add your derived class to the <xref:System.ServiceModel.ServiceHost> extensions that host your discoverable service. When the <xref:System.ServiceModel.ServiceBehaviorAttribute.System%23ServiceModel%23Description%23IServiceBehavior%23Validate%2A> is called the behavior iterates through the extensions in the service host and looks for a DiscoveryServiceExtension. If one is found its <xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A> is called to get the custom discovery service. If an extension is not found the default discovery service implementation is used."
+  summary: "Egy absztrakt WCF bővítmény osztály egyéni keresőszolgáltatás megadásával vagy a közzétett végpontok beolvasása."
+  remarks: "Egy osztály származik a DiscoveryServiceExtension és felülbírálás a <xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A>metódus vissza az egyéni keresőszolgáltatás.</xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A> A származtatott osztály hozzáadása a <xref:System.ServiceModel.ServiceHost>bővítmények a felderíthető szolgáltatást üzemeltető.</xref:System.ServiceModel.ServiceHost> Ha a <xref:System.ServiceModel.ServiceBehaviorAttribute.System%23ServiceModel%23Description%23IServiceBehavior%23Validate%2A>nevezik viselkedését a bővítményeket a szolgáltatásgazda telepítéseket, és megkeresi a DiscoveryServiceExtension.</xref:System.ServiceModel.ServiceBehaviorAttribute.System%23ServiceModel%23Description%23IServiceBehavior%23Validate%2A> Ha talált a <xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A>beolvasni az egyéni keresőszolgáltatás nevezik.</xref:System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService%2A> Ha egy bővítmény nem található az alapértelmezett felderítési szolgáltatás végrehajtására szolgál."
   syntax:
     content: 'public abstract class DiscoveryServiceExtension : System.ServiceModel.IExtension<System.ServiceModel.ServiceHostBase>'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.ServiceModel.Discovery
   namespace: System.ServiceModel.Discovery
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Discovery.DiscoveryServiceExtension&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Discovery.DiscoveryServiceExtension&quot;> </xref> osztály."
   syntax:
     content: protected DiscoveryServiceExtension ();
     parameters: []
@@ -57,14 +57,14 @@ items:
   assemblies:
   - System.ServiceModel.Discovery
   namespace: System.ServiceModel.Discovery
-  summary: "Override this method to return your custom <xref href=&quot;System.ServiceModel.Discovery.DiscoveryService&quot;></xref> implementation."
-  remarks: "An <xref:System.InvalidOperationException> is thrown while opening the service host if this method returns `null`"
+  summary: "Bírálja felül ezt a metódust az egyéni visszatérési <xref href=&quot;System.ServiceModel.Discovery.DiscoveryService&quot;> </xref> végrehajtására."
+  remarks: "Egy <xref:System.InvalidOperationException>a szolgáltatásgazda megnyitása, ha ez a metódus eredménye közben történt `null` </xref:System.InvalidOperationException>"
   syntax:
     content: protected abstract System.ServiceModel.Discovery.DiscoveryService GetDiscoveryService ();
     parameters: []
     return:
       type: System.ServiceModel.Discovery.DiscoveryService
-      description: "A custom discovery service implementation."
+      description: "Egy egyéni felderítési megvalósított."
   overload: System.ServiceModel.Discovery.DiscoveryServiceExtension.GetDiscoveryService*
   exceptions: []
   platform:
@@ -81,13 +81,13 @@ items:
   assemblies:
   - System.ServiceModel.Discovery
   namespace: System.ServiceModel.Discovery
-  summary: "Gets a read-only collection of published endpoints."
-  remarks: "The property should be accessed only after the <xref:System.ServiceModel.ServiceHost> has successfully opened. When the <xref:System.ServiceModel.ServiceHost> is in <xref:System.ServiceModel.CommunicationState> state, the <xref:System.ServiceModel.Discovery.EndpointDiscoveryMetadata> is being generated and added to the collection."
+  summary: "Lekérdezi a közzétett végpontok gyűjteménye csak olvasható."
+  remarks: "A tulajdonság csak azután legyenek elérhetők a <xref:System.ServiceModel.ServiceHost>sikeresen megnyitotta.</xref:System.ServiceModel.ServiceHost> Ha a <xref:System.ServiceModel.ServiceHost>van <xref:System.ServiceModel.CommunicationState>állapot, a <xref:System.ServiceModel.Discovery.EndpointDiscoveryMetadata>van generált és a hozzá a gyűjteményhez.</xref:System.ServiceModel.Discovery.EndpointDiscoveryMetadata> </xref:System.ServiceModel.CommunicationState> </xref:System.ServiceModel.ServiceHost>"
   syntax:
     content: public System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.Discovery.EndpointDiscoveryMetadata> PublishedEndpoints { get; }
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.ServiceModel.Discovery.EndpointDiscoveryMetadata}
-      description: "A read-only collection of published endpoints."
+      description: "Csak olvasható gyűjtemény közzétett végpontok."
   overload: System.ServiceModel.Discovery.DiscoveryServiceExtension.PublishedEndpoints*
   exceptions: []
   platform:
@@ -110,7 +110,7 @@ items:
     parameters:
     - id: owner
       type: System.ServiceModel.ServiceHostBase
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension<System#ServiceModel#ServiceHostBase>#Attach*
   exceptions: []
   platform:
@@ -133,7 +133,7 @@ items:
     parameters:
     - id: owner
       type: System.ServiceModel.ServiceHostBase
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Discovery.DiscoveryServiceExtension.System#ServiceModel#IExtension<System#ServiceModel#ServiceHostBase>#Detach*
   exceptions: []
   platform:
