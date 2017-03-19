@@ -15,8 +15,8 @@ items:
   nameWithType: ITextProvider
   fullName: System.Windows.Automation.Provider.ITextProvider
   type: Interface
-  summary: "Exposes methods and properties to support UI Automation client access to controls that contain text."
-  remarks: "Implemented on a UI Automation provider that must support the <xref:System.Windows.Automation.TextPattern> control pattern."
+  summary: "Módszerek és Felhasználófelület-automatizálási ügyfél-hozzáférési szöveget tartalmazó vezérlőket támogatásához tulajdonságok közzététele."
+  remarks: "Implementálva az olyan Felhasználófelület-automatizálási szolgáltatót, amely támogatja a <xref:System.Windows.Automation.TextPattern>vezérlő mintát.</xref:System.Windows.Automation.TextPattern>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,13 +41,13 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets a text range that encloses the main text of a document."
-  remarks: "Some auxiliary text such as headers, footnotes, or annotations may not be included."
+  summary: "A dokumentum fő helyezi szöveg széles lekérdezi."
+  remarks: "Néhány kiegészítő szöveg, például fejlécek, lábjegyzetei vagy széljegyzeteket nem foglalható be."
   syntax:
     content: public System.Windows.Automation.Provider.ITextRangeProvider DocumentRange { get; }
     return:
       type: System.Windows.Automation.Provider.ITextRangeProvider
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Windows.Automation.Provider.ITextProvider.DocumentRange*
   exceptions: []
   platform:
@@ -64,19 +64,19 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves a collection of disjoint text ranges associated with the current text selection or selections."
-  remarks: "For UI Automation providers that support text selection, the provider should implement this method and also return a <xref:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection%2A> value.       If no text is selected, GetSelection returns the degenerate text range (empty range) at the position of the system cursor (text insertion point).       If the system cursor (text insertion point) is not present, GetSelection may return a null reference (`Nothing` in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)])."
+  summary: "Lekérdezi a kijelölt szöveg vagy a kiválasztások társított különálló szöveg tartományok gyűjteményét."
+  remarks: "A kijelölt szöveg támogató Felhasználófelület-automatizálási szolgáltatók, a szolgáltató valósítsa meg ezt a metódust és is vissza kell egy <xref:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection%2A>érték.</xref:System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection%2A>       Ha nincs kijelölt szöveg, GetSelection a elfajult szöveg tartomány (üres tartomány) a helyen, a rendszer kurzor (kurzor) adja vissza.       Ha a rendszer kurzor (kurzor) nincs jelen, GetSelection adhat vissza null hivatkozást (`Nothing` a [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)])."
   syntax:
     content: public System.Windows.Automation.Provider.ITextRangeProvider[] GetSelection ();
     parameters: []
     return:
       type: System.Windows.Automation.Provider.ITextRangeProvider[]
-      description: "A collection of disjoint text ranges."
+      description: "Különálló szöveg tartományok gyűjteményét."
   overload: System.Windows.Automation.Provider.ITextProvider.GetSelection*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "If the UI Automation provider does not support text selection."
+    description: "Ha a felhasználói felület Automation-szolgáltató nem támogatja a kijelölt szöveg."
   platform:
   - net462
 - uid: System.Windows.Automation.Provider.ITextProvider.GetVisibleRanges
@@ -91,14 +91,14 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves an array of disjoint text ranges from a text container where each text range begins with the first partially visible line through to the end of the last partially visible line."
-  remarks: "UI Automation providers should ensure that they return, at most, the text ranges that are visible within the container.       Disjoint text ranges may occur when any content of a text container is obscured by an overlapping window or other object, or when a text container with a multi-column layout has one or more columns partially scrolled out of view.       If no text is visible, a degenerate (empty) text range is returned. This empty range can be returned if the text container is empty or when all text is scrolled out of view."
+  summary: "Különálló szöveg tartományok tömbje átveszi a szövegtároló, ahol minden szöveges tartomány kezdődik-e az első részben látható sortól a részben látható utolsó sor végére."
+  remarks: "Felhasználófelület-automatizálási szolgáltatók győződjön meg arról, hogy azok visszatérési, legfeljebb, a szöveg tartományok látható a tárolóban.       Különálló tartományok akkor fordulhat elő, ha a szöveg tároló tartalmakhoz van látható egy átfedő ablak vagy más objektumot, vagy ha a szövegtároló többoszlopos elrendezést van egy vagy több oszlop részben görgetéséhez nem látható szöveg.       Ha nincs szöveg látható, széles elfajult (üres) szöveget adja vissza. Az üres tartomány adhatók vissza, ha a szövegtároló üres, vagy ha nem látható az összes szöveg görgetése közben."
   syntax:
     content: public System.Windows.Automation.Provider.ITextRangeProvider[] GetVisibleRanges ();
     parameters: []
     return:
       type: System.Windows.Automation.Provider.ITextRangeProvider[]
-      description: "The collection of visible text ranges within the container or an empty array. A null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) is never returned."
+      description: "A tároló vagy egy üres tömb látható szöveg tartományokat gyűjteménye. Egy null hivatkozás (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) soha nem adott vissza."
   overload: System.Windows.Automation.Provider.ITextProvider.GetVisibleRanges*
   exceptions: []
   platform:
@@ -115,22 +115,22 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves a text range enclosing a child element such as an image, hyperlink, or other embedded object."
-  remarks: "A UI Automation provider should check that the passed element is a child of the text container.       If there is no text in the range where the child element exists, a degenerate (empty) range is returned.       The `childElement` parameter is either a child of the <xref:System.Windows.Automation.AutomationElement> associated with a <xref:System.Windows.Automation.TextPattern> or from the array of children of a <xref:System.Windows.Automation.Text.TextPatternRange>."
+  summary: "Lekéri egy befoglaló egy gyermekelem, például a lemezkép, hivatkozás vagy más beágyazott objektum szöveges tartományát."
+  remarks: "A felhasználói felület Automation szolgáltató ellenőrizni kell, hogy, hogy az átadott elem a szövegtároló gyermeke.       Ha nincs szöveg a tartományban, ahol a gyermek elem van, egy elfajult (üres) tartomány ad vissza.       A `childElement` paraméter vagy egy gyermeke <xref:System.Windows.Automation.AutomationElement> <xref:System.Windows.Automation.TextPattern>vagy egy olyan tömbből, gyermekek <xref:System.Windows.Automation.Text.TextPatternRange>.</xref:System.Windows.Automation.Text.TextPatternRange> </xref:System.Windows.Automation.TextPattern> </xref:System.Windows.Automation.AutomationElement>"
   syntax:
     content: public System.Windows.Automation.Provider.ITextRangeProvider RangeFromChild (System.Windows.Automation.Provider.IRawElementProviderSimple childElement);
     parameters:
     - id: childElement
       type: System.Windows.Automation.Provider.IRawElementProviderSimple
-      description: "The enclosed object."
+      description: "A befoglalt objektum."
     return:
       type: System.Windows.Automation.Provider.ITextRangeProvider
-      description: "A range that spans the child element."
+      description: "Az alárendelt elem magában foglaló tartományon."
   overload: System.Windows.Automation.Provider.ITextProvider.RangeFromChild*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "If the child element is a null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)])."
+    description: "Ha az alárendelt elem null hivatkozást (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)])."
   platform:
   - net462
 - uid: System.Windows.Automation.Provider.ITextProvider.RangeFromPoint(System.Windows.Point)
@@ -145,22 +145,22 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Returns the degenerate (empty) text range nearest to the specified screen coordinates."
-  remarks: "A text range that encloses a child object is returned if the screen coordinates are within the coordinates of an image, hyperlink, or other embedded object.       Because hidden text is not ignored by RangeFromPoint a degenerate range from the visible text closest to the given point is returned."
+  summary: "A megadott képernyő-koordináták legközelebb elfajult (üres) szövegtartomány adja vissza."
+  remarks: "Gyermekobjektum elfedi szöveg széles eredményül, ha a képernyő-koordináták kép, hivatkozás vagy más beágyazott objektum koordinátáit belül vannak.       Mert rejtett szöveg nem figyelmen kívül hagyják RangeFromPoint elfajult széles az adott pont legközelebbi látható szöveg adja vissza."
   syntax:
     content: public System.Windows.Automation.Provider.ITextRangeProvider RangeFromPoint (System.Windows.Point screenLocation);
     parameters:
     - id: screenLocation
       type: System.Windows.Point
-      description: "The location in screen coordinates."
+      description: "A képernyő-koordináták helyét."
     return:
       type: System.Windows.Automation.Provider.ITextRangeProvider
-      description: "A degenerate range nearest the specified location. A null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) is never returned."
+      description: "A megadott helyen legközelebbi elfajult tartományon. Egy null hivatkozás (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a [!INCLUDE[TLA#tla_visualbnet](~/add/includes/tlasharptla-visualbnet-md.md)]) soha nem adott vissza."
   overload: System.Windows.Automation.Provider.ITextProvider.RangeFromPoint*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "If a given point is outside the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] element associated with the text pattern."
+    description: "Ha egy adott ponton kívül esik a [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] a szöveges minta társított elemet."
   platform:
   - net462
 - uid: System.Windows.Automation.Provider.ITextProvider.SupportedTextSelection
@@ -175,7 +175,7 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets a value that specifies whether a text provider supports selection and, if so, the type of selection supported."
+  summary: "Lekérdezi a szám, amely meghatározza, hogy a szöveg szolgáltató támogatja a kijelölés, és ha igen, a kijelölés típusa támogatott."
   syntax:
     content: public System.Windows.Automation.SupportedTextSelection SupportedTextSelection { get; }
     return:
