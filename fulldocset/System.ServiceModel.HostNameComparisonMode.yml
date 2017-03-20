@@ -12,8 +12,8 @@ items:
   nameWithType: HostNameComparisonMode
   fullName: System.ServiceModel.HostNameComparisonMode
   type: Enum
-  summary: "Specifies how the host name should be used in URI comparisons when dispatching an incoming message to a service endpoint."
-  remarks: "The value is used to specify the URI matching rules used by transports such as HTTP, Net.Tcp, and Net.Pipe when dispatching incoming messages. Configure the value of the HostNameComparisonMode for a standard binding using one of the preceding transports, such as <xref:System.ServiceModel.BasicHttpBinding>, using the corresponding <xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A> property. Configure the value of the HostNameComparisonMode for a binding element using one of the preceding transports, such as <xref:System.ServiceModel.Channels.HttpTransportBindingElement>, using the corresponding <xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A> property.       Each value of the HostNameComparisonMode corresponds to a specific type of matching rule. The sequence of matching rules attempted is always ordered as follows:      1.  StrongWildcard      2.  Exact      3.  WeakWildcard       The first value, StrongWildcard, ignores the host name when matching and it takes the highest precedence of the three different matching modes. It is the default value for a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] system-provided binding or binding element. This indicates that a service endpoint can be reached using any valid host name. For example, if MyService is hosted using http://localhost/MyService, it is still reachable using http://www.adatum.com/MyService because the (presumably valid) host name, &quot;adatum.com&quot;, is ignored. Note that the port is a wildcard here as well.       The second value, Exact, requires that an exact match is found with the URI specified, including the hostname, if no strong match is found. This mode, for example, does not perform equivalence between short hostnames and fully-qualified domain names. This allows hostnames to be used as match criteria in the scenarios where multiple hosts are assigned a single IP address and it enables different services to be hosted on the same machine with distinct endpoints. Note that the port is a wildcard here as well.       The third value, WeakWildcard, matches by ignoring the hostname if no strong or exact match was found. The behavior is the same as for StrongWildcard other than the order of matching: it runs after the strong and exact bindings have been tried.      > [!NOTE] >  These values have no effect when used inside of the Internet Information Services (IIS) or Windows Process Activation Service (WAS) hosting environment. In those cases, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] uses whatever hostname comparison mode is provided by the IIS Web Site hosting the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] services."
+  summary: "Itt adhatja meg, hogyan használandó összehasonlítások URI állomásnevét a szolgáltatásvégpont a bejövő üzenet terjesztéséhez."
+  remarks: "Az érték határozza meg a megfelelő URI-szabályokat, például HTTP, a Net.Tcp és a Net.Pipe átvitelek használják, amikor a bejövő üzenetek szolgál. A HostNameComparisonMode értékének konfigurálása egyikével az előző szabványos kötés szállítja, például a <xref:System.ServiceModel.BasicHttpBinding>, használja a megfelelő <xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A>tulajdonság.</xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A> </xref:System.ServiceModel.BasicHttpBinding> A kötéselem egyikével az előző szállítja, például a HostNameComparisonMode értékének konfigurálása <xref:System.ServiceModel.Channels.HttpTransportBindingElement>, használja a megfelelő <xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A>tulajdonság.</xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A> </xref:System.ServiceModel.Channels.HttpTransportBindingElement>       A HostNameComparisonMode minden értékének megfelelő szabályt egy adott típusú felel meg. A megfeleltetési szabályokról próbált sorozatát mindig az alábbiak szerint van rendezve: 1.  StrongWildcard 2.  Pontosan 3.  Az első olyan értéket, StrongWildcard, WeakWildcard figyelmen kívül hagyja az állomás neve megfelelő, és azt a legmagasabb prioritású a három különböző egyező mód. Az alapértelmezett értéke egy [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] rendszer által biztosított binding vagy a kötéselem. Ez azt jelzi, hogy a szolgáltatási végpont elérhető bármely érvényes állomásnevet. Például ha MyService http://localhost/MyService üzemelteti, a rendszer továbbra is elérhető http://www.adatum.com/MyService használatával, mert a (vélhetően érvényes) állomásnevet, a &quot;adatum.com&quot; figyelmen kívül hagyja. Vegye figyelembe, hogy a port itt helyettesítő karakter is.       A második értéke Exact, megköveteli, hogy pontos egyezés található a megadott URI-, beleértve az állomásnevet, ha nincs erős megfelelő a. Ebben a módban, például nem végez rövid állomásnevek és teljes tartománynevek. Ez lehetővé teszi, hogy az esetek, amikor több gazdagépen is egyetlen IP-címmel, így lehetővé teszi a különböző szolgáltatásokhoz különböző végpontokon ugyanazon a gépen üzemeltetését egyezés a feltételként használható állomásnevek. Vegye figyelembe, hogy a port itt helyettesítő karakter is.       A harmadik érték WeakWildcard, által figyelmen kívül hagyva az állomásnevet, ha nincs erős megbízható vagy pontos egyezés megegyezik. A rendszer nem ugyanaz, mint a StrongWildcard eltérő megfelelő sorrendjét: futása után az erős és pontos kötések próbáltak.      > [!NOTE] > Ezeket az értékeket hatástalan, ha az Internet Information Services (IIS) vagy a Windows folyamataktivációs szolgáltatás (WAS) üzemeltetési környezet használnak. Ezekben az esetekben [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] bármilyen állomásnév összehasonlítása mód biztosított által az IIS-webhelyet használja üzemeltető a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] szolgáltatások."
   example:
   - "The following is an example of how to set StrongWildcard value in a service side configuration file.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n Here is a basic service and client that use the preceding configuration file.  \n  \n [!code-cs[S_UEHostnameComparisonMode#2](~/add/codesnippet/csharp/t-system.servicemodel.ho_2.cs)]  \n  \n [!code-cs[S_UEHostnameComparisonMode#3](~/add/codesnippet/csharp/t-system.servicemodel.ho_3.cs)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Uses the hostname when dispatching incoming messages to this endpoint, if no strong match was found."
+  summary: "Az állomásnevet használja, ha a bejövő üzenetek ehhez a végponthoz, ha nincs erős egyezés."
   syntax:
     content: Exact
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Ignores the hostname when dispatching incoming messages to this endpoint. This is the default value."
+  summary: "Figyelmen kívül hagyja az állomásnevet, ha a bejövő üzenetek ehhez a végponthoz. Ez az alapértelmezett beállítás."
   syntax:
     content: StrongWildcard
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "If no strong or exact match was found, ignores the hostname when matching."
+  summary: "Ha nincs erős megbízható vagy pontos egyezés, figyelmen kívül hagyja az állomásnév megfelelő."
   syntax:
     content: WeakWildcard
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

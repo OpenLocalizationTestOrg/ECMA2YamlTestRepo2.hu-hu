@@ -24,7 +24,7 @@ items:
   nameWithType: WsdlImporter
   fullName: System.ServiceModel.Description.WsdlImporter
   type: Class
-  summary: "Imports Web Services Description Language (WSDL) 1.1 metadata with WS-Policy attachments."
+  summary: "WS-Policy mellékletek Web Services Description Language (WSDL) 1.1-es metaadatait importálja."
   remarks: "Use the WsdlImporter class to import metadata as well as convert that information into various classes that represent contract and endpoint information.  \n  \n The base class for WsdlImporter, the <xref:System.ServiceModel.Description.MetadataImporter> class, defines methods that selectively import contract and endpoint information and properties that expose any import errors and accept type information relevant to the import and conversion process. The WsdlImporter type uses the custom policy importers (<xref:System.ServiceModel.Description.IPolicyImportExtension> implementations) from its parent type to handle custom policy statements and its own custom WSDL importers (<xref:System.ServiceModel.Description.IWsdlImportExtension> implementations) to handle custom WSDL elements. For details, see [Extending the Metadata System](~/add/includes/ajax-current-ext-md.md).  \n  \n When importing policy from WSDL documents, the WsdlImporter type will try up to 32 combinations of policy alternatives attached to the different WSDL policy subjects.  If no combination imports cleanly, the first combination is used to construct a partial custom binding.  \n  \n In addition to these methods and properties, WsdlImporter also implements methods that support importing binding information and properties that provide access to any policy documents, WSDL documents, WSDL extensions, and XML schema documents. For information about extending WsdlImporter to support custom WSDL elements, see <xref:System.ServiceModel.Description.IWsdlImportExtension>.  \n  \n Typically the WsdlImporter class is used in a three-step process.  \n  \n1.  Create a WsdlImporter object and pass a <xref:System.ServiceModel.Description.MetadataSet> object to the constructor.  \n  \n2.  Call the appropriate `Import` method to retrieve the results.  \n  \n3.  Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors.  \n  \n> [!NOTE]\n>  When importing WSDL port types, if the QName of the port type matches an entry in the <xref:System.ServiceModel.Description.MetadataImporter.KnownContracts%2A> dictionary then the port type is not imported and the known contract is used instead.  \n  \n No values are returned from the WsdlImporter properties until one of the import methods is called. Custom <xref:System.ServiceModel.Description.IWsdlImportExtension?displayProperty=fullName> objects can either be loaded into the WsdlImporter programmatically or using the client configuration [\\&lt;wsdlImporters\\&gt;](../Topic/%3CwsdlImporters%3E.md) element.  \n  \n Metadata that has been imported as service endpoints cannot be used to create a runtime or export metadata because the imported endpoints contain no managed type information. To use the metadata to create a client or service runtime or to generate metadata, you must first generate and compile code from the metadata and use that type information to create a new <xref:System.ServiceModel.Description.ContractDescription?displayProperty=fullName> object using <xref:System.ServiceModel.Description.ContractDescription.GetContract%2A>."
   example:
   - "The following code example shows how to use the WsdlImporter to add a custom <xref:System.Runtime.Serialization.IDataContractSurrogate?displayProperty=fullName>, import all contracts, and compile those contracts and save them to a file.  \n  \n [!code-cs[C_CustomWSDLExtensions#8](~/add/codesnippet/csharp/c_customwsdlextensions.client/client.cs#8)]"
@@ -53,8 +53,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> class."
-  remarks: "Use the WsdlImporter constructor to create a <xref:System.ServiceModel.Description.WsdlImporter> object from a set of metadata documents."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> osztály."
+  remarks: "A WsdlImporter konstruktor segítségével hozzon létre egy <xref:System.ServiceModel.Description.WsdlImporter>azon dokumentumok metaadat-objektum.</xref:System.ServiceModel.Description.WsdlImporter>"
   example:
   - "The following code example shows the most common use of <xref:System.ServiceModel.Description.WsdlImporter> class with the <xref:System.ServiceModel.Description.MetadataResolver> class.  \n  \n [!code-cs[C_CustomWSDLExtensions#10](~/add/codesnippet/csharp/c_customwsdlextensions.client/client.cs#10)]"
   syntax:
@@ -62,7 +62,7 @@ items:
     parameters:
     - id: metadata
       type: System.ServiceModel.Description.MetadataSet
-      description: "A collection of metadata documents from which to extract contract, endpoint, and binding information."
+      description: "Metaadatok dokumentumok, amelyből bontsa ki a szerződést, a végpont és a kötési információ gyűjteménye."
   overload: System.ServiceModel.Description.WsdlImporter.#ctor*
   exceptions: []
   platform:
@@ -79,8 +79,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Creates a <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> object from the specified metadata, custom policy importers, and custom WSDL importers."
-  remarks: "Use this constructor to control the metadata to be imported and the policy and WSDL importers to be used.      > [!NOTE] >  If custom policy importers or custom WSDL importers are passed to this constructor any custom importers specified in application configuration files are not loaded. If you want to add a custom importer, you must reconstruct the importers collections prior to using this constructor. See the Example section."
+  summary: "Létrehoz egy <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> a metaadatok megadott egyéni házirend importers és egyéni WSDL importers objektum."
+  remarks: "Ez a konstruktor a metaadatok, importálandók vezérlésére és a házirend- és WSDL importers használandó használja.      > [!NOTE] > Ha egyéni házirendet importers vagy egyéni WSDL importers vannak a konstruktornak átadott bármely alkalmazás konfigurációs fájljainak megadott egyéni importers nincsenek betöltve. Ha hozzá szeretne adni egy egyéni importáló, akkor ez a konstruktor használata előtt importers gyűjteményeket kell helyreállítására. A példa című szakaszában talál."
   example:
   - "The following code example shows how to add a new custom WSDL importer (the `WSDLDocumentationImporter`) to the default set of importers prior to using the <xref:System.ServiceModel.Description.WsdlImporter> object.  \n  \n [!code-cs[C_CustomWSDLExtensions#11](~/add/codesnippet/csharp/c_customwsdlextensions.client/client.cs#11)]"
   syntax:
@@ -88,13 +88,13 @@ items:
     parameters:
     - id: metadata
       type: System.ServiceModel.Description.MetadataSet
-      description: "The downloaded metadata."
+      description: "A letöltött metaadatok."
     - id: policyImportExtensions
       type: System.Collections.Generic.IEnumerable{System.ServiceModel.Description.IPolicyImportExtension}
-      description: "The custom policy importers used to import custom policy statements."
+      description: "Az egyéni házirend importers egyéni házirend-utasításoknál importálhatja."
     - id: wsdlImportExtensions
       type: System.Collections.Generic.IEnumerable{System.ServiceModel.Description.IWsdlImportExtension}
-      description: "The custom WSDL importers used to import custom WSDL elements."
+      description: "Az egyéni WSDL importers egyéni WSDL elemek importálhatja."
   overload: System.ServiceModel.Description.WsdlImporter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -114,8 +114,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Creates a <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> object from the specified metadata, custom policy importers, and custom WSDL importers."
-  remarks: "Use this constructor to control the metadata to be imported and the policy and WSDL importers to be used.      > [!NOTE] >  If custom policy importers or custom WSDL importers are passed to this constructor any custom importers specified in application configuration files are not loaded. If you want to add a custom importer, you must reconstruct the importers collections prior to using this constructor. See the Example section."
+  summary: "Létrehoz egy <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> a metaadatok megadott egyéni házirend importers és egyéni WSDL importers objektum."
+  remarks: "Ez a konstruktor a metaadatok, importálandók vezérlésére és a házirend- és WSDL importers használandó használja.      > [!NOTE] > Ha egyéni házirendet importers vagy egyéni WSDL importers vannak a konstruktornak átadott bármely alkalmazás konfigurációs fájljainak megadott egyéni importers nincsenek betöltve. Ha hozzá szeretne adni egy egyéni importáló, akkor ez a konstruktor használata előtt importers gyűjteményeket kell helyreállítására. A példa című szakaszában talál."
   example:
   - "The following code example shows how to add a new custom WSDL importer (the `WSDLDocumentationImporter`) to the default set of importers prior to using the <xref:System.ServiceModel.Description.WsdlImporter> object.  \n  \n [!code-cs[C_CustomWSDLExtensions#11](~/add/codesnippet/csharp/c_customwsdlextensions.client/client.cs#11)]"
   syntax:
@@ -123,16 +123,16 @@ items:
     parameters:
     - id: metadata
       type: System.ServiceModel.Description.MetadataSet
-      description: "The downloaded metadata."
+      description: "A letöltött metaadatok."
     - id: policyImportExtensions
       type: System.Collections.Generic.IEnumerable{System.ServiceModel.Description.IPolicyImportExtension}
-      description: "The custom policy importers used to import custom policy statements."
+      description: "Az egyéni házirend importers egyéni házirend-utasításoknál importálhatja."
     - id: wsdlImportExtensions
       type: System.Collections.Generic.IEnumerable{System.ServiceModel.Description.IWsdlImportExtension}
-      description: "The custom WSDL importers used to import custom WSDL elements."
+      description: "Az egyéni WSDL importers egyéni WSDL elemek importálhatja."
     - id: quotas
       type: System.ServiceModel.Description.MetadataImporterQuotas
-      description: "The amount of metadata to retrieve at a time"
+      description: "A metaadatok egyszerre beolvasandó mennyisége"
   overload: System.ServiceModel.Description.WsdlImporter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
@@ -152,19 +152,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a set of <xref:System.ServiceModel.Channels.Binding> objects imported from the metadata documents."
-  remarks: "Use the ImportAllBindings method to import all binding information from the metadata documents and return them as <xref:System.ServiceModel.Channels.Binding> objects. Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned objects.       To import a specific WSDL binding, see the <xref:System.ServiceModel.Description.WsdlImporter.ImportBinding%2A> method."
+  summary: "Adja vissza, amely <xref:System.ServiceModel.Channels.Binding>objektumok importálása a metaadat-dokumentum.</xref:System.ServiceModel.Channels.Binding>"
+  remarks: "A ImportAllBindings metódus használatával importálja az összes kötési információ a metaadat-dokumentumokat, és visszaküldi azokat, mint a <xref:System.ServiceModel.Channels.Binding>objektumok.</xref:System.ServiceModel.Channels.Binding> Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumok használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>       Szeretne importálni egy adott WSDL-kötés, tekintse meg a <xref:System.ServiceModel.Description.WsdlImporter.ImportBinding%2A>metódus.</xref:System.ServiceModel.Description.WsdlImporter.ImportBinding%2A>"
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Channels.Binding> ImportAllBindings ();
     parameters: []
     return:
       type: System.Collections.ObjectModel.Collection{System.ServiceModel.Channels.Binding}
-      description: "A set of <xref:System.ServiceModel.Channels.Binding> objects imported from the metadata documents."
+      description: "Egy <xref:System.ServiceModel.Channels.Binding>objektumok importálása a metaadat-dokumentum.</xref:System.ServiceModel.Channels.Binding>"
   overload: System.ServiceModel.Description.WsdlImporter.ImportAllBindings*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   platform:
   - net462
 - uid: System.ServiceModel.Description.WsdlImporter.ImportAllContracts
@@ -179,8 +179,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a set of <xref:System.ServiceModel.Description.ContractDescription> objects that represent port type information in the metadata documents."
-  remarks: "Use the ImportAllContracts method to import all WSDL port type information from the metadata documents and return them as <xref:System.ServiceModel.Description.ContractDescription> objects. It is recommended to check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned objects.       To import only one port type, see the <xref:System.ServiceModel.Description.WsdlImporter.ImportContract%2A> method."
+  summary: "Adja vissza, amely <xref:System.ServiceModel.Description.ContractDescription>objektumok, amelyek megfelelnek a port írja be a információkat, a metaadat-dokumentumokban.</xref:System.ServiceModel.Description.ContractDescription>"
+  remarks: "A ImportAllContracts módszer segítségével minden WSDL port típussal kapcsolatos információk importálása a metaadat-dokumentumokat, és visszaküldi azokat, mint a <xref:System.ServiceModel.Description.ContractDescription>objektumok.</xref:System.ServiceModel.Description.ContractDescription> Javasoljuk, hogy ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumok használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>       Csak egy porttípus szeretne importálni, tekintse meg a <xref:System.ServiceModel.Description.WsdlImporter.ImportContract%2A>metódus.</xref:System.ServiceModel.Description.WsdlImporter.ImportContract%2A>"
   example:
   - "The following code example shows how to use the <xref:System.ServiceModel.Description.WsdlImporter> to add a custom <xref:System.Runtime.Serialization.IDataContractSurrogate?displayProperty=fullName>, import all contracts, and compile those contracts and save them to a file.  \n  \n [!code-cs[C_CustomWSDLExtensions#8](~/add/codesnippet/csharp/c_customwsdlextensions.client/client.cs#8)]"
   syntax:
@@ -188,12 +188,12 @@ items:
     parameters: []
     return:
       type: System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ContractDescription}
-      description: "A set of <xref:System.ServiceModel.Description.ContractDescription> objects that represent port type information in the metadata documents."
+      description: "Egy <xref:System.ServiceModel.Description.ContractDescription>objektumok, amelyek megfelelnek a port írja be a információkat, a metaadat-dokumentumokban.</xref:System.ServiceModel.Description.ContractDescription>"
   overload: System.ServiceModel.Description.WsdlImporter.ImportAllContracts*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   platform:
   - net462
 - uid: System.ServiceModel.Description.WsdlImporter.ImportAllEndpoints
@@ -208,19 +208,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents the endpoints in WSDL documents."
-  remarks: "Use the ImportAllEndpoints method to import all endpoint information from the metadata documents and return them as a collection of <xref:System.ServiceModel.Description.ServiceEndpoint> objects. Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned objects.       To import only a specific WSDL port, see the <xref:System.ServiceModel.Description.WsdlImporter.ImportEndpoint%2A> method."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely a WSDL-dokumentumok végpontok jelöli."
+  remarks: "Használja a ImportAllEndpoints metódust összes endpoint-információk importálása a metaadat-dokumentumok, majd visszaküldi azokat gyűjteményeként <xref:System.ServiceModel.Description.ServiceEndpoint>objektumok.</xref:System.ServiceModel.Description.ServiceEndpoint> Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumok használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>       Csak egy adott WSDL-portot szeretne importálni, tekintse meg a <xref:System.ServiceModel.Description.WsdlImporter.ImportEndpoint%2A>metódus.</xref:System.ServiceModel.Description.WsdlImporter.ImportEndpoint%2A>"
   syntax:
     content: public override System.ServiceModel.Description.ServiceEndpointCollection ImportAllEndpoints ();
     parameters: []
     return:
       type: System.ServiceModel.Description.ServiceEndpointCollection
-      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents the endpoints in WSDL documents."
+      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely a WSDL-dokumentumok végpontok jelöli."
   overload: System.ServiceModel.Description.WsdlImporter.ImportAllEndpoints*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   platform:
   - net462
 - uid: System.ServiceModel.Description.WsdlImporter.ImportBinding(System.Web.Services.Description.Binding)
@@ -235,22 +235,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref:System.ServiceModel.Channels.Binding> object that represents binding information from a set of metadata documents."
-  remarks: "Use the ImportBinding method to use a <xref:System.Web.Services.Description.Binding?displayProperty=fullName> object to locate binding information in the metadata and return that binding information as a <xref:System.ServiceModel.Channels.Binding?displayProperty=fullName> object. Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref:System.ServiceModel.Channels.Binding>kötési információ metaadatok dokumentumok kategóriára képviselő objektum.</xref:System.ServiceModel.Channels.Binding>"
+  remarks: "A ImportBinding módszer segítségével egy <xref:System.Web.Services.Description.Binding?displayProperty=fullName>objektum kötési információ található a metaadatokat, és térjen vissza a kötési információ, mint egy <xref:System.ServiceModel.Channels.Binding?displayProperty=fullName>objektum.</xref:System.ServiceModel.Channels.Binding?displayProperty=fullName> </xref:System.Web.Services.Description.Binding?displayProperty=fullName> Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Channels.Binding ImportBinding (System.Web.Services.Description.Binding wsdlBinding);
     parameters:
     - id: wsdlBinding
       type: System.Web.Services.Description.Binding
-      description: "A <xref href=&quot;System.Web.Services.Description.Binding&quot;></xref> object that represents binding information in a metadata file."
+      description: "A <xref href=&quot;System.Web.Services.Description.Binding&quot;> </xref> kötési információ a metaadat-fájlt képviselő objektum."
     return:
       type: System.ServiceModel.Channels.Binding
-      description: "A &lt;xref:System.ServiceModel.Channels.Binding?displayProperty=fullName&gt; object that represents binding information from a set of metadata documents."
+      description: "A &lt;xref:System.ServiceModel.Channels.Binding?displayProperty=fullName&gt; kötési információ metaadatok dokumentumok kategóriára képviselő objektum."
   overload: System.ServiceModel.Description.WsdlImporter.ImportBinding*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>wsdlBinding</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -268,25 +268,25 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref:System.ServiceModel.Description.ContractDescription> object that represents metadata located by the specified port type information."
-  remarks: "Use the ImportContract method to use a <xref:System.Web.Services.Description.PortType?displayProperty=fullName> object to locate port type information in the metadata and return that information as a <xref:System.ServiceModel.Description.ContractDescription> object. Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref:System.ServiceModel.Description.ContractDescription>metaadat található a megadott port típusinformációt képviselő objektum.</xref:System.ServiceModel.Description.ContractDescription>"
+  remarks: "A ImportContract módszer segítségével egy <xref:System.Web.Services.Description.PortType?displayProperty=fullName>objektum port típussal kapcsolatos információk megkereséséhez a metaadatok, és ezt az információt, térjen vissza a <xref:System.ServiceModel.Description.ContractDescription>objektum.</xref:System.ServiceModel.Description.ContractDescription> </xref:System.Web.Services.Description.PortType?displayProperty=fullName> Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Description.ContractDescription ImportContract (System.Web.Services.Description.PortType wsdlPortType);
     parameters:
     - id: wsdlPortType
       type: System.Web.Services.Description.PortType
-      description: "A <xref href=&quot;System.Web.Services.Description.PortType&quot;></xref> object that represents the desired port type."
+      description: "A <xref href=&quot;System.Web.Services.Description.PortType&quot;> </xref> objektum, amely a kívánt port típusát jelöli."
     return:
       type: System.ServiceModel.Description.ContractDescription
-      description: "A <xref:System.ServiceModel.Description.ContractDescription> object that represents metadata located by the specified port type information."
+      description: "A <xref:System.ServiceModel.Description.ContractDescription>metaadat található a megadott port típusinformációt képviselő objektum.</xref:System.ServiceModel.Description.ContractDescription>"
   overload: System.ServiceModel.Description.WsdlImporter.ImportContract*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The port type is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "A port típusa <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.ServiceModel.Description.WsdlImporter.ImportEndpoint(System.Web.Services.Description.Port)
@@ -301,22 +301,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref:System.ServiceModel.Description.ServiceEndpoint> from a set of metadata documents that uses information from the specified <xref href=&quot;System.Web.Services.Description.Port&quot;></xref> object."
-  remarks: "Use the ImportEndpoint method to use a <xref:System.Web.Services.Description.Port?displayProperty=fullName> object to locate port type information in the metadata and return that information as a <xref:System.ServiceModel.Description.ServiceEndpoint> object. Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref:System.ServiceModel.Description.ServiceEndpoint>a metaadatok dokumentumok csoportja, amely a megadott adatokkal <xref href=&quot;System.Web.Services.Description.Port&quot;> </xref> objektum.</xref:System.ServiceModel.Description.ServiceEndpoint>"
+  remarks: "A ImportEndpoint módszer segítségével egy <xref:System.Web.Services.Description.Port?displayProperty=fullName>objektum port típussal kapcsolatos információk megkereséséhez a metaadatok, és ezt az információt, térjen vissza a <xref:System.ServiceModel.Description.ServiceEndpoint>objektum.</xref:System.ServiceModel.Description.ServiceEndpoint> </xref:System.Web.Services.Description.Port?displayProperty=fullName> Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpoint ImportEndpoint (System.Web.Services.Description.Port wsdlPort);
     parameters:
     - id: wsdlPort
       type: System.Web.Services.Description.Port
-      description: "A <xref href=&quot;System.Web.Services.Description.Port&quot;></xref> object that represents the desired WSDL port information."
+      description: "A <xref href=&quot;System.Web.Services.Description.Port&quot;> </xref> objektum, amely a kívánt WSDL port adatait jelöli."
     return:
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A <xref:System.ServiceModel.Description.ServiceEndpoint> object that represents specific WSDL port information in the metadata document."
+      description: "A <xref:System.ServiceModel.Description.ServiceEndpoint>a metaadat-dokumentum adott WSDL portinformációkat képviselő objektum.</xref:System.ServiceModel.Description.ServiceEndpoint>"
   overload: System.ServiceModel.Description.WsdlImporter.ImportEndpoint*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>wsdlPort</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -334,22 +334,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types using the specified <xref href=&quot;System.Web.Services.Description.Binding&quot;></xref>."
-  remarks: "Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely jelzi, hogy minden WSDL port típusok használata a megadott <xref href=&quot;System.Web.Services.Description.Binding&quot;> </xref>."
+  remarks: "Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpointCollection ImportEndpoints (System.Web.Services.Description.Binding wsdlBinding);
     parameters:
     - id: wsdlBinding
       type: System.Web.Services.Description.Binding
-      description: "A <xref href=&quot;System.Web.Services.Description.Binding&quot;></xref> object used in a WSDL port."
+      description: "A <xref href=&quot;System.Web.Services.Description.Binding&quot;> </xref> a WSDL-port használt objektum."
     return:
       type: System.ServiceModel.Description.ServiceEndpointCollection
-      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types using the specified <xref href=&quot;System.Web.Services.Description.Binding&quot;></xref>."
+      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely jelzi, hogy minden WSDL port típusok használata a megadott <xref href=&quot;System.Web.Services.Description.Binding&quot;> </xref>."
   overload: System.ServiceModel.Description.WsdlImporter.ImportEndpoints*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>wsdlBinding</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -367,22 +367,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types associated with the specified <xref href=&quot;System.Web.Services.Description.PortType&quot;></xref>."
-  remarks: "Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely jelöli, hogy a megadott társított összes WSDL port típus <xref href=&quot;System.Web.Services.Description.PortType&quot;> </xref>."
+  remarks: "Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpointCollection ImportEndpoints (System.Web.Services.Description.PortType wsdlPortType);
     parameters:
     - id: wsdlPortType
       type: System.Web.Services.Description.PortType
-      description: "The <xref href=&quot;System.Web.Services.Description.PortType&quot;></xref> object that is used to find associated WSDL port information."
+      description: "A <xref href=&quot;System.Web.Services.Description.PortType&quot;> </xref> kereséséhez használt objektum társított WSDL port információit."
     return:
       type: System.ServiceModel.Description.ServiceEndpointCollection
-      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types associated with the specified <xref href=&quot;System.Web.Services.Description.PortType&quot;></xref>."
+      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> , amely jelöli, hogy a megadott társított összes WSDL port típus <xref href=&quot;System.Web.Services.Description.PortType&quot;> </xref>."
   overload: System.ServiceModel.Description.WsdlImporter.ImportEndpoints*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>wsdlPortType</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -400,22 +400,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Returns a <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types within the specified <xref href=&quot;System.Web.Services.Description.Service&quot;></xref>."
-  remarks: "Check the <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A> property to determine whether there are any import errors before using the returned object."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> belül a megadott összes WSDL port típus jelöli, amely <xref href=&quot;System.Web.Services.Description.Service&quot;> </xref>."
+  remarks: "Ellenőrizze a <xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>tulajdonság határozza meg, hogy importálási hiba történik a visszaadott objektumot használata előtt.</xref:System.ServiceModel.Description.MetadataImporter.Errors%2A>"
   syntax:
     content: public System.ServiceModel.Description.ServiceEndpointCollection ImportEndpoints (System.Web.Services.Description.Service wsdlService);
     parameters:
     - id: wsdlService
       type: System.Web.Services.Description.Service
-      description: "The <xref href=&quot;System.Web.Services.Description.Service&quot;></xref> object within which to search for WSDL port information."
+      description: "A <xref href=&quot;System.Web.Services.Description.Service&quot;> </xref> belül keresse meg a WSDL-portadatok objektum."
     return:
       type: System.ServiceModel.Description.ServiceEndpointCollection
-      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;></xref> that represents all WSDL port types within the specified <xref href=&quot;System.Web.Services.Description.Service&quot;></xref>."
+      description: "A <xref href=&quot;System.ServiceModel.Description.ServiceEndpointCollection&quot;> </xref> belül a megadott összes WSDL port típus jelöli, amely <xref href=&quot;System.Web.Services.Description.Service&quot;> </xref>."
   overload: System.ServiceModel.Description.WsdlImporter.ImportEndpoints*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;></xref> has encountered an error."
+    description: "A <xref href=&quot;System.ServiceModel.Description.WsdlImporter&quot;> </xref> hibába ütközött."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>wsdlService</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -433,13 +433,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets a set of <xref href=&quot;System.Web.Services.Description.ServiceDescription&quot;></xref> objects that describe the contract information in the metadata documents."
-  remarks: "The WsdlDocuments property is not populated until an import method is called."
+  summary: "Lekérdezi egy <xref href=&quot;System.Web.Services.Description.ServiceDescription&quot;> </xref> objektumok, amelyek a metaadat-dokumentumokban adategyezmény-információk ismertetése."
+  remarks: "A WsdlDocuments tulajdonság nem van feltöltve, amíg az importálás módszer neve."
   syntax:
     content: public System.Web.Services.Description.ServiceDescriptionCollection WsdlDocuments { get; }
     return:
       type: System.Web.Services.Description.ServiceDescriptionCollection
-      description: "A collection of <xref href=&quot;System.Web.Services.Description.ServiceDescription&quot;></xref> objects that describe the contract information in the metadata documents."
+      description: "A gyűjtemény <xref href=&quot;System.Web.Services.Description.ServiceDescription&quot;> </xref> objektumok, amelyek a metaadat-dokumentumokban adategyezmény-információk ismertetése."
   overload: System.ServiceModel.Description.WsdlImporter.WsdlDocuments*
   exceptions: []
   platform:
@@ -456,13 +456,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets a set of <xref href=&quot;System.ServiceModel.Description.IWsdlImportExtension&quot;></xref> objects used to import custom WSDL information."
-  remarks: "Use the WsdlImportExtensions property to add or remove custom WSDL importers."
+  summary: "Lekérdezi egy <xref href=&quot;System.ServiceModel.Description.IWsdlImportExtension&quot;> </xref> egyéni WSDL-adatok importálása használt objektumok."
+  remarks: "A WsdlImportExtensions tulajdonsággal hozzáadásához vagy eltávolításához egyéni WSDL importers."
   syntax:
     content: public System.Collections.Generic.KeyedByTypeCollection<System.ServiceModel.Description.IWsdlImportExtension> WsdlImportExtensions { get; }
     return:
       type: System.Collections.Generic.KeyedByTypeCollection{System.ServiceModel.Description.IWsdlImportExtension}
-      description: "A set of <xref href=&quot;System.ServiceModel.Description.IWsdlImportExtension&quot;></xref> objects used to import custom WSDL information."
+      description: "Egy <xref href=&quot;System.ServiceModel.Description.IWsdlImportExtension&quot;> </xref> egyéni WSDL-adatok importálása használt objektumok."
   overload: System.ServiceModel.Description.WsdlImporter.WsdlImportExtensions*
   exceptions: []
   platform:
@@ -479,13 +479,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets a set of <xref:System.Xml.Schema.XmlSchema> objects that describe types in the metadata."
-  remarks: "This property is not populated until one of the import methods is called."
+  summary: "Lekérdezi egy <xref:System.Xml.Schema.XmlSchema>objektumok leíró típus a metaadatokban.</xref:System.Xml.Schema.XmlSchema>"
+  remarks: "Ez a tulajdonság nem van feltöltve, amíg egyik importálási metódusával nevezik."
   syntax:
     content: public System.Xml.Schema.XmlSchemaSet XmlSchemas { get; }
     return:
       type: System.Xml.Schema.XmlSchemaSet
-      description: "A set of <xref:System.Xml.Schema.XmlSchema> objects that describe types in the metadata."
+      description: "Egy <xref:System.Xml.Schema.XmlSchema>objektumok leíró típus a metaadatokban.</xref:System.Xml.Schema.XmlSchema>"
   overload: System.ServiceModel.Description.WsdlImporter.XmlSchemas*
   exceptions: []
   platform:

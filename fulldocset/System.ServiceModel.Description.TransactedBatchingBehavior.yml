@@ -15,8 +15,8 @@ items:
   nameWithType: TransactedBatchingBehavior
   fullName: System.ServiceModel.Description.TransactedBatchingBehavior
   type: Class
-  summary: "Represents a behavior that optimizes the receive operations for transports that support transactional receives."
-  remarks: "A transport that is configured with this behavior attempts to batch several receive operations into one transaction. By doing so, the relatively high cost of creating a transaction and committing it in every receive operation is avoided."
+  summary: "A probléma, amely optimalizálja a fogadási műveletek, amely megkapja a tranzakciós támogatási átvitelek jelöli."
+  remarks: "Egy átviteli be van állítva ez a viselkedés megkísérli kötegelt több fogadási műveletek egy tranzakcióban. Ezzel a módszerrel, a tranzakciót létre, és azt a véglegesítő viszonylag magas költségét minden fogadási művelet elkerülhető."
   example:
   - "The following example shows how to add the transacted batching behavior to a service in a configuration file.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n The following example shows how to add the transacted batching behavior to a service in code.  \n  \n [!code-cs[UETransactedBatchingCode#0](~/add/codesnippet/csharp/t-system.servicemodel.de_10_2.cs)]\n [!code-cs[UETransactedBatchingCode#0](~/add/codesnippet/csharp/t-system.servicemodel.de_10_2.cs)]"
   syntax:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Description.TransactedBatchingBehavior&quot;></xref> class with the specified batch size."
-  remarks: "The `maxBatchSize` value passed into the constructor is only a hint. It is possible that all messages are received before reaching the `maxBatchSize`. When that occurs, it is unnecessary to wait indefinitely for another message to be received. To prevent this from happening, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] commits the batch early and open a new batch to receive additional messages. The batch is committed if there are no messages to be received and 20 percent of the transaction time-out value has elapsed."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Description.TransactedBatchingBehavior&quot;> </xref> a megadott köteg mérete a osztályt."
+  remarks: "A `maxBatchSize` a konstruktornak átadott érték csak a mutató. Lehetséges, hogy minden üzenetek fogadása elérése előtt a `maxBatchSize`. Amikor ez történik, nem szükséges határozatlan ideig várjon, amíg egy másik üzenetet kapott. Ez megelőzhető, hogy [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] korai véglegesíti a köteg, majd nyissa meg egy új köteg további üzenetek fogadására. A kötegelt véglegesítve lesz, ha nincsenek üzenetek fogadását, és 20 százalékát a tranzakció időtúllépési érték eltelt."
   example:
   - "The following code shows how to create a new instance of <xref:System.ServiceModel.Description.TransactedBatchingBehavior> specifying the maximum number of messages to be processed in a batch.  \n  \n [!code-cs[UETransactedBatchingCode#1](~/add/codesnippet/csharp/39fc090e-5527-4a2d-a64d-_1.cs)]"
   syntax:
@@ -49,12 +49,12 @@ items:
     parameters:
     - id: maxBatchSize
       type: System.Int32
-      description: "The maximum number of receive operations that can be batched together."
+      description: "Maximális számát, amelyek együtt kötegelni műveletek kapnak."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.#ctor*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>MaxBatchSize</code> is less than 0."
+    description: "<code>MaxBatchSize</code>értéke 0-nál kisebb."
   platform:
   - net462
 - uid: System.ServiceModel.Description.TransactedBatchingBehavior.MaxBatchSize
@@ -69,20 +69,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Gets or sets the maximum number of receive operations that can be batched together in one transaction."
-  remarks: "The `maxBatchSize` value is only a hint. It is possible that all messages are received before reaching the `maxBatchSize`. When that occurs, it is unnecessary to wait indefinitely for another message to be received. To prevent this from happening, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] commits the batch early and open a new batch to receive additional messages. The batch is committed if there are no messages to be received and 20 percent of the transaction time-out value has elapsed."
+  summary: "Lekérdezi vagy beállítja azt a maximális számának fogadási műveletek is lehet kötegelni együtt egy tranzakcióban."
+  remarks: "A `maxBatchSize` értéke csak a mutató. Lehetséges, hogy minden üzenetek fogadása elérése előtt a `maxBatchSize`. Amikor ez történik, nem szükséges határozatlan ideig várjon, amíg egy másik üzenetet kapott. Ez megelőzhető, hogy [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] korai véglegesíti a köteg, majd nyissa meg egy új köteg további üzenetek fogadására. A kötegelt véglegesítve lesz, ha nincsenek üzenetek fogadását, és 20 százalékát a tranzakció időtúllépési érték eltelt."
   example:
   - "The following code shows how to set the MaxBatchSize property.  \n  \n [!code-cs[UETransactedBatchingCode#2](~/add/codesnippet/csharp/p-system.servicemodel.de_7_1.cs)]"
   syntax:
     content: public int MaxBatchSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of receive operations that can be batched together in one transaction."
+      description: "A maximális száma fogadási műveletek, amely képes lehet kötegelni együtt egy tranzakcióban."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.MaxBatchSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>MaxBatchSize</code> is less than 0."
+    description: "<code>MaxBatchSize</code>értéke 0-nál kisebb."
   platform:
   - net462
 - uid: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters(System.ServiceModel.Description.ServiceEndpoint,System.ServiceModel.Channels.BindingParameterCollection)
@@ -98,17 +98,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Applies binding settings to the specified service endpoint. This method cannot be inherited."
-  remarks: "Enables you to add additional binding parameters to the specified service endpoint. This is normally used when working with a custom binding."
+  summary: "A megadott végpont érvényes kötési beállításokat. Ez a módszer nem örökölhető."
+  remarks: "Lehetővé teszi, hogy a megadott végpont adjon hozzá további kötési paraméterek esetében. Ez általában akkor használható, az egyéni kötésben használatakor."
   syntax:
     content: void IEndpointBehavior.AddBindingParameters (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Channels.BindingParameterCollection bindingParameters);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "A szolgáltatásvégpont, ahol viselkedés beállítások érvényesek."
     - id: bindingParameters
       type: System.ServiceModel.Channels.BindingParameterCollection
-      description: "A collection of binding parameters that store information used by binding elements to build factories."
+      description: "Kötelező paraméterek kötéselemek előállítók létrehozásához használt adatokat tároló gyűjteménye."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#AddBindingParameters*
   exceptions: []
   platform:
@@ -126,16 +126,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Applies transaction batching behavior settings to the specified service endpoint. This method cannot be inherited."
+  summary: "Viselkedés beállítások a megadott szolgáltatásvégpont kötegelés tranzakció vonatkozik. Ez a módszer nem örökölhető."
   syntax:
     content: void IEndpointBehavior.ApplyClientBehavior (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.ClientRuntime behavior);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "A szolgáltatásvégpont, ahol viselkedés beállítások érvényesek."
     - id: behavior
       type: System.ServiceModel.Dispatcher.ClientRuntime
-      description: "Contains the transaction batching behavior."
+      description: "A tranzakció viselkedés kötegelés tartalmazza."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyClientBehavior*
   exceptions: []
   platform:
@@ -153,17 +153,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Associates an endpoint dispatcher with the specified service endpoint. This method cannot be inherited."
-  remarks: "This method is called by [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to associate a service endpoint with an endpoint dispatcher."
+  summary: "A megadott végpont egy végponti kézbesítőnek társítja. Ez a módszer nem örökölhető."
+  remarks: "Ezt a módszert hívja [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] rendelje hozzá a szolgáltatásvégpont egy végponti kézbesítőnek."
   syntax:
     content: void IEndpointBehavior.ApplyDispatchBehavior (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Dispatcher.EndpointDispatcher endpointDispatcher);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint where behavior settings are applied."
+      description: "A szolgáltatásvégpont, ahol viselkedés beállítások érvényesek."
     - id: endpointDispatcher
       type: System.ServiceModel.Dispatcher.EndpointDispatcher
-      description: "An endpoint dispatching for dispatching messages"
+      description: "Egy végpont terjesztéséhez az üzenetek terjesztéséhez"
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#ApplyDispatchBehavior*
   exceptions: []
   platform:
@@ -181,14 +181,14 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Description
-  summary: "Ensures that transacted batching is applicable only for the bindings that support transacted receive operation. This method cannot be inherited."
-  remarks: "This method is called by [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] to ensure that batching is available only for bindings that support transacted receive operations."
+  summary: "Ellenőrzi, hogy visszagörgethető kötegelés csak a kötéseket, hogy a tranzakcióalapú támogatási fogadási művelethez használható. Ez a módszer nem örökölhető."
+  remarks: "Ezt a módszert hívja [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] annak biztosításához, hogy kötegelés elérhető csak támogatási tranzakcióalapú kötéseket fogadási műveletek esetében."
   syntax:
     content: void IEndpointBehavior.Validate (System.ServiceModel.Description.ServiceEndpoint serviceEndpoint);
     parameters:
     - id: serviceEndpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "A service endpoint for which batching behavior is validated."
+      description: "Egy végpontot, amelynek kötegelés viselkedés van hitelesítve."
   overload: System.ServiceModel.Description.TransactedBatchingBehavior.System#ServiceModel#Description#IEndpointBehavior#Validate*
   exceptions: []
   platform:

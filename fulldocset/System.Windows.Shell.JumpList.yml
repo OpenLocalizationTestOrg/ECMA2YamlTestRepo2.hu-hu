@@ -24,8 +24,8 @@ items:
   nameWithType: JumpList
   fullName: System.Windows.Shell.JumpList
   type: Class
-  summary: "Represents a list of items and tasks displayed as a menu on a [!INCLUDE[win7](~/add/includes/win7-md.md)] taskbar button."
-  remarks: "The [!INCLUDE[win7](~/add/includes/win7-md.md)] taskbar provides enhanced functionality for starting programs directly from the taskbar button by using Jump Lists. Jump Lists are also used in the [!INCLUDE[win7](~/add/includes/win7-md.md)] Start menu. You access a Jump List by right-clicking a taskbar button or by clicking the arrow next to a program in the Start menu. For more information about Jump Lists, see the [Taskbar](http://go.microsoft.com/fwlink/?LinkId=178478) section of the Windows User Experience Interaction Guidelines.       The JumpList class provides a managed wrapper for the Jump List functionality in the [!INCLUDE[win7](~/add/includes/win7-md.md)] taskbar and manages the data passed to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell. The functionality exposed by the JumpList class is not available in versions of [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] earlier than [!INCLUDE[win7](~/add/includes/win7-md.md)]. Applications that use the JumpList class will run in other versions of [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)], but the Jump List will not be available. For more information about the Windows shell and native Jump List APIs, see [Taskbar Extensions](http://go.microsoft.com/fwlink/?LinkId=178479).       The following illustration shows the Jump List for Windows Media Player, with items in the **Tasks** and **Frequent** categories.       ![Windows Media Player Jump List](~/add/media/wpfshell-jumplist.png &quot;Windows Media Player Jump List&quot;)   Windows Media Player Jump List      ## Configuring a Jump List    Jump Lists can contain two types of items, a <xref:System.Windows.Shell.JumpTask> and a <xref:System.Windows.Shell.JumpPath>. A <xref:System.Windows.Shell.JumpTask> is a link to a program and a <xref:System.Windows.Shell.JumpPath> is a link to a file. You can visually separate items in a Jump List by creating a <xref:System.Windows.Shell.JumpTask> that does not have a <xref:System.Windows.Shell.JumpTask.Title%2A> and <xref:System.Windows.Shell.JumpItem.CustomCategory%2A> specified. This empty <xref:System.Windows.Shell.JumpTask> will be displayed as a horizontal line in the Jump List.      > [!NOTE] >  If the type of the file specified in a <xref:System.Windows.Shell.JumpPath> is not registered with your application, the file will not appear in the Jump List. For example, if you add a <xref:System.Windows.Shell.JumpPath> that points to a .txt file, your application must be registered to handle .txt files. For more information, see [Introduction to File Associations](http://go.microsoft.com/fwlink/?LinkId=178480).       Jump items are placed into categories in the JumpList. By default, a <xref:System.Windows.Shell.JumpItem> is displayed in the **Tasks** category. Alternatively, you can specify a <xref:System.Windows.Shell.JumpItem.CustomCategory%2A> for the <xref:System.Windows.Shell.JumpItem>.       You can specify whether the standard **Recent** and **Frequent** categories are displayed in the JumpList by setting the <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A> and <xref:System.Windows.Shell.JumpList.ShowFrequentCategory%2A> properties. The contents of these categories are managed by the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell. Because these categories might contain much of the same data, you typically display one or the other in your JumpList, but not both. [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] automatically manages recent items if they are opened through a common file dialog box or used to open an application through file type association. When an item is accessed through the Jump List, you can notify the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell to add the item to the **Recent** category by calling the <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A> method.      ## Applying a Jump List to the Windows Shell    You cannot access the shell’s Jump List directly or read its contents into the JumpList class. Instead, the JumpList class provides a representation of a Jump List that you can work with, and then apply to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell. You typically create a JumpList and set it one time when the application is first run. However, you can modify or replace the JumpList at run time.       When you have set the JumpList properties, you must apply the JumpList to the Windows shell before its contents appear in the taskbar Jump List. This is done automatically when the JumpList is first attached to an application, either in XAML or in a call to the <xref:System.Windows.Shell.JumpList.SetJumpList%2A> method. If you modify the contents of the JumpList at run time, you must call the <xref:System.Windows.Shell.JumpList.Apply%2A> method to apply its current contents to the Windows shell.      ## Setting a Jump List in XAML    A JumpList is not automatically attached to an <xref:System.Windows.Application> object. You attach a JumpList to an <xref:System.Windows.Application> object in XAML by using the attached property syntax. The JumpList class implements the <xref:System.ComponentModel.ISupportInitialize> interface to support XAML declaration of a JumpList. If the JumpList is declared in XAML and attached to the current <xref:System.Windows.Application>, it is automatically applied to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell when the JumpList is initialized.      ## Setting and Modifying a Jump List in Code    You attach a JumpList to an <xref:System.Windows.Application> object in code by calling the static <xref:System.Windows.Shell.JumpList.SetJumpList%2A> method. This also applies the JumpList to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell.       To modify a JumpList at run time, you call the <xref:System.Windows.Shell.JumpList.GetJumpList%2A> method to get the JumpList that is currently attached to an <xref:System.Windows.Application>. After you have modified the properties of the JumpList, you must call the <xref:System.Windows.Shell.JumpList.Apply%2A> method to apply the changes to the Windows shell.      > [!NOTE] >  You typically create one JumpList that is attached to the <xref:System.Windows.Application> and applied to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell. However, you can create multiple JumpList objects. Only one JumpList at a time can be applied to the [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] shell, and only one JumpList at a time can be associated with an <xref:System.Windows.Application>. The .NET Framework does not require that these be the same JumpList.      > [!NOTE] >  This class contains a link demand at the class level that applies to all members. A <xref:System.Security.SecurityException> is thrown when the immediate caller does not have full-trust permission. For more information about security demands, see [Link Demands](~/add/includes/ajax-current-ext-md.md) and [Inheritance Demands](http://msdn.microsoft.com/en-us/28b9adbb-8f08-4f10-b856-dbf59eb932d9)."
+  summary: "Az elemek és megjelenő menüként feladatok listáját jelöli egy [!INCLUDE[win7](~/add/includes/win7-md.md)] tálca gombra."
+  remarks: "A [!INCLUDE[win7](~/add/includes/win7-md.md)] tálca olyan programok közvetlenül a tálcán a Jump List fejlettebb funkciókat biztosít. A Jump List is használja a [!INCLUDE[win7](~/add/includes/win7-md.md)] Start menüből. Kattintson a jobb gombbal a tálcán található gomb vagy a program a Start menüben melletti nyílra kattintva elérheti Jump listáját. Jump List kapcsolatos további információkért tekintse meg a [tálca](http://go.microsoft.com/fwlink/?LinkId=178478) a Windows felhasználói élmény interakció kialakításához szakasza.       A JumpList osztály egy burkoló biztosít a lista Jump funkciói a [!INCLUDE[win7](~/add/includes/win7-md.md)] tálca és kezeli a átadott a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj. A funkció a JumpList osztály által elérhetővé tett verzióiban nem érhető el [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] korábbi, mint [!INCLUDE[win7](~/add/includes/win7-md.md)]. A JumpList osztályt használó alkalmazások fog futni, más verzióiban [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)], de a irányítják a lista nem lesz elérhető. A Windows felület és a natív Jump lista API-k kapcsolatos további információkért lásd: [tálca bővítmények](http://go.microsoft.com/fwlink/?LinkId=178479).       Az alábbi ábrán a Jump listáját a Windows Media Player, elemek a **feladatok** és **gyakori** kategóriák.       ![Windows Media Player Jump List](~/add/media/wpfshell-jumplist.png &quot;Windows Media Player Jump List&quot;) Windows Media Player Jump List ## kétféle típusú elemeket, egy <xref:System.Windows.Shell.JumpTask>és <xref:System.Windows.Shell.JumpPath>.</xref:System.Windows.Shell.JumpPath> </xref:System.Windows.Shell.JumpTask> tartalmazhat egy Jump Jump lista konfigurálása A <xref:System.Windows.Shell.JumpTask>egy hivatkozás található a program és a <xref:System.Windows.Shell.JumpPath>egy hivatkozást egy fájlba.</xref:System.Windows.Shell.JumpPath> </xref:System.Windows.Shell.JumpTask> Hozzon létre egy irányítják a listában lévő elemeket vizuálisan elkülönítheti a <xref:System.Windows.Shell.JumpTask>, amely nem rendelkezik egy <xref:System.Windows.Shell.JumpTask.Title%2A>és <xref:System.Windows.Shell.JumpItem.CustomCategory%2A>megadott.</xref:System.Windows.Shell.JumpItem.CustomCategory%2A> </xref:System.Windows.Shell.JumpTask.Title%2A> </xref:System.Windows.Shell.JumpTask> Az üres <xref:System.Windows.Shell.JumpTask>jelenik meg a irányítják a lista vízszintes vonal.</xref:System.Windows.Shell.JumpTask>      > [!NOTE] > Ha a fájl típus van megadva egy <xref:System.Windows.Shell.JumpPath>nincs regisztrálva az alkalmazás, a fájl nem jelenik meg a Jump List.</xref:System.Windows.Shell.JumpPath> Ha például egy <xref:System.Windows.Shell.JumpPath>egy .txt fájlt mutat, az alkalmazást regisztrálni kell a .txt fájlok kezelését.</xref:System.Windows.Shell.JumpPath> További információkért lásd: [fájltársítások bemutatása](http://go.microsoft.com/fwlink/?LinkId=178480).       Ugrás elemek bekerülnek a JumpList kategóriák. Alapértelmezés szerint egy <xref:System.Windows.Shell.JumpItem>jelenik meg a **feladatok** kategória.</xref:System.Windows.Shell.JumpItem> Azt is megteheti megadhat egy <xref:System.Windows.Shell.JumpItem.CustomCategory%2A> <xref:System.Windows.Shell.JumpItem>.</xref:System.Windows.Shell.JumpItem> </xref:System.Windows.Shell.JumpItem.CustomCategory%2A>       Adhat meg hogy a normál **Recent** és **gyakori** kategóriák jelennek meg a JumpList úgy, hogy a <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>és <xref:System.Windows.Shell.JumpList.ShowFrequentCategory%2A>Tulajdonságok.</xref:System.Windows.Shell.JumpList.ShowFrequentCategory%2A> </xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A> Ezen kategóriák tartalmát kezeli a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj. Ezen kategóriák előfordulhat, hogy tartalmaznak az adatokat, mert általában jelenítjük meg az egyiket a JumpList, de soha sem egyszerre mindkettőre. [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)]automatikusan kezeli a legutóbbi elemek, ha nyitják meg a közös párbeszédpanelt, vagy egy alkalmazást a fájltípustársítás megnyitásához használt. Egy elem a Jump List keresztül érhető el, amikor értesíti a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] az elem hozzáadása a rendszerhéj a **Recent** meghívásával kategória a <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A>metódus.</xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A>      ## Jump listáját alkalmazása a Windows felület, nem a rendszerhéj Jump List való közvetlen hozzáféréshez vagy tartalmának a JumpList osztályba. Ehelyett a JumpList osztály reprezentációja irányítják a lista a dolgozni, és ezután alkalmazza az [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj. Általában a JumpList létrehozása, majd állítsa be az alkalmazás első futtatásakor egy alkalommal. Azonban módosíthatja, vagy cserélje le a JumpList futási időben.       A JumpList tulajdonságainak beállításakor telepítenie kell a JumpList a Windows rendszerhéj előtt tartalmának megjelennek-e a tálcán irányítják a listában. Ez automatikusan történik, ha a JumpList először csatlakozik egy alkalmazást, az XAML-kódot vagy hívása a <xref:System.Windows.Shell.JumpList.SetJumpList%2A>metódus.</xref:System.Windows.Shell.JumpList.SetJumpList%2A> Ha futásidőben módosít a JumpList tartalmát, meg kell hívnia a <xref:System.Windows.Shell.JumpList.Apply%2A>metódus aktuális tartalma alkalmazása a Windows rendszerhéj.</xref:System.Windows.Shell.JumpList.Apply%2A>      ## Jump listáját beállítása az XAML-kódot A JumpList nem automatikusan csatolva van egy <xref:System.Windows.Application>objektum.</xref:System.Windows.Application> A JumpList való csatlakoztatása egy <xref:System.Windows.Application>objektumot XAML-kódban a csatolt tulajdonság szintaxissal.</xref:System.Windows.Application> A JumpList osztály megvalósítja a <xref:System.ComponentModel.ISupportInitialize>felülettel támogatva a JumpList XAML deklarációjában.</xref:System.ComponentModel.ISupportInitialize> Ha a JumpList XAML deklarálva van, és csatlakoztatta is azokat az aktuális <xref:System.Windows.Application>, automatikusan alkalmazva a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj a JumpList inicializálásakor.</xref:System.Windows.Application>      ## Beállítás és irányítják a listáját, amely akkor kód módosítása csatolja a JumpList való egy <xref:System.Windows.Application>a kódban a statikus meghívásával objektum <xref:System.Windows.Shell.JumpList.SetJumpList%2A>metódus.</xref:System.Windows.Shell.JumpList.SetJumpList%2A> </xref:System.Windows.Application> Ez vonatkozik a JumpList a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj.       A JumpList módosítása futás közben, akkor hívja meg a <xref:System.Windows.Shell.JumpList.GetJumpList%2A>metódus használatával kérje le a JumpList, amely jelenleg csatlakoztatva van egy <xref:System.Windows.Application>.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList.GetJumpList%2A> A JumpList tulajdonságainak módosítása után meg kell hívnia a <xref:System.Windows.Shell.JumpList.Apply%2A>módszer a Windows rendszerhéj a módosítások alkalmazásához.</xref:System.Windows.Shell.JumpList.Apply%2A>      > [!NOTE] > Általában létrehozása, amely csatolva van egy JumpList a <xref:System.Windows.Application>és alkalmazza a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] rendszerhéj.</xref:System.Windows.Application> Több JumpList objektumot is létrehozhat. Egyszerre csak egy JumpList alkalmazhatja a [!INCLUDE[TLA#tla_mswin](~/add/includes/tlasharptla-mswin-md.md)] héjas, és csak egy JumpList egyszerre társítható egy <xref:System.Windows.Application>.</xref:System.Windows.Application> A .NET-keretrendszer nem követelmény, hogy ezek a azonos JumpList.      > [!NOTE] > Ez az osztály tartalmaz egy hivatkozást igény szerint az összes tagjára érvényes osztály szintjén. A <xref:System.Security.SecurityException>fordul elő, amikor a közvetlen hívónak nincs engedélye teljesen megbízható.</xref:System.Security.SecurityException> Biztonsági követelményeivel kapcsolatos további információkért lásd: [hivatkozás iránti igények kielégítése érdekében](~/add/includes/ajax-current-ext-md.md) és [öröklési iránti igények kielégítése érdekében](http://msdn.microsoft.com/en-us/28b9adbb-8f08-4f10-b856-dbf59eb932d9)."
   example:
   - "The following example shows an application with a Jump List. The application has three buttons that enable you to add a task to the current Jump List, clear the contents of the Jump List, and apply a new Jump List to the application.  \n  \n The following example shows how to declare a JumpList in markup. The JumpList contains two <xref:System.Windows.Shell.JumpTask> links and one <xref:System.Windows.Shell.JumpPath>. Applying the <xref:System.Windows.Shell.JumpPath> to the shell will fail if the application is not registered to handle the .txt file name extension.  \n  \n [!code-xml[Shell_JumpListSample#000](~/add/codesnippet/xaml/jumplistsample/app.xaml#000)]  \n  \n The following example shows the code-behind page for `App.xaml`. This code handles the <xref:System.Windows.Shell.JumpList.JumpItemsRejected> and <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> events.  \n  \n [!code-cs[Shell_JumpListSample#100](~/add/codesnippet/csharp/jumplistsample/app.xaml.cs#100)]  \n  \n The following example shows the markup used to create the application user interface.  \n  \n [!code-xml[Shell_JumpListSample#300](~/add/codesnippet/xaml/jumplistsample/mainwindow.xaml#300)]  \n  \n The following example shows the code-behind page for `MainWindow.xaml`. This code demonstrates how to modify, clear, and create a JumpList in procedural code. For the new Jump List, the static <xref:System.Windows.Shell.JumpList.SetJumpList%2A> method is called to associate the JumpList with the current application and apply the JumpList to the Windows shell.  \n  \n [!code-cs[Shell_JumpListSample#200](~/add/codesnippet/csharp/jumplistsample/mainwindow.xaml.cs#200)]"
   syntax:
@@ -54,7 +54,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> osztály."
   syntax:
     content: public JumpList ();
     parameters: []
@@ -74,20 +74,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> class with the specified parameters."
-  remarks: "The **Recent** and **Frequent** categories often contain many of the same jump items. As a result, applications typically display either the **Recent** or the **Frequent** category in the Jump List, but not both."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> osztály a megadott paraméterekkel."
+  remarks: "A **Recent** és **gyakori** kategóriák azonos jump elemek gyakran tartalmaznak. Ennek eredményeképpen alkalmazások általában megjelenítéséhez vagy a **Recent** vagy a **gyakori** kategória a irányítják a listában, de soha sem egyszerre mindkettőre."
   syntax:
     content: public JumpList (System.Collections.Generic.IEnumerable<System.Windows.Shell.JumpItem> items, bool showFrequent, bool showRecent);
     parameters:
     - id: items
       type: System.Collections.Generic.IEnumerable{System.Windows.Shell.JumpItem}
-      description: "The collection of <xref href=&quot;System.Windows.Shell.JumpItem&quot;></xref> objects that are displayed in the Jump List."
+      description: "A gyűjtemény <xref href=&quot;System.Windows.Shell.JumpItem&quot;> </xref> a irányítják a listában megjelenített objektumok."
     - id: showFrequent
       type: System.Boolean
-      description: "A value that indicates whether frequently used items are displayed in the Jump List."
+      description: "Egy érték, amely azt jelzi, hogy gyakran használt elemek jelennek meg a irányítják a listában."
     - id: showRecent
       type: System.Boolean
-      description: "A value that indicates whether recently used items are displayed in the Jump List."
+      description: "Egy érték, amely azt jelzi, hogy használt elemek jelennek meg a irányítják a listában."
   overload: System.Windows.Shell.JumpList.#ctor*
   exceptions: []
   platform:
@@ -104,14 +104,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Adds the specified item path to the **Recent** category of the Jump List."
-  remarks: "The contents of the **Recent** category are managed by the Windows shell. To display recently used items in the Jump List, set the <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A> property to `true`.       You can call the AddToRecentCategory method to request that the Windows shell add an item path to the **Recent** items list. If your application is not registered to handle the file type of the item, it will not appear in the **Recent** list and calls to AddToRecentCategory will fail silently."
+  summary: "Hozzáadja a megadott elem elérési útját a **Recent** szereplő Jump lista."
+  remarks: "A tartalmát a **Recent** kategória kezeli a Windows felület. A irányítják a listán megjelenítendő használt elemek, állítsa be a <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>tulajdonságot `true`.</xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>       Kérje, hogy a Windows rendszerhéj adja hozzá az elem elérési útját, hogy a AddToRecentCategory metódus hívása a **Recent** elemek listára. Ha az alkalmazás nincs regisztrálva a fájl típusa, az elem kezelésére, akkor nem jelenik a **Recent** lista és a AddToRecentCategory csendes sikertelen lesz."
   syntax:
     content: public static void AddToRecentCategory (string itemPath);
     parameters:
     - id: itemPath
       type: System.String
-      description: "The path to add to the Jump List."
+      description: "Az elérési út a irányítják a listához adni."
   overload: System.Windows.Shell.JumpList.AddToRecentCategory*
   exceptions: []
   platform:
@@ -128,14 +128,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Adds the specified jump path to the **Recent** category of the Jump List."
-  remarks: "The contents of the **Recent** category are managed by the Windows shell. To display recently used items in the Jump List, set the <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A> property to `true`.       You can call the AddToRecentCategory method to request that the Windows shell add the specified jump path to the **Recent** items list. If your application is not registered to handle the file type of the item, it will not appear in the **Recent** list and calls to AddToRecentCategory will fail silently."
+  summary: "Hozzáadja a megadott jump elérési útját a **Recent** szereplő Jump lista."
+  remarks: "A tartalmát a **Recent** kategória kezeli a Windows felület. A irányítják a listán megjelenítendő használt elemek, állítsa be a <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>tulajdonságot `true`.</xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>       Kérje meg, hogy a Windows rendszerhéj adja hozzá a megadott jump elérési útját a AddToRecentCategory metódus hívása a **Recent** elemek listára. Ha az alkalmazás nincs regisztrálva a fájl típusa, az elem kezelésére, akkor nem jelenik a **Recent** lista és a AddToRecentCategory csendes sikertelen lesz."
   syntax:
     content: public static void AddToRecentCategory (System.Windows.Shell.JumpPath jumpPath);
     parameters:
     - id: jumpPath
       type: System.Windows.Shell.JumpPath
-      description: "The <xref href=&quot;System.Windows.Shell.JumpPath&quot;></xref> to add to the Jump List."
+      description: "A <xref href=&quot;System.Windows.Shell.JumpPath&quot;> </xref> a irányítják a listához adni."
   overload: System.Windows.Shell.JumpList.AddToRecentCategory*
   exceptions: []
   platform:
@@ -152,14 +152,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Adds the specified jump task to the **Recent** category of the Jump List."
-  remarks: "The contents of the **Recent** category are managed by the Windows shell. To display recently used items in the Jump List, set the <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A> property to `true`.       You can call the AddToRecentCategory method to request that the Windows shell add the specified jump task to the **Recent** items list."
+  summary: "Hozzáadja a megadott jump feladatot a **Recent** szereplő Jump lista."
+  remarks: "A tartalmát a **Recent** kategória kezeli a Windows felület. A irányítják a listán megjelenítendő használt elemek, állítsa be a <xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>tulajdonságot `true`.</xref:System.Windows.Shell.JumpList.ShowRecentCategory%2A>       A kéréséhez, hogy a Windows rendszerhéj adja hozzá a megadott jump feladat AddToRecentCategory metódus hívása a **Recent** elemek listára."
   syntax:
     content: public static void AddToRecentCategory (System.Windows.Shell.JumpTask jumpTask);
     parameters:
     - id: jumpTask
       type: System.Windows.Shell.JumpTask
-      description: "The <xref href=&quot;System.Windows.Shell.JumpTask&quot;></xref> to add to the Jump List."
+      description: "A <xref href=&quot;System.Windows.Shell.JumpTask&quot;> </xref> a irányítják a listához adni."
   overload: System.Windows.Shell.JumpList.AddToRecentCategory*
   exceptions: []
   platform:
@@ -176,8 +176,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Sends the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> to the Windows shell in its current state."
-  remarks: "The Apply method sends the content of the <xref:System.Windows.Shell.JumpList> to the Windows shell in its current state. After this call is complete, the <xref:System.Windows.Shell.JumpList.JumpItems%2A> property is modified to contain only those items that the Windows shell successfully added to its taskbar Jump List. You can access the lists of removed items through event handlers for the <xref:System.Windows.Shell.JumpList.JumpItemsRejected> and <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> events."
+  summary: "Elküldi a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> a Windows rendszerhéj a jelenlegi állapotában."
+  remarks: "Az alkalmazás metódus küldi el a tartalmat, az a <xref:System.Windows.Shell.JumpList>jelenlegi állapotában a Windows rendszerhéj.</xref:System.Windows.Shell.JumpList> Ez a hívás befejezése után, a <xref:System.Windows.Shell.JumpList.JumpItems%2A>tulajdonság úgy módosul, hogy csak a Windows rendszerhéj sikeresen hozzáadta a tálca irányítják a lista elemei.</xref:System.Windows.Shell.JumpList.JumpItems%2A> Az eltávolított elemekkel listája eseménykezelőinek érheti el a <xref:System.Windows.Shell.JumpList.JumpItemsRejected>és <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser>események.</xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> </xref:System.Windows.Shell.JumpList.JumpItemsRejected>"
   example:
   - "The following example shows how to get the current <xref:System.Windows.Shell.JumpList> and clear the contents of the <xref:System.Windows.Shell.JumpList.JumpItems%2A> collection. The Apply method is then called to apply the <xref:System.Windows.Shell.JumpList> changes to the Windows shell. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#230](~/add/codesnippet/csharp/jumplistsample/mainwindow.xaml.cs#230)]"
   syntax:
@@ -187,7 +187,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> is not completely initialized."
+    description: "A <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> nincs teljesen inicializálva."
   platform:
   - net462
 - uid: System.Windows.Shell.JumpList.BeginInit
@@ -202,8 +202,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Signals the start of the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> initialization."
-  remarks: "The <xref:System.Windows.Shell.JumpList> class implements the <xref:System.ComponentModel.ISupportInitialize> interface to support XAML declaration of a <xref:System.Windows.Shell.JumpList>. The BeginInit method is only called when the <xref:System.Windows.Shell.JumpList> is declared in XAML and attached to an <xref:System.Windows.Application> by using the attached property syntax. You do not call this method from your code."
+  summary: "Jelzi a a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> inicializálása."
+  remarks: "Az <xref:System.Windows.Shell.JumpList>osztály megvalósítja az <xref:System.ComponentModel.ISupportInitialize>XAML-deklaráció <xref:System.Windows.Shell.JumpList>.</xref:System.Windows.Shell.JumpList> támogatásához felület</xref:System.ComponentModel.ISupportInitialize> </xref:System.Windows.Shell.JumpList> A BeginInit metódus csak nevezik mikor a <xref:System.Windows.Shell.JumpList>XAML deklarálva, és csatlakozik egy <xref:System.Windows.Application>a csatolt tulajdonság szintaxissal.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList> Ez a metódus nem hívható, a felhasználói kódból."
   syntax:
     content: public void BeginInit ();
     parameters: []
@@ -211,7 +211,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This call to BeginInit is nested in a previous call to BeginInit."
+    description: "A BeginInit hívás egy korábbi hívás a BeginInit van beágyazva."
   platform:
   - net462
 - uid: System.Windows.Shell.JumpList.EndInit
@@ -226,8 +226,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Signals the end of the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> initialization."
-  remarks: "The <xref:System.Windows.Shell.JumpList> class implements the <xref:System.ComponentModel.ISupportInitialize> interface to support XAML declaration of a <xref:System.Windows.Shell.JumpList>. The EndInit method is only called when the <xref:System.Windows.Shell.JumpList> is declared in XAML and attached to an <xref:System.Windows.Application> by using the attached property syntax. You do not call this method from your code.       The EndInit method has the same effect as the <xref:System.Windows.Shell.JumpList.Apply%2A> method. EndInit sends the content of the <xref:System.Windows.Shell.JumpList> to the Windows shell in its current state. After this call is complete, the <xref:System.Windows.Shell.JumpList.JumpItems%2A> property is modified to contain only those items that the Windows shell successfully added to its Jump List. You can access the lists of removed items through event handlers for the <xref:System.Windows.Shell.JumpList.JumpItemsRejected> and <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> events."
+  summary: "Vége jelet a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> inicializálása."
+  remarks: "Az <xref:System.Windows.Shell.JumpList>osztály megvalósítja az <xref:System.ComponentModel.ISupportInitialize>XAML-deklaráció <xref:System.Windows.Shell.JumpList>.</xref:System.Windows.Shell.JumpList> támogatásához felület</xref:System.ComponentModel.ISupportInitialize> </xref:System.Windows.Shell.JumpList> Az EndInit metódust csak nevezik mikor a <xref:System.Windows.Shell.JumpList>XAML deklarálva, és csatlakozik egy <xref:System.Windows.Application>a csatolt tulajdonság szintaxissal.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList> Ez a metódus nem hívható, a felhasználói kódból.       Az EndInit metódust esetében ugyanaz az eredmény, mint a <xref:System.Windows.Shell.JumpList.Apply%2A>metódus.</xref:System.Windows.Shell.JumpList.Apply%2A> Az EndInit elküldi a tartalmát a <xref:System.Windows.Shell.JumpList>jelenlegi állapotában a Windows rendszerhéj.</xref:System.Windows.Shell.JumpList> Ez a hívás befejezése után, a <xref:System.Windows.Shell.JumpList.JumpItems%2A>tulajdonság úgy módosul, hogy csak a Windows rendszerhéj sikeresen hozzáadta a irányítják a lista elemei.</xref:System.Windows.Shell.JumpList.JumpItems%2A> Az eltávolított elemekkel listája eseménykezelőinek érheti el a <xref:System.Windows.Shell.JumpList.JumpItemsRejected>és <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser>események.</xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> </xref:System.Windows.Shell.JumpList.JumpItemsRejected>"
   syntax:
     content: public void EndInit ();
     parameters: []
@@ -235,7 +235,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This call to EndInit is not paired with a call to <xref:System.Windows.Shell.JumpList.BeginInit*>."
+    description: "Az EndInit hívása nem megfeleltetni <xref:System.Windows.Shell.JumpList.BeginInit*>.</xref:System.Windows.Shell.JumpList.BeginInit*> hívása"
   platform:
   - net462
 - uid: System.Windows.Shell.JumpList.GetJumpList(System.Windows.Application)
@@ -250,8 +250,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Returns the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> object associated with an application."
-  remarks: "You can call the GetJumpList method to get the <xref:System.Windows.Shell.JumpList> currently associated with an <xref:System.Windows.Application>. The .NET Framework does not require that this be the <xref:System.Windows.Shell.JumpList> that is currently applied to the Windows shell."
+  summary: "Vissza a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> alkalmazás rendelt objektumot."
+  remarks: "A GetJumpList módszer segítségével <xref:System.Windows.Shell.JumpList>jelenleg társított <xref:System.Windows.Application>.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList> hívása A .NET-keretrendszer nem követelmény, hogy ez a <xref:System.Windows.Shell.JumpList>, amely érvényben van a Windows rendszerhéj.</xref:System.Windows.Shell.JumpList>"
   example:
   - "The following example shows how to get the <xref:System.Windows.Shell.JumpList> associated with the current application. A <xref:System.Windows.Shell.JumpTask> is added to the <xref:System.Windows.Shell.JumpList.JumpItems%2A> collection and added to the **Recent** category. The <xref:System.Windows.Shell.JumpList.Apply%2A> method is called to apply the updated <xref:System.Windows.Shell.JumpList> to the Windows shell. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#240](~/add/codesnippet/csharp/jumplistsample/mainwindow.xaml.cs#240)]"
   syntax:
@@ -259,10 +259,10 @@ items:
     parameters:
     - id: application
       type: System.Windows.Application
-      description: "The application associated with the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref>."
+      description: "A társított alkalmazás a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref>."
     return:
       type: System.Windows.Shell.JumpList
-      description: "The <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> object associated with the specified application."
+      description: "A <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> az adott alkalmazáshoz kapcsolódó objektumot."
   overload: System.Windows.Shell.JumpList.GetJumpList*
   exceptions: []
   platform:
@@ -279,15 +279,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets the collection of <xref href=&quot;System.Windows.Shell.JumpItem&quot;></xref> objects that are displayed in the Jump List."
-  remarks: "Jump Lists can contain two types of items, a <xref:System.Windows.Shell.JumpTask> and a <xref:System.Windows.Shell.JumpPath>. A <xref:System.Windows.Shell.JumpTask> is a link to a program and a <xref:System.Windows.Shell.JumpPath> is a link to a file.       When a <xref:System.Windows.Shell.JumpList> is created, the JumpItems collection is empty. You can add any <xref:System.Windows.Shell.JumpTask> or <xref:System.Windows.Shell.JumpPath> objects to the collection. The collection will only contain items that have been added by your program. After the <xref:System.Windows.Shell.JumpList> has been passed to the Windows shell by a successful call to either the <xref:System.Windows.Shell.JumpList.EndInit%2A> or <xref:System.Windows.Shell.JumpList.Apply%2A> methods, the JumpItems collection will contain only the items that were successfully added to the taskbar Jump List. Items that were not successfully added are removed from the JumpItems collection. You can access the lists of removed items through event handlers for the <xref:System.Windows.Shell.JumpList.JumpItemsRejected> and <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> events."
+  summary: "Lekérdezi a gyűjteménye <xref href=&quot;System.Windows.Shell.JumpItem&quot;> </xref> a irányítják a listában megjelenített objektumok."
+  remarks: "Ugrás listák tartalmazhatnak kétféle típusú elemeket, egy <xref:System.Windows.Shell.JumpTask>és <xref:System.Windows.Shell.JumpPath>.</xref:System.Windows.Shell.JumpPath> </xref:System.Windows.Shell.JumpTask> A <xref:System.Windows.Shell.JumpTask>egy hivatkozás található a program és a <xref:System.Windows.Shell.JumpPath>egy hivatkozást egy fájlba.</xref:System.Windows.Shell.JumpPath> </xref:System.Windows.Shell.JumpTask>       Ha egy <xref:System.Windows.Shell.JumpList>jön létre, a JumpItems gyűjteménye üres.</xref:System.Windows.Shell.JumpList> Bármelyik felvehető <xref:System.Windows.Shell.JumpTask>vagy <xref:System.Windows.Shell.JumpPath>objektumok a gyűjteményhez.</xref:System.Windows.Shell.JumpPath> </xref:System.Windows.Shell.JumpTask> A gyűjtemény csak az elemek, a program által hozzáadott fogja tartalmazni. Után a <xref:System.Windows.Shell.JumpList>vagy sikeres hívásával adtak át a Windows rendszerhéj a <xref:System.Windows.Shell.JumpList.EndInit%2A>vagy <xref:System.Windows.Shell.JumpList.Apply%2A>módszerek, a JumpItems gyűjtemény elemet tartalmaz, csak a, amely a tálca Jump List kerültek.</xref:System.Windows.Shell.JumpList.Apply%2A> </xref:System.Windows.Shell.JumpList.EndInit%2A> </xref:System.Windows.Shell.JumpList> Nem sikerült hozzáadni elemekre a JumpItems gyűjtemény törlődnek. Az eltávolított elemekkel listája eseménykezelőinek érheti el a <xref:System.Windows.Shell.JumpList.JumpItemsRejected>és <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser>események.</xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> </xref:System.Windows.Shell.JumpList.JumpItemsRejected>"
   example:
   - "The following example shows how to get the current <xref:System.Windows.Shell.JumpList> and clear the contents of the JumpItems collection. The <xref:System.Windows.Shell.JumpList.Apply%2A> method is then called to apply the <xref:System.Windows.Shell.JumpList> changes to the Windows shell. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#230](~/add/codesnippet/csharp/jumplistsample/mainwindow.xaml.cs#230)]"
   syntax:
     content: public System.Collections.Generic.List<System.Windows.Shell.JumpItem> JumpItems { get; }
     return:
       type: System.Collections.Generic.List{System.Windows.Shell.JumpItem}
-      description: "The collection of <xref href=&quot;System.Windows.Shell.JumpItem&quot;></xref> objects displayed in the Jump List. The default is an empty collection."
+      description: "A gyűjtemény <xref href=&quot;System.Windows.Shell.JumpItem&quot;> </xref> a irányítják a listán megjelenített objektumok. Az alapértelmezett érték egy üres gyűjteményt."
   overload: System.Windows.Shell.JumpList.JumpItems*
   exceptions: []
   platform:
@@ -304,15 +304,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Occurs when jump items are not successfully added to the Jump List by the Windows shell."
-  remarks: "After the contents of the <xref:System.Windows.Shell.JumpList> are applied to the Windows shell, the <xref:System.Windows.Shell.JumpList.JumpItems%2A> property is modified to contain only those items that the Windows shell successfully added to its Jump List. You can access the lists of removed items through event handlers for the JumpItemsRejected and <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser> events."
+  summary: "Ugrás nem sikeresen elemekre Jump listájához a Windows rendszerhéj következik be."
+  remarks: "Után a tartalmát a <xref:System.Windows.Shell.JumpList>Windows rendszerhéj alkalmazott a <xref:System.Windows.Shell.JumpList.JumpItems%2A>tulajdonság úgy módosul, hogy csak a Windows rendszerhéj sikeresen hozzáadta a irányítják a lista elemei.</xref:System.Windows.Shell.JumpList.JumpItems%2A> </xref:System.Windows.Shell.JumpList> Érheti el az eltávolított elemekkel listája eseménykezelők a a JumpItemsRejected és <xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser>események.</xref:System.Windows.Shell.JumpList.JumpItemsRemovedByUser>"
   example:
   - "The following example shows how to handle the JumpItemsRejected event to display the rejected items in a message box. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#110](~/add/codesnippet/csharp/jumplistsample/app.xaml.cs#110)]"
   syntax:
     content: public event EventHandler<System.Windows.Shell.JumpItemsRejectedEventArgs> JumpItemsRejected;
     return:
       type: System.EventHandler{System.Windows.Shell.JumpItemsRejectedEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -328,15 +328,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Occurs when jump items previously in the Jump List are removed from the list by the user."
-  remarks: "After the contents of the <xref:System.Windows.Shell.JumpList> are applied to the Windows shell, the <xref:System.Windows.Shell.JumpList.JumpItems%2A> property is modified to contain only those items that the Windows shell successfully added to its Jump List. You can access the lists of removed items through event handlers for the <xref:System.Windows.Shell.JumpList.JumpItemsRejected> and JumpItemsRemovedByUser events."
+  summary: "Akkor következik be, ha korábban a a irányítják a lista elemeinek jump eltávolítja a listáról a felhasználó által."
+  remarks: "Után a tartalmát a <xref:System.Windows.Shell.JumpList>Windows rendszerhéj alkalmazott a <xref:System.Windows.Shell.JumpList.JumpItems%2A>tulajdonság úgy módosul, hogy csak a Windows rendszerhéj sikeresen hozzáadta a irányítják a lista elemei.</xref:System.Windows.Shell.JumpList.JumpItems%2A> </xref:System.Windows.Shell.JumpList> Az eltávolított elemekkel listája eseménykezelőinek érheti el a <xref:System.Windows.Shell.JumpList.JumpItemsRejected>és JumpItemsRemovedByUser események.</xref:System.Windows.Shell.JumpList.JumpItemsRejected>"
   example:
   - "The following example shows how to handle the JumpItemsRemovedByUser event to display the rejected items in a message box. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#120](~/add/codesnippet/csharp/jumplistsample/app.xaml.cs#120)]"
   syntax:
     content: public event EventHandler<System.Windows.Shell.JumpItemsRemovedEventArgs> JumpItemsRemovedByUser;
     return:
       type: System.EventHandler{System.Windows.Shell.JumpItemsRemovedEventArgs}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -352,8 +352,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Sets the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> object associated with an application."
-  remarks: "You can create multiple <xref:System.Windows.Shell.JumpList> objects. However, only one <xref:System.Windows.Shell.JumpList> at a time can be associated with an <xref:System.Windows.Application>. Call the SetJumpList method to set the <xref:System.Windows.Shell.JumpList> currently associated with an <xref:System.Windows.Application>."
+  summary: "Beállítja a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> alkalmazás rendelt objektumot."
+  remarks: "Létrehozhat több <xref:System.Windows.Shell.JumpList>objektumok.</xref:System.Windows.Shell.JumpList> Azonban csak egy <xref:System.Windows.Shell.JumpList>egyszerre társítható egy <xref:System.Windows.Application>.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList> A <xref:System.Windows.Shell.JumpList>jelenleg társított <xref:System.Windows.Application>.</xref:System.Windows.Application> </xref:System.Windows.Shell.JumpList> beállítása a SetJumpList metódus hívása"
   example:
   - "The following example shows how to create a <xref:System.Windows.Shell.JumpList> in code. The static SetJumpList method is called to associate the <xref:System.Windows.Shell.JumpList> with the current application. The <xref:System.Windows.Shell.JumpList> is automatically applied to the Windows shell when it is set. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-cs[Shell_JumpListSample#210](~/add/codesnippet/csharp/jumplistsample/mainwindow.xaml.cs#210)]"
   syntax:
@@ -361,10 +361,10 @@ items:
     parameters:
     - id: application
       type: System.Windows.Application
-      description: "The application associated with the <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref>."
+      description: "A társított alkalmazás a <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref>."
     - id: value
       type: System.Windows.Shell.JumpList
-      description: "The <xref href=&quot;System.Windows.Shell.JumpList&quot;></xref> to associate with the application."
+      description: "A <xref href=&quot;System.Windows.Shell.JumpList&quot;> </xref> az alkalmazáshoz hozzárendelni."
   overload: System.Windows.Shell.JumpList.SetJumpList*
   exceptions: []
   platform:
@@ -381,15 +381,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates whether frequently used items are displayed in the Jump List."
-  remarks: "The contents of the **Frequent** category are managed by the Windows shell. To display frequently used items in the Jump List, set the ShowFrequentCategory property to `true`.       The **Recent** and **Frequent** categories often contain many of the same jump items. As a result, applications typically display either the **Recent** or the **Frequent** category in the Jump List, but not both."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy a Jump List megjelenjenek-e a gyakran használt elemek."
+  remarks: "A tartalmát a **gyakori** kategória kezeli a Windows felület. A Jump List gyakran használt elemek megjelenítéséhez a tulajdonsága ShowFrequentCategory `true`.       A **Recent** és **gyakori** kategóriák azonos jump elemek gyakran tartalmaznak. Ennek eredményeképpen alkalmazások általában megjelenítéséhez vagy a **Recent** vagy a **gyakori** kategória a irányítják a listában, de soha sem egyszerre mindkettőre."
   example:
   - "The following example shows a <xref:System.Windows.Shell.JumpList> configured to show the **Frequent** category. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-xml[Shell_JumpListSample#001](~/add/codesnippet/xaml/jumplistsample/app.xaml#001)]"
   syntax:
     content: public bool ShowFrequentCategory { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if frequently used items are displayed in the Jump List; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a gyakran használt elemek jelennek meg a Jump List; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Shell.JumpList.ShowFrequentCategory*
   exceptions: []
   platform:
@@ -406,15 +406,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Shell
-  summary: "Gets or sets a value that indicates whether recently used items are displayed in the Jump List."
-  remarks: "The contents of the **Recent** category are managed by the Windows shell. To display frequently used items in the Jump List, set the ShowRecentCategory property to `true`.       The **Recent** and **Frequent** categories often contain many of the same jump items. As a result, applications typically display either the **Recent** or the **Frequent** category in the Jump List, but not both.       You can call the <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A> method to request that the Windows shell add items to the **Recent** items list. If your application is not registered to handle the file name type of the item, it will not appear in the **Recent** list and calls to <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A> will fail silently."
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy használt elemek jelennek meg a irányítják a listában."
+  remarks: "A tartalmát a **Recent** kategória kezeli a Windows felület. A Jump List gyakran használt elemek megjelenítéséhez a tulajdonsága ShowRecentCategory `true`.       A **Recent** és **gyakori** kategóriák azonos jump elemek gyakran tartalmaznak. Ennek eredményeképpen alkalmazások általában megjelenítéséhez vagy a **Recent** vagy a **gyakori** kategória a irányítják a listában, de soha sem egyszerre mindkettőre.       Hívása a <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A>metódus kéréséhez, hogy a Windows rendszerhéj elemek vehetők fel a **Recent** elemek listára.</xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A> Ha az alkalmazás kezelni a fájl nevét az elem nincs regisztrálva, már nem jelenik a a **Recent** lista és a <xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A>Csendes sikertelen lesz.</xref:System.Windows.Shell.JumpList.AddToRecentCategory%2A>"
   example:
   - "The following example shows a <xref:System.Windows.Shell.JumpList> configured to show the **Recent** category. This example is part of a larger example available in the <xref:System.Windows.Shell.JumpList> class overview.  \n  \n [!code-xml[Shell_JumpListSample#001](~/add/codesnippet/xaml/jumplistsample/app.xaml#001)]"
   syntax:
     content: public bool ShowRecentCategory { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if recently used items are displayed in the Jump List; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha használt elemek jelennek meg a Jump List; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Shell.JumpList.ShowRecentCategory*
   exceptions: []
   platform:

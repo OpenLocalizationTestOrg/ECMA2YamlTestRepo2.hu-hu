@@ -17,8 +17,8 @@ items:
   nameWithType: SeekableXPathNavigator
   fullName: System.ServiceModel.Dispatcher.SeekableXPathNavigator
   type: Class
-  summary: "Provides read-only, random access to data contained in XML documents and enables efficient querying for specified nodes."
-  remarks: "The SOAP messages passed between parts of the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] system are handled by various components of the system that must inspect these messages to determine what actions to take in processing them. The XPath engine is a component that queries messages for this purpose and it requires a navigator to read SOAP messages and other XML documents. A navigator provides a cursor that moves from node to node tracking where the XML document is actually being read.       The XPath engine works with a SeekableXPathNavigator, which extends the <xref:System.Xml.XPath.XPathNavigator> class by adding a <xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A> property. This property allows positions within the XML document to be saved and loaded quickly without having to clone the navigator, an expensive memory allocation that the <xref:System.Xml.XPath.XPathNavigator> requires for such an operation. The XPath engine must frequently record the position of the cursor in the course of executing queries on XML documents, so the SeekableXPathNavigator provides an important optimization for message processing.       Note that the value of the <xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A> property is implementation-specific and may not map to node position or character position. Its value is only meaningful to the SeekableXPathNavigator implementation (and instance) that supplied it."
+  summary: "XML-dokumentumok szereplő adatok csak olvasható, véletlenszerű hozzáférést biztosít, és lehetővé teszi, hogy a megadott csomópontok hatékony lekérdezése."
+  remarks: "A SOAP-üzenetekkel átadott részei között a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] rendszer különböző összetevői meg kell vizsgálnia az e-üzenetek alapján megállapíthatják milyen műveleteket kell elvégezni őket a rendszer kezeli. Az XPath-motor nem egy összetevő, amely üzeneteket erre a célra, és szükség van egy navigator SOAP-üzenetekkel és egyéb XML-dokumentumok olvasását. A Navigátor biztosít, amely áthelyezi a csomópontok nyomon követése, ahol az XML-dokumentum ténylegesen olvasása kurzor.       Az XPath-motor működik együtt SeekableXPathNavigator, amely kiterjeszti a <xref:System.Xml.XPath.XPathNavigator>osztály hozzáadásával egy <xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A>tulajdonság.</xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A> </xref:System.Xml.XPath.XPathNavigator> Ez a tulajdonság lehetővé teszi, hogy az XML-dokumentum mentése és betöltése gyorsan anélkül, hogy a Navigátor, az költséges memóriafoglalás klónozását belül, amely a <xref:System.Xml.XPath.XPathNavigator>ilyen művelet megköveteli.</xref:System.Xml.XPath.XPathNavigator> Az XPath-motor gyakran kell rögzítenie lekérdezések végrehajtása az XML-dokumentumok, így a SeekableXPathNavigator biztosít egy fontos optimalizálási lehetőséget jelent az üzenet feldolgozása során a kurzor pozíciója.       Vegye figyelembe, hogy az értékét a <xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A>tulajdonság függő, és nem feltétlenül csomópont pozícióját vagy Karakterpozíció.</xref:System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition%2A> Értéke csak jelentéssel bíró SeekableXPathNavigator végrehajtásával (és példány), amely megadja azt."
   syntax:
     content: 'public abstract class SeekableXPathNavigator : System.Xml.XPath.XPathNavigator'
   inheritance:
@@ -158,7 +158,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.SeekableXPathNavigator&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Dispatcher.SeekableXPathNavigator&quot;> </xref> osztály."
   syntax:
     content: protected SeekableXPathNavigator ();
     parameters: []
@@ -178,24 +178,24 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns a value that describes the document order of the two specified positions."
+  summary: "Felülbírálja a származtatott osztály, ha a két megadott pozíciók dokumentum sorrendjét meghatározó érték beolvasása."
   syntax:
     content: public abstract System.Xml.XmlNodeOrder ComparePosition (long firstPosition, long secondPosition);
     parameters:
     - id: firstPosition
       type: System.Int64
-      description: "The first position in the comparison."
+      description: "Az összehasonlítás első helyére."
     - id: secondPosition
       type: System.Int64
-      description: "The second position in the comparison."
+      description: "Az összehasonlítás második pozíciója."
     return:
       type: System.Xml.XmlNodeOrder
-      description: "One of the <xref href=&quot;System.Xml.XmlNodeOrder&quot;></xref> values that describes the relation of <code>firstPosition</code> to <code>secondPosition</code> in the document."
+      description: "Egy a <xref href=&quot;System.Xml.XmlNodeOrder&quot;> </xref> fűződő leíró értékek <code> firstPosition </code> való <code> secondPosition </code> a dokumentumban."
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.ComparePosition*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>firstPosition</code> or <code>secondPosition</code> is not valid."
+    description: "<code>firstPosition</code>vagy <code>secondPosition</code> érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition
@@ -210,13 +210,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, gets or sets a value associated with the node in the data where the XPath navigator is positioned."
-  remarks: "The `set` operation moves the navigator to the position associated with the value specified. The `get` operation returns a value associated with the current position of the navigator."
+  summary: "Felülbírálja a származtatott osztály, amikor lekérdezi vagy beállítja a társított adatokat a csomópontot hol helyezkedik el a XPath Navigátor."
+  remarks: "A `set` művelet a Navigátor társított megadott helyre kerül. A `get` művelet a navigátor aktuális pozíciója társított értéket ad vissza."
   syntax:
     content: public abstract long CurrentPosition { get; set; }
     return:
       type: System.Int64
-      description: "A value that is associated with the navigator’s current position."
+      description: "A navigátor aktuális pozíciója társított érték."
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.CurrentPosition*
   exceptions: []
   platform:
@@ -233,21 +233,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns the local name of the node at the position specified."
+  summary: "Felülbírálja a származtatott osztály, ha a megadott pozíciónál csomópont helyi nevét adja vissza."
   syntax:
     content: public abstract string GetLocalName (long nodePosition);
     parameters:
     - id: nodePosition
       type: System.Int64
-      description: "The position of the node whose local name is being retrieved."
+      description: "Helyi névvel lekérése folyamatban van a csomópont pozíciója."
     return:
       type: System.String
-      description: "The local name of the node at the specified position. <xref:System.String> is returned if the node does not have a local name, for example if the current position references a text node."
+      description: "A megadott pozíciónál található csomópont helyi neve. <xref:System.String>eredményül, ha a csomópont nem rendelkezik olyan helyi névvel, például ha az aktuális pozíció hivatkozik egy szöveges csomópontnak.</xref:System.String>"
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetLocalName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>nodePosition</code> is invalid."
+    description: "<code>nodePosition</code>érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetName(System.Int64)
@@ -262,22 +262,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns the name of the node at the specified position."
-  remarks: "The name is the name of the XML element at `nodePosition` and typically includes a namespace prefix."
+  summary: "Felülbírálja a származtatott osztály, ha a megadott pozíciónál található a csomópont nevét adja vissza."
+  remarks: "A név a következő XML-elem `nodePosition` és többek között a névtérelőtag."
   syntax:
     content: public abstract string GetName (long nodePosition);
     parameters:
     - id: nodePosition
       type: System.Int64
-      description: "The position of the node whose name is being retrieved."
+      description: "A pozíció a csomópont, amelynek a neve lekérése folyamatban van."
     return:
       type: System.String
-      description: "The name of the node at <code>nodePosition</code>. <xref:System.String> is returned if the node does not have a name."
+      description: "A csomópont neve <code> nodePosition </code>. <xref:System.String>rendszer adja vissza, ha a csomópont nincs neve.</xref:System.String>"
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>nodePosition</code> is invalid."
+    description: "<code>nodePosition</code>érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetNamespace(System.Int64)
@@ -292,21 +292,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns the namespace of the node at the specified position."
+  summary: "Amikor felül van bírálva a származtatott osztály, adja meg a névtér a megadott pozíciónál található a csomópont."
   syntax:
     content: public abstract string GetNamespace (long nodePosition);
     parameters:
     - id: nodePosition
       type: System.Int64
-      description: "The position of the node whose namespace is being retrieved."
+      description: "A csomópont, amelynek névtér lekérésére pozícióját."
     return:
       type: System.String
-      description: "The namespace of the node at <code>nodePosition</code>. <xref:System.String> is returned if the node does not have a namespace."
+      description: "A névtér, a csomópont <code> nodePosition </code>. <xref:System.String>az adott vissza, ha a csomópont nem rendelkezik a névtér.</xref:System.String>"
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetNamespace*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>nodePosition</code> is invalid."
+    description: "<code>nodePosition</code>érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetNodeType(System.Int64)
@@ -321,21 +321,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns the type of the node at the specified position."
+  summary: "Ha a származtatott osztály felülbírálva, a csomópont a megadott pozíciónál található típusát adja vissza."
   syntax:
     content: public abstract System.Xml.XPath.XPathNodeType GetNodeType (long nodePosition);
     parameters:
     - id: nodePosition
       type: System.Int64
-      description: "The position of the node whose node type is being retrieved."
+      description: "A csomópont, amelynek csomóponttípus lekérésére pozícióját."
     return:
       type: System.Xml.XPath.XPathNodeType
-      description: "One of the <xref href=&quot;System.Xml.XPath.XPathNodeType&quot;></xref> values that indicate the type of the XML node."
+      description: "Egy a <xref href=&quot;System.Xml.XPath.XPathNodeType&quot;> </xref> értékeket, amelyeket az XML-csomópont típusát jelzi."
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetNodeType*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>nodePosition</code> is invalid."
+    description: "<code>nodePosition</code>érvénytelen."
   platform:
   - net462
 - uid: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetValue(System.Int64)
@@ -350,22 +350,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "When overridden in a derived class, returns the text value of the node at the specified position."
-  remarks: "For elements, this method returns the concatenation of all text descendents of the node at the specified position, similar to the <xref:System.Xml.XmlElement.InnerText%2A> property."
+  summary: "Felülbírálja a származtatott osztály, amikor a csomópont a megadott pozíciónál található szöveg értékét adja vissza."
+  remarks: "Elemek, ez a módszer adja vissza a kapott a csomópont a megadott pozíciónál, hasonló található összes szöveg leszármazottai a <xref:System.Xml.XmlElement.InnerText%2A>tulajdonság.</xref:System.Xml.XmlElement.InnerText%2A>"
   syntax:
     content: public abstract string GetValue (long nodePosition);
     parameters:
     - id: nodePosition
       type: System.Int64
-      description: "The position of the node whose text value is being retrieved."
+      description: "A pozíció a csomópont, amelynek szöveges érték lekérése folyamatban van."
     return:
       type: System.String
-      description: "The text value of the node at <code>nodePosition</code>. <xref:System.String> is returned if the node does not have a text value."
+      description: "A szöveges értéket, a csomópont <code> nodePosition </code>. <xref:System.String>az adott vissza, ha a csomópont nem rendelkezik egy szöveges értéket.</xref:System.String>"
   overload: System.ServiceModel.Dispatcher.SeekableXPathNavigator.GetValue*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>nodePosition</code> is invalid."
+    description: "<code>nodePosition</code>érvénytelen."
   platform:
   - net462
 references:

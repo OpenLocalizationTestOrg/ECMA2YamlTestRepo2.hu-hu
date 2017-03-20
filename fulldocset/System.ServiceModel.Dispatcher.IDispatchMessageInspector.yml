@@ -11,8 +11,8 @@ items:
   nameWithType: IDispatchMessageInspector
   fullName: System.ServiceModel.Dispatcher.IDispatchMessageInspector
   type: Interface
-  summary: "Defines the methods that enable custom inspection or modification of inbound and outbound application messages in service applications."
-  remarks: "Implement IDispatchMessageInspector to inspect or modify inbound or outbound application messages either prior to dispatching a request message to an operation or before returning a reply message to a caller. There are a large number of scenarios that require intercepting messages prior to invoking the operation for which it is destined. For example, you can log incoming application messages or perform some feature based on a message header.       Typically, message inspectors are inserted by a service behavior (<xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName>), an endpoint behavior (<xref:System.ServiceModel.Description.IEndpointBehavior?displayProperty=fullName>), or a contract behavior (<xref:System.ServiceModel.Description.IContractBehavior?displayProperty=fullName>). The behavior then adds the message inspector to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName> collection. For more information about extending the runtime using behaviors, see [Extending ServiceHost and the Service Model Layer](~/add/includes/ajax-current-ext-md.md).      -   The <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A> method enables custom behavior after receiving the message but before dispatching it to the intended operation.      -   The <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A> method enables custom behavior after the operation returns but before the reply is sent.      > [!NOTE] >  IDispatchMessageInspector objects are always called at the same point during message dispatch regardless of whether an operation is one-way or request-reply."
+  summary: "Meghatározza a módszereket, amelyek lehetővé teszik egyéni vizsgálat vagy a bejövő és kimenő üzenetek szolgáltatásalkalmazások módosítása."
+  remarks: "Vizsgálja meg, vagy módosítsa a bejövő vagy kimenő üzenetek vagy egy kérelem üzenet művelethez, vagy a válaszüzenet visszatér a hívó elküldése előtt IDispatchMessageInspector megvalósításához. Nincsenek számos forgatókönyv esetén van szükség, elfogja üzenetek, amelynek célja a művelet meghívása előtt. Például a bejövő kérelem üzenetek naplózása, vagy hajtsa végre az egyes szolgáltatások egy fejléce alapján.       Általában egy szolgáltatás-viselkedéshez üzenet ellenőrök szúrja be (<xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName>), egy végpontviselkedéshez (<xref:System.ServiceModel.Description.IEndpointBehavior?displayProperty=fullName>), vagy egy szerződés viselkedés (<xref:System.ServiceModel.Description.IContractBehavior?displayProperty=fullName>).</xref:System.ServiceModel.Description.IContractBehavior?displayProperty=fullName> </xref:System.ServiceModel.Description.IEndpointBehavior?displayProperty=fullName> </xref:System.ServiceModel.Description.IServiceBehavior?displayProperty=fullName> A viselkedés hozzáadja az üzenet inspector, hogy a <xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName>gyűjtemény.</xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName> Kiterjesztése a futtatókörnyezet parancsfájlokkal kapcsolatos további információkért lásd: [ServiceHost kiterjesztése és a Service Model réteg](~/add/includes/ajax-current-ext-md.md).      -A <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A>módszer lehetővé teszi, hogy egyéni viselkedését az üzenetet kapta, de az azt a kívánt művelet indítása előtt.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A>      -A <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A>módszer lehetővé teszi egyéni viselkedés, a művelet visszatérése után, de a válasz elküldése előtt.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A>      > [!NOTE] > IDispatchMessageInspector mindig objektumok ugyanabban függetlenül attól, hogy egy művelet egyirányú vagy kérelem-válasz üzenet küldése során."
   example:
   - "The following code example shows a basic IDispatchMessageInspector that writes a string to the console when it is invoked.  \n  \n [!code-vb[Interceptors#7](~/add/codesnippet/visualbasic/interceptors.client/interceptors.vb#7)]\n [!code-cs[Interceptors#7](~/add/codesnippet/csharp/interceptors.client/interceptors.cs#7)]  \n  \n The following code example shows the implementation of an <xref:System.ServiceModel.Description.IServiceBehavior> that adds the `Inspector`IDispatchMessageInspector to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName> collection.  \n  \n [!code-vb[Interceptors#8](~/add/codesnippet/visualbasic/interceptors.client/insertingbehaviors.vb#8)]\n [!code-cs[Interceptors#8](~/add/codesnippet/csharp/interceptors.client/insertingbehaviors.cs#8)]  \n  \n The following code example shows the use of an application configuration file to load the service behavior that inserts the `Inspector`IDispatchMessageInspector.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -32,8 +32,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called after an inbound message has been received but before the message is dispatched to the intended operation."
-  remarks: "Use the AfterReceiveRequest method to inspect or modify the incoming message, the client channel that provided it, and the current service instance. The return value can be any object that you want to use for correlation purposes; it is returned to you as the `correlationState` parameter in the <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A> method.      > [!IMPORTANT] >  You cannot use the body of the message unless you buffer the entire message and make a copy. If you do this, you must make two copies of the message: one to inspect, and the other to overwrite the `request` parameter."
+  summary: "Hívása után egy bejövő üzenet érkezett előtt azonban az üzenet indít a kívánt műveletet."
+  remarks: "A AfterReceiveRequest módszerrel ellenőrizze vagy módosítsa a bejövő üzenetet, az ügyfél csatornán, és az aktuális szolgáltatáspéldányt. A visszatérési értéke lehet bármely objektum korrelációs célokra; használni kívánt az Ön mint visszakerül a `correlationState` paramétere a <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A>metódus.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply%2A>      > [!IMPORTANT] > Nem használhatja az üzenet törzsét, kivéve, ha a teljes üzenet puffer, és készítsen egy másolatot. Ha ezt a megoldást választja, meg kell győződnie két példányban, az üzenet: egy vizsgálata, míg a másik felülírja a `request` paraméter."
   example:
   - "The following code example shows a basic <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector> that writes a string to the console when it is invoked.  \n  \n [!code-vb[Interceptors#7](~/add/codesnippet/visualbasic/interceptors.client/interceptors.vb#7)]\n [!code-cs[Interceptors#7](~/add/codesnippet/csharp/interceptors.client/interceptors.cs#7)]  \n  \n The following code example shows the implementation of an <xref:System.ServiceModel.Description.IServiceBehavior> that adds the `Inspector`<xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector> to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName> collection.  \n  \n [!code-vb[Interceptors#8](~/add/codesnippet/visualbasic/interceptors.client/insertingbehaviors.vb#8)]\n [!code-cs[Interceptors#8](~/add/codesnippet/csharp/interceptors.client/insertingbehaviors.cs#8)]  \n  \n The following code example shows the use of an application configuration file to load the service behavior that inserts the `Inspector`<xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector>.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -41,16 +41,16 @@ items:
     parameters:
     - id: request
       type: System.ServiceModel.Channels.Message
-      description: "The request message."
+      description: "A kérelemüzenetet."
     - id: channel
       type: System.ServiceModel.IClientChannel
-      description: "The incoming channel."
+      description: "A bejövő csatorna."
     - id: instanceContext
       type: System.ServiceModel.InstanceContext
-      description: "The current service instance."
+      description: "Az aktuális szolgáltatáspéldányt."
     return:
       type: System.Object
-      description: "The object used to correlate state. This object is passed back in the <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply*> method."
+      description: "Az objektum állapota összefüggést. Ez az objektum átadott vissza a <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply*>metódus.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply*>"
   overload: System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest*
   exceptions: []
   platform:
@@ -67,8 +67,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Dispatcher
-  summary: "Called after the operation has returned but before the reply message is sent."
-  remarks: "Use the BeforeSendReply method to perform custom behavior prior to sending the return message. The `correlationState` is the object returned from the <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A> method that you can use to perform correlation between inbound and outbound calls to support your behavior."
+  summary: "Hívása után a művelet adott vissza, de a válasz előtt üzenetet küld."
+  remarks: "A BeforeSendReply módszer segítségével hajtsa végre a visszatérési üzenet küldése előtt egyéni viselkedését. A `correlationState` az objektum által visszaadott a <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A>módszer, amelynek segítségével hajtsa végre a viselkedés támogatásához a bejövő és kimenő hívások közötti összefüggést.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest%2A>"
   example:
   - "The following code example shows a basic <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector> that writes a string to the console when it is invoked.  \n  \n [!code-vb[Interceptors#7](~/add/codesnippet/visualbasic/interceptors.client/interceptors.vb#7)]\n [!code-cs[Interceptors#7](~/add/codesnippet/csharp/interceptors.client/interceptors.cs#7)]  \n  \n The following code example shows the implementation of an <xref:System.ServiceModel.Description.IServiceBehavior> that adds the `Inspector`<xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector> to the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.MessageInspectors%2A?displayProperty=fullName> collection.  \n  \n [!code-vb[Interceptors#8](~/add/codesnippet/visualbasic/interceptors.client/insertingbehaviors.vb#8)]\n [!code-cs[Interceptors#8](~/add/codesnippet/csharp/interceptors.client/insertingbehaviors.cs#8)]  \n  \n The following code example shows the use of an application configuration file to load the service behavior that inserts the `Inspector`<xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector>.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -76,10 +76,10 @@ items:
     parameters:
     - id: reply
       type: System.ServiceModel.Channels.Message
-      description: "The reply message. This value is null if the operation is one way."
+      description: "A válaszüzenet. Ez az érték null, ha a műveletet az egyik módja."
     - id: correlationState
       type: System.Object
-      description: "The correlation object returned from the <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest*> method."
+      description: "A korrelációs objektumot adott vissza a <xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest*>metódus.</xref:System.ServiceModel.Dispatcher.IDispatchMessageInspector.AfterReceiveRequest*>"
   overload: System.ServiceModel.Dispatcher.IDispatchMessageInspector.BeforeSendReply*
   exceptions: []
   platform:
