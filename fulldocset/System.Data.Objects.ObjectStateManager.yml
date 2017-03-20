@@ -23,8 +23,8 @@ items:
   nameWithType: ObjectStateManager
   fullName: System.Data.Objects.ObjectStateManager
   type: Class
-  summary: "Maintains object state and identity management for entity type instances and relationship instances."
-  remarks: "ObjectStateManager tracks query results, and provides logic to merge multiple overlapping query results. It also performs in-memory change tracking when a user inserts, deletes, or modifies objects, and provides the change set for updates. This change set is used by the change processor to persist modifications.       This class is typically used by <xref:System.Data.Objects.ObjectContext> and not directly in applications."
+  summary: "Objektum állapota és az identity management entitás típusú példányok és kapcsolati példányok kezeli."
+  remarks: "Az ObjectStateManager nyomon követi lekérdezés eredményei és egyesíteni, több egymást átfedő lekérdezési eredmények logikát tartalmaz. A felhasználó beszúrása, törlése, vagy objektumok módosítja, és frissítések módosításkészletben biztosít a memórián belüli változáskövetési is végez. Módosításkészlet használják a módosítás processzor megőrizni a módosításokat.       Ez az osztály általában használják <xref:System.Data.Objects.ObjectContext>, és nem közvetlenül a alkalmazások.</xref:System.Data.Objects.ObjectContext>"
   example:
   - "These examples are based on the [AdventureWorks Sales Model](http://msdn.microsoft.com/en-us/f16cd988-673f-4376-b034-129ca93c7832).  \n  \n The following example gets the ObjectStateManager from the <xref:System.Data.Objects.ObjectContext> and uses the state manager to access an object in the context.  \n  \n [!code-vb[DP ObjectServices Concepts#ObjectStateManager](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#objectstatemanager)]\n [!code-cs[DP ObjectServices Concepts#ObjectStateManager](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#objectstatemanager)]  \n  \n The following example uses the <xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Data.EntityKey%2CSystem.Data.Objects.ObjectStateEntry%40%29> method on the returned ObjectStateManager to get an object based on its entity key.  \n  \n [!code-vb[DP ObjectServices Concepts#ApplyItemUpdates](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#applyitemupdates)]\n [!code-cs[DP ObjectServices Concepts#ApplyItemUpdates](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#applyitemupdates)]"
   syntax:
@@ -47,13 +47,13 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref> osztály."
   syntax:
     content: public ObjectStateManager (System.Data.Metadata.Edm.MetadataWorkspace metadataWorkspace);
     parameters:
     - id: metadataWorkspace
       type: System.Data.Metadata.Edm.MetadataWorkspace
-      description: "The <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;></xref>, which supplies mapping and metadata information."
+      description: "A <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;> </xref>, amely megadja az leképezési adatai és metaadatai."
   overload: System.Data.Objects.ObjectStateManager.#ctor*
   exceptions: []
   platform:
@@ -70,17 +70,17 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Changes state of the <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for a specific object to the specified <code>entityState</code>."
-  remarks: "Calling the ChangeObjectState method to change the state of an object to <xref:System.Data.EntityState> does not cause related objects in a constrained relationship to be deleted.       Changing the state of an object does not affect related objects in the object graph.       When you change the <xref:System.Data.EntityState> of an entity object entry to <xref:System.Data.EntityState>, all the properties of the object are marked as modified, regardless of the current or original values.       When the <xref:System.Data.EntityState> of an entity object entry is changed to <xref:System.Data.EntityState>, <xref:System.Data.EntityState>, or <xref:System.Data.EntityState>, the relationship entries for the object are also updated."
+  summary: "Állapota megváltozik a <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> egy adott objektum a megadott <code> entityState </code>."
+  remarks: "A metódus hívása a ChangeObjectState egy objektumot állapotának módosítása <xref:System.Data.EntityState>kapcsolódó objektumok nem okoz a törlendő korlátozott kapcsolatban.</xref:System.Data.EntityState>       Egy objektumot állapotának módosítása nem befolyásolja a diagramot a kapcsolódó objektumok.       Ha módosítja a <xref:System.Data.EntityState>egy entitás objektum bejegyzés <xref:System.Data.EntityState>, az objektum összes tulajdonságának értéke a megjelölve módosítják, függetlenül az aktuális és eredeti értékei.</xref:System.Data.EntityState> </xref:System.Data.EntityState>       Ha a <xref:System.Data.EntityState>entitásobjektum bejegyzés változott <xref:System.Data.EntityState>, <xref:System.Data.EntityState>, vagy <xref:System.Data.EntityState>, a kapcsolati bejegyzések az objektum is frissülnek.</xref:System.Data.EntityState> </xref:System.Data.EntityState> </xref:System.Data.EntityState> </xref:System.Data.EntityState>"
   syntax:
     content: public System.Data.Objects.ObjectStateEntry ChangeObjectState (object entity, System.Data.EntityState entityState);
     parameters:
     - id: entity
       type: System.Object
-      description: "The object for which the state must be changed."
+      description: "Az objektum, amelynek megváltoztatta az állapotát."
     - id: entityState
       type: System.Data.EntityState
-      description: "The new state of the object."
+      description: "Az új állapot az objektum."
     return:
       type: System.Data.Objects.ObjectStateEntry
       description: "The <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the supplied <code>entity</code>."
@@ -91,7 +91,7 @@ items:
     description: "When <code>entity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "When the object is not detached and does not have an entry in the state manager.       -or-       When you try to change the state to <xref href=&quot;System.Data.EntityState&quot;></xref> from any other <xref:System.Data.EntityState.>       -or-       When <code>state</code> is not a valid <xref href=&quot;System.Data.EntityState&quot;></xref> value."
+    description: "Ha az objektum nem leválasztott és fürtkötetnek nincs bejegyzése az állapotkezelő.       – vagy – ha megpróbálja módosítani a állapot <xref href=&quot;System.Data.EntityState&quot;> </xref> egyéb <xref:System.Data.EntityState.>– vagy – ha <code> state </code> érvénytelen <xref href=&quot;System.Data.EntityState&quot;> </xref> érték.</xref:System.Data.EntityState.>"
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.ChangeRelationshipState(System.Object,System.Object,System.String,System.Data.EntityState)
@@ -106,26 +106,26 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Changes the state of the relationship between two entity objects that is specified based on the two related objects and the name of the navigation property."
-  remarks: "Entries for the objects at both ends of the specified relationship must exist in the <xref:System.Data.Objects.ObjectStateManager>.      > [!NOTE] >  This method is not supported for relationships based on a foreign key association."
+  summary: "Módosítások a megadott két entitásobjektumot közötti kapcsolat állapotát a két kapcsolódó objektumok és a neve alapján a navigálási tulajdonság."
+  remarks: "A megadott kapcsolat mindkét végén objektumok bejegyzések már léteznie kell a <xref:System.Data.Objects.ObjectStateManager>.</xref:System.Data.Objects.ObjectStateManager>      > [!NOTE] > A metódus nem támogatott olyan kapcsolatok alapján egy társítás a külső kulccsal."
   syntax:
     content: public System.Data.Objects.ObjectStateEntry ChangeRelationshipState (object sourceEntity, object targetEntity, string navigationProperty, System.Data.EntityState relationshipState);
     parameters:
     - id: sourceEntity
       type: System.Object
-      description: "The object instance or <xref href=&quot;System.Data.EntityKey&quot;></xref> of the source entity at one end of the relationship."
+      description: "Az objektumpéldány vagy <xref href=&quot;System.Data.EntityKey&quot;> </xref> a forrásentitás a kapcsolat egyik oldala."
     - id: targetEntity
       type: System.Object
-      description: "The object instance or <xref href=&quot;System.Data.EntityKey&quot;></xref> of the target entity at the other end of the relationship."
+      description: "Az objektumpéldány vagy <xref href=&quot;System.Data.EntityKey&quot;> </xref> célentitás kapcsolat másik végén."
     - id: navigationProperty
       type: System.String
-      description: "The name of the navigation property on `source` that returns the specified `target`."
+      description: "A navigációs tulajdonság neve `source` , amely visszaadja a megadott `target`."
     - id: relationshipState
       type: System.Data.EntityState
-      description: "The requested <xref href=&quot;System.Data.EntityState&quot;></xref> of the specified relationship."
+      description: "A kért <xref href=&quot;System.Data.EntityState&quot;> </xref> a megadott kapcsolat."
     return:
       type: System.Data.Objects.ObjectStateEntry
-      description: "The <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the relationship that was changed."
+      description: "A <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> módosított kapcsolat."
   overload: System.Data.Objects.ObjectStateManager.ChangeRelationshipState*
   exceptions:
   - type: System.ArgumentNullException
@@ -133,7 +133,7 @@ items:
     description: "When <code>source</code> or <code>target</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "When trying to change the state of the relationship to a state other than <xref href=&quot;System.Data.EntityState&quot;></xref> or <xref href=&quot;System.Data.EntityState&quot;></xref> when either <code>source</code> or <code>target</code> is in a <xref href=&quot;System.Data.EntityState&quot;></xref> state.       -or-       When you try to change the state of the relationship to a state other than <xref href=&quot;System.Data.EntityState&quot;></xref> or <xref href=&quot;System.Data.EntityState&quot;></xref> when either <code>source</code> or <code>target</code> is in an <xref href=&quot;System.Data.EntityState&quot;></xref> state.       -or-       When <code>state</code> is not a valid <xref href=&quot;System.Data.EntityState&quot;></xref> value."
+    description: "A kapcsolat állapotát eltérő állapotba módosításához közben <xref href=&quot;System.Data.EntityState&quot;> </xref> vagy <xref href=&quot;System.Data.EntityState&quot;> </xref> amikor vagy <code> source </code> vagy <code> target </code> van egy <xref href=&quot;System.Data.EntityState&quot;> </xref> állapotát.       – vagy – ha megpróbálja állítható be a kapcsolat állapotát egy állapottól eltérő <xref href=&quot;System.Data.EntityState&quot;> </xref> vagy <xref href=&quot;System.Data.EntityState&quot;> </xref> amikor vagy <code> source </code> vagy <code> target </code> van egy <xref href=&quot;System.Data.EntityState&quot;> </xref> állapotát.       – vagy – ha <code> state </code> érvénytelen <xref href=&quot;System.Data.EntityState&quot;> </xref> érték."
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.ChangeRelationshipState(System.Object,System.Object,System.String,System.String,System.Data.EntityState)
@@ -148,29 +148,29 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Changes the state of the relationship between two entity objects that is specified based on the two related objects and the properties of the relationship."
-  remarks: "Entries for the objects at both ends of the specified relationship must exist in the <xref:System.Data.Objects.ObjectStateManager>.      > [!NOTE] >  This method is not supported for relationships that are based on a foreign key association. For more information, see [Defining and Managing Relationships](http://msdn.microsoft.com/en-us/2c92c097-56bd-4145-989e-16d92475ecda)"
+  summary: "Két olyan entitásra objektum megadott közötti kapcsolat állapotát alapján módosul a két kapcsolódó objektumok és a kapcsolat tulajdonságait."
+  remarks: "A megadott kapcsolat mindkét végén objektumok bejegyzések már léteznie kell a <xref:System.Data.Objects.ObjectStateManager>.</xref:System.Data.Objects.ObjectStateManager>      > [!NOTE] > A metódus nem támogatott az egy társítás a külső kulccsal alapuló kapcsolatokhoz. További információkért lásd: [definiáló és kapcsolatok kezelése](http://msdn.microsoft.com/en-us/2c92c097-56bd-4145-989e-16d92475ecda)"
   syntax:
     content: public System.Data.Objects.ObjectStateEntry ChangeRelationshipState (object sourceEntity, object targetEntity, string relationshipName, string targetRoleName, System.Data.EntityState relationshipState);
     parameters:
     - id: sourceEntity
       type: System.Object
-      description: "The object instance or <xref href=&quot;System.Data.EntityKey&quot;></xref> of the source entity at one end of the relationship."
+      description: "Az objektumpéldány vagy <xref href=&quot;System.Data.EntityKey&quot;> </xref> a forrásentitás a kapcsolat egyik oldala."
     - id: targetEntity
       type: System.Object
-      description: "The object instance or <xref href=&quot;System.Data.EntityKey&quot;></xref> of the target entity at the other end of the relationship."
+      description: "Az objektumpéldány vagy <xref href=&quot;System.Data.EntityKey&quot;> </xref> célentitás kapcsolat másik végén."
     - id: relationshipName
       type: System.String
-      description: "The name of the relationship."
+      description: "A kapcsolat neve."
     - id: targetRoleName
       type: System.String
-      description: "The role name at the `target` end of the relationship."
+      description: "A szerepkör nevét, a `target` a kapcsolat végpontja."
     - id: relationshipState
       type: System.Data.EntityState
-      description: "The requested <xref href=&quot;System.Data.EntityState&quot;></xref> of the specified relationship."
+      description: "A kért <xref href=&quot;System.Data.EntityState&quot;> </xref> a megadott kapcsolat."
     return:
       type: System.Data.Objects.ObjectStateEntry
-      description: "The <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the relationship that was changed."
+      description: "A <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> módosított kapcsolat."
   overload: System.Data.Objects.ObjectStateManager.ChangeRelationshipState*
   exceptions:
   - type: System.ArgumentNullException
@@ -178,7 +178,7 @@ items:
     description: "When <code>source</code> or <code>target</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "When you try to change the state of the relationship to a state other than <xref href=&quot;System.Data.EntityState&quot;></xref> or <xref href=&quot;System.Data.EntityState&quot;></xref> when either <code>source</code> or <code>target</code> is in a <xref href=&quot;System.Data.EntityState&quot;></xref> state.       -or-       When you try to change the state of the relationship to a state other than <xref href=&quot;System.Data.EntityState&quot;></xref> or <xref href=&quot;System.Data.EntityState&quot;></xref> when either <code>source</code> or <code>target</code> is in an <xref href=&quot;System.Data.EntityState&quot;></xref> state.       -or-       When <code>state</code> is not a valid <xref href=&quot;System.Data.EntityState&quot;></xref> value."
+    description: "Amikor a kapcsolat állapotát eltérő módosításához állapotba próbálja <xref href=&quot;System.Data.EntityState&quot;> </xref> vagy <xref href=&quot;System.Data.EntityState&quot;> </xref> amikor vagy <code> source </code> vagy <code> target </code> van egy <xref href=&quot;System.Data.EntityState&quot;> </xref> állapotát.       – vagy – ha megpróbálja állítható be a kapcsolat állapotát egy állapottól eltérő <xref href=&quot;System.Data.EntityState&quot;> </xref> vagy <xref href=&quot;System.Data.EntityState&quot;> </xref> amikor vagy <code> source </code> vagy <code> target </code> van egy <xref href=&quot;System.Data.EntityState&quot;> </xref> állapotát.       – vagy – ha <code> state </code> érvénytelen <xref href=&quot;System.Data.EntityState&quot;> </xref> érték."
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.ChangeRelationshipState``1(``0,System.Object,System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Data.EntityState)
@@ -198,19 +198,19 @@ items:
     parameters:
     - id: sourceEntity
       type: TEntity
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: targetEntity
       type: System.Object
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: navigationPropertySelector
       type: System.Linq.Expressions.Expression{System.Func{TEntity,System.Object}}
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     - id: relationshipState
       type: System.Data.EntityState
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
     return:
       type: System.Data.Objects.ObjectStateEntry
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.Data.Objects.ObjectStateManager.ChangeRelationshipState<TEntity>*
   exceptions: []
   platform:
@@ -227,17 +227,17 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Returns a collection of <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> objects for objects or relationships with the given state."
-  remarks: "The <xref:System.Data.EntityState> is a bit field, so state entries for multiple states can be retrieved in one call by doing a bitwise OR of more than one <xref:System.Data.EntityState> values."
+  summary: "Gyűjteményének beolvasása az <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> objektumok vagy a kapcsolat az adott állapotú objektumokat."
+  remarks: "A <xref:System.Data.EntityState>van egy bitmezőben, így a állapot bejegyzéseket több állapota lehet beolvasni egy hívásban egy bitenkénti végrehajtásával, vagy egynél több <xref:System.Data.EntityState>értékek.</xref:System.Data.EntityState> </xref:System.Data.EntityState>"
   syntax:
     content: public System.Collections.Generic.IEnumerable<System.Data.Objects.ObjectStateEntry> GetObjectStateEntries (System.Data.EntityState state);
     parameters:
     - id: state
       type: System.Data.EntityState
-      description: "An <xref href=&quot;System.Data.EntityState&quot;></xref> used to filter the returned <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> objects."
+      description: "Egy <xref href=&quot;System.Data.EntityState&quot;> </xref> használatával szűrhetők a visszaadott <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> objektumok."
     return:
       type: System.Collections.Generic.IEnumerable{System.Data.Objects.ObjectStateEntry}
-      description: "A collection of <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> objects in the given <xref href=&quot;System.Data.EntityState&quot;></xref>."
+      description: "A gyűjtemény <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> objektumokat az adott <xref href=&quot;System.Data.EntityState&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.GetObjectStateEntries*
   exceptions:
   - type: System.ArgumentException
@@ -257,8 +257,8 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Returns an <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the object or relationship entry with the specified key."
-  remarks: "Use the <xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Data.EntityKey%2CSystem.Data.Objects.ObjectStateEntry%40%29> method to return an <xref:System.Data.Objects.ObjectStateEntry> object without having to handle the <xref:System.InvalidOperationException> raised by the GetObjectStateEntry method."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> a objektum vagy a kapcsolat bejegyzést a megadott kulccsal."
+  remarks: "Használja a <xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Data.EntityKey%2CSystem.Data.Objects.ObjectStateEntry%40%29>metódus vissza egy <xref:System.Data.Objects.ObjectStateEntry>objektum anélkül, hogy kezelni a <xref:System.InvalidOperationException>a GetObjectStateEntry metódus által kiváltott.</xref:System.InvalidOperationException> </xref:System.Data.Objects.ObjectStateEntry> </xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Data.EntityKey%2CSystem.Data.Objects.ObjectStateEntry%40%29>"
   example:
   - "The example in this topic is based on the [AdventureWorks Sales Model](http://msdn.microsoft.com/en-us/f16cd988-673f-4376-b034-129ca93c7832). The example gets the <xref:System.Data.Objects.ObjectStateEntry> for the given <xref:System.Data.EntityKey> from the <xref:System.Data.Objects.ObjectStateManager>. Then it gets the current value of the `SalesOrderHeader.PurchaseOrderNumber` property, changes the property's value, and enumerates through the collection of modified properties.  \n  \n [!code-vb[DP ObjectServices Concepts#ObjectStateEntry](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#objectstateentry)]\n [!code-cs[DP ObjectServices Concepts#ObjectStateEntry](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#objectstateentry)]"
   syntax:
@@ -269,7 +269,7 @@ items:
       description: "The <xref href=&quot;System.Data.EntityKey&quot;></xref>."
     return:
       type: System.Data.Objects.ObjectStateEntry
-      description: "The corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given <xref href=&quot;System.Data.EntityKey&quot;></xref>."
+      description: "A megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> számára az adott <xref href=&quot;System.Data.EntityKey&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.GetObjectStateEntry*
   exceptions:
   - type: System.ArgumentNullException
@@ -277,10 +277,10 @@ items:
     description: "When <code>key</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "When the specified <code>key</code> cannot be found in the state manager."
+    description: "Ha a megadott <code> key </code> az állapotkezelő nem található."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No entity with the specified <xref href=&quot;System.Data.EntityKey&quot;></xref> exists in the <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref>."
+    description: "A megadott entitás nem <xref href=&quot;System.Data.EntityKey&quot;> </xref> szerepel a <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref>."
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.GetObjectStateEntry(System.Object)
@@ -295,22 +295,22 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Returns an <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the specified object."
-  remarks: "Use the <xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Object%2CSystem.Data.Objects.ObjectStateEntry%40%29> method to return an <xref:System.Data.Objects.ObjectStateEntry> object without having to handle the <xref:System.InvalidOperationException> raised by the GetObjectStateEntry method."
+  summary: "Értéket ad vissza egy <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> a megadott objektumra."
+  remarks: "Használja a <xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Object%2CSystem.Data.Objects.ObjectStateEntry%40%29>metódus vissza egy <xref:System.Data.Objects.ObjectStateEntry>objektum anélkül, hogy kezelni a <xref:System.InvalidOperationException>a GetObjectStateEntry metódus által kiváltott.</xref:System.InvalidOperationException> </xref:System.Data.Objects.ObjectStateEntry> </xref:System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry%28System.Object%2CSystem.Data.Objects.ObjectStateEntry%40%29>"
   syntax:
     content: public System.Data.Objects.ObjectStateEntry GetObjectStateEntry (object entity);
     parameters:
     - id: entity
       type: System.Object
-      description: "The <xref:System.Object> to which the retrieved <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> belongs."
+      description: "A <xref:System.Object>, amelyhez a beolvasott <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> tartozik.</xref:System.Object>"
     return:
       type: System.Data.Objects.ObjectStateEntry
-      description: "The corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given <xref:System.Object>."
+      description: "A megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> az adott <xref:System.Object>.</xref:System.Object>"
   overload: System.Data.Objects.ObjectStateManager.GetObjectStateEntry*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No entity for the specified <xref:System.Object> exists in the <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref>."
+    description: "Nincs a megadott entitás <xref:System.Object>szerepel a <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref>.</xref:System.Object>"
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.GetRelationshipManager(System.Object)
@@ -325,22 +325,22 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Returns the <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> that is used by the specified object."
-  remarks: "Calling the GetRelationshipManager method is the same as calling the <xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A> method, except that this method raises an exception instead of returning `false`.       Call the <xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A> method to avoid handling the <xref:System.InvalidOperationException> that occurs when a <xref:System.Data.Objects.DataClasses.RelationshipManager> cannot be returned for the supplied entity."
+  summary: "Vissza a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> , amely a megadott objektum által használt."
+  remarks: "A metódus hívása a GetRelationshipManager megegyezik a hívása a <xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A>metódus, azzal a különbséggel, hogy ez a módszer riasztást helyett visszaadó kivétel `false`.</xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A>       Hívja a <xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A>módszerrel kerülheti el a kezelési a <xref:System.InvalidOperationException>, amely akkor fordul elő, amikor egy <xref:System.Data.Objects.DataClasses.RelationshipManager>a megadott entitás nem adható vissza.</xref:System.Data.Objects.DataClasses.RelationshipManager> </xref:System.InvalidOperationException> </xref:System.Data.Objects.ObjectStateManager.TryGetRelationshipManager%2A>"
   syntax:
     content: public System.Data.Objects.DataClasses.RelationshipManager GetRelationshipManager (object entity);
     parameters:
     - id: entity
       type: System.Object
-      description: "The object for which to return the <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref>."
+      description: "Az objektum, amelynek vissza a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref>."
     return:
       type: System.Data.Objects.DataClasses.RelationshipManager
-      description: "The <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> for the specified object."
+      description: "A <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> a megadott objektumra."
   overload: System.Data.Objects.ObjectStateManager.GetRelationshipManager*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "When a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> cannot be returned for the specified <code>entity</code>."
+    description: "Ha egy <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> nem adható vissza a megadott <code> entity </code>."
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.MetadataWorkspace
@@ -355,13 +355,13 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Gets the <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;></xref> associated with this state manager."
-  remarks: "The <xref:System.Data.Metadata.Edm.MetadataWorkspace> class is a central programming interface that you can use to interact with the Entity Data Model (EDM) metadata at runtime and in the context of an application."
+  summary: "Lekérdezi a <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;> </xref> az állapotkezelő társított."
+  remarks: "A <xref:System.Data.Metadata.Edm.MetadataWorkspace>osztály egy központi alkalmazásprogramozási felület használhatja futásidőben, és egy alkalmazás környezetében Entity Data Model (EDM) metaadatok együttműködhet.</xref:System.Data.Metadata.Edm.MetadataWorkspace>"
   syntax:
     content: public System.Data.Metadata.Edm.MetadataWorkspace MetadataWorkspace { get; }
     return:
       type: System.Data.Metadata.Edm.MetadataWorkspace
-      description: "The <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;></xref> associated with this <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;></xref>."
+      description: "A <xref href=&quot;System.Data.Metadata.Edm.MetadataWorkspace&quot;> </xref> ez társított <xref href=&quot;System.Data.Objects.ObjectStateManager&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.MetadataWorkspace*
   exceptions: []
   platform:
@@ -378,12 +378,12 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Occurs when entities are added to or removed from the state manager."
+  summary: "Akkor következik be, amikor entitásokat ad hozzá, vagy eltávolítja az állapotkezelő."
   syntax:
     content: public event System.ComponentModel.CollectionChangeEventHandler ObjectStateManagerChanged;
     return:
       type: System.ComponentModel.CollectionChangeEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -399,8 +399,8 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Tries to retrieve the corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the object or relationship with the specified <xref href=&quot;System.Data.EntityKey&quot;></xref>."
-  remarks: "Use TryGetObjectStateEntry to return an <xref:System.Data.Objects.ObjectStateEntry> without having to handle the <xref:System.InvalidOperationException> raised by the <xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Data.EntityKey%29> method."
+  summary: "Próbálja beolvasni a megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> az objektum vagy kapcsolatban van-e a megadott <xref href=&quot;System.Data.EntityKey&quot;> </xref>."
+  remarks: "TryGetObjectStateEntry használatával visszaállíthatja egy <xref:System.Data.Objects.ObjectStateEntry>anélkül, hogy kezelni a <xref:System.InvalidOperationException>által kiváltott a <xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Data.EntityKey%29>metódus.</xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Data.EntityKey%29> </xref:System.InvalidOperationException> </xref:System.Data.Objects.ObjectStateEntry>"
   example:
   - "The examples in this topic are based on the [AdventureWorks Sales Model](http://msdn.microsoft.com/en-us/f16cd988-673f-4376-b034-129ca93c7832).  \n  \n The example attempts to retrieve the corresponding <xref:System.Data.Objects.ObjectStateEntry> for the given <xref:System.Data.EntityKey>.  \n  \n [!code-vb[DP ObjectServices Concepts#ObjectStateManager](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#objectstatemanager)]\n [!code-cs[DP ObjectServices Concepts#ObjectStateManager](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#objectstatemanager)]  \n  \n The following example uses the TryGetObjectStateEntry method on the returned <xref:System.Data.Objects.ObjectStateManager> to get an object based on its entity key.  \n  \n [!code-vb[DP ObjectServices Concepts#ApplyItemUpdates](~/add/codesnippet/visualbasic/objectservicesconceptsvb/Source.vb#applyitemupdates)]\n [!code-cs[DP ObjectServices Concepts#ApplyItemUpdates](~/add/codesnippet/csharp/objectservicesconceptscs/Source.cs#applyitemupdates)]"
   syntax:
@@ -408,18 +408,18 @@ items:
     parameters:
     - id: key
       type: System.Data.EntityKey
-      description: "The given <xref href=&quot;System.Data.EntityKey&quot;></xref>."
+      description: "A megadott <xref href=&quot;System.Data.EntityKey&quot;> </xref>."
     - id: entry
       type: System.Data.Objects.ObjectStateEntry
-      description: "When this method returns, contains an <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given <xref href=&quot;System.Data.EntityKey&quot;></xref> This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza egy <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> a a megadott <xref href=&quot;System.Data.EntityKey&quot;> </xref> Ez a paraméter átadása történt nem inicializált."
     return:
       type: System.Boolean
-      description: "A Boolean value that is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is a corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given <xref href=&quot;System.Data.EntityKey&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Logikai érték, amely <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> esetén a megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> számára az adott <xref href=&quot;System.Data.EntityKey&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "A <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic) value is provided for <code>key</code>."
+    description: "A <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> a Visual Basic nyelvben) megadott érték van <code> key </code>."
   platform:
   - net462
 - uid: System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry(System.Object,System.Data.Objects.ObjectStateEntry@)
@@ -434,20 +434,20 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Tries to retrieve the corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the specified <xref:System.Object>."
-  remarks: "Use the TryGetObjectStateEntry method to return an <xref:System.Data.Objects.ObjectStateEntry> without having to handle the <xref:System.InvalidOperationException> raised by the <xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Object%29> method."
+  summary: "Próbálja beolvasni a megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> a megadott <xref:System.Object>.</xref:System.Object>"
+  remarks: "A TryGetObjectStateEntry metódus használatával adja vissza egy <xref:System.Data.Objects.ObjectStateEntry>anélkül, hogy kezelni a <xref:System.InvalidOperationException>által kiváltott a <xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Object%29>metódus.</xref:System.Data.Objects.ObjectStateManager.GetObjectStateEntry%28System.Object%29> </xref:System.InvalidOperationException> </xref:System.Data.Objects.ObjectStateEntry>"
   syntax:
     content: public bool TryGetObjectStateEntry (object entity, out System.Data.Objects.ObjectStateEntry entry);
     parameters:
     - id: entity
       type: System.Object
-      description: "The <xref:System.Object> to which the retrieved <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> belongs."
+      description: "A <xref:System.Object>, amelyhez a beolvasott <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> tartozik.</xref:System.Object>"
     - id: entry
       type: System.Data.Objects.ObjectStateEntry
-      description: "When this method returns, contains the <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given <xref href=&quot;System.Data.EntityKey&quot;></xref> This parameter is passed uninitialized."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> a a megadott <xref href=&quot;System.Data.EntityKey&quot;> </xref> Ez a paraméter átadása történt nem inicializált."
     return:
       type: System.Boolean
-      description: "A Boolean value that is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is a corresponding <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;></xref> for the given object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Logikai érték, amely <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> esetén a megfelelő <xref href=&quot;System.Data.Objects.ObjectStateEntry&quot;> </xref> az adott objektum; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.TryGetObjectStateEntry*
   exceptions: []
   platform:
@@ -464,20 +464,20 @@ items:
   assemblies:
   - System.Data.Entity
   namespace: System.Data.Objects
-  summary: "Returns the <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> that is used by the specified object."
-  remarks: "The <xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A> method is used to obtain the <xref:System.Data.Objects.DataClasses.RelationshipManager> for objects that are persistence ignorant. When objects implement <xref:System.Data.Objects.DataClasses.IEntityWithRelationships> or inherit from <xref:System.Data.Objects.DataClasses.EntityObject>, the <xref:System.Data.Objects.DataClasses.RelationshipManager> is accessed from the <xref:System.Data.Objects.DataClasses.IEntityWithRelationships.RelationshipManager%2A> property.       The <xref:System.Data.Objects.DataClasses.RelationshipManager> cannot be returned when the object is in a <xref:System.Data.EntityState> state.       Calling the TryGetRelationshipManager method is the same as calling the <xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A> method, except that this method returns `false` instead of raising an exception."
+  summary: "Vissza a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> , amely a megadott objektum által használt."
+  remarks: "A <xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A>módszert beszerzése a <xref:System.Data.Objects.DataClasses.RelationshipManager>olyan objektumoknál, amelyek vizsgálatot adatmegőrzési.</xref:System.Data.Objects.DataClasses.RelationshipManager> </xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A> Amikor objektumokat megvalósítása <xref:System.Data.Objects.DataClasses.IEntityWithRelationships>vagy örökölt <xref:System.Data.Objects.DataClasses.EntityObject>, a <xref:System.Data.Objects.DataClasses.RelationshipManager>elérése a <xref:System.Data.Objects.DataClasses.IEntityWithRelationships.RelationshipManager%2A>tulajdonság.</xref:System.Data.Objects.DataClasses.IEntityWithRelationships.RelationshipManager%2A> </xref:System.Data.Objects.DataClasses.RelationshipManager> </xref:System.Data.Objects.DataClasses.EntityObject> </xref:System.Data.Objects.DataClasses.IEntityWithRelationships>       A <xref:System.Data.Objects.DataClasses.RelationshipManager>nem adható vissza, ha az objektum egy <xref:System.Data.EntityState>állapotát.</xref:System.Data.EntityState> </xref:System.Data.Objects.DataClasses.RelationshipManager>       A metódus hívása a TryGetRelationshipManager megegyezik a hívása a <xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A>metódus, azzal a különbséggel, hogy ez a módszer `false` helyett egy kivétel kiváltása.</xref:System.Data.Objects.ObjectStateManager.GetRelationshipManager%2A>"
   syntax:
     content: public bool TryGetRelationshipManager (object entity, out System.Data.Objects.DataClasses.RelationshipManager relationshipManager);
     parameters:
     - id: entity
       type: System.Object
-      description: "The object for which to return the <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref>."
+      description: "Az objektum, amelynek vissza a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref>."
     - id: relationshipManager
       type: System.Data.Objects.DataClasses.RelationshipManager
-      description: "When this method returns, contains the <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> for the `entity`."
+      description: "Ha ez a módszer ad vissza, tartalmazza a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> a a `entity`."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;></xref> instance was returned for the supplied <code>entity</code>; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha egy <xref href=&quot;System.Data.Objects.DataClasses.RelationshipManager&quot;> </xref> példányt adott vissza a megadott <code> entity </code>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.Objects.ObjectStateManager.TryGetRelationshipManager*
   exceptions: []
   platform:
