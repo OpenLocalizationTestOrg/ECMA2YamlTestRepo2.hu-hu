@@ -11,8 +11,8 @@ items:
   nameWithType: IStreamProvider
   fullName: System.Xml.IStreamProvider
   type: Interface
-  summary: "Represents an interface that can be implemented by classes providing streams."
-  remarks: "When writing an outgoing message containing a streamed body to an XML writer, the <xref:System.ServiceModel.Channels.Message> will use a sequence of calls similar to the following in its <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> implementation:      -   Write any necessary information preceding the stream (For example, the opening XML tag).      -   Write the stream.      -   Write any information following the stream (For example, the closing XML tag).       This works well with encodings that are similar to the textual XML encoding. However, there are some encodings that do not place XML infoset information (For example, tags for starting and ending XML elements) together with the data contained within elements. For example, in the MTOM encoding, the message is split into multiple parts. One part contains the XML infoset, which may contain references to other parts for actual element contents. Since the XML infoset will normally be small compared to the streamed contents, it makes sense to buffer the infoset, write it out, and then write the contents in a streamed way. This means that by the time the closing element tag is written, we should not have written out the stream yet.       For this purpose, the IStreamProvider interface is used. The interface has a <xref:System.Xml.IStreamProvider.GetStream> method that returns the stream to be written. The correct way to write out a streamed message body in <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> is as follows:      -   Write any necessary information preceding the stream (For example, the opening XML tag)      -   Call the `WriteValue` overload on the <xref:System.Xml.XmlDictionaryWriter> that takes an IStreamProvider, with an `IStreamProvider` implementation that returns the stream to be written.      -   Write any information following the stream (For example, the closing XML tag)       With this approach, the XML writer has a choice of when to call <xref:System.Xml.IStreamProvider.GetStream> and write out the streamed data. For example, the textual and binary XML writers will call it immediately and write out the streamed contents in between the start and end tags. The MTOM writer may decide to call <xref:System.Xml.IStreamProvider.GetStream> later, when it is ready to write the appropriate part of the message."
+  summary: "Egy felületet biztosít adatfolyamok osztályok által végrehajtott jelöl."
+  remarks: "Azokat az XML-írónak, adatfolyamként továbbított törzs tartalmazó kimenő üzenet írásakor a <xref:System.ServiceModel.Channels.Message>fogja használni a következőhöz hasonló hívások sorozatát a <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>végrehajtása:-a szükséges információt az adatfolyam (például a nyitó XML-címke) megelőző írja.</xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> </xref:System.ServiceModel.Channels.Message>      -A adatfolyamba írni.      -Az adatfolyam (például a záró XML-címke) a következő információt írni.       Ez a módszer jól igazodik a szöveges XML-kódolás hasonló kódolások. Van azonban néhány kódolások, hogy ne tegyen XML adatkészlet információk (például a kezdő és záró XML-elemek címkék) együtt elemek található adatokat. Például az MTOM kódolással, az üzenet van szétosztva több részre. Egy részét tartalmazza az XML az adatkészletet, amely a tényleges elem tartalma egyéb részeinek mutató hivatkozásokat is tartalmazhat. Mivel az XML adatkészlet általában kis adatfolyamként továbbított tartalma képest, érdemes a puffer az adatkészlethez, jegyezze meg és jegyezze meg a tartalom adatfolyamként továbbított módon. Ez azt jelenti, hogy az időkorlát a záró elem címke írása, igazolnia kell nem írt meg az adatfolyam még.       Erre a célra a IStreamProvider kapcsolatot használja. A felület egy <xref:System.Xml.IStreamProvider.GetStream>metódus, amely visszaadja az adatfolyam írását.</xref:System.Xml.IStreamProvider.GetStream> A megfelelő módon írja ki az adatfolyamként továbbított üzenet törzse <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>a következőképpen történik: - minden szükséges információt az adatfolyam (például a nyitó XML-címke) megelőző írja - hívás a `WriteValue` a túlterhelési a <xref:System.Xml.XmlDictionaryWriter>, amely egy IStreamProvider vesz igénybe a egy `IStreamProvider` megvalósítása, amely visszaadja az adatfolyam írandó.</xref:System.Xml.XmlDictionaryWriter> </xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>      -Bármely kapcsolatos adatokat ír az ezt a módszert használja a stream (például a záró XML-címke) a következő, az XML-író tartozik kiválaszthatja, hogy mikor legyen meghívva <xref:System.Xml.IStreamProvider.GetStream>és az adatfolyamként továbbított adatok kiírni.</xref:System.Xml.IStreamProvider.GetStream> Például a szöveges és bináris XML-írók azonnal hívják, és írja ki az adatfolyamként továbbított tartalmát a kezdő és záró címkék között. Az MTOM-író dönthetnek úgy, hogy hívás <xref:System.Xml.IStreamProvider.GetStream>később, amikor készen áll az üzenet megfelelő részét írási.</xref:System.Xml.IStreamProvider.GetStream>"
   syntax:
     content: public interface IStreamProvider
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Gets a stream."
-  remarks: "This method can be used to return the stream to be written."
+  summary: "Lekérdezi az adatfolyam."
+  remarks: "Ez a módszer segítségével a írható adatfolyamot vissza."
   syntax:
     content: public System.IO.Stream GetStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object."
+      description: "A <xref:System.IO.Stream>objektum.</xref:System.IO.Stream>"
   overload: System.Xml.IStreamProvider.GetStream*
   exceptions: []
   platform:
@@ -54,13 +54,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Releases a stream to output."
+  summary: "Feloldja a kimeneti adatfolyam."
   syntax:
     content: public void ReleaseStream (System.IO.Stream stream);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream being released."
+      description: "Az adatfolyam érhetők el."
   overload: System.Xml.IStreamProvider.ReleaseStream*
   exceptions: []
   platform:
