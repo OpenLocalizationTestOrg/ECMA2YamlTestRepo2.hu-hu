@@ -17,8 +17,8 @@ items:
   nameWithType: AcknowledgeTypes
   fullName: System.Messaging.AcknowledgeTypes
   type: Enum
-  summary: "Specifies the types of acknowledgment message that Message Queuing returns to the sending application."
-  remarks: "The AcknowledgeTypes class provides a set of flags that you can combine to request one or more categories of acknowledgment messages.       When an application sends a message, it can request that Message Queuing return acknowledgment messages indicating the success or failure of the original message. Message Queuing sends these acknowledgment messages to the administration queue you specify. Acknowledgment types can be divided broadly into four groups: positive arrival acknowledgments, positive read acknowledgments, negative arrival acknowledgments, and negative read acknowledgments. Requesting acknowledgments enables your application to receive notification of certain occurrences—for example, a message reaching its destination queue, a message being retrieved, or a time-out preventing a message from reaching or being retrieved from the destination queue.       When you are using the <xref:System.Messaging.Message> class to send messages to a queue, you specify the types of acknowledgments your application should receive in the <xref:System.Messaging.Message.AcknowledgeType%2A> property, as well as the administration queue that receives the acknowledgment messages in the <xref:System.Messaging.Message.AdministrationQueue%2A> property.       When you use the <xref:System.Messaging.Message> class to read acknowledgment messages in the administration queue, the instance&quot;s <xref:System.Messaging.Message.Acknowledgment%2A> property indicates the condition responsible for the acknowledgment message, for example, if a time-out expired before the original message was read from the queue."
+  summary: "Adja meg a visszaigazoló üzenetet, amely a Message Queuing visszaadja a küldő alkalmazás típusú."
+  remarks: "A AcknowledgeTypes osztály biztosít, hogy egy vagy több kategóriához nyugtázási üzenetek kéréséhez kombinálva jelzőket.       Amikor egy alkalmazás egy üzenetet küld, azt kérheti, hogy a Message Queuing vissza, amely jelzi, a sikeres vagy sikertelen volt, az eredeti üzenet nyugtázási üzeneteket. A Message Queuing szolgáltatás ezen nyugtázási üzeneteket küld a megadott felügyeleti várólista. Visszaigazoló típusok lehet osztani tágabb értelemben véve négy csoportok: pozitív érkezési nyugták, pozitív olvasási visszaigazolások, negatív érkezési nyugták és negatív olvasási visszaigazolások. A kért nyugták lehetővé teszi, hogy bizonyos előfordulások értesítést szeretne kapni az alkalmazás – például egy üzenet célvárólistába elérése, egy üzenet lekérése folyamatban, vagy egy időtúllépési üzenet megakadályozza az elérésére, vagy éppen beolvassa az a cél várósor.       Használata esetén a <xref:System.Messaging.Message>osztály az üzenetek küldése egy üzenetsorba, megadhatja az alkalmazás kell kapnia a nyugtázások típusú a <xref:System.Messaging.Message.AcknowledgeType%2A>tulajdonság, valamint a felügyeleti várólistájának, amely a nyugtázási üzeneteket fogad az <xref:System.Messaging.Message.AdministrationQueue%2A>tulajdonság.</xref:System.Messaging.Message.AdministrationQueue%2A> </xref:System.Messaging.Message.AcknowledgeType%2A> </xref:System.Messaging.Message>       Ha a <xref:System.Messaging.Message>osztály, ha a felügyeleti várólista, a példány nyugtázási üzeneteket <xref:System.Messaging.Message.Acknowledgment%2A>tulajdonság a feltételt jelzi nyugtázó üzenet felelős például, ha egy időkorlátja lejárt, mielőtt az eredeti üzenet lett beolvasva a várólista.</xref:System.Messaging.Message.Acknowledgment%2A> </xref:System.Messaging.Message>"
   example:
   - "The following code example sends and receives a message that contains an order to and from a queue. It specifically requests a positive acknowledgment when the original message reaches or is retrieved from the queue.  \n  \n [!code-cs[Message.Acknowledgment#1](~/add/codesnippet/csharp/t-system.messaging.ackno_1_1.cs)]\n [!code-cpp[Message.Acknowledgment#1](~/add/codesnippet/cpp/t-system.messaging.ackno_1_1.cpp)]\n [!code-vb[Message.Acknowledgment#1](~/add/codesnippet/visualbasic/t-system.messaging.ackno_1_1.vb)]"
   syntax:
@@ -42,12 +42,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request positive acknowledgment if the original message reaches the queue or negative acknowledgment if the time-to-reach-queue timer expires or if the original message cannot be authenticated."
+  summary: "Egy maszk pozitív visszajelzés kéréséhez, ha az eredeti üzenet eléri a várólista vagy nyugtát, ha a várólista-reach időzítő lejárt, vagy ha az eredeti üzenet nem lehet hitelesíteni."
   syntax:
     content: FullReachQueue
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -63,12 +63,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request positive acknowledgment if the original message is received from the queue before its time-to-be-received timer expires or negative acknowledgment otherwise."
+  summary: "Egy pozitív visszajelzés kérése, ha az eredeti üzenet jelenik meg az üzenetsorból az idő-az-fogadási lejárata előtt, vagy más módon negatív visszaigazolás használt maszkot."
   syntax:
     content: FullReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -84,13 +84,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when the original message fails to be received from the queue."
-  remarks: "Using the <xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName> method does not remove a message from the queue, so this acknowledgment type could be returned even if you did peek the message. Only the <xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName> method (or the related asynchronous <xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName> method) removes a message from the queue."
+  summary: "Egy maszk negatív visszajelzés kéréséhez, ha az eredeti üzenet nem fogadható az üzenetsorból."
+  remarks: "Használja a <xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName>metódus nem távolítja el egy üzenetet az üzenetsorból, még akkor is, ha az üzenet volt Belepillantás visszatérő visszaigazolás ilyen.</xref:System.Messaging.MessageQueue.Peek%2A?displayProperty=fullName> Csak a <xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName>metódus (vagy a kapcsolódó aszinkron <xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName>metódus) eltávolítja az üzenetet az üzenetsorból.</xref:System.Messaging.MessageQueue.BeginReceive%2A?displayProperty=fullName> </xref:System.Messaging.MessageQueue.Receive%2A?displayProperty=fullName>"
   syntax:
     content: NegativeReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -106,12 +106,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request that no acknowledgment messages (positive or negative) be posted."
+  summary: "Lehet, hogy nem nyugtázó üzenet (pozitív vagy negatív) elküldeni igényelni maszkot."
   syntax:
     content: None
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -127,12 +127,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when the original message cannot reach the queue. This can happen when the time-to-reach-queue timer expires or if a message cannot be authenticated."
+  summary: "Egy maszk negatív visszajelzés kéréséhez, ha az eredeti üzenet nem érhető el a várólista. Ez akkor fordulhat elő, amikor a várólista-reach időkorlát lejár, vagy ha az üzenet nem lehet hitelesíteni."
   syntax:
     content: NotAcknowledgeReachQueue
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -148,12 +148,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a negative acknowledgment when an error occurs that prevents the original message from being received from the queue before its time-to-be-received timer expires."
+  summary: "Egy maszk negatív visszajelzés kéréséhez, ha hiba lép fel, amely megakadályozza, hogy az eredeti üzenet mértékben fogadja az üzenetsorból, az idő-az-fogadási lejárta előtt."
   syntax:
     content: NotAcknowledgeReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -169,12 +169,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a positive acknowledgment when the original message reaches the queue."
+  summary: "Egy maszk pozitív visszajelzés kéréséhez, ha az eredeti üzenet a várólista eléri."
   syntax:
     content: PositiveArrival
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -190,12 +190,12 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "A mask used to request a positive acknowledgment when the original message is successfully retrieved from the queue."
+  summary: "Egy maszk pozitív visszajelzés kéréséhez, ha az eredeti üzenet sikeresen beolvasta a várólistából."
   syntax:
     content: PositiveReceive
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

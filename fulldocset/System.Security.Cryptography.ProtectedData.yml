@@ -11,7 +11,7 @@ items:
   nameWithType: ProtectedData
   fullName: System.Security.Cryptography.ProtectedData
   type: Class
-  summary: "Provides methods for encrypting and decrypting data. This class cannot be inherited."
+  summary: "Az adatok titkosítása és visszafejtése módszereket kínál. Ez az osztály nem örökölhető."
   remarks: "This class provides access to the Data Protection API (DPAPI) available in Microsoft Windows 2000 and later operating systems. This is a service that is provided by the operating system and does not require additional libraries. It provides protection using the user or machine credentials to encrypt or decrypt data.  \n  \n The class consists of two wrappers for the unmanaged DPAPI, [Protect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True) and [Unprotect(Byte\\[\\], Byte\\[\\], DataProtectionScope)](assetId:///M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)?qualifyHint=False&autoUpgrade=True). These two methods can be used to encrypt and decrypt data such as passwords, keys, and connection strings.  \n  \n If you use these methods during impersonation, you may receive the following error: \"Key not valid for use in specified state.\" This occurs because the DPAPI stores the key data in user profiles. If the profile is not loaded, DPAPI won’t be able to perform the decryption. To prevent this error, load the profile of the user you want to impersonate before calling either method. Using DPAPI with impersonation can incur significant complication and requires careful design choices."
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/t-system.security.crypto_126_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/t-system.security.crypto_126_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/t-system.security.crypto_126_1.vb)]"
@@ -35,8 +35,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Encrypts the data in a specified byte array and returns a byte array that contains the encrypted data."
-  remarks: "This method can be used to encrypt data such as passwords, keys, or connection strings. The `optionalEntropy` parameter enables you to add data to increase the complexity of the encryption; specify `null` for no additional complexity. If provided, this information must also be used when decrypting the data using the <xref:System.Security.Cryptography.ProtectedData.Unprotect%2A> method.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "Titkosítja az adatokat a megadott bájttömb, és a titkosított adatokat tartalmazó bájttömb beolvasása."
+  remarks: "Ez a módszer segítségével titkosítsa az adatokat, például a jelszavak, a kulcsok és a kapcsolati karakterláncokat. A `optionalEntropy` paraméter lehetővé teszi a titkosítási összetettsége növeléséhez adatok; meg `null` nem nagyobb fokú összetettségével jár. Amennyiben, ezt az információt kell is használható, ha használatával végzett visszafejtése a <xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>metódus.</xref:System.Security.Cryptography.ProtectedData.Unprotect%2A>      > [!NOTE] > A megszemélyesítés során ezt a módszert használja, ha lehetséges, hogy a következő hibaüzenet: &quot;Kulcs nem használható a megadott állapot.&quot; Ez a hiba elkerülése érdekében a metódus hívása előtt megszemélyesíteni kívánt felhasználó profil betöltése."
   example:
   - "The following example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/95867340-d3f0-4c9c-82ca-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/95867340-d3f0-4c9c-82ca-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/95867340-d3f0-4c9c-82ca-_1.vb)]"
   syntax:
@@ -44,16 +44,16 @@ items:
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "A byte array that contains data to encrypt."
+      description: "Adatok titkosítása tartalmazó bájttömb."
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array used to increase the complexity of the encryption, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> for no additional complexity."
+      description: "Egy nem kötelező további bájttömb a titkosítási összetettsége növelésére használt vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> nem nagyobb fokú összetettségével jár."
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of encryption."
+      description: "A számbavételi érték, amely meghatározza a köre titkosítási egyikét."
     return:
       type: System.Byte[]
-      description: "A byte array representing the encrypted data."
+      description: "A titkosított adatok képviselő bájttömb."
   overload: System.Security.Cryptography.ProtectedData.Protect*
   exceptions:
   - type: System.ArgumentNullException
@@ -61,13 +61,13 @@ items:
     description: "The <code>userData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The encryption failed."
+    description: "A titkosítás nem sikerült."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "Az operációs rendszer nem támogatja ezt a módszert."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "The system ran out of memory while encrypting the data."
+    description: "Elfogyott a memória az adatok titkosítása közben."
   platform:
   - net462
 - uid: System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Decrypts the data in a specified byte array and returns a byte array that contains the decrypted data."
-  remarks: "This method can be used to unprotect data that was encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect%2A> method. If the `optionalEntropy` parameter was used during encryption, it must be supplied to unencrypt the data.      > [!NOTE] >  If you use this method during impersonation, you may receive the following error: &quot;Key not valid for use in specified state.&quot; To prevent this error, load the profile of the user you want to impersonate before calling the method."
+  summary: "Az adatokat a megadott bájttömb visszafejti, és egy, a visszafejtett adatokat tartalmazó bájttömb beolvasása."
+  remarks: "Ez a módszer használható a védelem használatával titkosított adatokat a <xref:System.Security.Cryptography.ProtectedData.Protect%2A>metódus.</xref:System.Security.Cryptography.ProtectedData.Protect%2A> Ha a `optionalEntropy` paraméter lett megadva a titkosítás során, meg kell adni az adatokat titkosítani.      > [!NOTE] > A megszemélyesítés során ezt a módszert használja, ha lehetséges, hogy a következő hibaüzenet: &quot;Kulcs nem használható a megadott állapot.&quot; Ez a hiba elkerülése érdekében a metódus hívása előtt megszemélyesíteni kívánt felhasználó profil betöltése."
   example:
   - "The following code example shows how to use data protection.  \n  \n [!code-cs[Cryptography.DataProtectionSample#1](~/add/codesnippet/csharp/52a5e76e-1631-47b1-9e44-_1.cs)]\n [!code-cpp[Cryptography.DataProtectionSample#1](~/add/codesnippet/cpp/52a5e76e-1631-47b1-9e44-_1.cpp)]\n [!code-vb[Cryptography.DataProtectionSample#1](~/add/codesnippet/visualbasic/52a5e76e-1631-47b1-9e44-_1.vb)]"
   syntax:
@@ -91,16 +91,16 @@ items:
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "A byte array containing data encrypted using the <xref:System.Security.Cryptography.ProtectedData.Protect*> method."
+      description: "A használatával titkosított adatok tartalmazó bájttömb a <xref:System.Security.Cryptography.ProtectedData.Protect*>metódus.</xref:System.Security.Cryptography.ProtectedData.Protect*>"
     - id: optionalEntropy
       type: System.Byte[]
-      description: "An optional additional byte array that was used to encrypt the data, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the additional byte array was not used."
+      description: "Nem kötelező további bájttömb az adatok titkosításához használt vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a további bájttömb nem lett megadva."
     - id: scope
       type: System.Security.Cryptography.DataProtectionScope
-      description: "One of the enumeration values that specifies the scope of data protection that was used to encrypt the data."
+      description: "Az egyik a számbavételi érték, amely meghatározza az adatvédelem, az adatok titkosításához használt körét."
     return:
       type: System.Byte[]
-      description: "A byte array representing the decrypted data."
+      description: "A visszafejtett adatok képviselő bájttömb."
   overload: System.Security.Cryptography.ProtectedData.Unprotect*
   exceptions:
   - type: System.ArgumentNullException
@@ -108,13 +108,13 @@ items:
     description: "The <code>encryptedData</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The decryption failed."
+    description: "A visszafejtés sikertelen."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The operating system does not support this method."
+    description: "Az operációs rendszer nem támogatja ezt a módszert."
   - type: System.OutOfMemoryException
     commentId: T:System.OutOfMemoryException
-    description: "Out of memory."
+    description: "Nincs elég szabad memória."
   platform:
   - net462
 references:
