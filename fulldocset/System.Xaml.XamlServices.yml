@@ -23,8 +23,8 @@ items:
   nameWithType: XamlServices
   fullName: System.Xaml.XamlServices
   type: Class
-  summary: "Provides higher-level services (static methods) for the common XAML tasks of reading XAML and writing an object graph; or reading an object graph and writing XAML file output for serialization purposes."
-  remarks: "The modes of the XamlServices class that are used in the most common XAML reading and writing scenarios rely on creating instances of XAML readers and XAML writers. These readers and writers are specialized but internal implementations of public classes, such as <xref:System.Xml.XmlReader>, <xref:System.Xaml.XamlXmlReader>, and <xref:System.Xaml.XamlObjectWriter>. To use XamlServices for most scenarios, you can rely on the default internal implementations to obtain the results that you want. For more specialized scenarios, you might define readers and writers yourself, and then pass them as arguments for overloads of the XamlServices methods.      > [!IMPORTANT] >  XamlServices is not the recommended XAML reading or XAML writing API set if you are processing WPF-defined types, or types based on WPF. For [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] usage, use <xref:System.Windows.Markup.XamlReader?displayProperty=fullName> for reading or loading XAML (or BAML); and <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> for writing back XAML. These classes use .NET Framework XAML Services APIs and the XAML readers and XAML writers internally in their implementation; however, they also provide support and specialized XAML schema context for WPF-specific concepts, such as optimizations for dependency properties and WPF known types."
+  summary: "Magasabb szintű szolgáltatások (statikus metódusok) biztosít a leggyakoribb XAML feladatok XAML olvasását és írását objektumdiagram; vagy objektumdiagram olvasása, és az írást XAML a kimeneti fájl szerializálási célokra."
+  remarks: "A leggyakoribb XAML olvasását és írását forgatókönyvekben használt módok a XamlServices osztály a támaszkodnak XAML-olvasók és XAML-író létrehozását. Ezek olvasók és írók is speciális, de belső rendszerbeli nyilvános osztályok, például a <xref:System.Xml.XmlReader>, <xref:System.Xaml.XamlXmlReader>, és <xref:System.Xaml.XamlObjectWriter>.</xref:System.Xaml.XamlObjectWriter> </xref:System.Xaml.XamlXmlReader> </xref:System.Xml.XmlReader> A legtöbb forgatókönyvhöz XamlServices használatához számíthat, amelyet az eredmények az alapértelmezett belső megvalósítása. További speciális forgatókönyvek esetén, előfordulhat, hogy olvasók és írók saját kezűleg pedig az majd adja meg azokat a túlterhelések XamlServices módszerek argumentumként.      > [!IMPORTANT] > XamlServices nincs a javasolt XAML olvasása vagy írása API-t feldolgozása WPF-definiált típusok esetén, vagy a WPF alapján XAML. A [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] használati, használjon <xref:System.Windows.Markup.XamlReader?displayProperty=fullName>vagy XAML-kódot vagy BAML; betöltése és <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName>vissza XAML írásra.</xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> </xref:System.Windows.Markup.XamlReader?displayProperty=fullName> Ezeket az osztályokat használja .NET Framework XAML szolgáltatások API-k és az XAML-olvasók és XAML-író belső végrehajtásuk; azonban is biztosítanak támogatást és speciális XAML séma környezetében a WPF-specifikus fogalmakkal, mint a függőségi tulajdonságok és az ismert típusok WPF optimalizálás."
   syntax:
     content: public static class XamlServices
   inheritance:
@@ -45,22 +45,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Loads a <xref:System.IO.Stream> source for a XAML reader and writes its output as an object graph."
-  remarks: "Different signatures for the Load method specify different types of input for the source XAML. The Load internal implementation first creates an <xref:System.Xml.XmlReader> by calling <xref:System.Xml.XmlReader.Create%28System.IO.Stream%29> and then creates a new instance of a specialized <xref:System.Xaml.XamlReader> that processes the input.       In order for the Load call to successfully create an object graph, the following must be true:      -   The source is well-formed and valid XML.      -   The source is valid XAML at the language level.      -   The XAML types that are specified in the source XAML must resolve to backing types in the relevant XAML namespaces. For example, XAML types for WPF namespaces can resolve to a WPF XAML namespace as specified in the XAML; the assemblies for WPF must be included in the project or available in the run time; and so on.      > [!IMPORTANT] >  <xref:System.Xaml.XamlServices> is not the recommended XAML reading or XAML writing API set if you are processing [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] types, or types based on [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]. For [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] usage, use <xref:System.Windows.Markup.XamlReader?displayProperty=fullName> for reading or loading XAML; and <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> for writing back XAML. These classes use <xref:System.Xaml> APIs internally in their implementation; however, they also provide support for WPF-specific concepts that influence the nature of XAML reading and writing, such as optimizations for dependency properties."
+  summary: "Betölti a <xref:System.IO.Stream>forrás egy XAML-olvasó és ír a kimeneti adatok objektumdiagram.</xref:System.IO.Stream>"
+  remarks: "A Load metódus aláírásának különböző adja meg a különböző típusú bemeneti XAML adatforrásra vonatkozóan. A betöltési belső végrehajtási először létrehoz egy <xref:System.Xml.XmlReader>meghívásával <xref:System.Xml.XmlReader.Create%28System.IO.Stream%29>majd létrehoz egy új példányát egy speciális <xref:System.Xaml.XamlReader>, amely feldolgozza a bemeneti.</xref:System.Xaml.XamlReader> </xref:System.Xml.XmlReader.Create%28System.IO.Stream%29> </xref:System.Xml.XmlReader>       Ahhoz, hogy a terhelési hívás objektumdiagram sikeresen létrehozásához, az alábbiaknak igaznak kell lenniük:-a forrás egy szabályos és érvényes XML.      -A forrás, a nyelvi szinten érvényes XAML-kódot.      -A a forráshelyen megadott XAML-típusok a megfelelő XAML-névterek típusainak biztonsági XAML-kódot kell tartoznia. Például WPF névterek típusainak XAML képes legyen feloldani a WPF XAML névtérből a XAML; a WPF szerelvényeket kell lennie, a projekt befoglalt, sem érhető el a futási időben; és így tovább.      > [!IMPORTANT] > <xref:System.Xaml.XamlServices>nem a javasolt XAML olvasása vagy írása API XAML beállítva feldolgozása esetén [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] típusokat, vagy alapján [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)].</xref:System.Xaml.XamlServices> A [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] használati, használjon <xref:System.Windows.Markup.XamlReader?displayProperty=fullName>vagy XAML; betöltése és <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName>vissza XAML írásra.</xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> </xref:System.Windows.Markup.XamlReader?displayProperty=fullName> Ezeket az osztályokat használja <xref:System.Xaml>belső végrehajtás; API-k azonban akkor is támogatást nyújt a WPF-specifikus fogalmakat, amelyek befolyásolják a XAML olvasását és írását, például a függőségi tulajdonságok optimalizálás jellegétől.</xref:System.Xaml>"
   syntax:
     content: public static object Load (System.IO.Stream stream);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream to load as input."
+      description: "Az adatfolyam bemenetként betöltése."
     return:
       type: System.Object
-      description: "The object graph that is written as output."
+      description: "Az objektumgráf kimenetként írt."
   overload: System.Xaml.XamlServices.Load*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>stream</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Load(System.IO.TextReader)
@@ -75,22 +75,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Creates a XAML reader from a <xref:System.IO.TextReader>, and returns an object graph."
-  remarks: "In order to return the object graph, the `textReader` input should be constructed by using its relevant input. For example, it should pass a <xref:System.IO.StringReader> that is constructed by using a valid XAML-as-string input for the <xref:System.IO.StringReader.%23ctor%28System.String%29> constructor."
+  summary: "Létrehoz egy XAML-olvasó a egy <xref:System.IO.TextReader>, és visszaadja az objektumdiagram.</xref:System.IO.TextReader>"
+  remarks: "Ahhoz, hogy a diagramot, térjen vissza a `textReader` bemeneti kell alakítható ki a megfelelő bemeneti használatával. Például továbbítani kell egy <xref:System.IO.StringReader>, amely az érvényes XAML-,-karakterlánc bemeneti használatával összeállított a <xref:System.IO.StringReader.%23ctor%28System.String%29>konstruktor.</xref:System.IO.StringReader.%23ctor%28System.String%29> </xref:System.IO.StringReader>"
   syntax:
     content: public static object Load (System.IO.TextReader textReader);
     parameters:
     - id: textReader
       type: System.IO.TextReader
-      description: "The <xref:System.IO.TextReader> to use as the basis for the created <xref:System.Xml.XmlReader>."
+      description: "A <xref:System.IO.TextReader>használatára a létrehozott <xref:System.Xml.XmlReader>.</xref:System.Xml.XmlReader> alapjaként</xref:System.IO.TextReader>"
     return:
       type: System.Object
-      description: "The object graph that is returned."
+      description: "Visszaadott diagramot."
   overload: System.Xaml.XamlServices.Load*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>textReader</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>textReader</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Load(System.String)
@@ -105,22 +105,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Loads a <xref:System.IO.Stream> source for a XAML reader and returns an object graph."
-  remarks: "Different signatures for the Load method specify different types of input for the source XAML. The Load internal implementation first creates an <xref:System.Xml.XmlReader> by calling <xref:System.Xml.XmlReader.Create%28System.String%29> and then creates a new instance of a specialized <xref:System.Xaml.XamlReader> that processes the input.       In order for the Load call to successfully create an object graph, the following must be true:      -   The source is well-formed and valid XML.      -   The source is valid XAML at the language level.      -   The XAML types that are specified in the source XAML must resolve to backing types in the relevant XAML namespaces. For example, XAML types for WPF namespaces can resolve to a WPF XAML namespace as specified in the XAML; the assemblies for WPF must be included in the project or be available in the run time; and so on."
+  summary: "Betölti a <xref:System.IO.Stream>forrás egy XAML-olvasó és objektumdiagram adja vissza.</xref:System.IO.Stream>"
+  remarks: "A Load metódus aláírásának különböző adja meg a különböző típusú bemeneti XAML adatforrásra vonatkozóan. A betöltési belső végrehajtási először létrehoz egy <xref:System.Xml.XmlReader>meghívásával <xref:System.Xml.XmlReader.Create%28System.String%29>majd létrehoz egy új példányát egy speciális <xref:System.Xaml.XamlReader>, amely feldolgozza a bemeneti.</xref:System.Xaml.XamlReader> </xref:System.Xml.XmlReader.Create%28System.String%29> </xref:System.Xml.XmlReader>       Ahhoz, hogy a terhelési hívás objektumdiagram sikeresen létrehozásához, az alábbiaknak igaznak kell lenniük:-a forrás egy szabályos és érvényes XML.      -A forrás, a nyelvi szinten érvényes XAML-kódot.      -A a forráshelyen megadott XAML-típusok a megfelelő XAML-névterek típusainak biztonsági XAML-kódot kell tartoznia. Például WPF névterek típusainak XAML képes legyen feloldani a WPF XAML névtérből a XAML; a szerelvények a WPF szerepelnie kell a projekt vagy elérhető, vagy a futási időben; és így tovább."
   syntax:
     content: public static object Load (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The file name to load and use as source."
+      description: "A fájlnév betölteni és adatforrásként."
     return:
       type: System.Object
-      description: "The object graph that is returned."
+      description: "Visszaadott diagramot."
   overload: System.Xaml.XamlServices.Load*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>fileName</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>fileName</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Load(System.Xaml.XamlReader)
@@ -135,22 +135,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Loads a specific XAML reader implementation and returns an object graph."
-  remarks: "You should typically use this signature only in the following cases:      -   You defined your own implementation of a <xref:System.Xaml.XamlReader>.      -   You specified settings for a <xref:System.Xaml.XamlReader> that differ from the default settings."
+  summary: "Egy adott XAML-olvasó megvalósítása betölt, és objektumdiagram adja vissza."
+  remarks: "Csak a következő esetekben kell használni az aláírás általában:-az Ön által definiált saját <xref:System.Xaml.XamlReader>.</xref:System.Xaml.XamlReader> végrehajtása      -A megadott beállítások egy <xref:System.Xaml.XamlReader>, amely eltér az alapértelmezett beállításokat.</xref:System.Xaml.XamlReader>"
   syntax:
     content: public static object Load (System.Xaml.XamlReader xamlReader);
     parameters:
     - id: xamlReader
       type: System.Xaml.XamlReader
-      description: "The XAML reader implementation to use as the reader for this <xref uid=&quot;langword_csharp_Load&quot; name=&quot;Load&quot; href=&quot;&quot;></xref> operation."
+      description: "Ennek az olvasó használandó XAML olvasó végrehajtása <xref uid=&quot;langword_csharp_Load&quot; name=&quot;Load&quot; href=&quot;&quot;> </xref> műveletet."
     return:
       type: System.Object
-      description: "The object graph that is returned."
+      description: "Visszaadott diagramot."
   overload: System.Xaml.XamlServices.Load*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlReader</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlReader</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Load(System.Xml.XmlReader)
@@ -165,22 +165,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Loads a specific XML reader implementation and returns an object graph."
-  remarks: "You should typically use this signature only if you defined your own implementation of a <xref:System.Xml.XmlReader>."
+  summary: "A megadott XML-olvasó megvalósítása betölt, és objektumdiagram adja vissza."
+  remarks: "Ajánlott az aláírás általában csak akkor, ha a saját <xref:System.Xml.XmlReader>.</xref:System.Xml.XmlReader> végrehajtásának definiált"
   syntax:
     content: public static object Load (System.Xml.XmlReader xmlReader);
     parameters:
     - id: xmlReader
       type: System.Xml.XmlReader
-      description: "The <xref:System.Xml.XmlReader> implementation to use as the reader for this <xref uid=&quot;langword_csharp_Load&quot; name=&quot;Load&quot; href=&quot;&quot;></xref> operation."
+      description: "A <xref:System.Xml.XmlReader>megvalósítását, hogy az olvasó használják a <xref uid=&quot;langword_csharp_Load&quot; name=&quot;Load&quot; href=&quot;&quot;> </xref> művelet.</xref:System.Xml.XmlReader>"
     return:
       type: System.Object
-      description: "The output object graph."
+      description: "A kimeneti objektumdiagram."
   overload: System.Xaml.XamlServices.Load*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlReader</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlReader</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Parse(System.String)
@@ -195,22 +195,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Reads XAML as string output and returns an object graph."
-  remarks: "In order for the Parse call to successfully create an object tree, the following must be true:      -   The `xaml` input is well-formed and valid XML.      -   The `xaml` input is valid XAML at the language level.      -   The XAML types that are specified in the `xaml` input must resolve to backing types in the relevant XAML namespaces. For example, XAML types for a WPF namespace can resolve to a WPF XAML namespace as specified in the XAML; the assemblies for WPF must be included in the project or be available in the run time; and so on.      > [!IMPORTANT] >  <xref:System.Xaml.XamlServices> is not the recommended XAML reading or XAML writing API set if you are processing [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] types, or types based on [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]. For [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] usage, use <xref:System.Windows.Markup.XamlReader?displayProperty=fullName> for reading or loading XAML, and <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> for writing back XAML. These classes use <xref:System.Xaml> APIs internally in their implementation; however, they also provide support for WPF-specific concepts that influence the nature of XAML reading and writing, such as optimizations for dependency properties."
+  summary: "Karakterlánc kimenetként XAML olvas, és objektumdiagram adja vissza."
+  remarks: "Ahhoz, hogy a Parse hívás sikeres létrehozásához az objektumfából, az alábbiaknak igaznak kell lenniük: - a `xaml` bemeneti szabályos és érvényes XML.      -A `xaml` bemeneti érték érvényes XAML-kódot a nyelvi szinten.      -A megadott XAML-típusok a `xaml` bemeneti a megfelelő XAML-névterek típusainak biztonsági kell tartoznia. Például a WPF-névtér az XAML-típusok képes legyen feloldani a WPF XAML névtérből a XAML; a szerelvények a WPF szerepelnie kell a projekt vagy elérhető, vagy a futási időben; és így tovább.      > [!IMPORTANT] > <xref:System.Xaml.XamlServices>nem a javasolt XAML olvasása vagy írása API XAML beállítva feldolgozása esetén [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)] típusokat, vagy alapján [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)].</xref:System.Xaml.XamlServices> A [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] használati, használjon <xref:System.Windows.Markup.XamlReader?displayProperty=fullName>vagy betöltése XAML-kódot, és <xref:System.Windows.Markup.XamlWriter?displayProperty=fullName>írásához vissza XAML.</xref:System.Windows.Markup.XamlWriter?displayProperty=fullName> </xref:System.Windows.Markup.XamlReader?displayProperty=fullName> Ezeket az osztályokat használja <xref:System.Xaml>belső végrehajtás; API-k azonban akkor is támogatást nyújt a WPF-specifikus fogalmakat, amelyek befolyásolják a XAML olvasását és írását, például a függőségi tulajdonságok optimalizálás jellegétől.</xref:System.Xaml>"
   syntax:
     content: public static object Parse (string xaml);
     parameters:
     - id: xaml
       type: System.String
-      description: "The XAML string input to parse."
+      description: "Az XAML karakterláncot adjon meg elemzése."
     return:
       type: System.Object
-      description: "The object graph that is returned."
+      description: "Visszaadott diagramot."
   overload: System.Xaml.XamlServices.Parse*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xaml</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xaml</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Save(System.Object)
@@ -225,17 +225,17 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object tree into a XAML node representation, and returns a string representation of the output XAML."
-  remarks: "The output from this method is the `ToString` result of an <xref:System.Xml.XmlWriter> that is created by the method call. That <xref:System.Xml.XmlWriter> is created by using the following settings: <xref:System.Xml.XmlWriterSettings.Indent%2A?displayProperty=fullName> is `true`; and <xref:System.Xml.XmlWriterSettings.OmitXmlDeclaration%2A?displayProperty=fullName> is `true`.       The returned string can be loaded as valid XML through the <xref:System.Xml.XmlReader.Create%2A> method if you processed the string into a stream, or into a reader more specifically dedicated for XAML."
+  summary: "Egy megadott objektumfához feldolgozza azokat a XAML-csomópont megjelenítése, és a kimeneti XAML karakterlánc alakot adja vissza."
+  remarks: "A metódus eredménye a `ToString` eredménye egy <xref:System.Xml.XmlWriter>a metódushívás által létrehozott.</xref:System.Xml.XmlWriter> Hogy <xref:System.Xml.XmlWriter>hozta létre a következő beállításokkal: <xref:System.Xml.XmlWriterSettings.Indent%2A?displayProperty=fullName>van `true`; és <xref:System.Xml.XmlWriterSettings.OmitXmlDeclaration%2A?displayProperty=fullName>van `true`.</xref:System.Xml.XmlWriterSettings.OmitXmlDeclaration%2A?displayProperty=fullName> </xref:System.Xml.XmlWriterSettings.Indent%2A?displayProperty=fullName> </xref:System.Xml.XmlWriter>       A visszaadott karakterlánc érvényes XML-keresztül tölthetők be a <xref:System.Xml.XmlReader.Create%2A>módszert, ha Ön érdekében dolgoz fel a karakterláncot adatfolyam, vagy egy olvasó pontosabban dedikált XAML.</xref:System.Xml.XmlReader.Create%2A>"
   syntax:
     content: public static string Save (object instance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
     return:
       type: System.String
-      description: "The XAML markup output as a string."
+      description: "Az XAML markup kimeneti karakterláncként."
   overload: System.Xaml.XamlServices.Save*
   exceptions: []
   platform:
@@ -252,7 +252,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object graph into a XAML node representation and then into an output stream for serialization."
+  summary: "Egy megadott objektumdiagram dolgozza fel a át egy XAML-csomópont ábrázolását, majd egy kimeneti adatfolyamba való szerializáláshoz."
   remarks: >-
     > [!IMPORTANT]
 
@@ -262,15 +262,15 @@ items:
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The destination stream."
+      description: "A céloldali adatfolyam."
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
   overload: System.Xaml.XamlServices.Save*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>stream</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Save(System.IO.TextWriter,System.Object)
@@ -285,21 +285,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object graph into a XAML node representation and then into an output that goes to the provided <xref:System.IO.TextWriter>."
+  summary: "A megadott objektumdiagram dolgozza fel a át egy XAML-csomópont ábrázolását, majd be, amely a megadott <xref:System.IO.TextWriter>.</xref:System.IO.TextWriter> ugrik kimenetnek"
   syntax:
     content: public static void Save (System.IO.TextWriter writer, object instance);
     parameters:
     - id: writer
       type: System.IO.TextWriter
-      description: "The <xref:System.IO.TextWriter> that writes the output."
+      description: "A <xref:System.IO.TextWriter>, amely a kimenetet írja.</xref:System.IO.TextWriter>"
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
   overload: System.Xaml.XamlServices.Save*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>writer</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Save(System.String,System.Object)
@@ -314,25 +314,25 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object graph into a XAML node representation and then writes it to an output file at a provided location."
-  remarks: "The `fileName` parameter value is used as the `outputFileName` input for a call to <xref:System.Xml.XmlWriter.Create%2A?displayProperty=fullName>, which creates a <xref:System.Xml.XmlWriter> as part of the method call."
+  summary: "A megadott objektumdiagram feldolgozza azokat a XAML-csomópont megjelenítése és ír a kimeneti fájl egy megadott helyen."
+  remarks: "A `fileName` paraméter az értéket a `outputFileName` hívása a bemenetet <xref:System.Xml.XmlWriter.Create%2A?displayProperty=fullName>, ami létrehoz egy <xref:System.Xml.XmlWriter>a metódushívás részeként.</xref:System.Xml.XmlWriter> </xref:System.Xml.XmlWriter.Create%2A?displayProperty=fullName>"
   syntax:
     content: public static void Save (string fileName, object instance);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name and location of the file to write the output to."
+      description: "A név és írni a kimeneti fájl helye."
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
   overload: System.Xaml.XamlServices.Save*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>fileName</code> is an empty string."
+    description: "<code>fileName</code>az üres karakterlánc."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>fileName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>fileName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Save(System.Xaml.XamlWriter,System.Object)
@@ -347,22 +347,22 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object graph into a XAML node representation and then writes it to the provided XAML writer."
-  remarks: "You should typically use this signature only in the following cases:      -   You defined your own implementation of a <xref:System.Xaml.XamlWriter>.      -   You specified settings for the <xref:System.Xaml.XamlWriter> that differ from the default settings."
+  summary: "A megadott objektumdiagram feldolgozza azokat a XAML-csomópont megjelenítése és ír a megadott XAML-író."
+  remarks: "Csak a következő esetekben kell használni az aláírás általában:-az Ön által definiált saját <xref:System.Xaml.XamlWriter>.</xref:System.Xaml.XamlWriter> végrehajtása      -A megadott beállítások a <xref:System.Xaml.XamlWriter>, amely eltér az alapértelmezett beállításokat.</xref:System.Xaml.XamlWriter>"
   syntax:
     content: public static void Save (System.Xaml.XamlWriter writer, object instance);
     parameters:
     - id: writer
       type: System.Xaml.XamlWriter
-      description: "The <xref href=&quot;System.Xaml.XamlWriter&quot;></xref> implementation to use."
+      description: "A <xref href=&quot;System.Xaml.XamlWriter&quot;> </xref> használandó végrehajtására."
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
   overload: System.Xaml.XamlServices.Save*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>writer</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Save(System.Xml.XmlWriter,System.Object)
@@ -377,21 +377,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Processes a provided object graph into a XAML node representation and then writes it to the provided <xref:System.Xml.XmlWriter>."
+  summary: "A megadott objektumdiagram feldolgozza azokat a XAML-csomópont megjelenítése és ír a megadott <xref:System.Xml.XmlWriter>.</xref:System.Xml.XmlWriter>"
   syntax:
     content: public static void Save (System.Xml.XmlWriter writer, object instance);
     parameters:
     - id: writer
       type: System.Xml.XmlWriter
-      description: "The <xref:System.Xml.XmlWriter> implementation to use."
+      description: "A <xref:System.Xml.XmlWriter>használandó megvalósítási.</xref:System.Xml.XmlWriter>"
     - id: instance
       type: System.Object
-      description: "The root of the object graph to process."
+      description: "Az objektumgráf feldolgozni gyökere."
   overload: System.Xaml.XamlServices.Save*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>writer</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>writer</code>input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Transform(System.Xaml.XamlReader,System.Xaml.XamlWriter)
@@ -406,14 +406,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Connects a <xref href=&quot;System.Xaml.XamlReader&quot;></xref> and a <xref href=&quot;System.Xaml.XamlWriter&quot;></xref> to use a common XAML node set intermediary. Potentially transforms the content, depending on the types of readers and writers that are provided."
-  remarks: "This method is a wrapper around <xref:System.Xaml.XamlServices.Transform%28System.Xaml.XamlReader%2CSystem.Xaml.XamlWriter%2CSystem.Boolean%29>, where `closeWriter` is specified as `true`."
+  summary: "Csatlakozik egy <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> és egy <xref href=&quot;System.Xaml.XamlWriter&quot;> </xref> egy közös XAML-csomópont beállítani köztes használatára. Potenciálisan átalakítja a tartalmat, attól függően, hogy az olvasók és írók által biztosított."
+  remarks: "Ez a módszer akkor csomagolásának <xref:System.Xaml.XamlServices.Transform%28System.Xaml.XamlReader%2CSystem.Xaml.XamlWriter%2CSystem.Boolean%29>, ahol `closeWriter` megadott `true`.</xref:System.Xaml.XamlServices.Transform%28System.Xaml.XamlReader%2CSystem.Xaml.XamlWriter%2CSystem.Boolean%29>"
   syntax:
     content: public static void Transform (System.Xaml.XamlReader xamlReader, System.Xaml.XamlWriter xamlWriter);
     parameters:
     - id: xamlReader
       type: System.Xaml.XamlReader
-      description: "The <xref href=&quot;System.Xaml.XamlReader&quot;></xref> implementation to use."
+      description: "A <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> használandó végrehajtására."
     - id: xamlWriter
       type: System.Xaml.XamlWriter
       description: "The <xref href=&quot;System.Xaml.XamlWriter&quot;></xref> to use."
@@ -421,10 +421,10 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlReader</code> or <code>xamlWriter</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlReader</code>or <code>xamlWriter</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Xaml.XamlException
     commentId: T:System.Xaml.XamlException
-    description: "The XAML schema context does not match between the provided <code>xamlReader</code> and <code>xamlWriter</code>."
+    description: "Az XAML-séma környezetében nem egyezik a megadott <code> xamlReader </code> és <code> xamlWriter </code>."
   platform:
   - net462
 - uid: System.Xaml.XamlServices.Transform(System.Xaml.XamlReader,System.Xaml.XamlWriter,System.Boolean)
@@ -439,27 +439,27 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Connects a <xref href=&quot;System.Xaml.XamlReader&quot;></xref> and a <xref href=&quot;System.Xaml.XamlWriter&quot;></xref> to use a common XAML node set intermediary. Potentially transforms the content, depending on the types of readers and writers that are provided. Provides a parameter for specifying whether to close the writer after the call is completed."
+  summary: "Csatlakozik egy <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> és egy <xref href=&quot;System.Xaml.XamlWriter&quot;> </xref> egy közös XAML-csomópont beállítani köztes használatára. Potenciálisan átalakítja a tartalmat, attól függően, hogy az olvasók és írók által biztosított. Biztosít egy paraméter megadása, hogy a hívás befejezése után, zárja be a írta-e."
   syntax:
     content: public static void Transform (System.Xaml.XamlReader xamlReader, System.Xaml.XamlWriter xamlWriter, bool closeWriter);
     parameters:
     - id: xamlReader
       type: System.Xaml.XamlReader
-      description: "The <xref href=&quot;System.Xaml.XamlReader&quot;></xref> implementation to use."
+      description: "A <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> használandó végrehajtására."
     - id: xamlWriter
       type: System.Xaml.XamlWriter
       description: "The <xref href=&quot;System.Xaml.XamlWriter&quot;></xref> to use."
     - id: closeWriter
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to close the writer after the call is complete; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to leave the writer active at the last written position."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Az író bezárása után a hívás; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> , hogy az író aktív utolsó írásbeli helyén."
   overload: System.Xaml.XamlServices.Transform*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlReader</code> or <code>xamlWriter</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlReader</code>or <code>xamlWriter</code> input is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Xaml.XamlException
     commentId: T:System.Xaml.XamlException
-    description: "The XAML schema context does not match between the provided <code>xamlReader</code> and <code>xamlWriter</code>."
+    description: "Az XAML-séma környezetében nem egyezik a megadott <code> xamlReader </code> és <code> xamlWriter </code>."
   platform:
   - net462
 references:
