@@ -49,8 +49,8 @@ items:
   nameWithType: Timeline
   fullName: System.Windows.Media.Animation.Timeline
   type: Class
-  summary: "Defines a segment of time."
-  remarks: "A timeline represents a segment of time.  It provides properties that enable you to specify the length of that segment, when it should start, how many times it will repeat, how fast time progresses in that segment, and more.       Classes that inherit from the timeline class provide additional functionality, such as animation and media playback. The following are examples of some of the different types of specialized timelines available.      -   **Animations**: An <xref:System.Windows.Media.Animation.AnimationTimeline> is a type of timeline that produces output values. When you associate an animation with a property, the animation updates the property&quot;s value as it plays, thereby &quot;animating&quot; it. For an introduction to animations, see [Animation Overview](~/add/includes/ajax-current-ext-md.md). For information about the different ways to apply animations, see the [Property Animation Techniques Overview](~/add/includes/ajax-current-ext-md.md).      -   **MediaTimelines**: A <xref:System.Windows.Media.MediaTimeline> is a type of timeline that controls the playback of a media file.      -   **ParallelTimelines**: A <xref:System.Windows.Media.Animation.ParallelTimeline> is a type of timeline that groups other timelines.      -   **Storyboards**: A <xref:System.Windows.Media.Animation.Storyboard> is a special type of <xref:System.Windows.Media.Animation.ParallelTimeline> that provides object and property targeting information for the timelines it contains. For more information about <xref:System.Windows.Media.Animation.Storyboard> objects, see the [Storyboards Overview](~/add/includes/ajax-current-ext-md.md).       For more information about using timelines, see the [Animation Overview](../Topic/Animation%20Overview.md). For an introduction to the timing features of timelines, see the [Timing Behaviors Overview](~/add/includes/ajax-current-ext-md.md).      ## Data Binding and Animating Timelines    Most timeline properties can be data bound or animated; however, because of the way the timing system works, data bound or animated timelines do not behave like other data bound or animated objects. To understand their behavior, it helps to understand what it means to activate a timeline.       When a timeline is applied, copies are made of the timeline and its child timelines. These copies are frozen (made read-only) and <xref:System.Windows.Media.Animation.Clock> objects are created from them. It&quot;s these clocks that do the actual work of animating the targeted properties. If a timeline was data bound or animated, a snapshot of its current values was made when its clock was created. Even though the original timeline might continue to change, its clock does not.       For a timeline to reflect data binding or animation changes, its clock must be regenerated. Clocks are not regenerated for you automatically. The following are several ways to apply timeline changes:      -   If the timeline is or belongs to a <xref:System.Windows.Media.Animation.Storyboard>, you can make it reflect changes by reapplying its storyboard using a <xref:System.Windows.Media.Animation.BeginStoryboard> or the <xref:System.Windows.Media.Animation.Storyboard.Begin%2A> method. This has the side effect of also restarting the animation. In code, you can use the <xref:System.Windows.Media.Animation.Storyboard.Seek%2A> method to advance the storyboard back to its previous position.      -   If you applied an animation directly to a property using the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method, call the <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> method again and pass it the animation that&quot;s been modified.      -   If you are working directly at the clock level, create and apply a new set of clocks and use them to replace the previous set of generated clocks.       For an example of a data bound animation, see the [Key Spline Animation Sample](http://go.microsoft.com/fwlink/?LinkID=160011) .      ## Using a Timeline as a Timer    A timeline&quot;s clock will only progress when there&quot;s an event hander associated with it or (in the case of an <xref:System.Windows.Media.Animation.AnimationClock> object) it is associated with a property. For this reason (and others), it&quot;s not recommended that you use a Timeline as a timer."
+  summary: "A szegmens idő határozza meg."
+  remarks: "Ütemterv egy szegmens időt jelenti.  Biztosít, amelyek lehetővé teszik, hogy adja meg az adott szegmens hosszát, ha addig kell elindítani, hányszor ismétlődik, milyen gyors idő az adott szegmens, és több megfelelően tulajdonságait.       Az ütemterv osztály öröklő további funkciókat, például az animáció és media adja meg. A következő példák néhány speciális ütemtervek érhető el a különböző típusú.      - **Animációk**: egy <xref:System.Windows.Media.Animation.AnimationTimeline>olyan típusú, hogy az előállított kimeneti értékek ütemterv.</xref:System.Windows.Media.Animation.AnimationTimeline> Ha egy tulajdonság az animáció társítja, az animáció frissíti a tulajdonság értékét lejátszás, ezáltal &quot;animálása&quot; azt. Megismerkedhet az animáció, lásd: [animáció – áttekintés](~/add/includes/ajax-current-ext-md.md). Animációk alkalmazni a különböző lehetőségekről további információkért lásd: a [tulajdonság animáció technikák – áttekintés](~/add/includes/ajax-current-ext-md.md).      - **MediaTimelines**: A <xref:System.Windows.Media.MediaTimeline>olyan típusú, amely a médiafájl lejátszás ütemterv.</xref:System.Windows.Media.MediaTimeline>      - **Elem**: A <xref:System.Windows.Media.Animation.ParallelTimeline>olyan típusú, amely csoportosítja a más ütemtervek ütemterv.</xref:System.Windows.Media.Animation.ParallelTimeline>      - **Storyboards**: A <xref:System.Windows.Media.Animation.Storyboard>speciális típusú <xref:System.Windows.Media.Animation.ParallelTimeline>biztosítja az objektum és a célcsoport-kezelési információkat tartalmaz az ütemtervek tulajdonság.</xref:System.Windows.Media.Animation.ParallelTimeline> </xref:System.Windows.Media.Animation.Storyboard> További információ <xref:System.Windows.Media.Animation.Storyboard>objektumok, tekintse meg a [Storyboards áttekintése](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Media.Animation.Storyboard>       Ütemtervek használatával kapcsolatos további információkért lásd: a [animáció – áttekintés](../Topic/Animation%20Overview.md). Bevezető időzítési funkcióinak ütemtervek, tekintse meg a [időzítési viselkedéseket – áttekintés](~/add/includes/ajax-current-ext-md.md).      ## Adatkötés és leginkább a ütemtervek animálása ütemterv tulajdonságok lehet kötött vagy animált; adatok azonban a működésére a rendszer, mert kötött vagy animált ütemtervek nem viselkednek más adatok adatok kötve, vagy animált objektumok. Szeretné megtudni, azok viselkedését, az segít megérteni, mit jelent, ha ütemterv aktiválása.       Ütemterv alkalmazása esetén másolja az ütemterv és annak gyermek ütemtervek épülnek. Példányainak sincs rögzítve (végzett a csak olvasható) és <xref:System.Windows.Media.Animation.Clock>objektumok létrehozásakor belőlük.</xref:System.Windows.Media.Animation.Clock> Az órákat, amelyek a tényleges munkát a célként megadott tulajdonságok animálása. Ha egy ütemterv adathoz kötött vagy animált, pillanatképet az aktuális értékeit történt a rendszeróra létrehozásakor. Annak ellenére, hogy az eredeti ütemterv előfordulhat, hogy továbbra is módosíthatja, a rendszeróra viszont nem.       Az adatok a binding vagy animáció módosításokkal ütemterv a rendszeróra újra létre kell hozni. Órák vannak nem újragenerálása meg automatikusan. A következő számos módon ütemterv módosítások alkalmazásához: – Ha az ütemterv vagy tartozik egy <xref:System.Windows.Media.Animation.Storyboard>, akkor teheti, hogy a storyboard használatával újbóli alkalmazásával változásainak követés érdekében egy <xref:System.Windows.Media.Animation.BeginStoryboard>vagy a <xref:System.Windows.Media.Animation.Storyboard.Begin%2A>metódus.</xref:System.Windows.Media.Animation.Storyboard.Begin%2A> </xref:System.Windows.Media.Animation.BeginStoryboard> </xref:System.Windows.Media.Animation.Storyboard> Ennek hatása az ügyféloldali is újraindíthatja az animációnak. A kódban, használhatja a <xref:System.Windows.Media.Animation.Storyboard.Seek%2A>ahhoz, hogy a storyboard metódus biztonsági másolatot az előző helyére.</xref:System.Windows.Media.Animation.Storyboard.Seek%2A>      – Ha egy animációt közvetlenül, hogy a tulajdonság használatával a <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>metódust, hívja az <xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>metódus újra, és adja át az animáció, amely módosítva lett.</xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A> </xref:System.Windows.Media.Animation.Animatable.BeginAnimation%2A>      – Ha közvetlenül az óra szintjén dolgozik, létrehozása és alkalmazása órák új készletét, és segítségével létrehozott órák előző készletét lecseréli.       Egy példa az animáció kötve, lásd: a [kulcs Spline animáció minta](http://go.microsoft.com/fwlink/?LinkID=160011) .      ## Ütemterv a használatával, mint A időzítő ütemterv óra lesz csak előrehaladás, ha egy esemény meg társított vagy (a következőket egy <xref:System.Windows.Media.Animation.AnimationClock>objektum) társítva van egy tulajdonság.</xref:System.Windows.Media.Animation.AnimationClock> Ezért (és mások) nem ajánlott, egy számlálót ütemterv használatát."
   syntax:
     content: >-
       [System.Windows.Localizability(System.Windows.LocalizationCategory.None, Readability=System.Windows.Readability.Unreadable)]
@@ -123,7 +123,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> osztály."
   syntax:
     content: protected Timeline ();
     parameters: []
@@ -143,13 +143,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> a megadott <xref:System.Windows.Media.Animation.Timeline.BeginTime*>.</xref:System.Windows.Media.Animation.Timeline.BeginTime*> osztály"
   syntax:
     content: protected Timeline (Nullable<TimeSpan> beginTime);
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "Az időpontot, amelyhez a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> el kell kezdődnie. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.BeginTime*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -166,7 +166,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*> and <xref:System.Windows.Media.Animation.Timeline.Duration*>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> és a megadott osztály <> </> *> és <> </> *>."
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "Az időpontot, amelyhez a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> el kell kezdődnie. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.BeginTime*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "Az ütemterv játszik, amelynek, nem számítva a szilánkazonosítók idő hosszúsága. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.Duration*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -195,7 +195,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> class with the specified <xref:System.Windows.Media.Animation.Timeline.BeginTime*>, <xref:System.Windows.Media.Animation.Timeline.Duration*>, and <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> és a megadott osztály <> </> *>, <> </> *>, és <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   remarks: ''
   example:
   - "<xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>  \n  \n <xref:System.Windows.Media.Animation.Timeline.Duration%2A>"
@@ -204,13 +204,13 @@ items:
     parameters:
     - id: beginTime
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin. See the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> property for more information."
+      description: "Az időpontot, amelyhez a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> el kell kezdődnie. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.BeginTime*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
     - id: duration
       type: System.Windows.Duration
-      description: "The length of time for which this timeline plays, not counting repetitions. See the <xref:System.Windows.Media.Animation.Timeline.Duration*> property for more information."
+      description: "Az ütemterv játszik, amelynek, nem számítva a szilánkazonosítók idő hosszúsága. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.Duration*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
     - id: repeatBehavior
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "The repeating behavior of this timeline, either as an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> or a repeat <xref:System.Windows.Media.Animation.RepeatBehavior.Duration*>. See the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> property for more information."
+      description: "Az ütemterv, akár egy iteráció ismétlődő viselkedését <> </> *> vagy ismétlés <> </> *>. Tekintse meg a <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>tulajdonság további információt.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   overload: System.Windows.Media.Animation.Timeline.#ctor*
   exceptions: []
   platform:
@@ -227,21 +227,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate."
-  remarks: "Use the AccelerationRatio property to create animations that start slowly and then speed up as time progresses. The AccelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdez vagy beállít egy értéket adja meg az ütemterv százalékos <xref:System.Windows.Media.Animation.Timeline.Duration*>töltött felgyorsítása az eltelt idő a nulla és a maximális sebesség.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "Az AccelerationRatio tulajdonsággal lassan indul el, majd felgyorsíthatja az idő előrehaladtával animációk létrehozása. Az AccelerationRatio tulajdonság könnyű a hatások létrehozása, és így úgy tűnik, több természetes adatátviteli hasznos. Használja az AccelerationRatio és <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>kezdődő, amelyek lassú, animációk létrehozásához tulajdonságok felgyorsítása, és ismét a befejezés előtt lelassul.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_AccelerationRatio&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.AccelerationRatioProperty>"
   syntax:
     content: public double AccelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent accelerating the passage of time from zero to its maximum rate. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> property is also set, the sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "A százalékos értékét határozza meg az ütemterv egy értéket 0 és 1, a határokat is beleértve, közötti <> </> *> töltött felgyorsítása az eltelt idő a nulla és a maximális sebesség. Ha az ütemterv <> </> *> is tulajdonsága, AccelerationRatio összege és <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>1 vagy annál kisebbnek kell lennie.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> Az alapértelmezett érték a 0."
   overload: System.Windows.Media.Animation.Timeline.AccelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "AccelerationRatio is less than 0 or greater than 1."
+    description: "AccelerationRatio értéke kisebb, mint 0 vagy 1-nél nagyobb."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of AccelerationRatio and <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> exceeds 1."
+    description: "Az összeg AccelerationRatio és <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>meghaladja az 1.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.AccelerationRatioProperty
@@ -256,12 +256,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AccelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -278,13 +278,13 @@ items:
   - PresentationCore
   namespace: System.Windows.Media.Animation
   summary: "Creates a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method is called by the <xref:System.Windows.Media.Animation.Timeline.CreateClock%2A> method and should not be called directly by your code."
+  remarks: "Ezt a metódust a <xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>metódus nem hívható közvetlenül a kóddal és.</xref:System.Windows.Media.Animation.Timeline.CreateClock%2A>"
   syntax:
     content: protected virtual System.Windows.Media.Animation.Clock AllocateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A clock for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "Ez egy olyan clock <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.AllocateClock*
   exceptions: []
   platform:
@@ -301,13 +301,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that indicates whether the timeline plays in reverse after it completes a forward iteration."
-  remarks: "If the AutoReverse property is set to `true`, the timeline plays for twice the length of time specified by its <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property.      ### AutoReverse and Repetitions    When a timeline&quot;s AutoReverse property is set to `true` and its <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> property causes it to repeat, each forward iteration is followed by a backward iteration. This makes one repetition. For example, a timeline with an AutoReverse value of `true` with an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forward once, then backwards, then forwards again, and then backwards again.      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdezi vagy beállítja egy érték, amely azt jelzi, hogy az ütemterv játszik névkeresési előre iteráció után."
+  remarks: "Ha a AutoReverse tulajdonság értéke `true`, az ütemterv kétszer a hosszú ideig által megadott szerepe a <xref:System.Windows.Media.Animation.Timeline.Duration%2A>tulajdonság.</xref:System.Windows.Media.Animation.Timeline.Duration%2A>      ### AutoReverse és ismétlődését, amikor egy ütemterv AutoReverse tulajdonsága `true` és annak <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A>úgy, hogy ismételje meg a tulajdonság azt eredményezi, előre törzsének visszafelé iterációs követi.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior%2A> Így egy megismétlését. Például egy AutoReverse értékű ütemterv `true` és egy ismétlés <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>2 volna play továbbítsa egyszer, majd visszafelé, ismét, majd továbbítja, majd újra visszamenőleges.</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>      <a name=&quot;dependencyPropertyInfo_AutoReverse&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.AutoReverseProperty>"
   syntax:
     content: public bool AutoReverse { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the timeline plays in reverse at the end of each iteration; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az ütemterv játszik névkeresési minden egyes ismétlés; végén Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.AutoReverse*
   exceptions: []
   platform:
@@ -324,12 +324,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.AutoReverse*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.AutoReverse*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.AutoReverse*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty AutoReverseProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -345,7 +345,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin."
+  summary: "Lekérdezi vagy beállítja az időt, amely ezt <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> el kell kezdődnie."
   remarks: "The BeginTime property is useful for creating timelines that play in a sequence: by increasing the BeginTime of successive timelines that share the same parent, you can stagger their play times.  \n  \n## Negative Values  \n A negative BeginTime value causes a <xref:System.Windows.Media.Animation.Timeline> to behave as though it started at some time in the past. For example, a <xref:System.Windows.Media.Animation.Timeline> with a BeginTime of negative 2.5 seconds and a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 5 seconds will appear to be half-way finished when it starts.  \n  \n## BeginTime and SpeedRatio  \n The time described by the BeginTime property is measured in the timeline's parent's time. For example, a timeline with a BeginTime of 5 whose parent has a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2 actually starts after 2.5 seconds.  \n  \n A timeline's own <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> setting does not affect its BeginTime. For example, a timeline with a BeginTime of 5 seconds, a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 2, and a parent timeline with a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio%2A> of 1 starts after 5 seconds, not 2.5.  \n  \n<a name=\"dependencyPropertyInfo_BeginTime\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.BeginTimeProperty>|  \n|Metadata properties set to `true`|None|  \n  \n<a name=\"xamlAttributeUsage_BeginTime\"></a>   \n## XAML Attribute Usage  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*:*seconds*[.*fractionalSeconds*]\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-][*days*.]*hours*:*minutes*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"[-]*days*\"/>  \n  \n \\- or -  \n  \n \\<*object* BeginTime=\"{[x:Null Markup Extension](~/add/includes/ajax-current-ext-md.md)}\"/>  \n  \n<a name=\"xamlValues_BeginTime\"></a>   \n## XAML Values  \n Items in square brackets (`[` and `]`) are optional.  \n  \n *days*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value greater than or equal to 0 that describes the number of days spanned by this begin time.  \n  \n *hours*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 23 that represents the number of hours spanned by this begin time.  \n  \n *minutes*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of minutes spanned by this begin time.  \n  \n *seconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value between 0 and 59 that represents the number of seconds spanned by this begin time.  \n  \n *fractionalSeconds*  \n <xref:System.Int32?displayProperty=fullName>  \n  \n A value consisting of 1 to 7 digits that represents fractional seconds.  \n  \n For the complete <xref:System.TimeSpan> syntax, see the Remarks section of the <xref:System.TimeSpan.Parse%2A> page."
   example:
   - "A timeline's BeginTime property determines the beginning of a timeline's active period. If the timeline has a parent timeline, the BeginTime property determines how long it takes the timeline to start after its parent starts. If the timeline is a root timeline (a <xref:System.Windows.Media.Animation.Storyboard>, for example), the BeginTime property determines how long the timeline takes to start playing after it is triggered.  \n  \n The following example shows several different timelines with different BeginTime settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_BeginTimeExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/BeginTimeExample.xaml#_graphicsmm_begintimeexamplewholepage)]"
@@ -353,7 +353,7 @@ items:
     content: public Nullable<TimeSpan> BeginTime { get; set; }
     return:
       type: System.Nullable{System.TimeSpan}
-      description: "The time at which this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> should begin, relative to its parent&quot;s BeginTime. If this timeline is a root timeline, the time is relative to its interactive begin time (the moment at which the timeline was triggered). This value may be positive, negative, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>; a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> value means the timeline never plays. The default value is zero."
+      description: "Az időpontot, amelyhez a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> kezdjen, a szülő BeginTime viszonyítva. Az ütemterv egy legfelső szintű ütemterv, az idő akkor viszonyítva az interaktív kezdési időpontnál (amelynél az ütemterv lett elindítva, amely jelenleg). Lehet, hogy ennek az értéknek pozitív, negatív, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>; a <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> érték azt jelenti, hogy az ütemterv soha nem betöltött szerepe. Az alapértelmezett értéke nulla."
   overload: System.Windows.Media.Animation.Timeline.BeginTime*
   exceptions: []
   platform:
@@ -370,12 +370,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.BeginTime*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.BeginTime*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.BeginTime*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty BeginTimeProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -391,14 +391,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, making deep copies of this object&quot;s values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.       When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values."
+  summary: "Ez módosítható klónja hoz <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>, ez az objektum értékek mély másolja."
+  remarks: "Ez a módszer segítségével módosítható másolatot készít rögzített <xref:System.Windows.Freezable>objektumok (vagy bármely <xref:System.Windows.Freezable>objektum).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> Kényelmi célokat szolgál ez a módszer eltakar egy szigorú típusmegadású végrehajtása az örökölt verziójával.       További információkért lásd: <xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.Clone%2A?displayProperty=fullName>       Függőségi tulajdonságok másolásakor Ez a módszer másolja át az erőforrás-hivatkozások és az adatok kötések (de már nem lehet feloldani) azonban nem animációk vagy a jelenlegi értékeit."
   syntax:
     content: public System.Windows.Media.Animation.Timeline Clone ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
+      description: "Az aktuális objektum módosíthatóvá másolat. A klónozott objektum <> </> *> tulajdonság <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> akkor is, ha a forrás <> </> *> tulajdonság<xref uid=&quot;langword_csharp_true.&quot; name=&quot;true.&quot; href=&quot;&quot;></xref>"
   overload: System.Windows.Media.Animation.Timeline.Clone*
   exceptions: []
   platform:
@@ -415,14 +415,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a modifiable clone of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object, making deep copies of this object&quot;s current values."
-  remarks: "This method is used to produce modifiable copies of frozen <xref:System.Windows.Freezable> objects (or any <xref:System.Windows.Freezable> object). For convenience, this method shadows the inherited version with a strongly typed implementation.       For more information, see <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.       Resource references, data bindings, and animations are not copied, but their current values are."
+  summary: "Ez módosítható klónja hoz <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> objektum, ez az objektum aktuális értékek mély másolja."
+  remarks: "Ez a módszer segítségével módosítható másolatot készít rögzített <xref:System.Windows.Freezable>objektumok (vagy bármely <xref:System.Windows.Freezable>objektum).</xref:System.Windows.Freezable> </xref:System.Windows.Freezable> Kényelmi célokat szolgál ez a módszer eltakar egy szigorú típusmegadású végrehajtása az örökölt verziójával.       További információkért lásd: <xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.CloneCurrentValue%2A?displayProperty=fullName>       Erőforrás-hivatkozások, az adatkötéseket és animációk nem kerülnek, de az aktuális értéke."
   syntax:
     content: public System.Windows.Media.Animation.Timeline CloneCurrentValue ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Timeline
-      description: "A modifiable clone of the current object. The cloned object&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the source&quot;s <xref:System.Windows.Freezable.IsFrozen*> property is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "Az aktuális objektum módosíthatóvá másolat. A klónozott objektum <> </> *> tulajdonság <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> akkor is, ha a forrás <> </> *> tulajdonság <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.CloneCurrentValue*
   exceptions: []
   platform:
@@ -439,15 +439,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: 'Occurs when this timeline has completely finished playing: it will no longer enter its active period.'
-  remarks: "If this timeline is the root timeline of a timeline tree, it has completed playing after it reaches the end of its active period (which includes repeats) and all its children have reached the end of their active periods. If this timeline is a child timeline, it is considered to have completely finished playing when the root timeline of the timeline tree to which it belongs reaches the end of its active period and all its child timelines have finished playing.       Stopping a timeline does not trigger its completed event, but skipping it to its fill period does.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: 'Akkor következik be, amikor ezen ütemterv teljesen befejezte a lejátszás: a program már nem ad meg az aktív időszak alatt.'
+  remarks: "Ha ezen ütemterv ütemterv fa legfelső szintű ütemtervének, az aktív időszak (amely tartalmazza az ismétlődések) az véget ér, és minden gyermekét elérte az aktív időszak vége után játszott befejeződött. Ha az ütemterv gyermek ütemterv, akkor tekinthető végzett lejátszása, ha a legfelső szintű ütemterv ütemterv fa, amelyhez tartozik éri el az aktív időszak alatt, és annak gyermek ütemtervek végén befejeződött játszott.       Ütemterv leállítása nem indítja el a befejezett esemény azonban a rendszer kihagyja a fill időszak nem.       Az <xref:System.Object> <xref:System.EventHandler>eseménykezelő az ütemterv <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> paramétere</xref:System.Object>       Ebben az eseménykezelőben ütemterv társítandó úgy tűnik, de ténylegesen az történő regisztrálást a <xref:System.Windows.Media.Animation.Clock>az ütemterv létrehozása.</xref:System.Windows.Media.Animation.Clock>  További információkért lásd: a [időzítési események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "In the following example, two <xref:System.Windows.Media.Animation.Storyboard> objects are used to create an animation transition between two images, stored using <xref:System.Windows.Media.ImageSource> objects and displayed using an <xref:System.Windows.Controls.Image> control. One storyboard shrinks the image control until it disappears. After it completes, the old <xref:System.Windows.Media.ImageSource> is swapped with the other <xref:System.Windows.Media.ImageSource>, and a second storyboard that expands the image control until it is full-sized again.  \n  \n [!code-xml[timingbehaviors_snip#TimelineCompletedExampleMarkupUsingWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/TimelineCompletedExample.xaml#timelinecompletedexamplemarkupusingwholepage)]  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public event EventHandler Completed;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -463,14 +463,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "Létrehoz egy új, vezérelhető <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> jelen <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>. Ha a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> gyermekelemek tartoznak, fája órák, létrejön a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> a legfelső szintű."
+  remarks: 'Bár ez <xref:System.Windows.Media.Animation.Timeline>lehet, hogy egy vagy több alárendelt <xref:System.Windows.Media.Animation.TimelineGroup>objektumok, ezt az információt a rendszer figyelmen kívül hagyja: Ez a metódus kezeli a jelenlegi <xref:System.Windows.Media.Animation.Timeline>legfelső szintű <xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock ();
     parameters: []
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new, controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "Egy új, vezérelhető <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> jelen összeállított <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>. Ha a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> van egy <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;> </xref> , amely tartalmazza a gyermek ütemtervek, fája, <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> objektumok jön létre egy vezérelhető a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> ez alapján létrehozott <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> a legfelső szintű."
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -487,17 +487,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Creates a new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> and specifies whether the new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is controllable. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> has children, a tree of clocks is created with this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
-  remarks: 'Although this <xref:System.Windows.Media.Animation.Timeline> may be the child of one or more <xref:System.Windows.Media.Animation.TimelineGroup> objects, this information is ignored: this method treats the current <xref:System.Windows.Media.Animation.Timeline> as a root <xref:System.Windows.Media.Animation.Timeline>.'
+  summary: "Létrehoz egy új <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> jelen <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> és megadja, hogy az új <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> vezérelhető. Ha a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> gyermekelemek tartoznak, fája órák, létrejön a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> a legfelső szintű."
+  remarks: 'Bár ez <xref:System.Windows.Media.Animation.Timeline>lehet, hogy egy vagy több alárendelt <xref:System.Windows.Media.Animation.TimelineGroup>objektumok, ezt az információt a rendszer figyelmen kívül hagyja: Ez a metódus kezeli a jelenlegi <xref:System.Windows.Media.Animation.Timeline>legfelső szintű <xref:System.Windows.Media.Animation.Timeline>.</xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.Timeline> </xref:System.Windows.Media.Animation.TimelineGroup> </xref:System.Windows.Media.Animation.Timeline>'
   syntax:
     content: public System.Windows.Media.Animation.Clock CreateClock (bool hasControllableRoot);
     parameters:
     - id: hasControllableRoot
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the root <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> returned should return a <xref href=&quot;System.Windows.Media.Animation.ClockController&quot;></xref> from its <xref:System.Windows.Media.Animation.Clock.Controller*> property so that the <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> tree can be interactively controlled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a legfelső szintű <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> vissza kell visszaadnia egy <xref href=&quot;System.Windows.Media.Animation.ClockController&quot;> </xref> a a <xref:System.Windows.Media.Animation.Clock.Controller*>tulajdonság, hogy a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> fa lehet párbeszédes formában történő ellenőrzött; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Windows.Media.Animation.Clock.Controller*>"
     return:
       type: System.Windows.Media.Animation.Clock
-      description: "A new <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> constructed from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. If this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> is a <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;></xref> that contains child timelines, a tree of <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> objects is created with a controllable <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> created from this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> as the root."
+      description: "Egy új <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> jelen összeállított <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>. Ha a <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> van egy <xref href=&quot;System.Windows.Media.Animation.TimelineGroup&quot;> </xref> , amely tartalmazza a gyermek ütemtervek, fája, <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> objektumok jön létre egy vezérelhető a <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> ez alapján létrehozott <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> a legfelső szintű."
   overload: System.Windows.Media.Animation.Timeline.CreateClock*
   exceptions: []
   platform:
@@ -514,15 +514,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the rate at which time progresses for the timeline&quot;s clock changes."
-  remarks: "The current global speed of a timeline&quot;s clock changes in the following circumstances:      -   The clock changes direction because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> setting.      -   The clock accelerates or decelerates because of its timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> property settings.      -   The clock is paused or resumed.      -   The clock becomes inactive or reactivates.      -   The <xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A> of one of the clock&quot;s parent changes.       The CurrentGlobalSpeedInvalidated event is useful for tracking when a timeline&quot;s clock becomes paused; in your event handler, use your storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A> method or check the clock&quot;s <xref:System.Windows.Media.Animation.Clock.IsPaused%2A> property to determine whether its clock is paused; compare this against a previously cached value to determine whether it changed.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "A sebesség, amikor az ütemterv óra változásainak megfelelően következik be."
+  remarks: "A következő körülmények között módosítja az aktuális globális sebesség egy ütemterv óra:-az óra irány módosítása miatt az ütemterv <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>beállítás.</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>      -Az óra felgyorsítják vagy miatt az ütemterv lassulás <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>vagy <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>tulajdonságbeállítások.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      -Az óra szünetel, vagy folytatódik.      -Az óra inaktívvá válik, vagy újraaktiválja.      -A <xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>az egyik a rendszeróra szülője változásai.</xref:System.Windows.Media.Animation.Clock.CurrentGlobalSpeed%2A>       A CurrentGlobalSpeedInvalidated az esemény akkor hasznos, ha nyomon követése, ha egy ütemterv óra lesz fel van függesztve; az eseménykezelő, használja a storyboard <xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>metódus, vagy ellenőrizze az óra <xref:System.Windows.Media.Animation.Clock.IsPaused%2A>tulajdonság határozza meg, hogy a rendszeróra fel van függesztve; ez hasonlítani egy korábban gyorsítótárazott értéket annak meghatározásához, hogy megváltozott.</xref:System.Windows.Media.Animation.Clock.IsPaused%2A> </xref:System.Windows.Media.Animation.Storyboard.GetCurrentGlobalSpeed%2A>       Az <xref:System.Object> <xref:System.EventHandler>eseménykezelő az ütemterv <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> paramétere</xref:System.Object>       Ebben az eseménykezelőben ütemterv társítandó úgy tűnik, de ténylegesen az történő regisztrálást a <xref:System.Windows.Media.Animation.Clock>az ütemterv létrehozása.</xref:System.Windows.Media.Animation.Clock>  További információkért lásd: a [időzítési események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to register for the CurrentGlobalSpeedInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentGlobalSpeedInvalidatedExample.cs#timelinecurrentglobalspeedinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentGlobalSpeedInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrentglobalspeedinvalidatedexample.vb#timelinecurrentglobalspeedinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentGlobalSpeedInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -538,13 +538,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentState*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the CurrentStateInvalidated event when you want to be notified  when a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> starts, stops, or fills.       Pausing a <xref:System.Windows.Media.Animation.Clock> does not change its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>. To be notified when a clock becomes paused, use the <xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated> event.       Although this event occurs when the <xref:System.Windows.Media.Animation.ClockState> becomes invalid, that doesn&quot;t necessarily mean the <xref:System.Windows.Media.Animation.ClockState> changed: a <xref:System.Windows.Media.Animation.Clock> that switches from <xref:System.Windows.Media.Animation.ClockState> to <xref:System.Windows.Media.Animation.ClockState> and then back to <xref:System.Windows.Media.Animation.ClockState> in the same tick will cause this event to fire, but its <xref:System.Windows.Media.Animation.Clock.CurrentState%2A> property won&quot;t actually change.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the  <xref:System.Windows.Media.Animation.Clock> that was created for this timeline.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Media.Animation.Clock.CurrentState*>tulajdonság az ütemterv <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> frissül.</xref:System.Windows.Media.Animation.Clock.CurrentState*>"
+  remarks: "Használja a CurrentStateInvalidated eseményt, ha szeretne értesítést kapni a ütemterv <xref:System.Windows.Media.Animation.Clock>kezdődik, nem vagy tölti.</xref:System.Windows.Media.Animation.Clock>       Egy <xref:System.Windows.Media.Animation.Clock>nem módosítja a <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>.</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> </xref:System.Windows.Media.Animation.Clock> felfüggesztése Ha értesítést szeretne kapni egy óra lesz felfüggesztve, használja a <xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>esemény.</xref:System.Windows.Media.Animation.Timeline.CurrentGlobalSpeedInvalidated>       Bár ez az esemény akkor következik be, amikor a <xref:System.Windows.Media.Animation.ClockState>érvénytelen, amely nem feltétlenül jelenti azt válnak a <xref:System.Windows.Media.Animation.ClockState>megváltozott: egy <xref:System.Windows.Media.Animation.Clock>, amely vált <xref:System.Windows.Media.Animation.ClockState>való <xref:System.Windows.Media.Animation.ClockState>majd ismét <xref:System.Windows.Media.Animation.ClockState>az azonos osztásjelek található, akkor ezt az eseményt az érvényesítést, de a <xref:System.Windows.Media.Animation.Clock.CurrentState%2A>tulajdonság nem módosul.</xref:System.Windows.Media.Animation.Clock.CurrentState%2A> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.ClockState> </xref:System.Windows.Media.Animation.ClockState>       A <xref:System.Object>paramétere a <xref:System.EventHandler>eseménykezelő a <xref:System.Windows.Media.Animation.Clock>, amely az ütemterv lett létrehozva.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> </xref:System.Object>       Ebben az eseménykezelőben ütemterv társítandó úgy tűnik, de ténylegesen az történő regisztrálást a <xref:System.Windows.Media.Animation.Clock>az ütemterv létrehozása.</xref:System.Windows.Media.Animation.Clock>  További információkért lásd: a [időzítési események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public event EventHandler CurrentStateInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -560,15 +560,15 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the <xref:System.Windows.Media.Animation.Clock.CurrentTime*> property of the timeline&quot;s <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> is updated."
-  remarks: "Use the <xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated> event when you want to be notified when the <xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> of a timeline&quot;s <xref:System.Windows.Media.Animation.Clock> is updated.       The <xref:System.Object> parameter of the <xref:System.EventHandler> event handler is the timeline&quot;s <xref:System.Windows.Media.Animation.Clock>.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Media.Animation.Clock.CurrentTime*>tulajdonság az ütemterv <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> frissül.</xref:System.Windows.Media.Animation.Clock.CurrentTime*>"
+  remarks: "Használja a <xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>eseményt, ha azt szeretné, hogy értesítést kap, ha a <xref:System.Windows.Media.Animation.Clock.CurrentTime%2A>egy TimeLine <xref:System.Windows.Media.Animation.Clock>frissül.</xref:System.Windows.Media.Animation.Clock> </xref:System.Windows.Media.Animation.Clock.CurrentTime%2A> </xref:System.Windows.Media.Animation.Timeline.CurrentStateInvalidated>       Az <xref:System.Object> <xref:System.EventHandler>eseménykezelő az ütemterv <xref:System.Windows.Media.Animation.Clock>.</xref:System.Windows.Media.Animation.Clock> </xref:System.EventHandler> paramétere</xref:System.Object>       Ebben az eseménykezelőben ütemterv társítandó úgy tűnik, de ténylegesen az történő regisztrálást a <xref:System.Windows.Media.Animation.Clock>az ütemterv létrehozása.</xref:System.Windows.Media.Animation.Clock>  További információkért lásd: a [időzítési események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to register for the CurrentTimeInvalidated event.  \n  \n [!code-cs[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/csharp/TimingBehavior_csharp/TimelineCurrentTimeInvalidatedExample.cs#timelinecurrenttimeinvalidatedexamplewholepage)]\n [!code-vb[timingbehaviors_procedural_snip#TimelineCurrentTimeInvalidatedExampleWholePage](~/add/codesnippet/visualbasic/timingbehavior_vb/timelinecurrenttimeinvalidatedexample.vb#timelinecurrenttimeinvalidatedexamplewholepage)]"
   syntax:
     content: public event EventHandler CurrentTimeInvalidated;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -584,21 +584,21 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value specifying the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero."
-  remarks: "Use the DecelerationRatio property to create animations that slow down before stopping. The DecelerationRatio property is useful for creating ease-in effects or making movement seem more natural. Use the <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> and DecelerationRatio properties together to create animations that that start slowly, speed up, and then slow down again before finishing.      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdez vagy beállít egy értéket adja meg az ütemterv százalékos <xref:System.Windows.Media.Animation.Timeline.Duration*>az eltelt idő lassít az a maximális sebesség nulla töltött.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
+  remarks: "A decelerationratio elemeket tulajdonsággal, hogy lassú lefelé előtt leállítása animációk létrehozása. A decelerationratio elemeket tulajdonság könnyű a hatások létrehozása, és így úgy tűnik, több természetes adatátviteli hasznos. Használja a <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>és decelerationratio elemeket tulajdonságok kezdődő, amelyek lassú, animációk létrehozásához felgyorsítása, és ismét a befejezés előtt lelassíthatják.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_DecelerationRatio&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.DecelerationRatioProperty>"
   syntax:
     content: public double DecelerationRatio { get; set; }
     return:
       type: System.Double
-      description: "A value between 0 and 1, inclusive, that specifies the percentage of the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration*> spent decelerating the passage of time from its maximum rate to zero. If the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> property is also set, the sum of DecelerationRatio and <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> must be less than or equal to 1. The default value is 0."
+      description: "A százalékos értékét határozza meg az ütemterv egy értéket 0 és 1, a határokat is beleértve, közötti <> </> *> töltött az eltelt idő lassít az a maximális sebesség nulla. Ha az ütemterv <> </> *> is tulajdonsága, decelerationratio elemeket összege és <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>1 vagy annál kisebbnek kell lennie.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> Az alapértelmezett érték a 0."
   overload: System.Windows.Media.Animation.Timeline.DecelerationRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "DecelerationRatio is less than 0 or greater than 1."
+    description: "Decelerationratio elemeket értéke kisebb, mint 0 vagy 1-nél nagyobb."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The sum of <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*> and DecelerationRatio exceeds 1."
+    description: "Összesített <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>és decelerationratio elemeket meghaladja az 1.</xref:System.Windows.Media.Animation.Timeline.AccelerationRatio*>"
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.DecelerationRatioProperty
@@ -613,12 +613,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DecelerationRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -634,12 +634,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*> attached property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>csatolt tulajdonság.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DesiredFrameRateProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -655,7 +655,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the length of time for which this timeline plays, not counting repetitions."
+  summary: "Lekérdezi vagy beállítja az ezen ütemterv játszik, amelynek, nem számítva a szilánkazonosítók időtartamot."
   remarks: "A timeline's simple duration constitutes the time for a single forward iteration versus the total play time, which includes repetitions.  \n  \n## Default Duration Behavior  \n The behavior of a Duration structure with a value of <xref:System.Windows.Duration.Automatic%2A> depends on the type of timeline:  \n  \n|||  \n|-|-|  \n|**Timeline**|**Behavior**|  \n|<xref:System.Windows.Media.Animation.Timeline>|Undetermined (<xref:System.Windows.Media.Animation.Timeline> is abstract)|  \n|<xref:System.Windows.Media.Animation.ParallelTimeline>,<br /><br /> <xref:System.Windows.Media.Animation.Storyboard>,<br /><br /> <xref:System.Windows.Media.Animation.TimelineGroup>|Expands to fit child timelines|  \n|\\<*Type*>Animation (Known as a \"From/To/By\" or \"basic\" animations)|1 second|  \n|\\<*Type*>AnimationUsingKeyFrames (Known as key frame animations)|Sum of all key frame <xref:System.Windows.Media.Animation.KeyTime> values|  \n  \n<a name=\"dependencyPropertyInfo_Duration\"></a>   \n## Dependency Property Information  \n  \n|||  \n|-|-|  \n|Identifier field|<xref:System.Windows.Media.Animation.Timeline.DurationProperty>|  \n|Metadata properties set to `true`|None|"
   example:
   - "<xref:System.Windows.Media.Animation.ParallelTimeline> and <xref:System.Windows.Media.Animation.Storyboard> are types of <xref:System.Windows.Media.Animation.TimelineGroup> objects. The duration of a <xref:System.Windows.Media.Animation.TimelineGroup> is determined by the duration of its child timelines. For example, the <xref:System.Windows.Media.Animation.Storyboard> below will run for six seconds (duration of 6 seconds) because that is when its last child Timeline (<xref:System.Windows.Media.Animation.DoubleAnimation>) ends.  \n  \n> [!NOTE]\n>  Note: code has been omitted from the following examples, which are provided for illustrative purposed only.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n    <DoubleAnimation Duration=\"0:0:2\" …/>  \n    <DoubleAnimation Duration=\"0:0:4\" BeginTime=\"0:0:2\" …/>  \n  </Storyboard>   \n...  \n```  \n  \n Examples of \\<*Type*>Animations include <xref:System.Windows.Media.Animation.DoubleAnimation>, <xref:System.Windows.Media.Animation.PointAnimation>, <xref:System.Windows.Media.Animation.ColorAnimation>, etc. If no Duration is specified for these types of animations, they will run for one second.  \n  \n [xaml]  \n  \n```  \n...  \n  <!-- With no Duration specified, this animation will run for   \n       one second -->  \n  <DoubleAnimation .../>  \n...  \n```  \n  \n Examples of \\<*Type*>AnimationUsingKeyFrames include <xref:System.Windows.Media.Animation.DoubleAnimationUsingKeyFrames>, <xref:System.Windows.Media.Animation.PointAnimationUsingKeyFrames>, etc. If no Duration is specified for these types of animations they will run until all key frames are finished.  \n  \n [xaml]  \n  \n```  \n...  \n  <Storyboard>  \n  \n    <!-- This key frame animation will end at 4.5 seconds  \n         Because that is when its last KeyFrame KeyTime ends. -->  \n    <DoubleAnimationUsingKeyFrames ...>  \n      <LinearDoubleKeyFrame ... KeyTime=\"0:0:3\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:3.5\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4\" />  \n      <DiscreteDoubleKeyFrame ... KeyTime=\"0:0:4.5\" />  \n    </DoubleAnimationUsingKeyFrames>  \n  </Storyboard>   \n...  \n```"
@@ -680,12 +680,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Duration*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.Duration*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.Duration*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty DurationProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -701,13 +701,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets a value that specifies how the <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> behaves after it reaches the end of its active period."
-  remarks: "Set an animations FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior> when you want the animation to hold its value after it reaches the end of its active period. An animation that has reached the end of its active period that has a FillBehavior setting of <xref:System.Windows.Media.Animation.FillBehavior> is said to be in its fill period. When you don&quot;t want an animation to hold its value after it reaches the end of its active period, set its       FillBehavior property to <xref:System.Windows.Media.Animation.FillBehavior>.       Because an animation in its fill period continues to override its target property&quot;s value, attempting to set the target property&quot;s value through other means might appear to have no effect. For an example showing how to set a property value after it has been animated, see [How to: Set a Property After Animating It with a Storyboard](~/add/includes/ajax-current-ext-md.md).       A child timeline stops playing and filling when its parent timeline stops; if you want a child timeline to fill, make sure its parent timeline has a FillBehavior of <xref:System.Windows.Media.Animation.FillBehavior>.      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdez vagy beállít egy értéket, amely meghatározza az <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> viselkedik eléri az aktív időszak vége után."
+  remarks: "Az animáció FillBehavior tulajdonság beállítása <xref:System.Windows.Media.Animation.FillBehavior>Ha azt szeretné, hogy az animációt tárolásához értéke eléri az aktív időszak vége után.</xref:System.Windows.Media.Animation.FillBehavior> Az animáció éri el az aktív időszak végén, amely rendelkezik FillBehavior beállítását <xref:System.Windows.Media.Animation.FillBehavior>a fill időszakban, különállónak.</xref:System.Windows.Media.Animation.FillBehavior> Az animáció tárolásához értéke eléri az aktív időszak vége után nem szeretné, ha a FillBehavior tulajdonságát állítsa a <xref:System.Windows.Media.Animation.FillBehavior>.</xref:System.Windows.Media.Animation.FillBehavior>       A kitöltés időszakban animáció továbbra is fennáll, felülbírálhatja a target tulajdonság értéke, mert más módon a target tulajdonság értékének beállítására tett kísérlet úgy tűnhet, hogy nincs hatása. A tulajdonság értékének beállítása után animált lett bemutató példát lásd: [hogyan: állítsa be a tulajdonság után animálása a storyboard fájlt az](~/add/includes/ajax-current-ext-md.md).       A gyermek ütemterv leállítja lejátszása, és csak a szülő ütemterv leállásakor; Ha azt szeretné, hogy kitöltse gyermek ütemterv, ellenőrizze, hogy a szülő ütemterv rendelkezik egy FillBehavior <xref:System.Windows.Media.Animation.FillBehavior>.</xref:System.Windows.Media.Animation.FillBehavior>      <a name=&quot;dependencyPropertyInfo_FillBehavior&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.FillBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.FillBehavior FillBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.FillBehavior
-      description: "A value that specifies how the timeline behaves after it reaches the end of its active period but its parent is inside its active or fill period. The default value is <xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;></xref>."
+      description: "Egy érték, amely meghatározza, hogyan viselkedik az ütemterv, után az aktív időszak az véget ér, de a szülő belül az aktív vagy fill időszak. Az alapértelmezett érték <xref href=&quot;System.Windows.Media.Animation.FillBehavior&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.FillBehavior*
   exceptions: []
   platform:
@@ -724,12 +724,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.FillBehavior*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.FillBehavior*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.FillBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty FillBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -745,17 +745,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> unmodifiable or determines whether it can be made unmodifiable."
-  remarks: "Do not call this method directly (except when calling base in an implementation). This method is called internally by <xref:System.Windows.Freezable.Freeze%2A>."
+  summary: "Ez <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> unmodifiable vagy határozza meg, hogy el kell végezni unmodifiable."
+  remarks: "Ne hívja meg ezt a módszert közvetlenül (kivéve, ha hívása talál megvalósítása). Ez a metódus belső <xref:System.Windows.Freezable.Freeze%2A>.</xref:System.Windows.Freezable.Freeze%2A> hívja"
   syntax:
     content: protected override bool FreezeCore (bool isChecking);
     parameters:
     - id: isChecking
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to check if this instance can be frozen; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to freeze this instance."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ellenőrizze, ha ez a példány lehet rögzítve; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ez a példány rögzíteni."
     return:
       type: System.Boolean
-      description: "If <code>isChecking</code> is true, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance can be made read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only.       If <code>isChecking</code> is false, this method returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this instance is now read-only, or <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if it cannot be made read-only, with the side effect of having begun to change the frozen status of this object."
+      description: "Ha <code> isChecking </code> értéke igaz, ez a metódus visszaadja <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> Ha ez a példány lehet tenni, csak olvasható, vagy <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha nem hozható létre, csak olvasható.       Ha <code> isChecking </code> beállítás hamis értékű, ez a metódus visszaadja <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> esetén ez a példány most csak olvasható, vagy <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Ha azt nem hozható létre csak olvasható, a a mellékhatása rendelkező kezdődött meg az objektum zárolt állapot módosítása."
   overload: System.Windows.Media.Animation.Timeline.FreezeCore*
   exceptions: []
   platform:
@@ -772,14 +772,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> object."
-  remarks: "When copying dependency properties, this method copies resource references and data bindings (but they might no longer resolve) but not animations or their current values. Note that if these properties contain resource references or data bindings, <xref:System.Windows.Freezable.GetAsFrozen%2A> will fail when trying to freeze the object and will throw an <xref:System.InvalidOperationException>.       This method is called by the <xref:System.Windows.Freezable.GetAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetAsFrozen%2A> instead of calling this method directly.       For more information, see <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "Ez a példány a megadott klónja <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> objektum."
+  remarks: "Függőségi tulajdonságok másolásakor Ez a módszer másolja át az erőforrás-hivatkozások és az adatok kötések (de már nem lehet feloldani) azonban nem animációk vagy a jelenlegi értékeit. Vegye figyelembe, hogy ha ezeket a tulajdonságokat tartalmaznak, erőforrás-hivatkozások, illetve az adatkötések, <xref:System.Windows.Freezable.GetAsFrozen%2A>sikertelen lesz, amikor megpróbálja rögzíteni az objektum és <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> kivételhibát</xref:System.Windows.Freezable.GetAsFrozen%2A>       Ezt a metódust a <xref:System.Windows.Freezable.GetAsFrozen%2A>metódus nem hívható közvetlenül a kódból, kivéve az alapszintű megvalósítás felülbírálásakor Ez a metódus meghívásakor és.</xref:System.Windows.Freezable.GetAsFrozen%2A> Az aktuális objektum zárolt másolat létrehozása, hívja meg a <xref:System.Windows.Freezable.GetAsFrozen%2A>helyett közvetlenül a metódus hívása.</xref:System.Windows.Freezable.GetAsFrozen%2A>       További információkért lásd: <xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.GetAsFrozenCore%2A?displayProperty=fullName>"
   syntax:
     content: protected override void GetAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> instance to clone."
+      description: "A <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> példány klónozását."
   overload: System.Windows.Media.Animation.Timeline.GetAsFrozenCore*
   exceptions: []
   platform:
@@ -796,14 +796,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Makes this instance a frozen clone of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. Resource references, data bindings, and animations are not copied, but their current values are."
-  remarks: "This method is called by the <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> method and should not be called directly from your code, except when calling the base implementation while overriding this method. To create a frozen copy of the current object, call <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> instead of calling this method directly.       For more information see <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>."
+  summary: "Ez a példány a megadott rögzített klónja <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>. Erőforrás-hivatkozások, az adatkötéseket és animációk nem kerülnek, de az aktuális értéke."
+  remarks: "Ezt a metódust a <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>metódus nem hívható közvetlenül a kódból, kivéve az alapszintű megvalósítás felülbírálásakor Ez a metódus meghívásakor és.</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A> Az aktuális objektum zárolt másolat létrehozása, hívja meg a <xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>helyett közvetlenül a metódus hívása.</xref:System.Windows.Freezable.GetCurrentValueAsFrozen%2A>       További információ: <xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>.</xref:System.Windows.Freezable.GetCurrentValueAsFrozenCore%2A?displayProperty=fullName>"
   syntax:
     content: protected override void GetCurrentValueAsFrozenCore (System.Windows.Freezable sourceFreezable);
     parameters:
     - id: sourceFreezable
       type: System.Windows.Freezable
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to copy and freeze."
+      description: "A <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> másolása és rögzítése."
   overload: System.Windows.Media.Animation.Timeline.GetCurrentValueAsFrozenCore*
   exceptions: []
   platform:
@@ -820,17 +820,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method provides read access to the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "Lekérdezi a megadott kívánt keretének aránya <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
+  remarks: "Ez a módszer olvasási hozzáférést biztosít a <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>csatolt tulajdonság.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> További információkért lásd: a <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>lap.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static Nullable<int> GetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The timeline from which to retrieve the desired frame rate."
+      description: "Az idősor, amelyből a kívánt képkockasebessége beolvasása."
     return:
       type: System.Nullable{System.Int32}
-      description: "The desired frame rate of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Az ütemterv kívánt képkockasebessége. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.GetDesiredFrameRate*
   exceptions: []
   platform:
@@ -847,17 +847,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method should only be called when the <xref:System.Windows.Media.Animation.Timeline.Duration%2A> property is set to <xref:System.Windows.Duration.Automatic%2A>. If <xref:System.Windows.Media.Animation.Timeline.Duration%2A> is <xref:System.Windows.Duration.Automatic%2A>, the natural duration is determined by that particular class&quot;s implementation of <xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.       If GetNaturalDuration returns <xref:System.Windows.Duration.Automatic%2A>, it means that the natural duration is unknown, which implies a natural duration of <xref:System.Windows.Duration.Forever%2A>. Such is the case for streaming media.       Note that passing this method a clock other than the one that was created for this timeline is possible, but will provide unreliable results."
+  summary: "Ez egy egyetlen ismétlését hosszának beolvasása <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
+  remarks: "Ez a módszer csak akkor szabad meghívni mikor <xref:System.Windows.Media.Animation.Timeline.Duration%2A>tulajdonsága <xref:System.Windows.Duration.Automatic%2A>.</xref:System.Windows.Duration.Automatic%2A> </xref:System.Windows.Media.Animation.Timeline.Duration%2A> Ha <xref:System.Windows.Media.Animation.Timeline.Duration%2A>van <xref:System.Windows.Duration.Automatic%2A>, a természetes időtartamát határozza meg, hogy adott osztály végrehajtásának <xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDurationCore%2A> </xref:System.Windows.Duration.Automatic%2A> </xref:System.Windows.Media.Animation.Timeline.Duration%2A>       Ha GetNaturalDuration adja vissza <xref:System.Windows.Duration.Automatic%2A>, ami azt jelenti, hogy a természetes időtartama ismeretlen, ami azt jelenti, hogy a <xref:System.Windows.Duration.Forever%2A>.</xref:System.Windows.Duration.Forever%2A> természetes időtartama</xref:System.Windows.Duration.Automatic%2A> Ez a helyzet médiaadatfolyam.       Vegye figyelembe, hogy átadja ezt a módszert az ütemterv nem az, hogy létrejött egy óra lehet, de megbízhatatlan eredményekhez biztosít."
   syntax:
     content: protected System.Windows.Duration GetNaturalDuration (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "A <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> a létrehozott <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "Ez egy egyetlen ismétlését hosszát <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>, vagy <xref:System.Windows.Duration.Automatic*>Ha a természetes ismeretlen.</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDuration*
   exceptions: []
   platform:
@@ -874,17 +874,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Returns the length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>. This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>."
-  remarks: "This method provides the implementation for <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> and should not be called directly from your code. Use <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> instead."
+  summary: "Ez egy egyetlen ismétlését hosszának beolvasása <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>. Ezt a módszert biztosít a <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*>.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration*> végrehajtása"
+  remarks: "Ez a módszer lehetővé teszi a végrehajtására <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>, és nem hívható közvetlenül a kódból.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A> Használjon <xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>helyette.</xref:System.Windows.Media.Animation.Timeline.GetNaturalDuration%2A>"
   syntax:
     content: protected virtual System.Windows.Duration GetNaturalDurationCore (System.Windows.Media.Animation.Clock clock);
     parameters:
     - id: clock
       type: System.Windows.Media.Animation.Clock
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Clock&quot;></xref> that was created for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+      description: "A <xref href=&quot;System.Windows.Media.Animation.Clock&quot;> </xref> a létrehozott <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
     return:
       type: System.Windows.Duration
-      description: "The length of a single iteration of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>, or <xref:System.Windows.Duration.Automatic*> if the natural duration is unknown."
+      description: "Ez egy egyetlen ismétlését hosszát <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>, vagy <xref:System.Windows.Duration.Automatic*>Ha a természetes ismeretlen.</xref:System.Windows.Duration.Automatic*>"
   overload: System.Windows.Media.Animation.Timeline.GetNaturalDurationCore*
   exceptions: []
   platform:
@@ -901,12 +901,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the name of this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
+  summary: "Lekérdezi vagy beállítja a nevét, ennek <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "The name of this timeline. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Az ütemterv neve. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Media.Animation.Timeline.Name*
   exceptions: []
   platform:
@@ -923,12 +923,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.Name*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.Name*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.Name*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty NameProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -944,13 +944,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Occurs when the clock created for this timeline or one of its parent timelines is removed."
-  remarks: "This event is raised by applying a <xref:System.Windows.Media.Animation.RemoveStoryboard> action to a storyboard, using a Storyboard&quot;s <xref:System.Windows.Media.Animation.Storyboard.Remove%2A> method, or (when working directly with clocks) calling the <xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> method.       Although this event handler appears to be associated with a timeline, it actually registers with the <xref:System.Windows.Media.Animation.Clock> created for this timeline.  For more information, see the [Timing Events Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, az ütemterv létrehozásakor az óra, illetve a szülő ütemtervek közül a rendszer eltávolítja."
+  remarks: "Ez az esemény akkor következik be, úgy, hogy alkalmazza a <xref:System.Windows.Media.Animation.RemoveStoryboard>műveletet egy storyboard, használja a storyboard fájlt az <xref:System.Windows.Media.Animation.Storyboard.Remove%2A>metódus, vagy (amikor közvetlenül órák) hívja a <xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName>metódus.</xref:System.Windows.Media.Animation.ClockController.Remove%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Storyboard.Remove%2A> </xref:System.Windows.Media.Animation.RemoveStoryboard>       Ebben az eseménykezelőben ütemterv társítandó úgy tűnik, de ténylegesen az történő regisztrálást a <xref:System.Windows.Media.Animation.Clock>az ütemterv létrehozása.</xref:System.Windows.Media.Animation.Clock>  További információkért lásd: a [időzítési események áttekintése](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public event EventHandler RemoveRequested;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -966,13 +966,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the repeating behavior of this timeline."
-  remarks: "If an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> is specified and the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property is set to `true`, a single repetition consists of one forward iteration and one backward iteration. A timeline with an <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> property set to true an iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> of 2 would play forwards, then backwards, then forwards again, and then backwards again.       Instead of specifying the number of times a timeline plays, you can also specify the total length of time you want the timeline to play. For a timeline to repeat, this <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> value should be greater than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>. For example, a timeline with a <xref:System.Windows.Media.Animation.Timeline.Duration%2A> of 2 seconds and a <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> of 4 seconds will play twice. If the <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> is less than the timeline&quot;s <xref:System.Windows.Media.Animation.Timeline.Duration%2A>, the timeline&quot;s active period is cut short.       For more information about repeating timelines, see [Animation Overview](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdezi vagy beállítja az ezen ütemterv ismétlődő viselkedését."
+  remarks: "Ha egy iteráció <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>van megadva, és az ütemterv <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>tulajdonsága `true`, az egyetlen ismétlési egy előre iterációs és egy előző verziókkal való iterációs áll.</xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> Az ütemterv egy <xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>tulajdonság beállítása true egy iteráció <xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A>2 játszhatja le előre, majd visszafelé, ismét, majd továbbítja, majd újra visszamenőleges.</xref:System.Windows.Media.Animation.RepeatBehavior.Count%2A> </xref:System.Windows.Media.Animation.Timeline.AutoReverse%2A>       Ütemterv játszik számának megadása, helyett az ütemterv lejátszani kívánt teljes időtartama is megadhatja. Ismétlődő, ez <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>az érték legyen nagyobb, mint az ütemterv <xref:System.Windows.Media.Animation.Timeline.Duration%2A>.</xref:System.Windows.Media.Animation.Timeline.Duration%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> ütemterv Például az ütemterv egy <xref:System.Windows.Media.Animation.Timeline.Duration%2A>2 másodpercben és egy <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>4 mp fog játszani kétszer.</xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName> </xref:System.Windows.Media.Animation.Timeline.Duration%2A> Ha a <xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>kisebb, mint az ütemterv <xref:System.Windows.Media.Animation.Timeline.Duration%2A>, az ütemterv aktív időszak vége rövid.</xref:System.Windows.Media.Animation.Timeline.Duration%2A> </xref:System.Windows.Media.Animation.RepeatBehavior.Duration%2A?displayProperty=fullName>       Ismétlődő ütemtervek kapcsolatos további információkért lásd: [animáció – áttekintés](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_RepeatBehavior&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.RepeatBehaviorProperty>"
   syntax:
     content: public System.Windows.Media.Animation.RepeatBehavior RepeatBehavior { get; set; }
     return:
       type: System.Windows.Media.Animation.RepeatBehavior
-      description: "An iteration <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> that specifies the number of times the timeline should play, a <xref:System.TimeSpan> value that specifies the total the length of this timeline&quot;s active period, or the special value <xref:System.Windows.Media.Animation.RepeatBehavior.Forever*>, which specifies that the timeline should repeat indefinitely. The default value is a <xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;></xref> with a <xref:System.Windows.Media.Animation.RepeatBehavior.Count*> of `1`, which indicates that the timeline plays once."
+      description: "Egy iteráció <> </> *>, amely megadja, hogy az ütemterv hallgatni, hányszor egy <xref:System.TimeSpan>érték, amely meghatározza az összes aktív ezen ütemterv időszak hosszát, vagy a speciális érték <> </> *>, amely megadja, hogy határozatlan ideig ismételje meg az ütemterv.</xref:System.TimeSpan> Az alapértelmezett érték egy <xref href=&quot;System.Windows.Media.Animation.RepeatBehavior&quot;> </xref> rendelkező egy <xref:System.Windows.Media.Animation.RepeatBehavior.Count*>a `1`, ami azt jelenti, hogy az ütemterv egyszer játszik.</xref:System.Windows.Media.Animation.RepeatBehavior.Count*>"
   overload: System.Windows.Media.Animation.Timeline.RepeatBehavior*
   exceptions: []
   platform:
@@ -989,12 +989,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies the <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.RepeatBehavior*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty RepeatBehaviorProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1010,17 +1010,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Sets the desired frame rate of the specified <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "This method sets the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> attached property. For more information, see the <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> page."
+  summary: "Beállítja a megadott kívánt keretének aránya <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
+  remarks: "Ez a módszer a <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>csatolt tulajdonság.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A> További információkért lásd: a <xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>lap.</xref:System.Windows.Media.Animation.Timeline.DesiredFrameRate%2A>"
   syntax:
     content: public static void SetDesiredFrameRate (System.Windows.Media.Animation.Timeline timeline, Nullable<int> desiredFrameRate);
     parameters:
     - id: timeline
       type: System.Windows.Media.Animation.Timeline
-      description: "The <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref> to which `desiredFrameRate` is assigned."
+      description: "A <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref> , amelyhez `desiredFrameRate` hozzá van rendelve."
     - id: desiredFrameRate
       type: System.Nullable{System.Int32}
-      description: "The maximum number of frames this timeline should generate each second, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the system should control the number of frames."
+      description: "Az ütemterv kell létrehozni minden második keretek maximális számának vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a rendszer kell szabályozza a keretek számát."
   overload: System.Windows.Media.Animation.Timeline.SetDesiredFrameRate*
   exceptions: []
   platform:
@@ -1037,20 +1037,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Gets or sets the rate, relative to its parent, at which time progresses for this <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;></xref>."
-  remarks: "A timeline&quot;s SpeedRatio setting does not have an effect on its <xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; that time is relative to the timeline&quot;s parent or, if the timeline is a root timeline, the moment at which the timeline&quot;s clock was begun.       If <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A> or <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> are specified, this SpeedRatio is the average ratio over the natural length of the timeline.      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|<xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|   |Metadata properties set to `true`|None|"
+  summary: "Lekérdezi vagy beállítja a sebesség, szülőelemének, mely idő előrehaladásával ezen <xref href=&quot;System.Windows.Media.Animation.Timeline&quot;> </xref>."
+  remarks: "Egy ütemterv SpeedRatio beállítás nincs hatással a a <xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>; hogy az ütemterv szülői mappától kiinduló relatív elérési ideje, vagy ha az ütemterv egy legfelső szintű ütemterv, ahol az ütemterv óra megkezdésének jelenleg.</xref:System.Windows.Media.Animation.Timeline.BeginTime%2A>       Ha <xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>vagy <xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A>van adva, a SpeedRatio átlagos aránya az ütemterv természetes hosszában.</xref:System.Windows.Media.Animation.Timeline.DecelerationRatio%2A> </xref:System.Windows.Media.Animation.Timeline.AccelerationRatio%2A>      <a name=&quot;dependencyPropertyInfo_SpeedRatio&quot;></a>## Függőségtulajdonság adatai |||   |-|-|   | Alkalmazásazonosító mezőben |} <xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>|   | Metaadat-tulajdonságainak beállítása `true`|} Nincs |}</xref:System.Windows.Media.Animation.Timeline.SpeedRatioProperty>"
   example:
   - "A timeline's SpeedRatio property controls its rate of progress, relative to its parent. If the timeline is a root, its <xref:System.Windows.Media.MediaPlayer.SpeedRatio%2A> is relative to the default timeline speed. The following example shows several timelines with different SpeedRatio settings.  \n  \n [!code-xml[timingbehaviors_snip#_graphicsmm_SpeedExampleWholePage](~/add/codesnippet/xaml/timingbehaviors_snip.project/SpeedExample.xaml#_graphicsmm_speedexamplewholepage)]"
   syntax:
     content: public double SpeedRatio { get; set; }
     return:
       type: System.Double
-      description: "A finite value greater than 0 that describes the rate at which time progresses for this timeline, relative to the speed of the timeline&quot;s parent or, if this is a root timeline, the default timeline speed. The default value is 1."
+      description: "Mely idő előrehaladásával ezen ütemterv, az ütemterv szülő sebességétől viszonyított aránya leíró 0-nál nagyobb véges számnak vagy, ha ez egy legfelső szintű ütemterv, az alapértelmezett ütemterv sebessége. Az alapértelmezett érték az 1."
   overload: System.Windows.Media.Animation.Timeline.SpeedRatio*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "SpeedRatio is less than 0 or is not a finite value."
+    description: "SpeedRatio kisebb, mint 0, vagy nem véges érték."
   platform:
   - net462
 - uid: System.Windows.Media.Animation.Timeline.SpeedRatioProperty
@@ -1065,12 +1065,12 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.Animation
-  summary: "Identifies for the <xref:System.Windows.Media.Animation.Timeline.SpeedRatio*> dependency property."
+  summary: "Azonosítja a <xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>függőség tulajdonság.</xref:System.Windows.Media.Animation.Timeline.SpeedRatio*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SpeedRatioProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

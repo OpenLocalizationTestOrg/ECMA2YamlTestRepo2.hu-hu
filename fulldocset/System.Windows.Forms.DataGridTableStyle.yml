@@ -102,8 +102,8 @@ items:
   nameWithType: DataGridTableStyle
   fullName: System.Windows.Forms.DataGridTableStyle
   type: Class
-  summary: "Represents the table drawn by the <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control at run time."
-  remarks: "The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control displays data in the form of a grid. The DataGridTableStyle is a class that represents the drawn grid only. This grid should not be confused with the <xref:System.Data.DataTable> class, which is a possible source of data for the grid. Instead, the DataGridTableStyle strictly represents the grid as it is painted in the control. Therefore, through the DataGridTableStyle you can control the appearance of the grid for each <xref:System.Data.DataTable>. To specify which DataGridTableStyle is used when displaying data from a particular <xref:System.Data.DataTable>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> to the <xref:System.Data.DataTable.TableName%2A> of a <xref:System.Data.DataTable>.       The <xref:System.Windows.Forms.GridTableStylesCollection> retrieved through the <xref:System.Windows.Forms.DataGrid.TableStyles%2A> property contains all the DataGridTableStyle objects used by a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control. The collection can contain as many DataGridTableStyle objects as you need, however the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of each must be unique. At run time, this allows you to substitute a different DataGridTableStyle for the same data, depending on the user&quot;s preference. To do this:      1.  Populate the <xref:System.Windows.Forms.GridTableStylesCollection> with DataGridTableStyle objects. If a DataGridTableStyle exists in the <xref:System.Windows.Forms.GridTableStylesCollection> whose <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property value equals the <xref:System.Data.DataTable> object&quot;s <xref:System.Data.DataTable.TableName%2A> property, the <xref:System.Data.DataTable> is displayed with this DataGridTableStyle. If no DataGridTableStyle exists with a matching <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>, the <xref:System.Data.DataTable> is displayed with the default style for data grid tables.      2.  When a different grid style is needed, use the `Item` property to select the appropriate DataGridTableStyle (pass the <xref:System.Data.DataTable.TableName%2A> to the <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> property) and set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the returned object to a new value.      3.  Use the <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> property to select the desired DataGridTableStyle, and set its <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> to the <xref:System.Data.DataTable.TableName%2A> of the <xref:System.Data.DataTable>.      > [!CAUTION] >  Always create <xref:System.Windows.Forms.DataGridColumnStyle> objects and add them to the <xref:System.Windows.Forms.GridColumnStylesCollection> before adding DataGridTableStyle objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. When you add an empty DataGridTableStyle with a valid <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> value to the collection, <xref:System.Windows.Forms.DataGridColumnStyle> objects are automatically generated for you. Consequently, an exception will be thrown if you try to add new <xref:System.Windows.Forms.DataGridColumnStyle> objects with duplicate <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> values to the <xref:System.Windows.Forms.GridColumnStylesCollection>.       To determine which DataGridTableStyle is currently displayed, use the <xref:System.Windows.Forms.DataGrid.DataSource%2A> and <xref:System.Windows.Forms.DataGrid.DataMember%2A> properties of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> to return a <xref:System.Windows.Forms.CurrencyManager>. If the data source implements the <xref:System.ComponentModel.ITypedList> interface, you can use the <xref:System.ComponentModel.ITypedList.GetListName%2A> method to return the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the current table. This is shown in the C# code below:      ```   private void PrintCurrentListName(DataGrid myDataGrid){    CurrencyManager myCM = (CurrencyManager)    BindingContext[myDataGrid.DataSource, myDataGrid.DataMember];    IList myList = myCM.List;    ITypedList thisList = (ITypedList) myList;    Console.WriteLine(thisList.GetListName(null));   }   ```       If the <xref:System.Data.DataSet> contains <xref:System.Data.DataTable> objects related through <xref:System.Data.DataRelation> objects, and the currently displayed <xref:System.Data.DataTable> is a child table, the <xref:System.Windows.Forms.DataGrid.DataMember%2A> will return a string in the form of TableName.RelationName (in the simplest case). If the <xref:System.Data.DataTable> is further down in the hierarchy, the string will consist of the parent table&quot;s name followed by the necessary <xref:System.Data.DataRelation.RelationName%2A> values required to reach the table&quot;s level. For example, imagine three <xref:System.Data.DataTable> objects in a hierarchical relationship named (top to bottom) `Regions`, `Customers`, and `Orders`, and two <xref:System.Data.DataRelation> objects named `RegionsToCustomers` and `CustomersToOrders`, the <xref:System.Windows.Forms.DataGrid.DataMember%2A> property will return &quot;Regions.RegionsToCustomers.CustomersToOrders&quot;. However, the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> will then be &quot;Orders&quot;.       The collection of DataGridTableStyle objects is returned through the <xref:System.Windows.Forms.DataGrid.TableStyles%2A> property of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>.       When a DataGridTableStyle is displayed, the settings for the DataGridTableStyle will override the settings for the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control. If a value is not set for a particular DataGridTableStyle property, the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control&quot;s value will be used instead. The following list shows the <xref:System.Windows.Forms.DataGridColumnStyle> properties that can be set to override <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control properties:      -   <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A>      -   <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A>       To bind the <xref:System.Windows.Forms.DataGrid> to a strongly typed array of objects, the object type must contain public properties. To create a DataGridTableStyle that displays the array, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName> property to `typename` where `typename` is replaced by the name of the object type. Also note that the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property is case-sensitive; the type name must be matched exactly. See the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> property for an example.       You can also bind the <xref:System.Windows.Forms.DataGrid> to an <xref:System.Collections.ArrayList>. A feature of the <xref:System.Collections.ArrayList> is that it can contain objects of multiple types, but the <xref:System.Windows.Forms.DataGrid> can only bind to such a list when all items in the list are of the same type as the first item. This means that all objects must either be of the same type, or they must inherit from the same class as the first item in the list. For example, if the first item in a list is a <xref:System.Windows.Forms.Control>, the second item could be a <xref:System.Windows.Forms.TextBox> (which inherits from <xref:System.Windows.Forms.Control>). If, on the other hand, the first item is a <xref:System.Windows.Forms.TextBox>, the second object cannot be a <xref:System.Windows.Forms.Control>. Further, the <xref:System.Collections.ArrayList> must have items in it when it is bound and the objects in the DataGridTableStyle must contain public properties. An empty <xref:System.Collections.ArrayList> will result in an empty grid. When binding to an <xref:System.Collections.ArrayList>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of the DataGridTableStyle to &quot;ArrayList&quot; (the type name)."
+  summary: "A táblázat által jelöli a <xref href=&quot;System.Windows.Forms.DataGrid&quot;> </xref> vezérlő futási időben."
+  remarks: "A <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő jeleníti meg a rács formájában.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> A DataGridTableStyle egy osztály, amely csak a kiállított rács jelöli. A rács nem keverendő össze a a <xref:System.Data.DataTable>osztályt, amely az adatok a rács lehetséges forrása.</xref:System.Data.DataTable> Ehelyett a DataGridTableStyle szigorúan jelöli a rács azt a vezérlő kerül meghívásra. Ezért a DataGridTableStyle keresztül szabályozhatja a a rács megjelenítési minden <xref:System.Data.DataTable>.</xref:System.Data.DataTable> Mely DataGridTableStyle megadásához használhatók, amikor adatokat jeleníti-e az egy adott <xref:System.Data.DataTable>a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>számára a <xref:System.Data.DataTable.TableName%2A> <xref:System.Data.DataTable>.</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Data.DataTable>       A <xref:System.Windows.Forms.GridTableStylesCollection>segítségével a <xref:System.Windows.Forms.DataGrid.TableStyles%2A>tulajdonság által használt összes DataGridTableStyle objektum tartalmaz egy <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGrid.TableStyles%2A> </xref:System.Windows.Forms.GridTableStylesCollection> A gyűjtemény tartalmazhat tetszőleges számú DataGridTableStyle objektumok csak szeretne, azonban a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>egyes egyedinek kell lennie.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> Futásidőben Ez lehetővé teszi egy másik DataGridTableStyle ugyanazokat az adatokat, attól függően, hogy a felhasználó preferenciájának helyettesíti. Ehhez: 1.  Feltölti az <xref:System.Windows.Forms.GridTableStylesCollection>DataGridTableStyle objektumok.</xref:System.Windows.Forms.GridTableStylesCollection> Ha létezik olyan DataGridTableStyle a <xref:System.Windows.Forms.GridTableStylesCollection>amelynek <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>tulajdonság értéke a <xref:System.Data.DataTable>objektum <xref:System.Data.DataTable.TableName%2A>tulajdonság, a <xref:System.Data.DataTable>jelenik meg, amely a DataGridTableStyle.</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Data.DataTable> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.GridTableStylesCollection> Ha nincs DataGridTableStyle van-e a hozzá tartozó <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>, a <xref:System.Data.DataTable>jelenik meg, amely az adatok rács tábláknál alapértelmezett stílus.</xref:System.Data.DataTable> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>      2.  Amikor szükség van egy másik rácsvonalak stílusát, használja a `Item` jelölje be a megfelelő DataGridTableStyle tulajdonság (továbbítja a <xref:System.Data.DataTable.TableName%2A>való a <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>tulajdonság) és állítsa be a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>az új értéket a visszaadott objektumot.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.GridTableStylesCollection.Item%2A> </xref:System.Data.DataTable.TableName%2A>      3.  <xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>Válassza ki a kívánt DataGridTableStyle, és annak <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>az a <xref:System.Data.DataTable.TableName%2A> <xref:System.Data.DataTable>.</xref:System.Data.DataTable> </xref:System.Data.DataTable.TableName%2A> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> tulajdonság</xref:System.Windows.Forms.GridTableStylesCollection.Item%2A>      > [!CAUTION] > Mindig hozzon létre az <xref:System.Windows.Forms.DataGridColumnStyle>objektumokat, és hozzáadhatja a <xref:System.Windows.Forms.GridColumnStylesCollection>a <xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection> DataGridTableStyle objektumok hozzáadása előtt</xref:System.Windows.Forms.GridColumnStylesCollection> </xref:System.Windows.Forms.DataGridColumnStyle> Amikor felvesz egy üres DataGridTableStyle érvényes <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>érték a gyűjteményhez, <xref:System.Windows.Forms.DataGridColumnStyle>objektumok automatikusan előállított akkor.</xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> Következésképpen kivételt fog jelezni, ha új <xref:System.Windows.Forms.DataGridColumnStyle>ismétlődő <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>értékek az <xref:System.Windows.Forms.GridColumnStylesCollection>.</xref:System.Windows.Forms.GridColumnStylesCollection> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> objektumok</xref:System.Windows.Forms.DataGridColumnStyle> hozzáadása       Annak meghatározásához, amelyet DataGridTableStyle jelenik meg, használja a <xref:System.Windows.Forms.DataGrid.DataSource%2A>és <xref:System.Windows.Forms.DataGrid.DataMember%2A>a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> <xref:System.Windows.Forms.CurrencyManager>.</xref:System.Windows.Forms.CurrencyManager> vissza</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> tulajdonságairól</xref:System.Windows.Forms.DataGrid.DataMember%2A> </xref:System.Windows.Forms.DataGrid.DataSource%2A> Ha az adatforrás-valósít meg a <xref:System.ComponentModel.ITypedList>felületet, használhatja a <xref:System.ComponentModel.ITypedList.GetListName%2A>metódus vissza a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>az aktuális táblázat.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.ComponentModel.ITypedList.GetListName%2A> </xref:System.ComponentModel.ITypedList> Ez jelenik meg a C#-kódban az alábbi: ```   private void PrintCurrentListName(DataGrid myDataGrid){    CurrencyManager myCM = (CurrencyManager)    BindingContext[myDataGrid.DataSource, myDataGrid.DataMember];    IList myList = myCM.List;    ITypedList thisList = (ITypedList) myList;    Console.WriteLine(thisList.GetListName(null));   }   ``` Ha a <xref:System.Data.DataSet>tartalmaz <xref:System.Data.DataTable>keresztül kapcsolódó objektumok <xref:System.Data.DataRelation>objektumok és az aktuálisan megjelenített <xref:System.Data.DataTable>gyermektáblaként, a <xref:System.Windows.Forms.DataGrid.DataMember%2A>fog adja vissza (a legegyszerűbb esetben) TableName.RelationName formájában.</xref:System.Windows.Forms.DataGrid.DataMember%2A> </xref:System.Data.DataTable> </xref:System.Data.DataRelation> </xref:System.Data.DataTable> </xref:System.Data.DataSet> Ha a <xref:System.Data.DataTable>Tovább lefelé a hierarchiában, a karakterlánc a következőkből áll a szülőtábla neve, majd a szükséges <xref:System.Data.DataRelation.RelationName%2A>a tábla szintű eléréséhez szükséges értékeket.</xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable> Tegyük három <xref:System.Data.DataTable>(felső – alsó) nevű hierarchikus kapcsolat objektumok `Regions`, `Customers`, és `Orders`, és két <xref:System.Data.DataRelation>nevű objektumok `RegionsToCustomers` és `CustomersToOrders`, a <xref:System.Windows.Forms.DataGrid.DataMember%2A>tulajdonság &quot;Regions.RegionsToCustomers.CustomersToOrders&quot; fog visszaadni.</xref:System.Windows.Forms.DataGrid.DataMember%2A> </xref:System.Data.DataRelation> </xref:System.Data.DataTable> Azonban a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>&quot;Rendelések&quot; lesz.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>       A <xref:System.Windows.Forms.DataGrid.TableStyles%2A>tulajdonság a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGrid.TableStyles%2A> keresztül adja vissza DataGridTableStyle objektumok gyűjteménye       A DataGridTableStyle jelenik meg, amikor a DataGridTableStyle beállításait beállítások felülírják az a a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> Ha egy adott DataGridTableStyle tulajdonság nincs beállítva egy értéket a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő érték lesz használva helyette.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> Az alábbi lista tartalmazza a <xref:System.Windows.Forms.DataGridColumnStyle>tulajdonságokhoz állítható be felülbírálás <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>Tulajdonságok szabályozzák:- <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A>- <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>- <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A>- <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A>- <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A>- <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A>- <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A>- <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A>- <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A>kötést létrehozni a <xref:System.Windows.Forms.DataGrid>egy szigorú típusmegadású objektumokból álló tömb, hogy az objektum típusa nyilvános tulajdonságok kell tartalmaznia.</xref:System.Windows.Forms.DataGrid> </xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth%2A> </xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible%2A> </xref:System.Windows.Forms.DataGridTableStyle.ReadOnly%2A> </xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight%2A> </xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth%2A> </xref:System.Windows.Forms.DataGridTableStyle.LinkColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A> </xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle%2A> </xref:System.Windows.Forms.DataGridTableStyle.GridLineColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.ForeColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible%2A> </xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> </xref:System.Windows.Forms.DataGridTableStyle.AllowSorting%2A> </xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle> Hozzon létre egy DataGridTableStyle, amely a tömb jeleníti meg, állítsa be a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName>tulajdonságot `typename` ahol `typename` neve az objektum típusának helyébe.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A?displayProperty=fullName> Ne feledje, hogy a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>tulajdonság kis-és nagybetűket, a következő típusnév pontosan egyeztetni.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> Tekintse meg a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>például egy tulajdonság.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>       Emellett a kötni <xref:System.Windows.Forms.DataGrid>a <xref:System.Collections.ArrayList>.</xref:System.Collections.ArrayList> </xref:System.Windows.Forms.DataGrid> Egyik funkciója a <xref:System.Collections.ArrayList>, hogy több típusú objektumok tartalmazhat, de a <xref:System.Windows.Forms.DataGrid>, ugyanolyan típusú, mint az első elem a lista összes elemének esetén ez a lista csak köthető.</xref:System.Windows.Forms.DataGrid> </xref:System.Collections.ArrayList> Ez azt jelenti, hogy az összes objektumnak azonos típusúnak vagy kell lennie, vagy azok ugyanahhoz az osztályhoz tartozik, mint a lista első elemének kell örökölnie. Például, ha a lista első eleme a <xref:System.Windows.Forms.Control>, a második elem lehet egy <xref:System.Windows.Forms.TextBox>(amely örököl <xref:System.Windows.Forms.Control>).</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control> Ha, másrészt, az első elem egy <xref:System.Windows.Forms.TextBox>a második objektum nem lehet egy <xref:System.Windows.Forms.Control>.</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> További, a <xref:System.Collections.ArrayList>kell elemek azt van kötve, és a a DataGridTableStyle objektumok tartalmaznia kell a nyilvános tulajdonságait.</xref:System.Collections.ArrayList> Egy üres <xref:System.Collections.ArrayList>eredményezi egy üres táblát.</xref:System.Collections.ArrayList> Való kötés egy <xref:System.Collections.ArrayList>, beállíthatja a <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>, a &quot;ArrayList&quot; (a típusnév) DataGridTableStyle.</xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Collections.ArrayList>"
   example:
   - "The following code example creates two DataGridTableStyle instances and sets the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of each object to the <xref:System.Data.DataTable.TableName%2A> of a <xref:System.Data.DataTable> in a <xref:System.Data.DataSet>. The example then adds <xref:System.Windows.Forms.DataGridColumnStyle> objects to the <xref:System.Windows.Forms.GridColumnStylesCollection> of each DataGridTableStyle. For an example that runs, see the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> example.  \n  \n [!code-cs[Classic DataGridTableStyle Example#1](~/add/codesnippet/csharp/t-system.windows.forms.d_25_1.cs)]\n [!code-vb[Classic DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.d_25_1.vb)]\n [!code-cpp[Classic DataGridTableStyle Example#1](~/add/codesnippet/cpp/t-system.windows.forms.d_25_1.cpp)]"
   syntax:
@@ -147,7 +147,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref> osztály."
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> and adds it to the <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_36_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_36_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_36_1.vb)]"
@@ -170,7 +170,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class using the specified value to determine whether the grid table is the default style."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref> osztály a megadott érték használatával állapítsa meg, hogy a Rács tábla alapértelmezett stílusát."
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> and adds it to the <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/cpp/m-system.windows.forms.d_32_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/csharp/m-system.windows.forms.d_32_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_32_1.vb)]"
@@ -179,7 +179,7 @@ items:
     parameters:
     - id: isDefaultTableStyle
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to specify the table as the default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a tábla meg alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.#ctor*
   exceptions: []
   platform:
@@ -196,7 +196,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> class with the specified <xref href=&quot;System.Windows.Forms.CurrencyManager&quot;></xref>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref> és a megadott osztály <xref href=&quot;System.Windows.Forms.CurrencyManager&quot;> </xref>."
   remarks: ''
   example:
   - "The following code example creates a new <xref:System.Windows.Forms.DataGridTableStyle> using a <xref:System.Windows.Forms.CurrencyManager> for a <xref:System.Data.DataTable>.  \n  \n [!code-cpp[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/cpp/6664725b-15b1-4da2-8a4a-_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/csharp/6664725b-15b1-4da2-8a4a-_1.cs)]\n [!code-vb[Classic DataGridTableStyle.DataGridTableStyle2 Example#1](~/add/codesnippet/visualbasic/6664725b-15b1-4da2-8a4a-_1.vb)]"
@@ -222,15 +222,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether sorting is allowed on the grid table when this <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref> is used."
-  remarks: "When the AllowSorting property is set to `true`, a triangle appears in each column header indicating the direction of the sort. The user can click on any column header to sort the grid by that column. Clicking the column a second time changes the direction of the sort.       This property overrides the <xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName> property."
+  summary: "Azt jelzi, hogy rendezést a rács táblából ez <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref> szolgál."
+  remarks: "Ha a AllowSorting tulajdonság értéke `true`, egy háromszög látható minden oszlop fejlécére, amely jelzi, a rendezés irányát. A felhasználó rákattinthat minden oszlop fejlécére a rács az oszlopnak. Az oszlop fejlécére kattint másodszor módosítja a rendezés irányát.       Ez a tulajdonság felülírja az <xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName>tulajdonság.</xref:System.Windows.Forms.DataGrid.AllowSorting%2A?displayProperty=fullName>"
   example:
   - "The following code example allows you to toggle sorting availability on a <xref:System.Windows.Forms.DataGrid> by clicking a button and the current sorting status is displayed in a label. This example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, a <xref:System.Windows.Forms.Button> and a <xref:System.Windows.Forms.Label> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cpp[DataGridTableStyle_Sample2#1](~/add/codesnippet/cpp/p-system.windows.forms.d_25_1.cpp)]\n [!code-cs[DataGridTableStyle_Sample2#1](~/add/codesnippet/csharp/p-system.windows.forms.d_25_1.cs)]\n [!code-vb[DataGridTableStyle_Sample2#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_25_1.vb)]"
   syntax:
     content: public bool AllowSorting { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if sorting is allowed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha engedélyezett a rendezés; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.AllowSorting*
   exceptions: []
   platform:
@@ -247,15 +247,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*> property value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*>tulajdonság változásainak.</xref:System.Windows.Forms.DataGridTableStyle.AllowSorting*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example allows you to toggle sorting availability on a <xref:System.Windows.Forms.DataGrid> by clicking a button and the current sorting status is displayed in a label. This example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, a <xref:System.Windows.Forms.Button> and a <xref:System.Windows.Forms.Label> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cpp[DataGridTableStyle_Sample2#1](~/add/codesnippet/cpp/e-system.windows.forms.d_131_1.cpp)]\n [!code-cs[DataGridTableStyle_Sample2#1](~/add/codesnippet/csharp/e-system.windows.forms.d_131_1.cs)]\n [!code-vb[DataGridTableStyle_Sample2#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_131_1.vb)]"
   syntax:
     content: public event EventHandler AllowSortingChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -271,7 +271,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of odd-numbered rows of the grid."
+  summary: "Lekérdezi vagy beállítja a rács páratlan sorok háttérszíne."
   remarks: ''
   example:
   - "The following code example creates an instance of <xref:System.Windows.Forms.DataGridTableStyle> and sets the <xref:System.Windows.Forms.DataGridTableStyle.BackColor%2A> and AlternatingBackColor properties to new values. The example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, and a <xref:System.Windows.Forms.Button> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cs[DataGridTableStyle_sample5#1](~/add/codesnippet/csharp/p-system.windows.forms.d_360_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_360_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#1](~/add/codesnippet/cpp/p-system.windows.forms.d_360_1.cpp)]"
@@ -279,7 +279,7 @@ items:
     content: public System.Drawing.Color AlternatingBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of odd-numbered rows. The default is <xref:System.Drawing.SystemBrushes.Window*>"
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a páratlan sorok háttérszíne. Az alapértelmezett érték<xref:System.Drawing.SystemBrushes.Window*></xref:System.Drawing.SystemBrushes.Window*>"
   overload: System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*
   exceptions: []
   platform:
@@ -296,15 +296,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the AlternatingBackColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the AlternatingBackColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#221](~/add/codesnippet/csharp/e-system.windows.forms.d_12_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#221](~/add/codesnippet/visualbasic/e-system.windows.forms.d_12_1.vb)]"
   syntax:
     content: public event EventHandler AlternatingBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -320,15 +320,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of even-numbered rows of the grid."
-  remarks: "The <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> property can also be set to create a ledger-like appearance."
+  summary: "Lekérdezi vagy beállítja a rács páros sorok háttérszíne."
+  remarks: "A <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>tulajdonság is állítható a főkönyvi hasonló megjelenési létrehozásához.</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A>"
   example:
   - "The following code example creates an instance of <xref:System.Windows.Forms.DataGridTableStyle> and sets the BackColor and <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor%2A> properties to new values. The example requires that you have a <xref:System.Windows.Forms.DataGrid> with a <xref:System.Data.DataSet?displayProperty=fullName> that contains some data, and a <xref:System.Windows.Forms.Button> on a <xref:System.Windows.Forms.Form>.  \n  \n [!code-cs[DataGridTableStyle_sample5#1](~/add/codesnippet/csharp/p-system.windows.forms.d_321_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_321_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#1](~/add/codesnippet/cpp/p-system.windows.forms.d_321_1.cpp)]"
   syntax:
     content: public System.Drawing.Color BackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of odd-numbered rows."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a páratlan sorok háttérszíne."
   overload: System.Windows.Forms.DataGridTableStyle.BackColor*
   exceptions: []
   platform:
@@ -345,15 +345,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.BackColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the BackColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the BackColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#222](~/add/codesnippet/csharp/e-system.windows.forms.d_141_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#222](~/add/codesnippet/visualbasic/e-system.windows.forms.d_141_1.vb)]"
   syntax:
     content: public event EventHandler BackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -369,8 +369,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Requests an edit operation."
-  remarks: "The BeginEdit method is intended to notify the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control when the user has begun an editing operation. When the control is in edit mode, multiple edits can be made and the constraints will be temporarily unenforced.       Call the <xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A> method to quit the edit mode."
+  summary: "Az alkalmazásszerkesztési művelet kéri."
+  remarks: "A BeginEdit metódus az célja, hogy értesítse a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>szabályozza, amikor a felhasználó egy szerkesztési művelet már megkezdődött.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> Ha a vezérlő szerkesztési módban van, több szerkeszthető és korlátait ideiglenesen megszüntette.       Hívja a <xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A>módszert Kilépés a szerkesztési módban.</xref:System.Windows.Forms.DataGridTableStyle.EndEdit%2A>"
   example:
   - "The following code example calls the BeginEdit method on the current <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control.  \n  \n [!code-cpp[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/cpp/b9c87dfa-7ead-4e85-b82d-_1.cpp)]\n [!code-cs[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/csharp/b9c87dfa-7ead-4e85-b82d-_1.cs)]\n [!code-vb[Classic DataGridTableStyle.BeginEdit Example#1](~/add/codesnippet/visualbasic/b9c87dfa-7ead-4e85-b82d-_1.vb)]"
   syntax:
@@ -378,13 +378,13 @@ items:
     parameters:
     - id: gridColumn
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> to edit."
+      description: "A <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> szerkesztése."
     - id: rowNumber
       type: System.Int32
-      description: "The number of the edited row."
+      description: "A módosított sorok száma."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the operation succeeds; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, ha a művelet sikeres; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.BeginEdit*
   exceptions: []
   platform:
@@ -401,15 +401,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether column headers are visible."
-  remarks: "To set header caption text, use the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy az oszlopfejlécek nem láthatók."
+  remarks: "Felirat fejlécszöveg beállításához használja a <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> <xref:System.Windows.Forms.DataGridColumnStyle>osztály</xref:System.Windows.Forms.DataGridColumnStyle> tulajdonsága</xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample3#1](~/add/codesnippet/csharp/p-system.windows.forms.d_242_1.cs)]\n [!code-vb[DataGridTableStyle_Sample3#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_242_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample3#1](~/add/codesnippet/cpp/p-system.windows.forms.d_242_1.cpp)]"
   syntax:
     content: public bool ColumnHeadersVisible { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if column headers are visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha az oszlopfejlécek nem láthatók; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*
   exceptions: []
   platform:
@@ -426,15 +426,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*> value changes."
-  remarks: "To set the caption text for each column in a grid, set the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class.       For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisible*>"
+  remarks: "A rács minden oszlop fejléccellájában megjelenő címszöveg beállításához <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> <xref:System.Windows.Forms.DataGridColumnStyle>osztály</xref:System.Windows.Forms.DataGridColumnStyle> tulajdonságának</xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> beállítása       Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample3#2](~/add/codesnippet/csharp/e-system.windows.forms.d_147_1.cs)]\n [!code-vb[DataGridTableStyle_Sample3#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_147_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample3#2](~/add/codesnippet/cpp/e-system.windows.forms.d_147_1.cpp)]"
   syntax:
     content: public event EventHandler ColumnHeadersVisibleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -450,16 +450,16 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>, using the specified property descriptor."
+  summary: "Létrehoz egy <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>, a megadott tulajdonság leíró használatával."
   syntax:
     content: protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn (System.ComponentModel.PropertyDescriptor prop);
     parameters:
     - id: prop
       type: System.ComponentModel.PropertyDescriptor
-      description: "The <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> used to create the column style object."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> az oszlop style objektum létrehozásához használt."
     return:
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The newly created <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>."
+      description: "Az újonnan létrehozott <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.CreateGridColumn*
   exceptions: []
   platform:
@@ -476,19 +476,19 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Creates a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> using the specified property descriptor. Specifies whether the <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> is a default column style."
+  summary: "Létrehoz egy <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> a megadott tulajdonság leíró használatával. Megadja, hogy a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> oszlop alapértelmezett stílus."
   syntax:
     content: protected virtual System.Windows.Forms.DataGridColumnStyle CreateGridColumn (System.ComponentModel.PropertyDescriptor prop, bool isDefault);
     parameters:
     - id: prop
       type: System.ComponentModel.PropertyDescriptor
-      description: "The <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> used to create the column style object."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> az oszlop style objektum létrehozásához használt."
     - id: isDefault
       type: System.Boolean
-      description: "Specifies whether the <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> is a default column style. This parameter is read-only."
+      description: "Megadja, hogy a <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> oszlop alapértelmezett stílus. Ez a paraméter csak olvasható."
     return:
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The newly created <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref>."
+      description: "Az újonnan létrehozott <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.CreateGridColumn*
   exceptions: []
   platform:
@@ -505,15 +505,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control for the drawn table."
-  remarks: "The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control displays data in the form of a grid. The <xref:System.Windows.Forms.DataGridTableStyle> is an object that represents the drawn grid. The <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> property returns a reference to the control that is displaying the grid.       The DataGrid property is set when a <xref:System.Windows.Forms.DataGridTableStyle> is added to a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control&quot;s <xref:System.Windows.Forms.GridTableStylesCollection>. You should not try to set this property unless you are overriding it and creating a designer for a user control that incorporates the <xref:System.Windows.Forms.DataGrid> control."
+  summary: "Lekérdezi vagy beállítja a <xref href=&quot;System.Windows.Forms.DataGrid&quot;> </xref> a megrajzolt táblához tartozó vezérlőelem."
+  remarks: "A <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő jeleníti meg a rács formájában.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> A <xref:System.Windows.Forms.DataGridTableStyle>a megrajzolt rács képviselő objektum.</xref:System.Windows.Forms.DataGridTableStyle> A <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>tulajdonság visszaad egy hivatkozást, amely a rács megjelenítő vezérlő.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName>       A DataGrid tulajdonsága egy <xref:System.Windows.Forms.DataGridTableStyle> <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>vezérlő <xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection> </xref:System.Windows.Forms.DataGrid?displayProperty=fullName> kerül</xref:System.Windows.Forms.DataGridTableStyle> Nem próbálja állítani ezt a tulajdonságot, ha felülírja azt, és magában foglalja a felhasználói vezérlő tervezőjét létrehozása a <xref:System.Windows.Forms.DataGrid>vezérlő.</xref:System.Windows.Forms.DataGrid>"
   example:
   - "The following code example prints the <xref:System.Windows.Forms.DataGrid.CurrentCell%2A> of the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> displaying a <xref:System.Windows.Forms.DataGridTableStyle>.  \n  \n [!code-cs[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_223_1.cs)]\n [!code-cpp[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_223_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.DataGrid Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_223_1.vb)]"
   syntax:
     content: public virtual System.Windows.Forms.DataGrid DataGrid { get; set; }
     return:
       type: System.Windows.Forms.DataGrid
-      description: "The <xref href=&quot;System.Windows.Forms.DataGrid&quot;></xref> control that displays the table."
+      description: "A <xref href=&quot;System.Windows.Forms.DataGrid&quot;> </xref> a tábla megjelenítő vezérlő."
   overload: System.Windows.Forms.DataGridTableStyle.DataGrid*
   exceptions: []
   platform:
@@ -530,12 +530,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the default table style."
+  summary: "Lekérdezi az alapértelmezett tábla típusú particionálási módot."
   syntax:
     content: public static readonly System.Windows.Forms.DataGridTableStyle DefaultTableStyle;
     return:
       type: System.Windows.Forms.DataGridTableStyle
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -551,14 +551,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Disposes of the resources (other than memory) used by the <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;></xref>."
-  remarks: "The method calls the Dispose method on each <xref:System.Windows.Forms.DataGridColumnStyle> contained by the collection before calling <xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName> on the grid itself."
+  summary: "(Nem memória) által használt erőforrások megválik az <xref href=&quot;System.Windows.Forms.DataGridTableStyle&quot;> </xref>."
+  remarks: "A metódust a Dispose metódus meghívja a minden egyes <xref:System.Windows.Forms.DataGridColumnStyle>hívása előtt gyűjtemény által tartalmazott <xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName>magát a rács.</xref:System.Windows.Forms.DataGrid.Dispose%2A?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle>"
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a kibocsátási felügyelt és a nem felügyelt erőforrások; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> csak a nem felügyelt erőforrások kijelölése."
   overload: System.Windows.Forms.DataGridTableStyle.Dispose*
   exceptions: []
   platform:
@@ -575,8 +575,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Requests an end to an edit operation."
-  remarks: "Similar to the <xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A> method, the EndEdit method is intended to notify the <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> when an edit operation is ending."
+  summary: "Az alkalmazásszerkesztési művelet véget kéri."
+  remarks: "Hasonló a <xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A>metódus, a módszer olyan értesítés EndEdit a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName>Amikor befejezi az alkalmazásszerkesztési művelet.</xref:System.Windows.Forms.DataGrid?displayProperty=fullName> </xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A>"
   example:
   - "The following code example calls the <xref:System.Windows.Forms.DataGridTableStyle.BeginEdit%2A> method on the current <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control.  \n  \n [!code-cpp[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/cpp/eb830448-c8b8-4607-acc3-_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/visualbasic/eb830448-c8b8-4607-acc3-_1.vb)]\n [!code-cs[Classic DataGridTableStyle.EndEdit Example#1](~/add/codesnippet/csharp/eb830448-c8b8-4607-acc3-_1.cs)]"
   syntax:
@@ -584,16 +584,16 @@ items:
     parameters:
     - id: gridColumn
       type: System.Windows.Forms.DataGridColumnStyle
-      description: "The <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> to edit."
+      description: "A <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> szerkesztése."
     - id: rowNumber
       type: System.Int32
-      description: "The number of the edited row."
+      description: "A módosított sorok száma."
     - id: shouldAbort
       type: System.Boolean
-      description: "A value indicating whether the operation should be stopped; <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if it should stop; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Egy érték, amely jelzi, hogy a művelet le kell állítani; <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> Ha le kell állnia; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the edit operation ends successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az alkalmazásszerkesztési művelet lejártát sikeresen; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.EndEdit*
   exceptions: []
   platform:
@@ -610,7 +610,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of the grid table."
+  summary: "Lekérdezi vagy beállítja a rácsvonalak tábla előtérszíne."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ForeColor#1](~/add/codesnippet/csharp/p-system.windows.forms.d_238_1.cs)]\n [!code-vb[DataGridTableStyle_ForeColor#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_238_1.vb)]\n [!code-cpp[DataGridTableStyle_ForeColor#1](~/add/codesnippet/cpp/p-system.windows.forms.d_238_1.cpp)]"
@@ -618,7 +618,7 @@ items:
     content: public System.Drawing.Color ForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of the grid table."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a Rács tábla előtérszíne."
   overload: System.Windows.Forms.DataGridTableStyle.ForeColor*
   exceptions: []
   platform:
@@ -635,15 +635,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the ForeColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the ForeColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#223](~/add/codesnippet/csharp/e-system.windows.forms.d_62_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#223](~/add/codesnippet/visualbasic/e-system.windows.forms.d_62_1.vb)]"
   syntax:
     content: public event EventHandler ForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -659,15 +659,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the collection of columns drawn for this table."
-  remarks: "The <xref:System.Windows.Forms.GridColumnStylesCollection> returned by the GridColumnStyles property allows you to create a customized set of column styles. For each <xref:System.Data.DataColumn> in a <xref:System.Data.DataTable>, set the <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> of a <xref:System.Windows.Forms.DataGridColumnStyle> to the <xref:System.Data.DataColumn.ColumnName%2A>. That column style will automatically be used when this <xref:System.Windows.Forms.DataGridTableStyle> is displayed.       If you create a <xref:System.Windows.Forms.DataGridTableStyle> without adding any <xref:System.Windows.Forms.DataGridColumnStyle> objects to the <xref:System.Windows.Forms.GridColumnStylesCollection>, a collection of <xref:System.Windows.Forms.DataGridColumnStyle> objects will be created automatically when a <xref:System.Windows.Forms.DataGridTableStyle> with a valid <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> is added to the <xref:System.Windows.Forms.GridTableStylesCollection>. An exception will be thrown if you attempt to add <xref:System.Windows.Forms.DataGridColumnStyle> objects with duplicate <xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A> values to the collection."
+  summary: "Ehhez a táblához rajzolni oszlopok gyűjteményének beolvasása."
+  remarks: "A <xref:System.Windows.Forms.GridColumnStylesCollection>a tulajdonság segítségével létrehozhat egy testreszabott oszlop stílusok GridColumnStyles által visszaadott.</xref:System.Windows.Forms.GridColumnStylesCollection> Minden <xref:System.Data.DataColumn> <xref:System.Data.DataTable>az <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>az egy <xref:System.Windows.Forms.DataGridColumnStyle>az <xref:System.Data.DataColumn.ColumnName%2A>.</xref:System.Data.DataColumn.ColumnName%2A> </xref:System.Windows.Forms.DataGridColumnStyle> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Data.DataTable> </xref:System.Data.DataColumn> Adott oszlop stílus automatikusan lesz. Ha ez <xref:System.Windows.Forms.DataGridTableStyle>jelenik meg.</xref:System.Windows.Forms.DataGridTableStyle>       Ha létrehoz egy <xref:System.Windows.Forms.DataGridTableStyle> <xref:System.Windows.Forms.DataGridColumnStyle> <xref:System.Windows.Forms.GridColumnStylesCollection>az <xref:System.Windows.Forms.DataGridColumnStyle>objektumok létrehozása automatikusan, ha egy <xref:System.Windows.Forms.DataGridTableStyle>a egy érvényes <xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A>hozzáadódik a <xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection> </xref:System.Windows.Forms.DataGridTableStyle.MappingName%2A> </xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridColumnStyle> gyűjteménye</xref:System.Windows.Forms.GridColumnStylesCollection> objektumok</xref:System.Windows.Forms.DataGridColumnStyle> hozzáadása nélkül</xref:System.Windows.Forms.DataGridTableStyle> Kivételt fog jelezni, ha megpróbálja hozzáadni az <xref:System.Windows.Forms.DataGridColumnStyle>Duplikált objektumok <xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A>értékek a gyűjteményhez.</xref:System.Windows.Forms.DataGridColumnStyle.MappingName%2A> </xref:System.Windows.Forms.DataGridColumnStyle>"
   example:
   - "The following code example gets the <xref:System.Windows.Forms.GridColumnStylesCollection> of a <xref:System.Windows.Forms.DataGridTableStyle> and prints each object's header.  \n  \n [!code-cs[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_293_1.cs)]\n [!code-cpp[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_293_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.GridColumnStyles Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_293_1.vb)]"
   syntax:
     content: public virtual System.Windows.Forms.GridColumnStylesCollection GridColumnStyles { get; }
     return:
       type: System.Windows.Forms.GridColumnStylesCollection
-      description: "A <xref href=&quot;System.Windows.Forms.GridColumnStylesCollection&quot;></xref> that contains all <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;></xref> objects for the table."
+      description: "A <xref href=&quot;System.Windows.Forms.GridColumnStylesCollection&quot;> </xref> , amely tartalmazza az összes <xref href=&quot;System.Windows.Forms.DataGridColumnStyle&quot;> </xref> objektumok a következő táblázatban."
   overload: System.Windows.Forms.DataGridTableStyle.GridColumnStyles*
   exceptions: []
   platform:
@@ -684,7 +684,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color of grid lines."
+  summary: "Lekérdezi vagy beállítja a rácsvonalak színét."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample5#2](~/add/codesnippet/csharp/p-system.windows.forms.d_181_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_181_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#2](~/add/codesnippet/cpp/p-system.windows.forms.d_181_1.cpp)]"
@@ -692,7 +692,7 @@ items:
     content: public System.Drawing.Color GridLineColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the grid line color."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a vonal színe."
   overload: System.Windows.Forms.DataGridTableStyle.GridLineColor*
   exceptions: []
   platform:
@@ -709,15 +709,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample5#3](~/add/codesnippet/csharp/e-system.windows.forms.d_121_1.cs)]\n [!code-vb[DataGridTableStyle_sample5#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_121_1.vb)]\n [!code-cpp[DataGridTableStyle_sample5#3](~/add/codesnippet/cpp/e-system.windows.forms.d_121_1.cpp)]"
   syntax:
     content: public event EventHandler GridLineColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -733,12 +733,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the style of grid lines."
+  summary: "Lekérdezi vagy beállítja a rácsvonalak stílusát."
   syntax:
     content: public System.Windows.Forms.DataGridLineStyle GridLineStyle { get; set; }
     return:
       type: System.Windows.Forms.DataGridLineStyle
-      description: "One of the <xref href=&quot;System.Windows.Forms.DataGridLineStyle&quot;></xref> values. The default is <xref uid=&quot;langword_csharp_DataGridLineStyle.Solid&quot; name=&quot;DataGridLineStyle.Solid&quot; href=&quot;&quot;></xref>."
+      description: "Egy a <xref href=&quot;System.Windows.Forms.DataGridLineStyle&quot;> </xref> értékeket. Az alapértelmezett érték <xref uid=&quot;langword_csharp_DataGridLineStyle.Solid&quot; name=&quot;DataGridLineStyle.Solid&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.GridLineStyle*
   exceptions: []
   platform:
@@ -755,15 +755,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.GridLineStyle*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample1#2](~/add/codesnippet/csharp/e-system.windows.forms.d_107_1.cs)]\n [!code-vb[DataGridTableStyle_sample1#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_107_1.vb)]\n [!code-cpp[DataGridTableStyle_sample1#2](~/add/codesnippet/cpp/e-system.windows.forms.d_107_1.cpp)]"
   syntax:
     content: public event EventHandler GridLineStyleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -779,7 +779,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of headers."
+  summary: "Lekérdezi vagy beállítja a fejléc háttérszínét."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#4](~/add/codesnippet/cpp/p-system.windows.forms.d_95_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#4](~/add/codesnippet/csharp/p-system.windows.forms.d_95_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#4](~/add/codesnippet/visualbasic/p-system.windows.forms.d_95_1.vb)]"
@@ -787,7 +787,7 @@ items:
     content: public System.Drawing.Color HeaderBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of headers."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelöli, hogy a fejléc háttérszínét."
   overload: System.Windows.Forms.DataGridTableStyle.HeaderBackColor*
   exceptions: []
   platform:
@@ -804,7 +804,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> value changes."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#3](~/add/codesnippet/cpp/e-system.windows.forms.d_79_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#3](~/add/codesnippet/csharp/e-system.windows.forms.d_79_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_79_1.vb)]"
@@ -812,7 +812,7 @@ items:
     content: public event EventHandler HeaderBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -828,15 +828,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the font used for header captions."
-  remarks: "To set header caption text, use the <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> property of the <xref:System.Windows.Forms.DataGridColumnStyle> class."
+  summary: "Lekérdezi vagy beállítja a fejléc feliratok betűtípusát."
+  remarks: "Felirat fejlécszöveg beállításához használja a <xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A> <xref:System.Windows.Forms.DataGridColumnStyle>osztály</xref:System.Windows.Forms.DataGridColumnStyle> tulajdonsága</xref:System.Windows.Forms.DataGridColumnStyle.HeaderText%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#2](~/add/codesnippet/csharp/p-system.windows.forms.d_329_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_329_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#2](~/add/codesnippet/cpp/p-system.windows.forms.d_329_1.cpp)]"
   syntax:
     content: public System.Drawing.Font HeaderFont { get; set; }
     return:
       type: System.Drawing.Font
-      description: "The <xref href=&quot;System.Drawing.Font&quot;></xref> used for captions."
+      description: "A <xref href=&quot;System.Drawing.Font&quot;> </xref> feliratok használatos."
   overload: System.Windows.Forms.DataGridTableStyle.HeaderFont*
   exceptions: []
   platform:
@@ -853,15 +853,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#4](~/add/codesnippet/csharp/e-system.windows.forms.d_114_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#4](~/add/codesnippet/visualbasic/e-system.windows.forms.d_114_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#4](~/add/codesnippet/cpp/e-system.windows.forms.d_114_1.cpp)]"
   syntax:
     content: public event EventHandler HeaderFontChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -877,7 +877,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of headers."
+  summary: "Lekérdezi vagy beállítja a rácsterület előtérszínét-fejléc."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#2](~/add/codesnippet/cpp/p-system.windows.forms.d_101_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#2](~/add/codesnippet/csharp/p-system.windows.forms.d_101_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_101_1.vb)]"
@@ -885,7 +885,7 @@ items:
     content: public System.Drawing.Color HeaderForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of headers."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> képviselő fejlécek előtérszíne."
   overload: System.Windows.Forms.DataGridTableStyle.HeaderForeColor*
   exceptions: []
   platform:
@@ -902,15 +902,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_Header_4#1](~/add/codesnippet/cpp/e-system.windows.forms.d_169_1.cpp)]\n [!code-cs[DataGridTableStyle_Header_4#1](~/add/codesnippet/csharp/e-system.windows.forms.d_169_1.cs)]\n [!code-vb[DataGridTableStyle_Header_4#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_169_1.vb)]"
   syntax:
     content: public event EventHandler HeaderForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -926,7 +926,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color of link text."
+  summary: "Lekérdezi vagy beállítja a hivatkozás szöveg színét."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#1](~/add/codesnippet/csharp/p-system.windows.forms.d_193_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_193_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#1](~/add/codesnippet/cpp/p-system.windows.forms.d_193_1.cpp)]"
@@ -934,7 +934,7 @@ items:
     content: public System.Drawing.Color LinkColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> of link text."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> hivatkozás szöveg."
   overload: System.Windows.Forms.DataGridTableStyle.LinkColor*
   exceptions: []
   platform:
@@ -951,15 +951,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_Sample#3](~/add/codesnippet/csharp/e-system.windows.forms.d_101_1.cs)]\n [!code-vb[DataGridTableStyle_Sample#3](~/add/codesnippet/visualbasic/e-system.windows.forms.d_101_1.vb)]\n [!code-cpp[DataGridTableStyle_Sample#3](~/add/codesnippet/cpp/e-system.windows.forms.d_101_1.cpp)]"
   syntax:
     content: public event EventHandler LinkColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -975,12 +975,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the color displayed when hovering over link text."
+  summary: "Lekérdezi vagy beállítja a színét, amikor hivatkozás szövege fölött jelenik meg."
   syntax:
     content: public System.Drawing.Color LinkHoverColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "A <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the hover color."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely való rámutatáskor használt színt jelöli."
   overload: System.Windows.Forms.DataGridTableStyle.LinkHoverColor*
   exceptions: []
   platform:
@@ -997,13 +997,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public event EventHandler LinkHoverColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1019,15 +1019,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the name used to map this table to a specific data source."
-  remarks: "To bind the <xref:System.Windows.Forms.DataGrid> to a strongly typed array of objects, the object type must contain public properties. To create a <xref:System.Windows.Forms.DataGridTableStyle> that displays the array, set the MappingName property to `typename` where `typename` is replaced by the name of the object type. Also note that the MappingName property is case-sensitive; the type name must be matched exactly. See the MappingName property for an example.       You can also bind the <xref:System.Windows.Forms.DataGrid> to an <xref:System.Collections.ArrayList>. A feature of the <xref:System.Collections.ArrayList> is that it can contain objects of multiple types, but the <xref:System.Windows.Forms.DataGrid> can only bind to such a list when all items in the list are of the same type as the first item. This means that all objects must either be of the same type, or they must inherit from the same class as the first item in the list. For example, if the first item in a list is a <xref:System.Windows.Forms.Control>, the second item could be a <xref:System.Windows.Forms.TextBox> (which inherits from <xref:System.Windows.Forms.Control>). If, on the other hand, the first item is a <xref:System.Windows.Forms.TextBox>, the second object cannot be a <xref:System.Windows.Forms.Control>. Further, the <xref:System.Collections.ArrayList> must have items in it when it is bound. An empty <xref:System.Collections.ArrayList> will result in an empty grid. When binding to an <xref:System.Collections.ArrayList>, set the MappingName of the <xref:System.Windows.Forms.DataGridTableStyle> to &quot;ArrayList&quot; (the type name).       The default is the name of the list managed by the <xref:System.Windows.Forms.CurrencyManager> for this grid. The <xref:System.Windows.Forms.CurrencyManager> for the <xref:System.Windows.Forms.DataGridTableStyle> is set using the <xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A> constructor.       The <xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged> event occurs when the MappingName value changes."
+  summary: "Lekérdezi vagy beállítja azt a nevet, amellyel ez a tábla leképezése egy adott adatforrást."
+  remarks: "Kötést létrehozni a <xref:System.Windows.Forms.DataGrid>egy szigorú típusmegadású objektumokból álló tömb, hogy az objektum típusa nyilvános tulajdonságok kell tartalmaznia.</xref:System.Windows.Forms.DataGrid> Létrehozásához egy <xref:System.Windows.Forms.DataGridTableStyle>, amely a tömb jeleníti meg, a tulajdonsága MappingName `typename` ahol `typename` neve az objektum típusának helyébe.</xref:System.Windows.Forms.DataGridTableStyle> Vegye figyelembe azt is, hogy a MappingName tulajdonság kis-és nagybetűket; a következő típusnév pontosan kell egymáshoz. Lásd például a MappingName tulajdonság.       Emellett a kötni <xref:System.Windows.Forms.DataGrid>a <xref:System.Collections.ArrayList>.</xref:System.Collections.ArrayList> </xref:System.Windows.Forms.DataGrid> Egyik funkciója a <xref:System.Collections.ArrayList>, hogy több típusú objektumok tartalmazhat, de a <xref:System.Windows.Forms.DataGrid>, ugyanolyan típusú, mint az első elem a lista összes elemének esetén ez a lista csak köthető.</xref:System.Windows.Forms.DataGrid> </xref:System.Collections.ArrayList> Ez azt jelenti, hogy az összes objektumnak azonos típusúnak vagy kell lennie, vagy azok ugyanahhoz az osztályhoz tartozik, mint a lista első elemének kell örökölnie. Például, ha a lista első eleme a <xref:System.Windows.Forms.Control>, a második elem lehet egy <xref:System.Windows.Forms.TextBox>(amely örököl <xref:System.Windows.Forms.Control>).</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.Control> Ha, másrészt, az első elem egy <xref:System.Windows.Forms.TextBox>a második objektum nem lehet egy <xref:System.Windows.Forms.Control>.</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.TextBox> További, a <xref:System.Collections.ArrayList>kell elemek, ha van kötve.</xref:System.Collections.ArrayList> Egy üres <xref:System.Collections.ArrayList>eredményezi egy üres táblát.</xref:System.Collections.ArrayList> Való kötés egy <xref:System.Collections.ArrayList>, állítsa be a MappingName a <xref:System.Windows.Forms.DataGridTableStyle>&quot;ArrayList&quot; (a típusnév) számára.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Collections.ArrayList>       Az alapértelmezett érték a lista által kezelt nevét a <xref:System.Windows.Forms.CurrencyManager>rács.</xref:System.Windows.Forms.CurrencyManager> A <xref:System.Windows.Forms.CurrencyManager>a a <xref:System.Windows.Forms.DataGridTableStyle>használata van beállítva a <xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A>konstruktor.</xref:System.Windows.Forms.DataGridTableStyle.%23ctor%2A> </xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.CurrencyManager>       A <xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged>esemény MappingName megváltozásakor következik be.</xref:System.Windows.Forms.DataGridTableStyle.MappingNameChanged>"
   example:
   - "The following code example creates an array of `Widget` objects and binds a <xref:System.Windows.Forms.DataGrid?displayProperty=fullName> control to the array. The code then creates a <xref:System.Windows.Forms.DataGridTableStyle> and sets the MappingName to the name of the class plus brackets.  \n  \n [!code-cpp[DataGridTable.MappingName Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_187_1.cpp)]\n [!code-cs[DataGridTable.MappingName Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_187_1.cs)]\n [!code-vb[DataGridTable.MappingName Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_187_1.vb)]"
   syntax:
     content: public string MappingName { get; set; }
     return:
       type: System.String
-      description: "The name used to map this grid to a specific data source."
+      description: "A rács leképezhető egy adott adatforrás nevét."
   overload: System.Windows.Forms.DataGridTableStyle.MappingName*
   exceptions: []
   platform:
@@ -1044,15 +1044,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.MappingName*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.MappingName*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.MappingName*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_sample1#1](~/add/codesnippet/csharp/e-system.windows.forms.d_21_1.cs)]\n [!code-vb[DataGridTableStyle_sample1#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_21_1.vb)]\n [!code-cpp[DataGridTableStyle_sample1#1](~/add/codesnippet/cpp/e-system.windows.forms.d_21_1.cpp)]"
   syntax:
     content: public event EventHandler MappingNameChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1068,14 +1068,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AllowSortingChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnAllowSortingChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AllowSortingChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnAllowSortingChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnAllowSortingChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnAllowSortingChanged*
   exceptions: []
   platform:
@@ -1092,14 +1092,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AlternatingBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnAlternatingBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.AlternatingBackColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnAlternatingBackColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnAlternatingBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnAlternatingBackColorChanged*
   exceptions: []
   platform:
@@ -1116,14 +1116,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.BackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.BackColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnBackColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnBackColorChanged*
   exceptions: []
   platform:
@@ -1140,14 +1140,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisibleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnColumnHeadersVisibleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ColumnHeadersVisibleChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnColumnHeadersVisibleChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnColumnHeadersVisibleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnColumnHeadersVisibleChanged*
   exceptions: []
   platform:
@@ -1164,14 +1164,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ForeColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnForeColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnForeColorChanged*
   exceptions: []
   platform:
@@ -1188,14 +1188,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnGridLineColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnGridLineColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnGridLineColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnGridLineColorChanged*
   exceptions: []
   platform:
@@ -1212,14 +1212,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineStyleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnGridLineStyleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.GridLineStyleChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnGridLineStyleChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnGridLineStyleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnGridLineStyleChanged*
   exceptions: []
   platform:
@@ -1236,14 +1236,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderBackColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnHeaderBackColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnHeaderBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderBackColorChanged*
   exceptions: []
   platform:
@@ -1260,14 +1260,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderFontChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderFontChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderFontChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnHeaderFontChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnHeaderFontChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderFontChanged*
   exceptions: []
   platform:
@@ -1284,14 +1284,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnHeaderForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.HeaderForeColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnHeaderForeColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnHeaderForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnHeaderForeColorChanged*
   exceptions: []
   platform:
@@ -1308,14 +1308,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.LinkColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnLinkColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.LinkColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnLinkColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnLinkColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnLinkColorChanged*
   exceptions: []
   platform:
@@ -1332,14 +1332,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref uid=&quot;langword_csharp_LinkHoverColorChanged&quot; name=&quot;LinkHoverColorChanged&quot; href=&quot;&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnLinkHoverColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref uid=&quot;langword_csharp_LinkHoverColorChanged&quot; name=&quot;LinkHoverColorChanged&quot; href=&quot;&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnLinkHoverColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnLinkHoverColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnLinkHoverColorChanged*
   exceptions: []
   platform:
@@ -1356,14 +1356,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.MappingNameChanged&quot;></xref> event"
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnMappingNameChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.MappingNameChanged&quot;> </xref> esemény"
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnMappingNameChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnMappingNameChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnMappingNameChanged*
   exceptions: []
   platform:
@@ -1380,14 +1380,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredColumnWidthChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreferredColumnWidthChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredColumnWidthChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnPreferredColumnWidthChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnPreferredColumnWidthChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnPreferredColumnWidthChanged*
   exceptions: []
   platform:
@@ -1404,14 +1404,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredRowHeightChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnPreferredRowHeightChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.PreferredRowHeightChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnPreferredRowHeightChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnPreferredRowHeightChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnPreferredRowHeightChanged*
   exceptions: []
   platform:
@@ -1428,14 +1428,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ReadOnlyChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnReadOnlyChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.ReadOnlyChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnReadOnlyChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnReadOnlyChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnReadOnlyChanged*
   exceptions: []
   platform:
@@ -1452,14 +1452,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeadersVisibleChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnRowHeadersVisibleChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeadersVisibleChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnRowHeadersVisibleChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnRowHeadersVisibleChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnRowHeadersVisibleChanged*
   exceptions: []
   platform:
@@ -1476,14 +1476,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeaderWidthChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnRowHeaderWidthChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.RowHeaderWidthChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnRowHeaderWidthChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnRowHeaderWidthChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnRowHeaderWidthChanged*
   exceptions: []
   platform:
@@ -1500,14 +1500,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionBackColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnSelectionBackColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionBackColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnSelectionBackColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnSelectionBackColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnSelectionBackColorChanged*
   exceptions: []
   platform:
@@ -1524,14 +1524,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionForeColorChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       The OnSelectionForeColorChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.DataGridTableStyle.SelectionForeColorChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).       A OnSelectionForeColorChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnSelectionForeColorChanged (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "Egy <xref:System.EventArgs>, amely tartalmazza az eseményadatok.</xref:System.EventArgs>"
   overload: System.Windows.Forms.DataGridTableStyle.OnSelectionForeColorChanged*
   exceptions: []
   platform:
@@ -1548,7 +1548,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the width used to create columns when a new grid is displayed."
+  summary: "Lekérdezi vagy beállítja az oszlopok létrehozásához, egy új rács megjelenítésekor használt szélességét."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/csharp/p-system.windows.forms.d_45_1.cs)]\n [!code-cpp[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/cpp/p-system.windows.forms.d_45_1.cpp)]\n [!code-vb[DataGridTableStyle_PreferredColumnWidth#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_45_1.vb)]"
@@ -1556,7 +1556,7 @@ items:
     content: public int PreferredColumnWidth { get; set; }
     return:
       type: System.Int32
-      description: "The width used to create columns when a new grid is displayed."
+      description: "Amikor megjelenik egy új rács oszlopok létrehozásához használt szélessége."
   overload: System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*
   exceptions: []
   platform:
@@ -1573,7 +1573,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*> property value changes."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*>tulajdonság változásainak.</xref:System.Windows.Forms.DataGridTableStyle.PreferredColumnWidth*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the PreferredColumnWidthChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the PreferredColumnWidthChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#231](~/add/codesnippet/csharp/e-system.windows.forms.d_26_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#231](~/add/codesnippet/visualbasic/e-system.windows.forms.d_26_1.vb)]"
@@ -1581,7 +1581,7 @@ items:
     content: public event EventHandler PreferredColumnWidthChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1597,15 +1597,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the height used to create a row when a new grid is displayed."
-  remarks: "The preferred height is the minimum height needed to accommodate the displayed text with the assigned <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>. A row will not be created with a height less than the specified value. If the font size requires it, however, the row height may be greater than the specified value."
+  summary: "Lekérdezi vagy beállítja a sor létrehozásához, egy új rács megjelenítésekor használt magasságát."
+  remarks: "Az előnyben részesített magassága a megjelenített szöveg és a hozzárendelt <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A>.</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont%2A> alkalmazásához szükséges minimális magassága Egy sor magasságát kevesebb, mint a megadott érték nem jön létre. A betűméret írja elő, ha azonban a sormagasság nagyobb, mint a megadott érték lehet."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/csharp/p-system.windows.forms.d_49_1.cs)]\n [!code-cpp[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/cpp/p-system.windows.forms.d_49_1.cpp)]\n [!code-vb[DataGridTableStyle_PreferredRowHeight#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_49_1.vb)]"
   syntax:
     content: public int PreferredRowHeight { get; set; }
     return:
       type: System.Int32
-      description: "The height of a row, in pixels."
+      description: "A sormagasság, képpontban megadva."
   overload: System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*
   exceptions: []
   platform:
@@ -1622,15 +1622,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/csharp/e-system.windows.forms.d_59_1.cs)]\n [!code-vb[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_59_1.vb)]\n [!code-cpp[DataGridTableStyle_PreferredRowHeightChanged#1](~/add/codesnippet/cpp/e-system.windows.forms.d_59_1.cpp)]"
   syntax:
     content: public event EventHandler PreferredRowHeightChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1646,15 +1646,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether columns can be edited."
-  remarks: "You can also specify whether individual columns within the table are editable by setting the <xref:System.Windows.Forms.DataGridColumnStyle> class&quot;s <xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName> property to an appropriate value, `true` or `false`.       Alternatively, to ensure that the data is not edited, you can set the <xref:System.Data.DataColumn> class&quot;s <xref:System.Data.DataColumn.ReadOnly%2A> property to `true`."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy szerkeszthető-e oszlopok."
+  remarks: "Azt is megadhatja, hogy egyes oszlopok a tábla között úgy, hogy szerkeszthető a <xref:System.Windows.Forms.DataGridColumnStyle>osztályának <xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName>tulajdonság egy megfelelő értékre `true` vagy `false`.</xref:System.Windows.Forms.DataGridColumnStyle.ReadOnly%2A?displayProperty=fullName> </xref:System.Windows.Forms.DataGridColumnStyle>       Azt is megteheti, győződjön meg arról, hogy az adatok nem szerkeszt, állítsa a <xref:System.Data.DataColumn>osztályának <xref:System.Data.DataColumn.ReadOnly%2A>tulajdonságot `true`.</xref:System.Data.DataColumn.ReadOnly%2A> </xref:System.Data.DataColumn>"
   example:
   - "The following code example returns the ReadOnly property for each <xref:System.Windows.Forms.DataGridTableStyle> in a <xref:System.Windows.Forms.GridTableStylesCollection>.  \n  \n [!code-cpp[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/cpp/p-system.windows.forms.d_184_1.cpp)]\n [!code-vb[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_184_1.vb)]\n [!code-cs[Classic DataGridTableStyle.ReadOnly Example#1](~/add/codesnippet/csharp/p-system.windows.forms.d_184_1.cs)]"
   syntax:
     content: public virtual bool ReadOnly { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if columns cannot be edited; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, ha az oszlop nem szerkeszthető, Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ReadOnly*
   exceptions: []
   platform:
@@ -1671,15 +1671,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.ReadOnly*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_73_1.vb)]\n [!code-cpp[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/cpp/e-system.windows.forms.d_73_1.cpp)]\n [!code-cs[DataGridTableStyle_ReadOnlyChanged#1](~/add/codesnippet/csharp/e-system.windows.forms.d_73_1.cs)]"
   syntax:
     content: public event EventHandler ReadOnlyChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1695,8 +1695,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_70_1.vb)]\n [!code-cs[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_70_1.cs)]\n [!code-cpp[DataGridTableStyle_ResetAlternatingBackcolor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_70_1.cpp)]"
   syntax:
@@ -1718,8 +1718,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.BackColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_73_1.cpp)]\n [!code-vb[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_73_1.vb)]\n [!code-cs[DataGridTableStyle_ResetBackColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_73_1.cs)]"
   syntax:
@@ -1741,8 +1741,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_23_1.cs)]\n [!code-vb[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_23_1.vb)]\n [!code-cpp[DataGridTableStyle_ResetForeColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_23_1.cpp)]"
   syntax:
@@ -1764,8 +1764,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_71_1.cs)]\n [!code-vb[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_71_1.vb)]\n [!code-cpp[DataGridTableStyle_ResetGridLineColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_71_1.cpp)]"
   syntax:
@@ -1787,8 +1787,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_7_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_7_1.cs)]\n [!code-vb[DataGridTableStyle_ResetHeaderBackColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_7_1.vb)]"
   syntax:
@@ -1810,8 +1810,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.HeaderFont*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/cpp/m-system.windows.forms.d_8_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/csharp/m-system.windows.forms.d_8_1.cs)]\n [!code-vb[DataGridTableStyle_ResetHeaderFont1#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_8_1.vb)]"
   syntax:
@@ -1833,8 +1833,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_60_1.cs)]\n [!code-cpp[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_60_1.cpp)]\n [!code-vb[DataGridTableStyle_ResetHeaderForeColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_60_1.vb)]"
   syntax:
@@ -1856,8 +1856,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/cpp/m-system.windows.forms.d_3_1.cpp)]\n [!code-cs[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/csharp/m-system.windows.forms.d_3_1.cs)]\n [!code-vb[DataGridTableStyle_ResetLinkColor#1](~/add/codesnippet/visualbasic/m-system.windows.forms.d_3_1.vb)]"
   syntax:
@@ -1879,8 +1879,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor%2A>"
   syntax:
     content: public void ResetLinkHoverColor ();
     parameters: []
@@ -1900,8 +1900,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor%2A>"
   syntax:
     content: public void ResetSelectionBackColor ();
     parameters: []
@@ -1921,8 +1921,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Resets the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> property to its default value."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>. You can use the <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A> method to determine whether the property value has changed from its default."
+  summary: "Alaphelyzetbe állítja a <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>tulajdonság az alapértelmezett értékre.</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor Használhatja a <xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A>módszer annak meghatározásához, hogy a tulajdonság értéke az alapértelmezett útvonalra változott.</xref:System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor%2A>"
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/visualbasic/m-system.windows.forms.d_78_1.vb)]\n [!code-cs[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/csharp/m-system.windows.forms.d_78_1.cs)]\n [!code-cpp[DataGridTableStyle_SelectionForeColor#2](~/add/codesnippet/cpp/m-system.windows.forms.d_78_1.cpp)]"
   syntax:
@@ -1944,15 +1944,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether row headers are visible."
-  remarks: "When row headers are visible, a plus sign is displayed in each row header if the underlying <xref:System.Data.DataTable> has a related child table.       This property will not function until you add <xref:System.Windows.Forms.DataGridTableStyle> objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. Until then, setting this property will have no effect."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy láthatók-e a sorfejlécek."
+  remarks: "A sorfejlécek látható, ha a plusz jelre jelenik meg minden sorfejléc Ha az alapul szolgáló <xref:System.Data.DataTable>rendelkezik kapcsolódó gyermektábla.</xref:System.Data.DataTable>       Ez a tulajdonság nem fog működni, amíg <xref:System.Windows.Forms.DataGridTableStyle>az <xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection> </xref:System.Windows.Forms.DataGridTableStyle> objektumokat Amíg ez nem sikerül a tulajdonság beállítása nem lesz hatása."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/csharp/p-system.windows.forms.d_368_1.cs)]\n [!code-cpp[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/cpp/p-system.windows.forms.d_368_1.cpp)]\n [!code-vb[DataGridTableStyle_RowHeadersVisibleChanged#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_368_1.vb)]"
   syntax:
     content: public bool RowHeadersVisible { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if row headers are visible; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a sorfejlécek jelennek meg. Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Az alapértelmezett érték <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*
   exceptions: []
   platform:
@@ -1969,15 +1969,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.RowHeadersVisible*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cs[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/csharp/e-system.windows.forms.d_43_1.cs)]\n [!code-cpp[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/cpp/e-system.windows.forms.d_43_1.cpp)]\n [!code-vb[DataGridTableStyle_RowHeadersVisibleChanged#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_43_1.vb)]"
   syntax:
     content: public event EventHandler RowHeadersVisibleChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -1993,15 +1993,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the width of row headers."
-  remarks: "When row headers are visible a plus sign is displayed in each row header if the underlying data has a related child table.       This property will not function until you add <xref:System.Windows.Forms.DataGridTableStyle> objects to the <xref:System.Windows.Forms.GridTableStylesCollection>. Until then, setting this property will have no effect."
+  summary: "Lekérdezi vagy beállítja a sorfejlécek szélességét."
+  remarks: "Amikor a sorfejlécek látható pluszjel megjelenik a minden sorfejléc kapcsolódó gyermektábla az alapul szolgáló adatokat-e.       Ez a tulajdonság nem fog működni, amíg <xref:System.Windows.Forms.DataGridTableStyle>az <xref:System.Windows.Forms.GridTableStylesCollection>.</xref:System.Windows.Forms.GridTableStylesCollection> </xref:System.Windows.Forms.DataGridTableStyle> objektumokat Amíg ez nem sikerül a tulajdonság beállítása nem lesz hatása."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_159_1.vb)]\n [!code-cpp[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/cpp/p-system.windows.forms.d_159_1.cpp)]\n [!code-cs[DataGridTableStyle_RowHeaderWidth#1](~/add/codesnippet/csharp/p-system.windows.forms.d_159_1.cs)]"
   syntax:
     content: public int RowHeaderWidth { get; set; }
     return:
       type: System.Int32
-      description: "The width of row headers, in pixels."
+      description: "Képpont a sorfejlécek szélességét."
   overload: System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*
   exceptions: []
   platform:
@@ -2018,15 +2018,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.RowHeaderWidth*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/visualbasic/e-system.windows.forms.d_52_1.vb)]\n [!code-cpp[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/cpp/e-system.windows.forms.d_52_1.cpp)]\n [!code-cs[DataGridTableStyle_RowHeaderWidth#2](~/add/codesnippet/csharp/e-system.windows.forms.d_52_1.cs)]"
   syntax:
     content: public event EventHandler RowHeaderWidthChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -2042,7 +2042,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the background color of selected cells."
+  summary: "Lekérdezi vagy beállítja a kijelölt cellák háttérszíne."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/cpp/p-system.windows.forms.d_96_1.cpp)]\n [!code-cs[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/csharp/p-system.windows.forms.d_96_1.cs)]\n [!code-vb[DataGridTableStyle_SelectionBackColor#2](~/add/codesnippet/visualbasic/p-system.windows.forms.d_96_1.vb)]"
@@ -2050,7 +2050,7 @@ items:
     content: public System.Drawing.Color SelectionBackColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the background color of selected cells."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a kijelölt cellák háttérszíne."
   overload: System.Windows.Forms.DataGridTableStyle.SelectionBackColor*
   exceptions: []
   platform:
@@ -2067,15 +2067,15 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> value changes."
-  remarks: "For more information about handling events, see [Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "Események kezelésére vonatkozó további információkért lásd: [események](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-cpp[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/cpp/e-system.windows.forms.d_78_1.cpp)]\n [!code-cs[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/csharp/e-system.windows.forms.d_78_1.cs)]\n [!code-vb[DataGridTableStyle_SelectionBackColor#1](~/add/codesnippet/visualbasic/e-system.windows.forms.d_78_1.vb)]"
   syntax:
     content: public event EventHandler SelectionBackColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -2091,7 +2091,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the foreground color of selected cells."
+  summary: "Lekérdezi vagy beállítja a kijelölt cellák előtérszíne."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member.  \n  \n [!code-vb[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/visualbasic/p-system.windows.forms.d_412_1.vb)]\n [!code-cs[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/csharp/p-system.windows.forms.d_412_1.cs)]\n [!code-cpp[DataGridTableStyle_SelectionForeColor#1](~/add/codesnippet/cpp/p-system.windows.forms.d_412_1.cpp)]"
@@ -2099,7 +2099,7 @@ items:
     content: public System.Drawing.Color SelectionForeColor { get; set; }
     return:
       type: System.Drawing.Color
-      description: "The <xref href=&quot;System.Drawing.Color&quot;></xref> that represents the foreground color of selected cells."
+      description: "A <xref href=&quot;System.Drawing.Color&quot;> </xref> , amely jelzi, hogy a kijelölt cellák előtérszíne."
   overload: System.Windows.Forms.DataGridTableStyle.SelectionForeColor*
   exceptions: []
   platform:
@@ -2116,7 +2116,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Occurs when the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> value changes."
+  summary: "Akkor következik be, amikor a <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>érték változik.</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
   remarks: ''
   example:
   - "The following code example demonstrates the use of this member. In the example, an event handler reports on the occurrence of the SelectionForeColorChanged event. This report helps you to learn when the event occurs and can assist you in debugging. To report on multiple events or on events that occur frequently, consider replacing <xref:System.Windows.Forms.MessageBox.Show%2A?displayProperty=fullName> with <xref:System.Console.WriteLine%2A?displayProperty=fullName> or appending the message to a multiline <xref:System.Windows.Forms.TextBox>.  \n  \n To run the example code, paste it into a project that contains an instance of type <xref:System.Windows.Forms.DataGridTableStyle> named `DataGridTableStyle1`. Then ensure that the event handler is associated with the SelectionForeColorChanged event.  \n  \n [!code-cs[System.Windows.Forms.EventExamples#237](~/add/codesnippet/csharp/e-system.windows.forms.d_70_1.cs)]\n [!code-vb[System.Windows.Forms.EventExamples#237](~/add/codesnippet/visualbasic/e-system.windows.forms.d_70_1.vb)]"
@@ -2124,7 +2124,7 @@ items:
     content: public event EventHandler SelectionForeColorChanged;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -2140,14 +2140,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.AlternatingBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeAlternatingBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeAlternatingBackColor*
   exceptions: []
   platform:
@@ -2164,14 +2164,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.BackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.BackColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.BackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected bool ShouldSerializeBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeBackColor*
   exceptions: []
   platform:
@@ -2188,14 +2188,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.ForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected bool ShouldSerializeForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeForeColor*
   exceptions: []
   platform:
@@ -2212,14 +2212,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.GridLineColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeGridLineColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeGridLineColor*
   exceptions: []
   platform:
@@ -2236,14 +2236,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.HeaderBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeHeaderBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderBackColor*
   exceptions: []
   platform:
@@ -2260,14 +2260,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.HeaderForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeHeaderForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeHeaderForeColor*
   exceptions: []
   platform:
@@ -2284,14 +2284,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.LinkColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeLinkColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkColor*
   exceptions: []
   platform:
@@ -2308,14 +2308,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.LinkHoverColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeLinkHoverColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeLinkHoverColor*
   exceptions: []
   platform:
@@ -2332,14 +2332,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.PreferredRowHeight*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected bool ShouldSerializePreferredRowHeight ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializePreferredRowHeight*
   exceptions: []
   platform:
@@ -2356,14 +2356,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.SelectionBackColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected bool ShouldSerializeSelectionBackColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionBackColor*
   exceptions: []
   platform:
@@ -2380,14 +2380,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Indicates whether the <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*> property should be persisted."
-  remarks: "You typically use this method if you are either creating a designer for the <xref:System.Windows.Forms.DataGridTableStyle> or creating your own control incorporating the <xref:System.Windows.Forms.DataGridTableStyle>."
+  summary: "Azt jelzi, hogy a <xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>tulajdonság kell állandósítható.</xref:System.Windows.Forms.DataGridTableStyle.SelectionForeColor*>"
+  remarks: "Általában ezt a módszert használja a <xref:System.Windows.Forms.DataGridTableStyle>vagy létrehozása a saját szabályozza, amely a <xref:System.Windows.Forms.DataGridTableStyle>.</xref:System.Windows.Forms.DataGridTableStyle> </xref:System.Windows.Forms.DataGridTableStyle> tervezőjét vagy létrehozásakor"
   syntax:
     content: protected virtual bool ShouldSerializeSelectionForeColor ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a tulajdonság értéke megváltozott, az alapértelmezett; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.DataGridTableStyle.ShouldSerializeSelectionForeColor*
   exceptions: []
   platform:

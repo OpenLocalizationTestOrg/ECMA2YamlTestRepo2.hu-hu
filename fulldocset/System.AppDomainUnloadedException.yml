@@ -13,8 +13,8 @@ items:
   nameWithType: AppDomainUnloadedException
   fullName: System.AppDomainUnloadedException
   type: Class
-  summary: "The exception that is thrown when an attempt is made to access an unloaded application domain."
-  remarks: "In the .NET Framework version 2.0, an AppDomainUnloadedException that is not handled in user code has the following effect:      -   If a thread was started in managed code, it is terminated. The unhandled exception is not allowed to terminate the application.      -   If a task is executing on a <xref:System.Threading.ThreadPool> thread, it is terminated and the thread is returned to the thread pool. The unhandled exception is not allowed to terminate the application.      -   If a thread started in unmanaged code, such as the main application thread, it is terminated. The unhandled exception is allowed to proceed, and the operating system terminates the application.       AppDomainUnloadedException uses the HRESULT COR_E_APPDOMAINUNLOADED, which has the value 0x80131014.       For a list of initial property values for an instance of AppDomainUnloadedException, see the <xref:System.AppDomainUnloadedException.%23ctor%2A> constructors."
+  summary: "A kivétellel, hogy ha egy memóriából alkalmazástartomány elérésére tett kísérlet történt."
+  remarks: "A .NET-keretrendszer 2.0-s verzióját, egy AppDomainUnloadedException, amely nem lett kezelve a felhasználói kód hatása, a következő:-Ha a szál indítása a felügyelt kódban, akkor a rendszer megszakítja. A nem kezelt kivétel nem engedélyezett az alkalmazás leáll.      -Ha a feladat végrehajtása történik meg a <xref:System.Threading.ThreadPool>szál, megszakításra kerül, és a szál küld vissza a szálkészlethez.</xref:System.Threading.ThreadPool> A nem kezelt kivétel nem engedélyezett az alkalmazás leáll.      -Ha a szál nem felügyelt kód, például a fő alkalmazás szál indítása a rendszer megszakítja. A folytatáshoz a nem kezelt kivétel engedélyezett, és az operációs rendszer leállít egy alkalmazást.       AppDomainUnloadedException használja a HRESULT COR_E_APPDOMAINUNLOADED, amely 0x80131014 értékkel rendelkezik.       A kezdeti tulajdonságértékek AppDomainUnloadedException példányt listájáért lásd: a <xref:System.AppDomainUnloadedException.%23ctor%2A>konstruktorok.</xref:System.AppDomainUnloadedException.%23ctor%2A>"
   example:
   - "This section contains two code examples. The first example demonstrates the effects of an AppDomainUnloadedException on various threads, and the second shows elementary application domain unloading.  \n  \n Example 1  \n  \n The following code example defines a `TestClass` class that can be marshaled across application domain boundaries and an `Example` class containing a `static` (`Shared` in Visual Basic) `ThreadProc` method. The `ThreadProc` method creates an application domain, creates a `TestClass` object in the domain, and calls a method of `TestClass` that unloads the executing domain, causing an AppDomainUnloadedException.  \n  \n The `TestClass` method is executed without exception handling from a <xref:System.Threading.ThreadPool> thread and from an ordinary thread, demonstrating that the unhandled exception terminates the task or thread but not the application. It is then executed with and without exception handling from the main application thread, demonstrating that it terminates the application if not handled.  \n  \n [!code-vb[AppDomainUnloadedException#1](~/add/codesnippet/visualbasic/t-system.appdomainunload_1.vb)]\n [!code-cs[AppDomainUnloadedException#1](~/add/codesnippet/csharp/t-system.appdomainunload_1.cs)]  \n  \n Example 2  \n  \n The following code example creates and unloads an application domain, and demonstrates that an AppDomainUnloadedException is thrown on a subsequent attempt to access the unloaded domain.  \n  \n [!code-cpp[ADUnload#1](~/add/codesnippet/cpp/t-system.appdomainunload_2.cpp)]\n [!code-vb[ADUnload#1](~/add/codesnippet/visualbasic/t-system.appdomainunload_2.vb)]\n [!code-cs[ADUnload#1](~/add/codesnippet/csharp/t-system.appdomainunload_2.cs)]"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class."
-  remarks: "This constructor initializes the <xref:System.Exception.Message%2A> property of the new instance to a system-supplied message that describes the error, such as &quot;The target application domain has been unloaded.&quot; This message takes into account the current system culture.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|   |<xref:System.Exception.Message%2A>|The localized error message string.|"
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> osztály."
+  remarks: "Ez a konstruktor inicializálja a <xref:System.Exception.Message%2A>tulajdonság az új példány egy rendszer által megadott üzenetet, amely leírja a hibát, például &quot;a célként megadott alkalmazástartományt eltávolították a memóriából.&quot;</xref:System.Exception.Message%2A> Ez az üzenet figyelembe veszi a rendszer jelenlegi kulturális környezethez.       Az alábbi táblázat a kezdeti tulajdonságértékek <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException> példánya      | Tulajdonság |} Érték |}   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| Egy null hivatkozás (`Nothing` a Visual Basic nyelvben). |}   | <xref:System.Exception.Message%2A>| Az üzenet honosított hibakarakterlánc. |}</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException ();
     parameters: []
@@ -62,14 +62,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with a specified error message."
-  remarks: "The content of the `message` parameter is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|A null reference (`Nothing` in Visual Basic).|   |<xref:System.Exception.Message%2A>|The error message string.|"
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> osztály egy adott hiba miatt."
+  remarks: "A tartalmát a `message` paraméter az célja, hogy ember által is értelmezhető. Ez a konstruktor védőfalkezelőbe annak érdekében szükség, hogy ez a karakterlánc a jelenlegi rendszer kulturális környezethez tartozó honosított.       Az alábbi táblázat a kezdeti tulajdonságértékek <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException> példánya      | Tulajdonság |} Érték |}   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| Egy null hivatkozás (`Nothing` a Visual Basic nyelvben). |}   | <xref:System.Exception.Message%2A>| A üzenetet hiba karakterlánca. |}</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Az üzenet, amely leírja a hibát."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:
@@ -86,17 +86,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with serialized data."
-  remarks: "This constructor is called during deserialization to reconstitute the exception object transmitted over a stream. For more information, see [XML and SOAP Serialization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> a szerializált adatok osztályt."
+  remarks: "Ez a konstruktor nevezik meglévő kölcsönökre az adatfolyam továbbított kivétel objektum deszerializálása közben. További információkért lásd: [XML és a SOAP-szerializálási](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: protected AppDomainUnloadedException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object that holds the serialized object data."
+      description: "A szerializált objektum adatokat tartalmazó objektum."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The contextual information about the source or destination."
+      description: "A cél- és környezeti információt."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:
@@ -113,17 +113,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.AppDomainUnloadedException&quot;></xref> class with a specified error message and a reference to the inner exception that is the cause of this exception."
-  remarks: "The content of the `message` parameter is intended to be understood by humans. The caller of this constructor is required to ensure that this string has been localized for the current system culture.       An exception that is thrown as a direct result of a previous exception should include a reference to the previous exception in the <xref:System.Exception.InnerException%2A> property. The <xref:System.Exception.InnerException%2A> property returns the same value that is passed into the constructor, or a null reference if the <xref:System.Exception.InnerException%2A> property does not supply the inner exception value to the constructor.       The following table shows the initial property values for an instance of <xref:System.AppDomainUnloadedException>.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|The inner exception reference.|   |<xref:System.Exception.Message%2A>|The error message string.|"
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.AppDomainUnloadedException&quot;> </xref> megadott hibaüzenet, és hivatkozni kell a belső kivételben találhatók okozza-e ezt a kivételt, a osztályt."
+  remarks: "A tartalmát a `message` paraméter az célja, hogy ember által is értelmezhető. Ez a konstruktor védőfalkezelőbe annak érdekében szükség, hogy ez a karakterlánc a jelenlegi rendszer kulturális környezethez tartozó honosított.       Kivételt vált ki, mert egy előző kivétel közvetlen eredménye tartalmaznia kell egy hivatkozást az előző kivétel az a <xref:System.Exception.InnerException%2A>tulajdonság.</xref:System.Exception.InnerException%2A> A <xref:System.Exception.InnerException%2A>tulajdonság ugyanazt az értéket, ha átad a konstruktorban, vagy null hivatkozást ad vissza a <xref:System.Exception.InnerException%2A>tulajdonság nem adja meg a belső kivétel értékét a konstruktor.</xref:System.Exception.InnerException%2A> </xref:System.Exception.InnerException%2A>       Az alábbi táblázat a kezdeti tulajdonságértékek <xref:System.AppDomainUnloadedException>.</xref:System.AppDomainUnloadedException> példánya      | Tulajdonság |} Érték |}   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| A belső kivétel referencia. |}   | <xref:System.Exception.Message%2A>| A üzenetet hiba karakterlánca. |}</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public AppDomainUnloadedException (string message, Exception innerException);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Az üzenet, amely leírja a hibát."
     - id: innerException
       type: System.Exception
-      description: "The exception that is the cause of the current exception. If the `innerException` parameter is not a null reference, the current exception is raised in a <xref uid=&quot;langword_csharp_catch&quot; name=&quot;catch&quot; href=&quot;&quot;></xref> block that handles the inner exception."
+      description: "A kivétellel, hogy a jelenlegi kivétel okozza. Ha a `innerException` paraméter nem egy null hivatkozás, a jelenlegi kivétel a következik be egy <xref uid=&quot;langword_csharp_catch&quot; name=&quot;catch&quot; href=&quot;&quot;> </xref> blokk, amely kezeli a belső kivételben találhatók."
   overload: System.AppDomainUnloadedException.#ctor*
   exceptions: []
   platform:

@@ -19,8 +19,8 @@ items:
   nameWithType: WebMessageEncodingElement
   fullName: System.ServiceModel.Configuration.WebMessageEncodingElement
   type: Class
-  summary: "Represents the configuration element that specifies the character encoding used for non-SOAP messages. This class cannot be inherited."
-  remarks: "Encoding is the process of transforming a set of Unicode characters into a sequence of bytes. The types of encoding for non-SOAP messages are text, JSON and raw.       The WebMessageEncodingElement represents the <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> in configuration. The <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> provides the extensibility point for plugging in a composite encoder that can be used to override how incoming message content-types map to the various inner encoders (text/JSON/raw binary) provided by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]. The composite message encoder does not support SOAP or WS-Addressing."
+  summary: "A konfigurációs elem, amely meghatározza a SOAP üzenetek számára karakterkódolású borítékok jelöli. Ez az osztály nem örökölhető."
+  remarks: "Kódolás Unicode karakterek bájt sorozatát való átalakítása során a rendszer. A kódolás nem SOAP-üzenetekkel: szöveg, JSON típusú és nyers.       A WebMessageEncodingElement jelöli a <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement>konfigurációban.</xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> A <xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement>a bővítési pontot biztosít egy összetett kódolót, amely segítségével hogyan bejövő üzenet tartalomtípusok hozzárendelés (text/JSON vagy raw bináris) belső kódolók által biztosított felülbírálása csatlakoztatása [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)].</xref:System.ServiceModel.Channels.WebMessageEncodingBindingElement> Az összetett üzenetkódoló nem támogatja a SOAP és a WS-Addressing."
   example:
   - "```c#  \nusing System;  \nusing System.Text;  \nusing System.ServiceModel;  \nusing System.ServiceModel.Web;  \nusing System.ServiceModel.Configuration;  \n  \nclass Program  \n{  \n  static void Main(string[] args)  \n  {  \n      WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n      Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n  \n      int maxReadPoolSize = webMEE.MaxReadPoolSize;  \n      Console.WriteLine(\"The MaxReadPoolSize is: {0}\", maxReadPoolSize);  \n      maxReadPoolSize = 128;  \n      Console.WriteLine(\"The MaxReadPoolSize has been changed to: {0}\", maxReadPoolSize);  \n  \n      int maxWritePoolSize = webMEE.MaxWritePoolSize;  \n      Console.WriteLine(\"The MaxWritePoolSize is: {0}\", maxWritePoolSize);  \n      maxWritePoolSize = 48;  \n      Console.WriteLine(\"The MaxWritePoolSize has been changed to: {0}\", maxWritePoolSize);  \n  \n      Encoding webMessageEncoding = webMEE.WriteEncoding;  \n      Console.WriteLine(\"The write encoding is: {0}\", webMessageEncoding);  \n      webMessageEncoding = UnicodeEncoding.Unicode;  \n      Console.WriteLine(\"The write encoding has been changed to: {0}\", webMessageEncoding);  \n  \n      XmlDictionaryReaderQuotasElement webMessageReaderQuotasElement = webMEE.ReaderQuotas;  \n      Console.WriteLine(\"The max depth of the reader Quotas is: {0}\", webMessageReaderQuotasElement.MaxDepth);  \n  \n      Console.WriteLine(\"Press <ENTER> to terminate the program.\");  \n      Console.ReadLine();  \n        }  \n    }  \n```"
   syntax:
@@ -85,7 +85,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.WebMessageEncodingElement&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.ServiceModel.Configuration.WebMessageEncodingElement&quot;> </xref> osztály."
   remarks: ''
   example:
   - "```  \nstatic void Main(string[] args)  \n {  \n    WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n    Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n  }  \n```"
@@ -108,13 +108,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Applies the content of a specified binding element to this binding configuration section."
+  summary: "A megadott kötési elem tartalmának vonatkozik ez a kötés konfigurációs szakasz."
   syntax:
     content: public override void ApplyConfiguration (System.ServiceModel.Channels.BindingElement bindingElement);
     parameters:
     - id: bindingElement
       type: System.ServiceModel.Channels.BindingElement
-      description: "The <xref:System.ServiceModel.Channels.BindingElement> to be applied."
+      description: "A <xref:System.ServiceModel.Channels.BindingElement>alkalmazandó.</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.ApplyConfiguration*
   exceptions: []
   platform:
@@ -131,7 +131,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets the type of the binding element enabled by this configuration element."
+  summary: "Lekérdezi a kötéselem által a konfigurációs elem engedélyezett típusú."
   remarks: ''
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n   WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n   Console.WriteLine(\"The BE type is: {0}\", webMEE.BindingElementType);  \n }  \n```"
@@ -139,7 +139,7 @@ items:
     content: public override Type BindingElementType { get; }
     return:
       type: System.Type
-      description: 'The type of binding element enabled by this configuration element: <xref href=&quot;System.ServiceModel.Channels.WebMessageEncodingBindingElement&quot;></xref>.'
+      description: 'A konfigurációs elem által engedélyezett kötési elem típusa: <xref href=&quot;System.ServiceModel.Channels.WebMessageEncodingBindingElement&quot;> </xref>.'
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.BindingElementType*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Copies the content of the specified configuration section to this element."
+  summary: "Másolja át a megadott konfigurációs szakasz tartalmának ehhez az elemhez."
   syntax:
     content: public override void CopyFrom (System.ServiceModel.Configuration.ServiceModelExtensionElement from);
     parameters:
     - id: from
       type: System.ServiceModel.Configuration.ServiceModelExtensionElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.ServiceModelExtensionElement&quot;></xref> to be copied."
+      description: "A <xref href=&quot;System.ServiceModel.Configuration.ServiceModelExtensionElement&quot;> </xref> kell átmásolnia."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.CopyFrom*
   exceptions: []
   platform:
@@ -184,7 +184,7 @@ items:
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.CreateBindingElement*
   exceptions: []
   platform:
@@ -201,15 +201,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a value that specifies the maximum number of messages that can be read simultaneously without allocating new readers."
-  remarks: "Larger pool sizes make the system more tolerant to activity spikes at the cost of a larger working set. The `WebMessageEncodingElement` configures a composite encoder that is capable of reading and writing plain-text XML, JSON, and raw binary. This encoder is composed of three separate encoders. This setting affects the maximum number of readers for each individual encoder."
+  summary: "Lekérdezi vagy beállítja egy érték, amely meghatározza egy időben olvasható új olvasók beállítása nélkül üzenetek maximális számát."
+  remarks: "Készlet nagyobb méretek ellenőrizze a rendszer jobban tűrik tevékenység teljesítményt nagyobb munkakészlet használ. A `WebMessageEncodingElement` konfigurál egy összetett kódolót, amely képes a egyszerű szöveges XML, JSON és nyers bináris olvasását és írását. A kódoló három különálló kódolók áll. Ez a beállítás hatással van az olvasók minden egyes kódoló a maximális számát."
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n    WebMessageEncodingElement webMEE = new WebMessageEncodingElement();  \n    int maxReadPoolSize = webMEE.MaxReadPoolSize;  \n    Console.WriteLine(\"The MaxReadPoolSize is: {0}\", maxReadPoolSize);  \n    maxReadPoolSize = 128;  \n    Console.WriteLine(\"The MaxReadPoolSize has been changed to: {0}\", maxReadPoolSize);  \n}  \n```"
   syntax:
     content: public int MaxReadPoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of messages that can be read simultaneously without allocating new readers. The default is 64."
+      description: "Egyidejűleg olvasható új olvasók beállítása nélkül üzenetek maximális száma. Az alapértelmezett érték 64."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.MaxReadPoolSize*
   exceptions: []
   platform:
@@ -226,15 +226,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a value that specifies the maximum number of messages that can be sent simultaneously without allocating new writers."
-  remarks: "Larger pool sizes make the system more tolerant to activity spikes at the cost of a larger working set. The `WebMessageEncodingElement` configures a composite encoder that is capable of reading and writing plain-text XML, JSON, and raw binary. This encoder is composed of three separate encoders. This setting affects the maximum number of writers for each individual encoder."
+  summary: "Lekérdezi vagy beállítja egy érték, amely az új írók beállítása nélkül egy időben elküldött üzenetek maximális számát határozza meg."
+  remarks: "Készlet nagyobb méretek ellenőrizze a rendszer jobban tűrik tevékenység teljesítményt nagyobb munkakészlet használ. A `WebMessageEncodingElement` konfigurál egy összetett kódolót, amely képes a egyszerű szöveges XML, JSON és nyers bináris olvasását és írását. A kódoló három különálló kódolók áll. Ez a beállítás a minden egyes kódoló írók maximális számának vonatkozik."
   example:
   - "```  \nstatic void Main(string[] args)  \n{  \n   int maxWritePoolSize = webMEE.MaxWritePoolSize;  \n   Console.WriteLine(\"The MaxWritePoolSize is: {0}\", maxWritePoolSize);  \n   maxWritePoolSize = 48;  \n   Console.WriteLine(\"The MaxWritePoolSize has been changed to: {0}\", maxWritePoolSize);  \n}  \n```"
   syntax:
     content: public int MaxWritePoolSize { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of messages that can be sent simultaneously without allocating new writers. The default is 16."
+      description: "Új írók beállítása nélkül egy időben elküldött üzenetek maximális száma. Az alapértelmezett érték 16."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.MaxWritePoolSize*
   exceptions: []
   platform:
@@ -251,15 +251,15 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets constraints on the complexity of SOAP messages that can be processed by endpoints configured with this binding."
-  remarks: "The complexity constraints include items like a maximum element depth, or a maximum length for string content within the message. The constraints protect against a type of denial of service (DOS) attacks that attempt to use message complexity to tie up endpoint processing resources."
+  summary: "Lekérdezi vagy beállítja a SOAP-üzenetekkel, amely feldolgozza-e konfigurálva a kötéshez végpontok összetettsége vonatkozóan."
+  remarks: "A összetettsége megkötések közé tartozik például a maximális elem mélysége, vagy az üzenet tartalmakra karakterlánc maximális hosszát. A megkötések egy szolgáltatásmegtagadási (DOS-) támadások ellen, amelyek lefoglalják az erőforrások feldolgozó végpont üzenet összetettsége segítségével típusú elleni védelem érdekében."
   example:
   - "```  \nXmlDictionaryReaderQuotasElement webMessageReaderQuotasElement = webMEE.ReaderQuotas;  \nConsole.WriteLine(\"The max depth of the reader Quotas is: {0}\", webMessageReaderQuotasElement.MaxDepth);  \n```"
   syntax:
     content: public System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement ReaderQuotas { get; }
     return:
       type: System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement&quot;></xref> that specifies the complexity constraints."
+      description: "A <xref href=&quot;System.ServiceModel.Configuration.XmlDictionaryReaderQuotasElement&quot;> </xref> , amely megadja, hogy a összetettsége megkötések."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.ReaderQuotas*
   exceptions: []
   platform:
@@ -276,13 +276,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the type name of a <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;></xref> that specifies the format to which the content type of an incoming message is mapped."
-  remarks: "This is an extensibility point in the programming model that is used by the Web message encoder to override how content types are mapped to formats."
+  summary: "Lekérdezi vagy beállítja a nevét a <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;> </xref> , amely megadja, hogy a formátum, amely a bejövő üzenet tartalomtípusa le lett képezve."
+  remarks: "Ez az a programozási modellel hogyan formázza a tartalmat a típusok le vannak képezve felülbírálására a webes üzenetkódoló által használt egy bővítési pontot."
   syntax:
     content: public string WebContentTypeMapperType { get; set; }
     return:
       type: System.String
-      description: "The type name of a <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;></xref>."
+      description: "A típus neve egy <xref href=&quot;System.ServiceModel.Channels.WebContentTypeMapper&quot;> </xref>."
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.WebContentTypeMapperType*
   exceptions: []
   platform:
@@ -299,7 +299,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets the character set encoding to be used for emitting messages on the binding."
+  summary: "Lekérdezi vagy beállítja a karakter, kibocsátás üzenetek a használandó kódolás."
   remarks: ''
   example:
   - "```  \nusing System;  \nusing System.Text;  \nusing System.ServiceModel;  \nusing System.ServiceModel.Web;  \nusing System.ServiceModel.Configuration;  \n  \nstatic void Main()  \n{  \n    Encoding webMessageEncoding = webMEE.WriteEncoding;  \n    Console.WriteLine(\"The write encoding is: {0}\",     webMessageEncoding);  \n    webMessageEncoding = UnicodeEncoding.Unicode;  \n    Console.WriteLine(\"The write encoding has been changed to: {0}\", webMessageEncoding);  \n}  \n```"
@@ -307,12 +307,12 @@ items:
     content: public System.Text.Encoding WriteEncoding { get; set; }
     return:
       type: System.Text.Encoding
-      description: "A valid <xref:System.Text.Encoding> value that specifies the character set encoding to be used for emitting messages on the binding. The default is <xref:System.Text.UTF8Encoding>."
+      description: "Egy érvényes <xref:System.Text.Encoding>érték, amely meghatározza a karakter, állítsa be az üzenetek a kibocsátó használandó kódolás.</xref:System.Text.Encoding> Az alapértelmezett érték <xref:System.Text.UTF8Encoding>.</xref:System.Text.UTF8Encoding>"
   overload: System.ServiceModel.Configuration.WebMessageEncodingElement.WriteEncoding*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value set is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "A beállított érték van <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 references:

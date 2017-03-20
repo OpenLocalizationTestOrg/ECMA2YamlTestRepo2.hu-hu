@@ -29,8 +29,8 @@ items:
   nameWithType: BindingContext
   fullName: System.Windows.Forms.BindingContext
   type: Class
-  summary: "Manages the collection of <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> objects for any object that inherits from the <xref href=&quot;System.Windows.Forms.Control&quot;></xref> class."
-  remarks: "Each Windows Form has at least one BindingContext object that manages the <xref:System.Windows.Forms.BindingManagerBase> objects for the form. Because the <xref:System.Windows.Forms.BindingManagerBase> class is abstract, the return type of the <xref:System.Windows.Forms.BindingContext.Item%2A> property is either a <xref:System.Windows.Forms.CurrencyManager> or a <xref:System.Windows.Forms.PropertyManager>. If the data source is an object that can return only a single property (instead of a list of objects), the <xref:System.Type> is a <xref:System.Windows.Forms.PropertyManager>. For example, if you specify a <xref:System.Windows.Forms.TextBox> as the data source, a <xref:System.Windows.Forms.PropertyManager> is returned. On the other hand, if the data source is an object that implements <xref:System.Collections.IList> or <xref:System.ComponentModel.IBindingList>, a <xref:System.Windows.Forms.CurrencyManager> is returned.       For each data source on a Windows Form, there is a single <xref:System.Windows.Forms.CurrencyManager> or <xref:System.Windows.Forms.PropertyManager>. Because there may be multiple data sources associated with a Windows Form, the BindingContext enables you to retrieve any particular <xref:System.Windows.Forms.CurrencyManager> associated with a data source.      > [!NOTE] >  When using the <xref:System.Windows.Forms.BindingContext.Item%2A> property, the BindingContext creates a new <xref:System.Windows.Forms.BindingManagerBase> if one does not already exist. This can lead to some confusion, as the returned object may not manage the list (or any list) that you intend. To prevent returning an invalid <xref:System.Windows.Forms.BindingManagerBase>, use the <xref:System.Windows.Forms.BindingContext.Contains%2A> method to determine if the intended <xref:System.Windows.Forms.BindingManagerBase> already exists.       If you use a container control, such as a <xref:System.Windows.Forms.GroupBox>, <xref:System.Windows.Forms.Panel>, or <xref:System.Windows.Forms.TabControl>, to contain data-bound controls, you can create a BindingContext for just that container control and its controls. Then, each part of your form can be managed by its own <xref:System.Windows.Forms.BindingManagerBase>. See the <xref:System.Windows.Forms.BindingContext.%23ctor%2A> constructor for more information about creating multiple <xref:System.Windows.Forms.BindingManagerBase> objects for the same data source.       If you add a <xref:System.Windows.Forms.TextBox> control to a form and bind it to a column of a table in a dataset, the control communicates with the BindingContext of that form. The BindingContext, in turn, talks to the specific <xref:System.Windows.Forms.CurrencyManager> for that data association. If you queried the `Position` property of the <xref:System.Windows.Forms.CurrencyManager>, it would report the current record for the binding of that <xref:System.Windows.Forms.TextBox> control. In the following code example, a <xref:System.Windows.Forms.TextBox> control is bound to the `FirstName` column of a `Customers` table on the `dataSet1` dataset through the BindingContext for the form it is on.      ```vb#   TextBox1.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;)      ```      ```c#   textBox1.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;);      ```      ```cpp   textBox1->DataBindings->Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;);   ```       You can add a second <xref:System.Windows.Forms.TextBox> control (`TextBox2`) to the form and bind it to the `LastName` column of the `Customers` table in the same dataset. The BindingContext is aware of the first binding (`TextBox1` to `Customers.FirstName`), so it would use the same <xref:System.Windows.Forms.CurrencyManager>, as both text boxes are bound to the same dataset (`DataSet1`).      ```vb#   TextBox2.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;)      ```      ```c#   textBox2.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;);      ```      ```cpp   textBox2->DataBindings->Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;);   ```       If you bind `TextBox2` to a different dataset, the BindingContext creates and manages a second <xref:System.Windows.Forms.CurrencyManager>.       It is important to be consistent about how you set the <xref:System.Windows.Forms.ListControl.DataSource%2A> and <xref:System.Windows.Forms.ListControl.DisplayMember%2A> properties; otherwise, the BindingContext creates multiple currency managers for the same dataset, which results in errors. The following code example shows a few ways to set the properties and their associated BindingContext objects. You can set the properties using either of the following methods, as long as you are consistent throughout your code.      ```vb#   ComboBox1.DataSource = DataSet1   ComboBox1.DisplayMember = &quot;Customers.FirstName&quot;   Me.BindingContext(dataSet1, &quot;Customers&quot;).Position = 1      ```      ```c#   comboBox1.DataSource = DataSet1;   comboBox1.DisplayMember = &quot;Customers.FirstName&quot;;   this.BindingContext[dataSet1, &quot;Customers&quot;].Position = 1;      ```      ```cpp   comboBox1->DataSource = dataSet1;   comboBox1->DisplayMember = &quot;Customers.FirstName&quot;;   this->BindingContext->get_Item(dataSet1, &quot;Customers&quot;)->Position = 1;      ```      ```vb#   ComboBox1.DataSource = DataSet1.Customers   ComboBox1.DisplayMember = &quot;FirstName&quot;   Me.BindingContext(dataSet1.Customers).Position = 1      ```      ```c#   comboBox1.DataSource = DataSet1.Customers;   comboBox1.DisplayMember = &quot;FirstName&quot;;   this.BindingContext[dataSet1.Customers].Position = 1;      ```      ```cpp   comboBox1->DataSource = dataSet1->Customers;   comboBox1->DisplayMember = &quot;FirstName&quot;;   this->BindingContext->get_Item(dataSet1->Customers)->Position = 1;      ```      > [!NOTE] >  Most Windows Forms applications bind through a <xref:System.Windows.Forms.BindingSource>. The <xref:System.Windows.Forms.BindingSource> component encapsulates a <xref:System.Windows.Forms.CurrencyManager> and exposes the <xref:System.Windows.Forms.CurrencyManager> programming interface. When using a <xref:System.Windows.Forms.BindingSource> for binding, you should use the members exposed by the <xref:System.Windows.Forms.BindingSource> to manipulate &quot;currency&quot; (that is, `Position`) rather than go through the BindingContext."
+  summary: "Kezeli a gyűjteménye <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> objektumok összes objektum, amely örökli a <xref href=&quot;System.Windows.Forms.Control&quot;> </xref> osztály."
+  remarks: "Minden Windows űrlap rendelkezik legalább egy paramétereiben objektum, amely kezeli a <xref:System.Windows.Forms.BindingManagerBase>az űrlap-objektumokat.</xref:System.Windows.Forms.BindingManagerBase> Mivel a <xref:System.Windows.Forms.BindingManagerBase>osztály absztrakt, akkor a <xref:System.Windows.Forms.BindingContext.Item%2A>tulajdonság egy <xref:System.Windows.Forms.CurrencyManager>vagy <xref:System.Windows.Forms.PropertyManager>.</xref:System.Windows.Forms.PropertyManager> </xref:System.Windows.Forms.CurrencyManager> </xref:System.Windows.Forms.BindingContext.Item%2A> visszatérési típusa</xref:System.Windows.Forms.BindingManagerBase> Ha az adatforrás-e olyan objektum, amely csak egyetlen tulajdonság (helyett objektumok listájának), lépjen vissza a <xref:System.Type>rendszer egy <xref:System.Windows.Forms.PropertyManager>.</xref:System.Windows.Forms.PropertyManager> </xref:System.Type> Például, ha megad egy <xref:System.Windows.Forms.TextBox>adatforrásként, egy <xref:System.Windows.Forms.PropertyManager>adja vissza.</xref:System.Windows.Forms.PropertyManager> </xref:System.Windows.Forms.TextBox> Másrészről, ha az adatforrás egy objektum, amely megvalósítja az <xref:System.Collections.IList>vagy <xref:System.ComponentModel.IBindingList>, egy <xref:System.Windows.Forms.CurrencyManager>adja vissza.</xref:System.Windows.Forms.CurrencyManager> </xref:System.ComponentModel.IBindingList> </xref:System.Collections.IList>       Az egyes adatforrások Windows űrlap nincs egyetlen <xref:System.Windows.Forms.CurrencyManager>vagy <xref:System.Windows.Forms.PropertyManager>.</xref:System.Windows.Forms.PropertyManager> </xref:System.Windows.Forms.CurrencyManager> Előfordulhat, hogy Windows űrlap társított több adatforrást, mert a paramétereiben segítségével lekérheti bármely adott <xref:System.Windows.Forms.CurrencyManager>adatforrás társított.</xref:System.Windows.Forms.CurrencyManager>      > [!NOTE] > Használata esetén a <xref:System.Windows.Forms.BindingContext.Item%2A>tulajdonság, a paramétereiben létrehoz egy új <xref:System.Windows.Forms.BindingManagerBase>Ha egy nem létezik.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.Item%2A> Néhány zavart, ez is vezethet, a visszaadott objektumot nem lehet kezelése, a lista (vagy listát), melyet. Érvénytelen visszatérés megelőzése érdekében <xref:System.Windows.Forms.BindingManagerBase>, használja a <xref:System.Windows.Forms.BindingContext.Contains%2A>módszer annak meghatározásához, hogy a kívánt <xref:System.Windows.Forms.BindingManagerBase>már létezik.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.Contains%2A> </xref:System.Windows.Forms.BindingManagerBase>       Egy tároló-vezérlőelem, például a használatakor a <xref:System.Windows.Forms.GroupBox>, <xref:System.Windows.Forms.Panel>, vagy <xref:System.Windows.Forms.TabControl>, magában foglalja az adathoz kötött vezérlők, létrehozhat egy adott tárolóvezérlő és a vezérlők paramétereiben.</xref:System.Windows.Forms.TabControl> </xref:System.Windows.Forms.Panel> </xref:System.Windows.Forms.GroupBox> Ezt követően az űrlap részét képező összes kezelheti a saját <xref:System.Windows.Forms.BindingManagerBase>.</xref:System.Windows.Forms.BindingManagerBase> Tekintse meg a <xref:System.Windows.Forms.BindingContext.%23ctor%2A>konstruktor több létrehozásával kapcsolatos további információért <xref:System.Windows.Forms.BindingManagerBase>objektumokat ugyanazon az adatforráson.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.%23ctor%2A>       Ha ad hozzá egy <xref:System.Windows.Forms.TextBox>űrlap megszabott, majd kösse oszlop egy tábla a DataSet adatkészletben, a vezérlő kommunikál az adott űrlap paramétereiben.</xref:System.Windows.Forms.TextBox> A paramétereiben az Advisor-az adott kiszolgálóhoz <xref:System.Windows.Forms.CurrencyManager>adott adatok társításhoz.</xref:System.Windows.Forms.CurrencyManager> Ha a lekérdezett a `Position` tulajdonsága a <xref:System.Windows.Forms.CurrencyManager>, akkor küldenek a jelenlegi rekord. a kötés az adott <xref:System.Windows.Forms.TextBox>vezérlő.</xref:System.Windows.Forms.TextBox> </xref:System.Windows.Forms.CurrencyManager> Az alábbi példakódban egy <xref:System.Windows.Forms.TextBox>vezérlőelem van kötve a `FirstName` oszlopa egy `Customers` tábla a `dataSet1` adathalmazból átkerültek az űrlap, mert nem paramétereiben.</xref:System.Windows.Forms.TextBox>      ```vb#   TextBox1.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;)      ```      ```c#   textBox1.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;);      ```      ```cpp   textBox1->DataBindings->Add(&quot;Text&quot;, dataSet1, &quot;Customers.FirstName&quot;);   ```Hozzáadhat egy második <xref:System.Windows.Forms.TextBox>vezérlő (`TextBox2`) formájában és kösse azt a `LastName` oszlopa a `Customers` tábla a DataSet adatkészlethez.</xref:System.Windows.Forms.TextBox> Az első kötés tudatában a paramétereiben (`TextBox1` való `Customers.FirstName`), így a használna azonos <xref:System.Windows.Forms.CurrencyManager>, mert mindkét szövegmezőbe az ugyanahhoz az adatkészlethez vannak kötve (`DataSet1`).</xref:System.Windows.Forms.CurrencyManager>      ```vb#   TextBox2.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;)      ```      ```c#   textBox2.DataBindings.Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;);      ```      ```cpp   textBox2->DataBindings->Add(&quot;Text&quot;, dataSet1, &quot;Customers.LastName&quot;);   ```Ha létrehozta kötését `TextBox2` egy másik DataSet a paramétereiben hoz létre, és egy második <xref:System.Windows.Forms.CurrencyManager>.</xref:System.Windows.Forms.CurrencyManager> kezeli       Fontos, hogy konzisztens kapcsolatban, hogyan állíthatja a <xref:System.Windows.Forms.ListControl.DataSource%2A>és <xref:System.Windows.Forms.ListControl.DisplayMember%2A>Tulajdonságok; ellenkező esetben a paramétereiben hoz létre több pénznem az ugyanahhoz az adatkészlethez, így ez hibákat feletteseit.</xref:System.Windows.Forms.ListControl.DisplayMember%2A> </xref:System.Windows.Forms.ListControl.DataSource%2A> Az alábbi példakód bemutatja, hogyan állítsa be a tulajdonságok és a hozzájuk társított paramétereiben objektumokat. A következő módszerek valamelyikével tulajdonságok mindaddig, amíg Ön megegyeznek a kód egészében állíthatja be.      ```vb#   ComboBox1.DataSource = DataSet1   ComboBox1.DisplayMember = &quot;Customers.FirstName&quot;   Me.BindingContext(dataSet1, &quot;Customers&quot;).Position = 1      ```      ```c#   comboBox1.DataSource = DataSet1;   comboBox1.DisplayMember = &quot;Customers.FirstName&quot;;   this.BindingContext[dataSet1, &quot;Customers&quot;].Position = 1;      ```      ```cpp   comboBox1->DataSource = dataSet1;   comboBox1->DisplayMember = &quot;Customers.FirstName&quot;;   this->BindingContext->get_Item(dataSet1, &quot;Customers&quot;)->Position = 1;      ```      ```vb#   ComboBox1.DataSource = DataSet1.Customers   ComboBox1.DisplayMember = &quot;FirstName&quot;   Me.BindingContext(dataSet1.Customers).Position = 1      ```      ```c#   comboBox1.DataSource = DataSet1.Customers;   comboBox1.DisplayMember = &quot;FirstName&quot;;   this.BindingContext[dataSet1.Customers].Position = 1;      ```      ```cpp   comboBox1->DataSource = dataSet1->Customers;   comboBox1->DisplayMember = &quot;FirstName&quot;;   this->BindingContext->get_Item(dataSet1->Customers)->Position = 1;      ```      > [!NOTE]> Egy <xref:System.Windows.Forms.BindingSource>.</xref:System.Windows.Forms.BindingSource> keresztül kötési a legtöbb Windows Forms-alkalmazásokhoz A <xref:System.Windows.Forms.BindingSource>összetevőt magában foglalja a <xref:System.Windows.Forms.CurrencyManager>és elérhetővé teszi a <xref:System.Windows.Forms.CurrencyManager>alkalmazásprogramozási felülete.</xref:System.Windows.Forms.CurrencyManager> </xref:System.Windows.Forms.CurrencyManager> </xref:System.Windows.Forms.BindingSource> Használata esetén egy <xref:System.Windows.Forms.BindingSource>kötés, érdemes használni a által feltárt tagokat tartalmazzák a <xref:System.Windows.Forms.BindingSource>segítségével kezelheti a &quot;currency&quot; (Ez azt jelenti, hogy `Position`) helyett a paramétereiben végighaladnia.</xref:System.Windows.Forms.BindingSource> </xref:System.Windows.Forms.BindingSource>"
   example:
   - "The following code example creates four <xref:System.Windows.Forms.Binding> objects to bind five controls—a <xref:System.Windows.Forms.DateTimePicker> and four <xref:System.Windows.Forms.TextBox> controls—to several data sources. The BindingContext is then used to get the <xref:System.Windows.Forms.BindingManagerBase> for each data source.  \n  \n [!code-cpp[Classic BindingContext Example#1](~/add/codesnippet/cpp/t-system.windows.forms.b_7_1.cpp)]\n [!code-cs[Classic BindingContext Example#1](~/add/codesnippet/csharp/t-system.windows.forms.b_7_1.cs)]\n [!code-vb[Classic BindingContext Example#1](~/add/codesnippet/visualbasic/t-system.windows.forms.b_7_1.vb)]"
   syntax:
@@ -57,8 +57,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> class."
-  remarks: "If you want to have multiple <xref:System.Windows.Forms.BindingManagerBase> instances for the same data source, create a new <xref:System.Windows.Forms.BindingContext> and set it to the <xref:System.Windows.Forms.Control.BindingContext%2A> property of an object that inherits from the <xref:System.Windows.Forms.Control> class. For example, if you have two <xref:System.Windows.Forms.BindingManagerBase> objects (from two different <xref:System.Windows.Forms.BindingContext> objects), you can set the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> properties of each <xref:System.Windows.Forms.BindingManagerBase> to different values. This causes each set of data-bound controls to display different values from the same data source."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> osztály."
+  remarks: "Ha szeretné több <xref:System.Windows.Forms.BindingManagerBase>példányainak ugyanarra az adatforrásra, hozzon létre egy új <xref:System.Windows.Forms.BindingContext>, és állítsa be úgy, hogy a <xref:System.Windows.Forms.Control.BindingContext%2A>tulajdonság az objektum, amely örökli az <xref:System.Windows.Forms.Control>osztályhoz.</xref:System.Windows.Forms.Control> </xref:System.Windows.Forms.Control.BindingContext%2A> </xref:System.Windows.Forms.BindingContext> </xref:System.Windows.Forms.BindingManagerBase> Például, ha két <xref:System.Windows.Forms.BindingManagerBase>objektumok (két másik <xref:System.Windows.Forms.BindingContext>objektumok), beállíthatja a <xref:System.Windows.Forms.BindingManagerBase.Position%2A>az egyes tulajdonságait <xref:System.Windows.Forms.BindingManagerBase>különböző értékekre.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingManagerBase.Position%2A> </xref:System.Windows.Forms.BindingContext> </xref:System.Windows.Forms.BindingManagerBase> Ez azt eredményezi, hogy minden adathoz kötött vezérlők ugyanazt az adatforrást a másik értékek megjelenítése készlete."
   example:
   - "The following code example creates two new <xref:System.Windows.Forms.BindingContext> objects and assigns each object to the <xref:System.Windows.Forms.BindingContext> property of a <xref:System.Windows.Forms.GroupBox> control. `GroupBox1` contains `TextBox1`, and `GroupBox2` contains `TextBox2` (which is accomplished by using the <xref:System.Windows.Forms.Control.ControlCollection.AddRange%2A> method of the <xref:System.Windows.Forms.Control.ControlCollection> class). The example then adds <xref:System.Windows.Forms.Binding> objects to the two <xref:System.Windows.Forms.TextBox> controls, binding each to the same data source and data member. The example also shows two event handlers that use the <xref:System.Windows.Forms.BindingContext> from the <xref:System.Windows.Forms.GroupBox> controls to set the <xref:System.Windows.Forms.BindingManagerBase.Position%2A> property on different <xref:System.Windows.Forms.BindingManagerBase> objects.  \n  \n [!code-cs[Classic BindingContext.BindingContext Example#1](~/add/codesnippet/csharp/m-system.windows.forms.b_17_1.cs)]\n [!code-cpp[Classic BindingContext.BindingContext Example#1](~/add/codesnippet/cpp/m-system.windows.forms.b_17_1.cpp)]\n [!code-vb[Classic BindingContext.BindingContext Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.b_17_1.vb)]"
   syntax:
@@ -80,13 +80,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with a specific data source to the collection."
+  summary: "Hozzáadja a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> társított egyes adatforrások a gyűjteményhez."
   syntax:
     content: protected void Add (object dataSource, System.Windows.Forms.BindingManagerBase listManager);
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The <xref:System.Object> associated with the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "A <xref:System.Object>társított a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>.</xref:System.Object>"
     - id: listManager
       type: System.Windows.Forms.BindingManagerBase
       description: "The <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> to add."
@@ -106,13 +106,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Adds the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with a specific data source to the collection."
+  summary: "Hozzáadja a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> társított egyes adatforrások a gyűjteményhez."
   syntax:
     content: protected virtual void AddCore (object dataSource, System.Windows.Forms.BindingManagerBase listManager);
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The object associated with the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "A társított objektum a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>."
     - id: listManager
       type: System.Windows.Forms.BindingManagerBase
       description: "The <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> to add."
@@ -120,7 +120,7 @@ items:
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>dataSource</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>listManager</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>dataSource</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>listManager</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Windows.Forms.BindingContext.Clear
@@ -135,7 +135,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Clears the collection of any <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> objects."
+  summary: "Törli a gyűjtemény tetszőleges <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> objektumok."
   syntax:
     content: protected void Clear ();
     parameters: []
@@ -155,7 +155,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Clears the collection."
+  summary: "A gyűjtemény törlése."
   syntax:
     content: protected virtual void ClearCore ();
     parameters: []
@@ -175,17 +175,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Always raises a <xref:System.NotImplementedException> when handled."
-  remarks: "The CollectionChanged event is obsolete and always raises a <xref:System.NotImplementedException> when handled. For more information about handling events, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Mindig kivált egy <xref:System.NotImplementedException>kezelésekor.</xref:System.NotImplementedException>"
+  remarks: "A CollectionChanged esemény már elavult, és mindig kivált egy <xref:System.NotImplementedException>kezelésekor.</xref:System.NotImplementedException> Események kezelésére vonatkozó további információkért lásd: [kezelésére és események kiváltása](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public event System.ComponentModel.CollectionChangeEventHandler CollectionChanged;
     return:
       type: System.ComponentModel.CollectionChangeEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "Occurs in all cases."
+    description: "Akkor következik be, minden esetben."
   platform:
   - net462
 - uid: System.Windows.Forms.BindingContext.Contains(System.Object)
@@ -200,8 +200,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> contains the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with the specified data source."
-  remarks: "See the <xref:System.Windows.Forms.Binding> class for a list of possible data sources and information about creating bindings between controls and data sources.       See the <xref:System.Windows.Forms.BindingContext.Item%2A> property for information about returning a <xref:System.Windows.Forms.BindingManagerBase> using only a data source."
+  summary: "Lekérdezi, hogy egy érték, amely jelzi, hogy a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> tartalmazza a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> a megadott adatforrás társított."
+  remarks: "Tekintse meg a <xref:System.Windows.Forms.Binding>osztály listáját lehetséges adatforrások és vezérlők és az adatforrás közötti kötések létrehozásával kapcsolatos információkat.</xref:System.Windows.Forms.Binding>       Tekintse meg a <xref:System.Windows.Forms.BindingContext.Item%2A>tulajdonság információt ad vissza egy <xref:System.Windows.Forms.BindingManagerBase>csak egy adatforrást használó.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.Item%2A>"
   example:
   - "The following code example uses the Contains method to determine whether a <xref:System.Windows.Forms.BindingManagerBase> exists for each control on a form. The example passes each <xref:System.Data.DataTable> in a <xref:System.Data.DataSet> to the method.  \n  \n [!code-vb[Classic BindingContext.Contains Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.b_9_1.vb)]\n [!code-cs[Classic BindingContext.Contains Example#1](~/add/codesnippet/csharp/m-system.windows.forms.b_9_1.cs)]\n [!code-cpp[Classic BindingContext.Contains Example#1](~/add/codesnippet/cpp/m-system.windows.forms.b_9_1.cpp)]"
   syntax:
@@ -209,10 +209,10 @@ items:
     parameters:
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "Egy <xref:System.Object>, amely jelzi, hogy az adatforrás.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> contains the specified <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> tartalmazza a megadott <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.Contains*
   exceptions: []
   platform:
@@ -229,8 +229,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> contains the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with the specified data source and data member."
-  remarks: "See the <xref:System.Windows.Forms.Binding> class for a list of possible data sources and for information about creating bindings between controls and data sources.       See the <xref:System.Windows.Forms.BindingContext.Item%2A> property for information about returning a <xref:System.Windows.Forms.BindingManagerBase> using a data source and data member."
+  summary: "Lekérdezi, hogy egy érték, amely jelzi, hogy a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> tartalmazza a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> a megadott adatforrás és adatelem társított."
+  remarks: "Tekintse meg a <xref:System.Windows.Forms.Binding>lehetséges adatforrások listáját, és vezérlők és az adatforrás közötti kötések létrehozásáról további információt.</xref:System.Windows.Forms.Binding>       Tekintse meg a <xref:System.Windows.Forms.BindingContext.Item%2A>tulajdonság információt ad vissza egy <xref:System.Windows.Forms.BindingManagerBase>adatforrás és adatelem.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.Item%2A>"
   example:
   - "The following code example uses the <xref:System.Windows.Forms.BindingContext.Contains%2A> method to test whether a specific <xref:System.Windows.Forms.BindingManagerBase> exists before attempting to get it through the <xref:System.Windows.Forms.BindingContext.Item%2A> property.  \n  \n [!code-cs[Classic BindingContext.Contains1 Example#1](~/add/codesnippet/csharp/m-system.windows.forms.b_18_1.cs)]\n [!code-vb[Classic BindingContext.Contains1 Example#1](~/add/codesnippet/visualbasic/m-system.windows.forms.b_18_1.vb)]\n [!code-cpp[Classic BindingContext.Contains1 Example#1](~/add/codesnippet/cpp/m-system.windows.forms.b_18_1.cpp)]"
   syntax:
@@ -238,13 +238,13 @@ items:
     parameters:
     - id: dataSource
       type: System.Object
-      description: "An <xref:System.Object> that represents the data source."
+      description: "Egy <xref:System.Object>, amely jelzi, hogy az adatforrás.</xref:System.Object>"
     - id: dataMember
       type: System.String
-      description: "The information needed to resolve to a specific <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "Egy adott megoldásához szükséges információkat <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> contains the specified <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> tartalmazza a megadott <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.Contains*
   exceptions: []
   platform:
@@ -261,13 +261,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the collection is read-only."
-  remarks: "This property is derived from <xref:System.Collections.ICollection>, and is overridden to always return `false`."
+  summary: "A gyűjtemény csak olvasható voltát jelző érték beolvasása."
+  remarks: "Ez a tulajdonság be van-e származtatva <xref:System.Collections.ICollection>, és mindig vissza felülbírálja `false`.</xref:System.Collections.ICollection>"
   syntax:
     content: public bool IsReadOnly { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the collection is read-only; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a gyűjtemény csak olvasható; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.IsReadOnly*
   exceptions: []
   platform:
@@ -284,8 +284,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> that is associated with the specified data source."
-  remarks: "Use this overload if the <xref:System.Windows.Forms.BindingManagerBase> you want does not require a navigation path. For example, if the <xref:System.Windows.Forms.BindingManagerBase> manages a set of <xref:System.Windows.Forms.Binding> objects that use an <xref:System.Collections.ArrayList> or <xref:System.Data.DataTable> as the <xref:System.Windows.Forms.Binding.DataSource%2A>, no navigation path is required.      > [!NOTE] >  The Item property will always return a <xref:System.Windows.Forms.BindingManagerBase>, and never return `null`.       See the <xref:System.Windows.Forms.Binding> class for a list of possible data sources and for information about creating bindings between controls and data sources."
+  summary: "Lekérdezi a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> , amely kapcsolódik a megadott adatforrás."
+  remarks: "Ez a túlterhelés használja, ha <xref:System.Windows.Forms.BindingManagerBase>azt szeretné, nincs szükség navigációs elérési utat.</xref:System.Windows.Forms.BindingManagerBase> Például ha a <xref:System.Windows.Forms.BindingManagerBase>kezeli az olyan <xref:System.Windows.Forms.Binding>használó objektumokat egy <xref:System.Collections.ArrayList>vagy <xref:System.Data.DataTable>, a <xref:System.Windows.Forms.Binding.DataSource%2A>, nincs navigációs elérési utat kell megadni.</xref:System.Windows.Forms.Binding.DataSource%2A> </xref:System.Data.DataTable> </xref:System.Collections.ArrayList> </xref:System.Windows.Forms.Binding> </xref:System.Windows.Forms.BindingManagerBase>      > [!NOTE] > Az elemtulajdonság mindig ad vissza egy <xref:System.Windows.Forms.BindingManagerBase>, és soha nem vissza `null`.</xref:System.Windows.Forms.BindingManagerBase>       Tekintse meg a <xref:System.Windows.Forms.Binding>lehetséges adatforrások listáját, és vezérlők és az adatforrás közötti kötések létrehozásáról további információt.</xref:System.Windows.Forms.Binding>"
   example:
   - "The following code example returns three <xref:System.Windows.Forms.BindingManagerBase> objects: one for a <xref:System.Data.DataView>, one for an <xref:System.Collections.ArrayList>, and one for the <xref:System.Windows.Forms.Binding.DataSource%2A> of a <xref:System.Windows.Forms.Binding> that belongs to a <xref:System.Windows.Forms.TextBox> control.  \n  \n [!code-cs[Classic BindingContext.this Example#1](~/add/codesnippet/csharp/p-system.windows.forms.b_30_1.cs)]\n [!code-cpp[Classic BindingContext.this Example#1](~/add/codesnippet/cpp/p-system.windows.forms.b_30_1.cpp)]\n [!code-vb[Classic BindingContext.this Example#1](~/add/codesnippet/visualbasic/p-system.windows.forms.b_30_1.vb)]"
   syntax:
@@ -293,10 +293,10 @@ items:
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The data source associated with a particular <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "Az adatforrás egy adott társított <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>."
     return:
       type: System.Windows.Forms.BindingManagerBase
-      description: "A <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> for the specified data source."
+      description: "A <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> megadott az adatforrásra vonatkozóan."
   overload: System.Windows.Forms.BindingContext.Item*
   exceptions: []
   platform:
@@ -313,8 +313,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> that is associated with the specified data source and data member."
-  remarks: "Use this overload when the <xref:System.Windows.Forms.BindingManagerBase> manages a set of <xref:System.Windows.Forms.Binding> objects for which the data source contains multiple objects. For example, a <xref:System.Data.DataSet> can contain several <xref:System.Data.DataTable> objects linked by <xref:System.Data.DataRelation> objects. In such a case, the navigation path is required to enable the <xref:System.Windows.Forms.BindingContext> to return the correct <xref:System.Windows.Forms.BindingManagerBase>.      > [!NOTE] >  The Item property will always return a <xref:System.Windows.Forms.BindingManagerBase>, when the `dataMember` parameter is valid. It will never return `null`.       See the <xref:System.Windows.Forms.Binding> class for a list of possible data sources and for information about creating bindings between controls and data sources.       If the desired <xref:System.Windows.Forms.BindingManagerBase> manages a list, the navigation path must also end with a list. For example, the following C# code binds a <xref:System.Windows.Forms.TextBox> control to the order date in a table of orders. The navigation path includes the <xref:System.Data.DataTable.TableName%2A>, the <xref:System.Data.DataRelation.RelationName%2A>, and the <xref:System.Data.DataColumn.ColumnName%2A>. However, the <xref:System.Windows.Forms.BindingManagerBase> must be retrieved using only the <xref:System.Data.DataTable.TableName%2A> and <xref:System.Data.DataRelation.RelationName%2A> (which resolves to a list).      ```   // The navigation path for a Binding ends with a property.   textBox1.DataBindings.Add   (&quot;Text&quot;, dataSet1, &quot;Customers.custToOrders.OrderDate&quot;);   // The navigation path for the BindingManagerBase ends with a list.   BindingManagerBase bmOrders = this.BindingContext   [dataSet1, &quot;Customers.custToOrders&quot;];   ```       When returning a <xref:System.Windows.Forms.BindingManagerBase>, you should use the same data source as the <xref:System.Windows.Forms.Binding> and modify only the navigation path.       Use the <xref:System.Windows.Forms.BindingContext.Contains%2A> method to determine if the desired <xref:System.Windows.Forms.BindingManagerBase> already exists."
+  summary: "Lekérdezi a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> , amely kapcsolódik a megadott adatforrás és adatelem."
+  remarks: "Ez túlterhelés esetén használja a <xref:System.Windows.Forms.BindingManagerBase>kezeli az olyan <xref:System.Windows.Forms.Binding>objektumok, amelyhez az adatforrás több objektumot tartalmaz.</xref:System.Windows.Forms.Binding> </xref:System.Windows.Forms.BindingManagerBase> Például egy <xref:System.Data.DataSet>tartalmazhat több <xref:System.Data.DataTable>összekapcsolva objektumok <xref:System.Data.DataRelation>objektumok.</xref:System.Data.DataRelation> </xref:System.Data.DataTable> </xref:System.Data.DataSet> Ebben az esetben a navigációs elérési út engedélyezéséhez szükség van az <xref:System.Windows.Forms.BindingContext>a megfelelő <xref:System.Windows.Forms.BindingManagerBase>.</xref:System.Windows.Forms.BindingManagerBase> vissza</xref:System.Windows.Forms.BindingContext>      > [!NOTE] > Az elemtulajdonság mindig ad vissza egy <xref:System.Windows.Forms.BindingManagerBase>, amikor a `dataMember` paraméter érvénytelen.</xref:System.Windows.Forms.BindingManagerBase> Soha nem fog visszaadni `null`.       Tekintse meg a <xref:System.Windows.Forms.Binding>lehetséges adatforrások listáját, és vezérlők és az adatforrás közötti kötések létrehozásáról további információt.</xref:System.Windows.Forms.Binding>       Ha a kívánt <xref:System.Windows.Forms.BindingManagerBase>kezeli a listáját, és a navigációs elérési út is végén szerepelnie kell egy lista.</xref:System.Windows.Forms.BindingManagerBase> Például az alábbi C#-kódban van kötve egy <xref:System.Windows.Forms.TextBox>vezérlőt a megrendelési dátumok rendelések egy táblázatban.</xref:System.Windows.Forms.TextBox> A navigációs elérési út tartalmazza a <xref:System.Data.DataTable.TableName%2A>, a <xref:System.Data.DataRelation.RelationName%2A>, és a <xref:System.Data.DataColumn.ColumnName%2A>.</xref:System.Data.DataColumn.ColumnName%2A> </xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable.TableName%2A> Azonban a <xref:System.Windows.Forms.BindingManagerBase>használatával csak olvasható a <xref:System.Data.DataTable.TableName%2A>és <xref:System.Data.DataRelation.RelationName%2A>(amely oldja fel listáját).</xref:System.Data.DataRelation.RelationName%2A> </xref:System.Data.DataTable.TableName%2A> </xref:System.Windows.Forms.BindingManagerBase>      ```   // The navigation path for a Binding ends with a property.   textBox1.DataBindings.Add   (&quot;Text&quot;, dataSet1, &quot;Customers.custToOrders.OrderDate&quot;);   // The navigation path for the BindingManagerBase ends with a list.   BindingManagerBase bmOrders = this.BindingContext   [dataSet1, &quot;Customers.custToOrders&quot;];   ```Ha vissza a <xref:System.Windows.Forms.BindingManagerBase>használja ugyanazt az adatforrást <xref:System.Windows.Forms.Binding>és módosítására csak a navigációs elérési úthoz.</xref:System.Windows.Forms.Binding> </xref:System.Windows.Forms.BindingManagerBase>       Használja a <xref:System.Windows.Forms.BindingContext.Contains%2A>módszer annak meghatározásához, hogy a kívánt <xref:System.Windows.Forms.BindingManagerBase>már létezik.</xref:System.Windows.Forms.BindingManagerBase> </xref:System.Windows.Forms.BindingContext.Contains%2A>"
   example:
   - "The following code example demonstrates how to use the Item to retrieve the <xref:System.Windows.Forms.BindingManagerBase> for a particular binding. It also shows how to handle the <xref:System.Windows.Forms.BindingManagerBase.BindingComplete> event for the <xref:System.Windows.Forms.BindingManagerBase> to ensure multiple controls bound to the same data source remain synchronized when one of the control values is changed. To run this example, paste the code into a Windows Form and call the `InitializeControlsAndData` method from the form's constructor or <xref:System.Windows.Forms.Form.Load> event-handling method.  \n  \n [!code-vb[System.Windows.Forms.BindingSourceMultipleControls#11](~/add/codesnippet/visualbasic/p-system.windows.forms.b_17_1.vb)]\n [!code-cs[System.Windows.Forms.BindingSourceMultipleControls#11](~/add/codesnippet/csharp/p-system.windows.forms.b_17_1.cs)]"
   syntax:
@@ -322,18 +322,18 @@ items:
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The data source associated with a particular <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "Az adatforrás egy adott társított <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>."
     - id: dataMember
       type: System.String
-      description: "A navigation path containing the information that resolves to a specific <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref>."
+      description: "A navigációs elérési útja, amely egy megadott információkat tartalmazó <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref>."
     return:
       type: System.Windows.Forms.BindingManagerBase
-      description: "The <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> for the specified data source and data member."
+      description: "A <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> a megadott adatforrás és adatelem."
   overload: System.Windows.Forms.BindingContext.Item*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "The specified <code>dataMember</code> does not exist within the data source."
+    description: "A megadott <code> dataMember </code> belül az adatforrás nem létezik."
   platform:
   - net462
 - uid: System.Windows.Forms.BindingContext.OnCollectionChanged(System.ComponentModel.CollectionChangeEventArgs)
@@ -348,14 +348,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Raises the <xref href=&quot;System.Windows.Forms.BindingContext.CollectionChanged&quot;></xref> event."
-  remarks: "Raising an event invokes the event handler through a delegate. For more information, see [Handling and Raising Events](~/add/includes/ajax-current-ext-md.md).       The OnCollectionChanged method also allows derived classes to handle the event without attaching a delegate. This is the preferred technique for handling the event in a derived class."
+  summary: "Kiváltja a <xref href=&quot;System.Windows.Forms.BindingContext.CollectionChanged&quot;> </xref> esemény."
+  remarks: "Az eseménykezelő keresztül egy delegált esemény indítása hív meg. További információkért lásd: [kezelésére és események kiváltása](~/add/includes/ajax-current-ext-md.md).       A OnCollectionChanged módszert is lehetővé teszi az események kezelésére anélkül egy delegált származtatott osztályok. Ez az ajánlott módszere az esemény egy származtatott osztályban kezelésére."
   syntax:
     content: protected virtual void OnCollectionChanged (System.ComponentModel.CollectionChangeEventArgs ccevent);
     parameters:
     - id: ccevent
       type: System.ComponentModel.CollectionChangeEventArgs
-      description: "A <xref href=&quot;System.ComponentModel.CollectionChangeEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.ComponentModel.CollectionChangeEventArgs&quot;> </xref> , amely tartalmazza az eseményadatok."
   overload: System.Windows.Forms.BindingContext.OnCollectionChanged*
   exceptions: []
   platform:
@@ -372,13 +372,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Deletes the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with the specified data source."
+  summary: "Törli a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> a megadott adatforrás társított."
   syntax:
     content: protected void Remove (object dataSource);
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The data source associated with the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> to remove."
+      description: "Az adatforráshoz társított a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> eltávolítása."
   overload: System.Windows.Forms.BindingContext.Remove*
   exceptions: []
   platform:
@@ -395,13 +395,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Removes the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> associated with the specified data source."
+  summary: "Eltávolítja a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> a megadott adatforrás társított."
   syntax:
     content: protected virtual void RemoveCore (object dataSource);
     parameters:
     - id: dataSource
       type: System.Object
-      description: "The data source associated with the <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;></xref> to remove."
+      description: "Az adatforráshoz társított a <xref href=&quot;System.Windows.Forms.BindingManagerBase&quot;> </xref> eltávolítása."
   overload: System.Windows.Forms.BindingContext.RemoveCore*
   exceptions: []
   platform:
@@ -419,7 +419,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Copies the elements of the collection into a specified array, starting at the collection index."
+  summary: "A gyűjtemény elemeinek másolja a gyűjtemény indextől kezdődő, egy meghatározott tömbbe."
   remarks: ''
   example:
   - >-
@@ -431,10 +431,10 @@ items:
     parameters:
     - id: ar
       type: System.Array
-      description: "An <xref:System.Array> to copy into."
+      description: "Egy <xref:System.Array>másolja.</xref:System.Array>"
     - id: index
       type: System.Int32
-      description: "The collection index to begin copying from."
+      description: "A gyűjtemény indexe másolását megkezdéséhez."
   overload: System.Windows.Forms.BindingContext.System#Collections#ICollection#CopyTo*
   exceptions: []
   platform:
@@ -452,7 +452,7 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets the total number of <xref href=&quot;System.Windows.Forms.CurrencyManager&quot;></xref> objects managed by the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref>."
+  summary: "Lekérdezi a teljes száma <xref href=&quot;System.Windows.Forms.CurrencyManager&quot;> </xref> által felügyelt objektumok a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref>."
   remarks: ''
   example:
   - "The following code example returns the number of <xref:System.Windows.Forms.CurrencyManager> objects managed by the <xref:System.Windows.Forms.BindingContext>.  \n  \n [!code-vb[Classic BindingContext.ICollection.Count Example#1](~/add/codesnippet/visualbasic/24e4ccaa-040d-4b41-b443-_1.vb)]\n [!code-cpp[Classic BindingContext.ICollection.Count Example#1](~/add/codesnippet/cpp/24e4ccaa-040d-4b41-b443-_1.cpp)]\n [!code-cs[Classic BindingContext.ICollection.Count Example#1](~/add/codesnippet/csharp/24e4ccaa-040d-4b41-b443-_1.cs)]"
@@ -460,7 +460,7 @@ items:
     content: int System.Collections.ICollection.Count { get; }
     return:
       type: System.Int32
-      description: "The number of data sources managed by the <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref>."
+      description: "Kezeli az adatforrások száma a <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.System#Collections#ICollection#Count*
   exceptions: []
   platform:
@@ -478,13 +478,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets a value indicating whether the collection is synchronized."
-  remarks: "This property is derived from <xref:System.Collections.ICollection>, and is overridden to always return `false`."
+  summary: "Lekérdezi egy érték, amely jelzi, hogy a gyűjtemény szinkronizálva van-e."
+  remarks: "Ez a tulajdonság be van-e származtatva <xref:System.Collections.ICollection>, és mindig vissza felülbírálja `false`.</xref:System.Collections.ICollection>"
   syntax:
     content: bool System.Collections.ICollection.IsSynchronized { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the collection is thread safe; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a gyűjtemény többszálú futtatásra; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.System#Collections#ICollection#IsSynchronized*
   exceptions: []
   platform:
@@ -502,12 +502,12 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets an object to use for synchronization (thread safety)."
+  summary: "Lekérdezi a használandó szinkronizálási (szál biztonsági) objektum."
   syntax:
     content: object System.Collections.ICollection.SyncRoot { get; }
     return:
       type: System.Object
-      description: "This property is derived from <xref:System.Collections.ICollection>, and is overridden to always return <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Ez a tulajdonság be van-e származtatva <xref:System.Collections.ICollection>, és mindig vissza felülbírálja <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Collections.ICollection>"
   overload: System.Windows.Forms.BindingContext.System#Collections#ICollection#SyncRoot*
   exceptions: []
   platform:
@@ -525,8 +525,8 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets an enumerator for the collection."
-  remarks: "The <xref:System.Collections.IEnumerator> returned by the IEnumerable.GetEnumerator method allows you to iterate over the collection managed by the <xref:System.Windows.Forms.BindingContext>."
+  summary: "Lekérdezi számbavevő a gyűjtemény."
+  remarks: "<xref:System.Collections.IEnumerator>A módszer lehetővé teszi a <xref:System.Windows.Forms.BindingContext>.</xref:System.Windows.Forms.BindingContext> kezeli a gyűjtemény elemeinek vizsgálatához IEnumerable.GetEnumerator metódust által visszaadott</xref:System.Collections.IEnumerator>"
   example:
   - "The following code example uses the IEnumerable.GetEnumerator method to return an <xref:System.Collections.IEnumerator> for the <xref:System.Windows.Forms.BindingContext>.  \n  \n [!code-cs[Classic BindingContext.IEnumerable.GetEnumerator Example#1](~/add/codesnippet/csharp/dec1c1ce-5dab-481d-86dd-_1.cs)]\n [!code-cpp[Classic BindingContext.IEnumerable.GetEnumerator Example#1](~/add/codesnippet/cpp/dec1c1ce-5dab-481d-86dd-_1.cpp)]\n [!code-vb[Classic BindingContext.IEnumerable.GetEnumerator Example#1](~/add/codesnippet/visualbasic/dec1c1ce-5dab-481d-86dd-_1.vb)]"
   syntax:
@@ -534,7 +534,7 @@ items:
     parameters: []
     return:
       type: System.Collections.IEnumerator
-      description: "An <xref:System.Collections.IEnumerator> for the collection."
+      description: "Egy <xref:System.Collections.IEnumerator>ahhoz a gyűjteményhez.</xref:System.Collections.IEnumerator>"
   overload: System.Windows.Forms.BindingContext.System#Collections#IEnumerable#GetEnumerator*
   exceptions: []
   platform:
@@ -551,17 +551,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Associates a <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> with a new <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref>."
-  remarks: "This method is intended update the bindings of components that implement <xref:System.Windows.Forms.IBindableComponent>, when their <xref:System.Windows.Forms.BindingContext> changes."
+  summary: "Társítja a <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> egy új <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref>."
+  remarks: "Ez a módszer olyan megvalósító összetevőket kötések frissítése <xref:System.Windows.Forms.IBindableComponent>, amikor azok <xref:System.Windows.Forms.BindingContext>módosításokat.</xref:System.Windows.Forms.BindingContext> </xref:System.Windows.Forms.IBindableComponent>"
   syntax:
     content: public static void UpdateBinding (System.Windows.Forms.BindingContext newBindingContext, System.Windows.Forms.Binding binding);
     parameters:
     - id: newBindingContext
       type: System.Windows.Forms.BindingContext
-      description: "The new <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref> to associate with the <xref href=&quot;System.Windows.Forms.Binding&quot;></xref>."
+      description: "Az új <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref> társítja a <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref>."
     - id: binding
       type: System.Windows.Forms.Binding
-      description: "The <xref href=&quot;System.Windows.Forms.Binding&quot;></xref> to associate with the new <xref href=&quot;System.Windows.Forms.BindingContext&quot;></xref>."
+      description: "A <xref href=&quot;System.Windows.Forms.Binding&quot;> </xref> hozzárendelni az új <xref href=&quot;System.Windows.Forms.BindingContext&quot;> </xref>."
   overload: System.Windows.Forms.BindingContext.UpdateBinding*
   exceptions: []
   platform:
