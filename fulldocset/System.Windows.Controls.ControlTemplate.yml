@@ -14,8 +14,8 @@ items:
   nameWithType: ControlTemplate
   fullName: System.Windows.Controls.ControlTemplate
   type: Class
-  summary: "Specifies the visual structure and behavioral aspects of a <xref href=&quot;System.Windows.Controls.Control&quot;></xref> that can be shared across multiple instances of the control."
-  remarks: "The ControlTemplate allows you to specify the visual structure of a control. The control author can define the default ControlTemplate and the application author can override the ControlTemplate to reconstruct the visual structure of the control.       Control templating is one of the many features offered by the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] styling and templating model. The styling and templating model provides you with such great flexibility that in many cases you do not need to write your own controls. If you are an application author that wants to change the visualization of your control or to replace the ControlTemplate of an existing control, see the [Styling and Templating](~/add/includes/ajax-current-ext-md.md) topic for examples and an in-depth discussion.       If you are writing your own control, see &quot;Create a Custom Control&quot; in the [Control Authoring Overview](~/add/includes/ajax-current-ext-md.md).       A ControlTemplate is intended to be a self-contained unit of implementation detail that is invisible to outside users and objects, including styles. The only way to manipulate the content of the control template is from within the same control template.      <a name=&quot;xamlObjectElementUsage_VisualTree&quot;></a>    ## XAML Property Element Usage      ```   <ControlTemplate>     <VisualTreeRootNode > VisualTreeNodeContents     </VisualTreeRootNode >   </ControlTemplate>   ```      <a name=&quot;xamlValues_VisualTree&quot;></a>    ## XAML Values    *ControlTemplate*    Object element for ControlTemplate or a derived class.       *VisualTreeRootNode*    A single [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] element as the immediate child of the ControlTemplate (or a derived class). Templates must have a single root node. In order to generate a useful template, the element chosen as *VisualTreeRootNode* is expected to support a content model of its own, often a model that supports multiple child elements.       *VisualTreeNodeContents*    One or more elements that complete the intended template. If the element chosen as *VisualTreeRootNode* only supports a single child, then there can only be one element declared as *VisualTreeNodeContents*. It is also possible (though uncommon) to provide text content if the chosen *VisualTreeRootNode* supports a text content property."
+  summary: "Visual struktúra és viselkedési aspektusait adja meg a <xref href=&quot;System.Windows.Controls.Control&quot;> </xref> , hogy a vezérlő több példánya között megoszthatók."
+  remarks: "A ControlTemplate lehetővé teszi egy vezérlő visual szerkezete megadását. A vezérlő Szerző határozhatja meg az alapértelmezett ControlTemplate, valamint az alkalmazás szerzőjéhez lehet felülbírálni a ControlTemplate vezérlő visual szerkezete helyreállítására.       Vezérlő templating egyike által kínált számos szolgáltatásokat a [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] stíluselemekkel és templating modell. A stíluselemekkel és templating modellt biztosít ilyen nagyfokú rugalmasságot hogy sok esetben nem kell saját vezérlők írni. Ha-e az alkalmazás szerzője, amely szeretné módosítani a képi megjelenítés a vezérlő, vagy cserélje le a ControlTemplate egy meglévő vezérlő, tekintse meg a [Stíluselemekkel és Templating](~/add/includes/ajax-current-ext-md.md) és részletes példákat a témakör.       Ha saját vezérlőt, lásd: &quot;Hozzon létre egy egyéni vezérlő&quot; a a [szerzői – áttekintés](~/add/includes/ajax-current-ext-md.md).       A ControlTemplate kívüli felhasználók és az objektumok, köztük a stílusok láthatatlan megvalósítási részletességi önálló egysége van használhatók. Csak a vezérlősablon tartalmának módosítására, a vezérlő ugyanabban a sablonban.      <a name=&quot;xamlObjectElementUsage_VisualTree&quot;></a>## XAML tulajdonság elemek használata ```   <ControlTemplate>     <VisualTreeRootNode > VisualTreeNodeContents     </VisualTreeRootNode >   </ControlTemplate>   ``` <a name=&quot;xamlValues_VisualTree&quot;> </a> ## XAML értékek *ControlTemplate* ControlTemplate vagy egy származtatott osztálynak objektum eleme.             *VisualTreeRootNode* egyetlen [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] elem ControlTemplate (vagy egy származtatott osztálynak) közvetlen gyermekeként. Sablonok egyetlen gyökércsomóponton kell rendelkeznie. Hasznos sablont, mint a kiválasztott elem generálásához *VisualTreeRootNode* várhatóan gyakran támogatja a tartalommodell saját, a modell, amely támogatja a több alárendelt elemei.       *VisualTreeNodeContents* egy vagy több olyan elemeken, végezze el a kívánt sablont. Ha a választott elem *VisualTreeRootNode* támogat egyetlen gyermeket, majd ott is csak egy elem deklarálható *VisualTreeNodeContents*. Lehetőség arra is (bár a ritka) szöveges tartalom gombra, ha a választott *VisualTreeRootNode* támogatja a szöveges tartalom tulajdonságot."
   example:
   - "The following shows a <xref:System.Windows.Controls.Button> <xref:System.Windows.Style> that sets the ControlTemplate of a <xref:System.Windows.Controls.Button>:  \n  \n [!code-xml[StylingIntroSample_snip#ButtonCT](~/add/codesnippet/xaml/t-system.windows.control_3_1.xaml)]  \n  \n When this gets applied, the <xref:System.Windows.Controls.Button> appears as an <xref:System.Windows.Shapes.Ellipse>:  \n  \n ![Button ControlTemplate sample](~/add/media/stylingintro-buttoncontroltemplate.png \"Button ControlTemplate sample\")  \n  \n When you set the <xref:System.Windows.Controls.Control.Template%2A> property of a <xref:System.Windows.Controls.Control> to a new ControlTemplate as in the above example, you are replacing the entire template. What the <xref:System.Windows.Controls.Button> looks like when it is in focus or pressed is all part of the default appearance of the button that you are replacing. Therefore, depending on your needs, you may want to put in your definition what your button should look like when it is pressed, and so on, as in the following example:  \n  \n [!code-xml[ControlTemplateExamples#1](~/add/codesnippet/xaml/controltemplateexamples/resources/button.xaml#1)]  \n  \n Note that this example references resources that are not shown here. For the complete sample, see [Styling with ControlTemplates Sample](http://go.microsoft.com/fwlink/?LinkID=160041). That sample provides examples of control templates for many controls and is the best way for you to get started with creating control templates."
   syntax:
@@ -62,7 +62,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Controls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> osztály."
   syntax:
     content: public ControlTemplate ();
     parameters: []
@@ -82,13 +82,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Controls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> class with the specified target type."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> osztály megadott típusa."
   syntax:
     content: public ControlTemplate (Type targetType);
     parameters:
     - id: targetType
       type: System.Type
-      description: "The type this template is intended for."
+      description: "Ez a sablon az célja, hogy a típus."
   overload: System.Windows.Controls.ControlTemplate.#ctor*
   exceptions: []
   platform:
@@ -105,23 +105,23 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Controls
-  summary: "Gets or sets the type for which this <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> is intended."
-  remarks: "If you have a standalone <xref:System.Windows.Controls.ControlTemplate> in the resources section with the TargetType property set to a type, the <xref:System.Windows.Controls.ControlTemplate> does not get applied to that type automatically. Instead, you need to specify an `x:Key` and apply the template explicitly.       Also note that the TargetType property is required on a <xref:System.Windows.Controls.ControlTemplate> if the template definition contains a <xref:System.Windows.Controls.ContentPresenter>.      <a name=&quot;xamlAttributeUsage_TargetType&quot;></a>    ## XAML Attribute Usage      ```   <object  TargetType=&quot;typeName&quot;/>   ```      <a name=&quot;xamlValues_TargetType&quot;></a>    ## XAML Values    *typeName*    The type name of the class. To refer to the <xref:System.Type> name of the class, use the [Markup Extensions and WPF XAML](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Lekérdezi vagy beállítja a típusát, amelyekre a megadott <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> készült."
+  remarks: "Ha egy önálló <xref:System.Windows.Controls.ControlTemplate>, egy típust a TargetType tulajdonsága erőforrások szakaszában a <xref:System.Windows.Controls.ControlTemplate>nem get típusú automatikusan alkalmazza.</xref:System.Windows.Controls.ControlTemplate> </xref:System.Windows.Controls.ControlTemplate> Ehelyett meg kell adnia egy `x:Key` és explicit módon alkalmazza a sablont.       Vegye figyelembe azt is, hogy a TargetType tulajdonság szükséges egy, <xref:System.Windows.Controls.ControlTemplate>Ha a sablon definíciójában <xref:System.Windows.Controls.ContentPresenter>.</xref:System.Windows.Controls.ContentPresenter> </xref:System.Windows.Controls.ControlTemplate>      <a name=&quot;xamlAttributeUsage_TargetType&quot;></a>## XAML attribútumok használata ```   <object  TargetType=&quot;typeName&quot;/>   ``` <a name=&quot;xamlValues_TargetType&quot;> </a> ## XAML értékek *typeName* az osztály nevét.       Lehet hivatkozni a <xref:System.Type>név az osztály, használja a [Kódkiterjesztés és WPF XAML](~/add/includes/ajax-current-ext-md.md).</xref:System.Type>"
   example:
   - "The following example demonstrates the use of this property:  \n  \n [!code-xml[ControlTemplateExamples#Label](~/add/codesnippet/xaml/controltemplateexamples/resources/label.xaml#label)]  \n  \n The above example uses the following resource:  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n For the complete sample, see [Styling with ControlTemplates Sample](http://go.microsoft.com/fwlink/?LinkID=160041)."
   syntax:
     content: public Type TargetType { get; set; }
     return:
       type: System.Type
-      description: "The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Controls.ControlTemplate.TargetType*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The TargetType property must not be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the definition of the template has a <xref href=&quot;System.Windows.Controls.ContentPresenter&quot;></xref>."
+    description: "A TargetType tulajdonsága nem lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> a sablon definíciója-e egy <xref href=&quot;System.Windows.Controls.ContentPresenter&quot;> </xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The specified types are not valid. The TargetType of a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> must be or inherit from a <xref href=&quot;System.Windows.Controls.Control&quot;></xref>, a <xref href=&quot;System.Windows.Controls.Page&quot;></xref>, or a <xref href=&quot;System.Windows.Navigation.PageFunctionBase&quot;></xref>."
+    description: "A megadott típusok nem érvényesek. A TargetType a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> kell lenniük, vagy örökli a <xref href=&quot;System.Windows.Controls.Control&quot;> </xref>, egy <xref href=&quot;System.Windows.Controls.Page&quot;> </xref>, vagy egy <xref href=&quot;System.Windows.Navigation.PageFunctionBase&quot;> </xref>."
   platform:
   - net462
 - uid: System.Windows.Controls.ControlTemplate.Triggers
@@ -136,15 +136,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Controls
-  summary: "Gets a collection of <xref href=&quot;System.Windows.TriggerBase&quot;></xref> objects that apply property changes or perform actions based on specified conditions."
-  remarks: "<a name=&quot;xamlPropertyElementUsage_Triggers&quot;></a>    ## XAML Property Element Usage      ```   <object>     <object.Triggers>       oneOrMoreTriggers     </object.Triggers>   </object>   ```      <a name=&quot;xamlValues_Triggers&quot;></a>    ## XAML Values    *oneOrMoreTriggers*    One or more <xref:System.Windows.TriggerBase> objects (usually these are a <xref:System.Windows.Trigger>)."
+  summary: "Lekérdezi a gyűjteménye <xref href=&quot;System.Windows.TriggerBase&quot;> </xref> tulajdonság módosítások alkalmazásához vagy a alapuló intézkedések objektumok meghatározott körülmények között."
+  remarks: "<a name=&quot;xamlPropertyElementUsage_Triggers&quot;></a>## XAML tulajdonság elemek használata ```   <object>     <object.Triggers>       oneOrMoreTriggers     </object.Triggers>   </object>   ``` <a name=&quot;xamlValues_Triggers&quot;> </a> ## XAML értékek *oneOrMoreTriggers* egy vagy több <xref:System.Windows.TriggerBase>objektumok (ezek általában a <xref:System.Windows.Trigger>).</xref:System.Windows.Trigger> </xref:System.Windows.TriggerBase>      "
   example:
   - "The following example demonstrates the use of this property:  \n  \n [!code-xml[ControlTemplateExamples#ToolTip](~/add/codesnippet/xaml/controltemplateexamples/resources/tooltip.xaml#tooltip)]  \n  \n The above example uses the following resources:  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n For the complete sample, see [Styling with ControlTemplates Sample](http://go.microsoft.com/fwlink/?LinkID=160041)."
   syntax:
     content: public System.Windows.TriggerCollection Triggers { get; }
     return:
       type: System.Windows.TriggerCollection
-      description: "A collection of <xref href=&quot;System.Windows.TriggerBase&quot;></xref> objects. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "A gyűjtemény <xref href=&quot;System.Windows.TriggerBase&quot;> </xref> objektumok. Az alapértelmezett érték <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Controls.ControlTemplate.Triggers*
   exceptions: []
   platform:
@@ -161,14 +161,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Controls
-  summary: "Checks the templated parent against a set of rules."
-  remarks: "The method uses the following rules:       1. The `templatedParent` cannot be of type <xref:System.Windows.FrameworkContentElement>.       2. The `templatedParent` cannot be of type <xref:System.Windows.FrameworkElement> that is not a <xref:System.Windows.Controls.Control>.       3. The `templatedParent` cannot be a <xref:System.Windows.Controls.Control> that is not associated with the <xref:System.Windows.Controls.ControlTemplate>."
+  summary: "Ellenőrzi a sablonalapú szülő meghatározott szabályok alapján."
+  remarks: "A metódusnak a következő szabályokat: 1. A `templatedParent` <xref:System.Windows.FrameworkContentElement>.</xref:System.Windows.FrameworkContentElement> típusa nem lehet       2. A `templatedParent` nem lehet típus <xref:System.Windows.FrameworkElement>, amely nem egy <xref:System.Windows.Controls.Control>.</xref:System.Windows.Controls.Control> </xref:System.Windows.FrameworkElement>       3. A `templatedParent` nem lehet egy <xref:System.Windows.Controls.Control>nem társított a <xref:System.Windows.Controls.ControlTemplate>.</xref:System.Windows.Controls.ControlTemplate> </xref:System.Windows.Controls.Control>"
   syntax:
     content: protected override void ValidateTemplatedParent (System.Windows.FrameworkElement templatedParent);
     parameters:
     - id: templatedParent
       type: System.Windows.FrameworkElement
-      description: "The element this template is applied to."
+      description: "Az elem a sablont alkalmaz."
   overload: System.Windows.Controls.ControlTemplate.ValidateTemplatedParent*
   exceptions:
   - type: System.ArgumentNullException
@@ -176,7 +176,7 @@ items:
     description: "The <code>templatedParent</code> must not be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "You must associate the <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> with a <xref href=&quot;System.Windows.Controls.Control&quot;></xref> by setting the &lt;xref:System.Windows.Controls.Control.Template%2A?displayProperty=fullName&gt; property before using the <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;></xref> on the <xref href=&quot;System.Windows.Controls.Control&quot;></xref>."
+    description: "Társítania kell a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> rendelkező egy <xref href=&quot;System.Windows.Controls.Control&quot;> </xref> úgy, hogy a &lt;xref:System.Windows.Controls.Control.Template%2A?displayProperty=fullName&gt; tulajdonság használata előtt a <xref href=&quot;System.Windows.Controls.ControlTemplate&quot;> </xref> a a <xref href=&quot;System.Windows.Controls.Control&quot;> </xref>."
   platform:
   - net462
 references:
