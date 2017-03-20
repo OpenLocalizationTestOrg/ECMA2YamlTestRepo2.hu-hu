@@ -13,8 +13,8 @@ items:
   nameWithType: IDbTransaction
   fullName: System.Data.IDbTransaction
   type: Interface
-  summary: "Represents a transaction to be performed at a data source, and is implemented by .NET Framework data providers that access relational databases."
-  remarks: "The IDbTransaction interface allows an inheriting class to implement a Transaction class, which represents the transaction to be performed at a data source. For more information about Transaction classes, see [Transactions and Concurrency](~/add/includes/ajax-current-ext-md.md).       An application does not create an instance of the IDbTransaction interface directly, but creates an instance of a class that inherits IDbTransaction.       Classes that inherit IDbTransaction must implement the inherited members, and typically define additional members to add provider-specific functionality. For example, the IDbTransaction interface defines the <xref:System.Data.IDbTransaction.Commit%2A> method. In turn, the <xref:System.Data.OleDb.OleDbTransaction> class inherits this property, and also defines the <xref:System.Data.OleDb.OleDbTransaction.Begin%2A> method."
+  summary: "Egy adatforrásban végrehajtandó tranzakció jelöli, és hozzáférni a relációs adatbázisok .NET-keretrendszer adatszolgáltatók által megvalósított."
+  remarks: "A IDbTransaction felület lehetővé teszi, hogy egy öröklő osztály egy tranzakció osztályt, amely jelöli az adatforrást kell végezni a tranzakció végrehajtásához. Tranzakció osztályokkal kapcsolatos további információkért lásd: [tranzakciók és feldolgozási](~/add/includes/ajax-current-ext-md.md).       Az alkalmazás nem hozható létre példánya a IDbTransaction felület közvetlenül, de az IDbTransaction osztály példányát.       IDbTransaction öröklő osztály kell valósítja meg az örökölt tagok, és általában a szolgáltatói funkciókkal további tagokat definiálja. Például a IDbTransaction felület meghatározása a <xref:System.Data.IDbTransaction.Commit%2A>metódus.</xref:System.Data.IDbTransaction.Commit%2A> Viszont a <xref:System.Data.OleDb.OleDbTransaction>osztály örökli ezt a tulajdonságot, és is definiálja a <xref:System.Data.OleDb.OleDbTransaction.Begin%2A>metódus.</xref:System.Data.OleDb.OleDbTransaction.Begin%2A> </xref:System.Data.OleDb.OleDbTransaction>"
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/t-system.data.idbtransac_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/t-system.data.idbtransac_1.vb)]"
   syntax:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Commits the database transaction."
+  summary: "Az adatbázis-tranzakció érvényesítése."
   remarks: ''
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and a <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/m-system.data.idbtransac_0_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/m-system.data.idbtransac_0_1.vb)]"
@@ -46,10 +46,10 @@ items:
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An error occurred while trying to commit the transaction."
+    description: "Hiba történt a tranzakció véglegesítése közben."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction has already been committed or rolled back.       -or-       The connection is broken."
+    description: "A tranzakció már véglegesítés vagy visszaállítás.       – vagy – a kapcsolat megszakad."
   platform:
   - net462
 - uid: System.Data.IDbTransaction.Connection
@@ -64,13 +64,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Specifies the Connection object to associate with the transaction."
-  remarks: "A single application may have multiple database connections, each with zero or more transactions. This property enables you to determine the connection object associated with a particular transaction."
+  summary: "A kapcsolati objektumot a tranzakció társítani adja meg."
+  remarks: "Egyetlen alkalmazás rendelkezhet több adatbázis-kapcsolatok az nulla vagy több tranzakció. Ez a tulajdonság határozza meg egy adott tranzakcióhoz tartozó kapcsolati objektum teszi lehetővé."
   syntax:
     content: public System.Data.IDbConnection Connection { get; }
     return:
       type: System.Data.IDbConnection
-      description: "The Connection object to associate with the transaction."
+      description: "A kapcsolati objektum a tranzakció társítja."
   overload: System.Data.IDbTransaction.Connection*
   exceptions: []
   platform:
@@ -87,13 +87,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Specifies the <xref href=&quot;System.Data.IsolationLevel&quot;></xref> for this transaction."
-  remarks: "Parallel transactions are not supported. Therefore, the <xref:System.Data.IsolationLevel> applies to the entire transaction."
+  summary: "Megadja a <xref href=&quot;System.Data.IsolationLevel&quot;> </xref> ebben a tranzakcióban."
+  remarks: "A párhuzamos tranzakciók nem támogatottak. Ezért a <xref:System.Data.IsolationLevel>a teljes tranzakció vonatkozik.</xref:System.Data.IsolationLevel>"
   syntax:
     content: public System.Data.IsolationLevel IsolationLevel { get; }
     return:
       type: System.Data.IsolationLevel
-      description: "The <xref href=&quot;System.Data.IsolationLevel&quot;></xref> for this transaction. The default is <xref uid=&quot;langword_csharp_ReadCommitted&quot; name=&quot;ReadCommitted&quot; href=&quot;&quot;></xref>."
+      description: "A <xref href=&quot;System.Data.IsolationLevel&quot;> </xref> ebben a tranzakcióban. Az alapértelmezett érték <xref uid=&quot;langword_csharp_ReadCommitted&quot; name=&quot;ReadCommitted&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.IDbTransaction.IsolationLevel*
   exceptions: []
   platform:
@@ -110,8 +110,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data
-  summary: "Rolls back a transaction from a pending state."
-  remarks: "The transaction can only be rolled back from a pending state (after <xref:System.Data.IDbConnection.BeginTransaction%2A> has been called, but before <xref:System.Data.IDbTransaction.Commit%2A> is called)."
+  summary: "Visszaállítja a tranzakció egy függőben lévő állapot."
+  remarks: "A tranzakció is csak állítható vissza egy függőben lévő állapot (után <xref:System.Data.IDbConnection.BeginTransaction%2A>hívása történt, de előtte <xref:System.Data.IDbTransaction.Commit%2A>nevezik).</xref:System.Data.IDbTransaction.Commit%2A> </xref:System.Data.IDbConnection.BeginTransaction%2A>"
   example:
   - "The following example creates instances of the derived classes, <xref:System.Data.SqlClient.SqlConnection> and a <xref:System.Data.SqlClient.SqlTransaction>. It also demonstrates how to use the <xref:System.Data.SqlClient.SqlConnection.BeginTransaction%2A>, <xref:System.Data.SqlClient.SqlTransaction.Commit%2A>, and <xref:System.Data.SqlClient.SqlTransaction.Rollback%2A> methods.  \n  \n [!code-cs[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/csharp/m-system.data.idbtransac_1_1.cs)]\n [!code-vb[Classic WebData SqlConnection.BeginTransaction Example#1](~/add/codesnippet/visualbasic/m-system.data.idbtransac_1_1.vb)]"
   syntax:
@@ -121,10 +121,10 @@ items:
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "An error occurred while trying to commit the transaction."
+    description: "Hiba történt a tranzakció véglegesítése közben."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The transaction has already been committed or rolled back.       -or-       The connection is broken."
+    description: "A tranzakció már véglegesítés vagy visszaállítás.       – vagy – a kapcsolat megszakad."
   platform:
   - net462
 references:
