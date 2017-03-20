@@ -13,8 +13,8 @@ items:
   nameWithType: SqlContext
   fullName: Microsoft.SqlServer.Server.SqlContext
   type: Class
-  summary: "Represents an abstraction of the caller&quot;s context, which provides access to the <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;></xref>, <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;></xref>, and <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> objects. This class cannot be inherited."
-  remarks: "The SqlContext object can be used to obtain the trigger context (for code executing in a trigger) and the pipe object (when available, such as in stored procedures). It can also be used to obtain a <xref:System.Security.Principal.WindowsIdentity> object that represents the Microsoft Windows identity of the calling client, if the client authenticated with the server using integrated authentication."
+  summary: "A hívó a környezetben, amely hozzáférést biztosít absztrakciós jelöli a <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;> </xref>, <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;> </xref>, és <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> objektumok. Ez az osztály nem örökölhető."
+  remarks: "Az SqlContext objektum segítségével az eseményindító környezetben (az eseményindító kód) és a pipe-objektum (ha elérhető, a tárolt eljárások többek között). Az beszerzése is használható egy <xref:System.Security.Principal.WindowsIdentity>objektum, amely a hívó ügyfél Microsoft Windows identitásának jelöli, ha az ügyfél hitelesítése a kiszolgálóra történő a beépített hitelesítés.</xref:System.Security.Principal.WindowsIdentity>"
   example:
   - "The following example creates a new <xref:Microsoft.SqlServer.Server.SqlDataRecord> and its <xref:Microsoft.SqlServer.Server.SqlMetaData>. The example then marks the beginning of a result set using the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsStart%2A> method, sends records with example data back to the client using the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsRow%2A> method, and marks the end of the result set with the <xref:Microsoft.SqlServer.Server.SqlPipe.SendResultsEnd%2A> method.  \n  \n [!code-vb[DataWorks SqlPipe.SendResultsRow#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_11_1.vb)]\n [!code-cs[DataWorks SqlPipe.SendResultsRow#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_11_1.cs)]"
   syntax:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Specifies whether the calling code is running within SQL Server, and if the context connection can be accessed."
-  remarks: "If this property returns false, all the other <xref:Microsoft.SqlServer.Server.SqlContext> members throw an <xref:System.InvalidOperationException> if used.       If this property returns false, any attempt to open a connection object that has &quot;context connection=true&quot; in the connection string fails.       This property is read-only.       When using ADO.NET for data-access, if a piece of code may run both inside SQL Server (using common language runtime integration) and outside SQL Server, this property can be used to check whether the context connection is available."
+  summary: "Meghatározza, hogy a hívó kód SQL-kiszolgálón belül fut, és ha a környezeti kapcsolat érhetők el."
+  remarks: "Ha ez a tulajdonság hamis, minden más <xref:Microsoft.SqlServer.Server.SqlContext>tagok throw egy <xref:System.InvalidOperationException>használatakor.</xref:System.InvalidOperationException> </xref:Microsoft.SqlServer.Server.SqlContext>       Ez a tulajdonság hamis értéket ad vissza, ha bármelyik próbálni megnyitni, amely rendelkezik egy olyan kapcsolatobjektum &quot;környezeti kapcsolat = true&quot; a kapcsolódási karakterláncban nem sikerül.       Ez a tulajdonság csak olvasható.       Használja az ADO.NET adatelérési, ha olyan kódrészletek, előfordulhat, hogy az SQL Server (használatával a közös nyelvi futtatókörnyezet integrációját) belüli és kívüli SQL Server működik, ha ez a tulajdonság segítségével ellenőrizze, hogy rendelkezésre áll-e a környezeti kapcsolaton."
   syntax:
     content: public static bool IsAvailable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if the context connection is available and the other <xref href=&quot;Microsoft.SqlServer.Server.SqlContext&quot;></xref> members can be accessed."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Ha a környezeti kapcsolat érhető el, a másik <xref href=&quot;Microsoft.SqlServer.Server.SqlContext&quot;> </xref> tagok érhetők el."
   overload: Microsoft.SqlServer.Server.SqlContext.IsAvailable*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the pipe object that allows the caller to send result sets, messages, and the results of executing commands back to the client."
-  remarks: "If invoked from outside SQL Server, a <xref:System.NotSupportedException> is thrown.       This property is read-only."
+  summary: "A cső objektum, amely lehetővé teszi, hogy a hívó eredményhalmazt, üzenetek, valamint az ügyfél parancsok végrehajtása az eredmények lekérése."
+  remarks: "Ha külső SQL Server rendszerből elindított egy <xref:System.NotSupportedException>vált ki.</xref:System.NotSupportedException>       Ez a tulajdonság csak olvasható."
   syntax:
     content: public static Microsoft.SqlServer.Server.SqlPipe Pipe { get; }
     return:
       type: Microsoft.SqlServer.Server.SqlPipe
-      description: "An instance of <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;></xref> if a pipe is available, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if called in a context where pipe is not available (for example, in a user-defined function)."
+      description: "Példányának <xref href=&quot;Microsoft.SqlServer.Server.SqlPipe&quot;> </xref> , ha a cső, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> hívása olyan környezetben, ahol az adatcsatorna nem érhető el (például a felhasználó által definiált függvény)."
   overload: Microsoft.SqlServer.Server.SqlContext.Pipe*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Gets the trigger context used to provide the caller with information about what caused the trigger to fire, and a map of the columns that were updated."
-  remarks: "The <xref:Microsoft.SqlServer.Server.SqlTriggerContext> object can only be retrieved from within a common language runtime trigger.       If the TriggerContext property is accessed from outside of SQL Server, a <xref:System.NotSupportedException> is thrown.       This property is read-only."
+  summary: "Lekérdezi a hívó biztosítható az eseményindítót az érvényesítést okáról, és az oszlopok frissített térképre eseményindító keretében."
+  remarks: "A <xref:Microsoft.SqlServer.Server.SqlTriggerContext>objektum csak olvasható be a közös nyelvi futtatókörnyezet eseményindítón belül.</xref:Microsoft.SqlServer.Server.SqlTriggerContext>       Ha SQL Server kívül a TriggerContext tulajdonság elérése egy <xref:System.NotSupportedException>vált ki.</xref:System.NotSupportedException>       Ez a tulajdonság csak olvasható."
   syntax:
     content: public static Microsoft.SqlServer.Server.SqlTriggerContext TriggerContext { get; }
     return:
       type: Microsoft.SqlServer.Server.SqlTriggerContext
-      description: "An instance of <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;></xref> if a trigger context is available, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if called outside of a trigger invocation."
+      description: "Példányának <xref href=&quot;Microsoft.SqlServer.Server.SqlTriggerContext&quot;> </xref> , ha egy eseményindító környezetben, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> kívül egy eseményindító meghíváshoz hívása."
   overload: Microsoft.SqlServer.Server.SqlContext.TriggerContext*
   exceptions: []
   platform:
@@ -106,15 +106,15 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The Microsoft Windows identity of the caller."
-  remarks: "Common language runtime (CLR) code inside SQL Server is always invoked in the context of the process account. If it is necessary for the code to perform an action using calling user’s identity instead of the SQL Server process identity, then an impersonation token should be obtained through this property. After obtaining the <xref:System.Security.Principal.WindowsIdentity> object, callers can impersonate the client account and perform actions on their behalf.       If invoked from outside SQL Server, a <xref:System.NotSupportedException> is thrown.       Only assemblies marked with `EXTERNAL_ACCESS` or `UNSAFE` permissions can access this property.       This property is read-only."
+  summary: "A hívó Microsoft Windows-identitását."
+  remarks: "SQL Server közös nyelvi futtatókörnyezet (CLR) kódot mindig meghívni, a folyamat fiókja környezetében. Szükség esetén a kód egy hívó felhasználói identitás helyett az SQL Server-folyamat identitása műveletet, majd egy megszemélyesítési jogkivonat kell kapni a tulajdonságon keresztül. Miután beszerezte a <xref:System.Security.Principal.WindowsIdentity>objektum hívóknak megszemélyesíteni a fiókot, és a műveleteket a nevében.</xref:System.Security.Principal.WindowsIdentity>       Ha külső SQL Server rendszerből elindított egy <xref:System.NotSupportedException>vált ki.</xref:System.NotSupportedException>       Csak szerelvények jelölésű `EXTERNAL_ACCESS` vagy `UNSAFE` engedélyek férhetnek hozzá ehhez a tulajdonsághoz.       Ez a tulajdonság csak olvasható."
   example:
   - "The following example shows how to get the Windows identity of the calling client and impersonate the client. See \"Impersonation Sample\" in SQL Server Books Online for an example of impersonation using the WindowsIdentity property.  \n  \n [!code-cs[DataWorks SqlContext.WindowsIdentity Sample#1](~/add/codesnippet/csharp/p-microsoft.sqlserver.se_6_1.cs)]\n [!code-vb[DataWorks SqlContext.WindowsIdentity Sample#1](~/add/codesnippet/visualbasic/p-microsoft.sqlserver.se_6_1.vb)]"
   syntax:
     content: public static System.Security.Principal.WindowsIdentity WindowsIdentity { get; }
     return:
       type: System.Security.Principal.WindowsIdentity
-      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;></xref> instance representing the Windows identity of the caller, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the client was authenticated using SQL Server Authentication."
+      description: "A <xref href=&quot;System.Security.Principal.WindowsIdentity&quot;> </xref> a Windows-identitását a hívó képviselő példányt vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha az ügyfél hitelesítési SQL Server-hitelesítést használ."
   overload: Microsoft.SqlServer.Server.SqlContext.WindowsIdentity*
   exceptions: []
   platform:

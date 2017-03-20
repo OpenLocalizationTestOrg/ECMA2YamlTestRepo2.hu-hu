@@ -36,7 +36,7 @@ items:
   nameWithType: DbConnection
   fullName: System.Data.Common.DbConnection
   type: Class
-  summary: "Represents a connection to a database."
+  summary: "Egy adatbázis-kapcsolat jelöli."
   syntax:
     content: 'public abstract class DbConnection : System.ComponentModel.Component, IDisposable, System.Data.IDbConnection'
   inheritance:
@@ -75,7 +75,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Common.DbConnection&quot;></xref> class."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Data.Common.DbConnection&quot;> </xref> osztály."
   syntax:
     content: protected DbConnection ();
     parameters: []
@@ -95,17 +95,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Starts a database transaction."
-  remarks: "If you are creating your own connection type, override this method to implement the code necessary to begin a transaction."
+  summary: "Elindul az adatbázis-tranzakció."
+  remarks: "A saját kapcsolattípus létrehozásakor, bírálja felül ezt a metódust valósítja meg a tranzakció indításához szükséges kódot."
   syntax:
     content: protected abstract System.Data.Common.DbTransaction BeginDbTransaction (System.Data.IsolationLevel isolationLevel);
     parameters:
     - id: isolationLevel
       type: System.Data.IsolationLevel
-      description: "Specifies the isolation level for the transaction."
+      description: "A tranzakció elkülönítési szintjét adja meg."
     return:
       type: System.Data.Common.DbTransaction
-      description: "An object representing the new transaction."
+      description: "Az új tranzakció képviselő objektum."
   overload: System.Data.Common.DbConnection.BeginDbTransaction*
   exceptions: []
   platform:
@@ -122,14 +122,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Starts a database transaction."
-  remarks: "If you do not specify an isolation level, the default isolation level for the specific type of connection is used."
+  summary: "Elindul az adatbázis-tranzakció."
+  remarks: "Ha nem ad meg egy elkülönítési szintet, kapcsolat típusát a alapértelmezett elkülönítési szintet használja."
   syntax:
     content: public System.Data.Common.DbTransaction BeginTransaction ();
     parameters: []
     return:
       type: System.Data.Common.DbTransaction
-      description: "An object representing the new transaction."
+      description: "Az új tranzakció képviselő objektum."
   overload: System.Data.Common.DbConnection.BeginTransaction*
   exceptions: []
   platform:
@@ -146,16 +146,16 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Starts a database transaction with the specified isolation level."
+  summary: "Adatbázis-tranzakció kezdődik-e a megadott elkülönítési szint."
   syntax:
     content: public System.Data.Common.DbTransaction BeginTransaction (System.Data.IsolationLevel isolationLevel);
     parameters:
     - id: isolationLevel
       type: System.Data.IsolationLevel
-      description: "Specifies the isolation level for the transaction."
+      description: "A tranzakció elkülönítési szintjét adja meg."
     return:
       type: System.Data.Common.DbTransaction
-      description: "An object representing the new transaction."
+      description: "Az új tranzakció képviselő objektum."
   overload: System.Data.Common.DbConnection.BeginTransaction*
   exceptions: []
   platform:
@@ -172,14 +172,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Changes the current database for an open connection."
-  remarks: "The value supplied in the `databaseName` parameter must be a valid database name for the current instance."
+  summary: "Módosítja az aktuális adatbázisban a nyitott kapcsolat."
+  remarks: "A megadott érték a `databaseName` paraméternek kell lennie az aktuális példány egy érvényes adatbázisnevet."
   syntax:
     content: public abstract void ChangeDatabase (string databaseName);
     parameters:
     - id: databaseName
       type: System.String
-      description: "Specifies the name of the database for the connection to use."
+      description: "Megadja a kapcsolat használjon, az adatbázis nevét."
   overload: System.Data.Common.DbConnection.ChangeDatabase*
   exceptions: []
   platform:
@@ -196,8 +196,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Closes the connection to the database. This is the preferred method of closing any open connection."
-  remarks: "The Close method rolls back any pending transactions. It then releases the connection to the connection pool, or closes the connection if connection pooling is disabled.       An application can call Close more than one time. No exception is generated.       If the <xref:System.Data.Common.DbConnection> goes out of scope, it is not closed. Therefore, you must explicitly close the connection by calling `Close` or `Dispose`, which are functionally equivalent. If the connection pooling value `Pooling` is set to `true` or `yes`, this also releases the physical connection.      > [!CAUTION] >  Do not call `Close` or `Dispose` on a **Connection**, a **DataReader**, or any other managed object in the `Finalize` method of your class. In a finalizer, you should only release unmanaged resources that your class owns directly. If your class does not own any unmanaged resources, do not include a `Finalize` method in your class definition. For more information, see [Garbage Collection](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Megszünteti a kapcsolatot az adatbázisba. Ez az preferált bármely nyitott kapcsolat bezárása."
+  remarks: "A Close metódus visszaállítja a folyamatban lévő tranzakciók. Majd kiadja a kapcsolatkészletbe csatlakozni, vagy bezárja a kapcsolatot, ha kapcsolatkészletezést le van tiltva.       Egy alkalmazás egyszer lehet meghívni a Close eljárást. Nincs kivétel jön létre.       Ha a <xref:System.Data.Common.DbConnection>kívüli is megnőnek hatókör, nem le van zárva.</xref:System.Data.Common.DbConnection> Ezért kifejezetten zárja be a kapcsolat meghívásával `Close` vagy `Dispose`, amelyek funkcionális szempontból egyenértékű. Ha az érték a kapcsolatkészletezést `Pooling` értékre van állítva `true` vagy `yes`, ez is kiadja a fizikai kapcsolat.      > [!CAUTION] > Ne hívja meg `Close` vagy `Dispose` a egy **kapcsolat**, egy **DataReader**, vagy bármely más felügyelt objektumot a `Finalize` az osztály. A véglegesítőt, a kiadás csak nem felügyelt erőforrást, amely a osztály birtokolja közvetlenül. Ha az osztály nem rendelkezik a nem felügyelt erőforrás nem tartalmaznak egy `Finalize` az osztálydefiníció metódust. További információkért lásd: [szemétgyűjtés](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public abstract void Close ();
     parameters: []
@@ -205,7 +205,7 @@ items:
   exceptions:
   - type: System.Data.Common.DbException
     commentId: T:System.Data.Common.DbException
-    description: "The connection-level error that occurred while opening the connection."
+    description: "A kapcsolati szintű hiba történt a kapcsolat megnyitása közben."
   platform:
   - net462
 - uid: System.Data.Common.DbConnection.ConnectionString
@@ -220,13 +220,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets or sets the string used to open the connection."
-  remarks: "The exact contents of the connection string depend on the specific data source for this connection. To determine which settings are valid, see the documentation for the specific type of connection that you are using."
+  summary: "Lekérdezi vagy beállítja a kapcsolat megnyitásához használt karakterlánc."
+  remarks: "A kapcsolati karakterlánc pontos tartalmát függ az adott adatforrás ehhez a kapcsolathoz. Annak megállapításához, hogy melyik beállítások érvényesek, Ön által használt kapcsolat típusát a dokumentációban."
   syntax:
     content: public abstract string ConnectionString { get; set; }
     return:
       type: System.String
-      description: "The connection string used to establish the initial connection. The exact contents of the connection string depend on the specific data source for this connection. The default value is an empty string."
+      description: "A kezdeti kapcsolat létrehozásához használt kapcsolati karakterlánc. A kapcsolati karakterlánc pontos tartalmát függ az adott adatforrás ehhez a kapcsolathoz. Az alapértelmezett érték: üres karakterlánc."
   overload: System.Data.Common.DbConnection.ConnectionString*
   exceptions: []
   platform:
@@ -243,12 +243,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets the time to wait while establishing a connection before terminating the attempt and generating an error."
+  summary: "Lekérdezi a rendszer mennyi ideig vár a kísérlet megszakítása és hibaüzenet előtt kapcsolatának létrehozása közben."
   syntax:
     content: public virtual int ConnectionTimeout { get; }
     return:
       type: System.Int32
-      description: "The time (in seconds) to wait for a connection to open. The default value is determined by the specific type of connection that you are using."
+      description: "Az eltelt idő (másodpercben) történő várakozás a kapcsolat megnyitásához. Az alapértelmezett érték az Ön által használt kapcsolat típusát határozza meg."
   overload: System.Data.Common.DbConnection.ConnectionTimeout*
   exceptions: []
   platform:
@@ -265,7 +265,7 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Creates and returns a <xref href=&quot;System.Data.Common.DbCommand&quot;></xref> object associated with the current connection."
+  summary: "Hoz létre, és adja vissza egy <xref href=&quot;System.Data.Common.DbCommand&quot;> </xref> objektum az aktuális kapcsolathoz rendelve."
   syntax:
     content: public System.Data.Common.DbCommand CreateCommand ();
     parameters: []
@@ -288,8 +288,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Creates and returns a <xref href=&quot;System.Data.Common.DbCommand&quot;></xref> object associated with the current connection."
-  remarks: "If you are implementing your own connection, override this method to implement the code necessary to create and return a <xref:System.Data.Common.DbCommand> object."
+  summary: "Hoz létre, és adja vissza egy <xref href=&quot;System.Data.Common.DbCommand&quot;> </xref> objektum az aktuális kapcsolathoz rendelve."
+  remarks: "Ha saját kapcsolat készül olyanokat, bírálja felül ezt a metódust valósítja meg a szükséges hozza létre a kódot egy <xref:System.Data.Common.DbCommand>objektum.</xref:System.Data.Common.DbCommand>"
   syntax:
     content: protected abstract System.Data.Common.DbCommand CreateDbCommand ();
     parameters: []
@@ -312,13 +312,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets the name of the current database after a connection is opened, or the database name specified in the connection string before the connection is opened."
-  remarks: "A connection typically updates this property dynamically when the current database changes."
+  summary: "Lekérdezi a kapcsolat megnyitása után az aktuális adatbázis nevét, vagy az adatbázis neve a kapcsolati karakterláncban megadott előtt a kapcsolat meg van nyitva."
+  remarks: "A kapcsolat általában frissíti Ez a tulajdonság dinamikusan módosítja az aktuális adatbázisban."
   syntax:
     content: public abstract string Database { get; }
     return:
       type: System.String
-      description: "The name of the current database or the name of the database to be used after a connection is opened. The default value is an empty string."
+      description: "Az aktuális adatbázisban vagy használható egy kapcsolat megnyitása után az adatbázis nevét a neve. Az alapértelmezett érték: üres karakterlánc."
   overload: System.Data.Common.DbConnection.Database*
   exceptions: []
   platform:
@@ -335,13 +335,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets the name of the database server to which to connect."
-  remarks: "If the connection to the database is closed, the DataSource returns whatever is contained in the <xref:System.Data.Common.DbConnection.ConnectionString%2A> for the `DataSource` keyword. If the connection is open and the <xref:System.Data.Common.DbConnection.ConnectionString%2A> data source keyword&quot;s value starts with &quot;&#124;`datadirectory`&#124;&quot;, the property returns whatever is contained in the <xref:System.Data.Common.DbConnection.ConnectionString%2A> for the `DataSource` keyword only. If the connection to the database is open, the property returns what the native provider returns for the `DBPROP_INIT_DATASOURCE`, and if that is empty, the native provider&quot;s `DBPROP_DATASOURCENAME` is returned."
+  summary: "Lekérdezi a nevét az adatbázis-kiszolgáló, amelyhez csatlakozni szeretne."
+  remarks: "Ha a kapcsolat az adatbázissal le van zárva, az adatforrás adja vissza, függetlenül az szerepel a <xref:System.Data.Common.DbConnection.ConnectionString%2A>a a `DataSource` kulcsszót.</xref:System.Data.Common.DbConnection.ConnectionString%2A> Ha a kapcsolat meg nyitva, és a <xref:System.Data.Common.DbConnection.ConnectionString%2A>adatok forrás kulcsszó érték kezdődik &quot;|}`datadirectory`|}&quot;, a tulajdonság adja vissza, függetlenül az szerepel a <xref:System.Data.Common.DbConnection.ConnectionString%2A>a a `DataSource` kulcsszó csak.</xref:System.Data.Common.DbConnection.ConnectionString%2A> </xref:System.Data.Common.DbConnection.ConnectionString%2A> A kapcsolat az adatbázissal meg nyitva, ha a tulajdonság adja vissza, mi a natív szolgáltató adja vissza a `DBPROP_INIT_DATASOURCE`, és ha üres, ez a natív szolgáltató `DBPROP_DATASOURCENAME` adja vissza."
   syntax:
     content: public abstract string DataSource { get; }
     return:
       type: System.String
-      description: "The name of the database server to which to connect. The default value is an empty string."
+      description: "Az adatbázis-kiszolgáló, amelyhez csatlakozni szeretne a neve. Az alapértelmezett érték: üres karakterlánc."
   overload: System.Data.Common.DbConnection.DataSource*
   exceptions: []
   platform:
@@ -363,7 +363,7 @@ items:
     content: protected virtual System.Data.Common.DbProviderFactory DbProviderFactory { get; }
     return:
       type: System.Data.Common.DbProviderFactory
-      description: "A set of methods for creating instances of a provider&quot;s implementation of the data source classes."
+      description: "Módszereket biztosít a szolgáltató általi megvalósítása forrás adatosztályok példányai készlete."
   overload: System.Data.Common.DbConnection.DbProviderFactory*
   exceptions: []
   platform:
@@ -380,14 +380,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Enlists in the specified transaction."
-  remarks: "New in ADO.NET 2.0 is support for using the `EnlistTransaction` method to enlist in a distributed transaction. Because it enlists a connection in a <xref:System.Transactions.Transaction> instance, `EnlistTransaction` takes advantage of functionality available in the <xref:System.Transactions> namespace for managing distributed transactions. Once a connection is explicitly enlisted in a transaction, it cannot be unenlisted or enlisted in another transaction until the first transaction finishes."
+  summary: "Felveszi a megadott tranzakció."
+  remarks: "Új ADO.NET 2.0 van támogatási használatához a `EnlistTransaction` az elosztott tranzakciókba való metódus. Mivel az felveszi a kapcsolatot egy <xref:System.Transactions.Transaction>példány, `EnlistTransaction` funkcionalitást kihasználja a <xref:System.Transactions>névtér kezelésére szolgáló elosztott tranzakciók.</xref:System.Transactions> </xref:System.Transactions.Transaction> Ha a kapcsolat explicit módon szerepel egy tranzakcióban van bejegyezve, nem lehet unenlisted és egy másik tranzakció bejelentkezve, amíg az első tranzakció befejezését."
   syntax:
     content: public virtual void EnlistTransaction (System.Transactions.Transaction transaction);
     parameters:
     - id: transaction
       type: System.Transactions.Transaction
-      description: "A reference to an existing <xref href=&quot;System.Transactions.Transaction&quot;></xref> in which to enlist."
+      description: "Egy meglévő hivatkozás <xref href=&quot;System.Transactions.Transaction&quot;> </xref> , amelyben a besorolásra."
   overload: System.Data.Common.DbConnection.EnlistTransaction*
   exceptions: []
   platform:
@@ -404,14 +404,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns schema information for the data source of this <xref href=&quot;System.Data.Common.DbConnection&quot;></xref>."
-  remarks: "If the connection is associated with a transaction, executing `GetSchema` calls may cause some providers to throw an exception."
+  summary: "Erre az adatforrásra vonatkozóan séma adatait adja vissza <xref href=&quot;System.Data.Common.DbConnection&quot;> </xref>."
+  remarks: "Ha a kapcsolat a tranzakcióhoz társított, végrehajtása `GetSchema` hívások okozhat kivételt jelez az egyes szolgáltatók."
   syntax:
     content: public virtual System.Data.DataTable GetSchema ();
     parameters: []
     return:
       type: System.Data.DataTable
-      description: "A <xref href=&quot;System.Data.DataTable&quot;></xref> that contains schema information."
+      description: "A <xref href=&quot;System.Data.DataTable&quot;> </xref> , amelyek séma információkat tartalmaznak."
   overload: System.Data.Common.DbConnection.GetSchema*
   exceptions: []
   platform:
@@ -428,22 +428,22 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns schema information for the data source of this <xref href=&quot;System.Data.Common.DbConnection&quot;></xref> using the specified string for the schema name."
-  remarks: "If the connection is associated with a transaction, executing `GetSchema` calls may cause some providers to throw an exception."
+  summary: "Erre az adatforrásra vonatkozóan séma adatait adja vissza <xref href=&quot;System.Data.Common.DbConnection&quot;> </xref> a megadott karakterlánc használ a séma neve."
+  remarks: "Ha a kapcsolat a tranzakcióhoz társított, végrehajtása `GetSchema` hívások okozhat kivételt jelez az egyes szolgáltatók."
   syntax:
     content: public virtual System.Data.DataTable GetSchema (string collectionName);
     parameters:
     - id: collectionName
       type: System.String
-      description: "Specifies the name of the schema to return."
+      description: "Vissza a séma neve."
     return:
       type: System.Data.DataTable
-      description: "A <xref href=&quot;System.Data.DataTable&quot;></xref> that contains schema information."
+      description: "A <xref href=&quot;System.Data.DataTable&quot;> </xref> , amelyek séma információkat tartalmaznak."
   overload: System.Data.Common.DbConnection.GetSchema*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>collectionName</code> is specified as null."
+    description: "<code>collectionName</code>nullként van megadva."
   platform:
   - net462
 - uid: System.Data.Common.DbConnection.GetSchema(System.String,System.String[])
@@ -458,25 +458,25 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Returns schema information for the data source of this <xref href=&quot;System.Data.Common.DbConnection&quot;></xref> using the specified string for the schema name and the specified string array for the restriction values."
-  remarks: "The `restrictionValues` parameter can supply *n* depth of values, which are specified by the restrictions collection for a specific collection. In order to set values on a given restriction, and not set the values of other restrictions, you need to set the preceding restrictions to null and then put the appropriate value in for the restriction that you would like to specify a value for.       An example of this is the &quot;Tables&quot; collection. If the &quot;Tables&quot; collection has three restrictions (database, owner, and table name) and you want to get back only the tables associated with the owner &quot;Carl&quot;, you must pass in the following values at least: null, &quot;Carl&quot;. If a restriction value is not passed in, the default values are used for that restriction. This is the same mapping as passing in null, which is different from passing in an empty string for the parameter value. In that case, the empty string (&quot;&quot;) is considered to be the value for the specified parameter.       If the connection is associated with a transaction, executing `GetSchema` calls may cause some providers to throw an exception."
+  summary: "Erre az adatforrásra vonatkozóan séma adatait adja vissza <xref href=&quot;System.Data.Common.DbConnection&quot;> </xref> a megadott karakterlánc használata a sémanév és a korlátozás értékeket a megadott karakterlánc-tömbben."
+  remarks: "A `restrictionValues` paraméter megadhatja *n* értékek, amelyeket a korlátozásgyűjtemény egy adott gyűjtemény által megadott mélységét. Ahhoz, hogy egy adott korlátozás kapacitásértékeinek beállítása, és nincs beállítva az egyéb korlátozások értékeit, be kell az előző korlátozások null, és majd írja be a megfelelő értéket a korlátozásokat, amelyeket szeretne, adjon meg egy értéket.       Például az &quot;Tábla&quot; gyűjteménye. Ha a &quot;Tábla&quot; gyűjtemény rendelkezik három korlátozások (a adatbázis, a tulajdonos és a tábla neve), és le szeretné kérdezni vissza csak a &quot;Carl&quot; tulajdonosa társított táblákat, át kell adnia az alábbi értékek legalább: null, a &quot;Carl&quot;. Egy korlátozási érték nem kerül át, a, ha az alapértelmezett értékeket használják, hogy korlátozásra vonatkozóan. Ez az azonosak maradjanak null, a sikeres, ami eltér a paraméter értéke üres karakterláncot a sikeres. Ebben az esetben, az üres karakterlánc (&quot;&quot;) a megadott paraméter értéke számít.       Ha a kapcsolat a tranzakcióhoz társított, végrehajtása `GetSchema` hívások okozhat kivételt jelez az egyes szolgáltatók."
   syntax:
     content: public virtual System.Data.DataTable GetSchema (string collectionName, string[] restrictionValues);
     parameters:
     - id: collectionName
       type: System.String
-      description: "Specifies the name of the schema to return."
+      description: "Vissza a séma neve."
     - id: restrictionValues
       type: System.String[]
-      description: "Specifies a set of restriction values for the requested schema."
+      description: "Itt adhatja meg a kért séma korlátozás értékeit."
     return:
       type: System.Data.DataTable
-      description: "A <xref href=&quot;System.Data.DataTable&quot;></xref> that contains schema information."
+      description: "A <xref href=&quot;System.Data.DataTable&quot;> </xref> , amelyek séma információkat tartalmaznak."
   overload: System.Data.Common.DbConnection.GetSchema*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>collectionName</code> is specified as null."
+    description: "<code>collectionName</code>nullként van megadva."
   platform:
   - net462
 - uid: System.Data.Common.DbConnection.OnStateChange(System.Data.StateChangeEventArgs)
@@ -491,14 +491,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Raises the <xref href=&quot;System.Data.Common.DbConnection.StateChange&quot;></xref> event."
-  remarks: 'Raising an event invokes the event handler through a delegate. For an overview, see [NIB: Raising an Event](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).'
+  summary: "Kiváltja a <xref href=&quot;System.Data.Common.DbConnection.StateChange&quot;> </xref> esemény."
+  remarks: 'Az eseménykezelő keresztül egy delegált esemény indítása hív meg. Megtudhatja, [NIB: esemény indítása](http://msdn.microsoft.com/en-us/f2adaf01-1ed1-42e1-8c31-8d467e7e0ee2).'
   syntax:
     content: protected virtual void OnStateChange (System.Data.StateChangeEventArgs stateChange);
     parameters:
     - id: stateChange
       type: System.Data.StateChangeEventArgs
-      description: "A <xref href=&quot;System.Data.StateChangeEventArgs&quot;></xref> that contains the event data."
+      description: "A <xref href=&quot;System.Data.StateChangeEventArgs&quot;> </xref> , amely tartalmazza az eseményadatok."
   overload: System.Data.Common.DbConnection.OnStateChange*
   exceptions: []
   platform:
@@ -515,8 +515,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Opens a database connection with the settings specified by the <xref:System.Data.Common.DbConnection.ConnectionString*>."
-  remarks: "This method must be overridden with user-defined behavior. <xref:System.Data.SqlClient.SqlConnection.Open%2A?displayProperty=fullName> will throw an exception if called again without first being closed."
+  summary: "A <xref:System.Data.Common.DbConnection.ConnectionString*>.</xref:System.Data.Common.DbConnection.ConnectionString*> által megadott beállításokat tartalmazó adatbázis-kapcsolat megnyitása"
+  remarks: "Ez a metódus felül kell bírálni a felhasználó által definiált viselkedése. <xref:System.Data.SqlClient.SqlConnection.Open%2A?displayProperty=fullName>rendszer kivételt jelez, ha hívása nélkül újra először lezárult.</xref:System.Data.SqlClient.SqlConnection.Open%2A?displayProperty=fullName>"
   syntax:
     content: public abstract void Open ();
     parameters: []
@@ -536,14 +536,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "An asynchronous version of <xref:System.Data.Common.DbConnection.Open*>, which opens a database connection with the settings specified by the <xref:System.Data.Common.DbConnection.ConnectionString*>. This method invokes the virtual method <xref:System.Data.Common.DbConnection.OpenAsync*> with CancellationToken.None."
-  remarks: "After calling <xref:System.Data.Common.DbConnection.OpenAsync%2A>, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState> until the returned <xref:System.Threading.Tasks.Task> is completed. Then, if the connection was successful, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState>. If the connection fails, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState>.       A call to <xref:System.Data.Common.DbConnection.Close%2A> will attempt to cancel or close the corresponding <xref:System.Data.Common.DbConnection.OpenAsync%2A> call.       For more information about asynchronous programming in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] Data Provider for [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], see [Asynchronous Programming](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Egy aszinkron verzióját <> </> *>, amely megnyitja az adatbázis-kapcsolat által megadott beállításokkal a <> </> *>. Ez a metódus meghívja a virtuális metódus <xref:System.Data.Common.DbConnection.OpenAsync*>rendelkező CancellationToken.None.</xref:System.Data.Common.DbConnection.OpenAsync*>"
+  remarks: "Hívása után <xref:System.Data.Common.DbConnection.OpenAsync%2A>, <xref:System.Data.Common.DbConnection.State%2A>kell visszaadnia <xref:System.Data.ConnectionState>csak a visszaadott <xref:System.Threading.Tasks.Task>befejeződött.</xref:System.Threading.Tasks.Task> </xref:System.Data.ConnectionState> </xref:System.Data.Common.DbConnection.State%2A> </xref:System.Data.Common.DbConnection.OpenAsync%2A> Ezután, ha a kapcsolat nem volt sikeres, <xref:System.Data.Common.DbConnection.State%2A> <xref:System.Data.ConnectionState>.</xref:System.Data.ConnectionState> kell visszaadnia.</xref:System.Data.Common.DbConnection.State%2A> Ha a kapcsolódás sikertelen, <xref:System.Data.Common.DbConnection.State%2A> <xref:System.Data.ConnectionState>.</xref:System.Data.ConnectionState> kell visszaadnia.</xref:System.Data.Common.DbConnection.State%2A>       Hívása <xref:System.Data.Common.DbConnection.Close%2A>állítsa le vagy zárja be a megfelelő megkísérli <xref:System.Data.Common.DbConnection.OpenAsync%2A>hívása.</xref:System.Data.Common.DbConnection.OpenAsync%2A> </xref:System.Data.Common.DbConnection.Close%2A>       Aszinkron programozásba a további információt a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] adatszolgáltatója [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], lásd: [aszinkron programozás](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public System.Threading.Tasks.Task OpenAsync ();
     parameters: []
     return:
       type: System.Threading.Tasks.Task
-      description: "A task representing the asynchronous operation."
+      description: "Az aszinkron művelet képviselő feladat."
   overload: System.Data.Common.DbConnection.OpenAsync*
   exceptions: []
   platform:
@@ -560,17 +560,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "This is the asynchronous version of <xref:System.Data.Common.DbConnection.Open*>. Providers should override with an appropriate implementation. The cancellation token can optionally be honored.       The default implementation invokes the synchronous <xref:System.Data.Common.DbConnection.Open*> call and returns a completed task. The default implementation will return a cancelled task if passed an already cancelled cancellationToken. Exceptions thrown by Open will be communicated via the returned Task Exception property.       Do not invoke other methods and properties of the <xref uid=&quot;langword_csharp_DbConnection&quot; name=&quot;DbConnection&quot; href=&quot;&quot;></xref> object until the returned Task is complete."
-  remarks: "After calling <xref:System.Data.Common.DbConnection.OpenAsync%2A>, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState> until the returned <xref:System.Threading.Tasks.Task> is completed. Then, if the connection was successful, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState>. If the connection fails, <xref:System.Data.Common.DbConnection.State%2A> must return <xref:System.Data.ConnectionState>.       A call to <xref:System.Data.Common.DbConnection.Close%2A> will attempt to cancel or close the corresponding <xref:System.Data.Common.DbConnection.OpenAsync%2A> call.       For more information about asynchronous programming in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] Data Provider for [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], see [Asynchronous Programming](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Ez az aszinkron verzióját <> </> *>. Szolgáltatók felül kell bírálniuk a megfelelő megvalósítását. A megszakítási token szükség lesz érvényes.       Az alapértelmezett implementációja hív meg, a szinkron <> </> *> hívja, és a befejezett tevékenység adja vissza. Az alapértelmezett implementációja vissza a megszakított feladatok, ha egy már megszakított cancellationToken átadott. Nyissa meg által okozott kivételeket kommunikálja visszaadott kivétel feladat tulajdonságon keresztül.       Ne hívja meg egyéb módszerek és tulajdonságait a <xref uid=&quot;langword_csharp_DbConnection&quot; name=&quot;DbConnection&quot; href=&quot;&quot;> </xref> objektum, amíg a visszaadott feladat be nem fejeződik."
+  remarks: "Hívása után <xref:System.Data.Common.DbConnection.OpenAsync%2A>, <xref:System.Data.Common.DbConnection.State%2A>kell visszaadnia <xref:System.Data.ConnectionState>csak a visszaadott <xref:System.Threading.Tasks.Task>befejeződött.</xref:System.Threading.Tasks.Task> </xref:System.Data.ConnectionState> </xref:System.Data.Common.DbConnection.State%2A> </xref:System.Data.Common.DbConnection.OpenAsync%2A> Ezután, ha a kapcsolat nem volt sikeres, <xref:System.Data.Common.DbConnection.State%2A> <xref:System.Data.ConnectionState>.</xref:System.Data.ConnectionState> kell visszaadnia.</xref:System.Data.Common.DbConnection.State%2A> Ha a kapcsolódás sikertelen, <xref:System.Data.Common.DbConnection.State%2A> <xref:System.Data.ConnectionState>.</xref:System.Data.ConnectionState> kell visszaadnia.</xref:System.Data.Common.DbConnection.State%2A>       Hívása <xref:System.Data.Common.DbConnection.Close%2A>állítsa le vagy zárja be a megfelelő megkísérli <xref:System.Data.Common.DbConnection.OpenAsync%2A>hívása.</xref:System.Data.Common.DbConnection.OpenAsync%2A> </xref:System.Data.Common.DbConnection.Close%2A>       Aszinkron programozásba a további információt a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] adatszolgáltatója [!INCLUDE[ssNoVersion](~/add/includes/ssnoversion-md.md)], lásd: [aszinkron programozás](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public virtual System.Threading.Tasks.Task OpenAsync (System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The cancellation instruction."
+      description: "A megszakítási utasítás."
     return:
       type: System.Threading.Tasks.Task
-      description: "A task representing the asynchronous operation."
+      description: "Az aszinkron művelet képviselő feladat."
   overload: System.Data.Common.DbConnection.OpenAsync*
   exceptions: []
   platform:
@@ -587,17 +587,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a string that represents the version of the server to which the object is connected."
+  summary: "Lekérdezi a kiszolgálót, amelyhez az objektum csatlakozik verziója jelölő karakterlánccá."
   syntax:
     content: public abstract string ServerVersion { get; }
     return:
       type: System.String
-      description: "The version of the database. The format of the string returned depends on the specific type of connection you are using."
+      description: "Az adatbázis verziója. A visszaadott karakterlánc formátuma attól függ, hogy használ a kapcsolat típusát."
   overload: System.Data.Common.DbConnection.ServerVersion*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "ServerVersion was called while the returned Task was not completed and the connection was not opened after a call to <xref:System.Data.Common.DbConnection.OpenAsync*>."
+    description: "OWA lett meghívva, amikor a visszaadott feladat nem fejeződött be, és a kapcsolat nem nyitható meg a <xref:System.Data.Common.DbConnection.OpenAsync*>.</xref:System.Data.Common.DbConnection.OpenAsync*> hívása után"
   platform:
   - net462
 - uid: System.Data.Common.DbConnection.State
@@ -612,12 +612,12 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Gets a string that describes the state of the connection."
+  summary: "Egy karakterlánc, amely a kapcsolat állapotának lekérése."
   syntax:
     content: public abstract System.Data.ConnectionState State { get; }
     return:
       type: System.Data.ConnectionState
-      description: "The state of the connection. The format of the string returned depends on the specific type of connection you are using."
+      description: "A kapcsolat állapotát. A visszaadott karakterlánc formátuma attól függ, hogy használ a kapcsolat típusát."
   overload: System.Data.Common.DbConnection.State*
   exceptions: []
   platform:
@@ -634,13 +634,13 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Occurs when the state of the event changes."
-  remarks: "The StateChange event occurs when the state of the event changes from closed to opened, or opened to closed."
+  summary: "Az esemény állapotának megváltozásakor következik be."
+  remarks: "A StateChange esemény lezárt megnyitni, vagy a megnyitott bezárására az esemény állapotának megváltozásakor következik be."
   syntax:
     content: public virtual event System.Data.StateChangeEventHandler StateChange;
     return:
       type: System.Data.StateChangeEventHandler
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -657,14 +657,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Begins a database transaction."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.Common.DbConnection> instance is cast to an <xref:System.Data.IDbConnection> interface.       For more information, see <xref:System.Data.IDbConnection.BeginTransaction%2A>."
+  summary: "Adatbázis-tranzakció kezdődik."
+  remarks: "Ez a tag egy explicit illesztőfelületet tag megvalósítása. Használat csak akkor, ha a <xref:System.Data.Common.DbConnection>példány típusúvá egy <xref:System.Data.IDbConnection>felületet.</xref:System.Data.IDbConnection> </xref:System.Data.Common.DbConnection>       További információkért lásd: <xref:System.Data.IDbConnection.BeginTransaction%2A>.</xref:System.Data.IDbConnection.BeginTransaction%2A>"
   syntax:
     content: System.Data.IDbTransaction IDbConnection.BeginTransaction ();
     parameters: []
     return:
       type: System.Data.IDbTransaction
-      description: "An object that represents the new transaction."
+      description: "Az új tranzakció képviselő objektum."
   overload: System.Data.Common.DbConnection.System#Data#IDbConnection#BeginTransaction*
   exceptions: []
   platform:
@@ -682,17 +682,17 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Begins a database transaction with the specified <xref href=&quot;System.Data.IsolationLevel&quot;></xref> value."
-  remarks: "For more information, see <xref:System.Data.IDbConnection.BeginTransaction%2A>."
+  summary: "A megadott adatbázis-tranzakció kezdete <xref href=&quot;System.Data.IsolationLevel&quot;> </xref> érték."
+  remarks: "További információkért lásd: <xref:System.Data.IDbConnection.BeginTransaction%2A>.</xref:System.Data.IDbConnection.BeginTransaction%2A>"
   syntax:
     content: System.Data.IDbTransaction IDbConnection.BeginTransaction (System.Data.IsolationLevel isolationLevel);
     parameters:
     - id: isolationLevel
       type: System.Data.IsolationLevel
-      description: "One of the <xref href=&quot;System.Data.IsolationLevel&quot;></xref> values."
+      description: "Egy a <xref href=&quot;System.Data.IsolationLevel&quot;> </xref> értékeket."
     return:
       type: System.Data.IDbTransaction
-      description: "An object that represents the new transaction."
+      description: "Az új tranzakció képviselő objektum."
   overload: System.Data.Common.DbConnection.System#Data#IDbConnection#BeginTransaction*
   exceptions: []
   platform:
@@ -710,14 +710,14 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Common
-  summary: "Creates and returns a <xref href=&quot;System.Data.Common.DbCommand&quot;></xref> object that is associated with the current connection."
-  remarks: "For more information, see [Commands and Parameters](~/add/includes/ajax-current-ext-md.md) and <xref:System.Data.IDbConnection.CreateCommand%2A>."
+  summary: "Hoz létre, és adja vissza egy <xref href=&quot;System.Data.Common.DbCommand&quot;> </xref> objektum, amely az aktuális kapcsolathoz társítva."
+  remarks: "További információkért lásd: [parancsok és a paraméterek](~/add/includes/ajax-current-ext-md.md) és <xref:System.Data.IDbConnection.CreateCommand%2A>.</xref:System.Data.IDbConnection.CreateCommand%2A>"
   syntax:
     content: System.Data.IDbCommand IDbConnection.CreateCommand ();
     parameters: []
     return:
       type: System.Data.IDbCommand
-      description: "A <xref href=&quot;System.Data.Common.DbCommand&quot;></xref> object that is associated with the connection."
+      description: "A <xref href=&quot;System.Data.Common.DbCommand&quot;> </xref> a kapcsolathoz társított objektumot."
   overload: System.Data.Common.DbConnection.System#Data#IDbConnection#CreateCommand*
   exceptions: []
   platform:

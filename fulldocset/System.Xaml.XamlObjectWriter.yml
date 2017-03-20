@@ -30,8 +30,8 @@ items:
   nameWithType: XamlObjectWriter
   fullName: System.Xaml.XamlObjectWriter
   type: Class
-  summary: "Creates an object graph from a source XAML node stream."
-  remarks: "The `Write` methods of XamlObjectWriter implement a pattern so that the XamlObjectWriter uses the <xref:System.Xaml.XamlWriter> that is defined by the <xref:System.Xaml.XamlWriter.WriteNode%2A> method. <xref:System.Xaml.XamlWriter.WriteNode%2A> logic switches between the `Write` methods, depending on which node type is at the current position in the reader.      ## Scope    A XamlObjectWriter has a concept of scope; that is, the XamlObjectWriter maintains a conceptual point of reference in its output object graph. For a particular scope, certain operations might be valid or invalid, or produce a no-operation result. For example, if you call <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> to write directives for initialization on an object that already exists as an instance, the default implementation throws an exception.       A possible technique for tracking scope in a custom XamlObjectWriter is to align the node actions with a stack or frame class. The stack or frame can keep track of push and pop for each level of object-model depth that is entered or exited while the XamlObjectWriter writes the object graph.      ## Callbacks    To support intermediate and advanced XamlObjectWriter scenarios, the mechanism of writing an object graph provides callback entry points that occur when a XamlObjectWriter commits or is about to commit certain actions. Some callbacks are enabled in the settings and are not specific to the object type or the member being written; however, callback information is often available in context or is in the event data that is sent through the callback. The following is a list of relevant callbacks:      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A> is invoked when the scope goes to a new object and at the <xref:System.ComponentModel.ISupportInitialize.BeginInit%2A> phase of object lifetime for each created object.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A> is invoked when the scope goes to a new object and at the <xref:System.ComponentModel.ISupportInitialize.EndInit%2A> phase of object lifetime for each created object.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A> is invoked when the scope starts in an object, and occurs when the first <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> call to that object scope is made but not yet committed.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A> is invoked when the scope starts in an object, and happens when the <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> call to that object scope is made but not yet committed.      -   The callback that is declared by <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> is invoked when <xref:System.Xaml.XamlObjectWriter.OnSetValue%2A> is called.      ## Writing Dictionary Keys    The default implementation of XamlObjectWriter supports type conversion on the constraints of a <xref:System.Collections.Generic.Dictionary%602> before the dictionary contents are added to the object graph. In this manner, a generic dictionary can be keyed at run time by objects and can match the relevant generic `Add` and indexer behavior. However, as implemented for the base XamlObjectWriter, this capability exists only for object graph creation from the base <xref:System.Collections.Generic.Dictionary%602> class and not for derived classes of <xref:System.Collections.Generic.Dictionary%602>.      ## Checks for Disposed    XAML writers are potentially used for deferred operations or where a call is made against a XAML writer instance that has been disposed in the interim. Various APIs of XamlObjectWriter might throw <xref:System.ObjectDisposedException> in these cases."
+  summary: "A forrás XAML-csomópont adatfolyama objektumdiagram jön létre."
+  remarks: "A `Write` XamlObjectWriter módszerek megvalósítása mintát, hogy az XamlObjectWriter használja a <xref:System.Xaml.XamlWriter>által definiált a <xref:System.Xaml.XamlWriter.WriteNode%2A>metódus.</xref:System.Xaml.XamlWriter.WriteNode%2A> </xref:System.Xaml.XamlWriter> <xref:System.Xaml.XamlWriter.WriteNode%2A>logikai kapcsolók között a `Write` módszerek, attól függően, hogy melyik csomópont típus az olvasó az aktuális helyén.</xref:System.Xaml.XamlWriter.WriteNode%2A>      ## Hatókör A XamlObjectWriter rendelkezik egy fogalom hatókör; Ez azt jelenti, hogy az XamlObjectWriter tart fenn a kimeneti objektum graph-hivatkozás fogalmi ponttá. Egy adott hatókör bizonyos műveletek végrehajtását lehet, hogy érvényes, vagy érvénytelen, vagy nem műveleti eredmény. Például, ha meghívja a <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>írni irányelvek egy objektum inicializálása már létezik egy példányt, az alapértelmezett megvalósítása kivételt jelez.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>       Egy lehetséges módszer a hatókörben található egyéni XamlObjectWriter nyomkövetési a csomópont műveletek verem vagy keret osztállyal igazíthatók. A verem vagy keret is nyomon követheti, leküldéses és az egyes van megadva, vagy kilépett, amíg az XamlObjectWriter ír az objektumgráf objektummodell mélység pop.      ## Itt a támogatási köztes és speciális XamlObjectWriter objektumdiagram rendszerekben mechanizmus forgatókönyvek visszahívási fordulhat elő, ha egy XamlObjectWriter megmutatják a véglegesítések számát, vagy végre bizonyos műveleteket belépési pontok. Néhány visszahívásokat beállítások engedélyezve vannak, és nem vonatkoznak az objektum típusának vagy a tag írása; azonban visszahívási információ gyakran érhető el a környezetben vagy az esemény a visszahívás keresztül küldött adatok. Az alábbiakban található a megfelelő visszahívásokat listáját:-a visszahívást, amelyet a deklarálja <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A>nyílik meg, ha a hatókör kerül egy új objektumot, és a a <xref:System.ComponentModel.ISupportInitialize.BeginInit%2A>minden létrehozott objektum objektum élettartama fázisa.</xref:System.ComponentModel.ISupportInitialize.BeginInit%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler%2A>      -A visszahívást, amelyet a deklarálja <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A>nyílik meg, ha a hatókör kerül egy új objektumot, és a a <xref:System.ComponentModel.ISupportInitialize.EndInit%2A>minden létrehozott objektum objektum élettartama fázisa.</xref:System.ComponentModel.ISupportInitialize.EndInit%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler%2A>      -A visszahívást, amelyet a deklarálja <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A>nyílik meg, ha a hatókör objektum elindul, és akkor fordul elő, amikor az első <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>objektum hatókörnek hívása történt, de még nem véglegesített.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler%2A>      -A visszahívást, amelyet a deklarálja <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A>nyílik meg, ha a hatókör objektum elindul, és akkor fordul elő, amikor a <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>objektum hatókörnek hívása történt, de még nem véglegesített.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> </xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler%2A>      -A visszahívást, amelyet a deklarálja <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>amikor meghívták <xref:System.Xaml.XamlObjectWriter.OnSetValue%2A>nevezik.</xref:System.Xaml.XamlObjectWriter.OnSetValue%2A> </xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>      ## Kulcsok szótár XamlObjectWriter alapértelmezett végrehajtását támogatja a típuskonverziós korlátai egy <xref:System.Collections.Generic.Dictionary%602>előtt a szótár tartalma hozzáadódnak a objektumdiagram.</xref:System.Collections.Generic.Dictionary%602> Ezen a módon kikapcsolja, általános dictionary úgy is beállítható, futási időben objektum, és megfelelnek a vonatkozó általános `Add` és indexelő viselkedését. Azonban az alap XamlObjectWriter megvalósuló Ez a lehetőség létezik csak objektum graph létrehozása az alaposztályból <xref:System.Collections.Generic.Dictionary%602>osztály és származtatott osztályainak <xref:System.Collections.Generic.Dictionary%602>.</xref:System.Collections.Generic.Dictionary%602> a nem</xref:System.Collections.Generic.Dictionary%602>      ## Ellenőrzi az eldobása XAML-íróhoz Késleltetett műveletek vagy ahol a rendszer telefonhívást indít el lett távolítva az ideiglenes XAML-író példány elleni potenciálisan szolgálnak. Különböző XamlObjectWriter API-k előfordulhat, hogy throw <xref:System.ObjectDisposedException>ezekben az esetekben.</xref:System.ObjectDisposedException>"
   syntax:
     content: 'public class XamlObjectWriter : System.Xaml.XamlWriter, System.Xaml.IXamlLineInfoConsumer'
   inheritance:
@@ -58,18 +58,18 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> class using  the XAML schema context that is used by a <xref href=&quot;System.Xaml.XamlReader&quot;></xref>."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> osztály által használt XAML-séma környezetet használ a <xref href=&quot;System.Xaml.XamlReader&quot;> </xref>."
   syntax:
     content: public XamlObjectWriter (System.Xaml.XamlSchemaContext schemaContext);
     parameters:
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "A XAML schema context that is shared with the XAML reader that provides nodes for writing."
+      description: "Egy XAML séma környezetében, az XAML-olvasó, amely csomópontok írásra meg van osztva."
   overload: System.Xaml.XamlObjectWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>schemaContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.#ctor(System.Xaml.XamlSchemaContext,System.Xaml.XamlObjectWriterSettings)
@@ -84,21 +84,21 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> class using the context that is used by a <xref href=&quot;System.Xaml.XamlReader&quot;></xref> and its settings."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> osztály által használt környezetével egy <xref href=&quot;System.Xaml.XamlReader&quot;> </xref> és annak beállításait."
   syntax:
     content: public XamlObjectWriter (System.Xaml.XamlSchemaContext schemaContext, System.Xaml.XamlObjectWriterSettings settings);
     parameters:
     - id: schemaContext
       type: System.Xaml.XamlSchemaContext
-      description: "A XAML schema context that is shared with the XAML reader that provides nodes for writing."
+      description: "Egy XAML séma környezetében, az XAML-olvasó, amely csomópontok írásra meg van osztva."
     - id: settings
       type: System.Xaml.XamlObjectWriterSettings
-      description: "A settings object that specifies certain options for <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref> behavior and output."
+      description: "A beállítási objektumot, amely bizonyos beállítások <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref> viselkedést és a kimeneti."
   overload: System.Xaml.XamlObjectWriter.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>schemaContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>schemaContext</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.Clear
@@ -113,7 +113,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Resets all possible frames and clears the object graph."
+  summary: "Alaphelyzetbe állítja az összes lehetséges keretek, és törli a diagramot."
   syntax:
     content: public void Clear ();
     parameters: []
@@ -133,13 +133,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>, and optionally, releases the managed resources."
+  summary: "A nem felügyelt által használt erőforrások kiadja a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>, és szükség esetén kiadja a felügyelt erőforrások."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release the managed resources; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>a felügyelt erőforrások; felszabadítása Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Xaml.XamlObjectWriter.Dispose*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*> method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "Meghívja a <xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*>metódust, amelyhez társítva van <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterBeginInitHandler*>"
   syntax:
     content: protected virtual void OnAfterBeginInit (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. The object is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "A jelentés az objektumot. Az objektum van csomagolva <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> amikor meghívták a kezelő."
   overload: System.Xaml.XamlObjectWriter.OnAfterBeginInit*
   exceptions: []
   platform:
@@ -179,13 +179,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*> method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "Meghívja a <xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*>metódust, amelyhez társítva van <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterEndInitHandler*>"
   syntax:
     content: protected virtual void OnAfterEndInit (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. The value  is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "A jelentés az objektumot. Az érték van csomagolva <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> amikor meghívták a kezelő."
   overload: System.Xaml.XamlObjectWriter.OnAfterEndInit*
   exceptions: []
   platform:
@@ -202,13 +202,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "Meghívja a <xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*>metódust, amelyhez társítva van hivatkozott <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.AfterPropertiesHandler*>"
   syntax:
     content: protected virtual void OnAfterProperties (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The object to report on. This is packaged into <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "A jelentés az objektumot. Ez van csomagolva <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> amikor meghívták a kezelő."
   overload: System.Xaml.XamlObjectWriter.OnAfterProperties*
   exceptions: []
   platform:
@@ -225,13 +225,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this <xref href=&quot;System.Xaml.XamlObjectWriter&quot;></xref>."
+  summary: "Meghívja a <xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*>metódust, amelyhez társítva van hivatkozott <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> a <xref href=&quot;System.Xaml.XamlObjectWriter&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.BeforePropertiesHandler*>"
   syntax:
     content: protected virtual void OnBeforeProperties (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value to pass through <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;></xref> when the handler is invoked."
+      description: "Az érték az áthaladás, <xref href=&quot;System.Xaml.XamlObjectEventArgs&quot;> </xref> amikor meghívták a kezelő."
   overload: System.Xaml.XamlObjectWriter.OnBeforeProperties*
   exceptions: []
   platform:
@@ -248,23 +248,23 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Invokes any <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*> referenced method that is associated with <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;></xref> for this writer, as long as <code>handled</code> in <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref> event data is not <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
-  remarks: "If the `SetValue` operation for this XAML writer has an associated handler (a <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> is declared in <xref:System.Xaml.XamlObjectWriterSettings>), this method creates new <xref:System.Windows.Markup.XamlSetValueEventArgs> and passes them to the handler. The return value is set by reading the <xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A> value that is passed through the event data. If no handler exists and this method is invoked, the call returns `false`."
+  summary: "Meghívja a <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*>metódust, amelyhez társítva van hivatkozott <xref href=&quot;System.Xaml.XamlObjectWriterSettings&quot;> </xref> mindaddig író <code> handled </code> a <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref> eseményadat nem <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>.</xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler*>"
+  remarks: "Ha a `SetValue` egy társított kezelő műveletnek az XAML-író (egy <xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A>fájlban deklarált <xref:System.Xaml.XamlObjectWriterSettings>), ezzel a módszerrel hoz létre új <xref:System.Windows.Markup.XamlSetValueEventArgs>, és továbbadja őket a kezelőnek.</xref:System.Windows.Markup.XamlSetValueEventArgs> </xref:System.Xaml.XamlObjectWriterSettings> </xref:System.Xaml.XamlObjectWriterSettings.XamlSetValueHandler%2A> A visszatérési érték van beállítva ehhez beolvassa a <xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A>érték, amely az eseményadatok keresztül.</xref:System.Windows.Markup.XamlSetValueEventArgs.Handled%2A> Ha nincs kezelő létezik, és ez a módszer meghívták, adott vissza a hívása `false`."
   syntax:
     content: protected virtual bool OnSetValue (object eventSender, System.Xaml.XamlMember member, object value);
     parameters:
     - id: eventSender
       type: System.Object
-      description: "The object to report as the source to the handler."
+      description: "A forrás és a kezelő a jelentés az objektumhoz."
     - id: member
       type: System.Xaml.XamlMember
-      description: "The name of the property to set, which is passed to the handler as part of <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref>."
+      description: "A tulajdonság beállítása, a nevét, a kezelő részeként átadott <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref>."
     - id: value
       type: System.Object
-      description: "The value to provide for the property that is named by `property`. The value is passed to the handler as part of <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;></xref>."
+      description: "Az érték a tulajdonság által nevű biztosít `property`. Az érték a kezelőnek átadott részeként <xref href=&quot;System.Windows.Markup.XamlSetValueEventArgs&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "A Boolean value that is set by any associated handler; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. See Remarks."
+      description: "Egy logikai érték, amely a van beállítva, a társított kezelő; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Tekintse meg a megjegyzés."
   overload: System.Xaml.XamlObjectWriter.OnSetValue*
   exceptions: []
   platform:
@@ -281,13 +281,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the last object that was written. Typically only called when the node stream is at its end and the object graph is complete."
-  remarks: "The most typical usage of Result is to call it only when the node stream is known to be at its end, and the object graph is complete. Otherwise, the object graph is likely to be incomplete, and is not useful for most platform scenarios.       Result typically only contains a non-null value if it is called immediately after a call to <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>, and if the current scope is in the member where the object provides a value."
+  summary: "Lekérdezi az utolsó objektum írt. Általában csak hívható meg, ha a csomópont adatfolyamában végén, és a objektumdiagram befejeződött."
+  remarks: "Az eredmény a legjellemzőbb használatát is hívják, csak akkor, ha a csomópont adatfolyamában ismert, hogy a végén, és a objektumdiagram befejeződött. Ellenkező esetben a objektumdiagram valószínű, hogy nem teljesek, és nem a legtöbb platformon forgatókönyvek esetén hasznos.       Eredmény általában csak nem null értéket tartalmaz hívása után azonnal hívása esetén <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>, és ha az objektum rendelkezik egy értéket a tag az aktuális hatókörben van.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>"
   syntax:
     content: public virtual object Result { get; }
     return:
       type: System.Object
-      description: "The last object written, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. See Remarks."
+      description: "Az utolsó objektum írt, vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>. Tekintse meg a megjegyzés."
   overload: System.Xaml.XamlObjectWriter.Result*
   exceptions: []
   platform:
@@ -304,13 +304,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the <xref:System.Windows.Markup.INameScope> service that maintains the XAML namescope for the absolute node root of the XAML object writer."
-  remarks: "The value of this property may come from the object writer context."
+  summary: "Lekérdezi a <xref:System.Windows.Markup.INameScope>szolgáltatás, amely megőrzi az XAML namescope az XAML-objektum író abszolút csomópont gyökerének.</xref:System.Windows.Markup.INameScope>"
+  remarks: "Ez a tulajdonság az objektum írási környezete származhatnak."
   syntax:
     content: public System.Windows.Markup.INameScope RootNameScope { get; }
     return:
       type: System.Windows.Markup.INameScope
-      description: "The <xref:System.Windows.Markup.INameScope> service that maintains the XAML namescope for the current root of the object writer."
+      description: "A <xref:System.Windows.Markup.INameScope>szolgáltatás, amely megőrzi az XAML namescope az objektum-író aktuális gyökerének.</xref:System.Windows.Markup.INameScope>"
   overload: System.Xaml.XamlObjectWriter.RootNameScope*
   exceptions: []
   platform:
@@ -327,13 +327,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets the active XAML schema context."
-  remarks: "XAML schema context is a necessary information source for most practical object-writing scenarios. The XAML schema context influences the type lookup for backing types and holds information about the assemblies where backing types exist. The default XAML schema context is based on CLR type-mapping rules. Frameworks typically provide their own XAML schema context in order to assure that that the assembly-loading mechanisms match the framework&quot;s programming amd application models."
+  summary: "Lekérdezi a aktív XAML séma környezetében."
+  remarks: "XAML-séma környezetében legtöbb gyakorlati objektum-írási forgatókönyvek szükséges információ forrását. Az XAML-séma környezetében hatását a biztonsági típusok típusú kereséskor, és biztonsági létezik ahol a szerelvények kapcsolatos információkat tartalmazza. Az alapértelmezett XAML séma környezet CLR típus-hozzárendelési szabályok alapul. Keretrendszerek általában biztosítják, hogy, hogy a szerelvény-betöltése mechanizmusok egyezik-e a keretrendszer programozási amd alkalmazás modellek érdekében adja meg a saját XAML séma környezetében."
   syntax:
     content: public override System.Xaml.XamlSchemaContext SchemaContext { get; }
     return:
       type: System.Xaml.XamlSchemaContext
-      description: "The XAML schema context."
+      description: "Az XAML-séma környezetében."
   overload: System.Xaml.XamlObjectWriter.SchemaContext*
   exceptions: []
   platform:
@@ -350,17 +350,17 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Implements &lt;xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo%2A?displayProperty=fullName&gt; and provides line information for exceptions."
-  remarks: "This service method is not intended to be called directly from your code. However, if you are creating a derived class from <xref:System.Xaml.XamlObjectWriter> and expect to report a context where line numbers are unavailable or not useful, this method may be called."
+  summary: "Megvalósítja &lt;xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo%2A?displayProperty=fullName&gt; és kivételek sor információkat nyújt."
+  remarks: "Ezt a módszert nem javasolt közvetlenül a kódból hívható. Azonban ha a származtatott osztály létrehozásakor <xref:System.Xaml.XamlObjectWriter>és várhatóan kontextusban jelentést a sorok számát esetén nem érhető el, vagy nem lehet hasznos, ez a metódus hívható.</xref:System.Xaml.XamlObjectWriter>"
   syntax:
     content: public void SetLineInfo (int lineNumber, int linePosition);
     parameters:
     - id: lineNumber
       type: System.Int32
-      description: "The line number from the reader."
+      description: "Az olvasó a sor száma."
     - id: linePosition
       type: System.Int32
-      description: "The line position from the reader."
+      description: "Az olvasó a sor pozícióját."
   overload: System.Xaml.XamlObjectWriter.SetLineInfo*
   exceptions: []
   platform:
@@ -377,13 +377,13 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Gets a value that reports whether a line information service should provide values and therefore, should also call the <xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*> method when it is relevant."
-  remarks: "This implementation always returns `true`."
+  summary: "Egy érték, amely jelzi, hogy biztosítania kell egy sor információs szolgáltatás értékeket, és ezért kell is meghívhatja lekérdezi a <xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*>metódust, ha a megfelelő.</xref:System.Xaml.IXamlLineInfoConsumer.SetLineInfo*>"
+  remarks: "Ez a megvalósítás mindig adja vissza `true`."
   syntax:
     content: public bool ShouldProvideLineInfo { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if line information is used by the writer; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha sor adatok a író; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Xaml.XamlObjectWriter.ShouldProvideLineInfo*
   exceptions: []
   platform:
@@ -400,7 +400,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Closes the current member scope, and may write the value of the member scope while it closes. The new scope becomes the parent object scope of the member."
+  summary: "Bezárja az aktuális tagot hatókör, és az értéket a tag hatókör írhat, amíg lezárja. Az új hatókörhöz a szülőhatókörben objektum tag lesz."
   syntax:
     content: public override void WriteEndMember ();
     parameters: []
@@ -408,7 +408,7 @@ items:
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Failed to create member value from a value node that is encountered between this call and a previous <xref uid=&quot;langword_csharp_StartMember&quot; name=&quot;StartMember&quot; href=&quot;&quot;></xref>."
+    description: "Nem sikerült létrehozni a tag értékét a hívás, és a korábbi közötti megtalált érték csomópont <xref uid=&quot;langword_csharp_StartMember&quot; name=&quot;StartMember&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteEndObject
@@ -423,8 +423,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Closes the current object scope in the writer. The new object scope becomes the parent member scope."
-  remarks: "If this `EndObject` position scope is closing the root object, the new object scope becomes the root scope.       The call to <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> might not yet have created the object because an object member might be a necessary initialization pathway, such as initialization text or initialization parameters. For these cases, the call to WriteEndObject actually writes the object."
+  summary: "Bezárja az író objektum a jelenlegi hatókörhöz. Az új objektum hatóköre a szülőhatókörben tagja lesz."
+  remarks: "Ha a `EndObject` pozíció hatókör lezárul, a legfelső szintű objektum, az új objektum hatóköre lesz a gyökérszintű hatókörben.       A hívás <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>Előfordulhat, hogy még nem rendelkezik hozott létre az objektum mivel előfordulhat, hogy az objektum tag szükséges inicializálási végzett információküldéshez, például az inicializálási szöveg vagy inicializálási paramétereket.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> Ezekben az esetekben a WriteEndObject hívása írna a objektum."
   syntax:
     content: public override void WriteEndObject ();
     parameters: []
@@ -444,8 +444,8 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes the conceptual <xref uid=&quot;langword_csharp_StartObject&quot; name=&quot;StartObject&quot; href=&quot;&quot;></xref> into the object graph when the specified object is a default or implicit value of the parent property. The implicit value comes from information that is obtained from the XAML schema context and backing type information, instead of being specified as an object value in the input XAML node set."
-  remarks: "The difference between writing with WriteGetObject and writing with <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> can be seen in the resulting object graph. WriteGetObject does not construct an instance of a type because the WriteGetObject API has no information to inform the object graph of what to construct. Instead, the object was created when the parent property was initialized; so a <xref:System.Xaml.XamlObjectWriter> does not need to construct it. In contrast, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> specifies that an instance of that type should be constructed and inserted into the object graph.       If you think of the XAML node stream as a series of frames, a WriteGetObject is balanced to a <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> call. Therefore, the number of WriteGetObject plus <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> calls should equal the number of <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> calls as part of a complete object-writing evaluation of the XAML node stream.       The conceptual `StartObject` position for an implicit object in the object graph is necessary because although the object value itself is an implicit default, that object might still have members that need to be written based on the XAML node stream. A typical scenario where this occurs is when <xref:System.Xaml.XamlObjectWriter> writes member nodes for a collection property, and the collection initialization is implicit to creating the object that owns the collection property."
+  summary: "A fogalmi ír <xref uid=&quot;langword_csharp_StartObject&quot; name=&quot;StartObject&quot; href=&quot;&quot;> </xref> az objektumgráf, ha a megadott objektum egy alapértelmezett vagy a szülő tulajdonság értékének implicit be. Az implicit érték a XAML séma környezetben szerzett ügyféladatoktól és biztonsági típussal kapcsolatos információk, egy olyan objektumértéket XAML-csomópont beviteli készletben alatt megadott helyett származik."
+  remarks: "A különbség WriteGetObject való írás és való írás <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>láthatók az eredményül kapott objektumdiagram.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> WriteGetObject összeállítani egy típus egy példánya, mert a WriteGetObject API nem tartalmaz információt, mit összeállításához diagramot tájékoztatja. Ehelyett lett létrehozva az objektum inicializálása a szülő tulajdonságot; így <xref:System.Xaml.XamlObjectWriter>nem kell létrehozni azt.</xref:System.Xaml.XamlObjectWriter> Ezzel szemben <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>határozza meg, hogy a típus egy példányának kell megtervezni és diagramot beszúrt.</xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       Ha úgy gondolja, hogy az az XAML-csomópont adatfolyama keretek sorozataként, hogy egy WriteGetObject kiegyensúlyozott egy <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>hívása.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> Ezért, plusz WriteGetObject száma <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>hívások száma meg kell egyeznie az <xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A>az XAML-csomópont adatfolyama teljes objektum-írási kiértékelésének részeként hívások.</xref:System.Xaml.XamlObjectWriter.WriteEndObject%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       A fogalmi `StartObject` elhelyezése a diagramot implicit objektumára szükség, mert egy implicit alapértelmezett maga az objektum érték azonban, hogy az objektum, amely előfordulhat, hogy továbbra is fennáll tagokat írandó alapján az XAML-csomópont adatfolyama. Meg kell a jellemző forgatókönyv, ahol ez akkor fordulhat elő, ha <xref:System.Xaml.XamlObjectWriter>írások tag csomópontok egy gyűjtemény tulajdonság és az gyűjtemény inicializálását a gyűjteménytulajdonság birtokló objektum létrehozásához implicit módon.</xref:System.Xaml.XamlObjectWriter>"
   syntax:
     content: public override void WriteGetObject ();
     parameters: []
@@ -465,14 +465,14 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Defines a namespace declaration that applies to the next object scope or member scope."
-  remarks: "A namespace declaration can be written if the current scope is a root scope, object scope, or member scope. However, WriteNamespace can only be called immediately before a call to one of the following: WriteNamespace, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>, or <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>. The consecutive WriteNamespace case is for writing multiple namespace declarations to the same node. Eventually, either <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> or <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> must be called.       WriteNamespace does not use a `Start`/`End` metaphor. Although a XAML namespace has members in the CLR representation sense, the members are known and do not need to be represented as a special type of <xref:System.Xaml.XamlMember> for extensibility. To access the values of a <xref:System.Xaml.NamespaceDeclaration>, you access its <xref:System.Xaml.NamespaceDeclaration.Namespace%2A> and <xref:System.Xaml.NamespaceDeclaration.Prefix%2A> properties.       A namespace declaration may have a <xref:System.String.Empty?displayProperty=fullName> value for the prefix. A <xref:System.String.Empty?displayProperty=fullName> prefix represents a declaration of the default XAML namespace. Do not attempt to use null to represent the default prefix;  it throws an exception in this API. For more information, see <xref:System.Xaml.NamespaceDeclaration>."
+  summary: "Határozza meg, amely a következő objektum hatóköre vagy a tag hatókörben érvényes névtér-deklaráció."
+  remarks: "A névtér-deklaráció csak írható, ha az aktuális hatókörben, egy gyökérszintű hatókörben, az objektum hatóköre vagy a tag hatókör. Azonban WriteNamespace csak akkor hívható közvetlenül előtt hívása a következő: WriteNamespace, <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>, vagy <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A> Az egymást követő WriteNamespace esetben van több névtér-deklarációk írásához ugyanahhoz a csomóponthoz. Végül, vagy <xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>vagy <xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A>kell meghívni.</xref:System.Xaml.XamlObjectWriter.WriteStartMember%2A> </xref:System.Xaml.XamlObjectWriter.WriteStartObject%2A>       WriteNamespace nem használ egy `Start` / `End` metaphor. Bár egy XAML-névtér a CLR-ábrázolását értelemben tagja van, a tagok nevezik, és nem jeleníthető meg speciális kell <xref:System.Xaml.XamlMember>Kiterjeszthetőség.</xref:System.Xaml.XamlMember> Értékének eléréséhez a <xref:System.Xaml.NamespaceDeclaration>, hozzáférhet a <xref:System.Xaml.NamespaceDeclaration.Namespace%2A>és <xref:System.Xaml.NamespaceDeclaration.Prefix%2A>Tulajdonságok.</xref:System.Xaml.NamespaceDeclaration.Prefix%2A> </xref:System.Xaml.NamespaceDeclaration.Namespace%2A> </xref:System.Xaml.NamespaceDeclaration>       A névtér-deklaráció előfordulhat, hogy rendelkezik egy <xref:System.String.Empty?displayProperty=fullName>érték a előtag.</xref:System.String.Empty?displayProperty=fullName> A <xref:System.String.Empty?displayProperty=fullName>előtag jelöli az alapértelmezett XAML-névtér nyilatkozatot.</xref:System.String.Empty?displayProperty=fullName> Ne próbálja meg használni az alapértelmezett előtag; képviselő null  Ez kivételt ezt az API-ban. További információkért lásd: <xref:System.Xaml.NamespaceDeclaration>.</xref:System.Xaml.NamespaceDeclaration>"
   syntax:
     content: public override void WriteNamespace (System.Xaml.NamespaceDeclaration namespaceDeclaration);
     parameters:
     - id: namespaceDeclaration
       type: System.Xaml.NamespaceDeclaration
-      description: "The namespace declaration to write."
+      description: "A névtér-deklaráció írni."
   overload: System.Xaml.XamlObjectWriter.WriteNamespace*
   exceptions:
   - type: System.ArgumentNullException
@@ -483,7 +483,7 @@ items:
     description: "A component of <code>namespaceDeclaration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Xaml.XamlObjectReaderException
     commentId: T:System.Xaml.XamlObjectReaderException
-    description: "Tried to write a XAML namespace node in an invalid scope."
+    description: "Próbált írni a csomópont a XAML-KÓDBAN érvénytelen hatókörben."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteStartMember(System.Xaml.XamlMember)
@@ -498,7 +498,7 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a new member node into the current object scope, and the scope becomes a new member scope."
+  summary: "Egy új tag csomópont írja be az aktuális objektum hatókör, és a hatókör válik az új tag hatókör."
   remarks: >-
     > [!TIP]
 
@@ -508,18 +508,18 @@ items:
     parameters:
     - id: property
       type: System.Xaml.XamlMember
-      description: "The XAML property to write. Typically you obtain this value from a XAML reader through the XAML node stream intermediate."
+      description: "Az XAML-tulajdonság írása. Ezt az értéket általában egy XAML-olvasó keresztül közbülső XAML-csomópont adatfolyama az beszerzése."
   overload: System.Xaml.XamlObjectWriter.WriteStartMember*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "<code>property</code> has <xref:System.Xaml.XamlMember.IsUnknown*> set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>.       -or-       <xref:System.Xaml.XamlLanguage.UnknownContent*> passed, which indicates that the XAML node stream contained content for an object that does not support content.       -or-       Attempted to write a start member in an invalid scope."
+    description: "<code>property</code>has <xref:System.Xaml.XamlMember.IsUnknown*> set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>.       – vagy – <xref:System.Xaml.XamlLanguage.UnknownContent*> sikeres, ami azt jelenti, hogy az XAML-csomópont adatfolyama található olyan objektum, amely nem támogatja a tartalom a tartalom.       – vagy – megkísérelt start tagja írása érvénytelen hatókörben."
   - type: System.Xaml.XamlDuplicateMemberException
     commentId: T:System.Xaml.XamlDuplicateMemberException
-    description: "<code>property</code> specifies a property that is already explicitly set in the parent object scope."
+    description: "<code>property</code>Adja meg azt a tulajdonságot, az objektum szülőhatókörben már explicit módon beállított."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>property</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>property</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteStartObject(System.Xaml.XamlType)
@@ -534,24 +534,24 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes an object node into the current scope, and sets the scope to a new object scope."
+  summary: "Egy objektum csomópont írja be az aktuális hatókörben, és beállítja a hatókört annak egy új objektumot."
   syntax:
     content: public override void WriteStartObject (System.Xaml.XamlType xamlType);
     parameters:
     - id: xamlType
       type: System.Xaml.XamlType
-      description: "The type to write. Typically you obtain this value from a XAML reader."
+      description: "A típus írni. Ezt az értéket általában egy XAML-olvasó az beszerzése."
   overload: System.Xaml.XamlObjectWriter.WriteStartObject*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Processing an <xref:System.Xaml.XamlType.IsUnknown*> type and cannot create an object.       -or-       Attempted to write a start object in an invalid scope."
+    description: "Feldolgozása egy <xref:System.Xaml.XamlType.IsUnknown*>Írja be, és nem lehet létrehozni egy objektumot.</xref:System.Xaml.XamlType.IsUnknown*>       – vagy – próbált írni egy kezdő objektum érvénytelen hatókörben."
   - type: System.Xaml.XamlParseException
     commentId: T:System.Xaml.XamlParseException
-    description: "Attempted to write a root object when the root object was already provided in the settings."
+    description: "Kísérlet történt egy legfelső szintű objektum írni, amikor a legfelső szintű objektum már meg lett adva a beállításai."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>xamlType</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>xamlType</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Xaml.XamlObjectWriter.WriteValue(System.Object)
@@ -566,18 +566,18 @@ items:
   assemblies:
   - System.Xaml
   namespace: System.Xaml
-  summary: "Writes a value to the current member scope. If the current scope is inside a collection, dictionary, or array object, the value should be added to the collection, dictionary, or array."
+  summary: "Egy értéket ír az aktuális tagot hatókörben. Ha az aktuális hatókörben egy gyűjteményt, a szótár vagy a tömb objektum belül, az értéket meg kell adni a gyűjteményt, a szótár vagy a tömb."
   syntax:
     content: public override void WriteValue (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value to write."
+      description: "Az érték írni."
   overload: System.Xaml.XamlObjectWriter.WriteValue*
   exceptions:
   - type: System.Xaml.XamlObjectWriterException
     commentId: T:System.Xaml.XamlObjectWriterException
-    description: "Attempted to write a value in an invalid scope."
+    description: "Kísérlet történt egy érték érvénytelen hatókörben."
   platform:
   - net462
 references:
