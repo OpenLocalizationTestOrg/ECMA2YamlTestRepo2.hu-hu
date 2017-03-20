@@ -13,8 +13,8 @@ items:
   nameWithType: IDataGridViewEditingCell
   fullName: System.Windows.Forms.IDataGridViewEditingCell
   type: Interface
-  summary: "Defines common functionality for a cell that allows the manipulation of its value."
-  remarks: "This interface is implemented by classes such as <xref:System.Windows.Forms.DataGridViewCheckBoxCell> that derive from <xref:System.Windows.Forms.DataGridViewCell> and provide a user interface (UI) for specifying values without hosting an editing control. The UI in this case is displayed regardless of whether the cell is in edit mode.       Other cell types, such as <xref:System.Windows.Forms.DataGridViewButtonCell>, provide a UI but do not store user-specified values. In this case, the cell type does not implement IDataGridViewEditingCell or host an editing control.       Cell types that display an editing control when the cell is in edit mode, such as <xref:System.Windows.Forms.DataGridViewTextBoxCell>, do not implement IDataGridViewEditingCell but instead provide a companion class that implements <xref:System.Windows.Forms.IDataGridViewEditingControl>. For example, <xref:System.Windows.Forms.DataGridViewTextBoxCell> provides a <xref:System.Windows.Forms.DataGridViewTextBoxEditingControl> that derives from the <xref:System.Windows.Forms.TextBox> control and implements <xref:System.Windows.Forms.IDataGridViewEditingControl>. In this case, the cell <xref:System.Windows.Forms.DataGridViewCell.EditType%2A> property is set to a <xref:System.Type> object representing the editing control type. For information about implementing <xref:System.Windows.Forms.IDataGridViewEditingControl>, see [How to: Host Controls in Windows Forms DataGridView Cells](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Határozza meg, amely lehetővé teszi az értékének módosítását egy cella közös funkció."
+  remarks: "Ez az interfész, mint osztály megvalósítja <xref:System.Windows.Forms.DataGridViewCheckBoxCell>célosztályából származik, amely <xref:System.Windows.Forms.DataGridViewCell>, és adjon meg egy felhasználói felület (UI) értékek megadása nélkül szerkesztési vezérlőelem üzemeltető.</xref:System.Windows.Forms.DataGridViewCell> </xref:System.Windows.Forms.DataGridViewCheckBoxCell> A felhasználói felület ebben az esetben jelenik meg, függetlenül attól, hogy a cella szerkesztési módban.       Más cella meg kell adnia, például a <xref:System.Windows.Forms.DataGridViewButtonCell>, adja meg a felhasználói Felületet, de ne tárolja a felhasználó által megadott értékeket.</xref:System.Windows.Forms.DataGridViewButtonCell> Ebben az esetben a cella típusa nem megvalósítását IDataGridViewEditingCell vagy szerkesztési vezérlőelem üzemeltetésére.       Cella típusokat megjelenítő szerkesztési vezérlőelem, ha a cella szerkesztési módban, például a <xref:System.Windows.Forms.DataGridViewTextBoxCell>, nem valósítja meg a IDataGridViewEditingCell, de ehelyett adjon meg egy kiegészítő osztály, amely megvalósítja <xref:System.Windows.Forms.IDataGridViewEditingControl>.</xref:System.Windows.Forms.IDataGridViewEditingControl> </xref:System.Windows.Forms.DataGridViewTextBoxCell> Például a <xref:System.Windows.Forms.DataGridViewTextBoxCell>biztosít <xref:System.Windows.Forms.DataGridViewTextBoxEditingControl>, amely a <xref:System.Windows.Forms.TextBox>vezérlik, és megvalósítja az <xref:System.Windows.Forms.IDataGridViewEditingControl>.</xref:System.Windows.Forms.IDataGridViewEditingControl> </xref:System.Windows.Forms.TextBox> származik</xref:System.Windows.Forms.DataGridViewTextBoxEditingControl> </xref:System.Windows.Forms.DataGridViewTextBoxCell> Ebben az esetben a cella <xref:System.Windows.Forms.DataGridViewCell.EditType%2A>tulajdonsága egy <xref:System.Type>a szerkesztési vezérlőtípust képviselő objektum.</xref:System.Type> </xref:System.Windows.Forms.DataGridViewCell.EditType%2A> További információ a végrehajtási <xref:System.Windows.Forms.IDataGridViewEditingControl>, lásd: [hogyan: a Windows Forms DataGridView vezérlőben levő gazdagép vezérlők](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Forms.IDataGridViewEditingControl>"
   syntax:
     content: public interface IDataGridViewEditingCell
   implements: []
@@ -32,13 +32,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets the formatted value of the cell."
-  remarks: "The formatted value represents the value as it is displayed in the cell&quot;s user interface. The formatted value may be different in absolute value and even data type than the actual value contained in the cell.       Implementations of this property typically return a value retrieved by calling the <xref:System.Windows.Forms.IDataGridViewEditingCell.GetEditingCellFormattedValue%2A> method and passing in the <xref:System.Windows.Forms.DataGridViewDataErrorContexts> value."
+  summary: "Lekérdezi vagy beállítja a cella formázott értékének."
+  remarks: "A formázott értékének értékét jelöli, ahogy megjelenik a cella felhasználói felületen. Lehet, hogy különböző abszolút értéke és az adattípus még akkor is, mint a tényleges érték szerepel a cella formázott értékének.       Ez a tulajdonság implementációja általában meghívásával beolvasott érték visszaadása a <xref:System.Windows.Forms.IDataGridViewEditingCell.GetEditingCellFormattedValue%2A>metódus és a sikeres a <xref:System.Windows.Forms.DataGridViewDataErrorContexts>érték.</xref:System.Windows.Forms.DataGridViewDataErrorContexts> </xref:System.Windows.Forms.IDataGridViewEditingCell.GetEditingCellFormattedValue%2A>"
   syntax:
     content: public object EditingCellFormattedValue { get; set; }
     return:
       type: System.Object
-      description: "An &lt;xref:System.Object?displayProperty=fullName&gt; that contains the cell&quot;s value."
+      description: "Egy &lt;xref:System.Object?displayProperty=fullName&gt; , amely a cella értékét tartalmazza."
   overload: System.Windows.Forms.IDataGridViewEditingCell.EditingCellFormattedValue*
   exceptions: []
   platform:
@@ -55,13 +55,13 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Gets or sets a value indicating whether the value of the cell has changed."
-  remarks: "This property is set to `true` to indicate that the cell value has been modified and that its user interface (UI) may need to be updated to reflect this change in value. The owning cell or table should reset this property to `false` after an update."
+  summary: "Lekérdezi vagy beállítja egy érték, amely jelzi, hogy a cella értékének változott-e."
+  remarks: "Ez a tulajdonság értéke `true` annak jelzésére, hogy a cella értékét módosítva lett, és, hogy a felhasználói felület (UI) is frissítenie kell a változásnak értékben. A tulajdonos cella vagy táblázat, állítsa vissza ezt a tulajdonságot `false` frissítés után."
   syntax:
     content: public bool EditingCellValueChanged { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the value of the cell has changed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a cella értékének megváltozott; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.IDataGridViewEditingCell.EditingCellValueChanged*
   exceptions: []
   platform:
@@ -78,17 +78,17 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Retrieves the formatted value of the cell."
-  remarks: "The formatted value represents the value as it is displayed in the cell&quot;s user interface. The formatted value may be different in absolute value and even data type than the actual value contained in the cell.       To set the formatted value of the cell, use the <xref:System.Windows.Forms.IDataGridViewEditingCell.EditingCellFormattedValue%2A> property."
+  summary: "A cella formázott értékét kérdezi le."
+  remarks: "A formázott értékének értékét jelöli, ahogy megjelenik a cella felhasználói felületen. Lehet, hogy különböző abszolút értéke és az adattípus még akkor is, mint a tényleges érték szerepel a cella formázott értékének.       A cella formázott értékének megadásához használja a <xref:System.Windows.Forms.IDataGridViewEditingCell.EditingCellFormattedValue%2A>tulajdonság.</xref:System.Windows.Forms.IDataGridViewEditingCell.EditingCellFormattedValue%2A>"
   syntax:
     content: public object GetEditingCellFormattedValue (System.Windows.Forms.DataGridViewDataErrorContexts context);
     parameters:
     - id: context
       type: System.Windows.Forms.DataGridViewDataErrorContexts
-      description: "A bitwise combination of <xref href=&quot;System.Windows.Forms.DataGridViewDataErrorContexts&quot;></xref> values that specifies the context in which the data is needed."
+      description: "Tagértékeinek <xref href=&quot;System.Windows.Forms.DataGridViewDataErrorContexts&quot;> </xref> értékeket, amelyeket a környezet, amelyben az adatok van szükség."
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the formatted version of the cell contents."
+      description: "Egy <xref:System.Object>, amely a cella tartalma formázott verziója jelöli.</xref:System.Object>"
   overload: System.Windows.Forms.IDataGridViewEditingCell.GetEditingCellFormattedValue*
   exceptions: []
   platform:
@@ -105,14 +105,14 @@ items:
   assemblies:
   - System.Windows.Forms
   namespace: System.Windows.Forms
-  summary: "Prepares the currently selected cell for editing"
-  remarks: "The purpose of this method is to prepare the cell and its contents for editing. For example, you might want to put the insertion point at the end of the cell contents, or change how the contents are aligned."
+  summary: "A kijelölt cella előkészíti a szerkesztéshez"
+  remarks: "Ez a módszer célja a cella és annak tartalmát előkészítéséhez szerkesztésre. Például előfordulhat, hogy kívánt helyezze a kurzort a cella tartalma végén, vagy módosítsa a tartalmának elrendezését."
   syntax:
     content: public void PrepareEditingCellForEdit (bool selectAll);
     parameters:
     - id: selectAll
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to select the cell contents; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Jelölje be a tartalmat; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Forms.IDataGridViewEditingCell.PrepareEditingCellForEdit*
   exceptions: []
   platform:
