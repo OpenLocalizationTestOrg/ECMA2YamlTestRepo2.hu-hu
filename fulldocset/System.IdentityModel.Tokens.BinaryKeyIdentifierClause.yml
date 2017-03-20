@@ -16,8 +16,8 @@ items:
   nameWithType: BinaryKeyIdentifierClause
   fullName: System.IdentityModel.Tokens.BinaryKeyIdentifierClause
   type: Class
-  summary: "Represents a base class for key identifier clauses that are based upon binary data."
-  remarks: "Typically, the BinaryKeyIdentifierClause does not need to be used, other than when a custom security token service is created. When a security token service returns a security token, the issued security token contains references to attached and unattached security tokens. Attached references refer to security tokens that are contained within the security header of a SOAP message and unattached references are security tokens that are not included within the security header of the SOAP message. These references typically affirm the authenticity of the issued security token."
+  summary: "Bináris adatok alapuló kulcsazonosító záradékok alaposztályt jelöli."
+  remarks: "Általában a BinaryKeyIdentifierClause nem kell használni, eltérő egyéni biztonságijogkivonat-szolgáltatás létrehozásakor. Biztonságijogkivonat-szolgáltatás egy biztonsági jogkivonatot ad vissza, ha a kiadott biztonsági jogkivonat nem csatolt és csatlakoztatott biztonsági jogkivonatokat hivatkozik. Csatolt hivatkozásokat tekintse meg a biztonsági fejlécben egy SOAP-üzenet belüli biztonsági jogkivonatokat és tartozó biztonsági jogkivonatokat, amelyek nem tartoznak a biztonsági fejlécben a SOAP-üzenet. Ezeket a hivatkozásokat általában elfogadhatja a kiadott biztonsági jogkivonat hitelességét."
   syntax:
     content: 'public abstract class BinaryKeyIdentifierClause : System.IdentityModel.Tokens.SecurityKeyIdentifierClause'
   inheritance:
@@ -45,27 +45,27 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;></xref> class using the specified key identifier clause type, binary data and a value that indicates whether the binary data must be cloned."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;> </xref> osztály záradékban megadott kulcsazonosító típusát, a bináris adatok és egy érték, amely azt jelzi, hogy a bináris adatok kell klónozható használatával."
   syntax:
     content: protected BinaryKeyIdentifierClause (string clauseType, byte[] identificationData, bool cloneBuffer);
     parameters:
     - id: clauseType
       type: System.String
-      description: "The key identifier clause type. Sets the value of the <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*> property."
+      description: "A kulcsazonosító záradék típusa. Az értéke a <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*>tulajdonság.</xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*>"
     - id: identificationData
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the binary data that represents the key identifier."
+      description: "A tömb <xref:System.Byte>, amely tartalmazza a bináris adatok, amelyek a kulcsazonosító.</xref:System.Byte>"
     - id: cloneBuffer
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to clone the array passed into the `identificationData` parameter; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az átadott tömb klónozásához a `identificationData` paraméter; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identificationData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>identificationData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>identificationData</code> is zero length."
+    description: "<code>identificationData</code>nem nulla hosszúságú."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.#ctor(System.String,System.Byte[],System.Boolean,System.Byte[],System.Int32)
@@ -80,34 +80,34 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;></xref> class using the specified key identifier clause type, binary data, a value that indicates whether the binary data must be cloned, a nonce and the key length."
-  remarks: "When the `derivationNonce` and `derivationLength` parameters are specified, the implied derived key is used instead of the direct security key of the token.       Regardless of the value passed into the `cloneBuffer` parameter, the <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A> method always returns a clone of the array passed into the `identificationData` parameter."
+  summary: "Egy új példányát inicializálja a <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;> </xref> osztály használata a megadott kulcsazonosító záradék típusa, a bináris adatok, az érték, amely jelzi, hogy a bináris adatok kell klónozható, egy nonce és a kulcs hossza."
+  remarks: "Ha a `derivationNonce` és `derivationLength` paraméter meg van adva, az implicit származtatott kulccsal helyett a közvetlen biztonsági kulcs a jogkivonat.       Átadott értékétől függetlenül a `cloneBuffer` paraméter, a <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A>metódus mindig adja meg az átadott tömb másolat a `identificationData` paraméter.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A>"
   syntax:
     content: protected BinaryKeyIdentifierClause (string clauseType, byte[] identificationData, bool cloneBuffer, byte[] derivationNonce, int derivationLength);
     parameters:
     - id: clauseType
       type: System.String
-      description: "The key identifier clause type. Sets the value of the <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*> property."
+      description: "A kulcsazonosító záradék típusa. Az értéke a <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*>tulajdonság.</xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.ClauseType*>"
     - id: identificationData
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the binary data that represents the key identifier. Sets the binary data that is returned by the <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*> method."
+      description: "A tömb <xref:System.Byte>, amely tartalmazza a bináris adatok, amelyek a kulcsazonosító.</xref:System.Byte> A bináris adatok által megtalált beállítja a <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>metódus.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>"
     - id: cloneBuffer
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to clone the array passed into the `identificationData` parameter; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>az átadott tömb klónozásához a `identificationData` paraméter; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: derivationNonce
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the nonce that was used to create a derived key. Sets the value that is returned by the <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.GetDerivationNonce*> method."
+      description: "A tömb <xref:System.Byte>, amely tartalmazza a származtatott kulcs létrehozásához használt nonce.</xref:System.Byte> Beállítja az értéket ad vissza a <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.GetDerivationNonce*>metódus.</xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.GetDerivationNonce*>"
     - id: derivationLength
       type: System.Int32
-      description: "The size of the derived key. Sets the value of the <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.DerivationLength*> property."
+      description: "A származtatott kulcs mérete. Az értéke a <xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.DerivationLength*>tulajdonság.</xref:System.IdentityModel.Tokens.SecurityKeyIdentifierClause.DerivationLength*>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identificationData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>identificationData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>identificationData</code> is zero length."
+    description: "<code>identificationData</code>nem nulla hosszúságú."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer
@@ -122,14 +122,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the binary data that represents the key identifier."
-  remarks: "Regardless of the value passed into the constructor&quot;s `cloneBuffer` parameter, the GetBuffer method always returns a clone of the array passed into the constructor&quot;s `identificationData` parameter."
+  summary: "Lekérdezi a bináris adatok, amelyek a kulcsazonosítójával."
+  remarks: "A konstruktornak átadott értékétől függetlenül `cloneBuffer` paraméter, a GetBuffer metódus mindig adja vissza a konstruktornak átadott tömb klónja `identificationData` paraméter."
   syntax:
     content: public byte[] GetBuffer ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the binary data that represents the key identifier."
+      description: "A tömb <xref:System.Byte>, amely tartalmazza a bináris adatok, amelyek a kulcsazonosító.</xref:System.Byte>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*
   exceptions: []
   platform:
@@ -146,14 +146,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the binary data that represents the key identifier."
-  remarks: "The array returned by the GetRawBuffer method is a clone of the constructor&quot;s `identificationData` parameter when the value passed into the `cloneBuffer` is `true`; otherwise it is same array.       The <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A> method always returns a clone of the array passed into the constructor&quot;s `identificationData` parameter."
+  summary: "Lekérdezi a bináris adatok, amelyek a kulcsazonosítójával."
+  remarks: "A GetRawBuffer metódus által visszaadott tömb a konstruktor klónja `identificationData` paramétert, ha az érték átadott a `cloneBuffer` van `true`; ellenkező esetben ugyanazon.       A <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A>metódus mindig adja meg a tömb a konstruktornak átadott másolat `identificationData` paraméter.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer%2A>"
   syntax:
     content: protected byte[] GetRawBuffer ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the binary data that represents the key identifier."
+      description: "A tömb <xref:System.Byte>, amely tartalmazza a bináris adatok, amelyek a kulcsazonosító.</xref:System.Byte>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetRawBuffer*
   exceptions: []
   platform:
@@ -170,16 +170,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns a value that indicates whether the binary data for the current instance matches the specified binary data."
+  summary: "Egy érték, amely azt jelzi, hogy a bináris adatok az aktuális példány megfelel-e a megadott bináris adatokat adja vissza."
   syntax:
     content: public bool Matches (byte[] data);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> to compare to."
+      description: "A tömb <xref:System.Byte>összehasonlítandó.</xref:System.Byte>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>data </code>is equivalent to the binary data returned by the <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*> method; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> data  </code>által visszaadott bináris adatok egyenértékű a <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>metódus; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.Matches*
   exceptions: []
   platform:
@@ -196,16 +196,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns a value that indicates whether the key identifier for this instance is equivalent to the specified key identifier clause."
+  summary: "Egy, amely azt jelzi, hogy az adott példány kulcs azonosítója megegyezik a megadott kulcsazonosító kifejezés értékét adja vissza."
   syntax:
     content: public override bool Matches (System.IdentityModel.Tokens.SecurityKeyIdentifierClause keyIdentifierClause);
     parameters:
     - id: keyIdentifierClause
       type: System.IdentityModel.Tokens.SecurityKeyIdentifierClause
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;></xref> to compare to."
+      description: "A <xref href=&quot;System.IdentityModel.Tokens.SecurityKeyIdentifierClause&quot;> </xref> összehasonlítandó."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>keyIdentifierClause</code> is of type <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;></xref> and the binary data returned by the <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*> method is identical for the <code>keyIdentifierClause</code> parameter and the current instance; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha <code> keyIdentifierClause </code> típusú <xref href=&quot;System.IdentityModel.Tokens.BinaryKeyIdentifierClause&quot;> </xref> és a bináris adatok által visszaadott a <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>módszer megegyezik a a <code> keyIdentifierClause </code> paraméter és a jelenlegi példány; ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.Matches*
   exceptions: []
   platform:
@@ -222,19 +222,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns a value that indicates whether the binary data for the current instance is equivalent to the specified binary data at the specified offset."
+  summary: "Egy érték, amely azt jelzi, hogy a bináris adatok az aktuális példány a megadott bináris adatokat az adott eltolástól egyenértékű adja vissza."
   syntax:
     content: public bool Matches (byte[] data, int offset);
     parameters:
     - id: data
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> to compare to."
+      description: "A tömb <xref:System.Byte>összehasonlítandó.</xref:System.Byte>"
     - id: offset
       type: System.Int32
-      description: "The index in the array at which the comparison starts."
+      description: "Az index a tömb, amit az összehasonlítás kezdi."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binary data in the <code>data </code>parameter starting at the index specified in the <code>offset</code> parameter is equivalent to the binary data returned by the <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*> method (starting at index zero); otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a bináris adatok a <code> data  </code>a megadott indextől kezdődő paraméter a <code> offset </code> paraméter értéke megegyezik a bináris adatok által visszaadott a <xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>metódus (nulla indexnél kezdődő); egyéb esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.IdentityModel.Tokens.BinaryKeyIdentifierClause.GetBuffer*>"
   overload: System.IdentityModel.Tokens.BinaryKeyIdentifierClause.Matches*
   exceptions: []
   platform:

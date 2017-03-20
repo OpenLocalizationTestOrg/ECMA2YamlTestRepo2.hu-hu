@@ -12,8 +12,8 @@ items:
   nameWithType: IApplicationSettingsProvider
   fullName: System.Configuration.IApplicationSettingsProvider
   type: Interface
-  summary: "Defines extended capabilities for client-based application settings providers."
-  remarks: "The application settings architecture enables you to provide a custom storage mechanism for application settings by creating a custom settings provider, which is a class derived from <xref:System.Configuration.SettingsProvider>. Such a class contains the basic functionality for storing and retrieving properties. However, you can add additional standardized functionality by implementing the IApplicationSettingsProvider interface in the custom settings provider. This interface contains three methods that primarily enable the settings provider to more intelligently handle application version changes. Typically, the settings provider will store application settings for different versions of an application separately to anticipate the following circumstances:      -   Side-by-side execution of different versions of an application.      -   Retaining application settings when upgrading an application.      -   Resetting the application settings to their default values for the currently used version.       The <xref:System.Configuration.LocalFileSettingsProvider> class implements the IApplicationSettingsProvider interface. The same set of methods contained by IApplicationSettingsProvider is also found in the <xref:System.Configuration.ApplicationSettingsBase> class, enabling the establishment of a predefined communication channel between an application settings wrapper and its settings provider.      > [!NOTE] >  This interface is optional. If a provider does not implement this interface, the settings infrastructure will fail without notification if it attempts to access any of the methods defined by this interface."
+  summary: "Az alkalmazás ügyfél-alapú beállítások szolgáltatók határozza meg a kiterjesztett képességeit."
+  remarks: "Az alkalmazás beállításainak architektúra lehetővé teszi, hogy adja meg egy egyéni tárolási mechanizmus az alkalmazásbeállítások hozzon létre egy egyéni beállítások szolgáltatót, amely <xref:System.Configuration.SettingsProvider>.</xref:System.Configuration.SettingsProvider> -ból származtatott osztályt Az ilyen osztály tárolásához és a Tulajdonságok beolvasása alapvető funkcióit tartalmazza. Azonban további szabványos funkciókat is hozzáadhat a IApplicationSettingsProvider felületet valósít meg az egyéni beállítások szolgáltató. Ez az interfész tartalmazza, amelyek elsődlegesen lehetővé teszik a beállítások szolgáltatót, amelyet ezután több leíró alkalmazás megváltozik a verzió három módszert. Általában a beállításszolgáltató fogja tárolja az alkalmazásbeállításokat az külön-külön várhatóan a következő esetekben az alkalmazások különböző verzióihoz:-az alkalmazás különböző verzióinak egymás melletti végrehajtását.      -Alkalmazásbeállítások megőrzése a alkalmazás verzióra.      -Az alkalmazás beállításainak visszaállítása az alapértelmezett értékekre a jelenleg használt verzió.       A <xref:System.Configuration.LocalFileSettingsProvider>osztály megvalósítja az IApplicationSettingsProvider felületet.</xref:System.Configuration.LocalFileSettingsProvider> Ugyanazokat a módszereket IApplicationSettingsProvider által tartalmazott is megtalálható a <xref:System.Configuration.ApplicationSettingsBase>osztály, amelyek lehetővé teszik az alkalmazás beállításainak burkoló és a beállítások szolgáltató közötti előre definiált kommunikációs csatorna.</xref:System.Configuration.ApplicationSettingsBase>      > [!NOTE] > Ez az interfész nem kötelező megadni. A szolgáltató nem valósítja meg az illesztő, ha a beállítások infrastruktúra értesítés nélküli meghiúsul, ha megkísérli elérni a módszerekkel, ez az interfész által meghatározott."
   syntax:
     content: public interface IApplicationSettingsProvider
   implements: []
@@ -31,20 +31,20 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Returns the value of the specified settings property for the previous version of the same application."
-  remarks: "You can use the GetPreviousVersion method in conjunction with the <xref:System.Configuration.IApplicationSettingsProvider.Upgrade%2A> method to migrate application settings during or after the installation of a new version of an application."
+  summary: "A régebbi ugyanahhoz az alkalmazáshoz megadott beállítások tulajdonságának értékét adja vissza."
+  remarks: "A GetPreviousVersion módszer használható együtt a <xref:System.Configuration.IApplicationSettingsProvider.Upgrade%2A>metódus alkalmazás-beállításainak áttelepítése során, vagy egy alkalmazás új verziójának telepítése után.</xref:System.Configuration.IApplicationSettingsProvider.Upgrade%2A>"
   syntax:
     content: public System.Configuration.SettingsPropertyValue GetPreviousVersion (System.Configuration.SettingsContext context, System.Configuration.SettingsProperty property);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> az aktuális alkalmazás használati leíró."
     - id: property
       type: System.Configuration.SettingsProperty
-      description: "The <xref href=&quot;System.Configuration.SettingsProperty&quot;></xref> whose value is to be returned."
+      description: "A <xref href=&quot;System.Configuration.SettingsProperty&quot;> </xref> visszaadandó értéke."
     return:
       type: System.Configuration.SettingsPropertyValue
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValue&quot;></xref> containing the value of the specified property setting as it was last set in the previous version of the application; or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the setting cannot be found."
+      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValue&quot;> </xref> utolsó állították be az alkalmazás; előző verzióját a megadott tulajdonság beállítás értékét tartalmazó vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a beállítás nem található."
   overload: System.Configuration.IApplicationSettingsProvider.GetPreviousVersion*
   exceptions: []
   platform:
@@ -61,14 +61,14 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Resets the application settings associated with the specified application to their default values."
-  remarks: "The Reset method reinitializes the stored values of the specified application settings group. In contrast, <xref:System.Configuration.DefaultSettingValueAttribute> supplies a default value for a single settings property during property initialization, if it has no stored value.       The settings provider determines what reasonable defaults are for the specified group of application settings. For example, the implementation in <xref:System.Configuration.LocalFileSettingsProvider> resets user-scoped settings to their shared values in the `application.exe.config` file; in contrast, it leaves the application-scoped settings unchanged."
+  summary: "Az alkalmazás beállításait az alapértékekre az adott alkalmazáshoz kapcsolódó visszaállítja."
+  remarks: "A visszaállítási metódus újrainicializálja a megadott beállítások alkalmazáscsoport tárolt értékeit. Ezzel szemben <xref:System.Configuration.DefaultSettingValueAttribute>választékát kínálja egy egyetlen beállítások tulajdonság alapértelmezett értékét tulajdonság az inicializálás során, ha nincs tárolt értékkel rendelkezik.</xref:System.Configuration.DefaultSettingValueAttribute>       A beállítások szolgáltató meghatározza, hogy ésszerű alapértelmezett Mik az alkalmazásbeállítások meghatározott csoportjára. Például a megvalósítást <xref:System.Configuration.LocalFileSettingsProvider>alaphelyzetbe állítja a felhasználó által megadott hatókörű beállításokat a megosztott értékeinek a `application.exe.config` ellentétben az hagyja változatlanul alkalmazásokra kiterjedő hatókörű beállítások; fájlt.</xref:System.Configuration.LocalFileSettingsProvider>"
   syntax:
     content: public void Reset (System.Configuration.SettingsContext context);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> az aktuális alkalmazás használati leíró."
   overload: System.Configuration.IApplicationSettingsProvider.Reset*
   exceptions: []
   platform:
@@ -85,17 +85,17 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Indicates to the provider that the application has been upgraded. This offers the provider an opportunity to upgrade its stored settings as appropriate."
-  remarks: "The .NET Framework enables side-by-side installation and execution of different versions of the same application. The application settings provider stores the application settings for each version of an application separately to ensure isolation. However, you may want to migrate settings from the previous version of an application to the current one. To provide this migration functionality, use the Upgrade method, implemented in a class derived from <xref:System.Configuration.SettingsProvider>.       You can use the Upgrade method in conjunction with the <xref:System.Configuration.IApplicationSettingsProvider.GetPreviousVersion%2A> method to migrate application settings during or after the installation of a new version of an application.       This method should be suppressed for every application setting that has the <xref:System.Configuration.NoSettingsVersionUpgradeAttribute> is applied to it, or to the entire settings wrapper class, derived from <xref:System.Configuration.ApplicationSettingsBase>."
+  summary: "A szolgáltató jelzi, hogy az alkalmazás frissítve lett. Ez lehetővé teszi, hogy a szolgáltató a megfelelő tárolt beállítások frissítéséhez."
+  remarks: "A .NET-keretrendszer lehetővé teszi, hogy egymás melletti telepítéséhez és futtatásához a az alkalmazás különböző verzióit. Az alkalmazás szolgáltatója tárolja az alkalmazás beállításait minden verzió esetében külön-külön az alkalmazás-elszigetelés érdekében. Azonban érdemes beállítások áttelepítése egy alkalmazást a jelenlegi egy korábbi verziója. Adja meg ezt a funkciót, használja a frissítési módszert, <xref:System.Configuration.SettingsProvider>.</xref:System.Configuration.SettingsProvider> -ból származtatott osztályt megvalósítva       A frissítési módszer használható együtt a <xref:System.Configuration.IApplicationSettingsProvider.GetPreviousVersion%2A>metódus alkalmazás-beállításainak áttelepítése során, vagy egy alkalmazás új verziójának telepítése után.</xref:System.Configuration.IApplicationSettingsProvider.GetPreviousVersion%2A>       Ezzel a módszerrel el kell rejteni minden Alkalmazásbeállítás, amely rendelkezik a <xref:System.Configuration.NoSettingsVersionUpgradeAttribute>van, vagy a teljes beállítások burkoló osztály, <xref:System.Configuration.ApplicationSettingsBase>.</xref:System.Configuration.ApplicationSettingsBase> származik</xref:System.Configuration.NoSettingsVersionUpgradeAttribute>"
   syntax:
     content: public void Upgrade (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyCollection properties);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> az aktuális alkalmazás használati leíró."
     - id: properties
       type: System.Configuration.SettingsPropertyCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;></xref> containing the settings property group whose values are to be retrieved."
+      description: "A <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;> </xref> tartalmazó a beállítások tulajdonságcsoport, amelynek értékei kérhető."
   overload: System.Configuration.IApplicationSettingsProvider.Upgrade*
   exceptions: []
   platform:

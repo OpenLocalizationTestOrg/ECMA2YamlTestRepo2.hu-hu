@@ -14,8 +14,8 @@ items:
   nameWithType: CipherMode
   fullName: System.Security.Cryptography.CipherMode
   type: Enum
-  summary: "Specifies the block cipher mode to use for encryption."
-  remarks: "Block cipher algorithms encrypt data in block units, rather than a single byte at a time. The most common block size is 8 bytes. Because each block is heavily processed, block ciphers provide a higher level of security than stream ciphers. However, block cipher algorithms tend to execute more slowly than stream ciphers.       Block ciphers use the same encryption algorithm for each block. Because of this, a block of plain text will always return the same cipher text when encrypted with the same key and algorithm. Because this behavior can be used to crack a cipher, cipher modes are introduced that modify the encryption process based on feedback from earlier block encryptions. The resulting encryption provides a higher level of security than a simple block encryption."
+  summary: "Adja meg a titkosításhoz használandó blokk titkosítási mód."
+  remarks: "Blokk titkosítási algoritmusok blokk egységekben, hanem egyszerre akár egyetlen bájtja titkosításához. A leggyakoribb blokkméret: 8 bájt. Valamennyi blokkja fokozottan dolgoz fel, mert block Rejtjelek adatfolyam rejtjelezését nál magasabb szintű biztonságot adja meg. Azonban a blokk titkosítási algoritmusok általában adatfolyam Rejtjelek lassabban hajtható végre.       Blokk Rejtjelek minden egyes ugyanazt a titkosítási algoritmust használja. Emiatt egy egyszerű szöveges adatblokk ugyanazt a titkosítási szöveget azonos kulccsal és algoritmus titkosított mindig ad vissza. Ez a viselkedés egy titkosítás feltörésére használható, mert titkosítási mód be, amelyek azt befolyásolják a titkosítási folyamat korábbi blokk titkosítás visszajelzései alapján. Az eredményül kapott titkosítási magasabb szintű biztonságot, mint egy egyszerű blokk titkosítást nyújt."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -37,12 +37,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Block Chaining (<xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref>) mode introduces feedback. Before each plain text block is encrypted, it is combined with the cipher text of the previous block by a bitwise exclusive OR operation. This ensures that even if the plain text contains many identical blocks, they will each encrypt to a different cipher text block. The initialization vector is combined with the first plain text block by a bitwise exclusive OR operation before the block is encrypted. If a single bit of the cipher text block is mangled, the corresponding plain text block will also be mangled. In addition, a bit in the subsequent block, in the same position as the original mangled bit, will be mangled."
+  summary: "A Cipher Block Chaining (<xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref>) mód visszajelzés vezet be. Minden egyszerű szöveges blokk titkosított, mielőtt azt együtt az előző blokk titkosítási szövegét által Bitenkénti kizáró vagy műveletet. Ez biztosítja, hogy akkor is, ha az egyszerű szöveges sok azonos blokkok tartalmaz, akkor minden egyes titkosítja különböző titkosítási szöveg címblokkhoz. Az inicializáló vektort együtt az egyszerű szöveg első kért blokkra által Bitenkénti kizáró vagy műveletet előtt titkosítja a blokkot. Egyetlen bit a titkosítási szöveg blokk összekeveredett, ha a rendszer a megfelelő egyszerű szöveges blokkot is összekeveredik. Emellett a későbbi blokkban, az eredeti összekeveredett bit, ugyanazon a helyen található egy kicsit fog kell összekeveredik."
   syntax:
     content: CBC
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -58,12 +58,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Feedback (<xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>) mode processes small increments of plain text into cipher text, instead of processing an entire block at a time. This mode uses a shift register that is one block in length and is divided into sections. For example, if the block size is 8 bytes, with one byte processed at a time, the shift register is divided into eight sections. If a bit in the cipher text is mangled, one plain text bit is mangled and the shift register is corrupted. This results in the next several plain text increments being mangled until the bad bit is shifted out of the shift register. The default feedback size can vary by algorithm, but is typically either 8 bits or the number of bits of the block size. You can alter the number of feedback bits by using the <xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*> property. Algorithms that support CFB use this property to set the feedback."
+  summary: "A titkosítási visszajelzési (<xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>) mód az egyszerű szöveg kis lépésekkel szöveggé, egyszerre egy teljes blokkban nem dolgozza fel. Ebben a módban, amely egy blokk hossza és oszlik meg a shift regiszterben szakaszokra használja. Például, ha a blokkméret 8 bájt, az egy időben feldolgozott egybájtos a shift regisztrálása nyolc szakaszra oszlik. Egy kicsit a titkosítás a szöveg összekeveredett, ha egy egyszerű szöveges bittel összekeveredett, és a shift register sérült. Az eredmény a következő több egyszerű szöveges lépésekben alatt összekeveredik mindaddig, amíg a hibás bit úgy kívül a shift regisztrálása. Az alapértelmezett visszajelzési méret algoritmus eltérőek lehetnek, de általában 8 bit vagy a blokkméret bitek száma. Visszajelzés bit használatával módosíthatja a <xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*>tulajdonság.</xref:System.Security.Cryptography.SymmetricAlgorithm.FeedbackSize*> CFB támogató algoritmusok a tulajdonság segítségével állítsa be a visszajelzését."
   syntax:
     content: CFB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -79,12 +79,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Cipher Text Stealing (<xref uid=&quot;langword_csharp_CTS&quot; name=&quot;CTS&quot; href=&quot;&quot;></xref>) mode handles any length of plain text and produces cipher text whose length matches the plain text length. This mode behaves like the <xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;></xref> mode for all but the last two blocks of the plain text."
+  summary: "A titkosított szöveg Ellophassák (<xref uid=&quot;langword_csharp_CTS&quot; name=&quot;CTS&quot; href=&quot;&quot;></xref>) mód bármely egyszerű szöveg hosszát kezeli, és előállított cipher szöveg, amelynek hossza megegyezik az egyszerű szöveg hossza. Ebben a módban viselkedik a <xref uid=&quot;langword_csharp_CBC&quot; name=&quot;CBC&quot; href=&quot;&quot;> </xref> módot az összes, de a két legutóbbi blokkok egyszerű szöveg."
   syntax:
     content: CTS
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -100,12 +100,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: 'The Electronic Codebook (<xref uid=&quot;langword_csharp_ECB&quot; name=&quot;ECB&quot; href=&quot;&quot;></xref>) mode encrypts each block individually. Any blocks of plain text that are identical and in the same message, or that are in a different message encrypted with the same key, will be transformed into identical cipher text blocks. **Important**:  This mode is not recommended because it opens the door for multiple security exploits. If the plain text to be encrypted contains substantial repetition, it is feasible for the cipher text to be broken one block at a time. It is also possible to use block analysis to determine the encryption key. Also, an active adversary can substitute and exchange individual blocks without detection, which allows blocks to be saved and inserted into the stream at other points without detection.'
+  summary: 'Az elektronikus Codebook (<xref uid=&quot;langword_csharp_ECB&quot; name=&quot;ECB&quot; href=&quot;&quot;></xref>) módot külön-külön titkosítja az egyes blokkot. Az egyszerű szöveges téglalapok, amelyek azonos és ugyanazt az üzenetet, vagy az ugyanazzal a kulccsal titkosított különböző üzenetben alakul azonos titkosított szöveg blokkba. **Fontos**: Ez a mód nem ajánlott, mert több biztonsági rések az ajtó nyílik meg. Titkosítani kell az egyszerű szöveges jelentős ismétlődését tartalmazza, akkor valósítható meg, hogy a titkosított szöveg egyszerre csak egy blokk kell megadni. Akkor is blokk elemzés segítségével határozza meg a titkosítási kulcs. Egy aktív ellenfél is, helyettesítse be és az egyes blokkok nélkül észlelést, ami lehetővé teszi, hogy menti, és az adatfolyam észlelési nélkül más pontokon beszúrt érdekében az exchange.'
   syntax:
     content: ECB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -121,12 +121,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "The Output Feedback (<xref uid=&quot;langword_csharp_OFB&quot; name=&quot;OFB&quot; href=&quot;&quot;></xref>) mode processes small increments of plain text into cipher text instead of processing an entire block at a time. This mode is similar to <xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;></xref>; the only difference between the two modes is the way that the shift register is filled. If a bit in the cipher text is mangled, the corresponding bit of plain text will be mangled. However, if there are extra or missing bits from the cipher text, the plain text will be mangled from that point on."
+  summary: "A kimeneti visszajelzési (<xref uid=&quot;langword_csharp_OFB&quot; name=&quot;OFB&quot; href=&quot;&quot;></xref>) mód az egyszerű szöveg kis lépésekkel helyett egy teljes blokkban feldolgozása egyszerre szöveggé dolgozza fel. Ebben a módban hasonlít <xref uid=&quot;langword_csharp_CFB&quot; name=&quot;CFB&quot; href=&quot;&quot;> </xref>; a csak a két mód közötti különbség a shift regisztrálni módon ki van töltve. Egy kicsit a titkosítás a szöveg összekeveredett, ha a rendszer összekeveredik a megfelelő bit egyszerű szöveget. Azonban a titkosított szövegből vagy fölösleges bitből áll, ha az egyszerű szöveges fog kell összekeveredik ettől a."
   syntax:
     content: OFB
     return:
       type: System.Security.Cryptography.CipherMode
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

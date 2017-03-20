@@ -17,8 +17,8 @@ items:
   nameWithType: IEventBindingService
   fullName: System.ComponentModel.Design.IEventBindingService
   type: Interface
-  summary: "Provides a service for registering event handlers for component events."
-  remarks: "The event binding service provides a way to link an event handler with a component event from designer code.       To link an event handler with a component event using the IEventBindingService, you must first obtain an <xref:System.ComponentModel.EventDescriptor> for the event of the component you intend to link. The IEventBindingService provides methods that can convert an <xref:System.ComponentModel.EventDescriptor> to a <xref:System.ComponentModel.PropertyDescriptor> which you can use to configure the event with an event handler method name.       The <xref:System.ComponentModel.TypeDescriptor> object provides a <xref:System.ComponentModel.TypeDescriptor.GetEvents%2A> method that you can use to obtain an <xref:System.ComponentModel.EventDescriptorCollection> containing <xref:System.ComponentModel.EventDescriptor> objects for each event of a component. The <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A> and <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A> methods of the IEventBindingService return a <xref:System.ComponentModel.PropertyDescriptor> for each <xref:System.ComponentModel.EventDescriptor> passed to either method. Each <xref:System.ComponentModel.PropertyDescriptor> returned from <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A> or <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A> has a property type of string. You can set this string to a value that indicates the name of the event-handler method to link the event with using the <xref:System.ComponentModel.PropertyDescriptor.SetValue%2A> method of the <xref:System.ComponentModel.PropertyDescriptor>."
+  summary: "A regisztrációhoz összetevő eseménykezelőinek szolgáltatást nyújt."
+  remarks: "Az eseménykötési szolgáltatásnak csatlakoztathat egy összetevő eseménnyel Tervező kódból eseménykezelő biztosít.       Egy összetevő eseménnyel használatával a IEventBindingService eseménykezelő csatolásához be kell szereznie egy <xref:System.ComponentModel.EventDescriptor>csatolni kívánt összetevő eseménynél.</xref:System.ComponentModel.EventDescriptor> A IEventBindingService decompression metódusokat biztosít az egy <xref:System.ComponentModel.EventDescriptor>való egy <xref:System.ComponentModel.PropertyDescriptor>segítségével állítsa be az esemény egy eseménykezelő metódus neve, amely.</xref:System.ComponentModel.PropertyDescriptor> </xref:System.ComponentModel.EventDescriptor>       A <xref:System.ComponentModel.TypeDescriptor>objektum tartalmaz egy <xref:System.ComponentModel.TypeDescriptor.GetEvents%2A>módszer, amelynek segítségével szerezzen be egy <xref:System.ComponentModel.EventDescriptorCollection>tartalmazó <xref:System.ComponentModel.EventDescriptor>objektumok minden olyan összetevő-esemény esetén.</xref:System.ComponentModel.EventDescriptor> </xref:System.ComponentModel.EventDescriptorCollection> </xref:System.ComponentModel.TypeDescriptor.GetEvents%2A> </xref:System.ComponentModel.TypeDescriptor> A <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A>és <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A>IEventBindingService visszatérési módszerek egy <xref:System.ComponentModel.PropertyDescriptor>minden <xref:System.ComponentModel.EventDescriptor>vagy a metódusnak átadott.</xref:System.ComponentModel.EventDescriptor> </xref:System.ComponentModel.PropertyDescriptor> </xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A> </xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A> Minden egyes <xref:System.ComponentModel.PropertyDescriptor>által visszaadott <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A>vagy <xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A>karakterlánc típusú tulajdonság.</xref:System.ComponentModel.Design.IEventBindingService.GetEventProperties%2A> </xref:System.ComponentModel.Design.IEventBindingService.GetEventProperty%2A> </xref:System.ComponentModel.PropertyDescriptor> Ez a karakterlánc állíthat be egy érték, amely azt jelzi, az esemény <xref:System.ComponentModel.PropertyDescriptor.SetValue%2A>a <xref:System.ComponentModel.PropertyDescriptor>.</xref:System.ComponentModel.PropertyDescriptor> metódusában</xref:System.ComponentModel.PropertyDescriptor.SetValue%2A> csatolni az eseménykezelő metódus neve"
   example:
   - "The following example demonstrates a designer that uses the IEventBindingService to link a component's event with an event handler at design time when the custom shortcut menu command that the designer adds for the component is invoked. To use the example, compile it to a class library, add a reference from a Windows Forms project, add the component in the class library to the Toolbox by right-clicking the Toolbox and selecting Customize Toolbox..., then choosing the class library and clicking OK, and add an instance of the EventControl to a Form. Then right-click the EventControl and click the Connect testEvent shortcut menu command. An empty event handler method is created and the EventControl's testEvent method is initialized to this event handler in the initialization code for the Form.  \n  \n [!code-cpp[IEventBindingServiceExample#1](~/add/codesnippet/cpp/t-system.componentmodel._102_1.cpp)]\n [!code-vb[IEventBindingServiceExample#1](~/add/codesnippet/visualbasic/t-system.componentmodel._102_1.vb)]\n [!code-cs[IEventBindingServiceExample#1](~/add/codesnippet/csharp/t-system.componentmodel._102_1.cs)]"
   syntax:
@@ -41,20 +41,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Creates a unique name for an event-handler method for the specified component and event."
-  remarks: "This method returns a name that is unique from any other method name in the user&quot;s source code."
+  summary: "Létrehoz egy egyedi nevet a megadott összetevő és az esemény egy eseménykezelő módszert."
+  remarks: "Ez a módszer, amely a többi metódus nevét a forráskódban a felhasználó egyedi nevét adja vissza."
   syntax:
     content: public string CreateUniqueMethodName (System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e);
     parameters:
     - id: component
       type: System.ComponentModel.IComponent
-      description: "The component instance the event is connected to."
+      description: "Az összetevő-példány az esemény csatlakozik-e."
     - id: e
       type: System.ComponentModel.EventDescriptor
-      description: "The event to create a name for."
+      description: "Az esemény nevét."
     return:
       type: System.String
-      description: "The recommended name for the event-handler method for this event."
+      description: "Az eseménykezelő módszer eseményhez ajánlott neve."
   overload: System.ComponentModel.Design.IEventBindingService.CreateUniqueMethodName*
   exceptions: []
   platform:
@@ -71,17 +71,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Gets a collection of event-handler methods that have a method signature compatible with the specified event."
-  remarks: "Each string in the collection is the name of a method that has a method signature compatible with the specified event."
+  summary: "Lekérdezi a metódus aláírása sem kompatibilis a megadott esemény a rendelkező eseménykezelő módszerek gyűjteménye."
+  remarks: "A gyűjtemény minden karakterlánca metódus aláírása sem kompatibilis a megadott esemény a metódus nevét."
   syntax:
     content: public System.Collections.ICollection GetCompatibleMethods (System.ComponentModel.EventDescriptor e);
     parameters:
     - id: e
       type: System.ComponentModel.EventDescriptor
-      description: "The event to get the compatible event-handler methods for."
+      description: "Az esemény a kompatibilis eseménykezelő módszerek segítségével."
     return:
       type: System.Collections.ICollection
-      description: "A collection of strings."
+      description: "Karakterláncok gyűjteménye."
   overload: System.ComponentModel.Design.IEventBindingService.GetCompatibleMethods*
   exceptions: []
   platform:
@@ -98,16 +98,16 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Gets an <xref href=&quot;System.ComponentModel.EventDescriptor&quot;></xref> for the event that the specified property descriptor represents, if it represents an event."
+  summary: "Lekérdezi egy <xref href=&quot;System.ComponentModel.EventDescriptor&quot;> </xref> az esemény, amely a megadott tulajdonság leíró jelöli, ha azt egy eseményt képvisel."
   syntax:
     content: public System.ComponentModel.EventDescriptor GetEvent (System.ComponentModel.PropertyDescriptor property);
     parameters:
     - id: property
       type: System.ComponentModel.PropertyDescriptor
-      description: "The property that represents an event."
+      description: "A tulajdonság, amely egy eseményt képvisel."
     return:
       type: System.ComponentModel.EventDescriptor
-      description: "An <xref href=&quot;System.ComponentModel.EventDescriptor&quot;></xref> for the event that the property represents, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the property does not represent an event."
+      description: "Egy <xref href=&quot;System.ComponentModel.EventDescriptor&quot;> </xref> szolgáló jelenti. a tulajdonság, esemény vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a tulajdonság nem határoz meg egy eseményt."
   overload: System.ComponentModel.Design.IEventBindingService.GetEvent*
   exceptions: []
   platform:
@@ -124,17 +124,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Converts a set of event descriptors to a set of property descriptors."
-  remarks: "Each returned <xref:System.ComponentModel.PropertyDescriptor> has a <xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A> of string."
+  summary: "Esemény leírók készlete alakítja tulajdonság leírók készlete."
+  remarks: "Minden egyes visszaküldött <xref:System.ComponentModel.PropertyDescriptor>rendelkezik egy <xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A>karakterlánc.</xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A> </xref:System.ComponentModel.PropertyDescriptor>"
   syntax:
     content: public System.ComponentModel.PropertyDescriptorCollection GetEventProperties (System.ComponentModel.EventDescriptorCollection events);
     parameters:
     - id: events
       type: System.ComponentModel.EventDescriptorCollection
-      description: "The events to convert to properties."
+      description: "Az események átalakítása tulajdonságait."
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "An array of <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> objects that describe the event set."
+      description: "A tömb <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> objektumok, amelyek az esemény set ismertetik."
   overload: System.ComponentModel.Design.IEventBindingService.GetEventProperties*
   exceptions: []
   platform:
@@ -151,17 +151,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Converts a single event descriptor to a property descriptor."
-  remarks: "The returned <xref:System.ComponentModel.PropertyDescriptor> has a <xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A> of string."
+  summary: "Egy adott eseményhez leíró konvertál egy tulajdonság leírója."
+  remarks: "A visszaadott <xref:System.ComponentModel.PropertyDescriptor>rendelkezik egy <xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A>karakterlánc.</xref:System.ComponentModel.PropertyDescriptor.PropertyType%2A> </xref:System.ComponentModel.PropertyDescriptor>"
   syntax:
     content: public System.ComponentModel.PropertyDescriptor GetEventProperty (System.ComponentModel.EventDescriptor e);
     parameters:
     - id: e
       type: System.ComponentModel.EventDescriptor
-      description: "The event to convert."
+      description: "Az esemény konvertálni."
     return:
       type: System.ComponentModel.PropertyDescriptor
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;></xref> that describes the event."
+      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptor&quot;> </xref> , amely leírja, hogy az esemény."
   overload: System.ComponentModel.Design.IEventBindingService.GetEventProperty*
   exceptions: []
   platform:
@@ -178,14 +178,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Displays the user code for the designer."
-  remarks: "This method displays the code editor."
+  summary: "A felhasználói kód jeleníti meg a tervező."
+  remarks: "Ezzel a módszerrel a kód szerkesztése jeleníti meg."
   syntax:
     content: public bool ShowCode ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the code is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kód jelenik meg; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.IEventBindingService.ShowCode*
   exceptions: []
   platform:
@@ -202,17 +202,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Displays the user code for the designer at the specified line."
-  remarks: "This method displays the code editor and positions the cursor on the specified line."
+  summary: "A felhasználói kód megjeleníti a megadott sor Designer."
+  remarks: "Ez a módszer jeleníti meg a kód szerkesztése és a kurzor a megadott sor."
   syntax:
     content: public bool ShowCode (int lineNumber);
     parameters:
     - id: lineNumber
       type: System.Int32
-      description: "The line number to place the caret on."
+      description: "A beszúrási jel elhelyezése sorszámot."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the code is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kód jelenik meg; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.IEventBindingService.ShowCode*
   exceptions: []
   platform:
@@ -229,20 +229,20 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design
-  summary: "Displays the user code for the specified event."
-  remarks: "This method displays the code editor and positions the cursor on the line that the specified event is declared on."
+  summary: "Megjeleníti a megadott eseményt a felhasználó kódját."
+  remarks: "Ez a módszer jeleníti meg a kód szerkesztése és a kurzor a sor, amely a megadott esemény megtörténjen a deklarálása."
   syntax:
     content: public bool ShowCode (System.ComponentModel.IComponent component, System.ComponentModel.EventDescriptor e);
     parameters:
     - id: component
       type: System.ComponentModel.IComponent
-      description: "The component that the event is connected to."
+      description: "Az összetevő, amely az esemény kapcsolódik."
     - id: e
       type: System.ComponentModel.EventDescriptor
-      description: "The event to display."
+      description: "Az esemény megjelenítéséhez."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the code is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Ha a kód jelenik meg; Ellenkező esetben <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.Design.IEventBindingService.ShowCode*
   exceptions: []
   platform:
