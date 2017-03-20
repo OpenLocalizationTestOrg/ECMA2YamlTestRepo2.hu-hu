@@ -14,7 +14,7 @@ items:
   nameWithType: IServerChannelSinkStack
   fullName: System.Runtime.Remoting.Channels.IServerChannelSinkStack
   type: Interface
-  summary: "Provides the stack functionality for a stack of server channel sinks."
+  summary: "Itt a verem funkciót, a kiszolgáló csatorna Jegyzettömb fogadók esetében."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -36,21 +36,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pops the information associated with all the sinks from the sink stack up to and including the specified sink."
+  summary: "Az adatokat a fogadó veremből összes mosdók legfeljebb társított, és többek között a megadott fogadó ugrik."
   syntax:
     content: public object Pop (System.Runtime.Remoting.Channels.IServerChannelSink sink);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The sink to remove and return from the sink stack."
+      description: "A gyűjtő eltávolítása és a gyűjtőverem vissza."
     return:
       type: System.Object
-      description: "Information generated on the request side and associated with the specified sink."
+      description: "A kérelem oldalon jön létre, és a megadott fogadó társított információkat."
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkStack.Pop*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IServerChannelSinkStack.Push(System.Runtime.Remoting.Channels.IServerChannelSink,System.Object)
@@ -65,22 +65,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pushes the specified sink and information associated with it onto the sink stack."
-  remarks: "The information generated on the request side and specified in the `state` parameter is returned in the `state` parameter of the <xref:System.Runtime.Remoting.Channels.IServerChannelSink.AsyncProcessResponse%2A> method on the corresponding sink."
+  summary: "Leküldéses értesítések a megadott fogadó és a fogadó verembe társított információkat."
+  remarks: "A kérelem oldalon generált, valamint a megadott a `state` paraméter eredmény abban az esetben a `state` paramétere a <xref:System.Runtime.Remoting.Channels.IServerChannelSink.AsyncProcessResponse%2A>metódust a megfelelő fogadó.</xref:System.Runtime.Remoting.Channels.IServerChannelSink.AsyncProcessResponse%2A>"
   syntax:
     content: public void Push (System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "The sink to push onto the sink stack."
+      description: "A fogadó verembe leküldéses fogadó."
     - id: state
       type: System.Object
-      description: "Information generated on the request side that is needed on the response side."
+      description: "A kérelem oldalon, a válasz oldalon szükséges generált adatokat."
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkStack.Push*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IServerChannelSinkStack.ServerCallback(System.IAsyncResult)
@@ -95,14 +95,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Presents a callback delegate to handle a callback after a message has been dispatched asynchronously."
-  remarks: "The dispatched message represents a request method call on a remote object.       The ServerCallback method is intended for use only by the .NET Framework remoting infrastructure."
+  summary: "Egy visszahívás kezeléséhez után üzenet elküldése aszinkron visszahívás meghatalmazott mutatja be."
+  remarks: "Az elküldött üzenet jelenti. a távoli objektumon kérelem metódus hívásakor.       A ServerCallback módszer van készült, csak a .NET-keretrendszer távoli eljáráshívási infrastruktúrában."
   syntax:
     content: public void ServerCallback (IAsyncResult ar);
     parameters:
     - id: ar
       type: System.IAsyncResult
-      description: "The status and state of an asynchronous operation on a remote object."
+      description: "Az állapot és a távoli objektumon található egy aszinkron művelet állapotát."
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkStack.ServerCallback*
   exceptions: []
   platform:
@@ -119,17 +119,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Stores a message sink and its associated state for later asynchronous processing."
-  remarks: "The Store method is intended for use only by the .NET Framework remoting infrastructure."
+  summary: "Egy üzenet gyűjtő és az aszinkron feldolgozás később társított állapotában tárolja."
+  remarks: "A tárolási mód van készült, csak a .NET-keretrendszer távoli eljáráshívási infrastruktúrában."
   syntax:
     content: public void Store (System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "A server channel sink."
+      description: "Egy kiszolgáló csatornagyűjtő."
     - id: state
       type: System.Object
-      description: "The state associated with `sink`."
+      description: "A társított állapot `sink`."
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkStack.Store*
   exceptions: []
   platform:
@@ -146,17 +146,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Stores a message sink and its associated state, and then dispatches a message asynchronously, using the sink just stored and any other stored sinks."
-  remarks: "The StoreAndDispatch method is intended for use only by the .NET Framework remoting infrastructure.       Also, the method should only be called by a transport sink to complete an asynchronous dispatch."
+  summary: "Egy üzenet fogadó és a kapcsolódó állapotában tárolja, és ezután kiszállítja üzenet aszinkron módon történik, a gyűjtő csak tárolt és bármely más tárolt mosdók használatával."
+  remarks: "A StoreAndDispatch módszer van készült, csak a .NET-keretrendszer távoli eljáráshívási infrastruktúrában.       Emellett a metódus csak akkor szabad meghívni egy átviteli gyűjtő befejeződik az aszinkron küldő által."
   syntax:
     content: public void StoreAndDispatch (System.Runtime.Remoting.Channels.IServerChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IServerChannelSink
-      description: "A server channel sink."
+      description: "Egy kiszolgáló csatornagyűjtő."
     - id: state
       type: System.Object
-      description: "The state associated with `sink`."
+      description: "A társított állapot `sink`."
   overload: System.Runtime.Remoting.Channels.IServerChannelSinkStack.StoreAndDispatch*
   exceptions: []
   platform:

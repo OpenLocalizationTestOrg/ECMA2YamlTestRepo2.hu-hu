@@ -12,8 +12,8 @@ items:
   nameWithType: SecurityKeyType
   fullName: System.IdentityModel.Tokens.SecurityKeyType
   type: Enum
-  summary: "Specifies the type of key that is associated with a security token."
-  remarks: "Use the SecurityKeyType enumeration to set the <xref:System.IdentityModel.Selectors.SecurityTokenRequirement.KeyType%2A> property.       The BearerKey field is used with the <xref:System.ServiceModel.Configuration.IssuedTokenParametersElement.KeyType%2A> property.      ### BearerKey Requires Wsu:Id or Transport Security with Message Credentials    In federation scenarios, an issued token is generally configured as an endorsing supporting token for message security between a client and the relying parties. However, when a Security Token Service (STS) issues a token with no key (BearerKey), [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] configures it as a <xref:System.ServiceModel.Security.SecurityTokenAttachmentMode> supporting token ([!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] cannot endorse without a key). This requires the issued token to be referenced in the signature. [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] currently uses the following: http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd:Id as a reference mechanism (Wsu:Id).       If an issued token does not have such an attribute, on a client, a <xref:System.ServiceModel.Security.MessageSecurityException> is thrown with the text &quot;Element to sign must have id&quot;. This happens when a SAML 1.1 token is used as an issued token (the Wsu:Id is not defined in the SAML 1.1 specification).       To work around this situation, either use transport security with message credentials (for example, <xref:System.ServiceModel.Configuration.AuthenticationMode>) or an STS must add the http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd:Id (Wsu:Id) to the issued token.       Note that if the Wsu:Id is added to a SAML 1.1 token, the resulting XML does not comply to the SAML 1.1 specification. The alternative is to add a Wsu:Id to the `EncryptedData` which is a result of encrypting the issued token. This procedure complies with the SAML 1.1 specification, because the `EncryptedData` element supports the Wsu:Id attribute.       So to be compliant with the specification, the bearer token must be encrypted by the STS."
+  summary: "Határozza meg a biztonsági jogkivonat társított kulcs."
+  remarks: "A SecurityKeyType számbavétel beállításához használja a <xref:System.IdentityModel.Selectors.SecurityTokenRequirement.KeyType%2A>tulajdonság.</xref:System.IdentityModel.Selectors.SecurityTokenRequirement.KeyType%2A>       A BearerKey mezővel rendelkező a <xref:System.ServiceModel.Configuration.IssuedTokenParametersElement.KeyType%2A>tulajdonság.</xref:System.ServiceModel.Configuration.IssuedTokenParametersElement.KeyType%2A>      ### BearerKey Wsu:Id vagy a Transport Security igényel az üzenetet hitelesítő adatokat az összevonási forgatókönyveket, kibocsátott jogkivonatot általában úgy van konfigurálva, az ügyfél és a függő entitások közötti üzenetbiztonsági egy ellenjegyzési jogkivonat. Azonban ha egy biztonsági jogkivonat-szolgáltatás (STS) ad ki egy token (BearerKey), kulcs nélkül [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] konfigurálja azt egy <xref:System.ServiceModel.Security.SecurityTokenAttachmentMode>támogató jogkivonat ([!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] nem hagyja jóvá a kulcs nélkül).</xref:System.ServiceModel.Security.SecurityTokenAttachmentMode> Ehhez a kibocsátott jogkivonat mutató hivatkozás fog megjelenni az aláírás. [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]jelenleg használja a következő: http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd:Id (Wsu:Id) hivatkozás mechanizmusaként.       Ha egy kiállított jogkivonat nem rendelkezik egy ilyen attribútum egy ügyfélen egy <xref:System.ServiceModel.Security.MessageSecurityException>vált ki, a szöveg &quot;Az aláírandó elemnek azonosítóval kell rendelkeznie&quot;.</xref:System.ServiceModel.Security.MessageSecurityException> Ez akkor fordul elő, ha a SAML 1.1 jogkivonatot (a Wsu:Id nem lehet meghatározva a SAML 1.1 specifikációban) kibocsátott jogkivonatot.       Ez a probléma megoldása, vagy használjon átviteli biztonságot üzenet hitelesítő adatokkal (például <xref:System.ServiceModel.Configuration.AuthenticationMode>) vagy az STS szolgáltatással hozzá kell adnia a http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd:Id (Wsu:Id) a kibocsátott jogkivonat.</xref:System.ServiceModel.Configuration.AuthenticationMode>       Vegye figyelembe, hogy a Wsu:Id SAML 1.1 jogkivonatot ad hozzá, ha az eredményül kapott XML-fájl nem felel meg a SAML 1.1-specifikációnak. Ez esetben egy Wsu:Id való hozzáadása a `EncryptedData` Ez az a kibocsátott jogkivonat titkosított eredménye. Ez az eljárás megfelel a SAML 1.1 szabvány, mert a `EncryptedData` elem támogatja a Wsu:Id attribútum.       Ezért meg kell felelnie a megadását, a tulajdonosi jogkivonatot titkosítani kell az STS által."
   syntax:
     content: public enum SecurityKeyType
   inheritance:
@@ -32,12 +32,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Specifies that the key is an asymmetric key."
+  summary: "Megadja, hogy a kulcs aszimmetrikus kulcsok."
   syntax:
     content: AsymmetricKey
     return:
       type: System.IdentityModel.Tokens.SecurityKeyType
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -53,12 +53,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Specifies that the security token does not contain a proof-of-possession key."
+  summary: "Meghatározza, hogy a biztonsági jogkivonat nem tartalmaz egy igazolása a birtokában a kulcsot."
   syntax:
     content: BearerKey
     return:
       type: System.IdentityModel.Tokens.SecurityKeyType
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462
@@ -74,12 +74,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Specifies that the key is a symmetric key."
+  summary: "Megadja, hogy a kulcs egy szimmetrikus kulcsot."
   syntax:
     content: SymmetricKey
     return:
       type: System.IdentityModel.Tokens.SecurityKeyType
-      description: "To be added."
+      description: "Fel kell venni a párbeszédpanelre."
   exceptions: []
   platform:
   - net462

@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkProvider
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
   type: Interface
-  summary: "Creates client channel sinks for the client channel through which remoting messages flow."
-  remarks: "Channel sinks are connected to a client channel through implementations of the IClientChannelSinkProvider interface. All the remoting client channels provide constructors that take a IClientChannelSinkProvider as a parameter.       Channel sink providers are stored in a chain, and the user is responsible for chaining all channel sink providers together before passing the outer one to the channel constructor. IClientChannelSinkProvider provides a property called <xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A> for this purpose.       When multiple channel sink providers are specified in a configuration file, the remoting infrastructure will chain them together in the order they are found in the configuration file. The channel sink providers will be created when the channel is created during the <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName> call."
+  summary: "Ügyfél csatorna mosdók, mely a távoli eljáráshívás keresztül üzenetek flow ügyfél-csatorna létrehozása"
+  remarks: "Csatorna mosdók egy ügyfél csatorna IClientChannelSinkProvider interfész megvalósítások keresztül csatlakoznak. A távoli eljáráshívási ügyfél csatornák konstruktorok használatát, amelyek egy IClientChannelSinkProvider paramétert adja meg.       Csatorna Gyűjtőszolgáltatóknak lánc tárolódnak, és a felhasználónak kell megőrizni az összes csatorna Gyűjtőszolgáltatóknak együtt láncolás előtt a csatorna konstruktorához külső egy. IClientChannelSinkProvider biztosít tulajdonságot, <xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>erre a célra.</xref:System.Runtime.Remoting.Channels.IServerChannelSinkProvider.Next%2A>       Ha több csatornát a fogadó is meg van adva egy konfigurációs fájlban, a távoli eljáráshívási infrastruktúrában fog láncolt azokat együtt a ahhoz, azok a konfigurációs fájlban találhatók. A csatorna Gyűjtőszolgáltatóknak fog létrejönni, ha a csatorna létrehozása során a <xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>hívása.</xref:System.Runtime.Remoting.RemotingConfiguration.Configure%2A?displayProperty=fullName>"
   example:
   - "The following code example illustrates an implementation of this interface.  \n  \n [!code-cs[Remoting_Sinks#30](~/add/codesnippet/csharp/t-system.runtime.remotin_15_1.cs)]\n [!code-cpp[Remoting_Sinks#30](~/add/codesnippet/cpp/t-system.runtime.remotin_15_1.cpp)]  \n  \n See the <xref:System.Runtime.Remoting.Channels.IClientChannelSink> interface documentation for an example of the corresponding client sink implementation."
   syntax:
@@ -35,8 +35,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Creates a sink chain."
-  remarks: "When the CreateSink method is called, it creates its own channel sink, forwards the CreateSink call to the next sink provider in the chain (if there is one), and ensures that the next sink and the current one are linked together."
+  summary: "A fogadó lánc hoz létre."
+  remarks: "CreateSink metódus hívásakor a saját csatornagyűjtő hoz létre, továbbítja a CreateSink hívása a következő gyűjtőszolgáltató a lánc (ha van ilyen), és biztosítja, hogy a következő gyűjtő és az aktuális egymáshoz kapcsolódó."
   example:
   - "The following code example illustrates an implementation of this method.  \n  \n [!code-cs[Remoting_Sinks#33](~/add/codesnippet/csharp/09bab0ba-2acd-4d69-ae61-_1.cs)]\n [!code-cpp[Remoting_Sinks#33](~/add/codesnippet/cpp/09bab0ba-2acd-4d69-ae61-_1.cpp)]"
   syntax:
@@ -44,21 +44,21 @@ items:
     parameters:
     - id: channel
       type: System.Runtime.Remoting.Channels.IChannelSender
-      description: "Channel for which the current sink chain is being constructed."
+      description: "A csatorna, amelynek az aktuális fogadó lánc kialakítani."
     - id: url
       type: System.String
-      description: "The URL of the object to connect to. This parameter can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the connection is based entirely on the information contained in the `remoteChannelData` parameter."
+      description: "Az URL-cím az objektum való csatlakozáshoz. Ez a paraméter lehet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Ha a kapcsolat alapján teljesen szereplő információk a `remoteChannelData` paraméter."
     - id: remoteChannelData
       type: System.Object
-      description: "A channel data object that describes a channel on the remote server."
+      description: "Egy csatorna-objektumot, amely leírja egy csatornát a távoli kiszolgálón."
     return:
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The first sink of the newly formed channel sink chain, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, which indicates that this provider will not or cannot provide a connection for this endpoint."
+      description: "A újonnan formátumú csatorna fogadó lánc első fogadó vagy <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, ami azt jelenti, hogy a szolgáltató nem lesz, vagy nem adhatók meg egy kapcsolat hozzáadása ehhez a végponthoz."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.CreateSink*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.Next
@@ -73,7 +73,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Gets or sets the next sink provider in the channel sink provider chain."
+  summary: "Lekérdezi vagy beállítja a következő gyűjtőszolgáltató a csatorna fogadó szolgáltató lánc."
   remarks: ''
   example:
   - "The following code example illustrates an implementation of this property.  \n  \n [!code-cs[Remoting_Sinks#32](~/add/codesnippet/csharp/p-system.runtime.remotin_37_1.cs)]\n [!code-cpp[Remoting_Sinks#32](~/add/codesnippet/cpp/p-system.runtime.remotin_37_1.cpp)]"
@@ -81,12 +81,12 @@ items:
     content: public System.Runtime.Remoting.Channels.IClientChannelSinkProvider Next { get; set; }
     return:
       type: System.Runtime.Remoting.Channels.IClientChannelSinkProvider
-      description: "The next sink provider in the channel sink provider chain."
+      description: "A következő gyűjtőszolgáltató a csatorna fogadó szolgáltató lánc."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkProvider.Next*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "A közvetlen hívónak nincs engedélye infrastruktúra."
   platform:
   - net462
 references:
